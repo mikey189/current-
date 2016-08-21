@@ -7,7 +7,7 @@
             </md-input-container>
         </div>
         <div layout-align='end center' layout='row' flex='50'>
-            <md-button id='showAllExceptionsButtonPolicy'>Show All Expections</md-button>
+            <md-button id='showAllExceptionsButtonPolicy'>Show All Expections {{fileTypeCtrl.test}} </md-button>
         </div>
     </div>
     <div layout-padding>
@@ -29,7 +29,7 @@
                         </h5>
                       </md-button>
                     <div class='panel-body collapse' id='windows'>
-                        <custom-table id='windowsTable' file-type-sections = 'fileTypeSections' files='files'></custom-table>
+                        <custom-table  ng-controller='fileType as fileTypeCtrl'></custom-table>
                     </div>
                     <md-button class='fullWidthPolicy'>
                         <h5 class="panel-title" layout-padding>

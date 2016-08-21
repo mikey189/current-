@@ -1,8 +1,55 @@
+
+app.controller('policy', function($scope, $mdSidenav, $location,$timeout, $q, getUsers){
+    var self = this;  
+    //______toggling the sideNav______
+    $scope.toggleMenu = function(){
+        $mdSidenav('policySidenav').toggle()
+    }
+    
+    
+    $scope.path = $location.path 
+    $scope.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+    $scope.casesFilter = ['Open Cases', 'Active Cases', 'High Priority', 'Priority/user'];
+    
+                          
+$scope.labels = ["", "", "", "", "", "", ""];
+  $scope.series = ['Series A'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 90]
+  ];
+    
+
+$scope.casesData= [30, 40, 35];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+    
+  
+  $scope.lorem=  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.';    
+}) 
+
+
+
+
+
+app.controller('addException', function(){
+    var self=this;
+
+}) 
+
+app.controller('customTable', function(){
+    var self=this;
+    
+}) 
+
+app.controller('exceptionRow', function(){
+    var self=this;
+    
+}) 
+
 app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
     
     
-    
-    /* begin loading the dialog window to add exceptions*/
     
   this.status = '  ';
   this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -41,10 +88,10 @@ app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
 
     function DialogController($mdDialog) {
       this.hide = function() {
-        $mdDialog.hide();
+        $mdDialog.hide 
       };
       this.cancel = function() {
-        $mdDialog.cancel();
+        $mdDialog.cancel 
       };
       this.answer = function(answer) {
         $mdDialog.hide(answer);
@@ -109,9 +156,52 @@ app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
             $.append(compiled);
             console.log('added');
         }
+        
        
-    });
+    }) 
 
 
 
+app.controller('detection', function(){
+    this.true = true
+})
+
+
+app.controller('policyDashboardTab', function(){
+    var self=this;
+    
+}) 
+
+app.controller('policyGraphToolbar', function(){
+    var self=this;
+    
+}) 
+
+app.controller('policySidenav', function(){
+    var self=this;
+    
+}) 
+
+app.controller('secondTab', function(){
+    var self=this;
+    
+})
+
+app.controller('thirdTab', function(){
+    var self=this;
+    
+})
+
+app.controller('topToolbar', function(){
+    var self=this;
+    
+})
+
+app.controller('settings', function(){
+    this.signFiles = true
+    this.blockedFiles = false
+    this.incorrectExtensions = false
+    this.nestingLevel = 3
+    this.emailReports = true
+})
 

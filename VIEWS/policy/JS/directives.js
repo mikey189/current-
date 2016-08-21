@@ -50,13 +50,7 @@ app.directive('fileType', function(){
     return{
         restrict: 'AECM',
         templateUrl: 'VIEWS/policy/templates/fileType.html', 
-        replace: false,
-        scope: {
-            execs: '=',
-            files: '=',
-            fileTypeSections: '=',
-            family: '='
-        }
+        replace: false
     }
 })
 
@@ -65,11 +59,8 @@ app.directive('customTable', function(){
     return{
         restrict: 'AECM',
         templateUrl: 'VIEWS/policy/templates/customTable.html', 
-        replace: false,
-        scope: {
-            fileTypeSections: '=',
-            files: '='
-        }  
+        replace: false
+       
     }
 })
 
@@ -96,6 +87,7 @@ return {
        };
     }
 }});
+
 app.directive('detection', function(){
     return{
         restrict: 'E',
@@ -105,23 +97,10 @@ app.directive('detection', function(){
 })
 
 
-/*
-
-app.directive('rowCreator', function($compile){
+app.directive('policySettings', function(){
     return{
-        restrict: 'AE',
-        template: '<button>Add Row</button>',
-        link: function(scope, element, attrs){
-            element.bind('click', function(){
-                element.find('table').append('<tr><td><p>WOW</p></td><td><p>WOW</p></td></tr>');
-                
-                console.log('appended !')
-            })
-                    $compile(element.contents())(scope);
-
-        }
+        restrict: 'E',
+        templateUrl: 'VIEWS/policy/templates/settings.html',
+        replace: false
     }
 })
-
-*/
-

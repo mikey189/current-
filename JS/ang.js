@@ -23,7 +23,7 @@ app.controller('index', function($mdSidenav, $translate){
       this.availableDirections = ['up', 'down', 'left', 'right'];
       this.selectedDirection = 'down';
     
+    
 })
-
 
 

@@ -312,12 +312,18 @@ md-chips.md-default-theme .md-chips, md-chips .md-chips {
     padding-top: 0px;
     padding-bottom: 0px;
 }
+
 .noTopPadding{
     padding-top: 0px;
 }
 .noMarginTop{
     margin-top: 0px;
 }
+
+.noMarginBottom{
+    margin-bottom: 0px;
+}
+
 .leftAligned{
     text-align: left;
     margin-bottom: 0px;
@@ -532,4 +538,26 @@ md-select:not ([disabled]):focus ._md-select-value{
     height: auto;
 }
 
+.detectionTHIcons{
+        margin-left: 0px;
+        padding-right: 0px;
+        margin-top: 0px;
+        margin-right: 0.5em;
+    }
+    .border-bottom-gray{
+        border-bottom: solid 1px gray;
+    }
 
+#settingsFileHeader{
+    margin-left: 0px;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+}
+.noMarginBottom{
+    margin-bottom: 0.5em;
+}
+
+#settingsArchiveInput{
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}

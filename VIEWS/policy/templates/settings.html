@@ -1,0 +1,61 @@
+<div layout='column' >
+    <div layout='row' layout-margin>
+        <md-list class='whiteBk' flex='40' flex-sm='100' flex-xs='100' flex-md='100'>
+            <md-list-item layout='row' layout-align='start center'>
+                <md-icon class='material-icons md-primary md-36' id='settingsFileHeader'>insert_drive_file</md-icon>
+                <h4 class='md-primary noMarginBottom'>Files</h4>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center'>
+                <p>Sign files</p>
+                <md-switch class="md-primary" ng-model="settings.signFiles" aria-label="file Sign switch">
+                </md-switch>  
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center'>
+                <p>Saved Block Files Reports</p>
+                <md-switch class="md-primary" ng-model="settings.blockedFiles" aria-label="Saved Blocked Files">
+                </md-switch>  
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center'>
+                <p>Block incorrect file extensions</p>
+                <md-switch class="md-primary" ng-model="settings.incorrectExtensions" aria-label="incorrect extensions">
+                </md-switch>  
+            </md-list-item>
+        </md-list>
+        <md-list class='whiteBk' flex>
+            <md-list-item layout='row' layout-align='start center'>
+                <md-icon class='material-icons md-primary md-36' id='settingsFileHeader'>archive</md-icon>
+                <h4 class='md-primary noMarginBottom'>Archive</h4>
+            </md-list-item>
+            <md-divider></md-divider>  
+            <md-list-item layout='row' layout-align='space-between center'>
+                <p>Maximum archive nesting level</p>
+                <md-input-container class='md-primary' id='settingsArchiveInput'>
+                    <input ng-model="settings.nestingLevel" type="number" placeholder='unlimited'>
+                </md-input-container>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                Excessively nested files in archive behavior
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                Disallowed files in archive behavior
+            </md-list-item>
+        </md-list>
+    </div>
+    <div layout-margin flex='100'>
+        <md-list class='whiteBk'>
+            <md-list-item layout='row' layout-align='space-between center'>
+                <div layout='row'>
+                    <md-icon class='material-icon md-primary'>email</md-icon>
+                    <h4 class='md-primary'>Email Report</h4>
+                </div>
+                <md-switch class="md-primary" ng-model="settings.emailReports" aria-label="settings authorize email reports">
+                </md-switch>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>

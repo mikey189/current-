@@ -1,54 +1,93 @@
-<div class='table responsive '>
-    <table class='table'>
-        <thead>
-            
-            <th layout='row' flex='40'>
-                <md-icon class="material-icons">people</md-icon>
-                <p>Scanners</p>
-            </th>
-            <th layout='row' flex='60'>
-                <md-checkbox aria-label='use'></md-checkbox>
-                <p>Use</p>
-            </th>
-            
-        </thead>
-        <tbody>
-            <tr>
-                <td>Avira</td>
-                <td><md-checkbox aria-label='avira'></md-checkbox></td>
-            </tr>
-            <tr>
-                <td>Clam</td>
-                <td><md-checkbox aria-label='clam'></md-checkbox></td>
-            </tr>
-            <tr data-toggle="collapse" data-target="#fireEye" class="accordion-toggle">
-                <td>FireEye Sandvox</td>
-                <td><md-checkbox aria-label='fireEye'></md-checkbox></td>
-            </tr>
-            <tr>
-                <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="fireEye"> Fire Eye </div> </td>
-            </tr>
-         
-            <tr data-toggle="collapse" data-target="#cukoo" class="accordion-toggle">
-                <td>Cuckoo Sandbox</td>
-                <td><md-checkbox aria-label='cukoo'></md-checkbox></td>
-            </tr>
-            <tr>
-                <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="cukoo"> Cukoo </div> </td>
+<div layout-margin style='margin-top: 1.5em'>
+    <div class='table-responsive'>
+        <table class='table table-hover whiteBk'>
 
-            </tr>
-            <tr>
-                <td>Vendor Signing</td>
-                <td><md-checkbox aria-label='vendorSigning'></md-checkbox></td>
-            </tr>
-            <tr>
-                <td>XML Validation</td>
-                <td><md-checkbox aria-label='xmlValidation'></md-checkbox></td>
-            </tr>
-            <tr>
-                <td>Regular Expression</td>
-                <td><md-checkbox aria-label='regex'></md-checkbox></td>
-            </tr>
-        </tbody>
-    </table>
+                <tr class='border-bottom-gray'>
+                    <td>
+                        <div layout='row'>
+                            <md-icon class="material-icons detectionTHIcons">format_list_numbered</md-icon>
+                            <p>Scanners</p>
+                        </div>
+                    </td>
+                    <td >
+                        <div layout='row'>
+                            <md-checkbox ng-model='detection.true' aria-label='use'></md-checkbox>
+                            <p>Use</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Avira</td>
+                    <td><md-checkbox aria-label='avira'></md-checkbox></td>
+                </tr>
+                <tr>
+                    <td>Clam</td>
+                    <td><md-checkbox aria-label='clam'></md-checkbox></td>
+                </tr>
+                <tr data-toggle="collapse" data-target="#fireEye" class="accordion-toggle">
+                    <td layout='row' layout-align='start center'>
+                        FireEye Sandvow <span class='material-icons'>expand_more</span>
+                    </td>
+                    <td>
+                        <md-checkbox aria-label='fireEyeCheckBox'></md-checkbox>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow" style='padding-top: 0px; padding-bottom: 0px'>
+                        <div class="accordian-body collapse" id="fireEye" layout-margin> 
+                            <table class="table" style='background-color: #e7e6f2'>
+                                <tr>
+                                    <td>Use FireEye servers for this policy</td>
+                                    <td><md-checkbox aria-label='fireeye hidden 1'></md-checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td>Check File Types</td>
+                                    <td><md-checkbox aria-label='fireEye hidden 2'></md-checkbox></td>
+                                </tr>
+                            </table>
+                        </div> 
+                    </td>
+                </tr>
+
+                <tr data-toggle="collapse" data-target="#cukoo" class="accordion-toggle">
+                    <td layout='row' layout-align='start center'>
+                        Cukoo Sandbox <span class='material-icons'>expand_more</span>
+                    </td>
+                    <td>
+                        <md-checkbox aria-label='cukooSandbox'></md-checkbox>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow" style='padding-top: 0px; padding-bottom: 0px'>
+                        <div class="accordian-body collapse" id="cukoo" layout-margin> 
+                            <table class="table" style='background-color: #e7e6f2'>
+                                <tr>
+                                    <td>Use Cukoo servers for this policy</td>
+                                    <td><md-checkbox aria-label='cukoo hidden 1'></md-checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td>Check File Types</td>
+                                    <td><md-checkbox aria-label='cukoo hidden 2'></md-checkbox></td>
+                                </tr>
+                            </table>
+                        </div> 
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Vendor Signing</td>
+                    <td><md-checkbox aria-label='vendorSigning'></md-checkbox></td>
+                </tr>
+                <tr>
+                    <td>XML Validation</td>
+                    <td><md-checkbox aria-label='xmlValidation'></md-checkbox></td>
+                </tr>
+                <tr>
+                    <td>Regular Expression</td>
+                    <td><md-checkbox aria-label='regex'></md-checkbox></td>
+                </tr>
+        </table>
+    </div>
 </div>

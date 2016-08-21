@@ -33,6 +33,7 @@ app.config(function ($routeProvider) {
         templateUrl: './VIEWS/policy/policy.html',
         controller: 'policy'
     })
+
     
      .when('/reports', {
         templateUrl: './VIEWS/reports/reports.html',
