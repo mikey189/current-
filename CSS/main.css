@@ -1,0 +1,535 @@
+/* Material Design Overriding 
+Icons */
+
+
+
+
+/* bootstrap custom palette
+  
+        success = purple ->#441D9E;
+        danger = yellow -> #E5A200;
+        info = lightBlue -> #0083ED;
+
+
+see below overriding bootstrap css for progress bar
+ */
+
+
+
+.progress-bar-purple{
+    background-color: #773EB2;
+}
+
+.progress-bar-blue{
+    background-color: #0083ED;
+}
+
+.progress-bar-yellow{
+    background-color: #E5A200;
+}
+
+.purple{
+    color: #773EB2;
+}
+/*end of overriding boostrap progress bar theme */
+
+.blue{
+    color: #0083ED;
+}
+.yellow{
+    color: #E5A200;
+}
+
+.grey{
+    color: grey;
+}
+.purpleIcons{
+    color: #786CC1;
+}
+
+.greenish{
+    color: #5DC5BD;
+}
+.blueish{
+    color: #4FAFC3;
+}
+.gray{
+    color: gray;
+}
+.greenIcon{
+    color: #62D0C9;
+}
+.red{
+    color: red;
+}
+.green-success{
+    color: #4F8A10;
+}
+
+.black{
+    color: black;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+}
+
+#dashboardToolbar{
+    background-color: white;
+}
+#mainToolbar{
+    background-color: #190051;
+}
+
+#secondItemSection{
+    margin-left: 1em;
+}
+
+#lisHolder{
+    margin: 1em;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+
+.middle{
+    text-align: center;
+}
+body{
+    
+  font-family: "Roboto";
+ flex: 1 0 auto;
+
+}
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1);}
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+
+.white{
+    color: white;
+}
+.white:hover {
+    color: #8C9EFF;
+}
+
+
+.fullWidthButton{
+    min-width: auto;
+}
+
+
+.dashboardTableGreenTop{
+    border-top: solid 0.3em #5DC5BD;
+    background-color: white;
+}
+
+.fullWidth{
+    width: 100%;
+}
+.dashboardTableBlueTop{
+    background-color: white;
+    border-top: solid 0.3em #4FAFC3;
+}
+
+#customNoPadding>tr>td{
+    padding: 0px;
+}
+
+/* Primal CSS */
+/*overwriting bootstrap properties for tables*/
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    padding-top: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    vertical-align: middle;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    border-top: 0px;
+}
+#transparentTable{
+    background-color: transparent;
+}
+.dashboardTablePurpleTop{
+    background-color: white;
+    border-top: solid 0.3em #773EB2;
+    
+}
+.noPadding{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+md-list-item>md-button{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+#mainContent {
+  color: #565656;
+  background: #DFE8F8;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+#sidenavIndex{
+    background-color: #190051;
+    z-index: 99;
+    width: auto;
+}
+.center{
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+#vertical-container {
+    height: 65%;}
+
+
+.progress-bar-purple{
+    background-color: #773EB2;
+}
+
+#dashboardTimeSelector{
+    border: 1px solid #979797;
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#testinput{
+    border: 1px solid #979797;
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0px;
+    padding-bottom: 0px; 
+}
+.padding-bottom{
+    padding-bottom: 1em;
+}
+
+.dashboardTransparentTable{
+    background-color: none;
+    border-top: solid 0.3em #773EB2;
+    border-left: solid 0.2em #773EB2;
+    border-right: solid 0.2em #773EB2;
+    border-bottom: solid 0.2em #773EB2;
+}
+.margin-left{
+    margin-left: 1em;
+}
+
+
+#testSep ::after{
+    background: #e0e0e0;
+    width: 1px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 70px;
+}
+
+.transparent{
+    background-color: white;
+}
+
+#dashboardToolbar:not {
+    color: greenyellow;
+}
+
+md-datepicker.md-default-theme, md-datepicker{
+    background-color: transparent;
+}
+
+#dashboardContainer{
+    height: 100%;
+    border-right: solid 0.5em #222172;
+}
+#dashboardTableContainer{
+    height: 100%;
+}
+#policySidenav{
+    background-color: #232174;
+    height: 100%;
+}
+
+@media (max-width: 456px) {
+    #sidenavIndex{
+    width: auto;
+        min-width: auto;}
+}
+    
+    
+#policySidenavListItems{
+    border: solid 1px #4527A0;
+    background-color: #0D0F47;
+    border-radius: 2px;
+}
+.special{
+    margin: 0px;
+    padding-top: 0.5em;
+}
+.special:hover{
+        background-color: #4527A0;
+    }
+    
+#yellow{
+    background-color: yellow;
+    height: 100%;
+}
+
+.policySidenavChips{
+    background-color: #773EB2;
+    color: white;
+}
+.policyIconsNoPaddingSidenav{
+    margin-left:0px;
+    margin-right:0.2em;
+}
+
+md-chips.md-default-theme .md-chips, md-chips .md-chips {
+    box-shadow: 0 0px rgba(0,0,0,0.12);
+}
+.noVerticalPadding{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.noTopPadding{
+    padding-top: 0px;
+}
+.noMarginTop{
+    margin-top: 0px;
+}
+.leftAligned{
+    text-align: left;
+    margin-bottom: 0px;
+    padding-top: 1em;
+}
+
+#repeatContainerPolicySidenav{
+    height: 90%;
+}
+.separator{
+    margin-top: 0.3em;
+}
+.noMarginRight{
+    margin-right: 0px;
+}
+#toolbar1Policy{
+    background-color: white;
+    border-bottom: solid 2px ghostwhite;
+}
+.marginRight{
+    margin-right: 1em;
+}
+.policyToolbarGreenButton{
+    background-color: #62D0C9;
+    color: white;
+}
+.roundedButton{
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.policyToolbarRedButton{
+    background-color: white;
+    color: red;
+    border: solid 2px red;
+}
+#red{
+    color: red; 
+}
+md-select.md-default-theme ._md-select-value, md-select ._md-select-value {
+    color: black;
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: solid 2px #773EB2;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+md-select.md-default-theme ._md-select-value._md-select-placeholder, md-select ._md-select-value._md-select-placeholder{
+    color: dimgray;
+    padding-left: 1em;
+    padding-bottom: 0.3em;
+    padding-top: 0.3em;
+    padding-right: 1em;
+}
+
+md-content{
+    -webkit-min-height:  100%;
+}
+
+#toolbar2Policy{
+    background-color: white;
+}
+#policyMainContent{
+    min-height: 100%;
+}
+.caption{
+    font-size: 70%;
+}
+#sanitizedFileGraph{
+    width: 80%;
+    height: 15%;
+}
+#blockedFilesGraph{
+    width: 80%;
+    height: 15%;
+}
+.rightSemiBorder{
+    border-right: solid 1px #d3d3d3 ;
+}
+#canou{
+    width: 40%; height: 6%
+}
+
+.greenBorder{
+    border-color: solid 1px #5DC5BD; 
+}
+#showAllExceptionsButtonPolicy{
+    border-radius: 100px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-color: solid 1px #5DC5BD; 
+
+}
+#policyFileTypeToolbar{
+    background-color: white;
+    border-bottom: solid 2px gray;
+    min-height: 100px;
+}
+.whiteBK{
+    background-color: white;
+}
+
+.hideExecs{
+    display: none;
+}
+#execRowID{
+   background-color: #C3CFE8; 
+}
+
+.execRows:hover{
+    background-color:#C3CFE8;
+}
+.hiddenFilesExtension{
+    display: none;
+}
+.rightAlignedIcon{
+    margin-right: 0px;
+}
+.fullWidthPolicy{
+    width: 100%;
+    text-align: left;margin-left: 0px;margin-top: 0px;margin-bottom: 0px;margin-right: 0px;
+}
+
+.fullWidthPanel{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+}
+    .parent:active{
+    background-color: red;
+}
+
+/*auto complete chips style*/
+
+.chipsdemoContactChips md-content.autocomplete {
+  min-height: 250px; }
+  .chipsdemoContactChips md-content.autocomplete input {
+    min-width: 400px; }
+.chipsdemoContactChips .md-item-text.compact {
+  padding-top: 8px;
+  padding-bottom: 8px; }
+.chipsdemoContactChips .contact-item {
+  box-sizing: border-box; }
+  .chipsdemoContactChips .contact-item.selected {
+    opacity: 0.5; }
+    .chipsdemoContactChips .contact-item.selected h3 {
+      opacity: 0.5; }
+  .chipsdemoContactChips .contact-item .md-list-item-text {
+    padding: 14px 0;
+    max-width: 190px; }
+    .chipsdemoContactChips .contact-item .md-list-item-text h3 {
+      margin: 0 !important;
+      padding: 0;
+      line-height: 1.2em !important; }
+    .chipsdemoContactChips .contact-item .md-list-item-text h3, .chipsdemoContactChips .contact-item .md-list-item-text p {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
+  @media (min-width: 960px) {
+    .chipsdemoContactChips .contact-item {
+      float: left;
+      width: 33%; } }
+.chipsdemoContactChips md-contact-chips {
+  margin-bottom: 10px; }
+.chipsdemoContactChips .md-chips {
+  padding: 5px 0 8px; }
+.chipsdemoContactChips .fixedRows {
+  height: 250px;
+  overflow: hidden; }
+
+/*end of auto complete chips styling*/
+
+
+md-select:not ([disabled]):focus ._md-select-value{
+    padding-bottom: 0.3em;
+}
+
+
+/* setting the fab-dial css */
+
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize; }
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important; }
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem; }
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+
+
+#topFileTypeMdList{
+    height: auto;
+}
+#topUsersMdList{
+    height: auto;
+}
+
+#topFileTypeMdList > md-list-item{
+    background-color: white;
+    height: auto;
+}
+#topUsersMdList > md-list-item{
+    background-color: white;
+    height: auto;
+}
+
+

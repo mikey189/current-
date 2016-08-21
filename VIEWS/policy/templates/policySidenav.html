@@ -1,0 +1,193 @@
+<md-sidenav layout-padding md-component-id='policySidenav' id='policySidenav' md-is-locked-open="$mdMedia('gt-lg')">
+            <div layout='row' layout-align='start center'>
+                <h4 flex='66' class='white'><strong>Policy Center</strong></h4>
+                <div flex='33' layout='row'>
+                    <md-button class='fullWidthButton'>
+                        <md-tooltip md-direction="bottom">add</md-tooltip>
+                        <md-icon class='material-icons greenIcon'>add</md-icon>
+                    </md-button>
+                    <md-button class='fullWidthButton'  ng-click='toggleMenu()'>
+                        <md-tooltip md-direction="bottom">close</md-tooltip>
+                        <md-icon ng-click='showSearchBar()' class='material-icons greenIcon'>reorder</md-icon>
+                    </md-button>  
+                </div>
+            </div>  
+            
+            <md-input-container class="md-block greenIcon" md-component-id='searchBar'>
+                <label class='greenIcon'>Search Documents</label>
+                <input ng-model="user.firstName">
+            </md-input-container>
+          
+            <md-virtual-repeat-container id='repeatContainerPolicySidenav'>
+            <md-list>
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Web High Priority</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Web Low Priority</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Mail High Privileges</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Mail Low Privileges</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Web High Priority</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+                <md-list-item id='policySidenavListItems' layout='column'>
+                    <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
+                        <p class='md-body-2
+ white leftAligned'>
+                            <strong>Mail Low Priority</strong>
+                        </p>
+                        <md-icon class='material-icons greenIcon noMarginRight'>more_vert</md-icon>
+                        </div>
+                        <div layout='row' layout-padding class='noVerticalPadding'>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple '>insert_drive_file</md-icon><span class='white'>2,123,123</span>
+                            </div>
+                            <div layout='row'>
+                                <md-icon class='policyIconsNoPaddingSidenav material-icons purple'>group</md-icon><span class='white'>
+                                213</span>
+                            </div>
+                        </div>
+                        <md-chips layout='row' class='noTopPadding' layout-padding >
+                            <md-chip class='policySidenavChips noMarginTop'>Web</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Dw2</md-chip>
+                            <md-chip class='policySidenavChips noMarginTop'>Mail</md-chip>
+                        </md-chips>
+                            </md-button>
+                  
+                    </md-list-item>
+                
+                <div class='separator'></div>
+                
+            </md-list>
+            </md-virtual-repeat-container>
+        </md-sidenav>

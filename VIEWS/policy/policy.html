@@ -1,0 +1,25 @@
+<div layout='column' layout-gt-sm='column' id='policyMainContent' ng-cloak> 
+   <top-toolbar></top-toolbar>
+    <div layout='row' flex>
+        <policy-sidenav></policy-sidenav>
+        <md-content flex flex-gt-sm layout='column'>
+            <policy-graph-toolbar></policy-graph-toolbar>
+            <div class='container' layout='column' layout-padding layout-align='center center'>
+                <div layout = 'row' flex>
+                    
+                    <md-center-tabs>
+                        <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs='always'>
+                            <policy-dashboard-tab></policy-dashboard-tab>
+                            <second-tab></second-tab>
+                            <third-tab></third-tab>
+                        </md-tabs>
+                    </md-center-tabs>
+                </div>
+            </div>
+            
+            <!--md-dynamic-height md-border-bottom-->
+        </md-content>
+    </div>
+</div>
+
+

@@ -1,0 +1,28 @@
+    
+    
+    
+    
+    
+    <table class='table'>
+        <thead class='thead-inverse'>
+            <th scope='row'>#</th>
+            <th>Allow</th>
+            <th>Size limit</th>
+            <th>Transform</th>
+            <th>Process embedded files</th>
+            <th>Sandbox</th>
+            <th>Exceptions</th>
+        </thead>
+        <tbody>
+                <tr data-toggle="collapse" data-target=".execRow" class='whiteBk'>
+                    <th scope='row'>Executables</th>
+                    <td ng-repeat='i in [1, 2, 3, 4, 5, 6]'></td>
+                </tr>
+            <tr class='execRow' class="collapse" ng-repeat='exec in execs'>
+                <th scope='row'>{{exec.name}}</th>
+                <td ng-repeat='i in [1, 2, 3, 4, 5, 6]'>Allow</td>
+            </tr>
+        </tbody>
+    </table>
+    
+  

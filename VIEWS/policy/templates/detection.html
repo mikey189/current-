@@ -1,0 +1,54 @@
+<div class='table responsive '>
+    <table class='table'>
+        <thead>
+            
+            <th layout='row' flex='40'>
+                <md-icon class="material-icons">people</md-icon>
+                <p>Scanners</p>
+            </th>
+            <th layout='row' flex='60'>
+                <md-checkbox aria-label='use'></md-checkbox>
+                <p>Use</p>
+            </th>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td>Avira</td>
+                <td><md-checkbox aria-label='avira'></md-checkbox></td>
+            </tr>
+            <tr>
+                <td>Clam</td>
+                <td><md-checkbox aria-label='clam'></md-checkbox></td>
+            </tr>
+            <tr data-toggle="collapse" data-target="#fireEye" class="accordion-toggle">
+                <td>FireEye Sandvox</td>
+                <td><md-checkbox aria-label='fireEye'></md-checkbox></td>
+            </tr>
+            <tr>
+                <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="fireEye"> Fire Eye </div> </td>
+            </tr>
+         
+            <tr data-toggle="collapse" data-target="#cukoo" class="accordion-toggle">
+                <td>Cuckoo Sandbox</td>
+                <td><md-checkbox aria-label='cukoo'></md-checkbox></td>
+            </tr>
+            <tr>
+                <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="cukoo"> Cukoo </div> </td>
+
+            </tr>
+            <tr>
+                <td>Vendor Signing</td>
+                <td><md-checkbox aria-label='vendorSigning'></md-checkbox></td>
+            </tr>
+            <tr>
+                <td>XML Validation</td>
+                <td><md-checkbox aria-label='xmlValidation'></md-checkbox></td>
+            </tr>
+            <tr>
+                <td>Regular Expression</td>
+                <td><md-checkbox aria-label='regex'></md-checkbox></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+
+ inject the custom service onto the custom autoCompleteChips directive.
+ write projector.js script to test that chips being displayed on the DOM correspond the data queried on the custom service.
+
+
+learn controller as syntax
+build future controllers with controller As syntax 
+
+
+add multilanguage support 
+
+upload json file to server (MAOR) and watch loading time -> call all json files in the background at once and cache them (feasible solution)?
+
+filtering : only loading the X first number of elements from Json file ->    
+<li ng-repat='x in contactList | limitTo:5:5'>
+
+
+
+mock data: http://10.100.102.86/api/adusersapi/users

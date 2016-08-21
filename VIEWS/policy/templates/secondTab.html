@@ -1,0 +1,32 @@
+<md-tab label="What is this policy?" ng-cloak>
+    <md-content class="md-padding">
+        <h1 class="md-display-2">What is this policy?</h1>
+        <p>{{lorem}}</p>
+        <md-center-tabs >
+            <md-tabs  md-dynamic-height md-border-bottom md-stretch-tabs='always'>
+                <md-tab flex label='File Type'>
+                    <md-content flex layout-fill>
+                        <file-type execs = 'execs' files='files' file-type-sections = 'fileTypeSections' family='family' transform-options ='transformOptions'></file-type>
+                    </md-content>
+                </md-tab>
+                <md-tab label='Detection'>
+                    <md-content>
+                        <detection></detection>
+                    </md-content>
+                </md-tab>
+                <md-tab label='Settings'>
+                    <md-content>
+                    
+                    </md-content>
+                
+                </md-tab>
+            </md-tabs>
+        </md-center-tabs>
+        
+        
+        
+        <!--<div id='model' flex>
+            {{formattedAdress({ whatever: personObject })}}
+        </div>-->
+    </md-content>
+</md-tab>

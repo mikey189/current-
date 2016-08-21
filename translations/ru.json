@@ -1,0 +1,22 @@
+{
+    "HELLO": "Здравствуйте",
+    "BUTTON_LANG_FR": "Французский",
+    "BUTTON_LANG_EN": "английский",
+    "BUTTON_LANG_RU": "русский",
+    "dashboard": "панель приборов",
+    "inputsByChannel": "Входы по каналу",
+    "Real Time": "реальном времени",
+    "1 hour": "1 час",
+    "1 week": "1 неделя",
+    "2 weeks": "2 недели",
+    "3 weeks": "3 недели",
+    "1 month": "1 месяц",  
+   "FilesWaiting":"файлы ожидания" ,
+   "currentWaitingFile":"текущие ожидающие файлы" ,
+   "savedFiles":"сохраненные файлы",
+   "blockedFiles": "заблокированный файлы",
+   "passedFiles":"прошли файлы",
+   "modifiedFiles":"измененные файлы ",
+    "Files": "файлы"
+}
+

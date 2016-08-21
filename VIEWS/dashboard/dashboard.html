@@ -1,0 +1,72 @@
+
+<div layout='column' id="dashoardContainer">
+    <toolbar-top></toolbar-top>
+    
+    <div flex layout-xl='row' layout gt-md='row' layout-md='row' layout-sm='column' layout-xs='column' layout-margin layout-align-xl='space-around-start' layout-align-lg='space-around start' id='dahboardTableContainer'> 
+        <!-- table 1-->    
+        <div flex-xl='25' flex-lg='25' flex-md='50' flex-sm='90' flex-xs='90'>
+            <!--Centered title of of table -->
+            <div layout='row' layout-align='center center' layout-margin>
+                <md-title translate='inputsByChannel'></md-title>
+            </div>
+            <channels-list purple-int={{purpleInt}}></channels-list>
+        </div>
+        
+        <!--End of table 1-->
+        
+        <!-- table 2 -->
+        
+        <div flex-xl='15' flex-lg='15' flex-md='50' flex-sm='90' flex-xs='90'>
+            <div layout='row' layout-margin layout-align='center center'>
+                <md-title translate = 'Files Waiting'></md-title>
+            </div>
+            <file-waiting></file-waiting>
+        </div>
+        
+        <!-- end of table 2 -->
+        
+        <!-- Table 3 -->
+
+        <div flex-xl='15' flex-lg='15' flex-md='50' flex-sm='90' flex-xs='90'>
+            <div layout='row' layout-margin layout-align='center center'>
+                <md-title class='purple'>RE<strong>SEC</strong></md-title>
+            </div>
+            <resec-table></resec-table>
+        </div>
+        
+        <!-- end of Table 3 -->
+        
+        <!--table 4-->
+        
+        <div  flex-xl='15' flex-lg='15' flex-md='50' flex-sm='90' flex-xs='90'>
+            <div layout='row' layout-margin layout-align='center center'>
+                <md-title class='blueish'><strong translate = 'Output Table'></strong></md-title>
+            </div>
+            <output-table></output-table>
+        </div>
+        
+        <!--End of table 4-->
+        
+        <!--Table 5: last-->
+        
+        <div flex-xl='15' flex-lg='15' flex-md='50' flex-sm='90' flex-xs='90'>
+            <!--Centered title of of table -->
+            <div layout='row' layout-align='center center' layout-margin>
+                <md-title class='greenish'><strong translate = 'Output by Channel'></strong></md-title>
+            </div>
+            <output-by-channel></output-by-channel>
+        </div>
+        <!--<md-content flex-lg='2'>
+            <mb-button layout-align='end start'>
+                <md-icon>
+                    <i class='material-icons'>web</i>
+                </md-icon>
+                <div style='height: 100%; border: solid 2px purple; width: 0px; margin-right: -100px'></div>
+            </mb-button>
+        </md-content>-->
+     
+    </div>
+    <!--<footer>
+        <bottom-legend></bottom-legend>
+    </footer>-->
+</div>

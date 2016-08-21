@@ -1,0 +1,33 @@
+<div ng-cloak ng-controller='fileType as ctrl'>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="yes">
+      <md-tab ng-repeat='tab in ctrl.groups' label="{{tab}}">
+        <md-content class="md-padding">
+          <md-content class="md-subhead" layout-padding>Define {{tab}} exceptions
+            <button ng-click='ctrl.addRow()'>add row</button>
+            </md-content>
+            <table class='table'>
+                <thead>
+                    <th>#</th>
+                    <th ng-repeat='th in ctrl.fileTypeSections'>
+                        {{th}}
+                    </th>
+                </thead>
+                <tbody id='#appendHere'>
+                    <!--<row-ceator></row-creator>  -->          
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                  </tr>
+                </tbody>
+            </table>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
