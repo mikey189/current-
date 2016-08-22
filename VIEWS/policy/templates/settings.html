@@ -1,9 +1,9 @@
-<div layout='column' >
+<div layout='column'>
     <div layout='row' layout-margin>
         <md-list class='whiteBk' flex='40' flex-sm='100' flex-xs='100' flex-md='100'>
             <md-list-item layout='row' layout-align='start center'>
                 <md-icon class='material-icons md-primary md-36' id='settingsFileHeader'>insert_drive_file</md-icon>
-                <h4 class='md-primary noMarginBottom'>Files</h4>
+                <h4 class='md-primary'>Files</h4>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center'>
@@ -32,9 +32,7 @@
             <md-divider></md-divider>  
             <md-list-item layout='row' layout-align='space-between center'>
                 <p>Maximum archive nesting level</p>
-                <md-input-container class='md-primary' id='settingsArchiveInput'>
-                    <input ng-model="settings.nestingLevel" type="number" placeholder='unlimited'>
-                </md-input-container>
+                <input flex='30' ng-model='settings.nestingLevel' type="number" min='0' class="form-control">
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item>
@@ -48,14 +46,44 @@
     </div>
     <div layout-margin flex='100'>
         <md-list class='whiteBk'>
-            <md-list-item layout='row' layout-align='space-between center'>
-                <div layout='row'>
-                    <md-icon class='material-icon md-primary'>email</md-icon>
-                    <h4 class='md-primary'>Email Report</h4>
+            <md-list-item>
+                <div layout='row' layout-align='space-between center' flex>
+                    <div layout='row' layout-align='space-between center'>
+                        <md-icon class='material-icons md-48 md-primary' style='margin-right: 0.3em'>email</md-icon>
+                        <h4 class='md-primary'>Email Reports</h4>
+                    </div>
+                    <md-switch class="md-primary" ng-model="settings.emailReports" aria-label="settings authorize email reports">
+                    </md-switch>
                 </div>
-                <md-switch class="md-primary" ng-model="settings.emailReports" aria-label="settings authorize email reports">
-                </md-switch>
             </md-list-item>
-        </md-list>
+            <md-divider></md-divider>
+            
+                <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                    Email condition
+                    <select class="form-control" flex='30'>
+                        <option ng-repeat='x in settings.emailCondition'>{{x}}</option>
+                    </select>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                    Email Address
+                    <input flex = '30' type="text" class="form-control" placeholder="Edit Email address">
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                    Query Active Directory for email address
+                    <input flex = '30' type="text" class="form-control" placeholder="Edit Query AD">
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                    Email subject
+                    <input flex = '30' type="text" class="form-control" placeholder="Edit Email subject">
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row' layout-align='space-between center' layout-padding class='_md-no-proxy'>
+                    Email Structure
+                    <md-button class="noVerticalPadding md-primary md-raised" ng-click="settings.showAdvanced(ev)">Edit Email Structure</md-button> 
+                </md-list-item>
+            </md-list>
     </div>
 </div>

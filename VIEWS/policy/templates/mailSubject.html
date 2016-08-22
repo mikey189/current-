@@ -1,0 +1,31 @@
+<md-dialog aria-label="Email Body">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Email Body</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <form role = "form" flex="100">
+   
+   <div class = "form-group">
+      <textarea class = "form-control" rows = "10"></textarea>
+   </div>
+   
+</form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       CANCEL
+      </md-button>
+      <md-button ng-click="answer('useful')">
+        OKAY!
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

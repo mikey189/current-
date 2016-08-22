@@ -1,4 +1,3 @@
-
 app.controller('policy', function($scope, $mdSidenav, $location,$timeout, $q, getUsers){
     var self = this;  
     //______toggling the sideNav______
@@ -26,16 +25,12 @@ $scope.casesData= [30, 40, 35];
     
   
   $scope.lorem=  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.';    
-}) 
-
-
-
-
+})
 
 app.controller('addException', function(){
     var self=this;
 
-}) 
+})
 
 app.controller('customTable', function(){
     var self=this;
@@ -45,12 +40,10 @@ app.controller('customTable', function(){
 app.controller('exceptionRow', function(){
     var self=this;
     
-}) 
+})
 
 app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
-    
-    
-    
+
   this.status = '  ';
   this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   this.showAlert = function(ev) {
@@ -160,12 +153,10 @@ app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
        
     }) 
 
-
-
 app.controller('detection', function(){
     this.true = true
+    this.test = 'JONATHAN MEGUIRA'
 })
-
 
 app.controller('policyDashboardTab', function(){
     var self=this;
@@ -188,20 +179,38 @@ app.controller('secondTab', function(){
 })
 
 app.controller('thirdTab', function(){
-    var self=this;
-    
+    var self=this;  
 })
 
 app.controller('topToolbar', function(){
     var self=this;
-    
 })
 
-app.controller('settings', function(){
+app.controller('policySettings', function($mdDialog){
+    
+    this.test = "wow"
+    console.log("inside settings controller")
     this.signFiles = true
     this.blockedFiles = false
     this.incorrectExtensions = false
     this.nestingLevel = 3
     this.emailReports = true
+    this.emailCondition = ['Always', 'on sanitization block or failure', 'on sanitization block or modified']
+    this.emailConditionStatus
+    this.userEmail
+    
+    //edit email structure modal //
+    
+    this.status = '  ';
+    this.customFullscreen = false;
+    this.showAdvanced = function(ev) {
+    $mdDialog.show({
+      templateUrl: 'VIEWS/policy/templates/mailSubject.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: this.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+  };
+  
 })
-

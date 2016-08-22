@@ -1,19 +1,11 @@
-/* Material Design Overriding 
-Icons */
+/* setting the proper size for md-x size on md-icons otherwise icons will gorw but not their dom Element */
 
 
+.material-icons.md-48 { font-size: 48px; height: 48px; width: 48px; }
 
+.material-icons.md-36 { font-size: 36px; height: 36px; width: 36px; }
 
-/* bootstrap custom palette
-  
-        success = purple ->#441D9E;
-        danger = yellow -> #E5A200;
-        info = lightBlue -> #0083ED;
-
-
-see below overriding bootstrap css for progress bar
- */
-
+.material-icons.md-24 { font-size: 24px; height: 24px; width: 24px; }
 
 
 .progress-bar-purple{
@@ -551,7 +543,7 @@ md-select:not ([disabled]):focus ._md-select-value{
 #settingsFileHeader{
     margin-left: 0px;
     margin-right: 0.5em;
-    margin-bottom: 1em;
+   /* margin-bottom: 1em;*/
 }
 .noMarginBottom{
     margin-bottom: 0.5em;
