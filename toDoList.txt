@@ -1,7 +1,20 @@
-define controllers for each templates// reorganize controllers
-build the detection screen and setting screen
-set home screen 
-create service for get and post requet to mock data: use the same variables as in the pdf. 
-load data from mock data
+
 
 mock data: http://10.100.102.86/api/adusersapi/users
+
+
+
+list all API calls / view 
+
+create the login screen with authotoken
+
+set the routing system such as login is unskippable
+
+what happens next ? see with Zohar
+
+create services to retrieve and post the data
+
+learn to cache the data  (see what data will need to be stored and when)
+
+write unit testing and? end to end testing ? ask ROI
+

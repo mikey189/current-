@@ -1,0 +1,154 @@
+{
+  "servers": [
+    {
+      "123.123.123": {
+        "001": {
+          "id": "001",
+          "user": "Oren",
+          "password": "123123"
+        },
+        "002": {
+          "id": "002",
+          "user": "Jonathan",
+          "password": "123123"
+        },
+        "003": {
+          "id": "003",
+          "user": "Maor",
+          "password": "123123"
+        },
+        "004": {
+          "id": "004",
+          "user": "Zohar",
+          "password": "123123"
+        },
+        "005": {
+          "id": "005",
+          "user": "Ben",
+          "password": "123123"
+        }
+      }
+    },
+    {
+      "000.000.000": {
+        "006": {
+          "id": "006",
+          "user": "Oren0",
+          "password": "123123"
+        },
+        "007": {
+          "id": "007",
+          "user": "Jonathan0",
+          "password": "123123"
+        },
+        "008": {
+          "id": "008",
+          "user": "Maor0",
+          "password": "123123"
+        },
+        "009": {
+          "id": "009",
+          "user": "Zohar0",
+          "password": "123123"
+        },
+        "010": {
+          "id": "010",
+          "user": "Ben0",
+          "password": "123123"
+        }
+      }
+    }
+  ],
+  "data": [
+    {
+      "001": {
+        "mailCount": "201",
+        "webCount": "301",
+        "scanStation1": "801",
+        "cloudMailCount": "501",
+        "scanStation2": "101"
+      }
+    },
+    {
+      "002": {
+        "mailCount": "202",
+        "webCount": "302",
+        "scanStation1": "802",
+        "cloudMailCount": "502",
+        "scanStation2": "102"
+      }
+    },
+    {
+      "003": {
+        "mailCount": "203",
+        "webCount": "303",
+        "scanStation1": "803",
+        "cloudMailCount": "503",
+        "scanStation2": "103"
+      }
+    },
+    {
+      "004": {
+        "mailCount": "204",
+        "webCount": "304",
+        "scanStation1": "804",
+        "cloudMailCount": "504",
+        "scanStation2": "104"
+      }
+    },
+    {
+      "005": {
+        "mailCount": "205",
+        "webCount": "305",
+        "scanStation1": "805",
+        "cloudMailCount": "505",
+        "scanStation2": "105"
+      }
+    },
+    {
+      "006": {
+        "mailCount": "206",
+        "webCount": "306",
+        "scanStation1": "806",
+        "cloudMailCount": "506",
+        "scanStation2": "106"
+      }
+    },
+    {
+      "007": {
+        "mailCount": "207",
+        "webCount": "307",
+        "scanStation1": "807",
+        "cloudMailCount": "507",
+        "scanStation2": "107"
+      }
+    },
+    {
+      "008": {
+        "mailCount": "208",
+        "webCount": "308",
+        "scanStation1": "808",
+        "cloudMailCount": "508",
+        "scanStation2": "108"
+      }
+    },
+    {
+      "009": {
+        "mailCount": "209",
+        "webCount": "309",
+        "scanStation1": "809",
+        "cloudMailCount": "509",
+        "scanStation2": "109"
+      }
+    },
+    {
+      "010": {
+        "mailCount": "210",
+        "webCount": "310",
+        "scanStation1": "810",
+        "cloudMailCount": "510",
+        "scanStation2": "110"
+      }
+    }
+  ]
+}

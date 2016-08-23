@@ -3,7 +3,11 @@ app.config(function ($routeProvider) {
    
     $routeProvider
         
-   
+   .when('/', {
+        templateUrl: './VIEWS/dashboard/dashboard.html',
+        controller: 'dashboard',
+        controllerAs: 'dashboard'
+    })
     .when('/agentManagement', {
         templateUrl: './VIEWS/agentManagement/agentManagement.html',
         controller: 'agentManagement'
@@ -56,7 +60,7 @@ app.config(function ($routeProvider) {
     })
 });
 
-//theming angulat material //
+//theming angular material //
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
@@ -67,6 +71,17 @@ app.config(function($mdThemingProvider) {
   })
     .accentPalette('orange');
 });
+
+//adding resec logo
+
+
+app.config(function($mdIconProvider) {
+    $mdIconProvider
+       .iconSet('resec', 'IMG/icons/resecLogo.svg', 24)
+   });
+
+
+
 
 
 //multilanguage config

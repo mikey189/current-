@@ -1,4 +1,4 @@
-app.controller('policy', function($scope, $mdSidenav, $location,$timeout, $q, getUsers){
+app.controller('policy', function($scope, $mdSidenav, $location,$timeout, $q){
     var self = this;  
     //______toggling the sideNav______
     $scope.toggleMenu = function(){
