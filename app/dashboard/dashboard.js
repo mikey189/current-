@@ -13,7 +13,7 @@ app.controller('dashboard', function($scope){
 app.directive("dashboardTables", function() {
    return {
        restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/dashboardTables.html',
+        templateUrl: 'app/dashboard/templates/dashboardTables.html',
        replace: false
    }
 });
@@ -22,7 +22,7 @@ app.directive("dashboardTables", function() {
 app.directive('channelsList', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/channelsList.html',
+        templateUrl: 'app/dashboard/templates/channelList/channelsList.html',
         replace: false,
         scope:{
             purpleInt: '@'
@@ -33,7 +33,7 @@ app.directive('channelsList', function(){
 app.directive('dashboardTimeline', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/dashboardTimeline.html',
+        templateUrl: 'app/dashboard/templates/timeline/timeline.html',
         replace: false
     }
 })
@@ -41,14 +41,14 @@ app.directive('dashboardTimeline', function(){
 app.directive('fileWaiting', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/fileWaiting.html',
+        templateUrl: 'app/dashboard/templates/fileWaiting/fileWaiting.html',
         replace: false
     }
 })
 app.directive('resecTable', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/resecTable.html',
+        templateUrl: 'app/dashboard/templates/resecTable/resecTable.html',
         replace: false
     }
 })
@@ -56,7 +56,7 @@ app.directive('resecTable', function(){
 app.directive('outputTable', function(){
     return{
         restrict :'AECM', 
-        templateUrl: 'VIEWS/dashboard/templates/outputTable.html',
+        templateUrl: 'app/dashboard/templates/outputTable/outputTable.html',
         replace: false
     }
 })
@@ -64,7 +64,7 @@ app.directive('outputTable', function(){
 app.directive('outputByChannel', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/outputByChannel.html',
+        templateUrl: 'app/dashboard/templates/outputByChannel/outputByChannel.html',
         replace: false
     }
 })
@@ -72,7 +72,7 @@ app.directive('outputByChannel', function(){
 app.directive('bottomLegend', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/bottomLegend.html',
+        templateUrl: 'app/dashboard/templates/outputByChannel/bottomLegend.html',
         replace: false
     }
 })
@@ -80,7 +80,7 @@ app.directive('bottomLegend', function(){
 app.directive('toolbarTop', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'VIEWS/dashboard/templates/toolbarTop.html',
+        templateUrl: 'app/dashboard/templates/toolbarTop/toolbarTop.html',
         replace: false
     }
 })

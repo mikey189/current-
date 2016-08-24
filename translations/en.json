@@ -20,6 +20,9 @@
     "savedFiles": "saved files",
     "blockedFiles": "blocked files",
     "passedFiles": "passed files",
-    "modifiedFiles": "modified files"
-    
+    "modifiedFiles": "modified files",
+    "Files Waiting": "files waiting",
+    "Output Table": "Output Table",
+    "Output By Channel": "Output by Channel"
 }
+

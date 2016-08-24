@@ -1,9 +1,6 @@
-
-<html lang="en">
+<html lang="en" ng-app='resec'>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <!-- Angular Material style sheet -->
     <!--<link rel="stylesheet" href="CSS/material.css">-->
     <link href="bower_components/angular-material/angular-material.min.css" rel='stylesheet' type='text/css' />
@@ -16,136 +13,68 @@
     <link rel="stylesheet" href="CSS/cust.css">
     <link href='CSS/Font/Ubuntu.css' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.css"/>
+    <link rel='stylesheet' href='login/login.css'/>
     <!-- data table : to load for data tables 
-    <link src="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
--->
-
-    
-      <script type='text/javascript' src="JS/jquery.min.js"></script><!--onload="window.$ = window.jQuery = module.exports;-->
-            <script src="JS/angular.min.js"></script>
-            <script src="JS/angular-animate.min.js"></script>
-            <script src="JS/angular-aria.min.js"></script>
-            <script src="JS/angular-message.min.js"></script>
-            <script src='JS/angular-route.min.js'></script>
-
-        <!-- Important Note: Angular Material Library rc1 version works well with list, rc2 is very unstable, the verison called here is V1.1RC01  -->
-    
-            <script src="JS/material.min.js"></script>
-            <script src='JS/ang.js'></script>
-            <script src='JS/config.js'></script>
-            <script src='JS/customServices/dataLoader.js'></script>
-            <script src='VIEWS/agentManagement/agentManagement.js'></script><script src='VIEWS/cases/cases.js'></script>
-            <script src='VIEWS/channelManagement/channelManagement.js'></script>
-            <script src='VIEWS/clusterManagement/clusterManagement.js'></script>
-            <script src='VIEWS/dashboard/dashboard.js'></script>
-            <script src='VIEWS/policy/JS/controllers.js'></script>
-            <script src='VIEWS/policy/JS/directives.js'></script>
-            <script src='VIEWS/reports/reports.js'></script>
-            <script src='VIEWS/settings/settings.js'></script>
-            <script src='JS/chart.js'></script>
-            <script src='JS/angular-chart.js'></script>
-            <script src='JS/angular-chart.js'></script>
-            <script src='JS/ngMdIcons.js'></script>
-            <script type='text/javascript' src='JS/bootstrap.min.js'></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.js"></script>
-            <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-            <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
-            <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <link src="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>-->
+    <script type='text/javascript' src="JS/jquery.min.js"></script><!--onload="window.$ = window.jQuery = module.exports;-->
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-animate.min.js"></script>
+    <script src="JS/angular-aria.min.js"></script>
+    <script src="JS/angular-message.min.js"></script>
+    <script src='JS/uiRoute.min.js'></script>
+    <script src="JS/material.min.js"></script>
+    <script src='JS/chart.js'></script>
+    <script src='JS/angular-chart.js'></script>
+    <script src='JS/angular-chart.js'></script>
+    <script src='JS/ngMdIcons.js'></script>
+    <script src="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <!-- Important Note: Angular Material Library rc1 version works well with list, rc2 is very unstable, the verison called here is V1.1RC01  -->
+    <!-- Bootstrap and JQuery -->
+    <script type='text/javascript' src='JS/bootstrap.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Local Libraries -->
+    <script src='JS/ang.js'></script>
+    <script src='JS/config.js'></script>
+    <script src='JS/customServices/dataLoader.js'></script>
+    <script src='login/login.js'></script>     
+    <script src='app/agentManagement/agentManagement.js'></script>
+    <script src='app/cases/cases.js'></script>
+    <script src='app/channelManagement/channelManagement.js'></script>
+    <script src='app/clusterManagement/clusterManagement.js'></script>
+    <script src='app/common/common.js'></script>
+    <script src='app/dashboard/dashboard.js'></script>
+    <script src='app/dashboard/templates/bottomLegend/bottomLegend.js'></script>
+    <script src='app/dashboard/templates/channelList/channelList.js'></script>
+    <script src='app/dashboard/templates/fileWaiting/fileWaiting.js'></script>
+    <script src='app/dashboard/templates/outputByChannel/outputByChannel.js'></script>
+    <script src='app/dashboard/templates/outputTable/outputTable.js'></script>
+    <script src='app/dashboard/templates/resecTable/resecTable.js'></script>
+    <script src='app/dashboard/templates/timeline/timeline.js'></script>
+    <script src='app/dashboard/templates/toolbarTop/toolbarTop.js'></script>
+    <script src='app/policy/directives.js'></script>
+    <script src='app/policy/policy.js'></script>
+    <script src='app/policy/templates/addException/addException.js'></script>
+    <script src='app/policy/templates/customTable/customTable.js'></script>
+    <script src='app/policy/templates/exceptionRow/exceptionRow.js'></script>
+    <script src='app/policy/templates/policyDashboardTab/policyDashboardTab.js'></script>
+    <script src='app/policy/templates/policyDefinition/policyDefinition.js'></script>
+    <script src='app/policy/templates/policyDefinition/detection/detection.js'></script>
+    <script src='app/policy/templates/policyDefinition/fileType/fileType.js'></script>
+    <script src='app/policy/templates/policyDefinition/settings/settings.js'></script>
+    <script src='app/policy/templates/policyDefinition/settings/mailSubject/mailSubject.js'></script>
+    <script src='app/policy/templates/policyGraphToolbar/policyGraphToolbar.js'></script>
+    <script src='app/policy/templates/policySideNav/policySidenav.js'></script>
+    <script src='app/policy/templates/topToolbar/topToolbar.js'></script>
+    <script src='app/policy/templates/who/who.js'></script>
+    <script src='app/reports/reports.js'></script>
+    <script src='app/settings/'></script>        
     <!-- load this one for data table 
-            <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
--->
+    <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script> -->
 </head>
-    
-      
-<body ng-app="resec" layout='column' ng-controller="index as indexCtrl" >
-        <!--<md-toolbar id="mainToolbar" layout='row'>
-            <md-button class='menu' ng-click='indexCtrl.toggleMenu()'>
-                <md-icon class="material-icons">reorder</md-icon>
-            </md-button>
-            <div layout='row' layout-align='center center' flex>
-               <md-title><strong>RE</strong>SEC</md-title>
-            </div>
-        </md-toolbar>-->
-
-        <div layout='row' flex>
-                        
-            <md-sidenav md-component-id="left" id="sidenavIndex" md-is-locked-open='true'  class='md-whiteframe-4dp' layout-align='start center'>
-                <md-list>
-                    <md-list-item>
-                        <md-button href='#/dashboard' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">{{'dashboard' | translate }}</md-tooltip>
-                            <md-icon class='material-icons md-light'>apps</md-icon>
-                        </md-button>
-                    </md-list-item>
-                    <md-list-item>
-                        <md-button href='#/policy' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Policy</md-tooltip>
-                            <md-icon class='material-icons md-light'>visibility</md-icon>
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/clusterManagement' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Cluster Management</md-tooltip>
-                            <md-icon class='material-icons md-light'>tune</md-icon>
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/reports' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Reports</md-tooltip>
-                            <md-icon class='material-icons md-light'>poll</md-icon>
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/agentManagement' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Agent Management</md-tooltip>
-                            <md-icon class='material-icons md-light'>supervisor_account</md-icon>
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/channelManagement' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Channel Management</md-tooltip>
-                            <md-icon class='material-icons md-light'>device_hub</md-icon>
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/cases' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">cases</md-tooltip>
-                            <md-icon class='material-icons md-light'>assistant_photo</md-icon>
-                            
-                        </md-button>
-                    </md-list-item>
-                     <md-list-item>
-                        <md-button href='#/settings' class='fullWidthButton white' ng-click='indexCtrl.toggleMenu()'>
-                            <md-tooltip md-direction="right">Settings</md-tooltip>
-                            <md-icon class='material-icons md-light'>settings</md-icon>
-                        </md-button>
-                    </md-list-item>
-                    
-                </md-list>
-                <md-fab-speed-dial md-open="indexCtrl.isOpen" md-direction="{{indexCtrl.selectedDirection}}" ng-class="indexCtrl.selectedMode">
-                            <md-fab-trigger>
-                              <md-button aria-label="menu" class="md-fab md-primary">
-                                <md-icon md-svg-src="icons/switchLang.svg"></md-icon>
-                              </md-button>
-                            </md-fab-trigger>
-                            <md-fab-actions>
-                              <md-button aria-label="english" class="md-fab md-raised md-mini" ng-click="indexCtrl.changeLanguage('en')">
-                                EN
-                              </md-button>
-                              <md-button aria-label="french" class="md-fab md-raised md-mini" ng-click="indexCtrl.changeLanguage('fr')">
-                                FR
-                              </md-button>
-                              <md-button aria-label="russian" class="md-fab md-raised md-mini" ng-click="indexCtrl.changeLanguage('ru')">
-                                RU
-                              </md-button>
-                            </md-fab-actions>
-                        </md-fab-speed-dial>
-            </md-sidenav>
-            
-            <md-content id="mainContent" flex ng-view>
-
-            </md-content>
-        </div>
+    <body ng-app="resec">
+        <div data-ui-view></div>
     </body>
 </html>
