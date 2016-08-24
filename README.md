@@ -7,7 +7,7 @@ Guidelines
 - All services and other logic should be help independantly from the controller, the controller being a middle man that calls the services on demand.
 - 
 
-here is the folder structure 
+here s the folder structure 
 
  |-CSS
  |---Font
