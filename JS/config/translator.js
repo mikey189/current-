@@ -7,7 +7,7 @@ app.config(['$translateProvider', function($translateProvider) {
   //specifying where are the translations files to load
    
    .useStaticFilesLoader({
-    prefix: '/translations/',
+    prefix: 'translations/',
     suffix: '.json'
   })
   .preferredLanguage('en')
