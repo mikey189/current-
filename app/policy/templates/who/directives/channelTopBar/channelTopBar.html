@@ -1,0 +1,12 @@
+<md-list class="whiteBk">
+    <md-list-item layout="row" layout-align="start center">
+        <md-icon class="material-icons md48 md-primary" style="margin-left: 0px">settings_input_component</md-icon>
+        <h4>Channels</h4>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item layout="row">
+        <md-chips  ng-model="controller.sources" readonly="true">
+            <md-chip-template>{{ $chip }}</md-chip-template>
+        </md-chips>
+    </md-list-item>
+</md-list>

@@ -4,22 +4,16 @@
         <policy-sidenav></policy-sidenav>
         <md-content flex flex-gt-sm layout='column'>
             <policy-graph-toolbar></policy-graph-toolbar>
-            <div class='container' layout='column' layout-padding layout-align='center center'>
-                <div layout = 'row' flex>
-                    
-                    <md-center-tabs>
-                        <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs='always'>
-                            <policy-dashboard-tab></policy-dashboard-tab>
-                            <policy-definition ng-controller='policyDefinition'></policy-definition>
-                            <who ng-controller='who'></who>
-                        </md-tabs>
-                    </md-center-tabs>
-                </div>
-            </div>
-            
-            <!--md-dynamic-height md-border-bottom-->
+            <nav class="container">
+                <ul class="nav nav-justified" id="policyNav">
+                    <li><a ui-sref="app.policy.dashboard">POLICY DASHBOARD</a></li>
+                    <li><a ui-sref="app.policy.definition">WHAT IS THIS POLICY</a></li>
+                    <li><a ui-sref="app.policy.who">WHO USES THIS POLICY?</a></li>
+                </ul>
+            </nav>
+            <div ui-view class="container" ng-cloak></div>
         </md-content>
     </div>
-</div>
 
+</div>
 

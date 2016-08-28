@@ -51,6 +51,23 @@ app.config(function($stateProvider, $urlRouterProvider){
             templateUrl: 'app/policy/policy.html',
             controller: 'policy'
         })
+        .state('app.policy.dashboard', {
+            url: '/policyDashboard',
+            templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
+            controller: 'policyDashboardTab'
+        })
+        .state('app.policy.definition', {
+            url: '/policyDefinition',
+            templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
+            controller: 'policyDefinition'
+        })
+    
+        .state('app.policy.who', {
+            url: '/policyWho',
+            templateUrl: 'app/policy/templates/who/who.html',
+            controller: 'who'
+        })
+    
         .state('app.reports', {
             url: '/reports',
             templateUrl: 'app/reports/reports.html',
@@ -66,4 +83,17 @@ app.config(function($stateProvider, $urlRouterProvider){
    
     
 })
+/*
 
+app.config(function ($loginProvider) {
+
+    $loginProvider
+        .setDefaultLoggedInState ("app.dashboard")
+        .setFallbackState("login")
+        .setAuthModule("$authentication")
+        .setAuthClearMethod("clearAuthKey")
+        .setAuthGetMethod("getAuthKey")
+        .setCookieName("__loginState");
+
+});
+*/

@@ -396,8 +396,10 @@ md-content{
 .rightSemiBorder{
     border-right: solid 1px #d3d3d3 ;
 }
-#canou{
-    width: 40%; height: 6%
+
+
+#topCases > canvas{
+    width: 10%; height: 3%;
 }
 
 .greenBorder{
@@ -552,4 +554,30 @@ md-select:not ([disabled]):focus ._md-select-value{
 #settingsArchiveInput{
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+}
+
+.noLeftPadding{
+    padding-left: 1em;
+}
+
+policy-graph-toolbar{
+    margin-bottom: 2em;
+}
+
+#policyNav{
+    background-color: #101250;
+}
+#policyNav > li > a {
+    color: white;
+}
+#policyNav > li >a:hover{
+    background-color: #39379D;
+    color: white
+}
+#policyNav > li >a:focus{
+    background-color: #39379D;
+    color: white;
+}
+.noMarginLeft{
+    margin-left: 0px;
 }

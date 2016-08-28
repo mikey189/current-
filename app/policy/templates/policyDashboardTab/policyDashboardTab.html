@@ -1,9 +1,7 @@
-<md-tab label="Policy Dashboard">
-    <md-content class="md-padding" layout='column'>
-                                        <h1 class="md-display-2"><h1>Policy Dashboard of {{ firstName }}</h1>
+<md-content class="md-padding" layout='column'>
                                         <!--<p>{{lorem}}</p>-->
-                                        <div layout='row' layout-xs='column' layout-sm='column' layout-md='column'>
-                                            <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90'>
+    <div layout='row' layout-xs='column' layout-sm='column' layout-md='column'>
+                                            <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90' style="overflow:hidden">
                                                 <div layout='row' style='background-color: white' layout-padding>
                                                     <div layout='row' layout-align='start center' class='col-md-4' hide-xs hide-sm hide-md>
                                                         <h3 class='red'>2,545 <span style='color: black'>Files</span></h3>
@@ -72,11 +70,13 @@
                                                             <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
                                                             <p class='red'>15%</p>
                                                         </md-list-item>
+                                                      
+                                                      
 
                                                     </md-list>
 
 
-                                                    <md-list id='topUsersMdList' hide-xs hide-sm hide-md flex flex-xs='90' flex-sm='90' flex-md='90'>
+                                                    <md-list id='topUsersMdList' hide-xs hide-md flex flex-xs='90' flex-sm='90' flex-md='90'>
                                                         <md-list-item layout='row' layout-padding layout-align ='start center'>
                                                             <ng-md-icon icon='people' style='fill: #311B92' size='40'></ng-md-icon>
                                                         <h4 class='gray'>Top Users</h4>
@@ -127,7 +127,7 @@
 
                                                 </div>
                                             </div>
-                                            <div flex layout='column' layout-margin flex-xs='90' flex-sm='90' flex-md='90' style='overflow: hidden'>
+                                            <div layout='column' layout-margin style='overflow: hidden' id="topCases">
                                                 <md-list style='background-color: white'>
                                                     <md-list-item layout='row' layout-padding>
                                                         <h4 class='gray'>Sort by</h4>
@@ -142,7 +142,7 @@
                                                             <h6>12</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas  class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -157,7 +157,7 @@
                                                             <h6>2</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -172,7 +172,7 @@
                                                             <h6>8</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -187,7 +187,7 @@
                                                             <h6>4</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -202,7 +202,7 @@
                                                             <h6>7</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -217,7 +217,7 @@
                                                             <h6>9</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -232,7 +232,7 @@
                                                             <h6>10</h6>
                                                         </md-content>
                                                         <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
+                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
                                                         </md-content>
 
                                                             <md-content layout='column' flex>
@@ -240,24 +240,9 @@
                                                                 <small class='caption gray'>6 medium, 2 low</small>
                                                         </md-content>
                                                     </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>11</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas id='canou' class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
-
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Step Oliel</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
+                                                   
                                                 </md-list>
                                             </div>
                                         </div>
                                             
-                                    </md-content>
-</md-tab>
+</md-content>

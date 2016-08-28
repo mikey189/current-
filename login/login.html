@@ -7,19 +7,19 @@
 						<md-content layout='column' layout-align='center stretch' layout-margin>
                             <md-input-container>
 								<label>Server</label>
-								<input ng-model="user.server">
+								<input ng-model = "loginDetails.server">
 							</md-input-container>
                             <md-input-container>
 								<label>User</label>
-								<input ng-model="user.user">
+								<input ng-model = "loginDetails.username">
 							</md-input-container>
 							<md-input-container>
 								<label>Password</label>
-								<input ng-model="user.password" type="password">
+								<input ng-model= "loginDetails.password" type="password">
 							</md-input-container>
 							<md-input-container>
 								<div layout="row" layout-sm="column" layout-margin layout-align="center center">
-									<md-button class="md-raised md-primary" ui-sref='app.dashboard'>Login</md-button>
+									<md-button class="md-raised md-primary" ui-sref='app.dashboard' ng-click='login.loadData()'>Login</md-button>
 									<md-button class="md-raised">Forgot Password</md-button>
 								</div>
 							</md-input-container>
