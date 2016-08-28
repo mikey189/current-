@@ -188,7 +188,8 @@ md-list-item>md-button{
 }
 
 #vertical-container {
-    height: 65%;}
+    height: 65%;
+}
 
 
 .progress-bar-purple{
@@ -303,6 +304,10 @@ md-chips.md-default-theme .md-chips, md-chips .md-chips {
 .noVerticalPadding{
     padding-top: 0px;
     padding-bottom: 0px;
+}
+.noVerticalMargin{
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .noTopPadding{
@@ -580,4 +585,18 @@ policy-graph-toolbar{
 }
 .noMarginLeft{
     margin-left: 0px;
+}
+
+#whoSearchBox > input{
+    border: 0px;
+}
+#whoGroup{
+    padding-bottom: 0px;
+}
+
+#usersSearchBox > input{
+    border: 0px;
+}
+#userList{
+    padding-bottom: 0px;
 }

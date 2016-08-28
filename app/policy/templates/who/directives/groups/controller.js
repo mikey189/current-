@@ -1,11 +1,12 @@
-app.controller('groupsList', function(){
+app.controller('groupsList', function($scope){
     
-    this.votes  = ["item 1", "item 2", "item 3"];
-    this.expand = function(vote) {
-       vote.show = !vote.show;
-    }
+ 
+    $scope.groupList  = ["HR", "Management", "Engineering", "PM", "Marketing", "Front End", "Sales Suppport"];
+
+    $scope.items = ["item 1", "item 2", "item 3"];
+    $scope.showList = false;
+    $scope.hiddenDiv = false;
     
-    this.groupList  =["HR", "Management", "Engineering", "PM", "Marketing"]
 })
 
 

@@ -1,7 +1,9 @@
     <div class="md-padding" layout='column' layout-padding>
         <channel-top-bar ng-controller="channelTopBar as controller"></channel-top-bar>
-        <div layout = "row" layout-align="space-between center">
-            <groups-list ng-controller="groupsList as controller" flex="33"></groups-list>
+        <div layout = "row" layout-align="space-between start">
+            <groups-list ng-controller="groupsList as controller" flex="30"></groups-list>
+            <user-list ng-controller="userList as ctrl" flex="30"></user-list>
+            <computer-list ng-controller="computerList as ctrl" flex="30"></computer-list>
         </div>
     </div>
 

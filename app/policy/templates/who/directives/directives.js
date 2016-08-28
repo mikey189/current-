@@ -12,3 +12,19 @@ app.directive('groupsList', function(){
         replace: false
     }
 })
+
+app.directive('userList', function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'app/policy/templates/who/directives/userList/userList.html',
+        replace: false
+    }
+})
+
+app.directive('computerList', function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'app/policy/templates/who/directives/computerList/computerList.html',
+        replace: false
+    }
+})
