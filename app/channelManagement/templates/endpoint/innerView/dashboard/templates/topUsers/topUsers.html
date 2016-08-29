@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topUsers/style.css" />
+<md-list ng-controller="endpointDashboardTopUsers as ctrl" id="endpointDashboardTopUsers">
+    <md-list-item layout="row" layout-align="START center">
+        <md-icon class="material-icons md-primary md-48" id="EndpointTopFilesIcon">groups</md-icon>
+        <h4>Top Users</h4>
+    </md-list-item>
+    <md-divider></md-divider>
+    <div ng-repeat = "x in ctrl.data">
+        <md-list-item layout="row" layout-align="space-between center">
+            <md-content>{{x.name}}</md-content>
+            <md-chips>
+                <md-chip>{{x.team}}</md-chip>
+            </md-chips>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+</md-list>

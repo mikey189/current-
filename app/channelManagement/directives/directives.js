@@ -47,3 +47,10 @@ app.directive("endpointDashboardTopFiles", function(){
         replace: false
     }
 })
+app.directive("endpointDashboardTopUsers", function(){
+    return{
+        restrict: 'E',
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/dashboard/templates/topUsers/topUsers.html",
+        replace: false
+    }
+})
