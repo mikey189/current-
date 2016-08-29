@@ -1,0 +1,20 @@
+<div ng-controller="channelManagementSidebar as ctrl" layout="column" ng-cloak id="channelSidenav">
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="channelLeftSidebar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
+            <md-toolbar class="purleSidebar" layout="row" layout-align="center center" id="channelSidebarToolbar">
+                <h1 class="md-toolbar-tools">Channel Management</h1>
+                <ng-md-icon icon="add" style="fill: #62D0C9" size="24px"></ng-md-icon> 
+                <ng-md-icon icon="refresh" style="fill: #62D0C9" size="24px" class="marginRight"></ng-md-icon>
+            </md-toolbar>
+            <md-content class="purpleSidebar" flex>
+                <md-input-container md-no-float flex layout="row" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" layout-margin>
+                    <input ng-model="ctrl.searchQuery" placeholder="Search users, groups..">
+                    <md-icon class="material-icons greenIcon noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
+                </md-input-container>
+                <md-list layout-margin id="sidebarNavLinks">
+                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.{{x.link}}">{{x.Name}}</a></strong></md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+    </section>
+</div>

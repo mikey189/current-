@@ -1,0 +1,14 @@
+#CMTopBar{
+    background-color: white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    border-left: solid 1em #6C69EA;
+    border-bottom: solid 2px #EDE2E2;
+    border-right: solid 2px #EDE2E2;
+}
+#topBarDropDown{
+    background-color: white;
+    border-radius: 100px;
+    border: solid 1px gray;
+}

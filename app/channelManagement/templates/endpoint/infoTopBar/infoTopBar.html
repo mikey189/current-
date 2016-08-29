@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/app/channelManagement/templates/endpoint/infoTopbar/style.css"/>
+<div layout="row" flex="100" layout-align="space-between center" ng-controller="CMinfoTopBar as ctrl" id="CMInfoTopBar">
+    <div flex="20" layout-padding class="infoTopBarDiv" layout-align="center center">
+        <p>{{ctrl.lorem}}</p>
+    </div>
+    <div flex="20" layout-padding class="infoTopBarDiv" layout-align="center center" layout="column">
+        <h2>{{ctrl.activeAgents}}</h2>
+        <small class="lighGray">Agents using this channel</small>
+    </div>
+    <div flex="15" layout-padding class="infoTopBarDiv" layout-align="center center" layout="column">
+        <h2>{{ctrl.openCases}}</h2>
+        <small class="lighGray">Open Cases</small>
+    </div>
+    <div flex="25" layout-padding class="infoTopBarDiv" layout-align="center center">
+        <h2>{{ctrl.blockedFiles}}</h2>
+        <small class="lighGray">Blocked Files Trend</small>
+    </div>
+    <div flex="25" layout-padding class="infoTopBarDiv" layout-align="center center">
+        <h2>{{ctrl.sanitizedFiles}}</h2>
+        <small class="lighGray">Sanitized Files</small>
+    </div>
+    

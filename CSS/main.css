@@ -38,7 +38,9 @@
 .purpleIcons{
     color: #786CC1;
 }
-
+.purpleSidebar{
+    background-color: #232174;
+}
 .greenish{
     color: #5DC5BD;
 }
@@ -599,4 +601,63 @@ policy-graph-toolbar{
 }
 #userList{
     padding-bottom: 0px;
+}
+#channelSidenav{
+    background-color: #232174;
+    height: 100%;
+}
+#channelSearchBox{
+    border-radius: 100px;
+    margin-bottom: 1em;
+    border: solid 1px #0D0F47;
+    background-color: #0D0F47;
+    margin-top: 0.7em;
+    padding-right: 0.7em;
+}
+#channelSearchBox > input{
+    border: 0px;
+    color: white
+}
+#channelSearchBox > input::-webkit-input-placeholder{
+    border: 0px;
+    color: white
+}
+
+.channelSidenavItems{
+    background-color: #0D0F47;
+    color: white;
+}
+.channelSidenavItems:hover{
+    background-color: #38359C;
+    color: white;
+    border-left: solid 0.5em #706BE2;
+}
+.channelSidenavItems:active{
+    background-color: #38359C;
+    color: white;
+    border-left: solid 0.5em #706BE2;
+}
+#channelSidenav{
+    background-color: #232174;
+}
+#channelSidebarSearchIcon{
+    margin-right: 0.8em;
+}
+#channelSidebarToolbar{
+    background-color: #232174;
+}
+
+a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover{
+    color: white;
+    text-decoration: none;
+}
+a.md-default-theme:not(.md-button), a:not(.md-button){
+    color: white;
+    text-decoration: none;
+}
+
+#topBarDropDown{
+    background-color: white;
+    border-radius: 100px;
+    border: solid 1px purple;
 }

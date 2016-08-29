@@ -3,7 +3,7 @@ app.controller('groupsList', function($scope){
  
     $scope.groupList  = ["HR", "Management", "Engineering", "PM", "Marketing", "Front End", "Sales Suppport"];
 
-    $scope.items = ["item 1", "item 2", "item 3"];
+    $scope.items = ["John Smith", "Paul Elluard", "Dave Birck"];
     $scope.showList = false;
     $scope.hiddenDiv = false;
     
