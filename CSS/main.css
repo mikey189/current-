@@ -585,6 +585,9 @@ policy-graph-toolbar{
     background-color: #39379D;
     color: white;
 }
+#policyNav > li {
+    border-left: solid 1px white;
+}
 .noMarginLeft{
     margin-left: 0px;
 }
@@ -656,8 +659,3 @@ a.md-default-theme:not(.md-button), a:not(.md-button){
     text-decoration: none;
 }
 
-#topBarDropDown{
-    background-color: white;
-    border-radius: 100px;
-    border: solid 1px purple;
-}

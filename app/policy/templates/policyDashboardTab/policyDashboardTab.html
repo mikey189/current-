@@ -1,248 +1,248 @@
 <md-content class="md-padding" layout='column'>
-                                        <!--<p>{{lorem}}</p>-->
+    <!--<p>{{lorem}}</p>-->
     <div layout='row' layout-xs='column' layout-sm='column' layout-md='column'>
-                                            <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90' style="overflow:hidden">
-                                                <div layout='row' style='background-color: white' layout-padding>
-                                                    <div layout='row' layout-align='start center' class='col-md-4' hide-xs hide-sm hide-md>
-                                                        <h3 class='red'>2,545 <span style='color: black'>Files</span></h3>
-                                                    </div>
+        <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90' style="overflow:hidden">
+            <div layout='row' style='background-color: white' layout-padding>
+                <div layout='row' layout-align='start center' class='col-md-4' hide-xs hide-sm hide-md>
+                    <h3 class='red'>2,545 <span style='color: black'>Files</span></h3>
+                </div>
 
-                                                    <div layout='row' flex layout-align='start center' layout-margin layout-align-xs='center center' layout-align-sm='center center' layout-align-md='center center'>
-                                                        <p class='gray'>Blocked Files</p>
-                                                        <md-switch ng-model="data.cb1" aria-label="Switch 1"></md-switch>
-                                                        <p class='gray'>Processed Files</p>     
-                                                    </div>
+                <div layout='row' flex layout-align='start center' layout-margin layout-align-xs='center center' layout-align-sm='center center' layout-align-md='center center'>
+                    <p class='gray'>Blocked Files</p>
+                    <md-switch ng-model="data.cb1" aria-label="Switch 1"></md-switch>
+                    <p class='gray'>Processed Files</p>
+                </div>
 
-                                                </div>
+            </div>
 
-                                                <div layout='row' layout-sm='column' layout-xs='column' layout-md='column' layout-margin>
-                                                    <md-list flex='50' flex-xs='90' flex-sm='90' flex-md='90' id='topFileTypeMdList'>
-                                                        <md-list-item layout='row' layout-padding layout-align ='start center'>
-                                                            <ng-md-icon icon='insert_drive_file' style='fill: #311B92' size='40'></ng-md-icon>
-                                                        <h4 class='gray'>Top File Type</h4>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
+            <div layout='row' layout-sm='column' layout-xs='column' layout-md='column' layout-margin>
+                <md-list flex='50' flex-xs='90' flex-sm='90' flex-md='90' id='topFileTypeMdList'>
+                    <md-list-item layout='row' layout-padding layout-align='start center'>
+                        <ng-md-icon icon='insert_drive_file' style='fill: #311B92' size='40'></ng-md-icon>
+                        <h4 class='gray'>Top File Type</h4>
+                    </md-list-item>
+                    <md-divider></md-divider>
 
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>EXE</p>
-                                                            <md-progress-linear md-mode="determinate" value="40"></md-progress-linear>
-                                                            <p class='red'>40%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>PDF</p>
-                                                            <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
-                                                            <p class='red'>15%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>PNG</p>
-                                                            <md-progress-linear md-mode="determinate" value="70"></md-progress-linear>
-                                                            <p class='red'>70%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>JPG</p>
-                                                            <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
-                                                            <p class='red'>90%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>TXT</p>
-                                                            <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
-                                                            <p class='red'>30%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                         <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>HTML</p>
-                                                            <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
-                                                            <p class='red'>90%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>XLS</p>
-                                                            <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
-                                                            <p class='red'>30%</p>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>CSV</p>
-                                                            <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
-                                                            <p class='red'>15%</p>
-                                                        </md-list-item>
-                                                      
-                                                      
-
-                                                    </md-list>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>EXE</p>
+                        <md-progress-linear md-mode="determinate" value="40"></md-progress-linear>
+                        <p class='red'>40%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>PDF</p>
+                        <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
+                        <p class='red'>15%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>PNG</p>
+                        <md-progress-linear md-mode="determinate" value="70"></md-progress-linear>
+                        <p class='red'>70%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>JPG</p>
+                        <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
+                        <p class='red'>90%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>TXT</p>
+                        <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
+                        <p class='red'>30%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>HTML</p>
+                        <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
+                        <p class='red'>90%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>XLS</p>
+                        <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
+                        <p class='red'>30%</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>CSV</p>
+                        <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
+                        <p class='red'>15%</p>
+                    </md-list-item>
 
 
-                                                    <md-list id='topUsersMdList' hide-xs hide-md flex flex-xs='90' flex-sm='90' flex-md='90'>
-                                                        <md-list-item layout='row' layout-padding layout-align ='start center'>
-                                                            <ng-md-icon icon='people' style='fill: #311B92' size='40'></ng-md-icon>
-                                                        <h4 class='gray'>Top Users</h4>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>Tyron Lister</p>
-                                                            <md-chips>
-                                                                <md-chip>Marketing</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>Jonathan Meguira</p>
-                                                            <md-chips>
-                                                                <md-chip>Developer</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>John Kirk</p>
-                                                            <md-chips>
-                                                                <md-chip>IT</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>Paul Allen</p>
-                                                            <md-chips>
-                                                                <md-chip>Finance</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>Maud Stuxnet</p>
-                                                            <md-chips>
-                                                                <md-chip>Marketing</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                        <md-divider></md-divider>
-                                                        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
-                                                            <p>Steph Oliel</p>
-                                                            <md-chips>
-                                                                <md-chip>Sells</md-chip>
-                                                            </md-chips>
-                                                        </md-list-item>
-                                                    </md-list>
 
-                                                </div>
-                                            </div>
-                                            <div layout='column' layout-margin style='overflow: hidden' id="topCases">
-                                                <md-list style='background-color: white'>
-                                                    <md-list-item layout='row' layout-padding>
-                                                        <h4 class='gray'>Sort by</h4>
-                                                        <md-select ng-model='i' placeholder='Sort..' class='noVerticalPadding' flex="initial">
-                                                            <md-option ng-repeat="i in casesFilter" value="{{i}}"><small>{{i}}</small></md-option>
-                                                        </md-select>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>12</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas  class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+                </md-list>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>John Smith</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>2</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Stan Smith</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>8</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+                <md-list id='topUsersMdList' hide-xs hide-md flex flex-xs='90' flex-sm='90' flex-md='90'>
+                    <md-list-item layout='row' layout-padding layout-align='start center'>
+                        <ng-md-icon icon='people' style='fill: #311B92' size='40'></ng-md-icon>
+                        <h4 class='gray'>Top Users</h4>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>Tyron Lister</p>
+                        <md-chips>
+                            <md-chip>Marketing</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>Jonathan Meguira</p>
+                        <md-chips>
+                            <md-chip>Developer</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>John Kirk</p>
+                        <md-chips>
+                            <md-chip>IT</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>Paul Allen</p>
+                        <md-chips>
+                            <md-chip>Finance</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>Maud Stuxnet</p>
+                        <md-chips>
+                            <md-chip>Marketing</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+                        <p>Steph Oliel</p>
+                        <md-chips>
+                            <md-chip>Sells</md-chip>
+                        </md-chips>
+                    </md-list-item>
+                </md-list>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Paul Allen</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>4</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+            </div>
+        </div>
+        <div layout='column' layout-margin style='overflow: hidden' id="topCases">
+            <md-list style='background-color: white'>
+                <md-list-item layout='row' layout-padding>
+                    <h4 class='gray'>Sort by</h4>
+                    <md-select ng-model='i' placeholder='Sort..' class='noVerticalPadding' flex="initial">
+                        <md-option ng-repeat="i in casesFilter" value="{{i}}"><small>{{i}}</small></md-option>
+                    </md-select>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>12</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Bill Gates</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>7</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+                    <md-content layout='column' flex>
+                        <small class='caption red'>John Smith</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>2</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Stanley Murrey</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>9</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Stan Smith</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>8</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Mac Gyver</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                    <md-divider></md-divider>
-                                                    <md-list-item layout='row'>
-                                                        <md-content layout='row' flex='25'>
-                                                            <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                                                            <h6>10</h6>
-                                                        </md-content>
-                                                        <md-content layout='row' flex='50' layout-padding>
-                                                            <canvas   class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas> 
-                                                        </md-content>
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Paul Allen</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>4</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
 
-                                                            <md-content layout='column' flex>
-                                                                <small class='caption red'>Ehud Barack</small>
-                                                                <small class='caption gray'>6 medium, 2 low</small>
-                                                        </md-content>
-                                                    </md-list-item>
-                                                   
-                                                </md-list>
-                                            </div>
-                                        </div>
-                                            
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Bill Gates</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>7</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
+
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Stanley Murrey</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>9</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
+
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Mac Gyver</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item layout='row'>
+                    <md-content layout='row' flex='25'>
+                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
+                        <h6>10</h6>
+                    </md-content>
+                    <md-content layout='row' flex='50' layout-padding>
+                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
+                    </md-content>
+
+                    <md-content layout='column' flex>
+                        <small class='caption red'>Ehud Barack</small>
+                        <small class='caption gray'>6 medium, 2 low</small>
+                    </md-content>
+                </md-list-item>
+
+            </md-list>
+        </div>
+    </div>
+
 </md-content>

@@ -1,0 +1,18 @@
+#endPointTopFiles{
+    background-color: white;
+    margin-top: 1em;
+}
+.progress-bar-danger {
+    background-color: #5BB56F;
+}
+.noMarginBottom{
+    margin-bottom: 0px;
+}
+#EndpointTopFilesIcon{
+    margin-right: 0.5em;
+    margin-left: 0px;
+}
+.md-48{
+    min-width: 48px;
+    min-height: 48px;
+}

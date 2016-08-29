@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
+<md-list ng-controller="endpointDashboardTopFiles as ctrl" flex="45" id="endPointTopFiles">
+    <md-list-item layout="row" layout-align="START center">
+        <md-icon class="material-icons md-primary md-48" id="EndpointTopFilesIcon">insert_drive_file</md-icon>
+        <h4>Top Files Type</h4>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <div ng-repeat="x in ctrl.data">
+        <md-list-item layout="row" layout-align="space-around center">
+            <p>{{x.type}}</p>
+            <div class="progress" flex="60" style="margin-bottom: 0px; margin-right: 1em">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.size}}" aria-valuemin="0" aria-valuemax="100" style="width:{{x.size}}%">{{x.size}}
+                </div>
+            </div>
+            <p>{{x.size}}</p>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+    
+</md-list>

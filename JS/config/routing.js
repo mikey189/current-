@@ -74,25 +74,25 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             controller: 'CMIVDashboard',
             controllerAs: 'controller'
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
             controller: 'CMIVSources',
             controllerAs: 'controller'
         })
         .state('app.channelManagement.endpoint.targets', {
             url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/targets/targets.html',
             controller: 'CMIVTargets',
             controllerAs: 'controller'
         })
         .state('app.channelManagement.endpoint.syslog', {
             url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/syslog.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/syslog/syslog.html',
             controller: 'CMIVSyslog',
             controllerAs: 'controller'
         })
