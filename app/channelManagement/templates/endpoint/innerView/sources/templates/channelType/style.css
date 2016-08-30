@@ -1,0 +1,16 @@
+#main {
+    background-color: white;
+}
+
+.fileTypeDiv {
+    border-radius: 1em;
+}
+
+.lightPurple {
+    color: #6B69EA;
+}
+
+.md-48 {
+    min-height: 48px;
+    min-width: 48px;
+}

@@ -1,11 +1,11 @@
 <html lang="en" ng-app='resec'>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Angular Material style sheet -->
     <!--<link rel="stylesheet" href="CSS/material.css">-->
     <link href="bower_components/angular-material/angular-material.min.css" rel='stylesheet' type='text/css' />
-    <link href="CSS/Font/MaterialFonts.css"
-    rel="stylesheet">
+    <link href="CSS/Font/MaterialFonts.css" rel="stylesheet">
     <link rel='stylesheet' href='CSS/bootstrap.css'>
     <link rel='stylesheet' href='CSS/timeLineDashboard.css'>
     <link rel='stylesheet' href='CSS/main.css'>
@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="CSS/cust.css">
     <link href='CSS/Font/Ubuntu.css' rel='stylesheet' type='text/css'>
     <!--<link rel='stylesheet' href="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.css"/>-->
-    
-    <link rel='stylesheet' href='login/login.css'/>
+    <link rel='stylesheet' href='login/login.css' />
+    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <!-- data table : to load for data tables 
     <link src="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>-->
-    
     <!-- special load for chromium of JQuery
     <script>
         window.nodeRequire = require;
@@ -40,13 +39,15 @@
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+
     <!-- Important Note: Angular Material Library rc1 version works well with list, rc2 is very unstable, the verison called here is V1.1RC01 
 
 
 
 <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
     <!-- Bootstrap and JQuery -->
-    
+
     <script type='text/javascript' src='JS/libraries/bootstrap.min.js'></script>
     <!-- Local Libraries -->
     <script src='JS/module.js'></script>
@@ -55,7 +56,7 @@
     <script src='JS/config/translator.js'></script>
     <script src='JS/customServices/dataLoader.js'></script>
     <script src='login/services/authentification.js'></script>
-    <script src='login/login.js'></script>     
+    <script src='login/login.js'></script>
     <script src='app/agentManagement/agentManagement.js'></script>
     <script src='app/cases/cases.js'></script>
     <script src='app/channelManagement/channelManagement.js'></script>
@@ -68,6 +69,9 @@
     <script src='app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/controller.js'></script>
     <script src='app/channelManagement/templates/endpoint/innerView/dashboard/templates/topUsers/controller.js'></script>
     <script src='app/channelManagement/templates/endpoint/innerView/dashboard/templates/casesFilter/controller.js'></script>
+    <script src='app/channelManagement/templates/endpoint/innerView/sources/controller.js'></script>
+    <script src='app/channelManagement/templates/endpoint/innerView/sources/templates/channelType/controller.js'></script>
+    <script src='app/channelManagement/templates/endpoint/innerView/sources/templates/descriptionBlock/controller.js'></script>
     <script src='app/channelManagement/templates/sidebar/sidebar.js'></script>
     <script src='app/channelManagement/templates/directoryWatcher/directoryWatcher.js'></script>
     <script src='app/channelManagement/templates/endpoint/endpoint.js'></script>
@@ -108,11 +112,13 @@
     <script src='app/policy/templates/who/directives/userList/controller.js'></script>
     <script src='app/policy/templates/who/directives/computerList/controller.js'></script>
     <script src='app/reports/reports.js'></script>
-    <script src='app/settings/settings.js'></script>  
+    <script src='app/settings/settings.js'></script>
     <!-- load this one for data table 
     <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script> -->
 </head>
-    <body ng-app="resec">
-        <div data-ui-view ng-cloak></div>
-    </body>
+
+<body ng-app="resec">
+    <div data-ui-view ng-cloak></div>
+</body>
+
 </html>

@@ -61,3 +61,18 @@ app.directive("endpointDashboardCasesFilter", function(){
         replace: false
     }
 })
+
+app.directive("endpointSourcesChannelType", function(){
+    return{
+        restrict: 'E',
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/channelType/channelType.html",
+        replace: false
+    }
+})
+app.directive("endpointSourcesChannelDescriptionBlock>", function(){
+    return{
+        restrict: 'E',
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/descriptionBlock/descriptionBlock.html",
+        replace: false
+    }
+})

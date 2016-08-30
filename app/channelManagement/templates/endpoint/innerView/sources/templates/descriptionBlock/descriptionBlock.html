@@ -1,0 +1,13 @@
+<div ng-controller="endpointSourcesDescriptionBlock as ctrl" layout="column" flex="33">
+    <div layout="row" layout-align="start center" layout-padding>
+        <md-icon class="material-icons md-primary">info_outline</md-icon>
+        <md-content>Description</md-content>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row">
+        <md-content>{{x.description}}</md-content>
+        <a href="#" editable-textarea="user.desc" e-rows="7" e-cols="40">
+            <pre>{{ x.description || 'no description' }}</pre>
+        </a>
+    </div>
+</div>
