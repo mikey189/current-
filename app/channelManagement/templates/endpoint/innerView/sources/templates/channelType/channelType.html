@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/templates/channelType/style.css"/>
 
-<div ng-controller="channelTypeCtrl as ctrl" layout="row" flex id="main" layout-align="space-around center" layout-margin>
+<div ng-controller="channelTypeCtrl as ctrl" layout="row" flex id="main" layout-align="space-around center" layout-margin class="md-whiteframe-z2">
     <div ng-repeat="x in ctrl.data" layout="column" layout-align="center center" class="fileTypeDiv" layout-margin flex="ctrl.width">
         <md-icon class="iconToHover material-icons md-48 lightPurple">{{x.iconName}}</md-icon>
         <md-content class="contentToHover"><strong>{{x.legend}}</strong></md-content>

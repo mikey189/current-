@@ -1,3 +1,9 @@
-app.controller("endpointSourcesDescriptionBlock", [function(){
-    this.description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
+app.controller("endpointSourcesDescriptionBlock", [function () {
+    this.description = "";
+    $(document).ready(function () {
+        $("#descEditButton").click(function () {
+            alert("don't forget to add animation to make that button toggle slide up and then back down")
+        })
+    });
+    this.description = "This channel contains the mails, drive, documents and mobiles devices property for the engineering team as well as all the front end developers team"
 }])

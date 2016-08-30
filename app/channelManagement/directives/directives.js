@@ -69,10 +69,17 @@ app.directive("endpointSourcesChannelType", function(){
         replace: false
     }
 })
-app.directive("endpointSourcesChannelDescriptionBlock>", function(){
+app.directive("endpointSourcesChannelDescriptionBlock", function(){
     return{
         restrict: 'E',
         templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/descriptionBlock/descriptionBlock.html",
+        replace: false
+    }
+})
+app.directive("endpointSourcesChannelSettingsBlock", function(){
+    return{
+        restrict: 'E',
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/settingsBlock/settingsBlock.html",
         replace: false
     }
 })
