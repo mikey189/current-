@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/casesFilter/style.css" />
+<md-list ng-controller="endpointDashboardCasesFilter as ctrl" id="endpointDashboardCasesFilter">
+    <md-list-item layout="row">
+        Top Cases By
+        <ul class="dropdown-menu" aria-labelledby="topBarDropDown">
+            <li><a>Last Week</a></li>
+            <li><a>2 Weeks</a></li>
+            <li><a>3 Weeks</a></li>
+            <li><a>1 Month</a></li>
+        </ul>
+    </md-list-item>
+    <md-divider></md-divider>
+    <div ng-repeat="x in ctrl.data">
+        <md-list-item layout="row" layout-align="space-around center" layout-padding>
+            <div layout="row" class="reducedBorderRight" layout-align="start center">
+                <md-icon class="material-icons md-primary iconsAligned">work</md-icon>
+                <md-content class="primaryBlue"><strong>{{x.total}}</strong></md-content>
+            </div>
+            <div layout="row" layout-align="space-around center">
+                <div class="resizedCharts">
+                    <canvas class="chart chart-doughnut" chart-data="[x.medium, x.high, x.low]" chart-labels="ctrl.label"></canvas>
+                </div>
+                <div layout="column">
+                    {{x.name}}
+                    <small><span class="redAlert">{{x.high}}</span> High,<span class="indigo"> {{x.medium}}</span> Medium, <span class="yellow"> {{x.low}} </span> Low</small>
+                </div>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+</md-list>

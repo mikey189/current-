@@ -54,3 +54,10 @@ app.directive("endpointDashboardTopUsers", function(){
         replace: false
     }
 })
+app.directive("endpointDashboardCasesFilter", function(){
+    return{
+        restrict: 'E',
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/dashboard/templates/casesFilter/casesFilter.html",
+        replace: false
+    }
+})

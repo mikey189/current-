@@ -2,10 +2,11 @@
     <md-content layout="row" flex>
         <md-content flex="55" layout="column" style="margin-left: 1em">
             <channel-dashboard-data-switcher></channel-dashboard-data-switcher>
-            <div layout="row" flex="100" layout-align="space-between start">
+            <div layout="row" flex="100" layout-align="space-around start">
                 <endpoint-dashboard-top-files flex='45'></endpoint-dashboard-top-files>
-                <endpoint-dashboard-top-users></endpoint-dashboard-top-users>
+                <endpoint-dashboard-top-users flex='53'></endpoint-dashboard-top-users>
             </div>
         </md-content>
+        <endpoint-dashboard-cases-filter flex="40"></endpoint-dashboard-cases-filter>
     </md-content>
 </md-content>
