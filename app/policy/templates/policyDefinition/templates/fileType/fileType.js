@@ -1,5 +1,12 @@
 app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
 
+    
+    
+    
+    
+    
+    
+
   this.status = '  ';
   this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   this.showAlert = function(ev) {
@@ -50,7 +57,6 @@ app.controller('fileType', function($mdDialog, $mdMedia, $compile, $scope) {
     /* end of dialog loading the dialog window to add exceptions*/
 
 
-    this.text = "this is a test";
 
     this.fileTypeSections = ['Allow', 'Size Limit', 'Transform', 'Process Embbeded Files', 'Sandbox', 'Exception'];
  

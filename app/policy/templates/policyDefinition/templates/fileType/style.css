@@ -36,3 +36,12 @@
     color: #23CCC7;
     margin-right: 0.3em;
 }
+
+
+#PDFTMainTable > thead{
+    background-color: white;
+    border-top: solid 1.5px #B9B9B9;
+}
+.PDFTMainTableRow > td{
+    background-color: #AAB7D1;
+}

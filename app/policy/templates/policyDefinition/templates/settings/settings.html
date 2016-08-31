@@ -9,19 +9,19 @@
             <md-list-item layout='row' layout-align='space-between center'>
                 <p>Sign files</p>
                 <md-switch class="md-primary" ng-model="settings.signFiles" aria-label="file Sign switch">
-                </md-switch>  
+                </md-switch>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center'>
                 <p>Saved Block Files Reports</p>
                 <md-switch class="md-primary" ng-model="settings.blockedFiles" aria-label="Saved Blocked Files">
-                </md-switch>  
+                </md-switch>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center'>
                 <p>Block incorrect file extensions</p>
                 <md-switch class="md-primary" ng-model="settings.incorrectExtensions" aria-label="incorrect extensions">
-                </md-switch>  
+                </md-switch>
             </md-list-item>
         </md-list>
         <md-list class='whiteBk' flex>
@@ -29,7 +29,7 @@
                 <md-icon class='material-icons md-primary md-36' id='settingsFileHeader'>archive</md-icon>
                 <h4 class='md-primary noMarginBottom'>Archive</h4>
             </md-list-item>
-            <md-divider></md-divider>  
+            <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center'>
                 <p>Maximum archive nesting level</p>
                 <input flex='30' ng-model='settings.nestingLevel' type="number" min='0' class="form-control">
@@ -57,33 +57,33 @@
                 </div>
             </md-list-item>
             <md-divider></md-divider>
-            
-                <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                    Email condition
-                    <select class="form-control" flex='30'>
+
+            <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                Email condition
+                <select class="form-control" flex='30'>
                         <option ng-repeat='x in settings.emailCondition'>{{x}}</option>
                     </select>
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                    Email Address
-                    <input flex = '30' type="text" class="form-control" placeholder="Edit Email address">
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                    Query Active Directory for email address
-                    <input flex = '30' type="text" class="form-control" placeholder="Edit Query AD">
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                    Email subject
-                    <input flex = '30' type="text" class="form-control" placeholder="Edit Email subject">
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item layout='row' layout-align='space-between center' layout-padding class='_md-no-proxy'>
-                    Email Structure
-                    <md-button class="noVerticalPadding md-primary md-raised" ng-click="settings.showAdvanced(ev)">Edit Email Structure</md-button> 
-                </md-list-item>
-            </md-list>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                Email Address
+                <input flex='30' type="text" class="form-control" placeholder="Edit Email address">
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                Query Active Directory for email address
+                <input flex='30' type="text" class="form-control" placeholder="Edit Query AD">
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                Email subject
+                <input flex='30' type="text" class="form-control" placeholder="Edit Email subject">
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center' layout-padding class='_md-no-proxy'>
+                Email Structure
+                <md-button class="noVerticalPadding md-primary md-raised" ng-click="settings.showAdvanced(ev)">Edit Email Structure</md-button>
+            </md-list-item>
+        </md-list>
     </div>
 </div>
