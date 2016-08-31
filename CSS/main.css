@@ -354,7 +354,7 @@ md-datepicker {
 }
 
 .special:hover {
-    background-color: #4527A0;
+    background-color: #6B69EB;
 }
 
 #yellow {
@@ -712,6 +712,10 @@ md-select:not ([disabled]):focus ._md-select-value {
 policy-graph-toolbar {
     margin-bottom: 2em;
 }
+#policyMainNav{
+    padding-left: 0px;
+    padding-right: 0px;
+}
 
 #policyNav {
     background-color: #101250;
@@ -722,12 +726,12 @@ policy-graph-toolbar {
 }
 
 #policyNav> li>a:hover {
-    background-color: #39379D;
+    background-color: #6B69EB;
     color: white
 }
 
 #policyNav> li>a:focus {
-    background-color: #39379D;
+    background-color: #6B69EB;
     color: white;
 }
 
@@ -823,4 +827,8 @@ a:not(.md-button) {
 .noMarginIcons {
     margin-right: 0px;
     margin-left: 0px;
+}
+#policyDefintionView{
+    padding-left: 0px;
+    padding-right: 0px;
 }

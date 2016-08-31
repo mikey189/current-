@@ -1,4 +1,4 @@
-<div layout='column' layout-margin ng-cloak>
+<div layout='column' layout-margin ng-cloak ng-controller="fileType as ctrl">
     <div layout='row' id='policyFileTypeToolbar' layout-padding>
         <div layout-align='start center' layout='row' flex='50'>
             <md-input-container flex='30'>
@@ -7,7 +7,7 @@
             </md-input-container>
         </div>
         <div layout-align='end center' layout='row' flex='50'>
-            <md-button id='showAllExceptionsButtonPolicy'>Show All Expections {{fileTypeCtrl.test}} </md-button>
+            <md-button id='showAllExceptionsButtonPolicy'>Show All Expections {{ctrl.test}} </md-button>
         </div>
     </div>
     <div layout-padding>

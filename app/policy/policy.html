@@ -2,17 +2,17 @@
    <top-toolbar></top-toolbar>
     <div layout='row' flex>
         <policy-sidenav></policy-sidenav>
-        <md-content flex flex-gt-sm layout='column'>
+        <div flex flex-gt-sm layout='column'>
             <policy-graph-toolbar></policy-graph-toolbar>
-            <nav class="container">
+            <nav class="container md-whiteframe-8dp" id="policyMainNav">
                 <ul class="nav nav-justified" id="policyNav">
                     <li><a ui-sref="app.policy.dashboard">POLICY DASHBOARD</a></li>
                     <li><a ui-sref="app.policy.definition">WHAT IS THIS POLICY</a></li>
                     <li><a ui-sref="app.policy.who">WHO USES THIS POLICY?</a></li>
                 </ul>
             </nav>
-            <div ui-view class="container" ng-cloak></div>
-        </md-content>
+            <div ui-view class="container" ng-cloak id="policyDefintionView"></div>
+        </div>
     </div>
 
 </div>

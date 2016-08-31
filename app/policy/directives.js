@@ -91,7 +91,13 @@ app.directive('policySettings', function(){
     }
 })
 
-
+app.directive("policyDefinitionSwitcher", function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'app/policy/templates/policyDefinition/switcher/switcher.html',
+        replace: false
+    }
+})
 
 
 /*app.directive('rowCreator', function() {
