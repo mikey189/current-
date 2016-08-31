@@ -513,12 +513,6 @@ md-content {
     border-color: solid 1px #5DC5BD;
 }
 
-#policyFileTypeToolbar {
-    background-color: white;
-    border-bottom: solid 2px gray;
-    min-height: 100px;
-}
-
 .whiteBK {
     background-color: white;
 }

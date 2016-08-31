@@ -160,13 +160,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('app.policy.definition.fileType', {
                 url: '/policyDefinitionFT',
-                templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
+                templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
                 controller: 'detection',
                 controllerAs: 'ctrl'
             })
             .state('app.policy.definition.detection', {
                 url: '/policyDefinitionDetect',
-                templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
+                templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
                 controller: 'fileType',
                 controllerAs: 'ctrl'
             })

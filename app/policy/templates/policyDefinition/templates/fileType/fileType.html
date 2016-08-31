@@ -1,70 +1,72 @@
-<div layout='column' layout-margin ng-cloak ng-controller="fileType as ctrl">
-    <div layout='row' id='policyFileTypeToolbar' layout-padding>
-        <div layout-align='start center' layout='row' flex='50'>
-            <md-input-container flex='30'>
-              <label>Search user, group.. </label>
-              <input type="text"/>
-            </md-input-container>
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
+
+<div layout='column' ng-cloak ng-controller="fileType as ctrl" id="fileTypeMain">
+    
+    <div id="policyFileTypeToolbar" layout="row" layout-align="space-between center" class="md-whiteframe-8dp">
+        <div class="form-group has-feedback" id="PDFTSearchBox" flex="30"  layout="row">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <md-icon class="material-icons form-control-feedback" id="PDFTSearchIcon">search</md-icon>
         </div>
-        <div layout-align='end center' layout='row' flex='50'>
-            <md-button id='showAllExceptionsButtonPolicy'>Show All Expections {{ctrl.test}} </md-button>
-        </div>
+        <md-button flex="20" id="PDFTExceptionButton" layout-align="space-between center"><md-icon class="material-icons" id="PDFTExceptionButtonIcon">error</md-icon><strong>Show all exceptions</strong>
+        </md-button>
+    
     </div>
+
     <div layout-padding>
-       <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title">
+                    <h4 class="panel-title">
                     <div class='primary active' aria-pressed="true" data-toggle="collapse" data-parent="#accordion" href="#executables">
                     Executables</div>
                   </h4>
                 </div>
                 <div id="executables" class="panel-collapse collapse">
-                  <div class="panel-body fullWidthPanel">
-                    <md-button class='fullWidthPolicy'>
-                        <h5 class="panel-title" layout-padding>
+                    <div class="panel-body fullWidthPanel">
+                        <md-button class='fullWidthPolicy'>
+                            <h5 class="panel-title" layout-padding>
                             <div data-toggle="collapse" data-parent="#customTable" href="#windows">
                                 <small>Windows</small>
                             </div>
                         </h5>
-                      </md-button>
-                    <div class='panel-body collapse' id='windows'>
-                        <custom-table  ng-controller='fileType as fileTypeCtrl'></custom-table>
-                    </div>
-                    <md-button class='fullWidthPolicy'>
-                        <h5 class="panel-title" layout-padding>
+                        </md-button>
+                        <div class='panel-body collapse' id='windows'>
+                            <custom-table ng-controller='fileType as fileTypeCtrl'></custom-table>
+                        </div>
+                        <md-button class='fullWidthPolicy'>
+                            <h5 class="panel-title" layout-padding>
                             <div data-toggle="collapse" data-parent="#customTable" href="#mac">
                                 <small>Mac</small>
                             </div>
                         </h5>
-                    </md-button>
-                    <div class='panel-body collapse' id='mac'>
-                        <custom-table id='windowsTable' file-type-sections = 'fileTypeSections' files='files' ></custom-table>
-                    </div>
-                    <md-button class='fullWidthPolicy'>
-                        <h5 class="panel-title" layout-padding>
+                        </md-button>
+                        <div class='panel-body collapse' id='mac'>
+                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
+                        </div>
+                        <md-button class='fullWidthPolicy'>
+                            <h5 class="panel-title" layout-padding>
                             <div data-toggle="collapse" data-parent="#customTable" href="#java">
                                 <small>Java</small>
                             </div>
                         </h5>
-                      </md-button>
-                    <div class='panel-body collapse' id='java'>
-                        <custom-table id='windowsTable' file-type-sections = 'fileTypeSections' files='files' ></custom-table>
-                    </div>
-                    <md-button class='fullWidthPolicy'>
-                        <h5 class="panel-title" layout-padding>
+                        </md-button>
+                        <div class='panel-body collapse' id='java'>
+                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
+                        </div>
+                        <md-button class='fullWidthPolicy'>
+                            <h5 class="panel-title" layout-padding>
                             <div data-toggle="collapse" data-parent="#customTable" href="#linux">
                                 <small>Linux</small>
                             </div>
                         </h5>
-                    </md-button>
-                    <div class='panel-body collapse' id='linux'>
-                        <custom-table id='windowsTable' file-type-sections = 'fileTypeSections' files='files' ></custom-table>
-                    </div>
+                        </md-button>
+                        <div class='panel-body collapse' id='linux'>
+                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
+                        </div>
 
+                    </div>
                 </div>
-              </div>
-              <!--<div class="panel panel-default">
+                <!--<div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="">
@@ -91,14 +93,11 @@
                 </div>
               </div>-->
             </div>
-            </div>
         </div>
     </div>
+</div>
 
 
 
 
 <!--<md-checkbox ng-model="data.cb1" style='padding-bottom: 0px' aria-label="Checkbox 1"></md-checkbox>-->
-
-
-
