@@ -1,33 +1,37 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/OSTables/types/style.css" />
 
 
+
 <table ng-controller="PDOSTypeFiles as ctrl" class="table table-responsive animated bounceInRight" id="PDOSFiles">
 
-
     <tr>
-        <td>
+        <td class="retrait"</td>
+        <td class="PDOSFilesRows" style="width: 11%">EXE</td>
+        <td class="PDOSFilesRows">
             <md-checkbox aria-label="exeAllowed" ng-model="ctrl.windows.EXE.isAllowed" class="PDOSFilesCheckbox"></md-checkbox>
         </td>
-        <td layout="row" flex layout-align="space-between center">
-            <span editable-text="ctrl.windows.EXE.sizeLimit" e-name="windowsEXESizeLimit" e-form="windowsEXESizeLimit">{{ ctrl.windows.EXE.sizeLimit || 'no limit defined' }}</span>
-            <md-icon ng-click="windowsEXESizeLimit.$show()" class="material-icons noMarginIcons">edit</md-icon>
+        <td class="PDOSFilesRows" layout="row">
+              <edit-in-place placeholder="ctrl.name" ng-model="ctrl.name"></edit-in-place>
         </td>
-        <td>
+        <td class="PDOSFilesRows">
             <select class="PDOSFilesSelect">
                 <option>None</option>
             </select>
         </td>
-        <td>
+        <td class="PDOSFilesRows">
             <md-checkbox ng-model="ctrl.windows.EXE.process" aria-label="exeProccessed" class="PDOSFilesCheckbox"></md-checkbox>
         </td>
-        <td>
+        <td class="PDOSFilesRows">
             <md-checkbox ng-model="ctrl.windows.EXE.sandbox" aria-label="exeSandbox" class="PDOSFilesCheckbox"></md-checkbox>
         </td>
-        <td>
+        <td class="PDOSFilesRowsLast">
             <md-checkbox ng-model="ctrl.windows.EXE.exception" aria-label="exeException" class="PDOSFilesCheckbox"></md-checkbox>
         </td>
 
     </tr>
 
-
 </table>
+
+
+<!--<span editable-text="ctrl.windows.EXE.sizeLimit" e-name="windowsEXESizeLimit" e-form="windowsEXESizeLimit">{{ ctrl.windows.EXE.sizeLimit || 'no limit defined' }}</span>
+            <md-icon ng-click="windowsEXESizeLimit.$show()" class="material-icons noMarginIcons">edit</md-icon>-->

@@ -1,10 +1,7 @@
 app.controller('fileType', [function($mdDialog, $mdMedia, $compile, $scope) {
 
    this.showOS = false;
-    this.toggleOS = function(){
-        this.showOS =! this.showOS;
-        console.log(this.showOS)
-    }
+   
     
     this.fileTypeSections = ['Allow', 'Size Limit', 'Transform', 'Process Embbeded Files', 'Sandbox', 'Exception'];
  

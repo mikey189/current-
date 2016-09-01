@@ -4,7 +4,7 @@ app.controller("PDOSTypeFiles", [function () {
                 this.files = ['EXE', 'JPG', 'PNG', 'XLS', 'CSV'];
                 this.groups = ['users', 'computers', 'groups']
 
-                
+              this.name = "Jonathan Meguira"  
 
 
 

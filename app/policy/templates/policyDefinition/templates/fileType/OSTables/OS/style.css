@@ -21,3 +21,6 @@ md-checkbox.md-default-theme.md-checked ._md-icon:after, md-checkbox.md-checked 
 md-checkbox.md-default-theme ._md-icon, md-checkbox ._md-icon{
     border-color: #23CCC7;
 }
+.PDOSFilesRowsTD{
+    padding:0px !important;
+}
