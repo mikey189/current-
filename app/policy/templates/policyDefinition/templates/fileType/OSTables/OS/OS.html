@@ -1,0 +1,27 @@
+
+
+<table ng-controller="PDOSTable as ctrl" class="table table-responsive animated bounceInRight" id="OSTable">
+    <tr class="OSTableRows" layout="row" ng-click ="ctrl.toggleWindows()">
+        <td style="width: 17%">Windows</td>
+        <td><md-checkbox aria-label="activeWindows"  class="checkBoxNoMarginBottom  " ng-model="ctrl.windows"></md-checkbox></td>
+    </tr>
+    <tr class="OSTableRows" layout="row">
+        <td style="width: 17%">Linux</td>
+        <td><md-checkbox aria-label="activeLinux" class="checkBoxNoMarginBottom green" ng-model="ctrl.linux"></md-checkbox></td>
+    </tr>
+    <tr class="OSTableRows" layout="row">
+        <td style="width: 17%">Mac</td>
+        <td><md-checkbox aria-label="activeMac" class="checkBoxNoMarginBottom" ng-model="ctrl.mac"></md-checkbox></td>
+    </tr>
+    <tr class="OSTableRows" layout="row">
+        <td style="width: 17%">Java</td>
+        <td><md-checkbox aria-label="activeJava" class="checkBoxNoMarginBottom  " ng-model="ctrl.java"></md-checkbox></td>
+    </tr>
+   
+</table>
+
+<windows-files ng-show="ctrl.showWindows"></windows-files>
+
+
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/OSTables/OS/style.css" />
+

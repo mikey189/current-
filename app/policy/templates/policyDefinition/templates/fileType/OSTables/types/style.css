@@ -1,0 +1,21 @@
+#PDOSFiles {
+    background-color: white;
+}
+
+.PDOSFilesCheckbox {
+    margin-bottom: 0px !important;
+}
+
+.PDOSFilesRow {
+    border-bottom: solid 2px #f1f1f1;
+}
+
+.PDOSFilesRow> td {
+    border-right: solid 2px #f1f1f1;
+}
+
+.PDOSFilesSelect {
+    border: 0px;
+    width: 100%;
+    background-color: white;
+}

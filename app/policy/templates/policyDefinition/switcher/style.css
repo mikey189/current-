@@ -21,4 +21,5 @@
 }
 .roundedTabSelector:focus{
     background-color: #6B69EB !important;
+    color: white !important;   
 }

@@ -98,18 +98,19 @@ app.directive("policyDefinitionSwitcher", function(){
         replace: false
     }
 })
-
-
-/*app.directive('rowCreator', function() {
-return {
-    restrict: "AE",
-    //scope: {},
-    template: "<button ng-click='addRow()'>Add Row</button><exception-row ng-repeat='row in rows track by $index'></exception-row>",
-    
-    link: function(scope, element, attrs) {
-       scope.rows = [];
-       scope.addRow = function() {
-           scope.rows.push(scope.rows.length); // or whatever else you want
-       };
+app.directive("osTable", function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/OSTables/OS/OS.html',
+        replace: false
     }
-}});*/
+})
+app.directive("windowsFiles", function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/OSTables/types/windowsFiles.html',
+        replace: false
+    }
+})
+
+
