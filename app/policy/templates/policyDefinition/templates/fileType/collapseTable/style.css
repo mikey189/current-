@@ -1,0 +1,40 @@
+#PDCollapseTable{
+    background-color: white;
+}
+
+.skyBlueTD{
+    background-color: #E0E9F7;
+    border-bottom: solid 1px #E0E9F7;
+}
+
+.collapseTableBorder{
+    border-bottom: solid 2px #f1f1f1 !important;
+}
+.PDCollapseTableSelect{
+    border: 0px;
+    background-color: white;
+    width: 100%;
+}
+
+md-checkbox{
+    margin-bottom: 0px;
+}
+.windows > td{
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+    border-right: solid 2px #f1f1f1 !important;
+}
+md-checkbox.md-default-theme.md-checked ._md-icon, md-checkbox.md-checked ._md-icon{
+ background-color: #23CCC7;
+}
+md-checkbox.md-default-theme.md-checked ._md-icon:after, md-checkbox.md-checked ._md-icon:after{
+    border-color: white;
+}
+md-checkbox.md-default-theme ._md-icon, md-checkbox ._md-icon{
+    border-color: #23CCC7;
+}
+
+#executables{
+    background-color: #C3CFE8;
+    color: #666AB9;
+}

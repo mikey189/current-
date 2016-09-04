@@ -1,0 +1,386 @@
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
+<div class="table-responsive">
+    <table class="table" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable">
+
+        <thead>
+            <th width="8%"></th>
+            <th width="7%"></th>
+            <th ng-repeat="th in ctrl.th">{{:: th}}</th>
+        </thead>
+        <tbody id="PDCollapseTableBody">
+            <tr class="collapseTableBorder" data-toggle="collapse" aria-expanded="true" data-target=".os" id="executables">
+                <td colspan="9">
+                 <md-icon class="material-icons">arrow_right</md-icon>   
+                <strong>Executables</strong></td>
+            </tr>
+            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" id="windowsRow" class="os collapse collapseTableBorder">
+                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Windows</strong></td>
+            </tr>
+
+
+            <!-- EXE -->
+
+            <tr class="windows collapse">
+                <td class="skyBlueTD"></td>
+                <td class="collapseTableBorder">EXE</td>
+                <td class="collapseTableBorder">
+                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['EXE'][0]['isAllowed']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                    <span editable-number="ctrl.windows[0]['EXE'][0]['sizeLimit']" e-form="windowsEXESizeLimit">
+    {{ ctrl.windows[0]['EXE'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                    <md-button ng-click="windowsEXESizeLimit.$show()" ng-hide="windowsEXESizeLimit.$visible" aria-label="windowsEXESizeLimit">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </td>
+                <td class="collapseTableBorder">
+                    <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.windows[0]['EXE'][0]['transform']" ng-model="ctrl.windows[0]['EXE'][0]['transform']">{{x}}</option>
+                </select>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['EXE'][0]['process']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['EXE'][0]['sandbox']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-icon ng-show="ctrl.windows[0]['EXE'][0]['exception']" class="material-icons">warning</md-icon>
+                </td>
+            </tr>
+
+
+            <!-- SOF EXE -->
+
+            <!-- JPG -->
+
+            <tr class="windows collapse">
+                <td class="skyBlueTD"></td>
+                <td class="collapseTableBorder">JPG</td>
+                <td class="collapseTableBorder">
+                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['JPG'][0]['isAllowed']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                    <span editable-number="ctrl.windows[0]['JPG'][0]['sizeLimit']" e-form="windowsJPGSizeLimit">
+    {{ ctrl.windows[0]['JPG'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                    <md-button ng-click="windowsJPGSizeLimit.$show()" ng-hide="windowsJPGSizeLimit.$visible" aria-label="windowsJPGSizeLimit">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </td>
+                <td class="collapseTableBorder">
+                    <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.windows[0]['JPG'][0]['transform']" ng-model="ctrl.windows[0]['JPG'][0]['transform']">{{x}}</option>
+                </select>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['JPG'][0]['process']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['JPG'][0]['sandbox']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-icon ng-show="ctrl.windows[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+                </td>
+            </tr>
+
+
+
+
+
+            <!-- SOF JPG -->
+
+            <!-- PNG -->
+
+
+            <tr class="windows collapse">
+                <td class="skyBlueTD"></td>
+                <td class="collapseTableBorder">PNG</td>
+                <td class="collapseTableBorder">
+                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['PNG'][0]['isAllowed']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                    <span editable-number="ctrl.windows[0]['PNG'][0]['sizeLimit']" e-form="windowsPNGSizeLimit">
+    {{ ctrl.windows[0]['PNG'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                    <md-button ng-click="windowsPNGSizeLimit.$show()" ng-hide="windowsPNGSizeLimit.$visible" aria-label="windowsPNGSizeLimit">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </td>
+                <td class="collapseTableBorder">
+                    <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.windows[0]['PNG'][0]['transform']" ng-model="ctrl.windows[0]['PNG'][0]['transform']">{{x}}</option>
+                </select>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['PNG'][0]['process']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['PNG'][0]['sandbox']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-icon ng-show="ctrl.windows[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+                </td>
+            </tr>
+
+
+
+            <!--  XLS -->
+
+            <tr class="windows collapse">
+                <td class="skyBlueTD"></td>
+                <td class="collapseTableBorder">XLS</td>
+                <td class="collapseTableBorder">
+                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['XLS'][0]['isAllowed']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                    <span editable-number="ctrl.windows[0]['XLS'][0]['sizeLimit']" e-form="windowsXLSSizeLimit">
+    {{ ctrl.windows[0]['XLS'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                    <md-button ng-click="windowsXLSSizeLimit.$show()" ng-hide="windowsXLSSizeLimit.$visible" aria-label="windowsXLSSizeLimit">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </td>
+                <td class="collapseTableBorder">
+                    <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.windows[0]['XLS'][0]['transform']" ng-model="ctrl.windows[0]['XLS'][0]['transform']">{{x}}</option>
+                </select>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['XLS'][0]['process']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['XLS'][0]['sandbox']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-icon ng-show="ctrl.windows[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+                </td>
+            </tr>
+
+
+            <!-- SOF XLS -->
+
+            <!-- CSV -->
+
+            <tr class="windows collapse">
+                <td class="skyBlueTD"></td>
+                <td class="collapseTableBorder">CSV</td>
+                <td class="collapseTableBorder">
+                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['CSV'][0]['isAllowed']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                    <span editable-number="ctrl.windows[0]['CSV'][0]['sizeLimit']" e-form="windowsCSVSizeLimit">
+    {{ ctrl.windows[0]['CSV'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                    <md-button ng-click="windowsCSVSizeLimit.$show()" ng-hide="windowsCSVSizeLimit.$visible" aria-label="windowsCSVSizeLimit">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </td>
+                <td class="collapseTableBorder">
+                    <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.windows[0]['CSV'][0]['transform']" ng-model="ctrl.windows[0]['CSV'][0]['transform']">{{x}}</option>
+                </select>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['CSV'][0]['process']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-checkbox ng-model="ctrl.windows[0]['CSV'][0]['sandbox']"></md-checkbox>
+                </td>
+                <td class="collapseTableBorder">
+                    <md-icon ng-show="ctrl.windows[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+                </td>
+            </tr>
+            
+            <!-- SOF CSV -->
+            <!-- SOF WINDOWS ROW -->
+
+            
+            <tr data-toggle="collapse" aria-expanded="false" data-target=".mac" id="macRow" class="os collapse collapseTableBorder">
+                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Mac</strong></td>
+            </tr>
+<tr class="mac collapse">
+            <td class="skyBlueTD"></td>
+            <td class="collapseTableBorder">DMG</td>
+            <td class="collapseTableBorder">
+                <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['DMG'][0]['isAllowed']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                <span editable-number="ctrl.mac[0]['DMG'][0]['sizeLimit']" e-form="macDMGSizeLimit">
+    {{ ctrl.mac[0]['DMG'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                <md-button ng-click="macDMGSizeLimit.$show()" ng-hide="macDMGSizeLimit.$visible" aria-label="macDMGSizeLimit">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="collapseTableBorder">
+                <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.mac[0]['DMG'][0]['transform']" ng-model="ctrl.mac[0]['DMG'][0]['transform']">{{x}}</option>
+                </select>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['DMG'][0]['process']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['DMG'][0]['sandbox']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-icon ng-show="ctrl.mac[0]['DMG'][0]['exception']" class="material-icons">warning</md-icon>
+            </td>
+        </tr>
+
+
+        <!-- SOF DMG -->
+            
+        <!-- JPG -->
+        
+        <tr class="mac collapse">
+            <td class="skyBlueTD"></td>
+            <td class="collapseTableBorder">JPG</td>
+            <td class="collapseTableBorder">
+                <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['JPG'][0]['isAllowed']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                <span editable-number="ctrl.mac[0]['JPG'][0]['sizeLimit']" e-form="macJPGSizeLimit">
+    {{ ctrl.mac[0]['JPG'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                <md-button ng-click="macJPGSizeLimit.$show()" ng-hide="macJPGSizeLimit.$visible" aria-label="macJPGSizeLimit">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="collapseTableBorder">
+                <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.mac[0]['JPG'][0]['transform']" ng-model="ctrl.mac[0]['JPG'][0]['transform']">{{x}}</option>
+                </select>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['JPG'][0]['process']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['JPG'][0]['sandbox']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-icon ng-show="ctrl.mac[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+            </td>
+        </tr>
+
+        
+        
+        
+        
+        <!-- SOF JPG -->
+
+        <!-- PNG -->
+        
+        
+        <tr class="mac collapse">
+            <td class="skyBlueTD"></td>
+            <td class="collapseTableBorder">PNG</td>
+            <td class="collapseTableBorder">
+                <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['PNG'][0]['isAllowed']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                <span editable-number="ctrl.mac[0]['PNG'][0]['sizeLimit']" e-form="macPNGSizeLimit">
+    {{ ctrl.mac[0]['PNG'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                <md-button ng-click="macPNGSizeLimit.$show()" ng-hide="macPNGSizeLimit.$visible" aria-label="macPNGSizeLimit">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="collapseTableBorder">
+                <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.mac[0]['PNG'][0]['transform']" ng-model="ctrl.mac[0]['PNG'][0]['transform']">{{x}}</option>
+                </select>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['PNG'][0]['process']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['PNG'][0]['sandbox']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-icon ng-show="ctrl.mac[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+            </td>
+        </tr>
+
+        
+
+        <!--  XLS -->
+        
+        <tr class="mac collapse">
+            <td class="skyBlueTD"></td>
+            <td class="collapseTableBorder">XLS</td>
+            <td class="collapseTableBorder">
+                <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['XLS'][0]['isAllowed']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                <span editable-number="ctrl.mac[0]['XLS'][0]['sizeLimit']" e-form="macXLSSizeLimit">
+    {{ ctrl.mac[0]['XLS'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                <md-button ng-click="macXLSSizeLimit.$show()" ng-hide="macXLSSizeLimit.$visible" aria-label="macXLSSizeLimit">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="collapseTableBorder">
+                <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.mac[0]['XLS'][0]['transform']" ng-model="ctrl.mac[0]['XLS'][0]['transform']">{{x}}</option>
+                </select>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['XLS'][0]['process']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['XLS'][0]['sandbox']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-icon ng-show="ctrl.mac[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+            </td>
+        </tr>
+        
+        
+        <!-- SOF XLS -->
+        
+        <!-- CSV -->
+        
+        <tr class="mac collapse">
+            <td class="skyBlueTD"></td>
+            <td class="collapseTableBorder">CSV</td>
+            <td class="collapseTableBorder">
+                <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['CSV'][0]['isAllowed']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder" layout="row" layout-align="space-between center">
+                <span editable-number="ctrl.mac[0]['CSV'][0]['sizeLimit']" e-form="macCSVSizeLimit">
+    {{ ctrl.mac[0]['CSV'][0]['sizeLimit'] || 'empty' }}
+  </span>
+                <md-button ng-click="macCSVSizeLimit.$show()" ng-hide="macCSVSizeLimit.$visible" aria-label="macCSVSizeLimit">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="collapseTableBorder">
+                <select class="PDCollapseTableSelect">
+                    <option ng-repeat = "x in ctrl.mac[0]['CSV'][0]['transform']" ng-model="ctrl.mac[0]['CSV'][0]['transform']">{{x}}</option>
+                </select>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['CSV'][0]['process']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-checkbox ng-model="ctrl.mac[0]['CSV'][0]['sandbox']"></md-checkbox>
+            </td>
+            <td class="collapseTableBorder">
+                <md-icon ng-show="ctrl.mac[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+            </td>
+        </tr>
+            
+            
+
+
+
+
+
+
+        </tbody>
+
+    </table>
+</div>

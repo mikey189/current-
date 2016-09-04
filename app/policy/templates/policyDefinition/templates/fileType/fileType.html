@@ -11,20 +11,8 @@
             <md-icon class="material-icons" id="PDFTExceptionButtonIcon">error</md-icon><strong>Show all exceptions</strong>
         </md-button>
     </div>
-
-    <table class="table table-responsive" id="PDFTMainTable">
-        <thead>
-            <th style="width: 17%"</th>
-            <th ng-repeat="section in ctrl.fileTypeSections" style="width: {{ctrl.fileTypeSections.length}}">{{section}}</th>
-        </thead>
-        <tr class="PDFTMainTableRow" ng-click="ctrl.showOS =! ctrl.showOS">
-            <td colspan="7">
-                <md-icon class="material-icons">keyboard_arrow_right</md-icon>
-                <strong>Executables</strong>
-            </td>
-        </tr>
-
-    </table>
-    <os-table ng-show="ctrl.showOS"></os-table>
+    
+    <policy-definition-collapse-table></policy-definition-collapse-table>
+    
 </div>
 
