@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/style.css"/>
+
+<md-dialog aria-label="Full Screen Dialog Test" class="fullscreen-dialog" ng-controller="windowsEXEException as ctrl">
+    <md-toolbar layout-align="center center">Add Exceptions for .EXE Files</md-toolbar>
+        <table class="table">
+            <thead>
+                <th id="leftSpaceTabException"></th>
+                <th>Allow</th>
+                <th>Size Limit</th>
+                <th>Transform</th>
+                <th>Process Embedded Files</th>
+                <th>Sandbox</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EXE</td>
+                    <td>
+                        <md-checkbox aria-label="allow exe excpetion for windows"></md-checkbox>
+                    </td>
+                    <td layout="row" layout-align="space-around center">
+                        <span editable-number="ctrl.sizeLimit" e-form="sizeLimit">{{ ctrl.sizeLimit || 'empty' }} MB</span>
+                        <md-button ng-click="sizeLimit.$show()" ng-hide="sizeLimit.$visible" aria-label="sizeLimit">
+                            <md-icon class="material-icons">edit</md-icon>
+                        </md-button>
+                    </td>
+                    <td>
+                        <select class="EXESelect">
+                        <option>N/A</option>
+                    </select>
+                    </td>
+                    <td>
+                        <md-checkbox aria-label="process exe windows" ng-model="ctrl.process"></md-checkbox>
+                    </td>
+                    <td>
+                        <md-checkbox aria-label="process exe windows" ng-model="ctrl.sandbox"></md-checkbox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td colspan="5">
+                        <md-chips ng-model="ctrl.users" readonly="ctrl.usersReadonly" md-removable="ctrl.removable" placeholder="add a user" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+User"></md-chips>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Computers</td>
+                    <td colspan="5">
+                        <md-chips ng-model="ctrl.computers" readonly="ctrl.computersReadonly" md-removable="ctrl.removable" placeholder="add a computer" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Computer"></md-chips>
+                    </td>
+      
+                </tr>
+                <tr>
+                    <td>Groups</td>
+                    <td colspan="5">
+                    <md-chips ng-model="ctrl.groups" readonly="ctrl.groupsReadonly" md-removable="ctrl.removable" placeholder="Enter a group" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Computer"></md-chips>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div layout="row">
+            <md-button flex="50" aria-label="close windows exe exception" ng-click="ctrl.cancel()"><strong>CANCEL</strong></md-button>
+            <md-button flex aria-label="close windows exe exception" ng-click="ctrl.closeDialog()"><strong>DONE</strong></md-button>
+        </div>
+</md-dialog>

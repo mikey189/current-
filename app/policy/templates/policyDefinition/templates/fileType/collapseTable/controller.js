@@ -1,8 +1,26 @@
-app.controller("PDCollapseTable", [function () {
+app.controller("PDCollapseTable", ['$mdDialog', function ($mdDialog) {
 
     this.th = ["Allow", "Size Limit", "Transform", "Process Embbeded files", "Sandbox", "Exception"]
-    
-    
+
+
+    this.showAdvanced = function (ev) {
+        $mdDialog.show({
+                templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/exe.html',
+                parent: angular.element(document.querySelector("#PDCollapseTable")),
+                targetEvent: ev,
+                clickOutsideToClose: false
+                //fullscreen: true // Only for -xs, -sm breakpoints.
+            })
+            .then(function (answer) {
+                this.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                this.status = 'You cancelled the dialog.';
+            });
+        
+
+    };
+   
+
     this.windows = [
         {
             "EXE": [
@@ -71,7 +89,7 @@ app.controller("PDCollapseTable", [function () {
 
         ]
 
-    
+
 
     this.mac = [
         {
@@ -144,7 +162,7 @@ app.controller("PDCollapseTable", [function () {
 
     this.linux = [
         {
-            "EXE": [
+            "ELF": [
                 {
                     "isAllowed": true,
                     "sizeLimit": 1 + "MB",
@@ -213,7 +231,7 @@ app.controller("PDCollapseTable", [function () {
 
     this.java = [
         {
-            "EXE": [
+            "JAR": [
                 {
                     "isAllowed": true,
                     "sizeLimit": 1 + "MB",
@@ -278,5 +296,6 @@ app.controller("PDCollapseTable", [function () {
 
 
         ]
+
 
 }])

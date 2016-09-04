@@ -106,5 +106,11 @@ app.directive("policyDefinitionCollapseTable", function(){
     }
 })
 
-
+app.directive("exeException", function(){
+    return{
+        restrict: "A",
+        templateUrl: "app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/exe.html",
+        replace: false
+    }
+})
 

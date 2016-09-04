@@ -1,0 +1,16 @@
+md-dialog.fullscreen-dialog {
+      max-width: 80%;
+      max-height: 80%;
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+  }
+  
+  .EXESelect {
+      border: 0px !important;
+      width: 100px !important;
+  }
+  
+  #leftSpaceTabException {
+      width: 15%;
+  }
