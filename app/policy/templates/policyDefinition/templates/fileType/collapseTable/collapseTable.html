@@ -48,7 +48,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.windows[0]['EXE'][0]['exception']" class="material-icons">warning</md-icon>
-                    <md-button aria-label="show windows exception" ng-click="ctrl.showAdvanced($event)">
+                    <md-button aria-label="show windows exception" id="windows.exe.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
                 </td>
@@ -87,6 +87,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.windows[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="windows.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -126,6 +129,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.windows[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="windows.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -160,6 +166,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.windows[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="windows.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -195,6 +204,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.windows[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="windows.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -234,6 +246,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.mac[0]['DMG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="mac.dmg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -269,6 +284,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.mac[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="mac.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -308,6 +326,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.mac[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="mac.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -342,6 +363,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.mac[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="mac.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -377,6 +401,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.mac[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="mac.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -418,6 +445,9 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.linux[0]['ELF'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="linux.elf.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
+                        <md-icon class="material-icons">add</md-icon>
+                    </md-button>
                 </td>
             </tr>
 
@@ -453,6 +483,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.linux[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="linux.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -492,6 +523,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.linux[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="linux.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -526,6 +558,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.linux[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="linux.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -561,6 +594,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.linux[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="linux.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -599,6 +633,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.java[0]['JAR'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="java.jar.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -634,6 +669,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.java[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="java.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -673,6 +709,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.java[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="java.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -707,6 +744,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.java[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="java.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
 
@@ -742,6 +780,7 @@
                 </td>
                 <td class="collapseTableBorder">
                     <md-icon ng-show="ctrl.java[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
+                    <md-button aria-label="show windows exception" id="java.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
             <!-- SOF JAVA ROW -->
