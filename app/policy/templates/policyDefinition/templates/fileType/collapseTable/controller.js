@@ -8,21 +8,20 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
     /*getting the id from the click element and storing on the $scope to pass it to the exception window*/
     angular.element(document).find('.getID').click(function () {
         $scope.clickedID = this.id;
-        $scope.transform = function(){
+        $scope.contextExt = "";
+        $scope.transform = function () {
             $scope.filterID = $scope.clickedID.split(".");
             $scope.os = $scope.filterID[0];
             $scope.extension = $scope.filterID[1].toUpperCase();
             return $scope.os;
             return $scope.extension;
+
+
         }
         $scope.transform();
-        console.log($scope.clickedID);
-        return $scope.clickedID;
-        
     });
 
-
-    //defining the method to pop up the excpetion window//
+    //defining the method to pop up the exception window//
 
     this.showAdvanced = function (ev) {
 
@@ -35,7 +34,6 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
                 scope: $scope,
                 //if preserveScope is not present, then $mdDialog will only open once and will not reopen after being closed DO NOT REMOVE
                 preserveScope: true
-
             })
             .then(function (answer) {
                 this.status = 'You said the information was "' + answer + '".';
@@ -44,6 +42,72 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
             });
 
     };
+
+
+    this.cancel = function () {
+        $mdDialog.cancel();
+    }
+
+
+    this.title = "Add an Exception";
+    this.sizeLimit = 1;
+    this.process = true;
+    this.sandbox = false;
+    this.users = [];
+
+    this.usersReadOnly = false;
+    this.computers = [];
+    this.computersReadOnly = false;
+    this.groups = [];
+    this.groupsReadOnly = false;
+    console.log($scope.test);
+    /*<option ng-repeat = "x in ctrl.windows[0]['JPG'][0]['transform']" ng-model="ctrl.windows[0]['JPG'][0]['transform']">{{x}}</option>*/
+
+
+
+    this.exceptionItems = function () {
+        this.items = {
+            "context": $scope.clickedID,
+            users: this.users,
+            "groups": this.groups,
+            "computers": this.computers
+        }
+        console.log(this.items)
+        return this.items;
+    }
+
+
+    this.closeDialog = function () {
+        $mdDialog.hide();
+        this.exceptionItems();
+
+    }
+
+
+
+    $scope.selectData = [
+        {
+            "JPG": ["None", "Transform & Sign", "Tranform, sign & blur"]
+        },
+
+        {
+            "CSV": ["None", "XLS -> PDF", "Standard", "Custom"]
+                },
+        {
+            "XLS": ["None", "XLS -> PDF", "Standard", "Custom"]
+        },
+        {
+            "EXE": "N/A"
+        },
+        {
+            "JAR": "N/A"
+        },
+        {
+            "ELF": "N/A"
+        }
+
+
+]
 
 
     this.windows = [
@@ -321,7 +385,5 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
 
         ]
-
-
 
 }])

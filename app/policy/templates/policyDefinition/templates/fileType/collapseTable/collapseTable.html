@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
 <div class="table-responsive" id="popupContainer">
-    <table class="table" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable">
+    <table class="table" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable" id="parentElem">
 
         <thead>
             <th width="8%"></th>
@@ -14,14 +14,14 @@
                     <strong>Executables</strong></td>
 
             </tr>
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" id="windowsRow" class="os collapse collapseTableBorder">
+            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" id="windowsRow" class="os collapse collapseTableBorder" data-parent="#executables">
                 <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Windows</strong></td>
             </tr>
 
 
             <!-- EXE -->
 
-            <tr class="windows collapse">
+            <tr class="windows collapse" data-parent="#executables" data-toggle="collapse" >
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">EXE</td>
                 <td class="collapseTableBorder">
@@ -47,7 +47,6 @@
                     <md-checkbox aria-label="sadobx windows exe" ng-model="ctrl.windows[0]['EXE'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.windows[0]['EXE'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="windows.exe.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -60,7 +59,7 @@
 
             <!-- JPG -->
 
-            <tr class="windows collapse">
+            <tr class="windows collapse" data-parent="#executables">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">JPG</td>
                 <td class="collapseTableBorder">
@@ -86,7 +85,6 @@
                     <md-checkbox aria-label="sandbox windows jpg" ng-model="ctrl.windows[0]['JPG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.windows[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="windows.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -128,7 +126,6 @@
                     <md-checkbox aria-label="process windows png" ng-model="ctrl.windows[0]['PNG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.windows[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="windows.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -165,7 +162,6 @@
                     <md-checkbox aria-label="sandbox windows xls" ng-model="ctrl.windows[0]['XLS'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.windows[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="windows.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -203,7 +199,6 @@
                     <md-checkbox aria-label="sandbox windows exe" ng-model="ctrl.windows[0]['CSV'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.windows[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="windows.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -245,7 +240,6 @@
                     <md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['DMG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.mac[0]['DMG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="mac.dmg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -283,13 +277,11 @@
                     <md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['JPG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.mac[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="mac.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
                 </td>
             </tr>
-
 
 
 
@@ -325,7 +317,6 @@
                     <md-checkbox aria-label="sandbox mac png" ng-model="ctrl.mac[0]['PNG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.mac[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="mac.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -362,7 +353,6 @@
                     <md-checkbox aria-label="sandbox mac xls" ng-model="ctrl.mac[0]['XLS'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.mac[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="mac.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -400,7 +390,6 @@
                     <md-checkbox aria-label="sandbox mac csv" ng-model="ctrl.mac[0]['CSV'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.mac[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="mac.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -444,7 +433,6 @@
                     <md-checkbox aria-label="sandbox linux elf" ng-model="ctrl.linux[0]['ELF'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.linux[0]['ELF'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="linux.elf.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
@@ -482,7 +470,6 @@
                     <md-checkbox aria-label="sandbox linux elf" ng-model="ctrl.linux[0]['JPG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.linux[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="linux.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -522,7 +509,6 @@
                     <md-checkbox aria-label="sandbox linux png" ng-model="ctrl.linux[0]['PNG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.linux[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="linux.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -557,7 +543,6 @@
                     <md-checkbox aria-label="process linux sandbox" ng-model="ctrl.linux[0]['XLS'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.linux[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="linux.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -593,7 +578,6 @@
                     <md-checkbox aria-label="sandbox linux csv" ng-model="ctrl.linux[0]['CSV'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.linux[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="linux.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -632,7 +616,6 @@
                     <md-checkbox aria-label="sandbox java jar" ng-model="ctrl.java[0]['JAR'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.java[0]['JAR'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="java.jar.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -668,7 +651,6 @@
                     <md-checkbox aria-label="sandbox java jpg" ng-model="ctrl.java[0]['JPG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.java[0]['JPG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="java.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -708,7 +690,6 @@
                     <md-checkbox aria-label="sandbox java png" ng-model="ctrl.java[0]['PNG'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.java[0]['PNG'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="java.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -743,7 +724,6 @@
                     <md-checkbox aria-label="sandbox java xls" ng-model="ctrl.java[0]['XLS'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.java[0]['XLS'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="java.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>
@@ -779,7 +759,6 @@
                     <md-checkbox aria-label="sandbox java csv" ng-model="ctrl.java[0]['CSV'][0]['sandbox']"></md-checkbox>
                 </td>
                 <td class="collapseTableBorder">
-                    <md-icon ng-show="ctrl.java[0]['CSV'][0]['exception']" class="material-icons">warning</md-icon>
                     <md-button aria-label="show windows exception" id="java.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
                 </td>
             </tr>

@@ -1,62 +1,196 @@
 {
-    "servers": [
-    {
-      "123.123.123": {
-        "001": {
-          "id": "001",
-          "user": "Oren",
-          "password": "123123"
+    "policyData": {
+        "windows": {
+            "EXE": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
         },
-        "002": {
-          "id": "002",
-          "user": "Jonathan",
-          "password": "123123"
+        "mac": {
+            "DMG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900 ,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
         },
-        "003": {
-          "id": "003",
-          "user": "Maor",
-          "password": "123123"
+        "linux": {
+            "ELF": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
         },
-        "004": {
-          "id": "004",
-          "user": "Zohar",
-          "password": "123123"
-        },
-        "005": {
-          "id": "005",
-          "user": "Ben",
-          "password": "123123"
+        "java": {
+            "TAR": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
         }
-      }
-    },
-    {
-      "000.000.000": {
-        "006": {
-          "id": "006",
-          "user": "Oren0",
-          "password": "123123"
-        },
-        "007": {
-          "id": "007",
-          "user": "Jonathan0",
-          "password": "123123"
-        },
-        "008": {
-          "id": "008",
-          "user": "Maor0",
-          "password": "123123"
-        },
-        "009": {
-          "id": "009",
-          "user": "Zohar0",
-          "password": "123123"
-        },
-        "010": {
-          "id": "010",
-          "user": "Ben0",
-          "password": "123123"
-        }
-      }
     }
-  ]
 }

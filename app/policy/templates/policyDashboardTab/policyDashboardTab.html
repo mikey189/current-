@@ -1,9 +1,9 @@
-<md-content class="md-padding" layout='column'>
+<md-content class="md-padding" layout='column' style="padding-left: 0px; padding-right: 0px">
     <!--<p>{{lorem}}</p>-->
-    <div layout='row' layout-xs='column' layout-sm='column' layout-md='column'>
-        <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90' style="overflow:hidden">
-            <div layout='row' style='background-color: white' layout-padding>
-                <div layout='row' layout-align='start center' class='col-md-4' hide-xs hide-sm hide-md>
+    <div  layout="row" layout-xs='column' layout-sm='column' layout-gt-md='row' layout-align="space-between start">
+        <div layout-margin layout='column' flex='66' flex-xs='90' flex-sm='90' flex-md='90'>
+            <div layout='row' style='background-color: white' layout-align layout-padding class="md-whiteframe-4dp">
+                <div layout='row' layout-align='start center' class='col-md-4' hide-xs hide-sm hide-md id="blockedFileSpan">
                     <h3 class='red'>2,545 <span style='color: black'>Files</span></h3>
                 </div>
 
@@ -70,6 +70,7 @@
                         <md-progress-linear md-mode="determinate" value="15"></md-progress-linear>
                         <p class='red'>15%</p>
                     </md-list-item>
+                   
 
 
 
@@ -123,123 +124,110 @@
                             <md-chip>Sells</md-chip>
                         </md-chips>
                     </md-list-item>
+                    
                 </md-list>
 
             </div>
         </div>
-        <div layout='column' layout-margin style='overflow: hidden' id="topCases">
-            <md-list style='background-color: white'>
+        <div layout='column' layout-margin  id="topCases" flex>
+            <md-list style='background-color: white' class="md-whiteframe-4dp">
                 <md-list-item layout='row' layout-padding>
-                    <h4 class='gray'>Sort by</h4>
-                    <md-select ng-model='i' placeholder='Sort..' class='noVerticalPadding' flex="initial">
+                    <h4 class='gray' flex="30">Sort by</h4>
+                    <md-select flex = "50" ng-model='i' placeholder='Sort By' class='noVerticalPadding' flex="initial">
                         <md-option ng-repeat="i in casesFilter" value="{{i}}"><small>{{i}}</small></md-option>
                     </md-select>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>12</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>John Smith</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='red'>John Smith</small>
+                        <small class='gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>2</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>Stan Smith</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='  red'>Stan Smith</small>
+                        <small class='  gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>8</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>Paul Allen</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='  red'>Paul Allen</small>
+                        <small class='  gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>4</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>Bill Gates</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='  red'>Bill Gates</small>
+                        <small class='  gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>7</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>Stanley Murrey</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='  red'>Stanley Murrey</small>
+                        <small class='  gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
-                <md-list-item layout='row'>
+                <md-list-item layout='row' layout-align="space-around center">
                     <md-content layout='row' flex='25'>
                         <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
                         <h6>9</h6>
                     </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
+                    <div layout-padding class="resizedDonoughts">
                         <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
+                    </div>
 
                     <md-content layout='column' flex>
-                        <small class='caption red'>Mac Gyver</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
+                        <small class='  red'>Mac Gyver</small>
+                        <small class='  gray'>6 medium, 2 low</small>
                     </md-content>
                 </md-list-item>
-                <md-divider></md-divider>
-                <md-list-item layout='row'>
-                    <md-content layout='row' flex='25'>
-                        <ng-md-icon icon='folder' style='fill:#311b92' size='30'></ng-md-icon>
-                        <h6>10</h6>
-                    </md-content>
-                    <md-content layout='row' flex='50' layout-padding>
-                        <canvas class="chart chart-doughnut" chart-data="casesData" chart-labels="labels"></canvas>
-                    </md-content>
-
-                    <md-content layout='column' flex>
-                        <small class='caption red'>Ehud Barack</small>
-                        <small class='caption gray'>6 medium, 2 low</small>
-                    </md-content>
-                </md-list-item>
+                
 
             </md-list>
         </div>

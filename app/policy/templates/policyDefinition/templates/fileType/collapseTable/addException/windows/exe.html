@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/style.css"/>
 
-<md-dialog aria-label="Full Screen Dialog Test" class="fullscreen-dialog" ng-controller="windowsEXEException as ctrl">
-    <md-toolbar layout-align="center center">{{ctrl.title}}</md-toolbar>
+<md-dialog aria-label="Full Screen Dialog Test" class="fullscreen-dialog">
+    <md-toolbar layout-align="center center">Define an Exception</md-toolbar>
         <table class="table">
             <thead>
                 <th id="leftSpaceTabException"></th>
@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>EXE</td>
+                    <td>{{extension}}</td>
                     <td>
                         <md-checkbox aria-label="allow exe excpetion for windows"></md-checkbox>
                     </td>
@@ -25,7 +25,7 @@
                     </td>
                     <td>
                         <select class="EXESelect">
-                        <option ng-repeat="">N/A</option>
+                        <option>N/A</option>
                     </select>
                     </td>
                     <td>
