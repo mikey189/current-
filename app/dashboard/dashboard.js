@@ -72,7 +72,7 @@ app.directive('outputByChannel', function(){
 app.directive('bottomLegend', function(){
     return{
         restrict: 'AECM',
-        templateUrl: 'app/dashboard/templates/outputByChannel/bottomLegend.html',
+        templateUrl: 'app/dashboard/templates/bottomLegend/bottomLegend.html',
         replace: false
     }
 })

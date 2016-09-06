@@ -1,4 +1,14 @@
-<md-dialog aria-label="Email Body" >
+<style>
+    md-dialog.fullscreen-dialog {
+      max-width: 70%;
+      max-height: 80%;
+      width: 70%;
+      height: auto;
+      border-radius: 10px;
+  } 
+</style>
+
+<md-dialog aria-label="Email Body" class="fullscreen-dialog">
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -19,11 +29,11 @@
     <md-dialog-actions layout="row">
       
       <span flex></span>
-      <md-button ng-click="answer('not useful')">
+      <md-button ng-click="closeDialog()">
        CANCEL
       </md-button>
-      <md-button ng-click="answer('useful')">
-        OKAY!
+      <md-button ng-click="closeDialog()">
+        DONE
       </md-button>
     </md-dialog-actions>
   </form>

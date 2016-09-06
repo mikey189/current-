@@ -862,3 +862,7 @@ a:not(.md-button) {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+#dashboardTableContainer{
+    min-height: 100% !important;
+}

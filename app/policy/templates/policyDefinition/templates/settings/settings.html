@@ -1,4 +1,4 @@
-<div layout='column' ng-controller="policySettings as ctrl">
+<div layout='column' ng-controller="policySettings as ctrl" id="policySettingsContainer">
     <div layout='row' layout-margin>
         <md-list class='whiteBk' flex='40' flex-sm='100' flex-xs='100' flex-md='100'>
             <md-list-item layout='row' layout-align='start center'>
@@ -82,7 +82,7 @@
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center' layout-padding class='_md-no-proxy'>
                 Email Structure
-                <md-button class="noVerticalPadding md-primary md-raised" ng-click="settings.showAdvanced(ev)">Edit Email Structure</md-button>
+                <md-button class="noVerticalPadding md-primary md-raised" ng-click="ctrl.showAdvanced(ev)">Edit Email Structure</md-button>
             </md-list-item>
         </md-list>
     </div>

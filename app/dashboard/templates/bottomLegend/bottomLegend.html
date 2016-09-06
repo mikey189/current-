@@ -1,24 +1,67 @@
-<md-toolbar class='transparent' layout='row'> 
-    <div flex='50' layout-align='center start'>
-        <md-icon>
-            <i class='material-icons blue'>radio_button_checked</i>
-        </md-icon>
-        <md-icon>
-            <i class='material-icons yellow'>radio_button_checked</i>
-        </md-icon>
-        <md-icon>
-            <i class='material-icons purple'>radio_button_checked</i>
-        </md-icon>
+<div layout = "row" flex hide-sm hide-xs hide-md layout-margin id="bottomLegendDashboard" >
+    <div flex="50" layout="row" layout-align="start center" layout-margin>
+        <span class="roundedLegendPurple"></span>Low Complexity
+        <span class="roundedLegendTurquoise"></span>Many Files
+        <span class="roundedLegendYellow"></span>High Complexity
     </div>
-    <div style='align: right' flex='50' layout-align='center end'>
-        <md-icon>
-            <i class='material-icons blue'>radio_button_checked</i>
-        </md-icon>
-        <md-icon>
-            <i class='material-icons yellow'>radio_button_checked</i>
-        </md-icon>
-        <md-icon>
-            <i class='material-icons purple'>radio_button_checked</i>
-        </md-icon>
+    <div flex layout="row" layout-align="end center" layout-margin>
+        <span class="roundedLegendBlack"></span>Low Complexity
+        <span class="roundedLegendLightGreen"></span>Many Files
+        <span class="roundedLegendRed"></span>High Complexity
     </div>
-</md-toolbar>
+</div>
+
+
+
+
+<style>
+    
+    .roundedLegendPurple{
+        border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: #773EB2;
+    }
+    .roundedLegendTurquoise{
+      border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: #0083ED;  
+    }
+    .roundedLegendYellow{
+      border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: #E5A200;  
+    }
+    
+    .roundedLegendBlack{
+        border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: black;  
+    }
+    
+    .roundedLegendLightGreen{
+        border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: #23CCC7;  
+    }
+    
+    .roundedLegendRed{
+        border-radius: 100px;
+        height: 0.5em;
+        width: 0.5em;
+        background-color: red;  
+    }
+    
+    
+    
+    #bottomLegendDashboard{
+        margin-top: 3em;
+    }
+    
+
+</style>
+
