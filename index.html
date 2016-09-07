@@ -18,13 +18,14 @@
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <!-- data table : to load for data tables 
     <link src="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>-->
-    <script>
+    <!--<script>
         window.nodeRequire = require;
         delete window.require;
         delete window.exports;
         delete window.module;
-    </script>
+    </script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type='text/javascript' src='JS/libraries/bootstrap.min.js'></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
@@ -41,6 +42,11 @@
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <!-- bootstrap angular ui -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap.min.js"></script>
 
 
     <!-- Important Note: Angular Material Library rc1 version works well with list, rc2 is very unstable, the verison called here is V1.1RC01 
@@ -50,7 +56,6 @@
 <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
     <!-- Bootstrap and JQuery -->
 
-    <script type='text/javascript' src='JS/libraries/bootstrap.min.js'></script>
     <!-- Local Libraries -->
     <script src='JS/module.js'></script>
     <script src='JS/config/routing.js'></script>
@@ -75,12 +80,11 @@
     <script src='app/channelManagement/templates/endpoint/innerView/sources/templates/channelType/controller.js'></script>
     <script src='app/channelManagement/templates/endpoint/innerView/sources/templates/descriptionBlock/controller.js'></script>
     <script src='app/channelManagement/templates/endpoint/innerView/sources/templates/settingsBlock/controller.js'></script>
+    <script src='app/channelManagement/templates/endpoint/innerView/targets/controller.js'></script>
+    <script src='app/channelManagement/templates/endpoint/innerView/syslog/controller.js'></script>
     <script src='app/channelManagement/templates/sidebar/sidebar.js'></script>
     <script src='app/channelManagement/templates/directoryWatcher/directoryWatcher.js'></script>
     <script src='app/channelManagement/templates/endpoint/endpoint.js'></script>
-    <script src='app/channelManagement/templates/endpoint2/endpoint2.js'></script>
-    <script src='app/channelManagement/templates/icap/icap.js'></script>
-    <script src='app/channelManagement/templates/mail/mail.js'></script>
     <script src='app/channelManagement/templates/api/api.js'></script>
     <script src='app/channelManagement/templates/newChannel/controller.js'></script>
     <script src='app/clusterManagement/clusterManagement.js'></script>

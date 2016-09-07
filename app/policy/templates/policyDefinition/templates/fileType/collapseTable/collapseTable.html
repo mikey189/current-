@@ -1,27 +1,27 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
 <div class="table-responsive" id="popupContainer">
-    <table class="table" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable" id="parentElem">
+    <table class="table panel-group" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable" id="parentElem">
 
         <thead>
             <th width="8%"></th>
             <th width="7%"></th>
             <th ng-repeat="th in ctrl.th">{{:: th}}</th>
         </thead>
-        <tbody id="PDCollapseTableBody">
-            <tr class="collapseTableBorder" data-toggle="collapse" aria-expanded="true" data-target=".os" id="executables">
+        <tbody id="PDCollapseTableBody" class="accordion-group">
+            <tr class="collapseTableBorder" data-toggle="collapse" aria-expanded="true" data-target=".os" id="executables" aria-controls="collapseWindows">
                 <td colspan="9">
                     <md-icon class="material-icons">arrow_right</md-icon>
-                    <strong>Executables</strong></td>
-
+                    <strong>Common</strong>
+                </td>
             </tr>
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" id="windowsRow" class="os collapse collapseTableBorder" data-parent="#executables">
+            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" class="os collapse collapseTableBorder" data-parent="#PDCollapseTableBody" id="collapseWindows">
                 <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Windows</strong></td>
             </tr>
 
 
             <!-- EXE -->
 
-            <tr class="windows collapse" data-parent="#executables" data-toggle="collapse" >
+            <tr class="windows panel-collapse collapse" data-parent="#collapseWindows" data-toggle="collapse">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">EXE</td>
                 <td class="collapseTableBorder">
@@ -59,7 +59,7 @@
 
             <!-- JPG -->
 
-            <tr class="windows collapse" data-parent="#executables">
+            <tr class="windows collapse" data-parent="#collapseWindows">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">JPG</td>
                 <td class="collapseTableBorder">
@@ -100,7 +100,7 @@
             <!-- PNG -->
 
 
-            <tr class="windows collapse">
+            <tr class="windows collapse" data-parent="#collapseWindows">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">PNG</td>
                 <td class="collapseTableBorder">
@@ -136,7 +136,7 @@
 
             <!--  XLS -->
 
-            <tr class="windows collapse">
+            <tr class="windows collapse" data-parent="#collapseWindows">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">XLS</td>
                 <td class="collapseTableBorder">
@@ -173,7 +173,7 @@
 
             <!-- CSV -->
 
-            <tr class="windows collapse">
+            <tr class="windows collapse" data-parent="#collapseWindows">
                 <td class="skyBlueTD"></td>
                 <td class="collapseTableBorder">CSV</td>
                 <td class="collapseTableBorder">
@@ -207,7 +207,6 @@
 
             <!-- SOF CSV -->
             <!-- SOF WINDOWS ROW -->
-
             <!-- MAC ROW -->
 
 
