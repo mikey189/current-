@@ -35,12 +35,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 controllerAs: 'cases'
             })
 
-
-
-
-
-
-
         .state('app.channelManagement', {
                 url: '/channelManagement',
                 templateUrl: 'app/channelManagement/channelManagement.html',
@@ -99,13 +93,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
 
 
-        .state('app.channelManagement.endpoint2', {
-                url: '/channelManagementEndpoint2',
-                templateUrl: 'app/channelManagement/templates/endpoint2/endpoint2.html',
-                controller: 'channelManagementEndpoint2',
-                controllerAs: 'controller'
-            })
-            .state('app.channelManagement.icap', {
+
+        .state('app.channelManagement.icap', {
                 url: '/channelManagementIcap',
                 templateUrl: 'app/channelManagement/templates/icap/icap.html',
                 controller: 'channelManagementIcap',
@@ -119,12 +108,24 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('app.channelManagement.newChannel', {
                 url: '/channelManagementNewChannel',
-                templateUrl: 'app/channelManagement/templates/newChannel/newChannel.html',
-                controller: 'channelManagementNewChannel',
+                templateUrl: 'app/channelManagement/templates/newChannel/common/common.html',
+                controller: 'ncCommon',
+                controllerAs: 'ctrl'
+            })
+            .state('app.channelManagement.newChannel.step1', {
+                url: '/channelManagementNewChannel',
+                templateUrl: 'app/channelManagement/templates/newChannel/templates/step1/step1.html',
+                controller: 'ncStep1',
+                controllerAs: 'ctrl'
+            })
+        .state('app.channelManagement.newChannel.step2', {
+                url: '/channelManagementNewChannel',
+                templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/step2.html',
+                controller: 'ncStep1',
                 controllerAs: 'ctrl'
             })
 
-
+            
 
 
 

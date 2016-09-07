@@ -89,7 +89,7 @@ app.directive("endpointSourcesChannelSettingsBlock", function(){
 app.directive("ncTopbar", function(){
     return{
         restrict: 'E',
-        templateUrl: "app/channelManagement/templates/newChannel/templates/topBar/topbar.html",
+        templateUrl: "app/channelManagement/templates/newChannel/templates/step1/topBar/topbar.html",
         replace: false
     }
 })
@@ -97,7 +97,7 @@ app.directive("ncTopbar", function(){
 app.directive("ncChannelName", function(){
     return{
         restrict: 'E',
-        templateUrl: "app/channelManagement/templates/newChannel/templates/channelName/channelName.html",
+        templateUrl: "app/channelManagement/templates/newChannel/templates/step1/channelName/channelName.html",
         replace: false
     }
 })
@@ -105,7 +105,7 @@ app.directive("ncChannelName", function(){
 app.directive("ncDescription", function(){
     return{
         restrict: 'E',
-        templateUrl: "app/channelManagement/templates/newChannel/templates/description/description.html",
+        templateUrl: "app/channelManagement/templates/newChannel/templates/step1/description/description.html",
         replace: false
     }
 })
@@ -113,7 +113,7 @@ app.directive("ncDescription", function(){
 app.directive("ncChannelType", function(){
     return{
         restrict: 'E',
-        templateUrl: "app/channelManagement/templates/newChannel/templates/channelType/channelType.html",
+        templateUrl: "app/channelManagement/templates/newChannel/templates/step1/channelType/channelType.html",
         replace: false
     }
 })

@@ -1,6 +1,5 @@
-app.controller("channelManagementNewChannel", [function () {
-
-
+app.controller("ncStep1", [function(){
+    
     self = this;
 
     self.ncTypes = [{
