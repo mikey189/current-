@@ -121,7 +121,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: '/channelManagementNewChannel',
                 templateUrl: 'app/channelManagement/templates/newChannel/newChannel.html',
                 controller: 'channelManagementNewChannel',
-                controllerAs: 'controller'
+                controllerAs: 'ctrl'
             })
 
 

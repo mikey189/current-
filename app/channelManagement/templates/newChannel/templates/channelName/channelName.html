@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="app/channelManagement/templates/newChannel/templates/channelName/style.css" />
+
+
+<div id="wrapper" class="md-whiteframe-8dp">
+    <div layout="row" layout-padding id="channelNameSection">
+        <md-icon md-svg-src="icons/editMode.svg" id="editIcon"></md-icon>
+        <md-content class="md-title" id="channelName">Channel Name</md-content>
+    </div>
+    <div layout="row" layout-align="center start" layout-padding id="editingArea">
+        <textarea flex="80" disabled layout-padding placeholder="Chose a Name" id="nameTXTArea"></textarea>
+        <div layout="column">
+            <md-button ng-click="ctrl.editName()">
+                <md-icon class="material-icons" id="txtAreaEdit">edit</md-icon>
+            </md-button>
+            <md-button ng-click="ctrl.confName()" class="hidden" id="confName">
+                <md-icon class="material-icons">done</md-icon>
+            </md-button>
+        </div>
+    </div>
+</div>
