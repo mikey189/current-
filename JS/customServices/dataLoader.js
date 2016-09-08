@@ -1,13 +1,20 @@
-
-//this return list of all users from JSON.
-//current size : 5 000 users
-
-app.factory("dataLoader", ['$http',function($http){  
-    var data = {};
-    
-    data.fetchData = function(){ 
-        return $http.get('../../JSON/db.json');
+app.factory("channelList", function ($http) {
+    var url = "http://localhost:3000/channels";
+    return {
+        addChannel: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: url,
+                method: "POST",
+                data: data
+            })
+        },
+        getChannel: function () {
+            return $http.get(url)
+        }
     }
+})
 
- return data;
-}]);
+//to run server json-server api.json B"H

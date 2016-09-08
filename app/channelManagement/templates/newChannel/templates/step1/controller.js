@@ -1,5 +1,7 @@
-app.controller("ncStep1", [function(){
-    
+app.controller("ncStep1", ["channelList", function (channelList) {
+
+
+
     self = this;
 
     self.ncTypes = [{
@@ -61,5 +63,22 @@ app.controller("ncStep1", [function(){
 
 
     self.ncTypeWidth = (100 / self.ncTypes.length);
+
+
+    channelList.getChannel().then(function (response) {
+        self.channelData = response.data
+        console.log(self.channelData)
+    })
+
+
+    self.addChannel = function () {
+        var data = {
+            name: self.channelName,
+            description: self.channelDescription
+        }
+        console.log(data)
+        channelList.addChannel(data)
+    }
+/*JSON.stringify({"name": self.channelName, "description": self.channelDescription});  */
 
 }])

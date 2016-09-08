@@ -113,19 +113,19 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 controllerAs: 'ctrl'
             })
             .state('app.channelManagement.newChannel.step1', {
-                url: '/channelManagementNewChannel',
+                url: '/channelManagementNewChannelS1',
                 templateUrl: 'app/channelManagement/templates/newChannel/templates/step1/step1.html',
                 controller: 'ncStep1',
                 controllerAs: 'ctrl'
             })
-        .state('app.channelManagement.newChannel.step2', {
-                url: '/channelManagementNewChannel',
+            .state('app.channelManagement.newChannel.step2', {
+                url: '/channelManagementNewChannelS2',
                 templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/step2.html',
-                controller: 'ncStep1',
+                controller: 'ncStep2',
                 controllerAs: 'ctrl'
             })
 
-            
+
 
 
 

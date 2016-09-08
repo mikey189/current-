@@ -1,0 +1,4 @@
+app.controller("channelManagementNewChannel", [function () {
+
+
+}])

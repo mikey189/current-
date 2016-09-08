@@ -1,0 +1,22 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "name": "Email",
+      "description": "json-server"
+    },
+    {
+      "name": "man",
+      "description": "betail iandre",
+      "id": 2
+    },
+    {
+      "name": "Maor Channel",
+      "description": "bible fausse",
+      "id": 3
+    },
+    {
+      "id": 4
+    }
+  ]
+}
