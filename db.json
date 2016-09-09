@@ -1,0 +1,18 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "name": "Endpoint",
+      "description": "Watches all XLS files received through the Endpoint channel",
+      "channelTypeName": "API",
+      "channelTypeIcon": "icons/ncApi.svg"
+    },
+    {
+      "name": "API Calls C# Team",
+      "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
+      "channelTypeName": "API",
+      "channelTypeIconUrl": "icons/ncApi.svg",
+      "id": 2
+    }
+  ]
+}

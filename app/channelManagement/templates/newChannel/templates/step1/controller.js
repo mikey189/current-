@@ -1,9 +1,7 @@
 app.controller("ncStep1", ["channelList", function (channelList) {
 
-
-
     self = this;
-
+    self.id = "";
     self.ncTypes = [{
             "icon": "icons/ncEndpoint.svg",
             "name": "Endpoint"
@@ -59,26 +57,24 @@ app.controller("ncStep1", ["channelList", function (channelList) {
             $(this).find(".ncTypeTitle").toggleClass("ncTypesHoverTitle")
             $(this).find("g").toggleClass("hoveredIcon")
         })
+        $(".channelType").click(function () {
+            self.id = $(this).attr("id")
+            self.channelTypesValues = self.id.split(".");
+            self.channelTypeName = self.channelTypesValues[0];
+            self.channelTypeIcon = self.channelTypesValues[1] + "." + self.channelTypesValues[2];
+        })
     })
-
 
     self.ncTypeWidth = (100 / self.ncTypes.length);
-
-
-    channelList.getChannel().then(function (response) {
-        self.channelData = response.data
-        console.log(self.channelData)
-    })
 
 
     self.addChannel = function () {
         var data = {
             name: self.channelName,
-            description: self.channelDescription
+            description: self.channelDescription,
+            channelTypeName: self.channelTypeName,
+            channelTypeIconUrl: self.channelTypeIcon
         }
-        console.log(data)
         channelList.addChannel(data)
     }
-/*JSON.stringify({"name": self.channelName, "description": self.channelDescription});  */
-
 }])
