@@ -118,10 +118,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 controller: 'ncStep1',
                 controllerAs: 'ctrl'
             })
-            .state('app.channelManagement.newChannel.step2', {
-                url: '/channelManagementNewChannelS2',
-                templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/step2.html',
-                controller: 'ncStep2',
+            .state('app.channelManagement.newChannel.ncStep2Separated', {
+                url: '/channelManagementNewChannelS2Separated',
+                templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/step2.html',
+                controller: 'ncStep2Separated',
+                controllerAs: 'ctrl'
+            })
+            .state('app.channelManagement.newChannel.ncStep2Mixed', {
+                url: '/channelManagementNewChannelS2Mixed',
+                templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
+                controller: 'ncStep2Mixed',
                 controllerAs: 'ctrl'
             })
 

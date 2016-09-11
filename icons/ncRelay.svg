@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="44px" viewBox="0 0 36 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>1473599169_security</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1473599169_security">
+            <g id="Layer_1">
+                <g id="Group" opacity="0.2" transform="translate(0.000000, 2.000000)" fill="#231F20">
+                    <path d="M18,42 C18,42 0,35.189 0,20.505 L0,6.883 C0,6.883 5.81,0 18,0 L18,42 L18,42 Z" id="Shape"></path>
+                </g>
+                <g id="Group" opacity="0.2" transform="translate(18.000000, 2.000000)" fill="#231F20">
+                    <path d="M0,42 C0,42 18,35.189 18,20.505 L18,6.883 C18,6.883 12.19,0 0,0 L0,42 L0,42 Z" id="Shape"></path>
+                </g>
+                <path d="M18,42 C18,42 0,35.189 0,20.505 L0,6.883 C0,6.883 5.81,0 18,0 L18,42 L18,42 Z" id="Shape" fill="#6C69EA"></path>
+                <path d="M18,42 C18,42 36,35.189 36,20.505 L36,6.883 C36,6.883 30.19,0 18,0 L18,42 L18,42 Z" id="Shape" fill="#3D3BA8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

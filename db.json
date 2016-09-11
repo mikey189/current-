@@ -1,18 +1,58 @@
 {
-  "channels": [
-    {
-      "id": 1,
-      "name": "Endpoint",
-      "description": "Watches all XLS files received through the Endpoint channel",
-      "channelTypeName": "API",
-      "channelTypeIcon": "icons/ncApi.svg"
+    "channels": [
+        {
+            "id": 1,
+            "name": "Endpoint",
+            "description": "Watches all XLS files received through the Endpoint channel",
+            "channelTypeName": "API",
+            "channelTypeIcon": "icons/ncApi.svg"
     },
-    {
-      "name": "API Calls C# Team",
-      "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
-      "channelTypeName": "API",
-      "channelTypeIconUrl": "icons/ncApi.svg",
-      "id": 2
+        {
+            "name": "API Calls C# Team",
+            "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
+            "channelTypeName": "API",
+            "channelTypeIconUrl": "icons/ncApi.svg",
+            "id": 2
     }
-  ]
+  ],
+    "channelsIcons": [
+        {
+            "icon": "icons/ncEndpoint.svg",
+            "name": "Endpoint"
+    }, {
+            "icon": "icons/ncEmail.svg",
+            "name": "Mail"
+    }, {
+            "icon": "icons/ncStation.svg",
+            "name": "Station"
+    }, {
+            "icon": "icons/ncDirWatcher.svg",
+            "name": "Directory Watcher"
+        },
+        {
+            "icon": "icons/ncIcap.svg",
+            "name": "ICAP"
+    }, {
+            "icon": "icons/ncApi.svg",
+            "name": "API"
+        }
+    ],
+    "inputList": [{
+    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    ,
+    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    
+}], 
+    "outputList": [{
+    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    ,
+    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+        
+    }]
 }
+    
+    
+
+
+
+

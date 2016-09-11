@@ -5,11 +5,10 @@
         <md-icon md-svg-src="icons/ncChannelType.svg" id="ncTypeIcon"></md-icon>
         <md-content class="md-title" id="ncChannelTypeCaption">Chose Channel Type</md-content>
     </div>
-    <div id="ncTypePicker" layout="row" layout-align="space-around center" layout-padding ng-mouseover="ctrl.ncTypesHover()">
-        <div layout="column" layout-align="center center" ng-repeat="x in ctrl.ncTypes" class="ncTypesItems" flex="ctrl.ncTypeWidth">
+    <div id="ncTypePicker" layout="row" layout-align="space-around center" layout-padding>
+        <div layout="column" layout-align="center center" ng-repeat="x in ctrl.channelIcons" class="ncTypesItems" flex="ctrl.ncTypeWidth" nc-type-selectable>
             <md-icon md-svg-src = "{{x.icon}}" class="ncTypesIcons"></md-icon>
             <md-content class="ncTypeTitle">{{x.name}}</md-content>
-            <md-checkbox aria-label="{{x.icon}}, {{x.name}}" ng-click="ctrl.getSelectedType()" id="{{x.name}}.{{x.icon}}" class="channelType"></md-checkbox>
         </div>
     </div>
 </div>

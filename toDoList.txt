@@ -1,118 +1,17 @@
+//input & outPut
 
-
-mock data: http://10.100.102.86/api/adusersapi/users
-
-
-
-list all API calls / view 
-
-create the login screen with authotoken
-
-set the routing system such as login is unskippable
-
-what happens next ? see with Zohar
-
-create services to retrieve and post the data
-
-learn to cache the data  (see what data will need to be stored and when)
-
-write unit testing and? end to end testing ? ask ROI
+/* cd rom, my document, fixed drives, removable, mobile devices, networks, relay, null
 
 
 
+endpoint and station get everything
+icap, email, api no input screen
 
 
+Dirwatcher 
+no input
+Target
+> 
 
 
-
-
-<!--<div layout-padding>
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <div class='primary active' aria-pressed="true" data-toggle="collapse" data-parent="#accordion" href="#executables">
-                    Executables</div>
-                  </h4>
-                </div>
-                <div id="executables" class="panel-collapse collapse">
-                    <div class="panel-body fullWidthPanel">
-                        <md-button class='fullWidthPolicy'>
-                            <h5 class="panel-title" layout-padding>
-                            <div data-toggle="collapse" data-parent="#customTable" href="#windows">
-                                <small>Windows</small>
-                            </div>
-                        </h5>
-                        </md-button>
-                        <div class='panel-body collapse' id='windows'>
-                            <custom-table ng-controller='fileType as fileTypeCtrl'></custom-table>
-                        </div>
-                        <md-button class='fullWidthPolicy'>
-                            <h5 class="panel-title" layout-padding>
-                            <div data-toggle="collapse" data-parent="#customTable" href="#mac">
-                                <small>Mac</small>
-                            </div>
-                        </h5>
-                        </md-button>
-                        <div class='panel-body collapse' id='mac'>
-                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
-                        </div>
-                        <md-button class='fullWidthPolicy'>
-                            <h5 class="panel-title" layout-padding>
-                            <div data-toggle="collapse" data-parent="#customTable" href="#java">
-                                <small>Java</small>
-                            </div>
-                        </h5>
-                        </md-button>
-                        <div class='panel-body collapse' id='java'>
-                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
-                        </div>
-                        <md-button class='fullWidthPolicy'>
-                            <h5 class="panel-title" layout-padding>
-                            <div data-toggle="collapse" data-parent="#customTable" href="#linux">
-                                <small>Linux</small>
-                            </div>
-                        </h5>
-                        </md-button>
-                        <div class='panel-body collapse' id='linux'>
-                            <custom-table id='windowsTable' file-type-sections='fileTypeSections' files='files'></custom-table>
-                        </div>
-
-                    </div>
-                </div>
-                <!--<div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="">
-                    Files</a>
-                  </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat.</div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="">
-                    Other Executables</a>
-                  </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                  <div class="panel-body">
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>-->
-
-<!--<md-checkbox ng-model="data.cb1" style='padding-bottom: 0px' aria-label="Checkbox 1"></md-checkbox>-->
-
-
-
-
-
+make icons list only missing icons from the dashbard (Re-Sec table)

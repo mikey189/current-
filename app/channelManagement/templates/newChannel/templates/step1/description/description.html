@@ -9,10 +9,10 @@
     <div layout="row" layout-align="center start" layout-padding id="descEditingArea">
         <textarea flex="80" disabled layout-padding placeholder="enter a desc" id="descTXTArea" ng-model="ctrl.channelDescription"></textarea>
         <div layout="column">
-            <md-button ng-click="ctrl.editDesc()">
-                <md-icon class="material-icons" id="editDesc">edit</md-icon>
+            <md-button>
+                <md-icon edit-desc class="material-icons" id="editDesc">edit</md-icon>
             </md-button>
-            <md-button ng-click="ctrl.confDesc()" class="hidden" id="confDesc">
+            <md-button conf-desc class="hidden" id="confDesc">
                 <md-icon class="material-icons">done</md-icon>
             </md-button>
         </div>
