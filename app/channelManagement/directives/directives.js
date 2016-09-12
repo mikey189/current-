@@ -193,6 +193,7 @@ app.directive("ncTypeSelectable", function () {
                     $(this).find("g").addClass("hoveredIcon")
                     $(this).find("md-content").addClass("ncTypesHoverTitle")
                     scope.ctrl.selected = $(this).find("md-content").html().toLowerCase();
+                    scope.ctrl.selectedIconSrc = $(this).find("md-icon").attr("md-svg-src")
                 })
 
             })

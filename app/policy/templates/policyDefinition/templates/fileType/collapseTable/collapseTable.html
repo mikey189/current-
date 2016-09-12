@@ -1,769 +1,381 @@
-<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
-<div class="table-responsive" id="popupContainer">
-    <table class="table panel-group" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable" id="parentElem">
-
-        <thead>
-            <th width="8%"></th>
-            <th width="7%"></th>
-            <th ng-repeat="th in ctrl.th">{{:: th}}</th>
-        </thead>
-        <tbody id="PDCollapseTableBody" class="accordion-group">
-            <tr class="collapseTableBorder" data-toggle="collapse" aria-expanded="true" data-target=".os" id="executables" aria-controls="collapseWindows">
-                <td colspan="9">
-                    <md-icon class="material-icons">arrow_right</md-icon>
-                    <strong>Common</strong>
-                </td>
-            </tr>
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".windows" class="os collapse collapseTableBorder" data-parent="#PDCollapseTableBody" id="collapseWindows">
-                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Windows</strong></td>
-            </tr>
-
-
-            <!-- EXE -->
-
-            <tr class="windows panel-collapse collapse" data-parent="#collapseWindows" data-toggle="collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">EXE</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['EXE'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.windows[0]['EXE'][0]['sizeLimit']" e-form="windowsEXESizeLimit">
-    {{ ctrl.windows[0]['EXE'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="windowsEXESizeLimit.$show()" ng-hide="windowsEXESizeLimit.$visible" aria-label="windowsEXESizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.windows[0]['EXE'][0]['transform']" ng-model="ctrl.windows[0]['EXE'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows exe" ng-model="ctrl.windows[0]['EXE'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sadobx windows exe" ng-model="ctrl.windows[0]['EXE'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="windows.exe.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-            <!-- SOF EXE -->
-
-            <!-- JPG -->
-
-            <tr class="windows collapse" data-parent="#collapseWindows">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">JPG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['JPG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.windows[0]['JPG'][0]['sizeLimit']" e-form="windowsJPGSizeLimit">
-    {{ ctrl.windows[0]['JPG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="windowsJPGSizeLimit.$show()" ng-hide="windowsJPGSizeLimit.$visible" aria-label="windowsJPGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.windows[0]['JPG'][0]['transform']" ng-model="ctrl.windows[0]['JPG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows jpg" ng-model="ctrl.windows[0]['JPG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox windows jpg" ng-model="ctrl.windows[0]['JPG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="windows.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-
-
-            <!-- SOF JPG -->
-
-            <!-- PNG -->
-
-
-            <tr class="windows collapse" data-parent="#collapseWindows">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">PNG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['PNG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.windows[0]['PNG'][0]['sizeLimit']" e-form="windowsPNGSizeLimit">
-    {{ ctrl.windows[0]['PNG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="windowsPNGSizeLimit.$show()" ng-hide="windowsPNGSizeLimit.$visible" aria-label="windowsPNGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.windows[0]['PNG'][0]['transform']" ng-model="ctrl.windows[0]['PNG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows png" ng-model="ctrl.windows[0]['PNG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows png" ng-model="ctrl.windows[0]['PNG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="windows.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-            <!--  XLS -->
-
-            <tr class="windows collapse" data-parent="#collapseWindows">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">XLS</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['XLS'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.windows[0]['XLS'][0]['sizeLimit']" e-form="windowsXLSSizeLimit">
-    {{ ctrl.windows[0]['XLS'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="windowsXLSSizeLimit.$show()" ng-hide="windowsXLSSizeLimit.$visible" aria-label="windowsXLSSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.windows[0]['XLS'][0]['transform']" ng-model="ctrl.windows[0]['XLS'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows xls" ng-model="ctrl.windows[0]['XLS'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox windows xls" ng-model="ctrl.windows[0]['XLS'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="windows.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF XLS -->
-
-            <!-- CSV -->
-
-            <tr class="windows collapse" data-parent="#collapseWindows">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">CSV</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['CSV'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.windows[0]['CSV'][0]['sizeLimit']" e-form="windowsCSVSizeLimit">
-    {{ ctrl.windows[0]['CSV'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="windowsCSVSizeLimit.$show()" ng-hide="windowsCSVSizeLimit.$visible" aria-label="windowsCSVSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.windows[0]['CSV'][0]['transform']" ng-model="ctrl.windows[0]['CSV'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process windows csv" ng-model="ctrl.windows[0]['CSV'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox windows exe" ng-model="ctrl.windows[0]['CSV'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="windows.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-            <!-- SOF CSV -->
-            <!-- SOF WINDOWS ROW -->
-            <!-- MAC ROW -->
-
-
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".mac" id="macRow" class="os collapse collapseTableBorder">
-                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Mac</strong></td>
-            </tr>
-            <tr class="mac collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">DMG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['DMG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.mac[0]['DMG'][0]['sizeLimit']" e-form="macDMGSizeLimit">
-    {{ ctrl.mac[0]['DMG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="macDMGSizeLimit.$show()" ng-hide="macDMGSizeLimit.$visible" aria-label="macDMGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.mac[0]['DMG'][0]['transform']" ng-model="ctrl.mac[0]['DMG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process mac dmg" ng-model="ctrl.mac[0]['DMG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['DMG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="mac.dmg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF DMG -->
-
-            <!-- JPG -->
-
-            <tr class="mac collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">JPG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['JPG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.mac[0]['JPG'][0]['sizeLimit']" e-form="macJPGSizeLimit">
-    {{ ctrl.mac[0]['JPG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="macJPGSizeLimit.$show()" ng-hide="macJPGSizeLimit.$visible" aria-label="macJPGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.mac[0]['JPG'][0]['transform']" ng-model="ctrl.mac[0]['JPG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process mac jpg" ng-model="ctrl.mac[0]['JPG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['JPG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="mac.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-
-            <!-- SOF JPG -->
-
-            <!-- PNG -->
-
-
-            <tr class="mac collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">PNG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['PNG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.mac[0]['PNG'][0]['sizeLimit']" e-form="macPNGSizeLimit">
-    {{ ctrl.mac[0]['PNG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="macPNGSizeLimit.$show()" ng-hide="macPNGSizeLimit.$visible" aria-label="macPNGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.mac[0]['PNG'][0]['transform']" ng-model="ctrl.mac[0]['PNG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process mac png" ng-model="ctrl.mac[0]['PNG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox mac png" ng-model="ctrl.mac[0]['PNG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="mac.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-            <!--  XLS -->
-
-            <tr class="mac collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">XLS</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['XLS'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.mac[0]['XLS'][0]['sizeLimit']" e-form="macXLSSizeLimit">
-    {{ ctrl.mac[0]['XLS'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="macXLSSizeLimit.$show()" ng-hide="macXLSSizeLimit.$visible" aria-label="macXLSSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.mac[0]['XLS'][0]['transform']" ng-model="ctrl.mac[0]['XLS'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process mac xls" ng-model="ctrl.mac[0]['XLS'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox mac xls" ng-model="ctrl.mac[0]['XLS'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="mac.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF XLS -->
-
-            <!-- CSV -->
-
-            <tr class="mac collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">CSV</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['CSV'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.mac[0]['CSV'][0]['sizeLimit']" e-form="macCSVSizeLimit">
-    {{ ctrl.mac[0]['CSV'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="macCSVSizeLimit.$show()" ng-hide="macCSVSizeLimit.$visible" aria-label="macCSVSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.mac[0]['CSV'][0]['transform']" ng-model="ctrl.mac[0]['CSV'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process mac csv" ng-model="ctrl.mac[0]['CSV'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox mac csv" ng-model="ctrl.mac[0]['CSV'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="mac.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-
-            <!-- SOF MAC ROW -->
-
-            <!-- Linux Row -->
-
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".linux" id="linuxRow" class="os collapse collapseTableBorder">
-                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Linux</strong></td>
-            </tr>
-
-
-            <tr class="linux collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">ELF</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['ELF'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.linux[0]['ELF'][0]['sizeLimit']" e-form="linuxELFSizeLimit">
-    {{ ctrl.linux[0]['ELF'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="linuxELFSizeLimit.$show()" ng-hide="linuxELFSizeLimit.$visible" aria-label="linuxELFSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.linux[0]['ELF'][0]['transform']" ng-model="ctrl.linux[0]['ELF'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux elf" ng-model="ctrl.linux[0]['ELF'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox linux elf" ng-model="ctrl.linux[0]['ELF'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="linux.elf.exception" class="getID" ng-click="ctrl.showAdvanced($event)">
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF ELF -->
-
-            <!-- JPG -->
-
-            <tr class="linux collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">JPG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['JPG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.linux[0]['JPG'][0]['sizeLimit']" e-form="linuxJPGSizeLimit">
-    {{ ctrl.linux[0]['JPG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="linuxJPGSizeLimit.$show()" ng-hide="linuxJPGSizeLimit.$visible" aria-label="linuxJPGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.linux[0]['JPG'][0]['transform']" ng-model="ctrl.linux[0]['JPG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux process" ng-model="ctrl.linux[0]['JPG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox linux elf" ng-model="ctrl.linux[0]['JPG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="linux.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-
-
-
-            <!-- SOF JPG -->
-
-            <!-- PNG -->
-
-
-            <tr class="linux collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">PNG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['PNG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.linux[0]['PNG'][0]['sizeLimit']" e-form="linuxPNGSizeLimit">
-    {{ ctrl.linux[0]['PNG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="linuxPNGSizeLimit.$show()" ng-hide="linuxPNGSizeLimit.$visible" aria-label="linuxPNGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.linux[0]['PNG'][0]['transform']" ng-model="ctrl.linux[0]['PNG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux png" ng-model="ctrl.linux[0]['PNG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox linux png" ng-model="ctrl.linux[0]['PNG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="linux.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-
-            <!--  XLS -->
-
-            <tr class="linux collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">XLS</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['XLS'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.linux[0]['XLS'][0]['sizeLimit']" e-form="linuxXLSSizeLimit">
-    {{ ctrl.linux[0]['XLS'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="linuxXLSSizeLimit.$show()" ng-hide="linuxXLSSizeLimit.$visible" aria-label="linuxXLSSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.linux[0]['XLS'][0]['transform']" ng-model="ctrl.linux[0]['XLS'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux xls" ng-model="ctrl.linux[0]['XLS'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux sandbox" ng-model="ctrl.linux[0]['XLS'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="linux.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF XLS -->
-
-            <!-- CSV -->
-
-            <tr class="linux collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">CSV</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['CSV'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.linux[0]['CSV'][0]['sizeLimit']" e-form="linuxCSVSizeLimit">
-    {{ ctrl.linux[0]['CSV'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="linuxCSVSizeLimit.$show()" ng-hide="linuxCSVSizeLimit.$visible" aria-label="linuxCSVSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.linux[0]['CSV'][0]['transform']" ng-model="ctrl.linux[0]['CSV'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process linux csv" ng-model="ctrl.linux[0]['CSV'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox linux csv" ng-model="ctrl.linux[0]['CSV'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="linux.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF Linux Row -->
-            <!-- JAVA ROW --->
-
-            <tr data-toggle="collapse" aria-expanded="false" data-target=".java" id="javaRow" class="os collapse collapseTableBorder">
-                <td colspan="8"><strong><md-icon class="material-icons">arrow_right</md-icon>Java</strong></td>
-            </tr>
-
-            <tr class="java collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">JAR</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['JAR'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.java[0]['JAR'][0]['sizeLimit']" e-form="javaJARSizeLimit">
-    {{ ctrl.java[0]['JAR'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="javaJARSizeLimit.$show()" ng-hide="javaJARSizeLimit.$visible" aria-label="javaJARSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.java[0]['JAR'][0]['transform']" ng-model="ctrl.java[0]['JAR'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process java jar" ng-model="ctrl.java[0]['JAR'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox java jar" ng-model="ctrl.java[0]['JAR'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="java.jar.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF JAR -->
-
-            <!-- JPG -->
-
-            <tr class="java collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">JPG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['JPG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.java[0]['JPG'][0]['sizeLimit']" e-form="javaJPGSizeLimit">
-    {{ ctrl.java[0]['JPG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="javaJPGSizeLimit.$show()" ng-hide="javaJPGSizeLimit.$visible" aria-label="javaJPGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.java[0]['JPG'][0]['transform']" ng-model="ctrl.java[0]['JPG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process java jpg" ng-model="ctrl.java[0]['JPG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox java jpg" ng-model="ctrl.java[0]['JPG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="java.jpg.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-
-
-
-            <!-- SOF JPG -->
-
-            <!-- PNG -->
-
-
-            <tr class="java collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">PNG</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['PNG'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.java[0]['PNG'][0]['sizeLimit']" e-form="javaPNGSizeLimit">
-    {{ ctrl.java[0]['PNG'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="javaPNGSizeLimit.$show()" ng-hide="javaPNGSizeLimit.$visible" aria-label="javaPNGSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.java[0]['PNG'][0]['transform']" ng-model="ctrl.java[0]['PNG'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process java png" ng-model="ctrl.java[0]['PNG'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox java png" ng-model="ctrl.java[0]['PNG'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="java.png.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-
-            <!--  XLS -->
-
-            <tr class="java collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">XLS</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['XLS'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.java[0]['XLS'][0]['sizeLimit']" e-form="javaXLSSizeLimit">
-    {{ ctrl.java[0]['XLS'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="javaXLSSizeLimit.$show()" ng-hide="javaXLSSizeLimit.$visible" aria-label="javaXLSSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.java[0]['XLS'][0]['transform']" ng-model="ctrl.java[0]['XLS'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process java xls" ng-model="ctrl.java[0]['XLS'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox java xls" ng-model="ctrl.java[0]['XLS'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="java.xls.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-
-
-            <!-- SOF XLS -->
-
-            <!-- CSV -->
-
-            <tr class="java collapse">
-                <td class="skyBlueTD"></td>
-                <td class="collapseTableBorder">CSV</td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['CSV'][0]['isAllowed']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder" layout="row" layout-align="space-between center">
-                    <span editable-number="ctrl.java[0]['CSV'][0]['sizeLimit']" e-form="javaCSVSizeLimit">
-    {{ ctrl.java[0]['CSV'][0]['sizeLimit'] || 'empty' }}
-  </span>
-                    <md-button ng-click="javaCSVSizeLimit.$show()" ng-hide="javaCSVSizeLimit.$visible" aria-label="javaCSVSizeLimit">
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="collapseTableBorder">
-                    <select class="PDCollapseTableSelect">
-                    <option ng-repeat = "x in ctrl.java[0]['CSV'][0]['transform']" ng-model="ctrl.java[0]['CSV'][0]['transform']">{{x}}</option>
-                </select>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="process java csv" ng-model="ctrl.java[0]['CSV'][0]['process']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-checkbox aria-label="sandbox java csv" ng-model="ctrl.java[0]['CSV'][0]['sandbox']"></md-checkbox>
-                </td>
-                <td class="collapseTableBorder">
-                    <md-button aria-label="show windows exception" id="java.csv.exception" class="getID" ng-click="ctrl.showAdvanced($event)">add</md-button>
-                </td>
-            </tr>
-            <!-- SOF JAVA ROW -->
-
-        </tbody>
-
-    </table>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1404.34">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+    td.td1 {width: 445.0px; margin: 0.5px 0.5px 0.5px 0.5px; padding: 1.0px 1.0px 1.0px 1.0px}
+  </style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="middle" class="td1">
+        <p class="p1"><span class="s1"><b>&lt;link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" /&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b>&lt;div class="table-responsive" id="popupContainer"&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;script&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b><span class="Apple-converted-space">      </span></b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/script&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;table class="table" ng-controller="PDCollapseTable as ctrl" id="PDCollapseTable" id="parentElem"&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;thead&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;th width="8%"&gt;&lt;/th&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;th width="7%"&gt;&lt;/th&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;th ng-repeat="th in ctrl.th"&gt;{{:: th}}&lt;/th&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/thead&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;tbody id="PDCollapseTableBody"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="collapseTableBorder" data-toggle="collapse" aria-expanded="true" data-target=".os" id="executables"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td colspan="9"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-icon class="material-icons"&gt;arrow_right&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;strong&gt;Executables&lt;/strong&gt;&lt;/td&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr data-toggle="collapse" aria-expanded="false" data-target=".windows" id="windowsRow" class="os collapse collapseTableBorder" data-parent="#executables"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td colspan="8"&gt;&lt;strong&gt;&lt;md-icon class="material-icons"&gt;arrow_right&lt;/md-icon&gt;Windows&lt;/strong&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- EXE --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="windows collapse collapseMe" data-parent="#executables" data-toggle="collapse"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;EXE&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['EXE'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.windows[0]['EXE'][0]['sizeLimit']" e-form="windowsEXESizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.windows[0]['EXE'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="windowsEXESizeLimit.$show()" ng-hide="windowsEXESizeLimit.$visible" aria-label="windowsEXESizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.windows[0]['EXE'][0]['transform']" ng-model="ctrl.windows[0]['EXE'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process windows exe" ng-model="ctrl.windows[0]['EXE'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sadobx windows exe" ng-model="ctrl.windows[0]['EXE'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="windows.exe.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF EXE --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- COM --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="windows collapse collapseMe" data-parent="#executables"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;COM&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['COM'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.windows[0]['COM'][0]['sizeLimit']" e-form="windowsCOMSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.windows[0]['COM'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="windowsCOMSizeLimit.$show()" ng-hide="windowsCOMSizeLimit.$visible" aria-label="windowsCOMSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.windows[0]['COM'][0]['transform']" ng-model="ctrl.windows[0]['COM'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process windows jpg" ng-model="ctrl.windows[0]['COM'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox windows jpg" ng-model="ctrl.windows[0]['COM'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="windows.COM.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF COM --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- MSI --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="windows collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;MSI&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['MSI'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.windows[0]['MSI'][0]['sizeLimit']" e-form="windowsMSISizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.windows[0]['MSI'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="windowsMSISizeLimit.$show()" ng-hide="windowsMSISizeLimit.$visible" aria-label="windowsMSISizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.windows[0]['MSI'][0]['transform']" ng-model="ctrl.windows[0]['MSI'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process windows png" ng-model="ctrl.windows[0]['MSI'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process windows png" ng-model="ctrl.windows[0]['MSI'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="windows.MSI.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!--<span class="Apple-converted-space">  </span>SYS --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="windows collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;SYS&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.windows[0]['SYS'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.windows[0]['SYS'][0]['sizeLimit']" e-form="windowsSYSSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.windows[0]['SYS'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="windowsSYSSizeLimit.$show()" ng-hide="windowsSYSSizeLimit.$visible" aria-label="windowsSYSSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.windows[0]['SYS'][0]['transform']" ng-model="ctrl.windows[0]['SYS'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process windows xls" ng-model="ctrl.windows[0]['SYS'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox windows xls" ng-model="ctrl.windows[0]['SYS'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="windows.SYS.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF SYS --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF WINDOWS ROW --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- MAC ROW --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr data-toggle="collapse" aria-expanded="false" data-target=".mac" id="macRow" class="os collapse collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td colspan="8"&gt;&lt;strong&gt;&lt;md-icon class="material-icons"&gt;arrow_right&lt;/md-icon&gt;Mac&lt;/strong&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="mac collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;DMG&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['DMG'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.mac[0]['DMG'][0]['sizeLimit']" e-form="macDMGSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.mac[0]['DMG'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="macDMGSizeLimit.$show()" ng-hide="macDMGSizeLimit.$visible" aria-label="macDMGSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.mac[0]['DMG'][0]['transform']" ng-model="ctrl.mac[0]['DMG'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process mac dmg" ng-model="ctrl.mac[0]['DMG'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['DMG'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="mac.dmg.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF DMG --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- JPG --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="mac collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;.APP&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.mac[0]['JPG'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.mac[0]['.APP'][0]['sizeLimit']" e-form="macAPPSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.mac[0]['.APP'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="macAPPSizeLimit.$show()" ng-hide="macAPPSizeLimit.$visible" aria-label="macJPGSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.mac[0]['.APP'][0]['transform']" ng-model="ctrl.mac[0]['.APP'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process mac jpg" ng-model="ctrl.mac[0]['.APP'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox mac dmg" ng-model="ctrl.mac[0]['.APP'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="mac.app.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF MAC ROW --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- Linux Row --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr data-toggle="collapse" aria-expanded="false" data-target=".linux" id="linuxRow" class="os collapse collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td colspan="8"&gt;&lt;strong&gt;&lt;md-icon class="material-icons"&gt;arrow_right&lt;/md-icon&gt;Linux&lt;/strong&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="linux collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;ELF&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.linux[0]['ELF'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.linux[0]['ELF'][0]['sizeLimit']" e-form="linuxELFSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.linux[0]['ELF'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="linuxELFSizeLimit.$show()" ng-hide="linuxELFSizeLimit.$visible" aria-label="linuxELFSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.linux[0]['ELF'][0]['transform']" ng-model="ctrl.linux[0]['ELF'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process linux elf" ng-model="ctrl.linux[0]['ELF'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox linux elf" ng-model="ctrl.linux[0]['ELF'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="linux.elf.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF ELF --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF Linux Row --&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- JAVA ROW ---&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr data-toggle="collapse" aria-expanded="false" data-target=".java" id="javaRow" class="os collapse collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td colspan="8"&gt;&lt;strong&gt;&lt;md-icon class="material-icons"&gt;arrow_right&lt;/md-icon&gt;Java&lt;/strong&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;tr class="java collapse collapseMe"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="skyBlueTD"&gt;&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;JAR&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="isAllowed" ng-model="ctrl.java[0]['JAR'][0]['isAllowed']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder" layout="row" layout-align="space-between center"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;span editable-number="ctrl.java[0]['JAR'][0]['sizeLimit']" e-form="javaJARSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>{{ ctrl.java[0]['JAR'][0]['sizeLimit'] || 'empty' }}</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/span&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button ng-click="javaJARSizeLimit.$show()" ng-hide="javaJARSizeLimit.$visible" aria-label="javaJARSizeLimit"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;edit&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;select class="PDCollapseTableSelect"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;option ng-repeat = "x in ctrl.java[0]['JAR'][0]['transform']" ng-model="ctrl.java[0]['JAR'][0]['transform']"&gt;{{x}}&lt;/option&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/select&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="process java jar" ng-model="ctrl.java[0]['JAR'][0]['process']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-checkbox aria-label="sandbox java jar" ng-model="ctrl.java[0]['JAR'][0]['sandbox']"&gt;&lt;/md-checkbox&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;td class="collapseTableBorder"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;md-button aria-label="show windows exception" id="java.jar.exception" class="getID" ng-click="ctrl.showAdvanced($event)"&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                        </span>&lt;md-icon class="material-icons"&gt;add&lt;/md-icon&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;/md-button&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/td&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/tr&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF JAR --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;!-- SOF JAVA ROW --&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/tbody&gt;</b></span></p>
+        <p class="p2"><span class="s1"><b></b></span><br></p>
+        <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/table&gt;</b></span></p>
+        <p class="p1"><span class="s1"><b>&lt;/div&gt;</b></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

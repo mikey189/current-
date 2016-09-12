@@ -1,3 +1,27 @@
+
+
+
+/* custom switcher with background color: on -> turquoise
+off -> red
+*/
+md-switch.md-default-theme.md-checked ._md-bar, md-switch.md-checked ._md-bar{
+    background-color: #64D3CC;
+}
+md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-ink-ripple{
+    background-color: #FAFAFA;
+}
+
+
+md-switch.md-default-theme ._md-bar, md-switch ._md-bar{
+    background-color: red;
+}
+
+
+
+
+
+
+
 /* setting the proper size for md-x size on md-icons otherwise icons will gorw but not their dom Element */
 
 

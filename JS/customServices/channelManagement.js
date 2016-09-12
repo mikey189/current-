@@ -21,7 +21,7 @@ app.factory("channelData", function ($http) {
             return $http.get(channelsIconsURL)
         }, 
         getInputList: function () {
-            return $http.get(inputUR)
+            return $http.get(inputURL)
         },
         getOutputList: function () {
             return $http.get(outputListURL)
@@ -34,7 +34,7 @@ app.factory("channelData", function ($http) {
 
     //service to pass data between step 1 and step 2
 
-app.factory("saveS1Data", function () {
+app.factory("C2CData", function () {
     var savedData = {}
 
     function set(data) {

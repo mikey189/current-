@@ -38,15 +38,15 @@
         }
     ],
     "inputList": [{
-    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
     ,
-    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
     
 }], 
     "outputList": [{
-    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    "endpoint": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
     ,
-    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles Devices", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
+    "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
         
     }]
 }

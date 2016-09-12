@@ -2,6 +2,20 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
     this.th = ["Allow", "Size Limit", "Transform", "Process Embbeded files", "Sandbox", "Exception"];
 
+    $(document).ready(function () {
+        var execRow = $("#executables")
+        var osRow = $(".os")
+        var childrenRow = $(".collapseMe")
+        execRow.click(function () {
+            if (childrenRow.attr("aria-expanded", true)) {
+                childrenRow.removeClass("in")
+                osRow.removeClass("in")
+            } else {
+                osRow.attr("aria-expanded", true);
+            }
+        })
+    })
+
 
     //initiate $scope.clickedID to recover the value from the click and pass it to the exeption window template
     $scope.clickedID;
@@ -124,7 +138,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
             }
 
             ],
-            "JPG": [
+            "COM": [
                 {
                     "isAllowed": true,
                     "sizeLimit": 1 + "MB",
@@ -136,7 +150,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
             }
 
             ],
-            "PNG": [
+            "MSI": [
                 {
                     "isAllowed": false,
                     "sizeLimit": 1.1 + "MB",
@@ -148,7 +162,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
             }
 
             ],
-            "XLS": [
+            "SYS": [
                 {
                     "isAllowed": false,
                     "sizeLimit": 870 + "KB",
@@ -159,19 +173,8 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
             }
 
-            ],
-            "CSV": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 900 + "KB",
-                    "process": false,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+            ]
 
-            }
-
-            ],
         }
 
 
@@ -194,7 +197,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
             }
 
             ],
-            "JPG": [
+            ".APP": [
                 {
                     "isAllowed": true,
                     "sizeLimit": 1 + "MB",
@@ -205,43 +208,8 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
             }
 
-            ],
-            "PNG": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 1.1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+            ]
 
-            }
-
-            ],
-            "XLS": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 870 + "KB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
-            "CSV": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 900 + "KB",
-                    "process": false,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
         }
 
 
@@ -262,55 +230,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
             }
 
-            ],
-            "JPG": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "PNG": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 1.1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "XLS": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 870 + "KB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
-            "CSV": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 900 + "KB",
-                    "process": false,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
+            ]
         }
 
 
@@ -331,55 +251,7 @@ app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $
 
             }
 
-            ],
-            "JPG": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "PNG": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 1.1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "XLS": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 870 + "KB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
-            "CSV": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 900 + "KB",
-                    "process": false,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ],
+            ]
         }
 
 

@@ -1,4 +1,4 @@
-app.controller("ncStep1", ["channelData", "$state", "saveS1Data", "$scope", function (channelData, $state, saveS1Data, $scope) {
+app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", function (channelData, $state, C2CData, $scope) {
 
     self = this;
     self.id;
@@ -15,8 +15,9 @@ app.controller("ncStep1", ["channelData", "$state", "saveS1Data", "$scope", func
             name: self.channelName,
             description: self.channelDescription,
             channelTypeName: self.selected,
-            channelTypeIconUrl: self.ctIcon
+            channelTypeIconUrl: self.selectedIconSrc
         }
+        
             //dynamic routing based on selection
 
         if (s1Data.channelTypeName == "endpoint" || s1Data.channelTypeName == "api" || s1Data.channelTypeName == "station") {
@@ -25,7 +26,7 @@ app.controller("ncStep1", ["channelData", "$state", "saveS1Data", "$scope", func
             self.uiSref = "ncStep2Mixed"
         }
         $state.go("app.channelManagement.newChannel." + self.uiSref)
-        saveS1Data.set(s1Data)
+        C2CData.set(s1Data)
 
     }
 
