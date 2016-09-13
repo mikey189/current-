@@ -52,9 +52,10 @@ app.directive("toggleMediaBurn", function () {
                     $(document).find("#mediaBurn").addClass("hidden")
                     $(document).find("#mediaBurn").addClass("animated slideOutRight")
                 }
-                
+
             })
 
         }
     }
 })
+

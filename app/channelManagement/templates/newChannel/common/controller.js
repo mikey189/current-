@@ -1,3 +1,5 @@
-app.controller("ncCommon", [function(){
-    
+app.controller("ncCommon", ["$state", function ($state) {
+
+    var self = this;
+   
 }])
