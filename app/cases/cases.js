@@ -1,5 +1,7 @@
-app.controller('cases', [function () {
+app.controller("cases", [function () {
     
-
+    var self = this;
+  
+        
 }])
 

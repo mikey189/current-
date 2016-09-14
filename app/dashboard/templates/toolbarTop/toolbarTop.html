@@ -1,10 +1,10 @@
 
 <md-toolbar id='dashboardToolbar' layout='row' layout-align='start center' layout-padding layout-sm='column' layout-xs='column'>
-    <md-content class='purple' translate='dashboard'>></md-content>
+    <md-content class='purple'>Dashboard</md-content>
     <md-input-container>
         
-        <md-select ng-model='timeReference' placeholder="{{ 'Real Time' | translate }}">
-            <md-option ng-repeat='timeReference in timeReferences' value='{{timeReference}}'><small>{{timeReference | translate}}</small></md-option>
+        <md-select ng-model='ctrl.timeReference' placeholder="{{ 'Real Time' | translate }}">
+            <md-option ng-repeat='x in ctrl.timeReferences' value='{{x}}'><small>{{x | translate}}</small></md-option>
         </md-select>
     </md-input-container>
 </md-toolbar>

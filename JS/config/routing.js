@@ -20,7 +20,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.dashboard', {
             url: '/dashboard',
             templateUrl: 'app/dashboard/dashboard.html',
-            controller: 'dashboard'
+            controller: 'dashboard',
+            controllerAs: "ctrl"
         })
         .state('app.agentManagement', {
             url: '/agentManagement',
@@ -32,7 +33,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/cases',
             templateUrl: 'app/cases/cases.html',
             controller: 'cases',
-            controllerAs: 'cases'
+            controllerAs: 'ctrl'
         })
 
     .state('app.channelManagement', {

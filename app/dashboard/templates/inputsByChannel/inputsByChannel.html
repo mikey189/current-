@@ -3,7 +3,7 @@
 
 <div layout="column" layout-margin md-whiteframe="6" id="dTotalInputs">
 
-    <div layout="row" layout-align="center center" id="dTotalInputsTitle">TOTAL OUTPUTS</div>
+    <div layout="row" layout-align="center center" id="dTotalInputsTitle">TOTAL INPUTS</div>
 
     <div ng-repeat="i in ctrl.totalInputs" layout="row" layout-align="space-between center" layout-padding id="dTotalInputWrapper">
         <div layout="column" layout-align="center start">
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<md-virtual-repeat-container id="dashInputList" layout-margin md-whiteframe="6" class="dOutput">
+<md-virtual-repeat-container id="dashInputList" layout-margin md-whiteframe="6" scroller>
     <md-list>
         <div ng-repeat="i in ctrl.input">
             <md-list-item layout="row" layout-padding>

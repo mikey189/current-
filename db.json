@@ -48,7 +48,32 @@
     ,
     "station": [{"name": "CD-ROM", "icon": "ncCDROM.svg"}, {"name": "My Documents", "icon": "ncMyDocuments.svg"}, {"name": "Fixed Drives", "icon": "ncFixedDrives.svg"}, {"name": "Removable", "icon": "ncRemovable.svg"}, {"name": "Mobiles", "icon": "ncMobileDevices.svg"}, {"name": "Networks", "icon": "ncNetworks.svg"}, {"name": "Relay", "icon": "ncRelay.svg"}, {"name": "Null", "icon": "ncNull.svg"}]
         
-    }]
+    }], 
+    
+    "dashboardInputs": [
+        {"name": "Email", "iconURL": "icons/ncEmail.svg", "lowComplexity": 34, "manyFiles": 30, "highComplexity": 36, "total": "1,458"},
+        {"name": "Endpoint", "iconURL": "icons/ncEndpoint.svg", "lowComplexity": 31, "manyFiles": 27, "highComplexity": 42, "total": "555"},
+        {"name": "Cloud Mail", "iconURL": "icons/ncEmail.svg", "lowComplexity": 30, "manyFiles": 27, "highComplexity": 43, "total": "1,329"},
+        {"name": "ScanStation", "iconURL": "icons/ncStation.svg", "lowComplexity": 30, "manyFiles": 25, "highComplexity": 45, "total": "2,890"},
+        {"name": "ScanStation 2", "iconURL": "icons/ncStation.svg", "lowComplexity": 35, "manyFiles": 34, "highComplexity": 31, "total": "988"},
+        {"name": "ICAP", "iconURL": "icons/ncIcap.svg", "lowComplexity": 43, "manyFiles": 25, "highComplexity": 32, "total": "1,236"},
+        {"name": "API", "iconURL": "icons/ncApi.svg", "lowComplexity": 40, "manyFiles": 33, "highComplexity": 27, "total": "1,717"},
+        {"name": "WEB", "iconURL": "icons/ncNetworks.svg", "lowComplexity": 30, "manyFiles": 40, "highComplexity": 30, "total": "324"},
+        {"name": "Directory Watcher", "iconURL": "icons/ncDirWatcher.svg", "lowComplexity": 34, "manyFiles": 23, "highComplexity": 43, "total": "1,908"},
+        {"name": "Email", "iconURL": "icons/ncEmail.svg", "lowComplexity": 34, "manyFiles": 20, "highComplexity": 46, "total": "722"},
+        {"name": "Endpoint", "iconURL": "icons/ncEndpoint.svg", "lowComplexity": 20, "manyFiles": 20, "highComplexity": 60, "total": "1,789"},
+        {"name": "Cloud Mail", "iconURL": "icons/ncEmail.svg", "lowComplexity": 30, "manyFiles": 27, "highComplexity": 43, "total": "1,619"},
+        {"name": "ScanStation", "iconURL": "icons/ncStation.svg", "lowComplexity": 20, "manyFiles": 25, "highComplexity": 55, "total": "880"},
+        {"name": "ScanStation 2", "iconURL": "icons/ncStation.svg", "lowComplexity": 35, "manyFiles": 34, "highComplexity": 31, "total": "551"},
+        {"name": "ICAP", "iconURL": "icons/ncIcap.svg", "lowComplexity": 43, "manyFiles": 25, "highComplexity": 32, "total": "343"},
+        {"name": "API", "iconURL": "icons/ncApi.svg", "lowComplexity": 20, "manyFiles": 33, "highComplexity": 47, "total": "982"},
+        {"name": "WEB", "iconURL": "icons/ncNetworks.svg", "lowComplexity": 30, "manyFiles": 40, "highComplexity": 30, "total": "670"},
+        {"name": "Directory Watcher", "iconURL": "icons/ncDirWatcher.svg", "lowComplexity": 34, "manyFiles": 23, "highComplexity": 43, "total": "457"}
+    ], 
+    
+    "dashboardTotalInputs": [{"total": "3,458", "time": "00:23:17"},{"total": "8,690", "time": "01:39:05"},{"total": "1,780", "time": "00:03:41"}], 
+    
+    "dashboardOutputs": [{"name": "Email", "iconURL": "icons/ncEmail.svg", "blocked": "345", "passed": "209", "modified": "108", "total": "662"}]
 }
     
     

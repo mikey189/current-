@@ -3,6 +3,7 @@ app.factory("channelData", function ($http) {
     var inputURL = "http://localhost:3000/inputList";
     var outputListURL = "http://localhost:3000/outputList";
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
+    var dashboard = "http://localhost:3000/dashboard";
     return {
         addChannel: function (data) {
             return $http({
@@ -16,15 +17,37 @@ app.factory("channelData", function ($http) {
         },
         getChannel: function () {
             return $http.get(url)
-        }, 
+        },
         getIcons: function () {
             return $http.get(channelsIconsURL)
-        }, 
+        },
         getInputList: function () {
             return $http.get(inputURL)
         },
         getOutputList: function () {
             return $http.get(outputListURL)
+        },
+        getDashboard: function () {
+            return $http.get(dashboard)
+        }
+    }
+})
+
+
+app.factory("dashboardData", function ($http) {
+    var inputURL = "http://localhost:3000/dashboardInputs";
+    var totalInputURL = "http://localhost:3000/dashboardTotalInputs";
+    var outputURL = "http://localhost:3000/dashboardOutputs"
+
+    return {
+        getInput: function () {
+            return $http.get(inputURL)
+        },
+        getTotalInput: function () {
+            return $http.get(totalInputURL)
+        },
+        getOutput: function () {
+            return $http.get(outputURL)
         }
     }
 })
@@ -32,7 +55,7 @@ app.factory("channelData", function ($http) {
 //get icons for the channels
 
 
-    //service to pass data between step 1 and step 2
+//service to pass data between step 1 and step 2
 
 app.factory("C2CData", function () {
     var savedData = {}
