@@ -7,7 +7,6 @@ app.controller("dashboard", ["$scope","dashboardData", function ($scope, dashboa
     
     dashboardData.getInput().then(function (response) {
         self.input = response.data
-        console.log(self.input)
     })
     dashboardData.getTotalInput().then(function(response){
         self.totalInputs = response.data;
@@ -15,14 +14,9 @@ app.controller("dashboard", ["$scope","dashboardData", function ($scope, dashboa
     
     dashboardData.getOutput().then(function(response){
         self.output = response.data;
-        console.log(self.output)
     })
     
-    $(document).ready(function(){
-        var inputHeight = document.getElementsByClassName('dOutputDataContainer').offsetHeight;
-        console.log(inputHeight)
-    })
-    
+ 
 }]);
 
 

@@ -55,12 +55,32 @@ app.directive("scroller", function () {
 })
 
 
-app.directive("getHeight", function(){
+app.directive("getHeight", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            scope.ctrl.height = element.prop('offsetHeight');
-            console.log(scope.ctrl.height)
+        link: function (scope, element, attrs) {
+            element.ready(function () {
+                scope.ctrl.height = $(document).find(".dOutputDataContainer").prop('offsetHeight');
+                scope.ctrl.inputTable = $(document).find(".dInputDataContainer");
+                scope.ctrl.inputTable.css("height", scope.ctrl.height)
+            })
+
+        }
+    }
+})
+
+app.directive("syncScroll", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $(document).ready(function () {
+                var inputList = $(document).find("#dashInputList")
+                inputList.children().bind("scroll", function () {
+                    var outputList = $(document).find("#dashOutputList")
+                    outputList.children().scrollTop($(this).scrollTop());
+                })
+            })
+
         }
     }
 })
