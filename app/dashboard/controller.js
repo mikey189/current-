@@ -14,8 +14,13 @@ app.controller("dashboard", ["$scope","dashboardData", function ($scope, dashboa
     })
     
     dashboardData.getOutput().then(function(response){
-        self.output = response.data
+        self.output = response.data;
         console.log(self.output)
+    })
+    
+    $(document).ready(function(){
+        var inputHeight = document.getElementsByClassName('dOutputDataContainer').offsetHeight;
+        console.log(inputHeight)
     })
     
 }]);

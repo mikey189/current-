@@ -17,10 +17,10 @@
     </div>
 </div>
 
-<md-virtual-repeat-container id="dashInputList" layout-margin md-whiteframe="6" scroller>
+<md-virtual-repeat-container id="dashInputList" layout-margin md-whiteframe="6" scroller match-my-size>
     <md-list>
         <div ng-repeat="i in ctrl.input">
-            <md-list-item layout="row" layout-padding>
+            <md-list-item layout="row" layout-padding class="dInputDataContainer">
                 <div layout="column" layout-align="center center" flex="40">
                     <md-icon md-svg-src="{{i.iconURL}}" class="md-42"></md-icon>
                     <md-content class="md-caption">{{i.name}}</md-content>

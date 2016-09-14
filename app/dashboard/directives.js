@@ -53,3 +53,14 @@ app.directive("scroller", function () {
         }
     }
 })
+
+
+app.directive("getHeight", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            scope.ctrl.height = element.prop('offsetHeight');
+            console.log(scope.ctrl.height)
+        }
+    }
+})

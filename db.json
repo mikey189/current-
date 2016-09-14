@@ -73,7 +73,26 @@
     
     "dashboardTotalInputs": [{"total": "3,458", "time": "00:23:17"},{"total": "8,690", "time": "01:39:05"},{"total": "1,780", "time": "00:03:41"}], 
     
-    "dashboardOutputs": [{"name": "Email", "iconURL": "icons/ncEmail.svg", "blocked": "345", "passed": "209", "modified": "108", "total": "662"}]
+    "dashboardOutputs": [
+        {"name": "Email", "iconURL": "icons/ncEmail.svg", "blocked": "345", "passed": "209", "modified": "108", "total": "662"},
+        {"name": "Endpoint", "iconURL": "icons/ncEndpoint.svg", "blocked": "207", "passed": "22", "modified": "321", "total": "550"},
+        {"name": "Cloud Mail", "iconURL": "icons/ncEmail.svg", "blocked": "189", "passed": "654", "modified": "230", "total": "1073"},
+        {"name": "Scan Station", "iconURL": "icons/ncStation.svg", "blocked": "45", "passed": "722", "modified": "31", "total": "798"},
+        {"name": "Scan Station", "iconURL": "icons/ncStation.svg", "blocked": "107", "passed": "801", "modified": "67", "total": "975"},
+        {"name": "Scan Station 2", "iconURL": "icons/ncStation.svg", "blocked": "30", "passed": "64", "modified": "109", "total": "203"},
+        {"name": "ICAP", "iconURL": "icons/ncIcap.svg", "blocked": "345", "passed": "468", "modified": "109", "total": "922"},
+        {"name": "API", "iconURL": "icons/ncApi.svg", "blocked": "328", "passed": "1798", "modified": "983", "total": "3109"},
+        {"name": "Directory Watcher", "iconURL": "icons/ncDirWatcher.svg", "blocked": "129", "passed": "802", "modified": "53", "total": "984"},
+        {"name": "Email", "iconURL": "icons/ncEmail.svg", "blocked": "345", "passed": "209", "modified": "108", "total": "662"},
+        {"name": "Endpoint", "iconURL": "icons/ncEndpoint.svg", "blocked": "207", "passed": "22", "modified": "321", "total": "550"},
+        {"name": "Cloud Mail", "iconURL": "icons/ncEmail.svg", "blocked": "189", "passed": "654", "modified": "230", "total": "1073"},
+        {"name": "Scan Station", "iconURL": "icons/ncStation.svg", "blocked": "45", "passed": "722", "modified": "31", "total": "798"},
+        {"name": "Scan Station", "iconURL": "icons/ncStation.svg", "blocked": "107", "passed": "801", "modified": "67", "total": "975"},
+        {"name": "Scan Station 2", "iconURL": "icons/ncStation.svg", "blocked": "30", "passed": "64", "modified": "109", "total": "203"},
+        {"name": "ICAP", "iconURL": "icons/ncIcap.svg", "blocked": "345", "passed": "468", "modified": "109", "total": "922"},
+        {"name": "API", "iconURL": "icons/ncApi.svg", "blocked": "328", "passed": "1798", "modified": "983", "total": "3109"},
+        {"name": "Directory Watcher", "iconURL": "icons/ncDirWatcher.svg", "blocked": "129", "passed": "802", "modified": "53", "total": "984"}
+    ]
 }
     
     
