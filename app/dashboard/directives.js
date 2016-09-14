@@ -42,19 +42,6 @@ app.directive('toolbarTop', function () {
     }
 })
 
-app.directive("scroller", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("scroll", function () {
-                console.log("coucou")
-                console.log("scrolling")
-            })
-        }
-    }
-})
-
-
 app.directive("getHeight", function () {
     return {
         restrict: "A",
@@ -69,18 +56,17 @@ app.directive("getHeight", function () {
     }
 })
 
-app.directive("syncScroll", function () {
+
+app.directive("syncScroll", function(){
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
-            $(document).ready(function () {
-                var inputList = $(document).find("#dashInputList")
-                inputList.children().bind("scroll", function () {
-                    var outputList = $(document).find("#dashOutputList")
-                    outputList.children().scrollTop($(this).scrollTop());
+        link: function(scope, element, attrs){
+            $(document).ready(function(){
+                $(document).find("md-virtual-repeat-container").children().bind("scroll", function(){
+                    var sibling = $(document).find("md-virtual-repeat-container").children();
+                    sibling.scrollTop($(this).scrollTop());
                 })
             })
-
         }
     }
 })

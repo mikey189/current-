@@ -2,7 +2,9 @@
         min-height: 70%;
         background-color: white;
         border-radius: 5px;
-border-top:solid 0.3em #773EB2    }
+        border-top:solid 0.3em #773EB2  
+}
+
     
     .md-42 {
         min-height: 42px !important;
@@ -42,3 +44,6 @@ border-top:solid 0.3em #773EB2    }
         margin-top:0px;
         margin-bottom: 0px;
     }
+.increaseMBottom{
+    margin-bottom: 3em;
+}
