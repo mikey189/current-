@@ -1,8 +1,6 @@
 
 app.controller('common', function($mdSidenav, $translate){
-    this.toggleMenu = function(){
-        $mdSidenav('left').toggle()
-    }
+  
    
      this.changeLanguage = function(key){
         $translate.use(key)

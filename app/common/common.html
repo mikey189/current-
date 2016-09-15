@@ -1,59 +1,62 @@
+<link rel="stylesheet" href="app/common/style.css" />
+
+
 <div layout='row' flex ng-controller='common' layout-fill>
 
-    <md-sidenav md-component-id="left" id="sidenavIndex" md-is-locked-open='true' class='md-whiteframe-4dp' layout-align='start center'>
+    <md-sidenav md-component-id="left" id="sidenavIndex" md-is-locked-open='true' class='md-whiteframe-4dp' layout-align='start center' sidebar-hover>
         <md-list>
-            <md-list-item>
-                <md-button ui-sref='app.dashboard' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.dashboard' class='fullWidthButton white thisButton' layout="row" layout-align="center center">
                     <md-tooltip md-direction="right">{{'dashboard' | translate }}</md-tooltip>
                     <md-icon md-svg-src="../../icons/dashboardLogo.svg"></md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.policy.dashboard' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="row" layout-align="center center">
                     <md-tooltip md-direction="right">Policy</md-tooltip>
                     <md-icon md-svg-src="../../icons/policiesIcon.svg"></md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.clusterManagement' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.clusterManagement' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
                     <md-tooltip md-direction="right">Cluster Management</md-tooltip>
                     <md-icon class='material-icons md-light'>tune</md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.reports' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.reports' class=' thisButton fullWidthButton white'layout="row" layout-align="center center">
                     <md-tooltip md-direction="right">Reports</md-tooltip>
                     <md-icon class="material-icons md-light">assignment</md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.agentManagement' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.agentManagement' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
                     <md-tooltip md-direction="right">Agent Management</md-tooltip>
                     <md-icon class="material-icons md-light">supervisor_account</md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.channelManagement.endpoint.dashboard' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="row" layout-align="center center" >
                     <md-tooltip md-direction="right">Channel Management</md-tooltip>
                     <md-icon md-svg-src="../../icons/channelLogo.svg"></md-icon>
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.cases' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.cases' class='thisButton fullWidthButton white' layout="row" layout-align="center center" >
                     <md-tooltip md-direction="right">cases</md-tooltip>
                     <md-icon md-svg-src="../../icons/casesLogo.svg"></md-icon>
 
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ui-sref='app.settings' class='fullWidthButton white' ng-click='common.toggleMenu()'>
+            <md-list-item ui-sref-active="sidebarIconHover animated pulse">
+                <md-button md-no-ink ui-sref='app.settings' class='thisButton fullWidthButton white' layout="row" layout-align="center center" >
                     <md-tooltip md-direction="right">Settings</md-tooltip>
                     <md-icon class='material-icons md-light'>settings</md-icon>
                 </md-button>
             </md-list-item>
 
         </md-list>
-        <md-fab-speed-dial md-open="common.isOpen" md-direction="{{common.selectedDirection}}" ng-class="common.selectedMode">
+        <!--<md-fab-speed-dial md-open="common.isOpen" md-direction="{{common.selectedDirection}}" ng-class="common.selectedMode">
             <md-fab-trigger>
                 <md-button aria-label="menu" class="md-fab md-primary">
                     <md-icon md-svg-src="icons/switchLang.svg"></md-icon>
@@ -70,10 +73,11 @@
                     RU
                 </md-button>
             </md-fab-actions>
-        </md-fab-speed-dial>
+        </md-fab-speed-dial>-->
     </md-sidenav>
 
     <md-content id="mainContent" flex data-ui-view>
 
     </md-content>
 </div>
+

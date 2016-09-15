@@ -1,0 +1,83 @@
+<md-button edit-mode class="md-raised" id="editButtonPolicy">Edit</md-button>
+<table class="table table-responsive notEditable">
+    <thead>
+        <th></th>
+        <th>Allow</th>
+        <th class="advanced hidden">Process Embedded Files</th>
+        <th class="advanced hidden">Size Limit</th>
+        <th class="advanced hidden">Sandbox</th>
+        <th class="advanced hidden">Add Exception</th>
+    </thead>
+    <tbody class="policyRowsDef">
+        <tr toggle-os class="executablesRow">
+            <td>Executables</td>
+            <td colspan="6">
+                <md-checkbox aria-label="exec"></md-checkbox>
+            </td>
+        </tr>
+        <tr class="hiddenOS" show-child ng-repeat="os in ctrl.data"> 
+            <td>{{os.name}}</td>
+            <td colspan = "6"><md-checkbox aria-label="execName" ng-model="ctrl.obj[i.name]['allowOS']"></md-checkbox></td>
+        </tr>
+        <tr class="child hidden commonBKRow" ng-repeat = "exec in ctrl.data">
+            <td>{{exec.os}}</td>
+            <td><md-checkbox activeMe aria-label="os" ng-model="ctrl.obj[i.name]['allowExec']"></md-checkbox></td>
+            <td class="action hidden">
+                <select>
+                    <option>N/A</option>
+                </select>
+            </td>
+            
+            <td class="advanced hidden">
+                <md-checkbox aria-label="process"></md-checkbox>
+            </td>
+            <td class="advanced hidden" layout="row">
+                <input placeholder="edit" disabled/>
+                <md-button edit-field>
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+            </td>
+            <td class="advanced hidden">
+                <md-checkbox aria-label="sandbox"></md-checkbox>
+            </td>
+            <td class="advanced hidden">
+                <md-button>
+                    <md-icon class="material-icons">add</md-icon>
+                </md-button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<md-button show-advanced-mode class="md-raised" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
+
+<button ng-click=ctrl.postData()>post data</button>
+<style>
+    .hiddenOS {
+        visibility: collapse;
+    }
+    
+    .commonBKRow {
+        background-color: whitesmoke;
+    }
+    
+    .executablesRow {
+        background-color: white;
+    }
+    
+    .hidden {
+        visibility: none;
+    }
+    
+    .notEditable {
+        pointer-events: none;
+    }
+    
+    .policyRowsDef> tr {
+        border-bottom: solid 2px #f1f1f1;
+    }
+    
+    .policyRowsDef> tr> td> md-checkbox {
+        margin-bottom: 0px !important;
+    }
+
+</style>

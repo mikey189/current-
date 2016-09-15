@@ -70,3 +70,15 @@ app.directive("syncScroll", function(){
         }
     }
 })
+
+app.directive("toggleOs", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.bind("click", function(){
+                $(document).find(".hiddenOS").toggleClass("hiddenOS").toggleClass("animated slideInRight commonBKRow")
+                
+            })
+        }
+    }
+})
