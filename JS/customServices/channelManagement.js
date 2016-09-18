@@ -53,13 +53,10 @@ app.factory("dashboardData", function ($http) {
 })
 
 
-app.factory("policyData", function($http){
-    var url = "  http://localhost:3000/policyDefinition"
+app.factory("policyData", function ($http) {
+    var url = "http://localhost:3000/policyDefinition";
     return {
-        getData: function(){
-            return $http.get(url)
-        },
-        postData: function (data) {
+        addData: function (data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,9 +65,15 @@ app.factory("policyData", function($http){
                 method: "POST",
                 data: data
             })
+        },
+        getData: function () {
+            return $http.get(url).then(function (response) {
+                return response.data
+            })
         }
     }
 })
+
 //get icons for the channels
 
 

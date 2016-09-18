@@ -46,19 +46,6 @@
         }
     })
 
-    app.directive("showChild", function () {
-        return {
-            restrict: "A",
-            link: function (scope, element, attrs) {
-
-                element.bind("click", function () {
-                    $(this).siblings(".child").toggleClass("hidden");
-                    $(this).siblings(".child").toggleClass("animated fadeInDown")
-                })
-            }
-        }
-    })
-
 
     app.directive("editField", function () {
         return {
@@ -80,26 +67,24 @@
         }
     })
 
-    
-    app.controller("someCtrl", [function($scope){
-        $scope.queryList = [
-        { name: 'Check Users', fields: [ "Name", "Id"] },
-        { name: 'Audit Report', fields: [] },
-        { name: 'Bounce Back Report', fields: [ "Date"] } 
-      ];
-    $scope.models = {};
-    $scope.$watch('selectedQuery', function (newVal, oldVal) {
-        if ($scope.selectedQuery) {
-            $scope.parameters = $scope.selectedQuery.fields;
+    app.directive("showChildren", function () {
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+                scope.ctrl.hideChild = true;
+                element.bind("click", function () {
+                    if (scope.ctrl.hideChild) {
+                        $(this).siblings("tr").removeClass("hidden");
+                        $(this).siblings("tr").addClass("animated fadeIn")
+                        $(this).find("md-icon").html("keyboard_arrow_down");
+                        scope.ctrl.hideChild = false;
+                    } else {
+                        $(this).siblings("tr").addClass("hidden");
+                        $(this).find("md-icon").html("keyboard_arrow_right");
+                        scope.ctrl.hideChild = true;
+                    }
+                })
+
+            }
         }
-    });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }])
+    })

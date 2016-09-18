@@ -5,12 +5,10 @@ app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", functio
     self.uiSref;
     self.channel = {};
 
-
     channelData.getIcons().then(function (response) {
         self.channelIcons = response.data
         self.ncTypeWidth = (100 / self.channelIcons.length);
     })
-
 
     self.saveS1Data = function () {
         self.S1Data = {

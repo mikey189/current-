@@ -1,19 +1,16 @@
 app.controller("cases", ["policyData", function (policyData) {
 
-    var self = this;
-    self.data = {};
-    policyData.getData().then(function (response) {
-        self.data = response.data;
-        console.log(self.data)
-        return self.data;
+    var c = this;
+    c.data;
+    c.dataSet = [];
+    c.obj = {};
+    policyData.getData().then(function (answer) {
+        c.data = answer;
+        for (i = 0; i < c.data.length;) {
+            c.dataSet.push(c.data[i]);
+            i++;
+        }
 
     })
-    self.obj = {};
-    
-    self.postData = function() {
-        self.data2post = self.obj
-        console.log(self.data2post)
-        return self.data2post
-    }
 
 }])
