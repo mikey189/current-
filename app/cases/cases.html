@@ -10,7 +10,7 @@
             <th class="advanced hidden">Add Exception</th>
         </thead>
         <tbody class="policyRowsDef" ng-repeat="i in ctrl.dataSet">
-            <tr class="osParent" style="background-color: red" show-children>
+            <tr class="osParent" show-children>
                 <td>
                     <md-icon class="material-icons">keyboard_arrow_right</md-icon>{{i.name}}</td>
                 <td colspan="6"></td>
@@ -24,7 +24,7 @@
                     <md-checkbox ng-model="ctrl.obj[i.name][x]['processEmbbededFiles']" aria-label="ctrl.obj[i.name]['process']"></md-checkbox>
                 </td>
                 <td class="advanced hidden">
-                    <input placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" />
+                    <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" type="number" class="ctInput"/>
                     <md-button edit-field>
                         <md-icon class="material-icons">edit</md-icon>
                     </md-button>
@@ -38,7 +38,6 @@
                     </md-button>
                 </td>
             </tr>
-
         </tbody>
     </table>
 </div>
@@ -62,19 +61,19 @@
     }
     
     #ctCollapseTable> thead {
-        background-color: white;
+        background-color: white !important;
     }
     
+    #ctCollapseTable> tr{
+        background-color: white;
+    }
     .hiddenOS {
         visibility: collapse;
     }
     
-    .commonBKRow {
-        background-color: whitesmoke;
-    }
     
     .executablesRow {
-        background-color: white;
+        background-color: white !important;
     }
     
     .hidden {
@@ -87,6 +86,7 @@
     
     .policyRowsDef> tr {
         border-bottom: solid 2px #f1f1f1;
+        background-color: white !important;
     }
     
     .policyRowsDef> tr> td> md-checkbox {
@@ -96,5 +96,18 @@
     .ctEXName {
         background-color: white;
     }
-
+    .ctInput{
+        height: 2.3em;
+        border-radius: 5px;
+        padding-left: 5px;
+    }
+   
+    .inputEnabled{
+        background-color: yellow !important; 
+    }
+    
+    .inputDisabled{
+        background-color: red !important;
+    }
+    
 </style>

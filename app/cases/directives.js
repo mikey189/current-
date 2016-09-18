@@ -2,22 +2,27 @@
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
-                var button = $("#showAdvanceButton");
-                var advanced = $(".advanced");
-                var state = true
-                element.bind("click", function () {
-                    if (state) {
-                        advanced.removeClass("hidden");
-                        advanced.addClass("animated fadeIn");
-                        button.text("RETURN TO BASIC MODE");
-                        state = false;
-                    } else {
-                        state = true;
-                        advanced.addClass("hidden")
-                        button.text("SHOW ADVANCED MODE")
-                    }
+                //DO NOT REMOVE
+                $(document).ready(function () {
+                //if removed, the directive only affects .hidden element of <th> and not elements from the body
+                    var button = $("#showAdvanceButton");
+                    var advanced = $(".advanced");
+                    var state = true
+                    element.bind("click", function () {
+                        if (state) {
+                            advanced.removeClass("hidden");
+                            advanced.addClass("animated fadeIn");
+                            button.text("RETURN TO BASIC MODE");
+                            state = false;
+                        } else {
+                            state = true;
+                            advanced.addClass("hidden")
+                            button.text("SHOW ADVANCED MODE")
+                        }
 
+                    })
                 })
+
 
             }
         }
@@ -33,12 +38,14 @@
                 element.bind("click", function () {
                     if (edit) {
                         table.removeClass("notEditable")
-                        editButton.html("Done")
+                        editButton.html("Save")
                         edit = false;
                     } else {
                         edit = true;
                         table.addClass("notEditable")
                         editButton.text("Edit")
+                        scope.ctrl.data2post = scope.ctrl.obj;
+                        console.log(scope.ctrl.data2post)
                     }
 
                 })
@@ -54,12 +61,17 @@
                 var input = $(this).siblings("input");
                 var icon = $(this).children("md-icon");
                 element.bind("click", function () {
-                    if (input.attr("disabled")) {
+                    var disabled = true;
+                    if (disabled) {
                         icon.html("done");
                         input.removeAttr("disabled")
+                        input.addClass("inputEnabled")
+                        disabled != disabled;
                     } else {
                         icon.html("edit");
                         input.attr("disabled")
+                        input.removeClass("inputEnabled").addClass("inputDisabled")
+                        disabled != disabled
                     }
 
                 })

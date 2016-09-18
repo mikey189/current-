@@ -12,5 +12,9 @@ app.controller("cases", ["policyData", function (policyData) {
         }
 
     })
+    
+    c.saveData = function(){
+        
+    }
 
 }])
