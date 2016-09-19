@@ -4,7 +4,7 @@
             link: function (scope, element, attrs) {
                 //DO NOT REMOVE
                 $(document).ready(function () {
-                //if removed, the directive only affects .hidden element of <th> and not elements from the body
+                    //if removed, the directive only affects .hidden element of <th> and not elements from the body
                     var button = $("#showAdvanceButton");
                     var advanced = $(".advanced");
                     var state = true
@@ -19,15 +19,11 @@
                             advanced.addClass("hidden")
                             button.text("SHOW ADVANCED MODE")
                         }
-
                     })
                 })
-
-
             }
         }
     })
-
     app.directive("editMode", function () {
         return {
             restrict: "A",
@@ -52,8 +48,6 @@
             }
         }
     })
-
-
     app.directive("editField", function () {
         return {
             restrict: "A",
@@ -65,12 +59,10 @@
                     if (disabled) {
                         icon.html("done");
                         input.removeAttr("disabled")
-                        input.addClass("inputEnabled")
                         disabled != disabled;
                     } else {
                         icon.html("edit");
                         input.attr("disabled")
-                        input.removeClass("inputEnabled").addClass("inputDisabled")
                         disabled != disabled
                     }
 
@@ -78,7 +70,6 @@
             }
         }
     })
-
     app.directive("showChildren", function () {
         return {
             restrict: "A",
@@ -100,3 +91,67 @@
             }
         }
     })
+    app.directive("ctDescription", function () {
+        return {
+            restrict: "E",
+            templateUrl: "app/cases/templates/description.html",
+            replace: false,
+            link: function (scope, element, attrs) {
+                $(document).ready(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            }
+        }
+    })
+    app.directive("showExceptionRow", function ($compile) {
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+
+
+                element.bind("click", function () {
+                    var parentRow = $(this).closest("tr");
+                    var icon = $(this).children("md-icon");
+                    var button = $(this);
+                    var exceptionRow = $compile("<pd-exception-row></pd-exception-row>")(scope);
+                    var userChips = $compile("<pd-user-chips></pd-user-chips>")(scope);
+                    
+                    if (!scope.ctrl.showException) {
+
+                        icon.html("done");
+                        button.addClass("md-raised pdGreenButton");
+                        userChips.insertAfter(parentRow);
+                        exceptionRow.insertAfter(userChips);
+                        scope.ctrl.showException = !scope.ctrl.showException;
+
+
+                    } else {
+
+                        icon.html("add");
+                        button.removeClass("pdGreenButton md-raised");
+                        $(".pdExceptionRow").remove();
+                        console.log(scope.ctrl.userList);
+                        scope.ctrl.showException = !scope.ctrl.showException;
+                        
+
+                    }
+                })
+            }
+        }
+    })
+    
+    app.directive("pdUserChips", function(){
+        return {
+            restrict: "E",
+            templateUrl: "app/cases/templates/userChips.html",
+            replace: true
+        }
+    })
+    app.directive("pdExceptionRow", function () {
+        return {
+            restrict: "E",
+            templateUrl: "app/cases/templates/exception.html",
+            replace: true
+        }
+    })
+    

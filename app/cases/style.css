@@ -1,0 +1,76 @@
+ #editButtonPolicy {
+        background-color: #23CCC7;
+        color: white
+    }
+    
+    #showAdvanceButton {
+        background-color: #23CCC7;
+        color: white
+    }
+    
+    #ct1stRow {
+        width: 15%;
+    }
+    
+    .bold {
+        font-weight: bold;
+    }
+    
+    #ctCollapseTable> thead {
+        background-color: white !important;
+    }
+    
+    .executablesRow {
+        background-color: white !important;
+    }
+    
+    .hidden {
+        visibility: none;
+    }
+    
+    .ctEXName {
+        text-align: right;
+    }
+    
+    .notEditable {
+        pointer-events: none;
+    }
+    
+    .policyRowsDef> tr {
+        border-bottom: solid 2px #f1f1f1;
+    }
+    
+    .osParent {
+        background-color: white;
+    }
+    
+    .policyRowsDef> tr> td> md-checkbox {
+        margin-bottom: 0px !important;
+    }
+    
+    .ctInput {
+        height: 2.3em;
+        border-radius: 5px;
+        padding-left: 5px;
+        background-color: white !important;
+    }
+    
+    .ctInput[disabled] {
+        background-color: #D2D9E6 !important;
+    }
+    
+    .ncTypeRows {
+        background-color: red !important;
+        border-bottom: solid 2px #f1f1f1 !important;
+    }
+.pdGreenButton{
+    background-color: #23CCC7 !important;
+}
+
+.pdGreenButton > md-icon {
+    color: white !important;
+}
+.pdExceptionRow{
+    border-left: solid 4px #E29C2F !important;
+    background-color: #F7EDE3 !important;
+}

@@ -1,0 +1,24 @@
+<tr class="animated fadeInRight pdExceptionRow">
+    <td></td>
+    <td>
+        <md-checkbox ng-model="ctrl.obj[i.name][x]['exception']['allow']" aria-label="ctrl.obj[i.name]['exception']['allow']"></md-checkbox>
+    </td>
+    <td>
+        <md-checkbox ng-model="ctrl.obj[i.name][x]['exception']['processEmbbededFiles']" aria-label="ctrl.obj[i.name]['exception']['process']"></md-checkbox>
+    </td>
+    <td>
+        <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['exception']['sizeLimit']" type="number" class="ctInput" />
+        <md-button edit-field>
+            <md-icon class="material-icons">edit</md-icon>
+        </md-button>
+    </td>
+    <td>
+        <md-checkbox ng-model="ctrl.obj[i.name][x]['exception']['sandbox']" aria-label="ctrl.obj[i.name]['exception']['sizeLimit']"></md-checkbox>
+    </td>
+    <td>
+        <md-button>
+            <md-icon class="material-icons">trash</md-icon>
+        </md-button>
+    </td>
+</tr>
+

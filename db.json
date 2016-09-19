@@ -1,514 +1,589 @@
 {
-  "channels": [
-    {
-      "id": 1,
-      "name": "Endpoint",
-      "description": "Watches all XLS files received through the Endpoint channel",
-      "channelTypeName": "API",
-      "channelTypeIcon": "icons/ncApi.svg"
+    "channels": [
+        {
+            "id": 1,
+            "name": "Endpoint",
+            "description": "Watches all XLS files received through the Endpoint channel",
+            "channelTypeName": "API",
+            "channelTypeIcon": "icons/ncApi.svg"
     },
-    {
-      "name": "API Calls C# Team",
-      "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
-      "channelTypeName": "API",
-      "channelTypeIconUrl": "icons/ncApi.svg",
-      "id": 2
+        {
+            "name": "API Calls C# Team",
+            "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
+            "channelTypeName": "API",
+            "channelTypeIconUrl": "icons/ncApi.svg",
+            "id": 2
     }
   ],
-  "channelsIcons": [
-    {
-      "icon": "icons/ncEndpoint.svg",
-      "name": "Endpoint"
+    "channelsIcons": [
+        {
+            "icon": "icons/ncEndpoint.svg",
+            "name": "Endpoint"
     },
-    {
-      "icon": "icons/ncEmail.svg",
-      "name": "Mail"
+        {
+            "icon": "icons/ncEmail.svg",
+            "name": "Mail"
     },
-    {
-      "icon": "icons/ncStation.svg",
-      "name": "Station"
+        {
+            "icon": "icons/ncStation.svg",
+            "name": "Station"
     },
-    {
-      "icon": "icons/ncDirWatcher.svg",
-      "name": "Directory Watcher"
+        {
+            "icon": "icons/ncDirWatcher.svg",
+            "name": "Directory Watcher"
     },
-    {
-      "icon": "icons/ncIcap.svg",
-      "name": "ICAP"
+        {
+            "icon": "icons/ncIcap.svg",
+            "name": "ICAP"
     },
-    {
-      "icon": "icons/ncApi.svg",
-      "name": "API"
+        {
+            "icon": "icons/ncApi.svg",
+            "name": "API"
     }
   ],
-  "inputList": [
-    {
-      "endpoint": [
+    "inputList": [
         {
-          "name": "CD-ROM",
-          "icon": "ncCDROM.svg"
+            "endpoint": [
+                {
+                    "name": "CD-ROM",
+                    "icon": "ncCDROM.svg"
         },
-        {
-          "name": "My Documents",
-          "icon": "ncMyDocuments.svg"
+                {
+                    "name": "My Documents",
+                    "icon": "ncMyDocuments.svg"
         },
-        {
-          "name": "Fixed Drives",
-          "icon": "ncFixedDrives.svg"
+                {
+                    "name": "Fixed Drives",
+                    "icon": "ncFixedDrives.svg"
         },
-        {
-          "name": "Removable",
-          "icon": "ncRemovable.svg"
+                {
+                    "name": "Removable",
+                    "icon": "ncRemovable.svg"
         },
-        {
-          "name": "Mobiles",
-          "icon": "ncMobileDevices.svg"
+                {
+                    "name": "Mobiles",
+                    "icon": "ncMobileDevices.svg"
         },
-        {
-          "name": "Networks",
-          "icon": "ncNetworks.svg"
+                {
+                    "name": "Networks",
+                    "icon": "ncNetworks.svg"
         },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
+                {
+                    "name": "Relay",
+                    "icon": "ncRelay.svg"
         },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
+                {
+                    "name": "Null",
+                    "icon": "ncNull.svg"
         }
       ],
-      "station": [
-        {
-          "name": "CD-ROM",
-          "icon": "ncCDROM.svg"
+            "station": [
+                {
+                    "name": "CD-ROM",
+                    "icon": "ncCDROM.svg"
         },
-        {
-          "name": "My Documents",
-          "icon": "ncMyDocuments.svg"
+                {
+                    "name": "My Documents",
+                    "icon": "ncMyDocuments.svg"
         },
-        {
-          "name": "Fixed Drives",
-          "icon": "ncFixedDrives.svg"
+                {
+                    "name": "Fixed Drives",
+                    "icon": "ncFixedDrives.svg"
         },
-        {
-          "name": "Removable",
-          "icon": "ncRemovable.svg"
+                {
+                    "name": "Removable",
+                    "icon": "ncRemovable.svg"
         },
-        {
-          "name": "Mobiles",
-          "icon": "ncMobileDevices.svg"
+                {
+                    "name": "Mobiles",
+                    "icon": "ncMobileDevices.svg"
         },
-        {
-          "name": "Networks",
-          "icon": "ncNetworks.svg"
+                {
+                    "name": "Networks",
+                    "icon": "ncNetworks.svg"
         },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
+                {
+                    "name": "Relay",
+                    "icon": "ncRelay.svg"
         },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
+                {
+                    "name": "Null",
+                    "icon": "ncNull.svg"
         }
       ]
     }
   ],
-  "outputList": [
-    {
-      "endpoint": [
+    "outputList": [
         {
-          "name": "CD-ROM",
-          "icon": "ncCDROM.svg"
+            "endpoint": [
+                {
+                    "name": "CD-ROM",
+                    "icon": "ncCDROM.svg"
         },
-        {
-          "name": "My Documents",
-          "icon": "ncMyDocuments.svg"
+                {
+                    "name": "My Documents",
+                    "icon": "ncMyDocuments.svg"
         },
-        {
-          "name": "Fixed Drives",
-          "icon": "ncFixedDrives.svg"
+                {
+                    "name": "Fixed Drives",
+                    "icon": "ncFixedDrives.svg"
         },
-        {
-          "name": "Removable",
-          "icon": "ncRemovable.svg"
+                {
+                    "name": "Removable",
+                    "icon": "ncRemovable.svg"
         },
-        {
-          "name": "Mobiles",
-          "icon": "ncMobileDevices.svg"
+                {
+                    "name": "Mobiles",
+                    "icon": "ncMobileDevices.svg"
         },
-        {
-          "name": "Networks",
-          "icon": "ncNetworks.svg"
+                {
+                    "name": "Networks",
+                    "icon": "ncNetworks.svg"
         },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
+                {
+                    "name": "Relay",
+                    "icon": "ncRelay.svg"
         },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
+                {
+                    "name": "Null",
+                    "icon": "ncNull.svg"
         }
       ],
-      "station": [
-        {
-          "name": "CD-ROM",
-          "icon": "ncCDROM.svg"
+            "station": [
+                {
+                    "name": "CD-ROM",
+                    "icon": "ncCDROM.svg"
         },
-        {
-          "name": "My Documents",
-          "icon": "ncMyDocuments.svg"
+                {
+                    "name": "My Documents",
+                    "icon": "ncMyDocuments.svg"
         },
-        {
-          "name": "Fixed Drives",
-          "icon": "ncFixedDrives.svg"
+                {
+                    "name": "Fixed Drives",
+                    "icon": "ncFixedDrives.svg"
         },
-        {
-          "name": "Removable",
-          "icon": "ncRemovable.svg"
+                {
+                    "name": "Removable",
+                    "icon": "ncRemovable.svg"
         },
-        {
-          "name": "Mobiles",
-          "icon": "ncMobileDevices.svg"
+                {
+                    "name": "Mobiles",
+                    "icon": "ncMobileDevices.svg"
         },
-        {
-          "name": "Networks",
-          "icon": "ncNetworks.svg"
+                {
+                    "name": "Networks",
+                    "icon": "ncNetworks.svg"
         },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
+                {
+                    "name": "Relay",
+                    "icon": "ncRelay.svg"
         },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
+                {
+                    "name": "Null",
+                    "icon": "ncNull.svg"
         }
       ]
     }
   ],
-  "dashboardInputs": [
-    {
-      "name": "Email",
-      "iconURL": "icons/ncEmail.svg",
-      "lowComplexity": 34,
-      "manyFiles": 30,
-      "highComplexity": 36,
-      "total": "1,458"
+    "dashboardInputs": [
+        {
+            "name": "Email",
+            "iconURL": "icons/ncEmail.svg",
+            "lowComplexity": 34,
+            "manyFiles": 30,
+            "highComplexity": 36,
+            "total": "1,458"
     },
-    {
-      "name": "Endpoint",
-      "iconURL": "icons/ncEndpoint.svg",
-      "lowComplexity": 31,
-      "manyFiles": 27,
-      "highComplexity": 42,
-      "total": "555"
+        {
+            "name": "Endpoint",
+            "iconURL": "icons/ncEndpoint.svg",
+            "lowComplexity": 31,
+            "manyFiles": 27,
+            "highComplexity": 42,
+            "total": "555"
     },
-    {
-      "name": "Cloud Mail",
-      "iconURL": "icons/ncEmail.svg",
-      "lowComplexity": 30,
-      "manyFiles": 27,
-      "highComplexity": 43,
-      "total": "1,329"
+        {
+            "name": "Cloud Mail",
+            "iconURL": "icons/ncEmail.svg",
+            "lowComplexity": 30,
+            "manyFiles": 27,
+            "highComplexity": 43,
+            "total": "1,329"
     },
-    {
-      "name": "ScanStation",
-      "iconURL": "icons/ncStation.svg",
-      "lowComplexity": 30,
-      "manyFiles": 25,
-      "highComplexity": 45,
-      "total": "2,890"
+        {
+            "name": "ScanStation",
+            "iconURL": "icons/ncStation.svg",
+            "lowComplexity": 30,
+            "manyFiles": 25,
+            "highComplexity": 45,
+            "total": "2,890"
     },
-    {
-      "name": "ScanStation 2",
-      "iconURL": "icons/ncStation.svg",
-      "lowComplexity": 35,
-      "manyFiles": 34,
-      "highComplexity": 31,
-      "total": "988"
+        {
+            "name": "ScanStation 2",
+            "iconURL": "icons/ncStation.svg",
+            "lowComplexity": 35,
+            "manyFiles": 34,
+            "highComplexity": 31,
+            "total": "988"
     },
-    {
-      "name": "ICAP",
-      "iconURL": "icons/ncIcap.svg",
-      "lowComplexity": 43,
-      "manyFiles": 25,
-      "highComplexity": 32,
-      "total": "1,236"
+        {
+            "name": "ICAP",
+            "iconURL": "icons/ncIcap.svg",
+            "lowComplexity": 43,
+            "manyFiles": 25,
+            "highComplexity": 32,
+            "total": "1,236"
     },
-    {
-      "name": "API",
-      "iconURL": "icons/ncApi.svg",
-      "lowComplexity": 40,
-      "manyFiles": 33,
-      "highComplexity": 27,
-      "total": "1,717"
+        {
+            "name": "API",
+            "iconURL": "icons/ncApi.svg",
+            "lowComplexity": 40,
+            "manyFiles": 33,
+            "highComplexity": 27,
+            "total": "1,717"
     },
-    {
-      "name": "WEB",
-      "iconURL": "icons/ncNetworks.svg",
-      "lowComplexity": 30,
-      "manyFiles": 40,
-      "highComplexity": 30,
-      "total": "324"
+        {
+            "name": "WEB",
+            "iconURL": "icons/ncNetworks.svg",
+            "lowComplexity": 30,
+            "manyFiles": 40,
+            "highComplexity": 30,
+            "total": "324"
     },
-    {
-      "name": "Directory Watcher",
-      "iconURL": "icons/ncDirWatcher.svg",
-      "lowComplexity": 34,
-      "manyFiles": 23,
-      "highComplexity": 43,
-      "total": "1,908"
+        {
+            "name": "Directory Watcher",
+            "iconURL": "icons/ncDirWatcher.svg",
+            "lowComplexity": 34,
+            "manyFiles": 23,
+            "highComplexity": 43,
+            "total": "1,908"
     },
-    {
-      "name": "Email",
-      "iconURL": "icons/ncEmail.svg",
-      "lowComplexity": 34,
-      "manyFiles": 20,
-      "highComplexity": 46,
-      "total": "722"
+        {
+            "name": "Email",
+            "iconURL": "icons/ncEmail.svg",
+            "lowComplexity": 34,
+            "manyFiles": 20,
+            "highComplexity": 46,
+            "total": "722"
     },
-    {
-      "name": "Endpoint",
-      "iconURL": "icons/ncEndpoint.svg",
-      "lowComplexity": 20,
-      "manyFiles": 20,
-      "highComplexity": 60,
-      "total": "1,789"
+        {
+            "name": "Endpoint",
+            "iconURL": "icons/ncEndpoint.svg",
+            "lowComplexity": 20,
+            "manyFiles": 20,
+            "highComplexity": 60,
+            "total": "1,789"
     },
-    {
-      "name": "Cloud Mail",
-      "iconURL": "icons/ncEmail.svg",
-      "lowComplexity": 30,
-      "manyFiles": 27,
-      "highComplexity": 43,
-      "total": "1,619"
+        {
+            "name": "Cloud Mail",
+            "iconURL": "icons/ncEmail.svg",
+            "lowComplexity": 30,
+            "manyFiles": 27,
+            "highComplexity": 43,
+            "total": "1,619"
     },
-    {
-      "name": "ScanStation",
-      "iconURL": "icons/ncStation.svg",
-      "lowComplexity": 20,
-      "manyFiles": 25,
-      "highComplexity": 55,
-      "total": "880"
+        {
+            "name": "ScanStation",
+            "iconURL": "icons/ncStation.svg",
+            "lowComplexity": 20,
+            "manyFiles": 25,
+            "highComplexity": 55,
+            "total": "880"
     },
-    {
-      "name": "ScanStation 2",
-      "iconURL": "icons/ncStation.svg",
-      "lowComplexity": 35,
-      "manyFiles": 34,
-      "highComplexity": 31,
-      "total": "551"
+        {
+            "name": "ScanStation 2",
+            "iconURL": "icons/ncStation.svg",
+            "lowComplexity": 35,
+            "manyFiles": 34,
+            "highComplexity": 31,
+            "total": "551"
     },
-    {
-      "name": "ICAP",
-      "iconURL": "icons/ncIcap.svg",
-      "lowComplexity": 43,
-      "manyFiles": 25,
-      "highComplexity": 32,
-      "total": "343"
+        {
+            "name": "ICAP",
+            "iconURL": "icons/ncIcap.svg",
+            "lowComplexity": 43,
+            "manyFiles": 25,
+            "highComplexity": 32,
+            "total": "343"
     },
-    {
-      "name": "API",
-      "iconURL": "icons/ncApi.svg",
-      "lowComplexity": 20,
-      "manyFiles": 33,
-      "highComplexity": 47,
-      "total": "982"
+        {
+            "name": "API",
+            "iconURL": "icons/ncApi.svg",
+            "lowComplexity": 20,
+            "manyFiles": 33,
+            "highComplexity": 47,
+            "total": "982"
     },
-    {
-      "name": "WEB",
-      "iconURL": "icons/ncNetworks.svg",
-      "lowComplexity": 30,
-      "manyFiles": 40,
-      "highComplexity": 30,
-      "total": "670"
+        {
+            "name": "WEB",
+            "iconURL": "icons/ncNetworks.svg",
+            "lowComplexity": 30,
+            "manyFiles": 40,
+            "highComplexity": 30,
+            "total": "670"
     },
-    {
-      "name": "Directory Watcher",
-      "iconURL": "icons/ncDirWatcher.svg",
-      "lowComplexity": 34,
-      "manyFiles": 23,
-      "highComplexity": 43,
-      "total": "457"
+        {
+            "name": "Directory Watcher",
+            "iconURL": "icons/ncDirWatcher.svg",
+            "lowComplexity": 34,
+            "manyFiles": 23,
+            "highComplexity": 43,
+            "total": "457"
     }
   ],
-  "dashboardTotalInputs": [
-    {
-      "total": "3,458",
-      "time": "00:23:17"
+    "dashboardTotalInputs": [
+        {
+            "total": "3,458",
+            "time": "00:23:17"
     },
-    {
-      "total": "8,690",
-      "time": "01:39:05"
+        {
+            "total": "8,690",
+            "time": "01:39:05"
     },
-    {
-      "total": "1,780",
-      "time": "00:03:41"
+        {
+            "total": "1,780",
+            "time": "00:03:41"
     }
   ],
-  "dashboardOutputs": [
-    {
-      "name": "Email",
-      "iconURL": "icons/ncEmail.svg",
-      "blocked": "345",
-      "passed": "209",
-      "modified": "108",
-      "total": "662"
+    "dashboardOutputs": [
+        {
+            "name": "Email",
+            "iconURL": "icons/ncEmail.svg",
+            "blocked": "345",
+            "passed": "209",
+            "modified": "108",
+            "total": "662"
     },
-    {
-      "name": "Endpoint",
-      "iconURL": "icons/ncEndpoint.svg",
-      "blocked": "207",
-      "passed": "22",
-      "modified": "321",
-      "total": "550"
+        {
+            "name": "Endpoint",
+            "iconURL": "icons/ncEndpoint.svg",
+            "blocked": "207",
+            "passed": "22",
+            "modified": "321",
+            "total": "550"
     },
-    {
-      "name": "Cloud Mail",
-      "iconURL": "icons/ncEmail.svg",
-      "blocked": "189",
-      "passed": "654",
-      "modified": "230",
-      "total": "1073"
+        {
+            "name": "Cloud Mail",
+            "iconURL": "icons/ncEmail.svg",
+            "blocked": "189",
+            "passed": "654",
+            "modified": "230",
+            "total": "1073"
     },
-    {
-      "name": "Scan Station",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "45",
-      "passed": "722",
-      "modified": "31",
-      "total": "798"
+        {
+            "name": "Scan Station",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "45",
+            "passed": "722",
+            "modified": "31",
+            "total": "798"
     },
-    {
-      "name": "Scan Station",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "107",
-      "passed": "801",
-      "modified": "67",
-      "total": "975"
+        {
+            "name": "Scan Station",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "107",
+            "passed": "801",
+            "modified": "67",
+            "total": "975"
     },
-    {
-      "name": "Scan Station 2",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "30",
-      "passed": "64",
-      "modified": "109",
-      "total": "203"
+        {
+            "name": "Scan Station 2",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "30",
+            "passed": "64",
+            "modified": "109",
+            "total": "203"
     },
-    {
-      "name": "ICAP",
-      "iconURL": "icons/ncIcap.svg",
-      "blocked": "345",
-      "passed": "468",
-      "modified": "109",
-      "total": "922"
+        {
+            "name": "ICAP",
+            "iconURL": "icons/ncIcap.svg",
+            "blocked": "345",
+            "passed": "468",
+            "modified": "109",
+            "total": "922"
     },
-    {
-      "name": "API",
-      "iconURL": "icons/ncApi.svg",
-      "blocked": "328",
-      "passed": "1798",
-      "modified": "983",
-      "total": "3109"
+        {
+            "name": "API",
+            "iconURL": "icons/ncApi.svg",
+            "blocked": "328",
+            "passed": "1798",
+            "modified": "983",
+            "total": "3109"
     },
-    {
-      "name": "Directory Watcher",
-      "iconURL": "icons/ncDirWatcher.svg",
-      "blocked": "129",
-      "passed": "802",
-      "modified": "53",
-      "total": "984"
+        {
+            "name": "Directory Watcher",
+            "iconURL": "icons/ncDirWatcher.svg",
+            "blocked": "129",
+            "passed": "802",
+            "modified": "53",
+            "total": "984"
     },
-    {
-      "name": "Email",
-      "iconURL": "icons/ncEmail.svg",
-      "blocked": "345",
-      "passed": "209",
-      "modified": "108",
-      "total": "662"
+        {
+            "name": "Email",
+            "iconURL": "icons/ncEmail.svg",
+            "blocked": "345",
+            "passed": "209",
+            "modified": "108",
+            "total": "662"
     },
-    {
-      "name": "Endpoint",
-      "iconURL": "icons/ncEndpoint.svg",
-      "blocked": "207",
-      "passed": "22",
-      "modified": "321",
-      "total": "550"
+        {
+            "name": "Endpoint",
+            "iconURL": "icons/ncEndpoint.svg",
+            "blocked": "207",
+            "passed": "22",
+            "modified": "321",
+            "total": "550"
     },
-    {
-      "name": "Cloud Mail",
-      "iconURL": "icons/ncEmail.svg",
-      "blocked": "189",
-      "passed": "654",
-      "modified": "230",
-      "total": "1073"
+        {
+            "name": "Cloud Mail",
+            "iconURL": "icons/ncEmail.svg",
+            "blocked": "189",
+            "passed": "654",
+            "modified": "230",
+            "total": "1073"
     },
-    {
-      "name": "Scan Station",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "45",
-      "passed": "722",
-      "modified": "31",
-      "total": "798"
+        {
+            "name": "Scan Station",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "45",
+            "passed": "722",
+            "modified": "31",
+            "total": "798"
     },
-    {
-      "name": "Scan Station",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "107",
-      "passed": "801",
-      "modified": "67",
-      "total": "975"
+        {
+            "name": "Scan Station",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "107",
+            "passed": "801",
+            "modified": "67",
+            "total": "975"
     },
-    {
-      "name": "Scan Station 2",
-      "iconURL": "icons/ncStation.svg",
-      "blocked": "30",
-      "passed": "64",
-      "modified": "109",
-      "total": "203"
+        {
+            "name": "Scan Station 2",
+            "iconURL": "icons/ncStation.svg",
+            "blocked": "30",
+            "passed": "64",
+            "modified": "109",
+            "total": "203"
     },
-    {
-      "name": "ICAP",
-      "iconURL": "icons/ncIcap.svg",
-      "blocked": "345",
-      "passed": "468",
-      "modified": "109",
-      "total": "922"
+        {
+            "name": "ICAP",
+            "iconURL": "icons/ncIcap.svg",
+            "blocked": "345",
+            "passed": "468",
+            "modified": "109",
+            "total": "922"
     },
-    {
-      "name": "API",
-      "iconURL": "icons/ncApi.svg",
-      "blocked": "328",
-      "passed": "1798",
-      "modified": "983",
-      "total": "3109"
+        {
+            "name": "API",
+            "iconURL": "icons/ncApi.svg",
+            "blocked": "328",
+            "passed": "1798",
+            "modified": "983",
+            "total": "3109"
     },
-    {
-      "name": "Directory Watcher",
-      "iconURL": "icons/ncDirWatcher.svg",
-      "blocked": "129",
-      "passed": "802",
-      "modified": "53",
-      "total": "984"
+        {
+            "name": "Directory Watcher",
+            "iconURL": "icons/ncDirWatcher.svg",
+            "blocked": "129",
+            "passed": "802",
+            "modified": "53",
+            "total": "984"
     }
   ],
-  "policyDefinition": [
-    {
-      "name": "WINDOWS",
-      "exec": ["EXE"]
+    "policyDefinition": [
+        {
+            "name": "WINDOWS",
+            "exec": ["EXE"]
     },
-    {
-      "name": "MAC",
-      "exec": ["DMG", "APP"]
-     
+        {
+            "name": "MAC",
+            "exec": ["DMG", "APP"]
+
     },
-      {
-      "name": "JAVA",
-      "exec": ["JAR"]
+        {
+            "name": "JAVA",
+            "exec": ["JAR"]
     },
-      {
-      "name": "LINUX",
-      "exec": ["SH", "DEB", "KO", "RPM", ".PY"]
+        {
+            "name": "LINUX",
+            "exec": ["SH", "DEB", "KO", "RPM", ".PY"]
     }
-      
-  ]
+
+  ],
+    "policyDescriptionToolip": [
+
+        {
+            "name": "Process embedeed Files",
+            "description": "Check this box if you want to do any processing on embbeded files"
+
+    },
+        {
+            "name": "Size Limit",
+            "description": "Set a size limit for the executable"
+        },
+        {
+            "name": "Sandbox",
+            "description": "Use sandbox default processes for the executable"
+        },
+        {
+            "name": "Add Exception",
+            "description": "Click here to set exceptions for users, or computers. These will not be subjected to the default policy set here"
+        }
+], 
+    "activeUsers":
+    [
+        {
+            "name": "David Zaffran",
+            "team": "Finance"
+        },
+        {
+            "name": "Laureen Hazan",
+            "team": "Marketing"
+        },
+        {
+            "name": "Deborah Touati",
+            "team": "Marketing"
+        },
+        {
+            "name": "Benjamin Fedida",
+            "team": "Sales"
+        },
+        {
+            "name": "David Lafond",
+            "team": "Sales"
+        },
+        {
+            "name": "Haim Sebbag",
+            "team": "Accounting"
+        },
+        {
+            "name": "Jonathan Oliel",
+            "team": "Accounting"
+        },
+        {
+            "name": "Alex Zarouk",
+            "team": "Developement"
+        },
+        {
+            "name": "Maude Gawsewitch",
+            "team": "Marketing"
+        },
+        {
+            "name": "Abigail Avery",
+            "team": "Communication"
+        },
+        {
+            "name": "Liam Kerr",
+            "team": "CPA"
+        },
+        {
+            "name": "Marshall Mathis",
+            "team": "HR"
+        },
+        {
+            "name": "Vance Vaughan",
+            "team": "HR"
+        }
+    ]
 }

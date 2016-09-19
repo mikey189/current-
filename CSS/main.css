@@ -1,4 +1,8 @@
 
+/*adding this property on ng-hide makes transitions on ng-show much faster (see exception row in policy defintion for more details)*/
+.ng-hide.ng-hide-animate{
+     display: none !important;
+}
 
 
 /* custom switcher with background color: on -> turquoise
@@ -308,6 +312,7 @@ md-list-item>md-button {
     background-color: #190051;
     z-index: 99;
     width: auto;
+    padding-right: 2em;
 }
 
 .center {

@@ -55,6 +55,7 @@ app.factory("dashboardData", function ($http) {
 
 app.factory("policyData", function ($http) {
     var url = "http://localhost:3000/policyDefinition";
+    var url2 = "http://localhost:3000/policyDescriptionToolip";
     return {
         addData: function (data) {
             return $http({
@@ -69,6 +70,23 @@ app.factory("policyData", function ($http) {
         getData: function () {
             return $http.get(url).then(function (response) {
                 return response.data
+            })
+        },
+        getDescriptions(){
+            return $http.get(url2).then(function(response){
+                return response.data
+            })
+        }
+    }
+})
+
+
+app.factory("users", function($http){
+    var url = "  http://localhost:3000/activeUsers";
+    return{
+        getUsers: function(){
+            return $http.get(url).then(function(answer){
+                return answer.data;
             })
         }
     }

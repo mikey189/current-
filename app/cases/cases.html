@@ -1,13 +1,14 @@
+<link rel="stylesheet" href="app/cases/style.css" />
+
 <md-button edit-mode class="md-raised bold" id="editButtonPolicy">Edit</md-button>
 <div layout-margin>
     <table id="ctCollapseTable" class="table table-responsive notEditable" md-whiteframe="6">
         <thead>
-            <th></th>
+            <th id="ct1stRow"></th>
             <th id="ctAllow">Allow</th>
-            <th class="advanced hidden">Process Embedded Files</th>
-            <th class="advanced hidden">Size Limit</th>
-            <th class="advanced hidden" id="ctSandbox">Sandbox</th>
-            <th class="advanced hidden">Add Exception</th>
+            <th class="advanced hidden" ng-repeat="h in ctrl.headers">{{h.name}}
+                <ct-description></ct-description>
+            </th>
         </thead>
         <tbody class="policyRowsDef" ng-repeat="i in ctrl.dataSet">
             <tr class="osParent" show-children>
@@ -15,7 +16,8 @@
                     <md-icon class="material-icons">keyboard_arrow_right</md-icon>{{i.name}}</td>
                 <td colspan="6"></td>
             </tr>
-            <tr class="hidden child" ng-repeat="x in i.exec">
+
+            <tr class="hidden child" ng-repeat="x in i.exec" class="ncTypeRows">
                 <td class="ctEXName">{{x}}</td>
                 <td>
                     <md-checkbox ng-model="ctrl.obj[i.name][x]['allow']" aria-label="ctrl.obj[i.name]['allow']"></md-checkbox>
@@ -24,7 +26,7 @@
                     <md-checkbox ng-model="ctrl.obj[i.name][x]['processEmbbededFiles']" aria-label="ctrl.obj[i.name]['process']"></md-checkbox>
                 </td>
                 <td class="advanced hidden">
-                    <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" type="number" class="ctInput"/>
+                    <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" type="number" class="ctInput" />
                     <md-button edit-field>
                         <md-icon class="material-icons">edit</md-icon>
                     </md-button>
@@ -33,7 +35,7 @@
                     <md-checkbox ng-model="ctrl.obj[i.name][x]['sandbox']" aria-label="ctrl.obj[i.name]['sizeLimit']"></md-checkbox>
                 </td>
                 <td class="advanced hidden">
-                    <md-button ng-click="">
+                    <md-button show-exception-row>
                         <md-icon class="material-icons">add</md-icon>
                     </md-button>
                 </td>
@@ -42,72 +44,4 @@
     </table>
 </div>
 <md-button show-advanced-mode class="md-raised bold" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
-
 <!-- <md-checkbox activeMe aria-label="os" ng-model="ctrl.obj[i.name]['allowExec']"></md-checkbox>-->
-
-<style>
-    #editButtonPolicy {
-        background-color: #23CCC7;
-        color: white
-    }
-    
-    #showAdvanceButton {
-        background-color: #23CCC7;
-        color: white
-    }
-    
-    .bold {
-        font-weight: bold;
-    }
-    
-    #ctCollapseTable> thead {
-        background-color: white !important;
-    }
-    
-    #ctCollapseTable> tr{
-        background-color: white;
-    }
-    .hiddenOS {
-        visibility: collapse;
-    }
-    
-    
-    .executablesRow {
-        background-color: white !important;
-    }
-    
-    .hidden {
-        visibility: none;
-    }
-    
-    .notEditable {
-        pointer-events: none;
-    }
-    
-    .policyRowsDef> tr {
-        border-bottom: solid 2px #f1f1f1;
-        background-color: white !important;
-    }
-    
-    .policyRowsDef> tr> td> md-checkbox {
-        margin-bottom: 0px !important;
-    }
-    
-    .ctEXName {
-        background-color: white;
-    }
-    .ctInput{
-        height: 2.3em;
-        border-radius: 5px;
-        padding-left: 5px;
-    }
-   
-    .inputEnabled{
-        background-color: yellow !important; 
-    }
-    
-    .inputDisabled{
-        background-color: red !important;
-    }
-    
-</style>

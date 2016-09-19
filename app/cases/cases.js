@@ -1,20 +1,32 @@
 app.controller("cases", ["policyData", function (policyData) {
 
-    var c = this;
-    c.data;
-    c.dataSet = [];
-    c.obj = {};
+    var self = this;
+    self.data;
+    self.dataSet = [];
+    self.obj = {};
+    self.readonly = false;
+    self.removable = true;
+    
+    self.userList = [];
+    
+    //loading table data
     policyData.getData().then(function (answer) {
-        c.data = answer;
-        for (i = 0; i < c.data.length;) {
-            c.dataSet.push(c.data[i]);
+        self.data = answer;
+        for (i = 0; i < self.data.length;) {
+            self.dataSet.push(self.data[i]);
             i++;
         }
-
     })
-    
-    c.saveData = function(){
-        
-    }
+    self.saveData = function () {
 
+    }
+    //loading th sections with descriptions
+    policyData.getDescriptions().then(
+        function (answer) {
+            self.headers = answer;
+        }
+    )
+
+    self.showException = false;
+   
 }])
