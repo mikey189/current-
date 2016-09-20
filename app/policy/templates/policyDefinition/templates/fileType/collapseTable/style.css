@@ -1,55 +1,99 @@
-#PDCollapseTable{
-    background-color: white;
+ #editButtonPolicy {
+     background-color: #23CCC7;
+     color: white;
+     margin-left: 0px;
+ }
+ 
+ #showAdvanceButton {
+     background-color: #23CCC7;
+     color: white;
+     margin-right: 0px;
+ }
+ 
+ #ct1stRow {
+     width: 12%;
+ }
+ 
+ .bold {
+     font-weight: bold;
+ }
+ 
+ #ctCollapseTable> thead {
+     background-color: white !important;
+ }
+.osParent > td{
+    padding-right: 0px !important;
 }
-
-.skyBlueTD{
-    background-color: #E0E9F7;
-    border-bottom: solid 1px #E0E9F7;
-}
-
-.collapseTableBorder{
-    border-bottom: solid 2px #f1f1f1 !important;
-}
-.PDCollapseTableSelect{
-    border: 0px;
-    background-color: white;
-    width: 100%;
-}
-
-md-checkbox{
-    margin-bottom: 0px;
-}
-.windows > td{
-    padding-bottom: 0px !important;
+ .executablesRow {
+     background-color: white !important;
+ }
+ 
+ .hidden {
+     visibility: none;
+ }
+ 
+ .ctEXName {
+     text-align: right;
+ }
+ 
+ .notEditable {
+     pointer-events: none;
+ }
+ 
+ .policyRowsDef> tr {
+     border-bottom: solid 2px #f1f1f1;
+ }
+ 
+ .osParent {
+     background-color: white;
+ }
+ 
+ .policyRowsDef> tr> td> md-checkbox {
+     margin-bottom: 0px !important;
+ }
+ 
+ .ctInput {
+     height: 2.3em;
+     border-radius: 5px;
+     padding-left: 5px;
+     background-color: white !important;
+     margin-top: 11.2px;
+     margin-bottom: 11.2px;
+     
+ }
+ 
+ .ctInput[disabled] {
+     background-color: #D2D9E6 !important;
+ }
+ 
+ .ncTypeRows {
+     background-color: red !important;
+     border-bottom: solid 2px #f1f1f1 !important;
+ }
+ 
+ .pdGreenButton {
+     background-color: #23CCC7 !important;
+ }
+ 
+ .pdGreenButton> md-icon {
+     color: white !important;
+ }
+ 
+ .pdExceptionRow {
+     border-left: solid 4px #E29C2F !important;
+     background-color: #F7EDE3 !important;
+ }
+.pdExceptionRow > td {
     padding-top: 0px !important;
-    border-right: solid 2px #f1f1f1 !important;
-}
-.mac > td{
     padding-bottom: 0px !important;
-    padding-top: 0px !important;
-    border-right: solid 2px #f1f1f1 !important;
 }
-.linux > td{
-    padding-bottom: 0px !important;
-    padding-top: 0px !important;
-    border-right: solid 2px #f1f1f1 !important;
+ 
+ .warningEditMode {
+     background-color: #FF1744 !important;
+ }
+#actionButtonsWrapper{
+    margin-bottom: 1em;
 }
-.java > td{
-    padding-bottom: 0px !important;
-    padding-top: 0px !important;
-    border-right: solid 2px #f1f1f1 !important;
-}
-md-checkbox.md-default-theme.md-checked ._md-icon, md-checkbox.md-checked ._md-icon{
- background-color: #23CCC7;
-}
-md-checkbox.md-default-theme.md-checked ._md-icon:after, md-checkbox.md-checked ._md-icon:after{
-    border-color: white;
-}
-md-checkbox.md-default-theme ._md-icon, md-checkbox ._md-icon{
-    border-color: #23CCC7;
-}
-
-#executables{
-    background-color: #C3CFE8;
-    color: #666AB9;
+.child{
+    background-color: #f1f1f1;
 }

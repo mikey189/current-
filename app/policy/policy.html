@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/style.css"/>
+
 <div layout='column' layout-gt-sm='column' id='policyMainContent' ng-cloak> 
    <top-toolbar></top-toolbar>
     <div layout='row' flex>
@@ -6,9 +8,9 @@
             <policy-graph-toolbar></policy-graph-toolbar>
             <nav class="container md-whiteframe-8dp" id="policyMainNav">
                 <ul class="nav nav-justified" id="policyNav">
-                    <li><a ui-sref="app.policy.dashboard"><strong>POLICY DASHBOARD</strong></a></li>
-                    <li><a ui-sref="app.policy.definition.fileType"><strong>WHAT IS THIS POLICY</strong></a></li>
-                    <li><a ui-sref="app.policy.who"><strong>WHO USES THIS POLICY?</strong></a></li>
+                    <li><a ui-sref="app.policy.dashboard" ui-sref-active="UISelectedNav"><strong>POLICY DASHBOARD</strong></a></li>
+                    <li><a ui-sref="app.policy.definition.fileType" ui-sref-active="UISelectedNav"><strong>WHAT IS THIS POLICY</strong></a></li>
+                    <li><a ui-sref="app.policy.who" ui-sref-active="UISelectedNav"><strong>WHO USES THIS POLICY?</strong></a></li>
                 </ul>
             </nav>
             <div ui-view class="container" ng-cloak id="policyDefintionView"></div>

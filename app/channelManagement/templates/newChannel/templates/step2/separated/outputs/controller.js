@@ -34,6 +34,11 @@ app.controller("separated.outputs", ["C2CData", "channelData", function (C2CData
             }
         }
         self.channel.outputSettings = self.outputSettings;
-        console.log(self.channel)
+        
+        
+        channelData.addChannel(self.channel);
+        
+        
+        console.log(self.channel);
     }
 }])

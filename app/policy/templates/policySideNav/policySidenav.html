@@ -1,6 +1,6 @@
 <md-sidenav layout-padding md-component-id='policySidenav' id='policySidenav' md-is-locked-open="$mdMedia('gt-lg')">
             <div layout='row' layout-align='start center'>
-                <h4 flex='66' class='white'><strong>Policy Center</strong></h4>
+                <h4 flex='66' class='white'><strong>Policy</strong></h4>
                 <div flex='33' layout='row'>
                     <md-button class='fullWidthButton'>
                         <md-tooltip md-direction="bottom">add</md-tooltip>
@@ -18,8 +18,7 @@
                 <input ng-model="user.firstName">
             </md-input-container>
           
-            <md-virtual-repeat-container id='repeatContainerPolicySidenav'>
-            <md-list>
+            <md-list id='repeatContainerPolicySidenav'>
                 <md-list-item id='policySidenavListItems' layout='column'>
                     <md-button style='width: 100%' class='special noVerticalPadding' layout-align='center start' layout-padding><div layout-padding class='noVerticalPadding' layout='row'  layout-align="space-between center">
                         <p class='md-body-2
@@ -189,5 +188,4 @@
                 <div class='separator'></div>
                 
             </md-list>
-            </md-virtual-repeat-container>
         </md-sidenav>

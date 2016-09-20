@@ -3,7 +3,9 @@
 .ng-hide.ng-hide-animate{
      display: none !important;
 }
-
+md-chips .md-chips.md-focused, md-chips .md-chips.md-focused{
+    box-shadow: 0 2px #23CCC7 !important;
+}
 
 /* custom switcher with background color: on -> turquoise
 off -> red

@@ -17,6 +17,7 @@
     <!--<link rel='stylesheet' href="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.css"/>-->
     <link rel='stylesheet' href='login/login.css' />
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+ 
     <!-- data table : to load for data tables 
     <link src="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>-->
     <!--<script>
@@ -39,7 +40,7 @@
     <script src='JS/libraries/chart.js'></script>
     <script src='JS/libraries/angular-chart.js'></script>
     <script src='JS/libraries/angular-chart.js'></script>
-    <script src='JS/libraries/ngMdIcons.js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
@@ -109,7 +110,6 @@
     <script src='app/dashboard/templates/toolbarTop/toolbarTop.js'></script>
     <script src='app/policy/directives.js'></script>
     <script src='app/policy/policy.js'></script>
-    <script src='app/policy/templates/addException/addException.js'></script>
     <script src='app/policy/templates/customTable/customTable.js'></script>
     <script src='app/policy/templates/exceptionRow/exceptionRow.js'></script>
     <script src='app/policy/templates/policyDashboardTab/policyDashboardTab.js'></script>
@@ -118,7 +118,7 @@
     <script src='app/policy/templates/policyDefinition/templates/detection/detection.js'></script>
     <script src='app/policy/templates/policyDefinition/templates/fileType/fileType.js'></script>
     <script src='app/policy/templates/policyDefinition/templates/fileType/collapseTable/controller.js'></script>
-    <script src='app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/controller.js'></script>
+    <script src='app/policy/templates/policyDefinition/templates/fileType/collapseTable/directives.js'></script>
     <script src='app/policy/templates/policyDefinition/templates/settings/settings.js'></script>
     <script src='app/policy/templates/policyDefinition/templates/settings/mailSubject/mailSubject.js'></script>
     <script src='app/policy/templates/policyGraphToolbar/policyGraphToolbar.js'></script>
@@ -134,10 +134,16 @@
     <script src='app/settings/settings.js'></script>
     <!-- load this one for data table 
     <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script> -->
+    
+    
+    
+    
+    
+    
 </head>
 
 <body ng-app="resec">
-    <div data-ui-view ng-cloak></div>
+    <div data-ui-view class="animated fadeIn" ng-cloak></div>
 </body>
 
 </html>

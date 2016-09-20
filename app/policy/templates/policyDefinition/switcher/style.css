@@ -16,10 +16,12 @@
     color: #484554 !important;
 }
 
-.roundedTabSelector:hover{
-    color: white !important;
-}
+
 .roundedTabSelector:focus{
     background-color: #6B69EB !important;
     color: white !important;   
+}
+.policyInnerNavUISelected{
+    background-color: #6B69EB;
+    color: white !important;
 }

@@ -1,47 +1,55 @@
-<link rel="stylesheet" href="app/cases/style.css" />
-
-<md-button edit-mode class="md-raised bold" id="editButtonPolicy">Edit</md-button>
-<div layout-margin>
-    <table id="ctCollapseTable" class="table table-responsive notEditable" md-whiteframe="6">
-        <thead>
-            <th id="ct1stRow"></th>
-            <th id="ctAllow">Allow</th>
-            <th class="advanced hidden" ng-repeat="h in ctrl.headers">{{h.name}}
-                <ct-description></ct-description>
-            </th>
-        </thead>
-        <tbody class="policyRowsDef" ng-repeat="i in ctrl.dataSet">
-            <tr class="osParent" show-children>
-                <td>
-                    <md-icon class="material-icons">keyboard_arrow_right</md-icon>{{i.name}}</td>
-                <td colspan="6"></td>
-            </tr>
-
-            <tr class="hidden child" ng-repeat="x in i.exec" class="ncTypeRows">
-                <td class="ctEXName">{{x}}</td>
-                <td>
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['allow']" aria-label="ctrl.obj[i.name]['allow']"></md-checkbox>
-                </td>
-                <td class="advanced hidden">
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['processEmbbededFiles']" aria-label="ctrl.obj[i.name]['process']"></md-checkbox>
-                </td>
-                <td class="advanced hidden">
-                    <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" type="number" class="ctInput" />
-                    <md-button edit-field>
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="advanced hidden">
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['sandbox']" aria-label="ctrl.obj[i.name]['sizeLimit']"></md-checkbox>
-                </td>
-                <td class="advanced hidden">
-                    <md-button show-exception-row>
-                        <md-icon class="material-icons">add</md-icon>
-                    </md-button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<md-button show-advanced-mode class="md-raised bold" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
-<!-- <md-checkbox activeMe aria-label="os" ng-model="ctrl.obj[i.name]['allowExec']"></md-checkbox>-->
+<table class="table table-responsive" md-whiteframe="6">
+    <thead>
+        <th>
+            <md-icon class="material-icons">location_searching</md-icon>
+            Scanners
+        </th>
+        <th>
+            <md-checkbox aria-label="use scanners"></md-checkbox>
+        </th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Avira</td>
+            <td><md-checkbox aria-label="useavria"></md-checkbox></td>
+        </tr>
+        <tr>
+            <td>Clam</td>
+            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
+        </tr>
+        <tr show-fireeye-sandbox>
+            <td>FireEye Sandbox</td>
+            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
+        </tr>
+        <tr class="fireEyeSandbox hidden">
+            <td>Use FireEye servers for this policy</td>
+            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
+        </tr>
+        <tr class="fireEyeSandbox hidden">
+            <td>Check File Types</td>
+            <td><md-checkbox aria-label="filetype"></md-checkbox></td>
+        </tr>
+        <tr show-cukoo-sandbox>
+            <td>FireEye Sandbox</td>
+            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
+        </tr>
+        <tr class="cukoo hidden">
+            <td>Use Cukoo servers for this policy</td>
+            <td><md-checkbox aria-label="cukooServers"></md-checkbox></td>
+        </tr>
+        <tr class="cukoo hidden">
+            <td>Check File Types</td>
+            <td><md-checkbox aria-label="cukootype"></md-checkbox></td>
+        </tr>
+        <tr>
+            <td>Vendor Signing</td>
+            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
+        </tr><tr>
+            <td>XML Validation</td>
+            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
+        </tr><tr>
+            <td>Regular Expression</td>
+            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
+        </tr>
+    </tbody>
+</table>

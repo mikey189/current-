@@ -1,261 +1,31 @@
-app.controller("PDCollapseTable", ['$mdDialog', '$scope', function ($mdDialog, $scope) {
+app.controller("PDCollapseTable", ["policyData", function (policyData) {
 
-    this.th = ["Allow", "Size Limit", "Transform", "Process Embbeded files", "Sandbox", "Exception"];
+    var self = this;
+    self.data;
+    self.dataSet = [];
+    self.obj = {};
+    self.readonly = false;
+    self.removable = true;
 
-    $(document).ready(function () {
-        var execRow = $("#executables")
-        var osRow = $(".os")
-        var childrenRow = $(".collapseMe")
-        execRow.click(function () {
-            if (childrenRow.attr("aria-expanded", true)) {
-                childrenRow.removeClass("in")
-                osRow.removeClass("in")
-            } else {
-                osRow.attr("aria-expanded", true);
-            }
-        })
+    self.exceptionUsers = [];
+    //loading table data
+    policyData.getData().then(function (answer) {
+        self.data = answer;
+        for (i = 0; i < self.data.length;) {
+            self.dataSet.push(self.data[i]);
+            i++;
+        }
     })
-
-
-    //initiate $scope.clickedID to recover the value from the click and pass it to the exeption window template
-    $scope.clickedID;
-    /*getting the id from the click element and storing on the $scope to pass it to the exception window*/
-    angular.element(document).find('.getID').click(function () {
-        $scope.clickedID = this.id;
-        $scope.contextExt = "";
-        $scope.transform = function () {
-            $scope.filterID = $scope.clickedID.split(".");
-            $scope.os = $scope.filterID[0];
-            $scope.extension = $scope.filterID[1].toUpperCase();
-            return $scope.os;
-            return $scope.extension;
-
+    self.saveData = function () {
 
         }
-        $scope.transform();
-    });
-
-    //defining the method to pop up the exception window//
-
-    this.showAdvanced = function (ev) {
-
-        $mdDialog.show({
-                templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/exe.html',
-                parent: angular.element(document.querySelector("#PDCollapseTable")),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                //exception window will inherit of the scope of this controller//
-                scope: $scope,
-                //if preserveScope is not present, then $mdDialog will only open once and will not reopen after being closed DO NOT REMOVE
-                preserveScope: true
-            })
-            .then(function (answer) {
-                this.status = 'You said the information was "' + answer + '".';
-            }, function () {
-                this.status = 'You cancelled the dialog.';
-            });
-
-    };
-
-
-    this.cancel = function () {
-        $mdDialog.cancel();
-    }
-
-
-    this.title = "Add an Exception";
-    this.sizeLimit = 1;
-    this.process = true;
-    this.sandbox = false;
-    this.users = [];
-
-    this.usersReadOnly = false;
-    this.computers = [];
-    this.computersReadOnly = false;
-    this.groups = [];
-    this.groupsReadOnly = false;
-    console.log($scope.test);
-    /*<option ng-repeat = "x in ctrl.windows[0]['JPG'][0]['transform']" ng-model="ctrl.windows[0]['JPG'][0]['transform']">{{x}}</option>*/
-
-
-
-    this.exceptionItems = function () {
-        this.items = {
-            "context": $scope.clickedID,
-            users: this.users,
-            "groups": this.groups,
-            "computers": this.computers
+        //loading th sections with descriptions
+    policyData.getDescriptions().then(
+        function (answer) {
+            self.headers = answer;
         }
-        console.log(this.items)
-        return this.items;
-    }
+    )
 
-
-    this.closeDialog = function () {
-        $mdDialog.hide();
-        this.exceptionItems();
-
-    }
-
-
-
-    $scope.selectData = [
-        {
-            "JPG": ["None", "Transform & Sign", "Tranform, sign & blur"]
-        },
-
-        {
-            "CSV": ["None", "XLS -> PDF", "Standard", "Custom"]
-                },
-        {
-            "XLS": ["None", "XLS -> PDF", "Standard", "Custom"]
-        },
-        {
-            "EXE": "N/A"
-        },
-        {
-            "JAR": "N/A"
-        },
-        {
-            "ELF": "N/A"
-        }
-
-
-]
-
-
-    this.windows = [
-        {
-            "EXE": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["N/A"]
-
-            }
-
-            ],
-            "COM": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "MSI": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 1.1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ],
-            "SYS": [
-                {
-                    "isAllowed": false,
-                    "sizeLimit": 870 + "KB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": false,
-                    "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
-
-            }
-
-            ]
-
-        }
-
-
-
-        ]
-
-
-
-    this.mac = [
-        {
-            "DMG": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["N/A"]
-
-            }
-
-            ],
-            ".APP": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
-
-            }
-
-            ]
-
-        }
-
-
-
-        ]
-
-
-    this.linux = [
-        {
-            "ELF": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["N/A"]
-
-            }
-
-            ]
-        }
-
-
-
-        ]
-
-
-    this.java = [
-        {
-            "JAR": [
-                {
-                    "isAllowed": true,
-                    "sizeLimit": 1 + "MB",
-                    "process": true,
-                    "sandbox": false,
-                    "exception": true,
-                    "transform": ["N/A"]
-
-            }
-
-            ]
-        }
-
-
-
-        ]
+    self.showException = false;
 
 }])
