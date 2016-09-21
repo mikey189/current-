@@ -1,6 +1,19 @@
-.md-36{
-    min-height: 36px !important;
-    min-width: 36px !important;
+#il{
+    margin-bottom: 1em;
+}
+#ol{
+    margin-bottom: 1em;
+}
+#ilWrapper{
+    width: 49%;
+}
+#olWrapper{
+    width: 49%;
+}
+
+.md-46{
+    min-height: 46px !important;
+    min-width: 46px !important;
   
 }
 #theRow{
@@ -8,6 +21,9 @@
     margin-top: 1.5em;
 }
 .ncitName{
+    margin-top: 1em;
+}
+.ncotName{
     margin-top: 1em;
 }
 #ncInputSettings{
@@ -78,4 +94,30 @@
 .noVP{
     padding-top: 0px;
     padding-bottom: 0px;
+}
+
+.ncotWrapper .ncitWrapper {
+    background-color: white;
+}
+.ncioTitleWrapper{
+    margin: 2em 0px;
+}
+.ncPaddingTop{
+    padding-top: 1em;
+}
+.ncPaddingBottom{
+    padding-bottom: 1em;
+}
+
+.ncSelected{
+    background-color: #6B69EA;
+    color: white;
+    border-radius: 5px;
+}
+
+.ncSelected > md-content{
+    color: white;
+}
+.ncIconSelected{
+    fill : white;
 }

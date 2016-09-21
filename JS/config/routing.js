@@ -125,12 +125,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'separated.inputs',
             controllerAs: 'ctrl'
         })
-        .state('app.channelManagement.newChannel.SOutputs', {
-            url: '/channelManagementNewChannelS2SeparatedOutputs',
-            templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/outputs/outputs.html',
-            controller: 'separated.outputs',
-            controllerAs: 'ctrl'
-        })
+        
         .state('app.channelManagement.newChannel.SSettings', {
             url: '/channelManagementNewChannelS2SeparatedSettings',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/settings/settings.html',

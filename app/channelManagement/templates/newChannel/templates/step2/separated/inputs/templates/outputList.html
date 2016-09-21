@@ -1,0 +1,20 @@
+<div class="ncioTitleWrapper">
+    <md-icon md-svg-src = "icons/ncOutput.svg"></md-icon>
+    <md-content class="md-title">Select Outputs</md-content>
+    
+</div>
+
+<div md-whiteframe="6" layout="column" id="theRow" layout-padding layout-align="space-around">
+    <div layout="row" layout-align="space-around center">
+        <div ng-repeat=" x in ctrl.iRow1" layout="column" layout-align="center center" nc-output-list-type class="ncotWrapper">
+            <md-icon md-svg-src="icons/{{x.icon}}" class="md-46 ncPaddingTop"></md-icon>
+            <md-content class="ncotName ncPaddingBottom">{{x.name}}</md-content>
+        </div>
+    </div>
+    <div layout="row" layout-align="space-around center">
+        <div ng-repeat=" x in ctrl.iRow2" layout="column" layout-align="center center" nc-output-list-type class="ncotWrapper">
+            <md-icon md-svg-src="icons/{{x.icon}}" class="md-46 ncPaddingTop"></md-icon>
+            <md-content class="ncotName ncPaddingBottom">{{x.name}}</md-content>
+        </div>
+    </div>
+</div>

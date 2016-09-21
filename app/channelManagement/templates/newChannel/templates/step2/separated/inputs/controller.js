@@ -1,35 +1,35 @@
 app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData, channelData) {
+    
     var self = this;
     self.channel = C2CData.get();
-    self.selectedInput = self.channel.generalInformations.channelTypeName;
+    
+    self.selectedInputS1 = self.channel.generalInformations.channelTypeName;
+    
+    self.selectedOutput;
+    self.showISMB = false; 
+    self.showOSMB = false; 
+    self.iSelected = false;
+    self.inputSettings = [];
+    self.outputSettings = [];
+    self.selectedInput= {};
+    self.inputsArray = [];
+
+    
     channelData.getInputList().then(function (response) {
-        self.rawData = response.data[0]
-        self.inputList = self.rawData[self.selectedInput];
-        self.width = 100 / self.inputList.length + "%"
+        self.iData = response.data[0]
+        self.inputList = self.iData[self.selectedInputS1];
+        self.totalLength = self.inputList.length;
+        self.iRow1 = self.inputList.slice(0,self.totalLength/2);
+        self.iRow2 = self.inputList.slice(self.totalLength/2, self.totalLength);
+        self.iWidth = 100 /self.iRow1.length + "%";
+        self.oWidth = 100/self.iRow2.length + "%"
     })
-    self.passDataS3 = function () {
-        self.inputSettings = {
-            type: self.selectedInput,
-            rootFolder: self.rootFolder,
-            speedLimit: {
-                "size": self.speedLimit,
-                "unit": self.speedLimitUnit
-            },
-            userQuota: {
-                "size": self.userQuota,
-                "unit": self.userQuotaUnit
-            },
-            hoursToKeep: self.hoursToKeep,
-            permissions: self.permissions,
-            useRelay: self.useRelay,
-            overwriteExistingFiles: self.overwriteExistingFiles,
-            createZIP: self.createZIPFile,
-            mediaBurn: {
-                "state": self.allowMediaBurn,
-                "path": self.localPathForMediaBurn
-            }
-        }
-        self.channel.inputSettings = self.inputSettings;
-        console.log(self.channel)
+    
+    self.checker = function(){
+        console.log("input settings", self.inputSettings)
+        console.log("name array", self.inputsArray)
     }
+    
+    
+    
 }])

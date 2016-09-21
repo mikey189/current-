@@ -1,0 +1,114 @@
+<div id="ncInputSettings" md-whiteframe="6" layout="column">
+    <div layout="row" layout-align="start center" id="ncInputTitle">
+        <md-icon md-svg-src="icons/ncInputTitleSettings.svg" class="md-36"></md-icon>
+        <md-content>Output Settings</md-content>
+    </div>
+    <div layout="row" class="ncInputRow">
+        <div flex="40" class="ncBorderMe" layout-align="start center" layout="row" layout-padding>
+            <md-content class="md-heading">Root Folder</md-content>
+        </div>
+        <div flex layout="row" layout-align="space-between center" layout-padding>
+            <input placeholder="root folder" disabled class="ncInputListInput" ng-model="ctrl.rootFolder" />
+            <md-button edit-field aria-label="root folder" class="ncMdButton">
+                <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" class="ncInputRow">
+        <div flex="40" class="ncBorderMe" layout-align="start center" layout="row" layout-padding>
+            <md-content class="md-heading">Speed Limit</md-content>
+        </div>
+        <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
+            <input placeholder="Set Limit" disabled class="ncInputListInput" ng-model="ctrl.speedLimit" type="number" />
+            <md-button edit-field aria-label="Set Limit" class="ncMdButton">
+                <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
+            </md-button>
+        </div>
+        <div flex="15" layout-align="center end" layout="row">
+            <select class="ncInputListSelect" ng-model="ctrl.speedLimitUnit">
+                    <option>Bytes</option>
+                    <option ng-selected="true">MB</option>
+                    <option>GB</option>
+                </select>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" class="ncInputRow">
+        <div flex="40" class="ncBorderMe" layout-align="start center" layout="row" layout-padding>
+            <md-content class="md-heading">User Quota</md-content>
+        </div>
+        <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
+            <input placeholder="Set Quota" disabled class="ncInputListInput" ng-model="ctrl.userQuota" type="number" />
+            <md-button edit-field aria-label="Set quota" class="ncMdButton">
+                <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
+            </md-button>
+        </div>
+        <div flex="15" layout-align="center end" layout="row">
+            <select class="ncInputListSelect" ng-model="ctrl.userQuotaUnit">
+                    <option ng-selected="true">Bytes</option>
+                    <option>MB</option>
+                    <option>GB</option>
+                </select>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" class="ncInputRow">
+        <div flex="40" class="ncBorderMe" layout-align="start center" layout="row" layout-padding>
+            <md-content class="md-heading">Number of Hours to keep the files</md-content>
+        </div>
+        <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
+            <input placeholder="Set Number Of hours" disabled class="ncInputListInput" ng-model="ctrl.hoursToKeep" type="number" />
+            <md-button edit-field aria-label="Set hours" class="ncMdButton">
+                <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" class="ncInputRow">
+        <div flex="40" class="ncBorderMe" layout-align="start center" layout="row" layout-padding>
+            <md-content class="md-heading">New Folder Permissions</md-content>
+        </div>
+        <div flex layout="row" layout-align="center center" layout-padding class="ncInputNoVP">
+            <select class="ncInputListSelectFullWidth" ng-model="ctrl.permissions">
+                    <option ng-selected="true">Read</option>
+                    <option>Write</option>
+                    <option>Read &amp; Write</option>
+                </select>
+        </div>
+    </div>
+    <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
+        <div flex="40">
+            Use Relay
+        </div>
+        <div flex>
+            <md-switch class="customSwitch" aria-label="use relay" ng-model="ctrl.useRelay"></md-switch>
+        </div>
+    </div>
+    <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
+        <div flex="40">
+            Overwrite existing files
+        </div>
+        <div flex>
+            <md-switch class="customSwitch" aria-label="overwrite existing files" ng-model="ctrl.overwriteExistingFiles"></md-switch>
+        </div>
+    </div>
+    <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
+        <div flex="40">
+            Create a single ZIP File
+        </div>
+        <div flex>
+            <md-switch class="customSwitch" aria-label="create ZIP File" ng-model="ctrl.createZIPFile"></md-switch>
+        </div>
+    </div>
+    <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
+        <div flex="40">
+            Allow Media Burn
+        </div>
+        <div flex="20">
+            <md-switch id="toggleMediaBurner" class="customSwitch" aria-label="Allow Media Burn" ng-model="ctrl.allowMediaBurn" toggle-media-burn></md-switch>
+        </div>
+        <div flex class="hidden" id="mediaBurn" layout="row" layout-align="space-around center">
+            <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="ctrl.localPathForMediaBurn" />
+            <md-button edit-field aria-label="Media burn" class="ncMdButton">
+                <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
+            </md-button>
+        </div>
+    </div>
+</div>

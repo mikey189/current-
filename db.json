@@ -82,6 +82,61 @@
         }
       },
       "id": 4
+    },
+    {
+      "generalInformations": {
+        "channelTypeName": "endpoint",
+        "channelTypeIconUrl": "icons/ncEndpoint.svg"
+      },
+      "inputSettings": {
+        "type": "my documents",
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "outputSettings": {
+        "type": "my documents",
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "id": 5
+    },
+    {
+      "generalInformations": {
+        "channelTypeName": "endpoint",
+        "channelTypeIconUrl": "icons/ncEndpoint.svg"
+      },
+      "inputSettings": {
+        "type": "endpoint",
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "outputSettings": {
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "id": 6
+    },
+    {
+      "generalInformations": {
+        "channelTypeName": "endpoint",
+        "channelTypeIconUrl": "icons/ncEndpoint.svg"
+      },
+      "inputSettings": {
+        "type": "endpoint",
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "outputSettings": {
+        "speedLimit": {},
+        "userQuota": {},
+        "mediaBurn": {}
+      },
+      "id": 7
     }
   ],
   "channelsIcons": [
