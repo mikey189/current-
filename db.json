@@ -163,7 +163,11 @@
     {
       "icon": "icons/ncApi.svg",
       "name": "API"
-    }
+    },
+      {
+          "icon": "icons/ncRelay.svg",
+          "name": "Relay"
+      }
   ],
   "inputList": [
     {
@@ -191,14 +195,6 @@
         {
           "name": "Networks",
           "icon": "ncNetworks.svg"
-        },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
-        },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
         }
       ],
       "station": [
@@ -263,14 +259,6 @@
         {
           "name": "Networks",
           "icon": "ncNetworks.svg"
-        },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
-        },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
         }
       ],
       "station": [
@@ -297,14 +285,6 @@
         {
           "name": "Networks",
           "icon": "ncNetworks.svg"
-        },
-        {
-          "name": "Relay",
-          "icon": "ncRelay.svg"
-        },
-        {
-          "name": "Null",
-          "icon": "ncNull.svg"
         }
       ]
     }

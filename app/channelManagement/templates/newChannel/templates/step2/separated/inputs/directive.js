@@ -1,40 +1,55 @@
-app.directive("ncInputListType", function ($compile) {
+app.directive("addIsmb", function($compile){
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
+        link: function(scope, element, attrs){
+            element.bind("click", function(){
+                $(".iSMBHolder").append($compile("<i-smb></i-smb>")(scope));
+            })
+        }
+    }
+})
 
-            $(document).find(".ncitWrapper").css("width", scope.ctrl.iWidth)
-            var il = $(document).find("#il");
-            var iSMB = $(".iSMB");
-
-            element.bind("click", function () {
-
-                var self = $(this);
-                var icon = self.find("g");
-                if (scope.ctrl.iSelected) {
-                    self.addClass("ncSelected");
-                    icon.addClass("ncIconSelected");
-                    scope.ctrl.iSelected = false;
-                } else {
-
-                    self.removeClass("ncSelected");
-                    icon.removeClass("ncIconSelected");
-                    scope.ctrl.iSelected = true;
-                }
-
-                /*if (scope.ctrl.selectedInput == "relay" && self.hasClass("ncSelected")) {
-                    iSMB.removeClass("hidden")
-                } else {
-                    iSMB.addClass("hidden")
-                }
-*/
-
+app.directive("addOsmb", function($compile){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.bind("click", function(){
+                $(".oSMBHolder").append($compile("<o-smb></o-smb>")(scope));
             })
         }
     }
 })
 
 
+
+
+app.directive("ncInputListType", function ($compile) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+
+            var il = $(document).find("#il");
+
+            element.bind("click", function () {
+
+                var self = $(this);
+                var icon = self.find("g");
+                scope.ctrl.selectedInput = $(this).find("md-content").html().toLowerCase();
+                if (scope.ctrl.iSelected) {
+                    self.addClass("iSelected");
+                    icon.addClass("ncIconSelected");
+                    scope.ctrl.iSelected = false;
+                } else {
+
+                    self.removeClass("iSelected");
+                    icon.removeClass("ncIconSelected");
+                    scope.ctrl.iSelected = true;
+                }
+
+            })
+        }
+    }
+})
 
 app.directive("checkInputs", function () {
     return {
@@ -42,30 +57,48 @@ app.directive("checkInputs", function () {
         link: function (scope, element, attrs) {
 
             element.bind("click", function () {
-                var selected = $(document).find(".ncSelected");
-                    scope.ctrl.inputSettings = [];  
-                
-                    selected.each(function(){
-                    scope.ctrl.selectedInput.name = $(this).find(".ncitName").html().toLowerCase();
-                    console.log(scope.ctrl.selectedInput.name)
-                    scope.ctrl.selectedInput.isActive = true;
-                      
-                    scope.ctrl.inputSettings.push(scope.ctrl.selectedInput)
 
-                 })
+                /*create array outside of for each loop to retrieve it later BUTT
+                all var related to the 'each' call should be as var otherwise they 
+                will be  local and each call will only return the last object*/
 
-
-                console.log(scope.ctrl.inputSettings)
+                var inputSettings = [];
+                var outputSettings = [];
+                $('.iSelected').each(function () {
+                    
+                    var that = $(this);
+                    var selectedInput = {};
+                    var inputSMBSettings = {};
+                    selectedInput.input = that.find("md-content").html();
+                    selectedInput.isActive = true;
+                    inputSettings.push(selectedInput)
+                });
+                $('.oSelected').each(function () {
+                    var that = $(this);
+                    var selectedOuput = {};
+                    selectedOuput.output = that.find("md-content").html();
+                    selectedOuput.isActive = true;
+                    outputSettings.push(selectedOuput)
+                });
+                scope.ctrl.inputSettings = inputSettings;
+                scope.ctrl.outputSettings = outputSettings;
 
             })
         }
     }
 })
 
-
-
-
-
+app.directive("checkRelay", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function(){
+                
+                alert(scope.ctrl.inputSettings)
+            })
+        }
+    }
+})
 
 
 app.directive("ncOutputListType", function ($compile) {
@@ -78,14 +111,9 @@ app.directive("ncOutputListType", function ($compile) {
             element.bind("click", function () {
 
                 $(this).each(function () {
-                    $(this).toggleClass("ncSelected")
+                    $(this).toggleClass("oSelected")
                     $(this).find("g").toggleClass("ncIconSelected")
                     scope.ctrl.selectedOutput = $(this).find(".ncotName").html().toLowerCase();
-                    if (scope.ctrl.selectedOutput == "relay") {
-                        oSMB.removeClass("hidden")
-                    } else {
-                        oSMB.addClass("hidden")
-                    }
                 })
 
             })

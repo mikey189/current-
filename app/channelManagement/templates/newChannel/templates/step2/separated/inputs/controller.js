@@ -9,10 +9,13 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
     self.showISMB = false; 
     self.showOSMB = false; 
     self.iSelected = false;
+    self.iSMB = {};
+    self.oSMB = {};
     self.inputSettings = [];
     self.outputSettings = [];
     self.selectedInput= {};
     self.inputsArray = [];
+    
 
     
     channelData.getInputList().then(function (response) {
@@ -21,8 +24,6 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
         self.totalLength = self.inputList.length;
         self.iRow1 = self.inputList.slice(0,self.totalLength/2);
         self.iRow2 = self.inputList.slice(self.totalLength/2, self.totalLength);
-        self.iWidth = 100 /self.iRow1.length + "%";
-        self.oWidth = 100/self.iRow2.length + "%"
     })
     
     self.checker = function(){
