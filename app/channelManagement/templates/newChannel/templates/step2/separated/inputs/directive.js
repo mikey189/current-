@@ -1,27 +1,61 @@
-app.directive("addIsmb", function($compile){
+app.directive("addIsmb", function ($compile) {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.bind("click", function(){
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
                 $(".iSMBHolder").append($compile("<i-smb></i-smb>")(scope));
             })
         }
     }
 })
 
-app.directive("addOsmb", function($compile){
+app.directive("addOsmb", function ($compile) {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.bind("click", function(){
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
                 $(".oSMBHolder").append($compile("<o-smb></o-smb>")(scope));
             })
         }
     }
 })
 
+app.directive("deleteOsmb", function ($timeout) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                console.log("deleting..")
+                console.log($(this))
+                var iSMB = $(this).parents(".oSMB");
+                iSMB.removeClass("fadeInUp");
+                iSMB.addClass("fadeOutRight");
+                $timeout(function () {
+                    iSMB.addClass("hidden")
 
+                }, 800)
+            })
+        }
+    }
+})
+app.directive("deleteIsmb", function ($timeout) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                console.log("deleting..")
+                console.log($(this))
+                var iSMB = $(this).parents(".iSMB");
+                iSMB.removeClass("fadeInUp");
+                iSMB.addClass("fadeOutLeft");
+                $timeout(function () {
+                    iSMB.addClass("hidden")
 
+                }, 800)
+            })
+        }
+    }
+})
 
 app.directive("ncInputListType", function ($compile) {
     return {
@@ -65,7 +99,7 @@ app.directive("checkInputs", function () {
                 var inputSettings = [];
                 var outputSettings = [];
                 $('.iSelected').each(function () {
-                    
+
                     var that = $(this);
                     var selectedInput = {};
                     var inputSMBSettings = {};
@@ -92,8 +126,8 @@ app.directive("checkRelay", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.bind("click", function(){
-                
+            element.bind("click", function () {
+
                 alert(scope.ctrl.inputSettings)
             })
         }

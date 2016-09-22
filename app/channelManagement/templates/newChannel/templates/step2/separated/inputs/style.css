@@ -5,10 +5,10 @@
     width: 25%;
 }
 
-.iSMBHolder{
+.iSMB{
     margin-bottom: 1em;
 }
-.oSMBHolder{
+.oSMB{
     margin-bottom: 1em;
 }
 #il{
@@ -40,6 +40,9 @@
     margin-top: 1em;
 }
 #ncInputSettings{
+    background-color: white;
+}
+#OSMBSettings{
     background-color: white;
 }
 #ncInputTitle{
@@ -141,4 +144,14 @@
 }
 .ncIconSelected{
     fill : white;
+}
+.ncDeleteSMBS{
+    background-color: #DA2244;
+    color: white !important;
+    font-weight: bold;
+}
+.ncDeleteSMBS:hover{
+    background-color: #190051 !important;
+    color: white !important;
+    font-weight: bold;
 }
