@@ -4,7 +4,7 @@ app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", functio
     self.id;
     self.uiSref;
     self.channel = {};
-
+    self.useAsRelay = false;
     channelData.getIcons().then(function (response) {
         self.channelIcons = response.data
         self.ncTypeWidth = (100 / self.channelIcons.length);
@@ -15,7 +15,8 @@ app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", functio
             name: self.channelName,
             description: self.channelDescription,
             channelTypeName: self.selected,
-            channelTypeIconUrl: self.selectedIconSrc
+            channelTypeIconUrl: self.selectedIconSrc,
+            useAsRelay: self.useAsRelay
         }
 
         self.channel.generalInformations = self.S1Data;

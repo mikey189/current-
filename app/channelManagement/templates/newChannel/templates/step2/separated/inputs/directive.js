@@ -3,7 +3,44 @@ app.directive("addIsmb", function ($compile) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                $(".iSMBHolder").append($compile("<i-smb></i-smb>")(scope));
+                var toAppend = $compile("<i-smb></i-smb>")(scope)
+                $(".iSMBHolder").append(toAppend);
+            })
+        }
+    }
+})
+
+app.directive("getIndex", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            var iSMB = $(".iSMB");
+            scope.ctrl.iIndex;
+            iSMB.each(function () {
+                var self = $(this);
+                var holder = $(".iSMBHolder");
+                var iIndex = self.parent().index();
+                scope.ctrl.iIndex = iIndex;
+            })
+
+
+
+        }
+    }
+})
+app.directive("deleteIsmb", function ($timeout) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                var iSMB = $(this).parents(".iSMB");
+                iSMB.removeClass("fadeInUp");
+                iSMB.addClass("fadeOutLeft");
+                scope.ctrl.iSMBCount--;
+                $timeout(function () {
+                    iSMB.addClass("hidden")
+
+                }, 800)
             })
         }
     }
@@ -15,6 +52,7 @@ app.directive("addOsmb", function ($compile) {
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 $(".oSMBHolder").append($compile("<o-smb></o-smb>")(scope));
+                scope.ctrl.oSMBCount++;
             })
         }
     }
@@ -25,11 +63,10 @@ app.directive("deleteOsmb", function ($timeout) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                console.log("deleting..")
-                console.log($(this))
                 var iSMB = $(this).parents(".oSMB");
                 iSMB.removeClass("fadeInUp");
                 iSMB.addClass("fadeOutRight");
+                scope.ctrl.oSMBCount--;
                 $timeout(function () {
                     iSMB.addClass("hidden")
 
@@ -38,24 +75,7 @@ app.directive("deleteOsmb", function ($timeout) {
         }
     }
 })
-app.directive("deleteIsmb", function ($timeout) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("click", function () {
-                console.log("deleting..")
-                console.log($(this))
-                var iSMB = $(this).parents(".iSMB");
-                iSMB.removeClass("fadeInUp");
-                iSMB.addClass("fadeOutLeft");
-                $timeout(function () {
-                    iSMB.addClass("hidden")
 
-                }, 800)
-            })
-        }
-    }
-})
 
 app.directive("ncInputListType", function ($compile) {
     return {

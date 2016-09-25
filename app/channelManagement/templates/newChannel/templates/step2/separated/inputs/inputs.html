@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="app/channelManagement/templates/newChannel/templates/step2/separated/inputs/style.css" />
-
+<p>{{ctrl.iList}}</p>
 <div layout-margin layout="row" layout-align="space-between start">
     <div layout="column" id="ilWrapper">
         <nc-separated-input-list id="il"></nc-separated-input-list>
-        <div class="iSMBHolder animated fadeInUp"></div>
+        <div class="iSMBHolder animated fadeInUp" get-index></div>
     </div>
     <div layout="column" id="olWrapper">
         <nc-separated-output-list id="ol"></nc-separated-output-list>
@@ -15,5 +15,6 @@
 <div layout="row" layout-align="space-between center" id="ncActionWrapper">
     <md-button class="md-primary md-raised" ui-sref="app.channelManagement.newChannel.step1"><strong>BACK</strong></md-button>
     <md-button class="md-primary md-raised" data-ui-sref="app.channelManagement.newChannel.SSettings"><strong>NEXT</strong></md-button>
-    <md-button class="md-primary md-raised" check-inputs check-relay>check data</md-button>
+    <md-button class="md-primary md-raised" check-inputs ng-click="ctrl.check()">check data</md-button>
 </div>
+
