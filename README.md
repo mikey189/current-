@@ -12,9 +12,17 @@ UI/UX-Dependency: Angular - Material
 
 To run the project :
 
+
+
 1. download and install npm-server : npm install -g json-server
 url for package just in case(https://www.npmjs.com/package/npm-server)
 
 2. download this folder
-3.terminal/CMD: cd to the local path of the download folder
+
+3. terminal/CMD: cd to the local path of the download folder
 command to type: json-server db.json
+
+4. Open the folder in atom 
+
+5. Run server on any port from the atom menu (packages > liver server > pick any server)
+
