@@ -1,4 +1,9 @@
+/*editing default select*/
 
+.defaultSelect{
+    border: 0px !important;
+    width: 100% !important;
+}
 /*adding this property on ng-hide makes transitions on ng-show much faster (see exception row in policy defintion for more details)*/
 .ng-hide.ng-hide-animate{
      display: none !important;

@@ -3,16 +3,18 @@ app.directive("addIsmb", function ($compile) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                scope.ctrl.index++;
-                var toAppend = $compile("<i-smb></i-smb>")(scope);
-                $(".iSMBHolder").append(toAppend);
-                $(".iSMB").each(function(){
-                    var strInd = $(this).parent().index();
-                    $(this).attr("index", strInd)
-                    scope.ctrl.ind = parseInt($(this).attr("index"));
-                })
-               console.log(scope.ctrl.ind)
+                //the code I wrote was stupid: it only allows once scope for all appended elements
+
+                //Maor code : keep this solution when ng-repeat is not an option 
+
+                /*
+                Maor brought a second solution : instead of appending the object to the page on click, we create the array and append object into the array upon click, then use ng-repeat on the <i-smb></i-smb>
+                see photo of the 26/09/2016 on git commit for more explanations of Maor's solution
+                */
+                var iSMB = {};
+                scope.ctrl.iSMBList.push(iSMB);
             })
+
         }
     }
 })
@@ -40,8 +42,8 @@ app.directive("addOsmb", function ($compile) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                $(".oSMBHolder").append($compile("<o-smb></o-smb>")(scope));
-                scope.ctrl.oSMBCount++;
+                var oSMB = {};
+                scope.ctrl.oSMBList.push(oSMB);
             })
         }
     }

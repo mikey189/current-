@@ -4,6 +4,7 @@ app.factory("channelData", function ($http) {
     var outputListURL = "http://localhost:3000/outputList";
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var dashboard = "http://localhost:3000/dashboard";
+    var relayList = "http://localhost:3000/relayList";
     return {
         addChannel: function (data) {
             return $http({
@@ -29,6 +30,9 @@ app.factory("channelData", function ($http) {
         },
         getDashboard: function () {
             return $http.get(dashboard)
+        },
+        getRelayList: function() {
+            return $http.get(relayList)
         }
     }
 })

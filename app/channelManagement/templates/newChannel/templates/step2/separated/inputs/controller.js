@@ -1,29 +1,18 @@
-app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData, channelData, $scope) {
+app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData, channelData) {
 
     var self = this;
     self.channel = C2CData.get();
-    console.log(self.channel)
     self.selectedInputS1 = self.channel.generalInformations.channelTypeName;
     self.selectedOutput;
-    self.showISMB = false;
-    self.showOSMB = false;
     self.iSelected = false;
+
+    self.iSMBList = [];
+    self.oSMBList = [];
     
-    self.index = 0;
-    self.iList = new Array(10);
-    
-    self.oSMB = {};
     self.inputSettings = [];
     self.outputSettings = [];
     self.selectedInput = {};
     self.inputsArray = [];
-    self.iSMBCount = 0;
-    self.oSMBCount = 0;
-
-
-    self.check = function () {
-        console.log(self.iList)
-    }
 
     channelData.getInputList().then(function (response) {
         self.iData = response.data[0]
@@ -31,6 +20,14 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
         self.totalLength = self.inputList.length;
         self.iRow1 = self.inputList.slice(0, self.totalLength / 2);
         self.iRow2 = self.inputList.slice(self.totalLength / 2, self.totalLength);
+    })
+    
+    channelData.getRelayList().then(function(response){
+        self.relayList = response.data;
+        self.iRelayList = self.relayList.ismb;
+        console.log(self.iRelayList)
+        self.oRelayList = self.relayList.osmb;
+        
     })
 
 

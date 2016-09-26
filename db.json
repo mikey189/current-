@@ -697,5 +697,5 @@
       "name": "Vance Vaughan",
       "team": "HR"
     }
-  ]
+  ], "relayList": {"ismb" :["Endpoint Relay", "Relay NC 2", "Relay IN 3"], "osmb": ["Endpoint Output Relay 1", "Relay NC 3", "Relay Out 4"]}
 }
