@@ -3,31 +3,20 @@ app.directive("addIsmb", function ($compile) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                var toAppend = $compile("<i-smb></i-smb>")(scope)
+                scope.ctrl.index++;
+                var toAppend = $compile("<i-smb></i-smb>")(scope);
                 $(".iSMBHolder").append(toAppend);
+                $(".iSMB").each(function(){
+                    var strInd = $(this).parent().index();
+                    $(this).attr("index", strInd)
+                    scope.ctrl.ind = parseInt($(this).attr("index"));
+                })
+               console.log(scope.ctrl.ind)
             })
         }
     }
 })
 
-app.directive("getIndex", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            var iSMB = $(".iSMB");
-            scope.ctrl.iIndex;
-            iSMB.each(function () {
-                var self = $(this);
-                var holder = $(".iSMBHolder");
-                var iIndex = self.parent().index();
-                scope.ctrl.iIndex = iIndex;
-            })
-
-
-
-        }
-    }
-})
 app.directive("deleteIsmb", function ($timeout) {
     return {
         restrict: "A",

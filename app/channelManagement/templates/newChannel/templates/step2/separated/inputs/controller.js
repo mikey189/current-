@@ -1,4 +1,4 @@
-app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData, channelData) {
+app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData, channelData, $scope) {
 
     var self = this;
     self.channel = C2CData.get();
@@ -8,12 +8,9 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
     self.showISMB = false;
     self.showOSMB = false;
     self.iSelected = false;
-    self.myObj = {};
-    self.iList = new Array(10);
     
-    for (i = 0; i < self.iList.length; i++){
-        self.iList[i] = {}
-    };
+    self.index = 0;
+    self.iList = new Array(10);
     
     self.oSMB = {};
     self.inputSettings = [];
@@ -23,8 +20,8 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
     self.iSMBCount = 0;
     self.oSMBCount = 0;
 
-    
-    self.check =  function(){
+
+    self.check = function () {
         console.log(self.iList)
     }
 
