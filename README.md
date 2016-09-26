@@ -1,4 +1,4 @@
-# current-
+# Instructions
  How to get it to work : 
  
  1. Download the project (https://github.com/jonathanmeguira/current-/archive/master.zip)
