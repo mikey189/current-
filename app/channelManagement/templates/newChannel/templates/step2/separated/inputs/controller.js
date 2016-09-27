@@ -3,17 +3,16 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
     var self = this;
     self.channel = C2CData.get();
     self.selectedInputS1 = self.channel.generalInformations.channelTypeName;
-    self.selectedOutput;
-    self.iSelected = false;
-
+    self.iSelected = true;
+    self.oSelected = true;
+    
+    self.selectedInputs = [];
+    self.selectedOutputs = [];
     self.iSMBList = [];
     self.oSMBList = [];
     
-    self.inputSettings = [];
-    self.outputSettings = [];
-    self.selectedInput = {};
-    self.inputsArray = [];
-
+    
+    self.inputList = [];
     channelData.getInputList().then(function (response) {
         self.iData = response.data[0]
         self.inputList = self.iData[self.selectedInputS1];
@@ -29,6 +28,5 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
         self.oRelayList = self.relayList.osmb;
         
     })
-
-
+        
 }])

@@ -3,14 +3,6 @@ app.directive("addIsmb", function ($compile) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                //the code I wrote was stupid: it only allows once scope for all appended elements
-
-                //Maor code : keep this solution when ng-repeat is not an option 
-
-                /*
-                Maor brought a second solution : instead of appending the object to the page on click, we create the array and append object into the array upon click, then use ng-repeat on the <i-smb></i-smb>
-                see photo of the 26/09/2016 on git commit for more explanations of Maor's solution
-                */
                 var iSMB = {};
                 scope.ctrl.iSMBList.push(iSMB);
             })
@@ -18,7 +10,6 @@ app.directive("addIsmb", function ($compile) {
         }
     }
 })
-
 app.directive("deleteIsmb", function ($timeout) {
     return {
         restrict: "A",
@@ -36,7 +27,6 @@ app.directive("deleteIsmb", function ($timeout) {
         }
     }
 })
-
 app.directive("addOsmb", function ($compile) {
     return {
         restrict: "A",
@@ -48,7 +38,6 @@ app.directive("addOsmb", function ($compile) {
         }
     }
 })
-
 app.directive("deleteOsmb", function ($timeout) {
     return {
         restrict: "A",
@@ -67,108 +56,53 @@ app.directive("deleteOsmb", function ($timeout) {
     }
 })
 
-
 app.directive("ncInputListType", function ($compile) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-
-            var il = $(document).find("#il");
-
             element.bind("click", function () {
-
                 var self = $(this);
                 var icon = self.find("g");
-                scope.ctrl.selectedInput = $(this).find("md-content").html().toLowerCase();
+
                 if (scope.ctrl.iSelected) {
                     self.addClass("iSelected");
                     icon.addClass("ncIconSelected");
                     scope.ctrl.iSelected = false;
+
                 } else {
 
                     self.removeClass("iSelected");
                     icon.removeClass("ncIconSelected");
                     scope.ctrl.iSelected = true;
                 }
-
             })
         }
     }
 })
-
-app.directive("checkInputs", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-
-            element.bind("click", function () {
-
-                /*create array outside of for each loop to retrieve it later BUTT
-                all var related to the 'each' call should be as var otherwise they 
-                will be  local and each call will only return the last object*/
-
-                var inputSettings = [];
-                var outputSettings = [];
-                $('.iSelected').each(function () {
-
-                    var that = $(this);
-                    var selectedInput = {};
-                    var inputSMBSettings = {};
-                    selectedInput.input = that.find("md-content").html();
-                    selectedInput.isActive = true;
-                    inputSettings.push(selectedInput)
-                });
-                $('.oSelected').each(function () {
-                    var that = $(this);
-                    var selectedOuput = {};
-                    selectedOuput.output = that.find("md-content").html();
-                    selectedOuput.isActive = true;
-                    outputSettings.push(selectedOuput)
-                });
-                scope.ctrl.inputSettings = inputSettings;
-                scope.ctrl.outputSettings = outputSettings;
-
-            })
-        }
-    }
-})
-
-app.directive("checkRelay", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("click", function () {
-
-                alert(scope.ctrl.inputSettings)
-            })
-        }
-    }
-})
-
-
 app.directive("ncOutputListType", function ($compile) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            $(document).find(".ncotWrapper").css("width", scope.ctrl.oWidth)
-            var ol = $(document).find("#ol");
-            var oSMB = $(".oSMB");
+
             element.bind("click", function () {
 
-                $(this).each(function () {
-                    $(this).toggleClass("oSelected")
-                    $(this).find("g").toggleClass("ncIconSelected")
-                    scope.ctrl.selectedOutput = $(this).find(".ncotName").html().toLowerCase();
-                })
+                var self = $(this);
+                var icon = self.find("g");
+                if (scope.ctrl.oSelected) {
+                    self.addClass("oSelected");
+                    icon.addClass("ncIconSelected");
+                    scope.ctrl.oSelected = false;
 
+                } else {
+
+                    self.removeClass("oSelected");
+                    icon.removeClass("ncIconSelected");
+                    scope.ctrl.oSelected = true;
+                }
             })
-
         }
     }
 })
-
-
-
 app.directive("editField", function () {
     return {
         restrict: "A",
@@ -206,6 +140,47 @@ app.directive("toggleMediaBurn", function () {
         }
     }
 })
+
+app.directive("ncPassDataToSettings", ["C2CData", function (C2CData) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                var inputSettings = [];
+                var outputSettings = [];
+
+                $(".iSelected").each(function () {
+                    var that = $(this);
+                    var selectedInput = {};
+                    selectedInput.input = that.find("md-content").html().toLowerCase();
+                    selectedInput.isActive = true;
+                    inputSettings.push(selectedInput)
+                });
+                $(".oSelected").each(function () {
+                    var that = $(this);
+                    var selectedOutput = {};
+                    selectedOutput.output = that.find("md-content").html().toLowerCase();
+                    selectedOutput.isActive = true;
+                    outputSettings.push(selectedOutput)
+                })
+
+                scope.ctrl.selectedOutputs = outputSettings;
+                scope.ctrl.selectedInputs = inputSettings;
+
+                var data2pass = {
+                    generalInformations: scope.ctrl.channel,
+                    selectedInputs: scope.ctrl.selectedInputs,
+                    selectedOutputs: scope.ctrl.selectedOutputs,
+                    iSMB: scope.ctrl.iSMBList,
+                    oSMB: scope.ctrl.oSMBList
+                }
+                console.log(data2pass);
+                C2CData.set(data2pass);
+            })
+        }
+    }
+}])
+
 
 app.directive("ncSeparatedInputList", function () {
     return {
