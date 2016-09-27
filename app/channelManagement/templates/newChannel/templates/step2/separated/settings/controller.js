@@ -1,4 +1,9 @@
-app.controller("separated.settings", [function(C2CData, channelData){
+app.controller("separated.settings", ["C2CData", "channelData", function(C2CData, channelData){
     var self = this;
-    self.test = "it works"
+    self.previousData = C2CData.get();
+    console.log(self.previousData)
+    
+    self.basicSettings = {};
+    self.advancedSettings = {};
+    
 }])

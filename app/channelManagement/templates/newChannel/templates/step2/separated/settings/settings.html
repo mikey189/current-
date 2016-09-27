@@ -1,14 +1,22 @@
 <link rel="stylesheet" href="app/channelManagement/templates/newChannel/templates/step2/separated/settings/style.css" />
 
+<div layout="column">
+
+    <div layout-sm="column" layout-xs="column" layout-gt-md="row" layout-align-gt-md="space-between start" layout-margin match-children-height>
+        <div layout="column" layout-align="center center" style="width: 49%">
+            <h3>Basic Settings</h3>
+            <nc-separated-basic-settings style="width: 100%"></nc-separated-basic-settings>
+        </div>
+        <div layout="column" layout-align="center center" style="width: 49%">
+            <h3>Advanced Settings</h3>
+            <nc-separated-advanced-settings style="width: 100%"></nc-separated-advanced-settings>
+        </div>
+    </div>
 
 
-<div layout-sm="column" layout-xs="column" layout-gt-md="row" layout-align-gt-md="spaced-around start" layout-margin>
-    <div layout="column" layout-align="center center">
-        <h3>Basic Settings</h3>
-        <nc-separated-basic-settings flex-gt-md="50"></nc-separated-basic-settings>
+    <div layout="row" layout-align="space-between center" layout-margin>
+        <md-button class="md-primary md-raised" ui-sref="app.channelManagement.newChannel.SSettings"><strong>BACK</strong></md-button>
+        <md-button class="md-primary md-raised" ui-sref="app.channelManagement.newChannel.SComputerList"><strong>NEXT</strong></md-button>
     </div>
-    <div layout="column" layout-align="center center">
-        <h3>Advanced Settings</h3>
-        <nc-separated-advanced-settings flex-gt-md="50"></nc-separated-advanced-settings>
-    </div>
+    
 </div>

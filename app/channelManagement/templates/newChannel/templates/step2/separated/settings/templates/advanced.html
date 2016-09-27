@@ -1,87 +1,113 @@
-<table class="table table-responsive advancedSettings" md-whiteframe="6">
+<table class="table table-responsive advancedSettings" md-whiteframe="6" id="ncAdvancedSettings">
     <thead class="ncSettingsHeaders">
         <th>Name</th>
         <th>value</th>
     </thead>
     <tbody>
         <tr>
-            <td>Status Message</td>
-            <td><input ng-model="ctrl.statusMessage" placeholder="$(server)"></td>
+            <td>File Size By Type Limit</td>
+            <td><input ng-model="ctrl.advancedSettings.fileSizeLimit"></td>
         </tr>
         <tr>
-            <td>Details Message</td>
-            <td><input ng-model="ctrl.messageDetail" placeholder="connected to: $(server) $(version)"></td>
+            <td>Server Port</td>
+            <td><input ng-model="ctrl.advancedSettings.serverPort" type="number"></td>
         </tr>
         <tr>
-            <td>Max Total Files size upload limit</td>
-            <td layout="row" layout-align="space-around center">
-                <input ng-model="ctrl.fileSizeUploadLimit" type="number" class="RMargin">
-                <select>
-                    <option ng-selected>Bytes</option>
-                    <option>MB</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Max Files Number upload Limit</td>
-            <td><input ng-model="ctrl.fileUploadLimit"</td>
-        </tr>
-        <tr>
-            <td>Agent to server speed limit (Kpbs) </td>
-            <td><input type="number" ng-model="ctrl.agentToServerSpeedLimit"/></td>
-        </tr>
-        <tr>
-            <td>Reboot on exit</td>
-            <td><md-checkbox ng-model="ctrl.rebootOnExit"></md-checkbox></td>
-        </tr>
-        <tr>
-            <td>Exit to System</td>
+            <td>Check Server Certificate</td>
             <td>
-                <select ng-model="ctrl.exitToSystem">
-                    <option>Not Allowed</option>
-                    <option>Allowed</option>
+                <md-checkbox aria-label = "basic 1"  ng-model="ctrl.advancedSettings.serverCertificate"></md-checkbox>
+            </td>
+        </tr>
+        <tr>
+            <td>Resume Sanitization on Reconnect</td>
+            <td>
+                <md-checkbox aria-label = "basic 2"  ng-model="ctrl.advancedSettings.resumeSanitization"></md-checkbox>
+            </td>
+        </tr>
+        <tr>
+            <td>Keep Alive (Sec)</td>
+            <td><input type="number" ng-model="ctrl.advancedSettings.secToKeepAlive" /></td>
+        </tr>
+        <tr>
+            <td>Local File Optimization</td>
+            <td>
+                <md-checkbox aria-label = "basic 3" ng-model="ctrl.advancedSettings.localFileOptimization"></md-checkbox>
+            </td>
+        </tr>
+        <tr>
+            <td>Hash Algorithm</td>
+            <td>
+                <select ng-model="ctrl.advancedSettings.hashAlgorithm">
+                    <option>MD5</option>
+                    <option>MD6</option>
                 </select>
             </td>
         </tr>
         <tr>
-            <td>Inactivity Logout time (min)</td>
-            <td><input type="number" ng-model="ctrl.inactivityLogout"/></td>
+            <td>Syslog Server</td>
+            <td><input type="number" ng-model="ctrl.advancedSettings.syslogServer" /></td>
         </tr>
         <tr>
-            <td>Show Preview</td>
-            <td><md-checkbox ng-model="ctrl.showPreview"></md-checkbox></td>
+            <td>Results Format</td>
+            <td>
+                <select ng-model="ctrl.advancedSettings.resultsFormat">
+                    <option>Plain</option>
+                    <option>MD6</option>
+                </select>
+            </td>
         </tr>
         <tr>
-            <td>Login Fail Attempts No</td>
-            <td><input ng-model="ctrl.failAttemptsNo" type="number"/></td>
+            <td>Reduce Db Operations</td>
+            <td>
+                <md-checkbox aria-label = "basic 4"  ng-model="ctrl.advancedSettings.reduceDBOperations"></md-checkbox>
+            </td>
         </tr>
         <tr>
-            <td>Login Fail Attempts Lock Timeout</td>
-            <td><input ng-model="ctrl.failAttemptsTime" type="number"/></td>
+            <td>Authenticate user On Endpoint</td>
+            <td>
+                <md-checkbox aria-label = "basic 5" ng-model="ctrl.advancedSettings.authenticateUserOnEndpoint"></md-checkbox>
+            </td>
         </tr>
         <tr>
-            <td>Reboot on infected Result</td>
-            <td><md-checkbox ng-model="ctrl.rebootOnInfection"></md-checkbox></td>
+            <tr>
+                <td>Use Temp Folder</td>
+                <td>
+                    <md-checkbox aria-label = "basic 7" ng-model="ctrl.advancedSettings.useTempFolder"></md-checkbox>
+                </td>
+            </tr>
         </tr>
         <tr>
-            <td>Reboot wait timeout (sec)</td>
-            <td><input type="number" ng-model="ctrl.infectionRebootTimeout"/></td>
+            <td>Seconds until Disconnect</td>
+            <td>
+                <input type="number" ng-model="ctrl.advancedSettings.secondsUntilDisconnect" />
+            </td>
         </tr>
         <tr>
-            <td>Is agent disabled</td>
-            <td><md-checkbox ng-model="ctrl.isAgentDisabled"></md-checkbox></td>
+            <td>Auto Reconnect</td>
+            <td>
+                <md-checkbox aria-label = "basic 8" ng-model="ctrl.advancedSettings.autoReconnect"></md-checkbox>
+            </td>
         </tr>
         <tr>
-            <td>Disabled reason message</td>
-            <td><md-checkbox ng-model="ctrl.disabledMessage"/></td>
+            <td>Perform Interactive Update</td>
+            <td>
+                <select ng-model="ctrl.advancedSettings.performInteractiveUpdate">
+                    <option>Passive</option>
+                    <option>Active</option>
+                </select>
+            </td>
         </tr>
         <tr>
-            <td>Enforce Scan Comment</td>
-            <td><md-checkbox ng-model="ctrl.enforceScanComment"></md-checkbox></td>
+            <td>Store Blocked File Report</td>
+            <td>
+                <md-checkbox aria-label = "basic 9" ng-model="ctrl.advancedSettings.storeBlockedFileReport" />
+            </td>
         </tr>
         <tr>
-            <td>Enforce Scan Comment</td>
-            <td><md-checkbox ng-model="ctrl.allowOneScanOnly"></md-checkbox></td>
+            <td>Create Empty Folders</td>
+            <td>
+                <md-checkbox aria-label = "basic 10" ng-model="ctrl.advancedSettings.createEmptyFolders"></md-checkbox>
+            </td>
         </tr>
     </tbody>
 </table>

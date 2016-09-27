@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="app/channelManagement/templates/newChannel/templates/step2/separated/computers/style.css" />
+
+<div layout="row" layout-align="space-around center">
+    <div layout-margin md-whiteframe="6" id="ncComputerContainer">
+        <h4>Computers on the Network</h4>
+        <md-virtual-repeat-container id="vertical-container">
+            <md-list>
+                <md-list-item search-box layout-padding>
+                    <input placeholder="search computers" class="searchInput" ng-model="computer" />
+                </md-list-item>
+                <div ng-repeat="item in ctrl.computerList | filter : computer" nc-select-computer>
+                    <div layout="row" class="ncComputerItem">
+                        <md-icon class="material-icons">computer</md-icon>
+                        <md-list-item>{{item.name}}</md-list-item>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+            </md-list>
+        </md-virtual-repeat-container>
+    </div>
+
+    <div layout-margin md-whiteframe="6" id="ncComputerContainer">
+        <h4>Added Computers</h4>
+        <md-virtual-repeat-container id="vertical-container">
+            <md-list>
+                <md-list-item search-box layout-padding>
+                    <input placeholder="search computers" class="searchInput" ng-model="addedComputer" />
+                </md-list-item>
+                <div ng-repeat="computer in ctrl.addedComputers | filter : computer">
+                    <div layout="row" class="ncComputerItem">
+                        <md-icon class="material-icons">computer</md-icon>
+                        <md-chips md-removable=true>{{computer}}</md-chips>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+            </md-list>
+        </md-virtual-repeat-container>
+    </div>
+</div>

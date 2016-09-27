@@ -5,6 +5,8 @@ app.factory("channelData", function ($http) {
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
+    var computerList = "http://localhost:3000/userComputers";
+    var real = "http://jdev01:4580/api/getallchannels";
     return {
         addChannel: function (data) {
             return $http({
@@ -33,6 +35,12 @@ app.factory("channelData", function ($http) {
         },
         getRelayList: function() {
             return $http.get(relayList)
+        },
+        getComputerList: function() {
+            return $http.get(computerList)
+        },
+        getReal: function () {
+            return $http.get(real)
         }
     }
 })

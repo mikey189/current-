@@ -132,6 +132,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'separated.settings',
             controllerAs: 'ctrl'
         })
+        .state('app.channelManagement.newChannel.SComputerList', {
+            url: '/channelManagementNewChannelS2SeparatedComputerList',
+            templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/computers/computers.html',
+            controller: 'separated.computerList',
+            controllerAs: 'ctrl'
+        })
         .state('app.channelManagement.newChannel.ncStep2Mixed', {
             url: '/channelManagementNewChannelS2Mixed',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
