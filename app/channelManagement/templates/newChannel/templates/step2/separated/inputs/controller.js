@@ -2,6 +2,7 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
 
     var self = this;
     self.channel = C2CData.get();
+    console.log(self.channel);
     self.selectedInputS1 = self.channel.generalInformations.channelTypeName;
     self.iSelected = true;
     self.oSelected = true;
@@ -28,5 +29,6 @@ app.controller("separated.inputs", ["C2CData", "channelData", function (C2CData,
         self.oRelayList = self.relayList.osmb;
         
     })
+    
         
 }])

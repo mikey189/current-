@@ -199,10 +199,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
-
-
-
-
     .state('app.policy.who', {
         url: '/policyWho',
         templateUrl: 'app/policy/templates/who/who.html',

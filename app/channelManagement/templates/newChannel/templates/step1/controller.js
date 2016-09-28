@@ -3,15 +3,15 @@ app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", functio
     self = this;
     self.id;
     self.uiSref;
-    self.channel = {};
     self.useAsRelay = false;
+    self.channel = {};
     channelData.getIcons().then(function (response) {
         self.channelIcons = response.data
         self.ncTypeWidth = (100 / self.channelIcons.length);
     })
 
     self.saveS1Data = function () {
-        self.S1Data = {
+        self.generalInformations = {
             name: self.channelName,
             description: self.channelDescription,
             channelTypeName: self.selected,
@@ -19,16 +19,16 @@ app.controller("ncStep1", ["channelData", "$state", "C2CData", "$scope", functio
             useAsRelay: self.useAsRelay
         }
 
-        self.channel.generalInformations = self.S1Data;
         //dynamic routing based on selection
 
-        if (self.S1Data.channelTypeName == "endpoint" || self.S1Data.channelTypeName == "api" || self.S1Data.channelTypeName == "station") {
+        if (self.generalInformations.channelTypeName == "endpoint" || self.generalInformations.channelTypeName == "api" || self.generalInformations.channelTypeName == "station") {
             self.uiSref = "SInputs"
         } else {
             self.uiSref = "ncStep2Mixed"
         }
-        $state.go("app.channelManagement.newChannel." + self.uiSref)
+        self.channel.generalInformations = self.generalInformations;
         C2CData.set(self.channel)
+        $state.go("app.channelManagement.newChannel." + self.uiSref)
 
     }
 

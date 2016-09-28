@@ -167,15 +167,15 @@ app.directive("ncPassDataToSettings", ["C2CData", function (C2CData) {
                 scope.ctrl.selectedOutputs = outputSettings;
                 scope.ctrl.selectedInputs = inputSettings;
 
-                var data2pass = {
-                    generalInformations: scope.ctrl.channel,
+                var inputAndOutputSettings = {
                     selectedInputs: scope.ctrl.selectedInputs,
                     selectedOutputs: scope.ctrl.selectedOutputs,
                     iSMB: scope.ctrl.iSMBList,
                     oSMB: scope.ctrl.oSMBList
                 }
-                console.log(data2pass);
-                C2CData.set(data2pass);
+                scope.ctrl.channel.inputsAndOutputs = inputAndOutputSettings;
+                console.log(scope.ctrl.channel);
+                C2CData.set(scope.ctrl.channel);
             })
         }
     }

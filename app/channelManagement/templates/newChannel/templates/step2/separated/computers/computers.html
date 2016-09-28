@@ -8,7 +8,7 @@
                 <md-list-item search-box layout-padding>
                     <input placeholder="search computers" class="searchInput" ng-model="computer" />
                 </md-list-item>
-                <div ng-repeat="item in ctrl.computerList | filter : computer" nc-select-computer>
+                <div ng-repeat="item in ctrl.computerList | filter : computer" nc-select-computer class="listHeight">
                     <div layout="row" class="ncComputerItem">
                         <md-icon class="material-icons">computer</md-icon>
                         <md-list-item>{{item.name}}</md-list-item>
@@ -26,14 +26,21 @@
                 <md-list-item search-box layout-padding>
                     <input placeholder="search computers" class="searchInput" ng-model="addedComputer" />
                 </md-list-item>
-                <div ng-repeat="computer in ctrl.addedComputers | filter : computer">
-                    <div layout="row" class="ncComputerItem">
-                        <md-icon class="material-icons">computer</md-icon>
-                        <md-chips md-removable=true>{{computer}}</md-chips>
+                <div ng-repeat="computer in ctrl.addedComputers | filter : computer" class="addedComputers" match-my-height>
+                    <div layout="row" class="ncComputerItem animated fadeInLeft" layout-align="space-between center">
+                        <div layout="row">
+                            <md-icon class="material-icons-no-margin">computer</md-icon>
+                            <md-list-item>{{computer}}</md-list-item>
+                        </div>
+                        <md-icon class="material-icons-no-margin" delete-computer-from-list>delete</md-icon>
                     </div>
                     <md-divider></md-divider>
                 </div>
             </md-list>
         </md-virtual-repeat-container>
     </div>
+</div>
+<div layout="row" layout-align="space-between center">
+    <md-button class="md-primary md-raised" ui-sref="app.channelManagement.newChannel.SSettings"><strong>BACK</strong></md-button>
+    <md-button class="md-green md-raised" ui-sref="app.channelManagement.endpoint.dashboard" ng-click="ctrl.postChannel()"><strong>DONE</strong></md-button>
 </div>
