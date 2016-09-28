@@ -3,7 +3,9 @@ app.directive('policySidenav', function(){
     return{
         restrict: 'AECM',
         templateUrl: 'app/policy/templates/policySidenav/policySidenav.html',
-        replace: true
+        replace: false,
+        controller: "policySidenav",
+        controllerAs: "ctrl"
     }
 })
 

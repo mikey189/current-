@@ -6,7 +6,7 @@ app.factory("channelData", function ($http) {
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://localhost:3000/userComputers";
-    var real = "http://jdev01:4580/api/getallchannels";
+    var real = "http://jdev01:4580/api/channels/getallchannels";
     return {
         addChannel: function (data) {
             return $http({
@@ -44,6 +44,18 @@ app.factory("channelData", function ($http) {
         }
     }
 })
+
+
+app.factory("policyList", function($http){
+    var policyList = "  http://localhost:3000/policyList";
+    var policyListOrder="";
+    return {
+        getList: function(){
+            return $http.get(policyList);
+        }
+    }
+})
+
 
 
 app.factory("dashboardData", function ($http) {

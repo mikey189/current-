@@ -1,0 +1,70 @@
+.customChips {
+    background-color: #222073;
+    color: white;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    margin-left: 0px;
+}
+
+.lightPurple {
+    color: #6B66E7;
+}
+
+.policyItem {
+    background-color: #0C0B47;
+    margin-bottom: 1em;
+}
+
+#policyListHolder {
+    background-color: #1E1D6B;
+}
+
+.searchPolicies {
+    border-radius: 20px;
+    background-color: transparent;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border: solid 2px #62D0C9 !important;
+    color: white
+}
+
+.searchPolicies:focus {
+    outline: none !important;
+}
+.searchPolicies::-webkit-input-placeholder {
+    color: white !important;
+}
+#policySidenavTop {
+    margin-top: 1.5em;
+}
+
+.marginRight1em {
+    margin-left: 0px;
+    margin-right: 0.5em;
+}
+
+.bold {
+    font-weight: 600
+}
+
+.noMarginBottom {
+    margin-bottom: 0px !important;
+}
+
+.noMarginLeft {
+    margin-left: 0px !important;
+}
+
+.policyListHover {
+    background-color: #3A389D;
+    border-left: solid 1em #6B66E8;
+}
+
+[ng-drag].dragging {
+    opacity: 0.5;
+}
+
+[ng-drop].drag-enter {
+    border: solid 3px #62D0C9;
+}

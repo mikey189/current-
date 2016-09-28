@@ -1,2 +1,3 @@
-app.controller('clusterManagement', ['$scope', function($scope){
+app.controller('clusterManagement', ['channelData', function(channelData){
+    
 }])

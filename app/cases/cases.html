@@ -53,3 +53,15 @@
         </tr>
     </tbody>
 </table>
+
+
+
+<div class="row text-center">
+    <ul class="draglist">
+        <li ng-repeat="obj in ctrl.draggableObjects" ng-drop="true" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
+            <div ng-drag="true" ng-drag-data="obj">
+                {{obj.name}}
+            </div>
+        </li>
+    </ul>
+</div>

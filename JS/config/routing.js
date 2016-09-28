@@ -172,8 +172,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
-
-
     .state('app.policy.definition', {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',

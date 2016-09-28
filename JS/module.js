@@ -1,3 +1,3 @@
- var app = angular.module('resec', ['ngMaterial', 'ui.router', 'chart.js', 'ngMdIcons', 'pascalprecht.translate', 'xeditable', 'ui.bootstrap'])
+ var app = angular.module('resec', ['ngMaterial', 'ui.router', 'chart.js', 'ngMdIcons', 'pascalprecht.translate', 'xeditable', 'ui.bootstrap', 'ngDraggable'])
  
  

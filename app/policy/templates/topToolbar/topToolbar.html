@@ -1,34 +1,28 @@
- 
 <md-toolbar layout='row' id='toolbar1policy' layout-sm='column' layout-xs='column'>
-        
-        <div flex='50' layout-align='start center' layout='row' flex-sm='15' flex-xs='15' layout-align-sm='center center' layout-align-xs='center center'>
-            
-        <md-button ng-click='toggleMenu()'>
-            <md-icon>
-                <i class='material-icons purple'>keyboard_arrow_right</i>
-            </md-icon>
-        </md-button>
-        <md-title hide-xs class='purple marginRight'>Web High Authority
+
+    <div flex='50' layout-align='start center' layout='row' flex-sm='15' flex-xs='15' layout-align-sm='center center' layout-align-xs='center center'>
+        <md-button class="md-fab md-raised md-primary" open-sidenav hide-gt-lg><md-icon>arrow_right</md-icon></md-button>
+        <md-title hide-xs class='purple marginRight marginLeft1em'>Web High Authority
         </md-title>
         <md-select ng-model='timeReference' placeholder='Real Time' class='noVerticalPadding' flex="initial">
             <md-option ng-repeat="timeReference in timeReferences" value="{{timeReference}}"><small>{{timeReference}}</small></md-option>
         </md-select>
-        </div>
-        
-        
-        <div layout='row' layout-align="end center" flex flex-xs='15' flex-sm='15' layout-align-sm='center center' layout-align-xs='center center'>
-            <md-button class='roundedButton policyToolbarGreenButton'>
-                <md-icon class='material-icons'>
-                    insert_drive_file 
-                </md-icon>
-                Duplicate
-            </md-button>
-            <md-button class='roundedButton policyToolbarRedButton'>
-                <md-icon id='red' class='material-icons purple'>
-                    delete 
-                </md-icon>
-                Delete
-            </md-button>
-        </div>
+    </div>
 
-    </md-toolbar>
+
+    <div layout='row' layout-align="end center" flex flex-xs='15' flex-sm='15' layout-align-sm='center center' layout-align-xs='center center'>
+        <md-button class='roundedButton policyToolbarGreenButton'>
+            <md-icon class='material-icons'>
+                insert_drive_file
+            </md-icon>
+            Duplicate
+        </md-button>
+        <md-button class='roundedButton policyToolbarRedButton'>
+            <md-icon id='red' class='material-icons purple'>
+                delete
+            </md-icon>
+            Delete
+        </md-button>
+    </div>
+
+</md-toolbar>

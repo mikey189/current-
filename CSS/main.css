@@ -909,3 +909,6 @@ a:not(.md-button) {
 #dashboardTableContainer{
     min-height: 100% !important;
 }
+.marginLeft1em{
+    margin-left: 1em;
+}
