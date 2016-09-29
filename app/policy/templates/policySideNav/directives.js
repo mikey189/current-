@@ -10,3 +10,18 @@ app.directive("policyListHover", function(){
         }
     }
 })
+
+app.directive("reorderPolicyList", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attr){
+            element.click(function(){
+                var icon = $(this).find("md-icon")
+                icon.toggleClass("animated wobble")
+                var items = $(".policyItem");
+                items.attr("ng-drag", "true");
+                items.toggleClass("animated bounce");
+            })
+        }
+    }
+})

@@ -114,20 +114,3 @@ app.directive("exeException", function () {
         replace: false
     }
 })
-app.directive("autoSidenavHeight", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.click(function () {
-                var elmnt = document.getElementById("policyMainContent");
-                var y = elmnt.scrollHeight;
-                var h = y+"px";
-                console.log(y)
-            })
-           
-
-        }
-
-    }
-})
-

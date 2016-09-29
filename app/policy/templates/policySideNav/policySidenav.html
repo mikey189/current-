@@ -9,7 +9,7 @@
                 <md-tooltip md-direction="bottom">add</md-tooltip>
                 <md-icon class='material-icons greenIcon'>add</md-icon>
             </md-button>
-            <md-button class='fullWidthButton'>
+            <md-button class='fullWidthButton' reorder-policy-list>
                 <md-tooltip md-direction="bottom">drag policies to re-order their priority</md-tooltip>
                 <md-icon ng-click='showSearchBar()' class='material-icons greenIcon'>list</md-icon>
             </md-button>
@@ -19,7 +19,7 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-drop="true" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover ng-drag="true" ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
+        <md-list-item ng-drop="true" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover  ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
             <div layout="column">
                 <p class="md-subhead white bold">{{policy.name}}</p>
                 <div layout="row" layout-align="space-between center">
