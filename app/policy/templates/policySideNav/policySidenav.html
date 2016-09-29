@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="app/policy/templates/policySideNav/style.css" />
-
 <md-sidenav layout-padding md-component-id='policySidenav' id='policySidenav' md-is-locked-open="$mdMedia('gt-lg')" class="md-sidenav-left" md-whiteframe="6">
+
+    <link rel="stylesheet" href="app/policy/templates/policySideNav/style.css" />
+
     <div layout='row' layout-align='start center' id="policySidenavTop">
         <h4 flex='66' class='white'><strong>Available Policies</strong></h4>
         <div flex='33' layout='row'>
@@ -15,10 +16,10 @@
         </div>
     </div>
 
-    <input class="searchPolicies" placeholder = "search policies" ng-model="name"/>
+    <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        <md-list-item  ng-drop="true" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover   ng-drag="true" ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
+        <md-list-item ng-drop="true" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover ng-drag="true" ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
             <div layout="column">
                 <p class="md-subhead white bold">{{policy.name}}</p>
                 <div layout="row" layout-align="space-between center">
@@ -26,13 +27,13 @@
                         <md-icon class="lightPurple marginRight1em">insert_drive_file</md-icon>
                         <p class="md-subhead white noMarginBottom">{{policy.files}}</p>
                     </div>
-                    <div layout="row" flex >
+                    <div layout="row" flex>
                         <md-icon class="lightPurple marginRight1em">group</md-icon>
                         <p class="md-subhead white noMarginBottom">{{policy.users}}</p>
                     </div>
                 </div>
                 <div layout-margin layout-wrap layout="row" layout-align="start center" class="noMarginLeft">
-                    <p class="customChips" ng-repeat = "channel in policy.channels" md-whiteframe="4">{{channel}}</p>
+                    <p class="customChips" ng-repeat="channel in policy.channels" md-whiteframe="4">{{channel}}</p>
                 </div>
             </div>
         </md-list-item>

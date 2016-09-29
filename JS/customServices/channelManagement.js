@@ -5,7 +5,7 @@ app.factory("channelData", function ($http) {
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
-    var computerList = "http://localhost:3000/userComputers";
+    var computerList = "http://jdev01:4580/api/users/getadmachines";
     var real = "http://jdev01:4580/api/channels/getallchannels";
     return {
         addChannel: function (data) {

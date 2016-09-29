@@ -2,3 +2,8 @@
     background-color: #6B69EB;
     color: white !important;
 }
+
+.stop-scrolling {
+  height: 100% !important;
+  overflow: hidden !important;
+}
