@@ -15,4 +15,5 @@ app.controller('policySidenav', ["policyList", function (policyList) {
         self.draggableObjects[index] = obj;
         self.draggableObjects[otherIndex] = otherObj;
     }
+    self.dragMe = false;
 }])

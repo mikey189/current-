@@ -19,7 +19,7 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-drop="true" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover  ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
+        <md-list-item ng-drop="true" ng-drag="ctrl.dragMe" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover  ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
             <div layout="column">
                 <p class="md-subhead white bold">{{policy.name}}</p>
                 <div layout="row" layout-align="space-between center">

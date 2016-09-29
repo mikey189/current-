@@ -19,7 +19,7 @@ app.directive("reorderPolicyList", function(){
                 var icon = $(this).find("md-icon")
                 icon.toggleClass("animated wobble")
                 var items = $(".policyItem");
-                items.attr("ng-drag", "true");
+                scope.ctrl.dragMe = true;
                 items.toggleClass("animated bounce");
             })
         }
