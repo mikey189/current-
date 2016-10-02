@@ -33,10 +33,10 @@ app.factory("channelData", function ($http) {
         getDashboard: function () {
             return $http.get(dashboard)
         },
-        getRelayList: function() {
+        getRelayList: function () {
             return $http.get(relayList)
         },
-        getComputerList: function() {
+        getComputerList: function () {
             return $http.get(computerList)
         },
         getReal: function () {
@@ -46,12 +46,22 @@ app.factory("channelData", function ($http) {
 })
 
 
-app.factory("policyList", function($http){
-    var policyList = "  http://localhost:3000/policyList";
-    var policyListOrder="";
+app.factory("policyList", function ($http) {
+    var policyList = "http://localhost:3000/policyList";
+    var policyOrder = "http://localhost:3000/policyOrder"
     return {
-        getList: function(){
+        getList: function () {
             return $http.get(policyList);
+        },
+        postOrder: function (order) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: policyOrder,
+                method: "POST",
+                data: order
+            })
         }
     }
 })
@@ -96,8 +106,8 @@ app.factory("policyData", function ($http) {
                 return response.data
             })
         },
-        getDescriptions(){
-            return $http.get(url2).then(function(response){
+        getDescriptions() {
+            return $http.get(url2).then(function (response) {
                 return response.data
             })
         }
@@ -105,11 +115,11 @@ app.factory("policyData", function ($http) {
 })
 
 
-app.factory("users", function($http){
+app.factory("users", function ($http) {
     var url = "  http://localhost:3000/activeUsers";
-    return{
-        getUsers: function(){
-            return $http.get(url).then(function(answer){
+    return {
+        getUsers: function () {
+            return $http.get(url).then(function (answer) {
                 return answer.data;
             })
         }

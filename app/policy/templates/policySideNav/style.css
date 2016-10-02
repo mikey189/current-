@@ -32,9 +32,11 @@
 .searchPolicies:focus {
     outline: none !important;
 }
+
 .searchPolicies::-webkit-input-placeholder {
     color: white !important;
 }
+
 #policySidenavTop {
     margin-top: 1.5em;
 }
@@ -66,5 +68,5 @@
 }
 
 [ng-drop].drag-enter {
-    border: solid 3px #62D0C9;
+    border: solid 3px #EC407A;
 }

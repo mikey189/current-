@@ -964,14 +964,102 @@
       "name": "Marquez Richard"
     }
   ],
-    "policyList": [
-        {"name": "Web High Priority", "files": 234, "users": 34, "channels": ["Endpoint", "Scanner", "API"], "id": 1},
-        {"name": "Web Low Priority", "files": 31, "users": 12, "channels": ["ICAP", "API", "MAIL"], "id": 2},
-        {"name": "Mail High Privilegies", "files": 27, "users": 4, "channels": ["MAIL"], "id": 3},
-        {"name": "Mail Low Privilegies", "files": 120, "users": 8, "channels": ["MAIL"], "id": 4},
-        {"name": "C# Team Google Drive", "files": 301, "users": 72, "channels": ["Endpoint", "Mail", "API"], "id": 5},
-        {"name": "iOS Team Local Drive", "files": 561, "users": 56, "channels": ["Scanner", "Endpoint", "CDROM"], "id": 6},
-        {"name": "Sales Local Drive", "files": 207, "users": 22, "channels": ["ICAP", "Endpoint", "MAIL"], "id": 7}
-        
+  "policyList": [
+    {
+      "name": "Web High Priority",
+      "files": 234,
+      "users": 34,
+      "channels": [
+        "Endpoint",
+        "Scanner",
+        "API"
+      ],
+      "id": 1
+    },
+    {
+      "name": "Web Low Priority",
+      "files": 31,
+      "users": 12,
+      "channels": [
+        "ICAP",
+        "API",
+        "MAIL"
+      ],
+      "id": 2
+    },
+    {
+      "name": "Mail High Privilegies",
+      "files": 27,
+      "users": 4,
+      "channels": [
+        "MAIL"
+      ],
+      "id": 3
+    },
+    {
+      "name": "Mail Low Privilegies",
+      "files": 120,
+      "users": 8,
+      "channels": [
+        "MAIL"
+      ],
+      "id": 4
+    },
+    {
+      "name": "C# Team Google Drive",
+      "files": 301,
+      "users": 72,
+      "channels": [
+        "Endpoint",
+        "Mail",
+        "API"
+      ],
+      "id": 5
+    },
+    {
+      "name": "iOS Team Local Drive",
+      "files": 561,
+      "users": 56,
+      "channels": [
+        "Scanner",
+        "Endpoint",
+        "CDROM"
+      ],
+      "id": 6
+    },
+    {
+      "name": "Sales Local Drive",
+      "files": 207,
+      "users": 22,
+      "channels": [
+        "ICAP",
+        "Endpoint",
+        "MAIL"
+      ],
+      "id": 7
+    }
+  ],
+  "policyOrder": [
+    {
+      "id": 1
+    },
+    [
+      3,
+      2,
+      1,
+      4,
+      7,
+      5,
+      6
+    ],
+    [
+      3,
+      2,
+      1,
+      4,
+      7,
+      6,
+      5
     ]
+  ]
 }

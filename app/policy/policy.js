@@ -18,6 +18,7 @@ app.controller('policy', function ($scope, $location, $timeout, $q) {
         console.log(points, evt);
     };
     
+    $scope.sidenavIsOpened = false;
     
     
 
