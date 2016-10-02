@@ -1039,6 +1039,28 @@
       "id": 7
     }
   ],
+  "policyDetection": [
+    {
+      "id": 1
+    },
+    {
+      "avira": true,
+      "clam": true,
+      "useAll": true,
+      "id": 2
+    },
+    {
+      "avira": true,
+      "clam": true,
+      "fireEyeSandbox": false,
+      "id": 3
+    },
+    {
+      "avira": true,
+      "clam": true,
+      "id": 4
+    }
+  ],
   "policyOrder": [
     {
       "id": 1

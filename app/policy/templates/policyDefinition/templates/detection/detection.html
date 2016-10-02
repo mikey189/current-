@@ -1,93 +1,74 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/detection/style.css" />
 
-<table md-whiteframe="6" class="detectionTables table table-responsive">
-    <thead>
-        <th class="verticalMargin">
-            <div layout="row" layout-align="start center">
+<md-button md-ink-ripple="white" md-whiteframe = "6" class="editDetection" aria-label="edit preferences" edit-preferences>EDIT</md-button>
+
+<table md-whiteframe="6" class="detectionTables table table-responsive notEditable" match-width>
+    <thead >
+        <th class="verticalMargin" id="copyMyWidth">
+            <div layout="row" layout-align="start center" class="this">
                 <md-icon class="noMargin">list</md-icon>
                 <p class="noMarginBottom">SCANNERS</p>
             </div>
         </th>
         <th class="verticalMargin">
             <div layout="row" layout-align="start center">
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.useAll" use-all></md-checkbox>
+                <md-checkbox aria-label="useAll" class="noMarginBottom" ng-model="ctrl.detection.useAll" use-all></md-checkbox>
                 <p class="noMarginBottom">USE</p>
             </div>
         </th>
     </thead>
     <tbody>
         <tr class="verticalMargin">
-            <td>Avira</td>
+            <td class="this">Avira</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.avira"></md-checkbox>
+                <md-checkbox aria-label="avira" class="noMarginBottom" ng-model="ctrl.detection.avira"></md-checkbox>
             </td>
         </tr>
         <tr class="verticalMargin">
-            <td>Clam</td>
+            <td class="this">Clam</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.clam"></md-checkbox>
+                <md-checkbox aria-label="clam" class="noMarginBottom" ng-model="ctrl.detection.clam"></md-checkbox>
             </td>
         </tr>
     </tbody>
 </table>
 
-<table md-whiteframe="6" class="detectionTables table table-responsive">
-    <thead>
-        <th class="verticalMargin">
-            <div layout="row" layout-align="start center">
-                <md-icon class="noMargin">list</md-icon>
-                <p class="noMarginBottom">SCANNERS</p>
-            </div>
-        </th>
-        <th class="verticalMargin">
-            <div layout="row" layout-align="start center">
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.useAll" use-all></md-checkbox>
-                <p class="noMarginBottom">USE</p>
-            </div>
-        </th>
-    </thead>
+<table md-whiteframe="6" class="detectionTables table table-responsive notEditable">
+
     <tbody>
         <tr class="verticalMargin">
-            <td>Avira</td>
+            <td class="this">FireEye Sandbox</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.avira"></md-checkbox>
+                <md-checkbox aria-label="feSandbox" class="noMarginBottom" ng-model="ctrl.detection.fireEyeSandbox"></md-checkbox>
             </td>
         </tr>
         <tr class="verticalMargin">
-            <td>Clam</td>
+            <td class="this">Cukoo Sandbox</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.clam"></md-checkbox>
+                <md-checkbox aria-label="cukoo" class="noMarginBottom" ng-model="ctrl.detection.cukooSandbox"></md-checkbox>
             </td>
         </tr>
     </tbody>
 </table>
 
-<table md-whiteframe="6" class="detectionTables table table-responsive">
-    <thead>
-        <th class="verticalMargin">
-            <div layout="row" layout-align="start center">
-                <md-icon class="noMargin">list</md-icon>
-                <p class="noMarginBottom">SCANNERS</p>
-            </div>
-        </th>
-        <th class="verticalMargin">
-            <div layout="row" layout-align="start center">
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.useAll" use-all></md-checkbox>
-                <p class="noMarginBottom">USE</p>
-            </div>
-        </th>
-    </thead>
+<table md-whiteframe="6" class="detectionTables table table-responsive notEditable">
     <tbody>
         <tr class="verticalMargin">
-            <td>Avira</td>
+            <td class="this">Vendor Signing</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.avira"></md-checkbox>
+                <md-checkbox aria-label="vendor" class="noMarginBottom" ng-model="ctrl.detection.vendorSigning"></md-checkbox>
             </td>
         </tr>
         <tr class="verticalMargin">
-            <td>Clam</td>
+            <td class="this">XML Validation</td>
             <td>
-                <md-checkbox class="noMarginBottom" ng-model="ctrl.detection.clam"></md-checkbox>
+                <md-checkbox aria-label="xml" class="noMarginBottom" ng-model="ctrl.detection.xmlValidation"></md-checkbox>
+            </td>
+        </tr>
+        <tr class="verticalMargin">
+            <td class="this">Regular Expression</td>
+            <td>
+                <md-checkbox aria-label="regex" class="noMarginBottom" ng-model="ctrl.detection.regex"></md-checkbox>
             </td>
         </tr>
     </tbody>

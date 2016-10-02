@@ -18,3 +18,19 @@
     height: 3em;
     background-color: none;
 }
+
+.editDetection{
+    background-color: #190051;
+    color: white;
+    font-weight: 600;
+    margin-left: 0px;
+    margin-top: 2em;
+}
+.editDetection:hover{
+    background-color: #FF1744 !important;
+    color: white;
+    font-weight: 600;
+}
+.notEditable {
+    pointer-events: none;
+}

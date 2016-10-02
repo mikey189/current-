@@ -85,7 +85,21 @@ app.factory("dashboardData", function ($http) {
         }
     }
 })
-
+app.factory("policyDetection", function($http){
+    var url = "http://localhost:3000/policyDetection"
+    return {
+       post: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: url,
+                method: "POST",
+                data: data
+            })
+        }
+    }
+})
 
 app.factory("policyData", function ($http) {
     var url = "http://localhost:3000/policyDefinition";

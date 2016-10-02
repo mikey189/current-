@@ -7,7 +7,10 @@ app.controller('detection',["policyData", function(policyData){
     self.obj = {};
     self.readonly = false;
     self.removable = true;
-
+    
+    self.detection = {};
+    self.editMode = false;
+    
     self.exceptionUsers = [];
     //loading table data
     policyData.getData().then(function (answer) {
