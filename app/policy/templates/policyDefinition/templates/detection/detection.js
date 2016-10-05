@@ -7,7 +7,8 @@ app.controller('detection',["policyData", function(policyData){
     self.obj = {};
     self.readonly = false;
     self.removable = true;
-    
+    self.fireEye = false;
+    self.cukoo = false;
     self.detection = {};
     self.editMode = false;
     

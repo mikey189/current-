@@ -1,19 +1,10 @@
-app.controller("cases", [function () {
+app.controller("cases", ["dashboardData", function (dashboardData) {
 
-    
+
     var self = this;
-    
-    self.draggableObjects = [
-                    {name: 'one'},
-                    {name: 'two'},
-                    {name: 'three'}
-                ];
-                self.onDropComplete = function (index, obj, evt) {
-                    var otherObj = self.draggableObjects[index];
-                    var otherIndex = self.draggableObjects.indexOf(obj);
-                    self.draggableObjects[index] = obj;
-                    self.draggableObjects[otherIndex] = otherObj;
-                }
-    
-   
+    dashboardData.getCasesSidebar().then(function (answer) {
+        self.casesInfo = answer.data;
+        self.totalCases = self.casesInfo.length;
+    })
+self.repeat = 1000;
 }])

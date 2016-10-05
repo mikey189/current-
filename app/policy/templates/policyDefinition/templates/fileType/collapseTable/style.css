@@ -1,4 +1,14 @@
- #editButtonPolicy {
+.toggleOs{
+    background-color: #C3CFE7;
+    color: #6A68EF;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.toggleOs > md-icon{
+    color: #6A68EF;
+}
+
+#editButtonPolicy {
      background-color: #23CCC7;
      color: white;
      margin-left: 0px;
@@ -97,3 +107,4 @@
 .child{
     background-color: #f1f1f1;
 }
+

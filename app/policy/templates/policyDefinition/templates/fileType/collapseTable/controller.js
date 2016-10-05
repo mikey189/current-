@@ -6,6 +6,7 @@ app.controller("PDCollapseTable", ["policyData", function (policyData) {
     self.obj = {};
     self.readonly = false;
     self.removable = true;
+    self.showOs = false;
 
     self.exceptionUsers = [];
     //loading table data

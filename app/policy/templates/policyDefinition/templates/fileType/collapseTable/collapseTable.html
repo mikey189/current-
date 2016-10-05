@@ -1,13 +1,12 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
 <div style="margin-top: 1.5em">
-    
+
     <div layout="row" layout-align="space-between center" id="actionButtonsWrapper">
         <md-button edit-mode class="md-raised bold" id="editButtonPolicy">Edit</md-button>
-    <md-button show-advanced-mode class="md-raised bold" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
+        <md-button show-advanced-mode class="md-raised bold" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
 
     </div>
-    
-    <table id="ctCollapseTable" class="table table-responsive notEditable" not-editable-warning md-whiteframe="6">
+    <table id="ctCollapseTable" class="table table-responsive notEditable animated fadeIn" not-editable-warning md-whiteframe="6">
         <thead>
             <th id="ct1stRow"></th>
             <th id="ctAllow">Allow</th>
@@ -15,13 +14,18 @@
                 <ct-description></ct-description>
             </th>
         </thead>
-        <tbody class="policyRowsDef" ng-repeat="i in ctrl.dataSet">
-            <tr class="osParent" show-children>
+        <tr toggle-os>
+            <td colspan="7" class="toggleOs">
+                <md-icon>keyboard_arrow_right</md-icon>
+                Executables
+            </td>
+        </tr>
+        <tbody class="policyRowsDef animated fadeIn" ng-repeat="i in ctrl.dataSet" id="execBody">
+            <tr class="osParent hidden animated fadeIn" show-children>
                 <td>
                     <md-icon class="material-icons">keyboard_arrow_right</md-icon>{{i.name}}</td>
                 <td colspan="6"></td>
             </tr>
-
             <tr class="hidden child" ng-repeat="x in i.exec" class="ncTypeRows">
                 <td class="ctEXName">{{x}}</td>
                 <td>

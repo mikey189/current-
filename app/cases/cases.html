@@ -1,67 +1,7 @@
-<table class="table table-responsive" md-whiteframe="6">
-    <thead>
-        <th>
-            <md-icon class="material-icons">location_searching</md-icon>
-            Scanners
-        </th>
-        <th>
-            <md-checkbox aria-label="use scanners"></md-checkbox>
-        </th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Avira</td>
-            <td><md-checkbox aria-label="useavria"></md-checkbox></td>
-        </tr>
-        <tr>
-            <td>Clam</td>
-            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
-        </tr>
-        <tr show-fireeye-sandbox>
-            <td>FireEye Sandbox</td>
-            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
-        </tr>
-        <tr class="fireEyeSandbox hidden">
-            <td>Use FireEye servers for this policy</td>
-            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
-        </tr>
-        <tr class="fireEyeSandbox hidden">
-            <td>Check File Types</td>
-            <td><md-checkbox aria-label="filetype"></md-checkbox></td>
-        </tr>
-        <tr show-cukoo-sandbox>
-            <td>FireEye Sandbox</td>
-            <td><md-checkbox aria-label="fireEye"></md-checkbox></td>
-        </tr>
-        <tr class="cukoo hidden">
-            <td>Use Cukoo servers for this policy</td>
-            <td><md-checkbox aria-label="cukooServers"></md-checkbox></td>
-        </tr>
-        <tr class="cukoo hidden">
-            <td>Check File Types</td>
-            <td><md-checkbox aria-label="cukootype"></md-checkbox></td>
-        </tr>
-        <tr>
-            <td>Vendor Signing</td>
-            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
-        </tr><tr>
-            <td>XML Validation</td>
-            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
-        </tr><tr>
-            <td>Regular Expression</td>
-            <td><md-checkbox aria-label="useClam"></md-checkbox></td>
-        </tr>
-    </tbody>
-</table>
+<div layout="row" layout-fill>
 
-
-
-<div class="row text-center">
-    <ul class="draglist">
-        <li ng-repeat="obj in ctrl.draggableObjects" ng-drop="true" ng-drop-success="ctrl.onDropComplete($index, $data,$event)">
-            <div ng-drag="true" ng-drag-data="obj">
-                {{obj.name}}
-            </div>
-        </li>
-    </ul>
+<d-cases-sidebar></d-cases-sidebar>
+    <div layout="column">
+    <div ng-repeat="i in [1, 2, 3, 4, 5, 6, 7]" style="background-color: yellow; height: 300px"></div>
+    </div>
 </div>

@@ -15,7 +15,10 @@ app.controller("dashboard", ["$scope","dashboardData", function ($scope, dashboa
     dashboardData.getOutput().then(function(response){
         self.output = response.data;
     })
-    
+    dashboardData.getCasesSidebar().then(function(answer){
+        self.casesInfo = answer.data;
+        self.totalCases = self.casesInfo.length;
+    })
  
 }]);
 

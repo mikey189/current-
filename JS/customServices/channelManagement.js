@@ -71,7 +71,8 @@ app.factory("policyList", function ($http) {
 app.factory("dashboardData", function ($http) {
     var inputURL = "http://localhost:3000/dashboardInputs";
     var totalInputURL = "http://localhost:3000/dashboardTotalInputs";
-    var outputURL = "http://localhost:3000/dashboardOutputs"
+    var outputURL = "http://localhost:3000/dashboardOutputs";
+    var casesSidebar  = "http://localhost:3000/dashboardSidebar";
 
     return {
         getInput: function () {
@@ -82,6 +83,9 @@ app.factory("dashboardData", function ($http) {
         },
         getOutput: function () {
             return $http.get(outputURL)
+        },
+        getCasesSidebar: function(){
+            return $http.get(casesSidebar)
         }
     }
 })
