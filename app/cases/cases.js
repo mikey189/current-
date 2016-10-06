@@ -6,5 +6,10 @@ app.controller("cases", ["dashboardData", function (dashboardData) {
         self.casesInfo = answer.data;
         self.totalCases = self.casesInfo.length;
     })
-self.repeat = 1000;
+    self.Policy = {};
+    self.readonly = false;
+    self.removable = true;
+    self.Policy.UsersList = [];
+    self.Policy.UserGroupsList = [];
+    self.Policy.channels = [];
 }])

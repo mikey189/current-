@@ -7,6 +7,5 @@ app.controller('login', function($rootScope){
         password: ''  
   };
    
-   
-    
+ 
 })

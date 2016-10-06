@@ -45,7 +45,22 @@ app.factory("channelData", function ($http) {
     }
 })
 
+app.factory("addPolicy", function ($http) {
+    var url = "http://jdev01:4580/api/Policy/Add";
+    return {
+        add: function(data){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: url,
+                method: "POST",
+                data: data
+            }) 
+        }
+    }
 
+})
 app.factory("policyList", function ($http) {
     var policyList = "http://localhost:3000/policyList";
     var policyOrder = "http://localhost:3000/policyOrder"
@@ -72,7 +87,7 @@ app.factory("dashboardData", function ($http) {
     var inputURL = "http://localhost:3000/dashboardInputs";
     var totalInputURL = "http://localhost:3000/dashboardTotalInputs";
     var outputURL = "http://localhost:3000/dashboardOutputs";
-    var casesSidebar  = "http://localhost:3000/dashboardSidebar";
+    var casesSidebar = "http://localhost:3000/dashboardSidebar";
 
     return {
         getInput: function () {
@@ -84,15 +99,15 @@ app.factory("dashboardData", function ($http) {
         getOutput: function () {
             return $http.get(outputURL)
         },
-        getCasesSidebar: function(){
+        getCasesSidebar: function () {
             return $http.get(casesSidebar)
         }
     }
 })
-app.factory("policyDetection", function($http){
+app.factory("policyDetection", function ($http) {
     var url = "http://localhost:3000/policyDetection"
     return {
-       post: function (data) {
+        post: function (data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
