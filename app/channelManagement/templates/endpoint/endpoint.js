@@ -1,3 +1,18 @@
-app.controller("channelManagementEndpoint", [function(){
+app.controller("channelManagementEndpoint", ["C2CData","$scope", "channelDashboard", function(C2CData,$scope, channelDashboard){
     
+    
+    var self = this;
+    self.rootId = 0;
+    self.rootId = parseInt(C2CData.get());
+    /*watching the value change on the scope*/
+    $scope.$watch(angular.bind(this, function () {
+  return this.rootId;
+}), function (newVal) {
+  console.log('Name changed to ' + newVal);
+});
+    console.log("the root id ", self.rootId)
+    channelDashboard.getData().then(function(answer){
+        self.data = answer.data[self.rootId]
+        console.log(self.data)
+    })
 }])

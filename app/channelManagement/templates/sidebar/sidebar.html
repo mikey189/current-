@@ -12,7 +12,8 @@
                     <md-icon class="material-icons greenIcon noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
-                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.{{x.link}}">{{x.Name}}</a></strong></md-list-item>
+                    <md-list-item class="channelSidenavItems" ><a ui-sref="app.channelManagement.newChannel.step1"><strong>Create Channel</strong></a></md-list-item>
+                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems" _id="{{x.id}}" get-my-id><strong><a ui-sref="app.channelManagement.endpoint.dashboard">{{x.Name}}</a></strong></md-list-item>
                 </md-list>
             </md-content>
         </md-sidenav>

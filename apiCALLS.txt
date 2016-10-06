@@ -1,7 +1,0 @@
-DASHBOARD
-
-GetSystemAlerts - input none, output list <alerts>
-GetOpenCases - input admin ID, output List <cases>
-GetNewsFeedMessages - input none
-Ouput - List <newsfeedAlert>
-GetRealTimeInputByChannel - input none

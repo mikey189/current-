@@ -1,3 +1,9 @@
-app.controller('userList', [function(){
-    this.users = ["John Smith", "Paul Allen", "Barack Smith", "Jesse McKinsey", "Allen Stauart", "Jonathan Meguira", "Margaux L'ainée", "Stan Fields"]
+app.controller('userList', ["channelData", function(channelData){
+    
+    var self = this;
+    
+    channelData.getComputerList().then(function(answer){
+        self.users = answer.data;
+    })
+    
 }])

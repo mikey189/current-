@@ -1,3 +1,6 @@
-app.controller('channelManagementSidebar', function ($timeout, $mdSidenav, $log) {
-    this.menuItems = [{"Name": "Create Channel", "link": "newChannel.step1"},{"Name": "Endpoint", "link": "endpoint.dashboard"},  {"Name": "Directory Watcher", "link": "directoryWatcher"}, {"Name": "API", "link": "api"}]
-});
+app.controller('channelManagementSidebar',["channelData", function (channelData) {
+    var self= this;
+    channelData.getchannelList().then(function(answer){
+ self.menuItems= answer.data;
+    })
+}]);

@@ -12,13 +12,29 @@ app.directive("matchWidth", function () {
     }
 })
 
+app.directive("checkIfEditable", function () {
+    return {
+        restrict: "A",
+        priority: 1000,
+        link: function (scope, element, attrs) {
+            var tables = $("#detectionWrapper");
+            var editButton = $(".editDetection");
+            element.click(function () {
+                if (tables.hasClass("notEditable")) {
+                    editButton.toggleClass("animated shake")
+                }
+            })
+        }
+    }
+})
+
 app.directive("editPreferences", ["policyDetection", function (policyDetection) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
             element.click(function () {
                 var button = $(this)
-                table = $("table")
+                var table = $("#detectionWrapper")
                 if (!scope.ctrl.editMode) {
                     table.removeClass("notEditable")
                     button.html("DONE");
@@ -26,6 +42,8 @@ app.directive("editPreferences", ["policyDetection", function (policyDetection) 
                 } else {
                     table.addClass("notEditable")
                     button.html("EDIT");
+                    scope.ctrl.editMode = false;
+
                     policyDetection.post(scope.ctrl.detection)
                 }
             })
@@ -54,13 +72,13 @@ app.directive("unwrappFireye", function () {
 })
 
 
-app.directive("unwrappCukoo", function(){
+app.directive("unwrappCukoo", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.click(function(){
+        link: function (scope, element, attrs) {
+            element.click(function () {
                 var self = $(this);
-                if (!scope.ctrl.cukoo){
+                if (!scope.ctrl.cukoo) {
                     $(".cukoo").removeClass("hidden")
                     self.find("md-icon").html("keyboard_arrow_down")
                     scope.ctrl.cukoo = true;

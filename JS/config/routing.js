@@ -49,18 +49,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'channelManagementDashboard',
             controllerAs: 'controller'
         })*/
-        .state('app.channelManagement.api', {
-            url: '/channelManagementApi',
-            templateUrl: 'app/channelManagement/templates/api/api.html',
-            controller: 'channelManagementApi',
-            controllerAs: 'controller'
-        })
-        .state('app.channelManagement.directoryWatcher', {
-            url: '/channelManagementDW',
-            templateUrl: 'app/channelManagement/templates/directoryWatcher/directoryWatcher.html',
-            controller: 'channelManagementDirectoryWatcher',
-            controllerAs: 'controller'
-        })
 
 
     .state('app.channelManagement.endpoint', {

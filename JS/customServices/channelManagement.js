@@ -5,9 +5,13 @@ app.factory("channelData", function ($http) {
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
-    var computerList = "http://jdev01:4580/api/users/getadmachines";
-    var real = "http://jdev01:4580/api/channels/getallchannels";
+    var computerList = "http://localhost:3000/userComputers";
+    var channelList="http://localhost:3000/channelList";
+    var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
     return {
+        getchannelList: function(){
+           return $http.get(channelList) 
+        },
         addChannel: function (data) {
             return $http({
                 headers: {
@@ -44,7 +48,14 @@ app.factory("channelData", function ($http) {
         }
     }
 })
-
+app.factory("channelDashboard", function($http){
+    var url = "  http://localhost:3000/channelDashboard";
+    return{
+    getData: function(){
+        return $http.get(url)
+    }
+    }
+})
 app.factory("addPolicy", function ($http) {
     var url = "http://jdev01:4580/api/Policy/Add";
     return {

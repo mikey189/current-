@@ -1042,30 +1042,8 @@
   "policyDetection": [
     {
       "id": 1
-    },
-    {
-      "avira": true,
-      "clam": true,
-      "useAll": true,
-      "id": 2
-    },
-    {
-      "avira": true,
-      "clam": true,
-      "fireEyeSandbox": false,
-      "id": 3
-    },
-    {
-      "avira": true,
-      "clam": true,
-      "id": 4
-    },
-    {
-      "avira": false,
-      "clam": false,
-      "useAll": false,
-      "id": 5
     }
+
   ],
   "policyOrder": [
     {
@@ -1099,62 +1077,163 @@
       3
     ]
   ],
-    "dashboardSidebar": 
+  "dashboardSidebar": [
+    {
+      "caseID": 345,
+      "severity": "High",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-08-14",
+        "time": "10:00"
+      },
+      "closeTime": {
+        "date": "2016-08-17",
+        "time": "12:00"
+      },
+      "relatedUser": "Zohar Brande"
+    },
+    {
+      "caseID": 349,
+      "severity": "Low",
+      "status": "In Progress",
+      "openTime": {
+        "date": "2016-09-24",
+        "time": "11:34"
+      },
+      "closeTime": {
+        "date": "2016-09-27",
+        "time": "08:45"
+      },
+      "relatedUser": "Jonathan Meguira"
+    },
+    {
+      "caseID": 735,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-04",
+        "time": "09:24"
+      },
+      "closeTime": {
+        "date": "2016-10-05",
+        "time": "17:45"
+      },
+      "relatedUser": "John Malkinov"
+    },
+    {
+      "caseID": 129,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-11-01",
+        "time": "13:42"
+      },
+      "closeTime": {
+        "date": "2016-11-01",
+        "time": "18:07"
+      },
+      "relatedUser": "David Zaffran"
+    },
+    {
+      "caseID": 220,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-05",
+        "time": "11:10"
+      },
+      "closeTime": {
+        "date": "2016-10-05",
+        "time": "14:22"
+      },
+      "relatedUser": "Benjamin Fedida"
+    },
+    {
+      "caseID": 101,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-06",
+        "time": "11:26"
+      },
+      "closeTime": {
+        "date": "2016-10-06",
+        "time": "14:37"
+      },
+      "relatedUser": "David Oliel"
+    },
+    {
+      "caseID": 334,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-07",
+        "time": "12:14"
+      },
+      "closeTime": {
+        "date": "2016-10-07",
+        "time": "14:56"
+      },
+      "relatedUser": "Haim Sebag"
+    },
+    {
+      "caseID": 809,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-06",
+        "time": "13:23"
+      },
+      "closeTime": {
+        "date": "2016-10-06",
+        "time": "15:52"
+      },
+      "relatedUser": "Anaelle Safira"
+    },
+    {
+      "caseID": 108,
+      "severity": "Low",
+      "status": "Opened",
+      "openTime": {
+        "date": "2016-10-08",
+        "time": "16:20"
+      },
+      "closeTime": {
+        "date": "2016-10-08",
+        "time": "18:08"
+      },
+      "relatedUser": "William Kirk"
+    }
+  ],
+    "channelList":
+    [{"Name": "Endpoint", "id": "00"},  {"Name": "Directory Watcher", "id": "01"}, {"Name": "API", "id": "02"}],
+    
+    "channelDashboard":
     [
-        {"caseID": 345,
-        "severity": "High",
-        "status": "Opened",
-        "openTime": {"date": "2016-08-14", "time": "10:00"},
-        "closeTime": {"date": "2016-08-17", "time": "12:00"},
-        "relatedUser": "Zohar Brande"},
-        {"caseID": 349,
-        "severity": "Low",
-        "status": "In Progress",
-        "openTime": {"date": "2016-09-24", "time": "11:34"},
-        "closeTime": {"date": "2016-09-27", "time": "08:45"},
-        "relatedUser": "Jonathan Meguira"},
-        {"caseID": 735,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-04", "time": "09:24"},
-        "closeTime": {"date": "2016-10-05", "time": "17:45"},
-        "relatedUser": "John Malkinov"},
-        {"caseID": 129,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-11-01", "time": "13:42"},
-        "closeTime": {"date": "2016-11-01", "time": "18:07"},
-        "relatedUser": "David Zaffran"},
-        {"caseID": 220,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-05", "time": "11:10"},
-        "closeTime": {"date": "2016-10-05", "time": "14:22"},
-        "relatedUser": "Benjamin Fedida"},
-        {"caseID": 101,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-06", "time": "11:26"},
-        "closeTime": {"date": "2016-10-06", "time": "14:37"},
-        "relatedUser": "David Oliel"},
-        {"caseID": 334,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-07", "time": "12:14"},
-        "closeTime": {"date": "2016-10-07", "time": "14:56"},
-        "relatedUser": "Haim Sebag"},
-        {"caseID": 809,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-06", "time": "13:23"},
-        "closeTime": {"date": "2016-10-06", "time": "15:52"},
-        "relatedUser": "Anaelle Safira"},
-        {"caseID": 108,
-        "severity": "Low",
-        "status": "Opened",
-        "openTime": {"date": "2016-10-08", "time": "16:20"},
-        "closeTime": {"date": "2016-10-08", "time": "18:08"},
-        "relatedUser": "William Kirk"}
+        {"00": 
+         [
+             {"topFilesType": [{"type": "EXE", "number": "40"}, {"type": "JPEG", "number": "67"}, {"type": "PNG", "number": "65"}, {"type": "XLS", "number": "32"}, {"type": "DOC", "number": "78"}, {"type": "PDF", "number": "51"}, {"type": "SVG", "number": "89"}, {"type": "TXT", "number": "33"}, {"type": "HTML", "number": "87"}, {"type": "CSV", "number": "90"}]},
+             {"topUsers": [{"name": "Sylvia Workman", "team": "Marketing"}, {"name": "Wright Osborn", "team": "Developer"}, {"name": "Marsha Sanders", "team": "HR"}, {"name": "Josefina Gibson", "team": "Sales"}, {"name": "Hancock Eaton", "team": "Marketing"}, {"name": "Yang Peck", "team": "Data Scientist"}, {"name": "Manning Larson", "team": "Hardware Engineer"}, {"name": "Jordan Moss", "team": "Community Manager"}, {"name": "Willis England", "team": "Marketing"}, {"name": "Estella Walters", "team": "Designer"}, {"name": "Schwartz Pollard", "team": "Accounting"}]},
+             {"topCases": [{"totalCases": "10", "name": "Gary Rudowicz", "high": "2", "medium": "6", "low": "2"}, {"totalCases": "12", "name": "Meir Lor", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Phill Murstein", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "9", "name": "Lauren Smirk", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "10", "name": "Oren Mekori", "high": "2", "medium": "5", "low": "3"}, {"totalCases": "12", "name": "Jenya Sedin", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "15", "name": "Eva Cohen", "high": "5", "medium": "4", "low": "6"}, {"totalCases": "9", "name": "Sofia Samilov", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "12", "name": "Rafael Shwatz", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Jonathan Meguira", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "18", "name": "Karinne Lubitz", "high": "6", "medium": "4", "low": "8"}]},
+             {"generalInformations": [{"description": "This channel is made of all PDF files received through mails"}, {"activeAgents": "2545"}, {"openedCases": "235"}, {"blockedFiles": "45"}, {"sanitizedFiles": "21"}]}
+         ]
+        },
+        {"01": 
+         [
+             {"topFilesType": [{"type": "EXE", "number": "70"}, {"type": "JPEG", "number": "28"}, {"type": "PNG", "number": "45"}, {"type": "XLS", "number": "60"}, {"type": "DOC", "number": "78"}, {"type": "PDF", "number": "51"}, {"type": "SVG", "number": "89"}, {"type": "TXT", "number": "33"}, {"type": "HTML", "number": "87"}, {"type": "CSV", "number": "90"}]},
+             {"topUsers": [{"name": "Jack Osborn", "team": "Marketing"}, {"name": "Wright Osborn", "team": "Developer"}, {"name": "Marsha Sanders", "team": "HR"}, {"name": "Josefina Gibson", "team": "Sales"}, {"name": "Hancock Eaton", "team": "Marketing"}, {"name": "Yang Peck", "team": "Data Scientist"}, {"name": "Manning Larson", "team": "Hardware Engineer"}, {"name": "Jordan Moss", "team": "Community Manager"}, {"name": "Willis England", "team": "Marketing"}, {"name": "Estella Walters", "team": "Designer"}, {"name": "Schwartz Pollard", "team": "Accounting"}]},
+             {"topCases": [{"totalCases": "10", "name": "Alon Splitcz", "high": "2", "medium": "6", "low": "2"}, {"totalCases": "12", "name": "Meir Lor", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Phill Murstein", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "9", "name": "Lauren Smirk", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "10", "name": "Oren Mekori", "high": "2", "medium": "5", "low": "3"}, {"totalCases": "12", "name": "Jenya Sedin", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "15", "name": "Eva Cohen", "high": "5", "medium": "4", "low": "6"}, {"totalCases": "9", "name": "Sofia Samilov", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "12", "name": "Rafael Shwatz", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Jonathan Meguira", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "18", "name": "Karinne Lubitz", "high": "6", "medium": "4", "low": "8"}]},
+             {"generalInformations": [{"description": "All files copied from external hard drives onto local desktops"}, {"activeAgents": "11"}, {"openedCases": "85"}, {"blockedFiles": "11"}, {"sanitizedFiles": "21"}]}
+         ]
+        },
+        {"02": 
+         [
+             {"topFilesType": [{"type": "EXE", "number": "40"}, {"type": "JPEG", "number": "67"}, {"type": "PNG", "number": "65"}, {"type": "XLS", "number": "32"}, {"type": "DOC", "number": "78"}, {"type": "PDF", "number": "51"}, {"type": "SVG", "number": "89"}, {"type": "TXT", "number": "33"}, {"type": "HTML", "number": "87"}, {"type": "CSV", "number": "90"}]},
+             {"topUsers": [{"name": "Sylvia Workman", "team": "Marketing"}, {"name": "Wright Osborn", "team": "Developer"}, {"name": "Marsha Sanders", "team": "HR"}, {"name": "Josefina Gibson", "team": "Sales"}, {"name": "Hancock Eaton", "team": "Marketing"}, {"name": "Yang Peck", "team": "Data Scientist"}, {"name": "Manning Larson", "team": "Hardware Engineer"}, {"name": "Jordan Moss", "team": "Community Manager"}, {"name": "Willis England", "team": "Marketing"}, {"name": "Estella Walters", "team": "Designer"}, {"name": "Schwartz Pollard", "team": "Accounting"}]},
+             {"topCases": [{"totalCases": "10", "name": "Murdock Rupert", "high": "2", "medium": "6", "low": "2"}, {"totalCases": "12", "name": "Meir Lor", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Phill Murstein", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "9", "name": "Lauren Smirk", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "10", "name": "Oren Mekori", "high": "2", "medium": "5", "low": "3"}, {"totalCases": "12", "name": "Jenya Sedin", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "15", "name": "Eva Cohen", "high": "5", "medium": "4", "low": "6"}, {"totalCases": "9", "name": "Sofia Samilov", "high": "3", "medium": "3", "low": "3"}, {"totalCases": "12", "name": "Rafael Shwatz", "high": "3", "medium": "6", "low": "3"}, {"totalCases": "8", "name": "Jonathan Meguira", "high": "2", "medium": "4", "low": "2"}, {"totalCases": "18", "name": "Karinne Lubitz", "high": "6", "medium": "4", "low": "8"}]},
+             {"generalInformations": [{"description": "All .HTML and .PHP Files on developers local drives"}, {"activeAgents": "212"}, {"openedCases": "23"}, {"blockedFiles": "108"}, {"sanitizedFiles": "87"}]}
+         ]
+        }
         
-    ] 
+    ]
 }
