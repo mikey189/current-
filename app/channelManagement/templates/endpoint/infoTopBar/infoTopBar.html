@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/infoTopbar/style.css" />
-<div layout="row" flex="100" layout-align="space-between center" ng-controller="CMinfoTopBar as ctrl" id="CMInfoTopBar">
+<div layout="row" flex="100" layout-align="space-between center" id="CMInfoTopBar" ng-controller="channelManagementEndpoint as ctrl">
     <div flex="20" class="infoTopBarDiv" layout-align="center center">
-        <p>{{ctrl.lorem}}</p>
+        <p>{{ctrl.first}}</p>
     </div>
     <div flex="20" class="infoTopBarDiv" layout-align="center center" layout="column">
         <h2>{{ctrl.activeAgents}}</h2>
@@ -19,3 +19,4 @@
         <h2>{{ctrl.sanitizedFiles}}</h2>
         <small class="lighGray">Sanitized Files</small>
     </div>
+</div>

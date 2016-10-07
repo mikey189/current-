@@ -10,9 +10,16 @@ app.controller("channelManagementEndpoint", ["C2CData", "$scope", "channelDashbo
     }), function (newVal) {
         console.log('new index changed to ' + newVal);
     });*/
-    console.log("the root id ", self.rootId)
     channelDashboard.getData().then(function (answer) {
         self.data = answer.data[self.rootId]
-        console.log(self.data)
+       for (i in self.data){
+           console.log(self.data[i])
+       }
     })
+    
+    self.lorem = "Endpoint channel is made of all PDF files received through mail";
+    self.activeAgents = "2545";
+    self.openCases = "235";
+    self.blockedFiles = "254";
+    self.sanitizedFiles = "387";
 }])
