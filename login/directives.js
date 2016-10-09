@@ -9,23 +9,21 @@ app.directive("loginButton", function () {
     }
 })
 
-app.directive("checkCredentials", ["authService", "$rootScope", "$timeout", function (authService, $rootScope, $timeout) {
+app.directive("checkCredentials", ["authService", "$rootScope", "$http", function (authService, $rootScope, $http) {
     return {
         restrict: "A",
         priority: 1000,
         link: function (scope, element, attrs) {
             element.click(function () {
-                console.log("inside service")
                 scope.ctrl.defaultUrl = "http://" + scope.ctrl.server + ":4580"
-                console.log(scope.ctrl.defaultUrl)
                 $rootScope.url = scope.ctrl.defaultUrl;
 
-                $timeout(function () {
-                    console.log("here ius the ", $rootScope.url)
-                    authService.checkLogin(scope.ctrl.username, scope.ctrl.password).then(function (answer) {
-                        console.log("token is ", answer.data)
-                    })
-                }, 2000)
+                authService.checkLogin(scope.ctrl.username,
+                    scope.ctrl.password).then(function (answer) {
+                    var token = answer.data.AccessToken
+                    $http.defaults.headers.common['Authorization'];
+                    $http.defaults.headers.common['Authorization'] = token;
+                })
 
             })
         }
