@@ -8,7 +8,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/',
             templateUrl: 'login/login.html',
             controller: 'login',
-            controllerAs: 'login'
+            controllerAs: 'ctrl'
             
         })
 

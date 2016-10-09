@@ -1,7 +1,31 @@
+app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
-var devServer = "http://jdev01:4580";
+    return {
+        checkLogin: function (username, password) {
+            var url = $rootScope.url + "/api/users/login";
 
-app.factory("channelData", function ($http) {
+            console.log($rootScope.url, "this the rootscope")
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: url,
+                method: "POST",
+                data: {
+                    username: username,
+                    password: password
+                }
+            })
+        }
+    }
+}])
+
+
+
+
+
+
+app.factory("channelData", function ($http, $rootScope) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
     var outputListURL = "http://localhost:3000/outputList";
@@ -9,11 +33,11 @@ app.factory("channelData", function ($http) {
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://localhost:3000/userComputers";
-    var channelList="http://localhost:3000/channelList";
-    var channelListReal =  devServer+ "/api/channels/getALLCHANNELS";
+    var channelList = "http://localhost:3000/channelList";
+    var channelListReal = $rootScope.url + "/api/channels/getALLCHANNELS";
     return {
-        getchannelList: function(){
-           return $http.get(channelList) 
+        getchannelList: function () {
+            return $http.get(channelList)
         },
         addChannel: function (data) {
             return $http({
@@ -51,20 +75,20 @@ app.factory("channelData", function ($http) {
         }
     }
 })
-app.factory("channelDashboard", function($http){
+app.factory("channelDashboard", function ($http) {
     var url = "  http://localhost:3000/channelDashboard";
-    return{
-    getData: function(){
-        return $http.get(url)
-    }
+    return {
+        getData: function () {
+            return $http.get(url)
+        }
     }
 })
 
-app.factory("addPolicy", function ($http) {
-    var url = devServer + "/api/policy/postPolicy";
+app.factory("addPolicy", function ($http, $rootScope) {
+    var url = $rootScope.url + "/api/policy/postPolicy";
     //"http://jdev01:4580/api/Policy/PostPolicy"
     return {
-        add: function(data){
+        add: function (data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -72,17 +96,17 @@ app.factory("addPolicy", function ($http) {
                 url: url,
                 method: "POST",
                 data: data
-            }) 
+            })
         }
     }
 })
 
-app.factory("policyList", function ($http) {
-    var policyList = devServer + "/api/policy/getallpolicies";
+app.factory("policyList", function ($rootScope, $http) {
+    var policyList = $rootScope.url + "/api/policy/getallpolicies";
     //"http://localhost:3000/policyList";
-    var policyOrder = devServer + "/api/policy/reorderPolicyPriority";
+    var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
-    var deletePolicy = devServer +"/api/policy/deletepolicy";
+    var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
     return {
         getList: function () {
             return $http.get(policyList);
@@ -97,15 +121,15 @@ app.factory("policyList", function ($http) {
                 data: order
             })
         },
-        deletePolicy: function(id){
-            if (id !=0){
-                return  $http({
+        deletePolicy: function (id) {
+            if (id != 0) {
+                return $http({
                     headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: deletePolicy+"/"+id,
-                method: "POST",
-                data: id
+                        'Content-Type': 'application/json'
+                    },
+                    url: deletePolicy + "/" + id,
+                    method: "POST",
+                    data: id
                 })
             }
         }
