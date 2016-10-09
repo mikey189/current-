@@ -1,15 +1,8 @@
-<!--<div layout="row" layout-fill>
-
-<d-cases-sidebar></d-cases-sidebar>
-    <div layout="column">
-    <div ng-repeat="i in [1, 2, 3, 4, 5, 6, 7]" style="background-color: yellow; height: 300px"></div>
-    </div>
-</div>-->
 
 Let's create a Policy 
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Policy Name" aria-describedby="policy-Name" ng-model="ctrl.Policy.PolicyInfo.GeneralInformations.name">
-  <input type="text" class="form-control" placeholder="Policy Description" aria-describedby="policy-desc" ng-model="ctrl.Policy.PolicyInfo.GeneralInformations.description">
+  <input type="text" class="form-control" placeholder="Policy Name" aria-describedby="policy-Name" ng-model="ctrl.Policy.GeneralInformations.PolicyName">
+  <input type="text" class="form-control" placeholder="Policy Description" aria-describedby="policy-desc" ng-model="ctrl.Policy.GeneralInformations.PolicyDescription">
     userList
     <form name="userList">
         <md-chips ng-model="ctrl.Policy.UsersList" name="userList"  md-removable="true"></md-chips>
@@ -18,10 +11,11 @@ Let's create a Policy
     <form name="groupList">
         <md-chips ng-model="ctrl.Policy.UserGroupsList" name="groupList"  md-removable="false"></md-chips>
     </form>
-    channelList
-     <form name="channelList">
-        <md-chips ng-model="ctrl.Policy.channels" name="channels"  md-removable="false"></md-chips>
+    channel id
+    <form name="channelList">
+        <md-chips ng-model="ctrl.Policy.channelIds" name="channels"  md-removable="false"></md-chips>
     </form>
+     
 </div>
 
 

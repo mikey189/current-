@@ -55,7 +55,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/channelManagementEndpoint',
             templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
             controller: 'channelManagementEndpoint',
-            controllerAs: 'controller'
+            controllerAs: 'ctrl'
         })
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',

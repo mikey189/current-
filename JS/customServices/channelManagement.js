@@ -1,3 +1,6 @@
+
+var devServer = "http://jdev01:4580";
+
 app.factory("channelData", function ($http) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
@@ -7,7 +10,7 @@ app.factory("channelData", function ($http) {
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://localhost:3000/userComputers";
     var channelList="http://localhost:3000/channelList";
-    var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
+    var channelListReal =  devServer+ "/api/channels/getALLCHANNELS";
     return {
         getchannelList: function(){
            return $http.get(channelList) 
@@ -56,8 +59,10 @@ app.factory("channelDashboard", function($http){
     }
     }
 })
+
 app.factory("addPolicy", function ($http) {
-    var url = "http://jdev01:4580/api/Policy/Add";
+    var url = devServer + "/api/policy/postPolicy";
+    //"http://jdev01:4580/api/Policy/PostPolicy"
     return {
         add: function(data){
             return $http({
@@ -70,11 +75,14 @@ app.factory("addPolicy", function ($http) {
             }) 
         }
     }
-
 })
+
 app.factory("policyList", function ($http) {
-    var policyList = "http://localhost:3000/policyList";
-    var policyOrder = "http://localhost:3000/policyOrder"
+    var policyList = devServer + "/api/policy/getallpolicies";
+    //"http://localhost:3000/policyList";
+    var policyOrder = devServer + "/api/policy/reorderPolicyPriority";
+    //"http://localhost:3000/policyOrder"
+    var deletePolicy = devServer +"/api/policy/deletepolicy";
     return {
         getList: function () {
             return $http.get(policyList);
@@ -88,6 +96,18 @@ app.factory("policyList", function ($http) {
                 method: "POST",
                 data: order
             })
+        },
+        deletePolicy: function(id){
+            if (id !=0){
+                return  $http({
+                    headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: deletePolicy+"/"+id,
+                method: "POST",
+                data: id
+                })
+            }
         }
     }
 })

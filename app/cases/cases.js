@@ -11,5 +11,5 @@ app.controller("cases", ["dashboardData", function (dashboardData) {
     self.removable = true;
     self.Policy.UsersList = [];
     self.Policy.UserGroupsList = [];
-    self.Policy.channels = [];
+    self.Policy.channelIds = [];
 }])

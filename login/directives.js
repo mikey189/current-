@@ -8,3 +8,14 @@ app.directive("loginButton", function(){
         }
     }
 })
+
+app.directive("checkCredentials", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.click(function(){
+                //do nothing
+            })
+        }
+    }
+})

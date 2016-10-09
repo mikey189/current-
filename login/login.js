@@ -1,11 +1,7 @@
-app.controller('login', function($rootScope){
+app.controller('login', function(){
     
    
-    $rootScope.loginDetails = {
-        server: '',
-        username: '',
-        password: ''  
-  };
+
    
  
 })
