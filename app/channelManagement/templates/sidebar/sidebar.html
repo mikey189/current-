@@ -13,7 +13,7 @@
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
                     <md-list-item class="channelSidenavItems" ><a ui-sref="app.channelManagement.newChannel.step1"><strong>Create Channel</strong></a></md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.endpoint.dashboard"  get-my-id  _id="{{x.id}}">{{x.Name}}</a></strong></md-list-item>
+                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.endpoint.dashboard"  get-my-id  _id="{{x.Id}}">{{x.Name}}</a></strong></md-list-item>
                 </md-list>
             </md-content>
         </md-sidenav>

@@ -1,27 +1,33 @@
-
-Let's create a Policy 
+ Let's create a Policy
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Policy Name" aria-describedby="policy-Name" ng-model="ctrl.Policy.GeneralInformations.PolicyName">
-  <input type="text" class="form-control" placeholder="Policy Description" aria-describedby="policy-desc" ng-model="ctrl.Policy.GeneralInformations.PolicyDescription">
-    userList
+    <input type="text" class="form-control" placeholder="Policy Name" aria-describedby="policy-Name" ng-model="ctrl.Policy.GeneralInformations.PolicyName">
+    <input type="text" class="form-control" placeholder="Policy Description" aria-describedby="policy-desc" ng-model="ctrl.Policy.GeneralInformations.PolicyDescription"> userList
     <form name="userList">
-        <md-chips ng-model="ctrl.Policy.UsersList" name="userList"  md-removable="true"></md-chips>
+        <md-chips ng-model="ctrl.Policy.UsersList" name="userList" md-removable="true"></md-chips>
     </form>
     groupList
     <form name="groupList">
-        <md-chips ng-model="ctrl.Policy.UserGroupsList" name="groupList"  md-removable="false"></md-chips>
+        <md-chips ng-model="ctrl.Policy.UserGroupsList" name="groupList" md-removable="false"></md-chips>
     </form>
-    channel id
+    channel List
     <form name="channelID">
-        <md-chips ng-model="ctrl.Policy.channelIds" name="channelsID"  md-removable="false"></md-chips>
+        <md-chips ng-model="ctrl.Policy.channelIds" name="channelsID" md-removable="false"></md-chips>
     </form>
-    channels list
-    <form name="channelList">
-        <md-chips ng-model="ctrl.Policy.channelsList" name="channelsList"  md-removable="false"></md-chips>
-    </form>
-     
 </div>
 
 
 <md-button class="md-primary md-raised" post-the-data>POST DATA</md-button>
- 
+
+
+<p>{{ctrl.items}}</p>
+
+<md-chips ng-model="ctrl.selectedChannels" md-autocomplete-snap md-on-add="ctrl.filter()">
+    <md-autocomplete  md-search-text="id" md-items="channel in ctrl.data | filter: id" md-item-text="channel.Name" md-require-match = "ctrl.requireMatch">
+        <span md-highlight-text="searchText">{{channel.Name}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+        <span>
+          {{$chip.Name || $chip.Id}}
+        </span>
+        </md-chip-template>
+</md-chips>

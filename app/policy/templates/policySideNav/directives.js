@@ -48,10 +48,10 @@ app.directive("deletePolicy",["policyList", "$timeout", function(policyList, $ti
                 var self = $(this);
                 var cell = self.parents("md-list-item");
                 var id = parseInt(cell.attr("index"));
-                cell.addClass("animated flipOutX");
+                cell.addClass("animated bounceOutRight");
                 $timeout(function(){
                     cell.addClass("hidden")
-                }, 600)
+                }, 500)
                 policyList.deletePolicy(id)
             })
         }

@@ -1,4 +1,4 @@
-app.controller("cases", ["dashboardData", function (dashboardData) {
+app.controller("cases", ["dashboardData", "channelData", function (dashboardData, channelData) {
 
 
     var self = this;
@@ -12,5 +12,27 @@ app.controller("cases", ["dashboardData", function (dashboardData) {
     self.Policy.UsersList = [];
     self.Policy.UserGroupsList = [];
     self.Policy.channelIds = [];
-    self.Policy.channelsList = [];
+
+    self.requireMatch = true;
+    channelData.getAllChannels().then(function (answer) {
+        self.data = answer.data
+    })
+    self.selectedChannels = [];
+    self.returnedItems = [];
+    
+    self.items = [];
+
+
+    self.filter = function () {
+        for (i in self.selectedChannels) {
+            var obj = {
+                name: self.selectedChannels[i].Name,
+                Id: self.selectedChannels[i].Id
+            }
+        }
+                    self.items.push(obj)
+
+        console.log("selected", self.items)
+    }
+
 }])

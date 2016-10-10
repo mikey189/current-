@@ -21,10 +21,6 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
 }])
 
 
-
-
-
-
 app.factory("channelData", function ($http, $rootScope) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
@@ -33,8 +29,9 @@ app.factory("channelData", function ($http, $rootScope) {
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://localhost:3000/userComputers";
-    var channelList = "http://localhost:3000/channelList";
-    var channelListReal = $rootScope.url + "/api/channels/getALLCHANNELS";
+    var channelList = "http://jdev01:4580/api/channels/getallchannels"
+    //var channelList = "http://localhost:3000/channelList";
+    var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -70,16 +67,20 @@ app.factory("channelData", function ($http, $rootScope) {
         getComputerList: function () {
             return $http.get(computerList)
         },
-        getReal: function () {
-            return $http.get(real)
+        getAllChannels: function () {
+            return $http.get(channelListReal)
         }
     }
 })
+
 app.factory("channelDashboard", function ($http) {
-    var url = "  http://localhost:3000/channelDashboard";
+//var url = "  http://localhost:3000/channelDashboard";
+   
+var url = "http://jdev01:4580/api/channels/getchannel/"    
     return {
-        getData: function () {
-            return $http.get(url)
+        getData: function (id) {
+            return $http.get(url+id)
+            
         }
     }
 })
@@ -102,8 +103,8 @@ app.factory("addPolicy", function ($http, $rootScope) {
 })
 
 app.factory("policyList", function ($rootScope, $http) {
-    var policyList =  $rootScope.url +"/api/policy/getallpolicies";
-    //  http://localhost:3000/policyList
+    var policyList =  "http://localhost:3000/policyList";
+    //   $rootScope.url +"/api/policy/getallpolicies"
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
