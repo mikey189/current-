@@ -12,4 +12,5 @@ app.controller("cases", ["dashboardData", function (dashboardData) {
     self.Policy.UsersList = [];
     self.Policy.UserGroupsList = [];
     self.Policy.channelIds = [];
+    self.Policy.channelsList = [];
 }])

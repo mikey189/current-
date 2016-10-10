@@ -70,3 +70,11 @@
 [ng-drop].drag-enter {
     border: solid 3px #EC407A;
 }
+.pinkIcon{
+    color: #EC407A;
+    margin-top: 0px !important;
+}
+
+.psGpeHolder{
+    margin-left: 1em !important;
+}

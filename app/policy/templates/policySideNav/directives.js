@@ -40,15 +40,18 @@ app.directive("reorderPolicyList",["policyList", function (policyList) {
         }
     }
 }])
-app.directive("deletePolicy",["policyList", function(policyList){
+app.directive("deletePolicy",["policyList", "$timeout", function(policyList, $timeout){
     return {
         restrict: "A",
         link: function(scope, element, attrs){
             element.click(function(){
                 var self = $(this);
-                var id = parseInt(self.parents("md-list-item").attr("index"));
-                
-                console.log(id)
+                var cell = self.parents("md-list-item");
+                var id = parseInt(cell.attr("index"));
+                cell.addClass("animated flipOutX");
+                $timeout(function(){
+                    cell.addClass("hidden")
+                }, 600)
                 policyList.deletePolicy(id)
             })
         }

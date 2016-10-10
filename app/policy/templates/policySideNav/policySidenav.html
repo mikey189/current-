@@ -19,24 +19,30 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover  ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}">
-            <md-button delete-policy>Delete me</md-button>
-            <div layout="column">
-                <p class="md-subhead white bold">{{policy.DisplayName}}</p>
-                <div layout="row" layout-align="space-between center">
-                    <div layout="row" flex="50" layout-align="start center">
-                        <md-icon class="lightPurple marginRight1em">insert_drive_file</md-icon>
-                        <p class="md-subhead white noMarginBottom">234</p>
-                    </div>
-                    <div layout="row" flex>
-                        <md-icon class="lightPurple marginRight1em">group</md-icon>
-                        <p class="md-subhead white noMarginBottom">{{policy.PolicyInfo.UsersList.length}}</p>
-                    </div>
-                </div>
-                <div layout-margin layout-wrap layout="row" layout-align="start center" class="noMarginLeft">
-                    <p class="customChips" ng-repeat="channel in policy.PolicyInfo.ChannelsList" md-whiteframe="4">{{channel.DisplayName}}</p>
-                </div>
+        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
+            
+            <div layout="row" layout-align="space-between start" style="width: 100%">
+                <p flex="95" class="md-subhead white bold">{{policy.name}}</p>
+                <md-icon flex class="pinkIcon material-icons" delete-policy md-whiteframe="7">delete_sweep</md-icon>
             </div>
+            
+            <div layout="row" layout-align="space-between start">
+                <div layout="row" flex="45" layout-align="start start">
+                    <md-icon class="lightPurple marginRight1em">insert_drive_file</md-icon>
+                    <p class="md-subhead white noMarginBottom">{{policy.files}}</p>
+                </div>
+                
+                <div layout="row" flex class="psGpeHolder">
+                    <md-icon class="lightPurple marginRight1em">group</md-icon>
+                    <p class="md-subhead white noMarginBottom">{{policy.users}}</p>
+                </div>
+                
+            </div>
+            
+            <div layout-margin layout-wrap layout="row" layout-align="start center" class="noMarginLeft">
+                <p class="customChips" ng-repeat="channel in policy.channels" md-whiteframe="4">{{channel.name}}</p>
+            </div>
+            
         </md-list-item>
     </md-list>
 </md-sidenav>
