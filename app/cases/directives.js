@@ -1,4 +1,4 @@
-app.directive("postTheData", ["addPolicy", function(addPolicy){
+app.directive("postPolicy", ["addPolicy", function(addPolicy){
     return {
         restrict: "A",
         link: function(scope, element, attrs){

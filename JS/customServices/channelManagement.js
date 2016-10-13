@@ -20,7 +20,15 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
     }
 }])
 
+app.factory("groupList", function ($http) {
 
+    var url = "http://localhost:3000/groupList";
+    return {
+        getGroups: function () {
+            return $http.get(url)
+        }
+    }
+})
 app.factory("channelData", function ($http, $rootScope) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
@@ -30,7 +38,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://localhost:3000/userComputers";
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
-    //var channelList = "http://localhost:3000/channelList";
+        //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
     return {
         getchannelList: function () {
@@ -74,13 +82,13 @@ app.factory("channelData", function ($http, $rootScope) {
 })
 
 app.factory("channelDashboard", function ($http) {
-//var url = "  http://localhost:3000/channelDashboard";
-   
-var url = "http://jdev01:4580/api/channels/getchannel/"    
+    //var url = "  http://localhost:3000/channelDashboard";
+
+    var url = "http://jdev01:4580/api/channels/getchannel/"
     return {
         getData: function (id) {
-            return $http.get(url+id)
-            
+            return $http.get(url + id)
+
         }
     }
 })
@@ -103,7 +111,7 @@ app.factory("addPolicy", function ($http, $rootScope) {
 })
 
 app.factory("policyList", function ($rootScope, $http) {
-    var policyList =  "http://localhost:3000/policyList";
+    var policyList = "http://localhost:3000/policyList";
     //   $rootScope.url +"/api/policy/getallpolicies"
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"

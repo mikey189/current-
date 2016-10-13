@@ -1901,5 +1901,6 @@
         }
       ]
     }
-  ]
+  ],
+    "groupList": ["iOS Group", "Android", "Marketing", "QA", "Front End", "Backend Engineers", "Automation", "Accounting", "Human Ressources"]
 }
