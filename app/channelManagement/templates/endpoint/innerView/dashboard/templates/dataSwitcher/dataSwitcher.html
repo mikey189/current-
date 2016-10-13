@@ -1,12 +1,15 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/dataSwitcher/style.css" />
-<div id="CMDataSwitcher" layout="row" ng-controller="CMDataSwitcher as ctrl" layout-padding layout-align="space-around center" class="md-whiteframe-5dp">
-    <h4 flex="25">{{ctrl.totalFiles}} Files</h4>
+<div id="CMDataSwitcher" layout="row" layout-padding layout-align="space-around center" class="md-whiteframe-5dp">
+    <h4 flex="25">3207 Files</h4>
     <div layout="row" layout-align="start center" flex layout-margin>
-        <span>Blocked Files</span>
-        <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="data.cb5">
-        </md-switch>
-        <span>Processed Files</span>
+        <div layout="row" class="c1" test-dir layout-margin>
+            <div class="blocked">
+                Blocked Files
+            </div>
+            <div class="processed">
+                Processed Files
+            </div>
+        </div>
     </div>
-    
 </div>
 

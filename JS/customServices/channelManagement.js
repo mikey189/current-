@@ -29,6 +29,7 @@ app.factory("groupList", function ($http) {
         }
     }
 })
+
 app.factory("channelData", function ($http, $rootScope) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
@@ -40,6 +41,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
         //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
+    var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/"
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -77,18 +79,18 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         getAllChannels: function () {
             return $http.get(channelListReal)
+        },
+        getChannelDashboard: function(id){
+            return $http.get(channelDashboard+id)
         }
     }
 })
 
-app.factory("channelDashboard", function ($http) {
-    //var url = "  http://localhost:3000/channelDashboard";
-
-    var url = "http://jdev01:4580/api/channels/getchannel/"
+app.factory("topCases", function($http){
+    var url = "  http://localhost:3000/topUsers";
     return {
-        getData: function (id) {
-            return $http.get(url + id)
-
+        getTopCases: function(){
+            return $http.get(url)
         }
     }
 })
@@ -145,8 +147,6 @@ app.factory("policyList", function ($rootScope, $http) {
     }
 })
 
-
-
 app.factory("dashboardData", function ($http) {
     var inputURL = "http://localhost:3000/dashboardInputs";
     var totalInputURL = "http://localhost:3000/dashboardTotalInputs";
@@ -168,6 +168,7 @@ app.factory("dashboardData", function ($http) {
         }
     }
 })
+
 app.factory("policyDetection", function ($http) {
     var url = "http://localhost:3000/policyDetection"
     return {
@@ -211,9 +212,8 @@ app.factory("policyData", function ($http) {
     }
 })
 
-
 app.factory("users", function ($http) {
-    var url = "  http://localhost:3000/activeUsers";
+    var url = "http://localhost:3000/activeUsers";
     return {
         getUsers: function () {
             return $http.get(url).then(function (answer) {
@@ -222,11 +222,6 @@ app.factory("users", function ($http) {
         }
     }
 })
-
-//get icons for the channels
-
-
-//service to pass data between step 1 and step 2
 
 app.factory("C2CData", function () {
     var savedData = {}
@@ -245,5 +240,3 @@ app.factory("C2CData", function () {
     }
 
 });
-
-//to run server json-server api.json B"H

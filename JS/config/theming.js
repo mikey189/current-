@@ -17,3 +17,12 @@ app.config(function($mdIconProvider) {
     $mdIconProvider
        .iconSet('resec', 'IMG/icons/resecLogo.svg', 24)
    });
+
+
+app.config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts 
+    ChartJsProvider.setOptions({
+      chartColors: ['#2D90EA', '#E19F2F', '#E43754']
+    });
+    
+}])

@@ -1,21 +1,30 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
-<md-list ng-controller="endpointDashboardTopFiles as ctrl" id="endPointTopFiles" class="md-whiteframe-4dp">
-    <md-list-item layout="row" layout-align="START center">
-        <md-icon class="material-icons md-primary md-48" id="EndpointTopFilesIcon">insert_drive_file</md-icon>
-        <h4>Top Files Type</h4>
-    </md-list-item>
-    <md-divider></md-divider>
 
-    <div ng-repeat="x in ctrl.data">
-        <md-list-item layout="row" layout-align="space-around center">
-            <p>{{x.type}}</p>
-            <div class="progress" flex="60" style="margin-bottom: 0px; margin-right: 1em">
-                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.size}}" aria-valuemin="0" aria-valuemax="100" style="width:{{x.size}}%">{{x.size}}
-                </div>
-            </div>
-            <p>{{x.size}}</p>
-        </md-list-item>
-        <md-divider></md-divider>
+
+
+<md-content id="endPointTopFiles" md-whiteframe="6">
+
+    <div layout="row" md-whiteframe="4" layout-padding layout-align="none center">
+        <md-icon id="EndpointTopFilesIcon" md-svg-src="icons/topFiles.svg" class="md-48"></md-icon>
+        <h4>Top Files Type</h4>
     </div>
-    
-</md-list>
+    <button ng-click="myFilter = {BlockededNumber}">blocked</button>
+    <button ng-click="myFilter = {ProcessedNumber} ">Processed</button>
+
+    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight">
+        <md-list class="toRecompile">
+            <div md-virtual-repeat="fileType in ctrl.channelDashboard.TopFilesTypeList | filter:myFilter">
+                <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin>
+                    <p flex> {{fileType.Filetype}}</p>
+                    <div class="progress topFilesProgressBar" flex="60">
+                        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{fileType.BlockededNumber}}" aria-valuemin="0" aria-valuemax="100" style="width: {{fileType.BlockededNumber}}%; min-width: 2em">
+                            {{fileType.BlockededNumber}}%
+                        </div>
+                    </div>
+                    <p flex="10">{{fileType.BlockededNumber}}%</p>
+                </md-list-item>
+                <md-divider></md-divider>
+            </div>
+        </md-list>
+    </md-virtual-repeat-container>
+</md-content>

@@ -44,14 +44,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     controller: 'channelManagement',
                     controllerAs: 'channelManagement'
                 })
-                /*.state('app.channelManagement.dashboard', {
-                    url: '/channelManagementDashboard',
-                    templateUrl: 'app/channelManagement/templates/dashboard/dashboard.html',
-                    controller: 'channelManagementDashboard',
-                    controllerAs: 'controller'
-                })*/
-
-
+             
                 .state('app.channelManagement.endpoint', {
                     url: '/channelManagementEndpoint',
                     templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
@@ -61,7 +54,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 .state('app.channelManagement.endpoint.dashboard', {
                     url: '/CMEndpointDashboard',
                     templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
-                    controller: 'CMIVDashboard',
+                    controller: 'channelManagementEndpoint',
                     controllerAs: 'controller'
                 })
                 .state('app.channelManagement.endpoint.sources', {

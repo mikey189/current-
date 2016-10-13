@@ -1,22 +1,22 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/infoTopbar/style.css" />
 <div layout="row" flex="100" layout-align="space-between center" id="CMInfoTopBar" ng-controller="channelManagementEndpoint as ctrl">
     <div flex="20" class="infoTopBarDiv" layout-align="center center">
-        <p>{{ctrl.rootId}}</p>
+        <p>This Channel watches all policies accros the domain, for more informations, see below</p>
     </div>
     <div flex="20" class="infoTopBarDiv" layout-align="center center" layout="column">
-        <h2>{{ctrl.activeAgents}}</h2>
+        <h2>{{ctrl.channelDashboard.AgentsUseTheChannel}}</h2>
         <small class="lighGray">Agents using this channel</small>
     </div>
     <div flex="15" class="infoTopBarDiv" layout-align="center center" layout="column">
-        <h2>{{ctrl.openCases}}</h2>
+        <h2>{{ctrl.channelDashboard.OpenCases}}</h2>
         <small class="lighGray">Open Cases</small>
     </div>
-    <div flex="25"  layout="column" class="infoTopBarDiv" layout-align="center center">
-        <h2>{{ctrl.blockedFiles}}</h2>
+    <div flex="25" layout="column" class="infoTopBarDiv" layout-align="center center">
+        <h2>{{ctrl.channelDashboard.BlockedFiles}}</h2>
         <small class="lighGray">Blocked Files</small>
     </div>
     <div flex="25" layout="column" layout-padding class="infoTopBarDiv" layout-align="center center">
-        <h2>{{ctrl.sanitizedFiles}}</h2>
+        <h2>{{ctrl.channelDashboard.SanitizedFiles}}</h2>
         <small class="lighGray">Sanitized Files</small>
     </div>
 </div>
