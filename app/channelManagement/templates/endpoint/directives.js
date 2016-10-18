@@ -39,15 +39,16 @@ app.directive("testDir", function ($compile) {
                     blocked.addClass("active")
                     scope.ctrl.isBlocked = true;
                     scope.ctrl.fileState = "fileType.BlockededNumber";
-                    $compile(toRecompile)(scope)
+                    scope.ctrl.state = true;
                     toRecompile.css("background-color", "red")
-                    console.log(toRecompile)
+                                        $compile(toRecompile)(scope)
+
                 } else {
                     blocked.addClass("active")
                     scope.ctrl.isBlocked = true;
                     scope.ctrl.fileState = "BlockededNumber";
+                    scope.ctrl.state = false;
                     $compile(toRecompile)(scope)
-                    console.log(toRecompile)
 
                 }
             })
@@ -56,13 +57,19 @@ app.directive("testDir", function ($compile) {
                     blocked.removeClass("active")
                     processed.addClass("active")
                     scope.ctrl.isProcessed = true
+                    scope.ctrl.state = false;
+
                     scope.ctrl.fileState = "ProcessedNumber";
+                    $compile(toRecompile)(scope)
 
 
                 } else {
                     processed.addClass("active")
                     scope.ctrl.isProcessed = true;
+                    scope.ctrl.state = true;
+
                     scope.ctrl.fileState = "ProcessedNumber";
+                    $compile(toRecompile)(scope)
 
 
                 }

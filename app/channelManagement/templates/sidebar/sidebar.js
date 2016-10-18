@@ -3,4 +3,5 @@ app.controller('channelManagementSidebar', ["channelData", function (channelData
     channelData.getchannelList().then(function (answer) {
         self.menuItems = answer.data;
     })
+  
 }]);
