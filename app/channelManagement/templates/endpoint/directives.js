@@ -25,7 +25,7 @@ app.directive("toggleBlockedFiles", function () {
     }
 })
 
-app.directive("testDir", function ($compile) {
+app.directive("blockedProcessedToggler", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -33,43 +33,43 @@ app.directive("testDir", function ($compile) {
             var blocked = $(".blocked")
             var processed = $(".processed")
             var toRecompile = $(".toRecompile")
+
             blocked.click(function () {
+
                 if (processed.hasClass("active")) {
                     processed.removeClass("active");
                     blocked.addClass("active")
-                    scope.ctrl.isBlocked = true;
-                    scope.ctrl.fileState = "fileType.BlockededNumber";
-                    scope.ctrl.state = true;
                     toRecompile.css("background-color", "red")
-                                        $compile(toRecompile)(scope)
-
+                    scope.$apply(function () {
+                        scope.ctrl.isBlocked = true
+                    })
                 } else {
-                    blocked.addClass("active")
-                    scope.ctrl.isBlocked = true;
-                    scope.ctrl.fileState = "BlockededNumber";
-                    scope.ctrl.state = false;
-                    $compile(toRecompile)(scope)
+
+                    blocked.addClass("active");
+                    scope.$apply(function () {
+                        scope.ctrl.isBlocked = true
+                    })
+
 
                 }
             })
+
             processed.click(function () {
+
                 if (blocked.hasClass("active")) {
                     blocked.removeClass("active")
                     processed.addClass("active")
-                    scope.ctrl.isProcessed = true
-                    scope.ctrl.state = false;
-
-                    scope.ctrl.fileState = "ProcessedNumber";
-                    $compile(toRecompile)(scope)
+                    scope.$apply(function () {
+                        scope.ctrl.isBlocked = false
+                    })
 
 
                 } else {
-                    processed.addClass("active")
-                    scope.ctrl.isProcessed = true;
-                    scope.ctrl.state = true;
 
-                    scope.ctrl.fileState = "ProcessedNumber";
-                    $compile(toRecompile)(scope)
+                    processed.addClass("active")
+                    scope.$apply(function () {
+                        scope.ctrl.isBlocked = false
+                    })
 
 
                 }

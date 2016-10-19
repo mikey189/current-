@@ -1,33 +1,28 @@
 app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", "topCases", function (C2CData, channelData, users, topCases) {
 
     var self = this;
+    
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
 
     self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 1;
 
-    channelData.getChannelDashboard(self.rootId).then(function (answer) {
-        
-        self.data = answer.data
-        self.fileTypeList = self.data.TopFilesTypeList
-        
-        self.filter = function () {
-            
-            var ftArray = [];
-            for (var i = 0, len = self.fileTypeList.length; i < len; i++) {
-                var file = {};
-                file.name = self.fileTypeList[i].Filetype;
-                if (self.state) {
-                    file.state = self.fileTypeList[i].ProcessedNumber
-                } else {
-                    file.state = self.fileTypeList[i].BlockededNumber
-                }
-                ftArray.push(file)
-            }
-            return ftArray
-        }
-    })
+    self.isBlocked = true;
 
-    self.stateConfig;
+    self.loader = function () {
+
+        
+        channelData.getChannelDashboard(self.rootId).then(function (answer) {
+            
+            self.totalAgents = answer.data.AgentsUseTheChannel;
+            self.openedCases = answer.data.OpenCases;
+            self.blockedFiles = answer.data.BlockedFiles;
+            self.sanitizedFiles = answer.data.SanitizedFiles;
+            
+            self.data = answer.data.TopFilesTypeList.slice(1, 100)
+
+            
+        })
+    }
 
     //top users loading from db.json because there are more instances of users (just nice to render)
 
@@ -43,8 +38,5 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
 
     self.label = ["Medium", "Low", "high"];
 
-    self.isBlocked = false;
-    self.isProcessed = false;
-    self.test = "BlockededNumber"
 
 }])

@@ -9,20 +9,38 @@
         <h4>Top Files Type</h4>
     </div>
 
-    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight">
-        <md-list class="toRecompile">
-            <div md-virtual-repeat="fileType in ctrl.filter()">
-                <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin>
-                    <p flex> {{fileType.name}}</p>
-                    <div class="progress topFilesProgressBar" flex="60">
-                        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{fileType.state}}" aria-valuemin="0" aria-valuemax="100" style="width: {{fileType.state}}%; min-width: 2em">
-                            {{fileType.state}}%
-                        </div>
+    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight" ng-init="ctrl.loader()">
+    <md-list>
+
+        <div md-virtual-repeat="x in ctrl.data">
+
+            <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin ng-switch="ctrl.isBlocked">
+                <p flex> {{x.Filetype}}</p>
+
+
+
+                <div class="progress topFilesProgressBar" flex="60" ng-switch-when=false>
+
+                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.ProcessedNumber}}" aria-valuemin="0" aria-valuemax="100" style="width: {{x.ProcessedNumber}}%; min-width: 2em">
+                        {{x.ProcessedNumber}}%
                     </div>
-                    <p flex="10">{{fileType.state}}%</p>
-                </md-list-item>
-                <md-divider></md-divider>
-            </div>
-        </md-list>
-    </md-virtual-repeat-container>
+                </div>
+
+                <div class="progress topFilesProgressBar" flex="60" ng-switch-default>
+
+                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.BlockededNumber}}" aria-valuemin="0" aria-valuemax="100" style="width: {{x.BlockededNumber}}%; min-width: 2em">
+                        {{x.BlockededNumber}}%
+                    </div>
+                </div>
+
+                <p flex="10" ng-switch-when=false>{{x.ProcessedNumber}}%</p>
+                <p flex="10" ng-switch-default>{{x.BlockededNumber}}%</p>
+
+            </md-list-item>
+        </div>
+
+        <md-divider></md-divider>
+        </div>
+    </md-list>
+</md-virtual-repeat-container>
 </md-content>

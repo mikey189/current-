@@ -7,13 +7,13 @@
                 <ng-md-icon icon="refresh" style="fill: #62D0C9" size="24px" class="marginRight"></ng-md-icon>
             </md-toolbar>
             <md-content class="purpleSidebar" flex>
-                <md-input-container md-no-float flex layout="row" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" layout-margin>
+                <md-input-container md-no-float flex layout="row" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" layout-margin ng-model="channel">
                     <input ng-model="ctrl.searchQuery" placeholder="Search users, groups..">
                     <md-icon class="material-icons greenIcon noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
                     <md-list-item class="channelSidenavItems" ><a ui-sref="app.channelManagement.newChannel.step1"><strong>Create Channel</strong></a></md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.menuItems" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.endpoint.dashboard"  get-my-id  _id="{{x.Id}}">{{x.Name}}</a></strong></md-list-item>
+                    <md-list-item ng-repeat="x in ctrl.menuItems | filter: channel" class="channelSidenavItems"><strong><a ui-sref="app.channelManagement.endpoint.dashboard"  get-my-id  _id="{{x.Id}}">{{x.Name}}</a></strong></md-list-item>
                 </md-list>
             </md-content>
         </md-sidenav>
