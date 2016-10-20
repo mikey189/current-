@@ -1410,7 +1410,7 @@
             "low": 13,
             "high": 16
     },
-                 {
+        {
             "name": "Gary Rudowicz",
             "total": "10",
             "medium": 6,
@@ -1493,7 +1493,7 @@
             "low": 13,
             "high": 16
     },
-                 {
+        {
             "name": "Gary Rudowicz",
             "total": "10",
             "medium": 6,
@@ -1577,5 +1577,84 @@
             "high": 16
     }
 
-                ]
+                ],
+    "policyUsers": {
+        "channels": ["Mail", "USB", "Web", "Endpoint", "Scan Station", "Scan Station 2", "Scan Station 3", "Dirtwatche 1", "Dirtwatcher 2", "Dirtwatcher 3", "Dirtwatcher 4", "Dirtwatcher 5", "Dirtwatcher 6", "Dirtwatcher 7", "Dirtwatcher 8"],
+        "groups": [
+            {
+                "service": "Marketing",
+                "users": ["Jenya Sedin", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "iOS Developers",
+                "users": ["Sebastina Dobtincu", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Accounting",
+                "users": ["Sean Parker", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Designers",
+                "users": ["Oren Riksark", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Software Developers",
+                "users": ["Martine Sebbag", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Part Time Contractors",
+                "users": ["Myriam Oliel", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Data Scientists",
+                "users": ["Pharell Nelyia", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Machine Learning Engineers",
+                "users": ["Walter White", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Lawyers",
+                "users": ["Thomas Heisenberg", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            }, {
+                "service": "Marketing",
+                "users": ["Laureen Mset", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "iOS Developers",
+                "users": ["Salomé Lellouche", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Accounting",
+                "users": ["Anaelle Bellalou", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Designers",
+                "users": ["Roy Granot", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Software Developers",
+                "users": ["Paul Sedin", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Part Time Contractors",
+                "users": ["Johny Ive", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Data Scientists",
+                "users": ["Maurice Chekroun", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Machine Learning Engineers",
+                "users": ["Laure Laloum", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            },
+            {
+                "service": "Lawyers",
+                "users": ["Nissim Abehsseira", "Gabriel Mamou Mani", "Sofia Samilov", "William Davila", "Avenr Benarous", "Eliezer Guedj", "Ariel Oliel", "Benjamin Fedida"]
+            }
+
+
+
+        ]
+    }
 }

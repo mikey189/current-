@@ -5,8 +5,10 @@
     </md-list-item>
     <md-divider></md-divider>
     <md-list-item layout="row">
-        <md-chips  ng-model="controller.sources" readonly="true">
-            <md-chip-template>{{ $chip }}</md-chip-template>
-        </md-chips>
+        <md-chips  ng-model="ctrl.data.channels" readonly="true">
+        <md-chip-template>
+          {{ $chip }}
+        </md-chip-template>
+    </md-chips>
     </md-list-item>
 </md-list>

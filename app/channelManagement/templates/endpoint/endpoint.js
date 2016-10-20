@@ -13,10 +13,8 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         
         channelData.getChannelDashboard(self.rootId).then(function (answer) {
             
-            self.totalAgents = answer.data.AgentsUseTheChannel;
-            self.openedCases = answer.data.OpenCases;
-            self.blockedFiles = answer.data.BlockedFiles;
-            self.sanitizedFiles = answer.data.SanitizedFiles;
+            self.generalInformations = answer.data
+            console.log(self.generalInformations)
             
             self.data = answer.data.TopFilesTypeList.slice(1, 100)
 
@@ -38,5 +36,7 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
 
     self.label = ["Medium", "Low", "high"];
 
+    
+    self.test  ="wcdlvkjls=dqijvoqsùdfojbmlsdk=fmvl"
 
 }])

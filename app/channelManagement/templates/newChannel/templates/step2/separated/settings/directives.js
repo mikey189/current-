@@ -14,7 +14,7 @@ app.directive("ncSeparatedBasicSettings", function () {
     }
 })
 
-app.directive("matchChildrenHeight", function () {
+app.directive("matchChildreHeight", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {

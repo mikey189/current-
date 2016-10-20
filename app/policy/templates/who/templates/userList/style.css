@@ -1,0 +1,12 @@
+.user-user-list{
+    border-bottom: solid 1px #f1f1f1;
+    height: 4em;
+    margin-left: 0.6em !important;
+}
+#userList{
+    width: 98%;
+    padding-right :0px !important;
+}
+.smallMarginRight{
+    margin-right: 1em !important;
+}

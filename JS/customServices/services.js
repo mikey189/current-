@@ -80,16 +80,16 @@ app.factory("channelData", function ($http, $rootScope) {
         getAllChannels: function () {
             return $http.get(channelListReal)
         },
-        getChannelDashboard: function(id){
-            return $http.get(channelDashboard+id)
+        getChannelDashboard: function (id) {
+            return $http.get(channelDashboard + id)
         }
     }
 })
 
-app.factory("topCases", function($http){
+app.factory("topCases", function ($http) {
     var url = "  http://localhost:3000/topUsers";
     return {
-        getTopCases: function(){
+        getTopCases: function () {
             return $http.get(url)
         }
     }
@@ -223,6 +223,15 @@ app.factory("users", function ($http) {
     }
 })
 
+app.factory("policyUsers", function($http){
+    var url = "http://localhost:3000/policyUsers";
+    return {
+        getData: function(){
+            return $http.get(url)
+        }
+    }
+})
+
 app.factory("C2CData", function () {
     var savedData = {}
 
@@ -240,3 +249,4 @@ app.factory("C2CData", function () {
     }
 
 });
+

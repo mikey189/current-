@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="app/policy/templates/who/templates/userList/style.css" />
+
+<md-list class="whiteBk" id="userList" md-whiteframe="6">
+    <md-list-item layout="row" layout-align="start center">
+        <div layout="row" flex="30" layout-align="start">
+            <md-icon class="purple noMarginLeft smallMarginRight material-icons md-primary"><i class="material-icons">assignment_ind</i></md-icon>
+            <h4 class="md-primary">Users</h4>
+        </div>
+        <div layout="row" flex>
+            <md-input-container md-no-float flex layout="row" id="usersSearchBox" flex class="noVerticalMargin">
+                <input ng-model="user" placeholder="Search">
+                <md-icon class="material-icons greenIcon noMarginLeft">search</md-icon>
+            </md-input-container>
+        </div>
+    </md-list-item>
+    <md-divider></md-divider>
+    
+    <md-virtual-repeat-container id="vertical-container">
+        <div md-virtual-repeat="user in ctrl.users |filter:user" class="user-user-list" flex layout-padding layout="row" layout-align="start center">
+            {{user.name}}
+        </div>
+    </md-virtual-repeat-container>
+</md-list>

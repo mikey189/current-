@@ -5,7 +5,6 @@ app.controller('policySidenav', ["policyList", function (policyList) {
 
     policyList.getList().then(function (answer) {
         self.policyList = answer.data
-        console.log(self.policyList)
         for (i in self.policyList) {
             self.draggableObjects.push(self.policyList[i])
         }

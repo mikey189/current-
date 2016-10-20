@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="app/policy/templates/who/style.css"/>
+<link rel="stylesheet" href="app/policy/templates/who/style.css" />
 
-<div class="md-padding" layout='column' layout-padding>
-    <channel-top-bar ng-controller="channelTopBar as controller"></channel-top-bar>
-    <div layout="row" layout-align="space-between start" id="whoWrapper">
-        <groups-list ng-controller="groupsList as controller" flex="50"></groups-list>
-        <user-list ng-controller="userList as ctrl" flex></user-list>
-        <!--<computer-list ng-controller="computerList as ctrl" flex="30"></computer-list>-->
+<div class="md-padding" layout='column' layout-padding ng-controller="who as ctrl">
+    <channel-top-bar></channel-top-bar>
+    <div layout="row" layout-align="space-between start" id="whoWrapper" vertalize-container>
+        <groups-list vertalize flex="50"></groups-list>
+        <user-list vertalize flex></user-list>
     </div>
 </div>

@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="app/policy/templates/who/templates/groups/style.css" />
+
+<div id="whoGroup" md-whiteframe="6">
+
+
+    <md-list>
+        <md-list-item layout="row" layout-align="start center">
+            <div layout="row" flex="30" layout-align="start">
+                <md-icon class="purple noMarginLeft smallMarginRight material-icons md-primary">group</md-icon>
+                <h4 class="md-primary">Groups</h4>
+            </div>
+            <div layout="row" flex>
+                <md-input-container md-no-float flex layout="row" id="usersSearchBox" flex class="noVerticalMargin">
+                    <input ng-model="group" placeholder="Search">
+                    <md-icon class="material-icons greenIcon noMarginLeft">search</md-icon>
+                </md-input-container>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-virtual-repeat-container id="vertical-container">
+            <div md-virtual-repeat="group in ctrl.data.groups |filter: group" class="user-user-list" layout="column" layout-align="center start">
+
+                <div layout="row" layout-align="start center" show-related-users>
+                    <md-icon class="noMarginLeft smallMarginRight material-icons expandGroups">keyboard_arrow_right</md-icon>
+                    {{group.service}}
+                </div>
+                <!--<div class="groupUsers animated fadeInDown hidden" layout-margin layout="column">
+
+                    jonathan
+
+                </div>-->
+            </div>
+        </md-virtual-repeat-container>
+    </md-list>
+</div>
