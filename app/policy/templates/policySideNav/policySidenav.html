@@ -10,8 +10,8 @@
                 <md-icon class='material-icons greenIcon'>add</md-icon>
             </md-button>
             <md-button class='fullWidthButton' reorder-policy-list>
-                <md-tooltip md-direction="bottom">drag policies to re-order their priority</md-tooltip>
-                <md-icon ng-click='showSearchBar()' class='material-icons greenIcon'>list</md-icon>
+                <md-tooltip md-direction="bottom">Click here to rename, delete or reorder policies</md-tooltip>
+                <md-icon ng-click='showSearchBar()' class='material-icons greenIcon'>format_line_spacing</md-icon>
             </md-button>
         </div>
     </div>
@@ -20,29 +20,32 @@
 
     <md-list layout-padding id="policyListHolder">
         <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
-            
             <div layout="row" layout-align="space-between start" style="width: 100%">
-                <p flex="95" class="md-subhead white bold">{{policy.name}}</p>
-                <md-icon flex class="pinkIcon material-icons" delete-policy md-whiteframe="7">delete_sweep</md-icon>
+                <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.name}}</p>
+                <md-icon flex class="pinkIcon material-icons" delete-policy ng-show="ctrl.dragMode">close</md-icon>
+                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.dragMode"  toggle-editable-mode>
+                    <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
+                </md-button>
+
             </div>
-            
+
             <div layout="row" layout-align="space-between start">
                 <div layout="row" flex="45" layout-align="start start">
                     <md-icon class="lightPurple marginRight1em">insert_drive_file</md-icon>
                     <p class="md-subhead white noMarginBottom">{{policy.files}}</p>
                 </div>
-                
+
                 <div layout="row" flex class="psGpeHolder">
                     <md-icon class="lightPurple marginRight1em">group</md-icon>
                     <p class="md-subhead white noMarginBottom">{{policy.users}}</p>
                 </div>
-                
+
             </div>
-            
+
             <div layout-margin layout-wrap layout="row" layout-align="start center" class="noMarginLeft">
                 <p class="customChips" ng-repeat="channel in policy.channels" md-whiteframe="4">{{channel.name}}</p>
             </div>
-            
+
         </md-list-item>
     </md-list>
 </md-sidenav>

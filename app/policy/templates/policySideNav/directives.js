@@ -11,27 +11,30 @@ app.directive("policyListHover", function () {
     }
 })
 
-app.directive("reorderPolicyList",["policyList", function (policyList) {
+app.directive("reorderPolicyList", ["policyList", function (policyList) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
             element.click(function () {
                 var icon = $(this).find("md-icon")
                 var items = $(".policyItem");
+                var policyName = $(".editPolicyName")
                 if (!scope.ctrl.dragMode) {
                     icon.addClass("animated wobble");
-                    icon.html("save");
+                    icon.html("done_all");
                     icon.css("color", "#EC407A");
+                    policyName.hide()
                     scope.ctrl.dragMode = true;
-                    items.addClass("animated bounce"); 
-                }else{
+                    items.addClass("animated bounce");
+                } else {
                     icon.removeClass("animated wobble")
-                    icon.html("list")
+                    icon.html("format_line_spacing")
                     icon.css("color", "#23CCC7")
+                    policyName.show();
                     scope.ctrl.dragMode = false;
                     items.removeClass("animated bounce");
                     scope.ctrl.priority = [];
-                    items.each(function(){
+                    items.each(function () {
                         scope.ctrl.priority.push($(this).attr("index"))
                     })
                     policyList.postOrder(scope.ctrl.priority);
@@ -40,16 +43,42 @@ app.directive("reorderPolicyList",["policyList", function (policyList) {
         }
     }
 }])
-app.directive("deletePolicy",["policyList", "$timeout", function(policyList, $timeout){
+
+app.directive("toggleEditableMode", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.click(function(){
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                var icon = $(this).find("md-icon")
+                var policyName = $(this).siblings(".policyName")
+                if (!scope.ctrl.isEditable) {
+                    icon.html("done");
+                    policyName.css("color", "orange");
+                    policyName.addClass("animated flash")
+                    scope.ctrl.isEditable = true;
+                } else {
+                    icon.html("edit");
+                    policyName.removeClass("animated flash")
+
+                    policyName.css("color", "white")
+                    scope.ctrl.isEditable = false;
+                }
+            })
+
+        }
+    }
+})
+
+app.directive("deletePolicy", ["policyList", "$timeout", function (policyList, $timeout) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
                 var self = $(this);
                 var cell = self.parents("md-list-item");
                 var id = parseInt(cell.attr("index"));
                 cell.addClass("animated bounceOutRight");
-                $timeout(function(){
+                $timeout(function () {
                     cell.addClass("hidden")
                 }, 500)
                 policyList.deletePolicy(id)
