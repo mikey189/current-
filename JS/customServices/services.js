@@ -113,8 +113,9 @@ app.factory("addPolicy", function ($http, $rootScope) {
 })
 
 app.factory("policyList", function ($rootScope, $http) {
+    
     var policyList = "http://localhost:3000/policyList";
-    //   $rootScope.url +"/api/policy/getallpolicies"
+    //http://jdev01:4580/api/policy/getallpolicies
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";

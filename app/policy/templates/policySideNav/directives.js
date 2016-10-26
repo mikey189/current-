@@ -69,6 +69,31 @@ app.directive("toggleEditableMode", function () {
     }
 })
 
+app.directive("toggleNewPolicyEditableMode", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                var icon = $(this).find("md-icon")
+                var policyName = $(".newPolicyName")
+                if (!scope.ctrl.isEditable) {
+                    icon.html("done");
+                    policyName.css("color", "orange");
+                    policyName.addClass("animated flash")
+                    scope.ctrl.isEditable = true;
+                } else {
+                    icon.html("edit");
+                    policyName.removeClass("animated flash")
+
+                    policyName.css("color", "white")
+                    scope.ctrl.isEditable = false;
+                }
+            })
+
+        }
+    }
+})
+
 app.directive("deletePolicy", ["policyList", "$timeout", function (policyList, $timeout) {
     return {
         restrict: "A",
@@ -86,3 +111,15 @@ app.directive("deletePolicy", ["policyList", "$timeout", function (policyList, $
         }
     }
 }])
+
+app.directive("continuePolicySetup", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attr){
+            var button = $(".saveNContinue")
+            button.click(function(){
+                $(this).html("SET UP IN PROCESS ...")
+            })
+        }
+    }
+})

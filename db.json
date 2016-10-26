@@ -1183,6 +1183,9 @@
       "avira": true,
       "clam": true,
       "id": 2
+    },
+    {
+      "id": 3
     }
   ],
   "policyOrder": [

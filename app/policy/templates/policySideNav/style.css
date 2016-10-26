@@ -78,3 +78,21 @@
 .psGpeHolder{
     margin-left: 1em !important;
 }
+.saveNContinue{
+    border: solid 2px #62D0C9;
+    color: white;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-top: 2em;
+}
+.saveNContinue:focus{
+    color: white;
+
+}
+.saveNContinue:hover{
+    color: white;
+}
+.pinkishIcon{
+        color: #EC407A;
+
+}

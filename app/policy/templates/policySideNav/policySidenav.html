@@ -5,7 +5,7 @@
     <div layout='row' layout-align='start center' id="policySidenavTop">
         <h4 flex='66' class='white'><strong>Available Policies</strong></h4>
         <div flex='33' layout='row'>
-            <md-button class='fullWidthButton'>
+            <md-button class='fullWidthButton' ng-click="ctrl.newPolicy = true">
                 <md-tooltip md-direction="bottom">add</md-tooltip>
                 <md-icon class='material-icons greenIcon'>add</md-icon>
             </md-button>
@@ -19,11 +19,37 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
+        
+        
+        <!--new policyCell cell-->
+        
+        <md-list-item ng-show="ctrl.newPolicy" class="animated fadeInDown policyItem" policy-list-hover layout="column">
+
+            <div layout="row" layout-align="space-between start" style="width: 100%">
+                <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName newPolicyName">New Policy</p>
+                <div layout="row">
+                    <md-button class="fullWidthButton noMarginTop" ng-click="ctrl.newPolicy = false">
+                        <md-icon class="material-icons pinkishIcon">clear</md-icon>
+                    </md-button>
+                    <md-button class="fullWidthButton noMarginTop" toggle-new-policy-editable-mode>
+                        <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
+                    </md-button>
+                </div>
+            </div>
+            <md-button class="saveNContinue" md-whiteframe="8" ui-sref="app.policy.definition.fileType" continue-policy-setup>Save And Continue to Set up</md-button>
+
+
+        </md-list-item>
+        
+        <!--new policyCell cell-->
+
+
+
+        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
             <div layout="row" layout-align="space-between start" style="width: 100%">
                 <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.name}}</p>
                 <md-icon flex class="pinkIcon material-icons" delete-policy ng-show="ctrl.dragMode">close</md-icon>
-                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.dragMode"  toggle-editable-mode>
+                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.dragMode" toggle-editable-mode>
                     <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
                 </md-button>
 
