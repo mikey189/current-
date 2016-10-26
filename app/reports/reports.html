@@ -1,6 +1,20 @@
 <h1>testing window</h1>
 
 
+<h1>Key : Type</h1>
 
+<input placeholder="search" ng-model="ext1" />
 
-
+<div ng-repeat="x in ctrl.data">
+    <div style="background-color: red">1 - {{x.Key}}
+        <div style="background-color: yellow" ng-repeat="y in x.Values | filter:ext1 ">2 - {{y.Key}}
+            <div ng-repeat="z in y.Values" style="background-color: white"> 3 - {{z.Key}}
+                <div ng-repeat="a in z.Values" style="background-color: pink">
+                    <div ng-repeat="ext in a.ClassificationExtensions track by $index">
+                        4 - {{ext}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

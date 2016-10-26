@@ -1,3 +1,19 @@
 #whoWrapper{
     padding-right:0px !important;
 }
+
+.selectedChip{
+    background-color: #62D0C9;
+    color: white;
+    font-weight: 600;
+}
+.notEditable{
+        pointer-events: none;
+
+}
+.strong600{
+    font-weight: 600;
+}
+.inEdition{
+    background-color: #FF1744 !important;
+}

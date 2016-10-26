@@ -139,78 +139,10 @@ app.directive("ctDescription", function () {
         }
     }
 })
-app.directive("showExceptionRow", function ($compile) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
 
 
-            element.bind("click", function () {
-                var parentRow = $(this).closest("tr");
-                var icon = $(this).children("md-icon");
-                var button = $(this);
-                var exceptionRow = $compile("<pd-exception-row></pd-exception-row>")(scope);
-                var userChips = $compile("<pd-user-chips></pd-user-chips>")(scope);
-
-                if (!scope.ctrl.showException) {
-
-                    icon.html("done");
-                    button.addClass("md-raised pdGreenButton");
-                    userChips.insertAfter(parentRow);
-                    exceptionRow.insertAfter(userChips);
-                    scope.ctrl.showException = !scope.ctrl.showException;
 
 
-                } else {
-
-                    icon.html("add");
-                    button.removeClass("pdGreenButton md-raised");
-                    $(".pdExceptionRow").remove();
-                    console.log(scope.ctrl.userList);
-                    scope.ctrl.showException = !scope.ctrl.showException;
-
-
-                }
-            })
-        }
-    }
-})
-
-app.directive("pdUserChips", function () {
-    return {
-        restrict: "E",
-        templateUrl: "app/policy/templates/policyDefinition/templates/fileType/collapseTable/templates/userChips.html",
-        replace: true
-    }
-})
-app.directive("pdExceptionRow", function () {
-    return {
-        restrict: "E",
-        templateUrl: "app/policy/templates/policyDefinition/templates/fileType/collapseTable/templates/exception.html",
-        replace: true
-    }
-})
-
-app.directive("cancelExceptionCreation", function ($timeout) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            $(document).ready(function () {
-                element.bind("click", function () {
-                    $(".pdExceptionRow").addClass("animated slideOutRight");
-                    $(".showExceptionRowButton").children("md-icon").html("add");
-                    $(".showExceptionRowButton").removeClass("pdGreenButton md-raised");
-                    scope.ctrl.showException = false;
-                    $timeout(function () {
-                        $(".pdExceptionRow").remove();
-
-                    }, 450)
-                })
-
-            })
-        }
-    }
-})
 app.directive("notEditableWarning", function () {
     return {
         restrict: "A",

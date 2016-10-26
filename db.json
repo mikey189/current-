@@ -793,10 +793,6 @@
     {
       "name": "Sandbox",
       "description": "Use sandbox default processes for the executable"
-    },
-    {
-      "name": "Add Exception",
-      "description": "Click here to set exceptions for users, or computers. These will not be subjected to the default policy set here"
     }
   ],
   "activeUsers": [

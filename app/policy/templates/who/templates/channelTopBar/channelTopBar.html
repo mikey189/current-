@@ -1,14 +1,20 @@
 <md-list class="whiteBk" md-whiteframe="6">
-    <md-list-item layout="row" layout-align="start center">
-        <md-icon class="material-icons md48 md-primary" style="margin-left: 0px">settings_input_component</md-icon>
-        <h4>Channels</h4>
+    <md-list-item layout="row" layout-align="space-between center" layout-margin>
+        <div layout="row" layout-margin>
+            <md-icon class="material-icons md48 md-primary" style="margin-left: 0px">settings_input_component</md-icon>
+            <h4>Channels</h4>
+        </div>
+        <div layout="row">
+            <md-button class="md-primary md-raised strong600" id="editChannels" toggle-edition layout-align="end center">EDIT</md-button>
+        </div>
     </md-list-item>
     <md-divider></md-divider>
-    <md-list-item layout="row">
-        <md-chips  ng-model="ctrl.data.channels" readonly="true">
-        <md-chip-template>
-          {{ $chip }}
-        </md-chip-template>
-    </md-chips>
+    <md-list-item layout="row" block-edition class="channelEditionZone notEditable">
+        <md-chips ng-model="ctrl.data.channels" readonly="true">
+            <md-chip-template add-channel class="channelChip">
+                {{ $chip }}
+                <md-icon class="material-icons">add</md-icon>
+            </md-chip-template>
+        </md-chips>
     </md-list-item>
 </md-list>

@@ -232,6 +232,15 @@ app.factory("policyUsers", function($http){
     }
 })
 
+app.factory("filetype", function($http){
+    var url = "http://jdev01:4580/api/general/filetypes";
+    return{
+        getData: function(){
+            return $http.get(url)
+        }
+    }
+})
+
 app.factory("C2CData", function () {
     var savedData = {}
 
