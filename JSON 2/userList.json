@@ -1,0 +1,196 @@
+{
+    "policyData": {
+        "windows": {
+            "EXE": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
+        },
+        "mac": {
+            "DMG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900 ,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
+        },
+        "linux": {
+            "ELF": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
+        },
+        "java": {
+            "TAR": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["N/A"]
+
+            },
+            "JPG": {
+                "isAllowed": true,
+                "sizeLimit": 1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "PNG": {
+                "isAllowed": false,
+                "sizeLimit": 1.1  ,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "Transform & Sign", "Tranform, sign & blur"]
+
+            },
+            "XLS": {
+                "isAllowed": false,
+                "sizeLimit": 870,
+                "process": true,
+                "sandbox": false,
+                "exception": false,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            },
+            "CSV": {
+                "isAllowed": false,
+                "sizeLimit": 900,
+                "process": false,
+                "sandbox": false,
+                "exception": true,
+                "transform": ["None", "XLS -> PDF", "Standard", "Custom"]
+
+            }
+
+        }
+    }
+}
