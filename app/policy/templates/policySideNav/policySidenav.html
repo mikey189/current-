@@ -19,10 +19,10 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="name" />
 
     <md-list layout-padding id="policyListHolder">
-        
-        
+
+
         <!--new policyCell cell-->
-        
+
         <md-list-item ng-show="ctrl.newPolicy" class="animated fadeInDown policyItem" policy-list-hover layout="column">
 
             <div layout="row" layout-align="space-between start" style="width: 100%">
@@ -40,7 +40,7 @@
 
 
         </md-list-item>
-        
+
         <!--new policyCell cell-->
 
 
@@ -48,7 +48,9 @@
         <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
             <div layout="row" layout-align="space-between start" style="width: 100%">
                 <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.name}}</p>
-                <md-icon flex class="pinkIcon material-icons" delete-policy ng-show="ctrl.dragMode">close</md-icon>
+                <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.dragMode">
+                    <md-icon flex class="pinkIcon material-icons">close</md-icon>
+                </md-button>
                 <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.dragMode" toggle-editable-mode>
                     <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
                 </md-button>

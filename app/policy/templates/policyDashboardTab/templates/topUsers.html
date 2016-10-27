@@ -1,0 +1,27 @@
+
+
+
+
+<md-list>
+    <md-list-item layout='row' layout-padding layout-align='start center'>
+        <ng-md-icon icon='people' style='fill: #311B92' size='40'></ng-md-icon>
+        <h4 class='gray'>Top Users</h4>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    
+    
+    <md-virtual-repeat-container style="height: 500px">
+    
+    <div md-virtual-repeat="user in ctrl.topUsers">
+        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+            <p>{{user.name}}</p>
+            <md-chips>
+                <md-chip>{{user.team}}</md-chip>
+            </md-chips>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+    </md-virtual-repeat-container>
+
+</md-list>

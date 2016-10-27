@@ -1,0 +1,16 @@
+<md-list>
+    <md-list-item layout='row' layout-padding layout-align='start center'>
+        <ng-md-icon icon='insert_drive_file' style='fill: #311B92' size='40'></ng-md-icon>
+        <h4 class='gray'>Top File Type</h4>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <div ng-repeat="topFile in ctrl.topFiles">
+        <md-list-item layout='row' layout-padding layout-align='space-around-center'>
+            <p>{{topFile.file}}</p>
+            <md-progress-linear md-mode="determinate" value="{{topFile.size}}"></md-progress-linear>
+            <p class='red'>{{topFile.size}}</p>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+</md-list>

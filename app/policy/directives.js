@@ -107,10 +107,18 @@ app.directive("policyDefinitionCollapseTable", function () {
     }
 })
 
-app.directive("exeException", function () {
+
+app.directive("policyDashboardTopFiles", function(){
     return {
-        restrict: "A",
-        templateUrl: "app/policy/templates/policyDefinition/templates/fileType/collapseTable/addException/windows/exe.html",
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/topFiles.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardTopUsers", function(){
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/topUsers.html",
         replace: false
     }
 })

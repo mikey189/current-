@@ -7,5 +7,7 @@ app.controller("reports",["filetype", function (filetype) {
         self.data = answer.data
     })
     
+    self.showClassfications = false;
+    self.showKeys = false;
 }])
 

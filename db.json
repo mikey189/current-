@@ -1186,6 +1186,9 @@
     },
     {
       "id": 3
+    },
+    {
+      "id": 4
     }
   ],
   "policyOrder": [
@@ -1911,5 +1914,89 @@
         ]
       }
     ]
-  }
+  },
+  "PDTopFiles": [
+    {
+      "file": "EXE",
+      "size": 40
+    },
+    {
+      "file": "DMG",
+      "size": 30
+    },
+    {
+      "file": "HTML",
+      "size": 21
+    },
+    {
+      "file": "PNG",
+      "size": 31
+    },
+    {
+      "file": "APK",
+      "size": 12
+    },
+    {
+      "file": "SRT",
+      "size": 8.5
+    },
+    {
+      "file": "TFS",
+      "size": 43
+    },
+    {
+      "file": "DOCX",
+      "size": 23
+    },
+    {
+      "file": "XLS",
+      "size": 15
+    },
+    {
+      "file": "PPT",
+      "size": 20
+    }
+  ],
+  "PDTopUsers": [
+    {
+      "name": "Alex Slimansky",
+      "team": "Marketing"
+    },
+    {
+      "name": "Jonathan Meguira",
+      "team": "Front End Engineer"
+    },
+    {
+      "name": "Bernard Bianski",
+      "team": "Accounting"
+    },
+    {
+      "name": "Paul Elluard",
+      "team": "Design"
+    },
+    {
+      "name": "Audelia Oliel",
+      "team": "Sales"
+    },
+    {
+      "name": "Marine Lulaz",
+      "team": "Data Scientist"
+    },
+    {
+      "name": "Laurent Sebbah",
+      "team": "Sales"
+    },
+    {
+      "name": "Luc Richter",
+      "team": "Marketing"
+    },
+    {
+      "name": "Samuel Marciano",
+      "team": "Market Analysis"
+    },
+    {
+      "name": "Pearl Davis",
+      "team": "Design"
+    }
+  ]
 }

@@ -1,20 +1,64 @@
-<h1>testing window</h1>
+<div ng-cloak>
+
+    <md-input-container flex="100">
+        <label>Search</label>
+        <input type="text" ng-model="extensions">
+    </md-input-container>
 
 
-<h1>Key : Type</h1>
 
-<input placeholder="search" ng-model="ext1" />
+    <table class="table table-responsive table-striped">
 
-<div ng-repeat="x in ctrl.data">
-    <div style="background-color: red">1 - {{x.Key}}
-        <div style="background-color: yellow" ng-repeat="y in x.Values | filter:ext1 ">2 - {{y.Key}}
-            <div ng-repeat="z in y.Values" style="background-color: white"> 3 - {{z.Key}}
-                <div ng-repeat="a in z.Values" style="background-color: pink">
-                    <div ng-repeat="ext in a.ClassificationExtensions track by $index">
-                        4 - {{ext}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <thead>
+            <th></th>
+            <th>Allow</th>
+            <th>Process Embbeded Files</th>
+            <th>Size Limit</th>
+            <th>Sandbox</th>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat-start="x in ctrl.data" show-values class="parent">
+                <td layout="row">
+                    <md-icon class="material-icon noMarginIcon">keyboard_arrow_right</md-icon>
+                    {{x.Key}}
+                </td>
+            </tr>
+
+            <tr ng-repeat-start="y in x.Values" class="hidden keys" show-extensions>
+                <td layout="row">
+                    <md-icon class="material-icon noMarginIcon">keyboard_arrow_right</md-icon>
+                    {{y.Key}}</td>
+            </tr>
+            <tr ng-repeat-start="z in y.Values | filter: extensions" class="hidden animated fadeIn extensions">
+                <td layout="row">
+                    <md-icon class="material-icon noMarginIcon">jonathan</md-icon>
+                    {{z.ClassificationExtensions}}
+                    <md-tooltip md-visible="false" md-direction="top">
+                        {{z.ClassificationDescription}}
+                    </md-tooltip>
+                </td>
+            </tr>
+
+
+            <tr ng-repeat-end></tr>
+            <tr ng-repeat-end></tr>
+            <tr ng-repeat-end></tr>
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+    <style>
+        .noMarginIcon {
+            margin-left: 0px;
+            margin-right: 0.5em;
+        }
+
+    </style>
+
 </div>

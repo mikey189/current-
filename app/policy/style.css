@@ -7,3 +7,16 @@
   height: 100% !important;
   overflow: hidden !important;
 }
+#topFileTypeMdList{
+    background-color: white;
+    width: 49%;
+}
+
+#topUsersMdList{
+    background-color: white;
+    width: 49%;
+}
+
+#pdWrapper{
+    margin-bottom : 2em;
+}

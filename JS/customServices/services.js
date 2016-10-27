@@ -119,9 +119,19 @@ app.factory("policyList", function ($rootScope, $http) {
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
+    
+    var topFiles = "http://localhost:3000/PDTopFiles";
+    var topUsers = "http://localhost:3000/PDTopUsers";
+
     return {
         getList: function () {
             return $http.get(policyList);
+        },
+        getTopFiles: function(){
+            return $http.get(topFiles)  
+        },
+        getTopUsers: function(){
+            return $http.get(topUsers)  
         },
         postOrder: function (order) {
             return $http({

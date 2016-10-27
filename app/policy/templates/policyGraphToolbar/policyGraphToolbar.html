@@ -1,4 +1,4 @@
-<md-toolbar hide-xs hide-sm hide-md layout='row' layout-padding class='md-whiteframe-8dp' id='toolbar2Policy' layout-align='space-around center'>
+<md-toolbar hide-xs hide-sm hide-md layout='row' layout-padding class='md-whiteframe-8dp' id='toolbar2Policy' layout-align='space-around center' ng-controller = "policy as ctrl">
     <div layout-align='center center' layout='column' class='superPartialDivider' flex="20">
         <md-content>
             <small>Web Policy</small><br>
@@ -31,7 +31,7 @@
                 <h3 class='purple'>9</h3>
             </div>
             <div flex>
-                <canvas id="blockedFilesGraph" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick" </canvas>
+                <canvas id="blockedFilesGraph" class="chart chart-line" chart-data="ctrl.data" chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options" chart-dataset-override="datasetOverride" chart-click="ctrl.onClick" </canvas>
             </div>
         </div>
         <small class='gray'>Blocked Files</small>
@@ -45,7 +45,7 @@
                 <h3 class='purple'>12</h3>
             </div>
             <div flex>
-                <canvas style='width: 80%; height: 15%' id="sanitizedFileGraph" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick" </canvas>
+                <canvas style='width: 80%; height: 15%' id="sanitizedFileGraph" class="chart chart-line" chart-data="ctrl.data" chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options" chart-dataset-override="datasetOverride" chart-click="ctrl.onClick" </canvas>
             </div>
         </div>
         <small class='gray'>Sanitized Files</small>

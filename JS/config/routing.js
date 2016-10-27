@@ -130,13 +130,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
-
-
-
-
-
-
-
     .state('app.clusterManagement', {
         url: '/clusterManagement',
         templateUrl: 'app/clusterManagement/clusterManagement.html',
@@ -147,12 +140,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.policy', {
             url: '/policy',
             templateUrl: 'app/policy/policy.html',
-            controller: 'policy'
+            controller: 'policy',
+            controllerAs: "ctrl"
         })
         .state('app.policy.dashboard', {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
-            controller: 'policyDashboardTab'
+        controller: "policy",
+        controllerAs: "ctrl"
         })
 
 

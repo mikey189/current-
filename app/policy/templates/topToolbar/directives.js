@@ -7,18 +7,18 @@ app.directive("openSidenav", function ($mdSidenav) {
                 
                 var icon = $("#openSidenav");
                 
-                if (scope.sidenavIsOpened == false) {
+                if (scope.ctrl.sidenavIsOpened == false) {
 
                     console.log(scope.sidenavIsOpened)
                     $mdSidenav("policySidenav").open();
                     icon.html("arrow_left");
-                    scope.sidenavIsOpened = true;
+                    scope.ctrl.sidenavIsOpened = true;
 
                 } else {
 
                     $mdSidenav("policySidenav").close();
                     icon.html("arrow_right");
-                    scope.sidenavIsOpened = false;
+                    scope.ctrl.sidenavIsOpened = false;
 
                 }
 
