@@ -9,5 +9,12 @@ app.controller("reports",["filetype", function (filetype) {
     
     self.showClassfications = false;
     self.showKeys = false;
+    
+    self.isSizeLimitEditable = false;
+    
+    
+    self.filetype = {};
+    
+  
 }])
 

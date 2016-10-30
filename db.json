@@ -296,6 +296,57 @@
       },
       "computerList": [],
       "id": 11
+    },
+    {
+      "generalInformations": {
+        "name": "new channel",
+        "description": "this si the description",
+        "channelTypeName": "endpoint",
+        "channelTypeIconUrl": "icons/ncEndpoint.svg",
+        "useAsRelay": true
+      },
+      "inputsAndOutputs": {
+        "selectedInputs": [
+          {
+            "input": "cd-rom",
+            "isActive": true
+          },
+          {
+            "input": "my documents",
+            "isActive": true
+          },
+          {
+            "input": "mobiles",
+            "isActive": true
+          }
+        ],
+        "selectedOutputs": [
+          {
+            "output": "my documents",
+            "isActive": true
+          },
+          {
+            "output": "fixed drives",
+            "isActive": true
+          }
+        ],
+        "iSMB": [
+          {
+            "name": ""
+          },
+          {},
+          {},
+          {}
+        ],
+        "oSMB": [
+          {},
+          {}
+        ]
+      },
+      "computerList": [
+        "wright osborn"
+      ],
+      "id": 12
     }
   ],
   "channelsIcons": [
@@ -1189,6 +1240,13 @@
     },
     {
       "id": 4
+    },
+    {
+      "avira": true,
+      "id": 5
+    },
+    {
+      "id": 6
     }
   ],
   "policyOrder": [

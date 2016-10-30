@@ -1,11 +1,31 @@
 <div ng-cloak>
 
-    <md-input-container flex="100">
+    
+    
+    
+   <!-- <p style="background-color: white" ng-repeat-start="x in ctrl.data">1- {{x.Key}}</p>
+    <p style="background-color: pink" ng-repeat-start="y in x.Values">2- {{y.Key}}</p>
+    <p style="background-color: yellow" ng-repeat-start="z in y.Values">3- {{z.ClassificationExtensions}}</p>
+    <p ng-repeat-end></p>
+    <p ng-repeat-end></p>
+    <p ng-repeat-end></p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   <md-input-container flex="100">
         <label>Search</label>
         <input type="text" ng-model="extensions">
-    </md-input-container>
+    </md-input-container>-->
 
-
+    <p>{{ctrl.filetype}}</p>
 
     <table class="table table-responsive table-striped">
 
@@ -18,19 +38,64 @@
         </thead>
 
         <tbody>
-            <tr ng-repeat-start="x in ctrl.data" show-values class="parent">
-                <td layout="row">
+           
+            <tr ng-repeat-start="x in ctrl.data" class="parent">
+                <td layout="row" show-values>
                     <md-icon class="material-icon noMarginIcon">keyboard_arrow_right</md-icon>
                     {{x.Key}}
                 </td>
-            </tr>
+                <td>
+                    <md-checkbox aria-label="allow" class="green" ng-model="ctrl.filetype[x.Key]['allow']"></md-checkbox>
+                </td>
+                <td>
+                    <md-checkbox aria-label="process embedded files" ng-model="ctrl.filetype[x.Key]['processEmbeddedFiles']" class="green"></md-checkbox>
+                </td>
+                <td layout="row" layout-align="none center">
+                    <div layout="row">
+                        <input type="number" class="sizeLimitP" placeholder="set size limit" ng-disabled="!ctrl.isSizeLimitEditable" ng-model="ctrl.filetype[x.Key]['sizeLimit']" />
+                        <select name="select">
+                            <option value="KB">KB</option> 
+                            <option value="MB" selected>MB</option>
+                        </select>
+                    </div>
 
-            <tr ng-repeat-start="y in x.Values" class="hidden keys" show-extensions>
-                <td layout="row">
-                    <md-icon class="material-icon noMarginIcon">keyboard_arrow_right</md-icon>
-                    {{y.Key}}</td>
+                    <md-button aria-label="size limit of the file" class="fullWidthButton noMarginTop" edit-size-limit>
+                        <md-icon class="material-icons green editIcon">edit</md-icon>
+                    </md-button>
+                </td>
+                <td>
+                    <md-checkbox aria-label="allo sandbox" ng-model="ctrl.filetype[x.Key]['allowSandbox']" class="green"></md-checkbox>
+                </td>
             </tr>
-            <tr ng-repeat-start="z in y.Values | filter: extensions" class="hidden animated fadeIn extensions">
+            <tr ng-repeat-start="y in x.Values" class="hidden keys">
+                <td layout="row" show-extensions>
+                    <md-icon class="material-icon noMarginIcon">keyboard_arrow_right</md-icon>
+                    {{y.Key}}
+                </td>
+                <td>
+                    <md-checkbox aria-label="allow" class="green" ng-model="ctrl.filetype[y.Key]['allow']"></md-checkbox>
+                </td>
+                <td>
+                    <md-checkbox aria-label="process embedded files" ng-model="ctrl.filetype[y.Key]['processEmbeddedFiles']" class="green"></md-checkbox>
+                </td>
+                <td layout="row" layout-align="none center">
+                    <div layout="row">
+                        <input type="number" class="sizeLimitP" placeholder="set size limit" ng-disabled="!ctrl.isSizeLimitEditable" ng-model="ctrl.filetype[y.Key]['sizeLimit']" />
+                        <select name="select">
+                            <option value="KB">KB</option> 
+                            <option value="MB" selected>MB</option>
+                        </select>
+                    </div>
+
+                    <md-button aria-label="size limit of the file" class="fullWidthButton noMarginTop" edit-size-limit>
+                        <md-icon class="material-icons green editIcon">edit</md-icon>
+                    </md-button>
+                </td>
+                <td>
+                    <md-checkbox aria-label="allo sandbox" ng-model="ctrl.filetype[y.Key]['allowSandbox']" class="green"></md-checkbox>
+                </td>
+            </tr>
+            <tr ng-repeat-start="z in y.Values" class="hidden animated fadeIn extensions">
                 <td layout="row">
                     <md-icon class="material-icon noMarginIcon">jonathan</md-icon>
                     {{z.ClassificationExtensions}}
@@ -38,13 +103,33 @@
                         {{z.ClassificationDescription}}
                     </md-tooltip>
                 </td>
+                <td>
+                    <md-checkbox aria-label="allow" class="green" ng-model="ctrl.filetype[z.ClassificationExtensions]['allow']"></md-checkbox>
+                </td>
+                <td>
+                    <md-checkbox aria-label="process embedded files" ng-model="ctrl.filetype[z.ClassificationExtensions]['processEmbeddedFiles']" class="green"></md-checkbox>
+                </td>
+                <td layout="row" layout-align="none center">
+                    <div layout="row">
+                        <input type="number" class="sizeLimitP" placeholder="set size limit" ng-disabled="!ctrl.isSizeLimitEditable" ng-model="ctrl.filetype[z.ClassificationExtensions]['sizeLimit']" />
+                        <select name="select">
+                            <option value="KB">KB</option> 
+                            <option value="MB" selected>MB</option>
+                        </select>
+                    </div>
+
+                    <md-button aria-label="size limit of the file" class="fullWidthButton noMarginTop" edit-size-limit>
+                        <md-icon class="material-icons green editIcon">edit</md-icon>
+                    </md-button>
+                </td>
+                <td>
+                    <md-checkbox aria-label="allo sandbox" ng-model="ctrl.filetype[z.ClassificationExtensions]['allowSandbox']" class="green"></md-checkbox>
+                </td>
             </tr>
 
-
             <tr ng-repeat-end></tr>
             <tr ng-repeat-end></tr>
             <tr ng-repeat-end></tr>
-
 
         </tbody>
     </table>
@@ -58,7 +143,18 @@
             margin-left: 0px;
             margin-right: 0.5em;
         }
-
+        
+        .sizeLimitP {
+            margin-bottom: 0px;
+            color: gray;
+        }
+        
+        sizeLimitEditMode {
+            background-color: orange;
+        }
+        .key{
+            background-color: hotpink;
+        }
     </style>
 
 </div>
