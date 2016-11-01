@@ -2055,20 +2055,13 @@
     
     "usedChannels": [{"id": 0}],
     "availableChannels": [
-      "Mail",
-      "USB",
-      "Web",
-      "Endpoint",
-      "Scan Station",
-      "Scan Station 2",
-      "Scan Station 3",
-      "Dirtwatche 1",
-      "Dirtwatcher 2",
-      "Dirtwatcher 3",
-      "Dirtwatcher 4",
-      "Dirtwatcher 5",
-      "Dirtwatcher 6",
-      "Dirtwatcher 7",
-      "Dirtwatcher 8"
+      {"key": "Mail", "value": 1},
+      {"key": "Web", "value": 2},
+      {"key": "Endpoint", "value": 3},
+      {"key": "Scan Station", "value": 4},
+      {"key": "DirWatcher", "value": 5},
+      {"key": "API", "value": 6},
+      {"key": "ICAP", "value": 7}
+
     ]
 }

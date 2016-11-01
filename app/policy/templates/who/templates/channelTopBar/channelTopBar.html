@@ -1,28 +1,30 @@
 <md-list class="whiteBk" md-whiteframe="6">
-    <md-list-item layout="row" layout-align="space-between center" layout-margin>
-        <div layout="row" layout-margin>
-            <div flex="20">
+    <md-list-item layout="row" layout-align="space-between center">
+        <div layout="row" layout-margin flex="100">
+            <div flex="10" layout="row" layout-margin> 
                 <md-icon class="material-icons md48 md-primary" style="margin-left: 0px">settings_input_component</md-icon>
                 <h4>Channels</h4>
             </div>
-            <div flex>
-                <md-chips ng-model="ctrl.data.currentChannels" readonly="true">
-                    <md-chip-template delete-channel class="channelChip">
-                        {{ $chip }}
-                        <md-icon class="material-icons">add</md-icon>
+            <div flex="90">
+                <md-chips ng-model="ctrl.currentChannels" readonly="true">
+                    <md-chip-template delete-channel class="channelChip animated bounce">
+                        {{$chip.chipKey}}
                     </md-chip-template>
                 </md-chips>
             </div>
         </div>
 
     </md-list-item>
+    <div class="hidden animated fadeInDown" id="channelTopBar">
     <md-divider></md-divider>
-    <md-list-item layout="row" block-edition class="channelEditionZone notEditable">
+    <md-list-item layout="row" block-edition class="channelEditionZone notEditable" id="channelTopBar">
         <md-chips ng-model="ctrl.availableChannels" readonly="true">
-            <md-chip-template add-channel class="channelChip">
-                {{ $chip }}
+            <md-chip-template add-channel class="channelChip" _value="{{$chip.value}}" _key = "{{$chip.key}}">
+                {{ $chip.key }}
                 <md-icon class="material-icons">add</md-icon>
             </md-chip-template>
         </md-chips>
     </md-list-item>
+    </div>
 </md-list>
+

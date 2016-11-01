@@ -113,11 +113,12 @@ app.factory("addPolicy", function ($http, $rootScope) {
 
 app.factory("policyList", function ($rootScope, $http) {
 
-    var policyList = "http://localhost:3000/policyList";
-    //http://jdev01:4580/api/policy/getallpolicies
+    var policyList = "http://jdev01:4580/api/policy/getallpolicies";
+    //http://localhost:3000/policyList
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
+    var policySidenav = "http://jdev01:4580/api/policy/GetPoliciesSideNav"
 
     var topFiles = "http://localhost:3000/PDTopFiles";
     var topUsers = "http://localhost:3000/PDTopUsers";
@@ -125,6 +126,9 @@ app.factory("policyList", function ($rootScope, $http) {
     return {
         getList: function () {
             return $http.get(policyList);
+        },
+        getSidenav: function(){
+            return $http.get(policySidenav)
         },
         getTopFiles: function () {
             return $http.get(topFiles)
@@ -263,36 +267,6 @@ app.factory("policyChannels", function ($http) {
     return {
         getAvailablechannels: function () {
             return $http.get(availableChannels)
-        },
-        addChannel: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: usedPolicies,
-                method: "POST",
-                data: data
-            })
-        },
-        removeChannelFromUsedChannel: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: usedPolicies,
-                method: "DELETE",
-                data: data
-            })
-        },
-        remove_channel_from_available_channels_on_selection: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: availableChannels,
-                method: "DELETE",
-                data: data
-            })
         }
     }
 

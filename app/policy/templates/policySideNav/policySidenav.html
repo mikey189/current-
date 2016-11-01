@@ -45,9 +45,9 @@
 
 
 
-        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" index="{{policy.Id}}" layout="column" layout-align="center start">
+        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" _id="{{policy.PolicyId}}" layout="column" layout-align="center start">
             <div layout="row" layout-align="space-between start" style="width: 100%">
-                <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.name}}</p>
+                <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>
                 <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.dragMode">
                     <md-icon flex class="pinkIcon material-icons">close</md-icon>
                 </md-button>
@@ -60,18 +60,18 @@
             <div layout="row" layout-align="space-between start">
                 <div layout="row" flex="45" layout-align="start start">
                     <md-icon class="lightPurple marginRight1em">insert_drive_file</md-icon>
-                    <p class="md-subhead white noMarginBottom">{{policy.files}}</p>
+                    <p class="md-subhead white noMarginBottom">{{policy.TotalFiles}}</p>
                 </div>
 
                 <div layout="row" flex class="psGpeHolder">
                     <md-icon class="lightPurple marginRight1em">group</md-icon>
-                    <p class="md-subhead white noMarginBottom">{{policy.users}}</p>
+                    <p class="md-subhead white noMarginBottom">{{policy.TotalUsers}}</p>
                 </div>
 
             </div>
 
             <div layout-margin layout-wrap layout="row" layout-align="start center" class="noMarginLeft">
-                <p class="customChips" ng-repeat="channel in policy.channels" md-whiteframe="4">{{channel.name}}</p>
+                <p class="customChips" ng-repeat="channel in policy.ChannelNames" md-whiteframe="4">{{channel}}</p>
             </div>
 
         </md-list-item>

@@ -1,26 +1,41 @@
-app.controller('policy', ["$location", "filetype", function ($location, filetype) {
+app.controller('policy', ["filetype","policyList", function (filetype, policyList) {
+    
     var self = this;
 
-    self.path = $location.path
-    self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
-
+    
+    
     filetype.getTopFileType().then(function (answer) {
         self.topFiles = answer.data
     });
 
 
+    
+    
+    //dragMode for policySideNav
+    
+    self.draggableObjects = [];
 
-
-    self.labels = ["", "", "", "", "", "", ""];
-    self.series = ['Series A'];
-    self.data = [
-    [65, 59, 80, 81, 56, 55, 90]
-    ];
-
-    self.casesData = [30, 40, 35];
-    self.onClick = function (points, evt) {
-        console.log(points, evt);
-    };
+    policyList.getSidenav().then(function (answer) {
+        self.sideNavList = answer.data
+        for (i in self.sideNavList) {
+            self.draggableObjects.push(self.sideNavList[i])
+        }
+    })
+    
+    self.onDropComplete = function (index, obj, evt) {
+        var otherObj = self.draggableObjects[index];
+        var otherIndex = self.draggableObjects.indexOf(obj);
+        self.draggableObjects[index] = obj;
+        self.draggableObjects[otherIndex] = otherObj;
+    }
+    
+    self.dragMode = false;
+    self.newPolicy = false;
+    self.isEditable = false;
+    
+    
+    
+    
 
 
 }])

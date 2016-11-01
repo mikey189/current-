@@ -4,6 +4,8 @@ app.controller('who', ["channelData","policyChannels", "policyUsers", function (
 
     self.showList = false;
     self.hiddenDiv = false;
+    
+    
 
     channelData.getComputerList().then(function (answer) {
         self.users = answer.data;
@@ -16,16 +18,22 @@ app.controller('who', ["channelData","policyChannels", "policyUsers", function (
     })
     
     
+    
+    
     policyChannels.getAvailablechannels().then(function(answer){
-        self.availableChannels = answer.data
-    })
+        
+        self.availableChannels = answer.data;
+         
+    });
+    
     
     self.areUsersVisible = false;
 
     self.isChannelAdded = false;
     
-    self.isChannelEditable = false
+    self.isChannelEditable = false;
     
-    self.channelsArray = [];
+    self.currentChannels = [];
+    
 
 }])
