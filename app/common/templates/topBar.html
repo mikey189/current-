@@ -1,0 +1,13 @@
+<md-toolbar id='dashboardToolbar' layout='row' layout-align='space-between center' layout-padding layout-sm='column' layout-xs='column' md-whiteframe="12">
+    <md-content class='md-headline darkPurple'>{{$state.current.displayName}}</md-content>
+    <md-input-container class="noMarginInput">
+        
+        <md-select ng-model='$rootScope.selectedTime' placeholder="Real Time">
+            <md-option><small>Real Time</small></md-option>
+            <md-option><small>1 Hour</small></md-option>
+            <md-option><small>1 Day</small></md-option>
+            <md-option><small>1 Week</small></md-option>
+            <md-option><small>1 Month</small></md-option>
+        </md-select>
+    </md-input-container>
+</md-toolbar>

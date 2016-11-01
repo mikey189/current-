@@ -1,4 +1,4 @@
-app.controller('who', ["channelData", "policyUsers", function (channelData, policyUsers) {
+app.controller('who', ["channelData","policyChannels", "policyUsers", function (channelData, policyChannels, policyUsers) {
 
     var self = this;
 
@@ -9,9 +9,17 @@ app.controller('who', ["channelData", "policyUsers", function (channelData, poli
         self.users = answer.data;
     })
 
+    
+    
     policyUsers.getData().then(function (answer) {
         self.data = answer.data
     })
+    
+    
+    policyChannels.getAvailablechannels().then(function(answer){
+        self.availableChannels = answer.data
+    })
+    
     self.areUsersVisible = false;
 
     self.isChannelAdded = false;

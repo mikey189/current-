@@ -5,13 +5,7 @@ app.directive("channelSidebar", function () {
         replace: false
     }
 })
-app.directive("topBar", function () {
-    return {
-        restrict: 'E',
-        templateUrl: "app/channelManagement/templates/endpoint/topBar/topBar.html",
-        replace: false
-    }
-})
+
 app.directive("infoTopBar", function () {
     return {
         restrict: 'E',

@@ -1,17 +1,13 @@
-app.controller('policy', ["$location", "policyList", function ($location, policyList) {
+app.controller('policy', ["$location", "filetype", function ($location, filetype) {
     var self = this;
 
     self.path = $location.path
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
 
-    policyList.getTopFiles().then(function (answer) {
+    filetype.getTopFileType().then(function (answer) {
         self.topFiles = answer.data
     });
 
-
-    policyList.getTopUsers().then(function (answer) {
-        self.topUsers = answer.data
-    });
 
 
 
@@ -26,6 +22,5 @@ app.controller('policy', ["$location", "policyList", function ($location, policy
         console.log(points, evt);
     };
 
-    self.sidenavIsOpened = false;
 
 }])

@@ -92,7 +92,7 @@ app.directive("toggleEdition", function () {
         link: function (scope, element, attr) {
             element.click(function () {
                 var editionZone = $(".channelEditionZone");
-                var editButton = $("#editChannels")
+                var editButton = $("#editWhoSection")
 
                 if (!scope.ctrl.isChannelEditable) {
                     editionZone.removeClass("notEditable")

@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="app/policy/templates/who/style.css" />
 
 <div class="md-padding" layout='column' layout-padding ng-controller="who as ctrl">
+
+    <div layout="row">
+        <md-button class="md-primary md-raised strong600" id="editWhoSection" toggle-edition layout-align="end center">EDIT</md-button>
+    </div>
+
+
     <channel-top-bar></channel-top-bar>
     <div layout="row" layout-align="space-between start" id="whoWrapper" vertalize-container>
         <groups-list vertalize flex="50"></groups-list>

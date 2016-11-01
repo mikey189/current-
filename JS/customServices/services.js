@@ -4,7 +4,6 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
         checkLogin: function (username, password) {
             var url = $rootScope.url + "/api/users/login";
 
-            console.log($rootScope.url, "this the rootscope")
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -113,13 +112,13 @@ app.factory("addPolicy", function ($http, $rootScope) {
 })
 
 app.factory("policyList", function ($rootScope, $http) {
-    
+
     var policyList = "http://localhost:3000/policyList";
     //http://jdev01:4580/api/policy/getallpolicies
     var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
-    
+
     var topFiles = "http://localhost:3000/PDTopFiles";
     var topUsers = "http://localhost:3000/PDTopUsers";
 
@@ -127,11 +126,11 @@ app.factory("policyList", function ($rootScope, $http) {
         getList: function () {
             return $http.get(policyList);
         },
-        getTopFiles: function(){
-            return $http.get(topFiles)  
+        getTopFiles: function () {
+            return $http.get(topFiles)
         },
-        getTopUsers: function(){
-            return $http.get(topUsers)  
+        getTopUsers: function () {
+            return $http.get(topUsers)
         },
         postOrder: function (order) {
             return $http({
@@ -234,22 +233,69 @@ app.factory("users", function ($http) {
     }
 })
 
-app.factory("policyUsers", function($http){
+app.factory("policyUsers", function ($http) {
     var url = "http://localhost:3000/policyUsers";
     return {
-        getData: function(){
+        getData: function () {
             return $http.get(url)
         }
     }
 })
 
-app.factory("filetype", function($http){
+app.factory("filetype", function ($http) {
     var url = "http://jdev01:4580/api/general/filetypes";
-    return{
-        getData: function(){
+    var topFileType = "http://localhost:3000/topFileType"
+    return {
+        getData: function () {
             return $http.get(url)
+        },
+        getTopFileType: function () {
+            return $http.get(topFileType)
         }
     }
+})
+
+app.factory("policyChannels", function ($http) {
+
+    var usedPolicies = "http://localhost:3000/usedChannels";
+    var availableChannels = "http://localhost:3000/availableChannels";
+
+    return {
+        getAvailablechannels: function () {
+            return $http.get(availableChannels)
+        },
+        addChannel: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: usedPolicies,
+                method: "POST",
+                data: data
+            })
+        },
+        removeChannelFromUsedChannel: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: usedPolicies,
+                method: "DELETE",
+                data: data
+            })
+        },
+        remove_channel_from_available_channels_on_selection: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: availableChannels,
+                method: "DELETE",
+                data: data
+            })
+        }
+    }
+
 })
 
 app.factory("C2CData", function () {
@@ -269,4 +315,3 @@ app.factory("C2CData", function () {
     }
 
 });
-

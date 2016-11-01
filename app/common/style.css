@@ -6,3 +6,18 @@
  .thisButton:hover{
         background-color: transparent !important;
     }
+
+#dashboardToolbar{
+    border-bottom: solid 2px #F5F5F5;
+ 
+
+}
+
+.noMarginInput{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.menuHolder{
+    margin-top: 1.5em;
+}
+
