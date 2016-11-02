@@ -11,7 +11,7 @@ app.directive("policyListHover", function () {
     }
 })
 
-app.directive("reorderPolicyList", ["policyList", function (policyList) {
+app.directive("reorderPolicyList", ["policyData", function (policyList) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
@@ -37,7 +37,7 @@ app.directive("reorderPolicyList", ["policyList", function (policyList) {
                     items.each(function () {
                         scope.ctrl.priority.push($(this).attr("index"))
                     })
-                    policyList.postOrder(scope.ctrl.priority);
+                    policyData.postOrder(scope.ctrl.priority);
                 }
             })
         }
@@ -94,7 +94,7 @@ app.directive("toggleNewPolicyEditableMode", function () {
     }
 })
 
-app.directive("deletePolicy", ["policyList", "$timeout", function (policyList, $timeout) {
+app.directive("deletePolicy", ["policyData", "$timeout", function (policyList, $timeout) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -106,7 +106,7 @@ app.directive("deletePolicy", ["policyList", "$timeout", function (policyList, $
                 $timeout(function () {
                     cell.addClass("hidden")
                 }, 500)
-                policyList.deletePolicy(id)
+                policyData.deletePolicy(id)
             })
         }
     }
@@ -123,3 +123,20 @@ app.directive("continuePolicySetup", function(){
         }
     }
 })
+
+app.directive("initiateApiCallWithId",["policyData", function(policyData){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.click(function(){
+                var self = $(this);
+                scope.ctrl.policyId = parseInt(self.attr("_id"));
+                console.log(scope.ctrl.policyId)
+                policyData.getDashboard(scope.ctrl.policyId).then(function(answer){
+                    scope.ctrl.dashboardData = answer.data;
+                    scope.$apply();
+                })
+            })
+        }
+    }
+}])

@@ -1,21 +1,16 @@
-app.controller('policy', ["filetype","policyList", function (filetype, policyList) {
+app.controller('policy', ["policyData", function (policyData) {
+    
+    
+    
     
     var self = this;
 
-    
-    
-    filetype.getTopFileType().then(function (answer) {
-        self.topFiles = answer.data
-    });
 
-
-    
-    
     //dragMode for policySideNav
     
     self.draggableObjects = [];
 
-    policyList.getSidenav().then(function (answer) {
+    policyData.getSidenav().then(function (answer) {
         self.sideNavList = answer.data
         for (i in self.sideNavList) {
             self.draggableObjects.push(self.sideNavList[i])
@@ -34,8 +29,6 @@ app.controller('policy', ["filetype","policyList", function (filetype, policyLis
     self.isEditable = false;
     
     
-    
-    
-
-
+    //getDashboard data with policyId
+    //API Call inside directive :"initiateApiCallWithId" 
 }])

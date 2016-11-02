@@ -111,7 +111,7 @@ app.factory("addPolicy", function ($http, $rootScope) {
     }
 })
 
-app.factory("policyList", function ($rootScope, $http) {
+app.factory("policyData", function ($rootScope, $http) {
 
     var policyList = "http://jdev01:4580/api/policy/getallpolicies";
     //http://localhost:3000/policyList
@@ -122,6 +122,10 @@ app.factory("policyList", function ($rootScope, $http) {
 
     var topFiles = "http://localhost:3000/PDTopFiles";
     var topUsers = "http://localhost:3000/PDTopUsers";
+    
+    var policyDefinition = "http://localhost:3000/policyDefinition";
+    var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
+    var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
 
     return {
         getList: function () {
@@ -157,6 +161,29 @@ app.factory("policyList", function ($rootScope, $http) {
                     data: id
                 })
             }
+        },
+        addData: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: policyDefinition,
+                method: "POST",
+                data: data
+            })
+        },
+        getData: function () {
+            return $http.get(policyDefinition).then(function (response) {
+                return response.data
+            })
+        },
+        getDashboard: function(id) {
+            return $http.get(policyDashboard + id)
+        },
+        getDescriptions() {
+            return $http.get(fileExtensionsDescription).then(function (response) {
+                return response.data
+            })
         }
     }
 })
@@ -194,33 +221,6 @@ app.factory("policyDetection", function ($http) {
                 url: url,
                 method: "POST",
                 data: data
-            })
-        }
-    }
-})
-
-app.factory("policyData", function ($http) {
-    var url = "http://localhost:3000/policyDefinition";
-    var url2 = "http://localhost:3000/policyDescriptionToolip";
-    return {
-        addData: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: url,
-                method: "POST",
-                data: data
-            })
-        },
-        getData: function () {
-            return $http.get(url).then(function (response) {
-                return response.data
-            })
-        },
-        getDescriptions() {
-            return $http.get(url2).then(function (response) {
-                return response.data
             })
         }
     }
