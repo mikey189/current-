@@ -31,7 +31,7 @@ app.controller('who', ["channelData","policyChannels", "policyUsers", function (
 
     self.isChannelAdded = false;
     
-    self.isChannelEditable = false;
+    self.isWindowEditable = false;
     
     self.currentChannels = [];
     

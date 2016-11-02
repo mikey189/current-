@@ -10,3 +10,7 @@
 .smallMarginRight{
     margin-right: 1em !important;
 }
+
+.md-red{
+    color: #d50000 !important;
+}

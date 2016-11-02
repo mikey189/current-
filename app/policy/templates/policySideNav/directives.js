@@ -11,6 +11,9 @@ app.directive("policyListHover", function () {
     }
 })
 
+
+//is_policy_sidenav_editable
+
 app.directive("reorderPolicyList", ["policyData", function (policyList) {
     return {
         restrict: "A",
@@ -131,11 +134,10 @@ app.directive("initiateApiCallWithId",["policyData", function(policyData){
             element.click(function(){
                 var self = $(this);
                 scope.ctrl.policyId = parseInt(self.attr("_id"));
-                console.log(scope.ctrl.policyId)
                 policyData.getDashboard(scope.ctrl.policyId).then(function(answer){
-                    scope.ctrl.dashboardData = answer.data;
-                    scope.$apply();
+                    scope.ctrl.dashboardData = answer.data
                 })
+                scope.$apply();
             })
         }
     }

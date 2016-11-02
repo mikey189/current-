@@ -43,8 +43,6 @@
 
         <!--new policyCell cell-->
 
-
-
         <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" _id="{{policy.PolicyId}}" layout="column" layout-align="center start" initiate-api-call-with-id>
             <div layout="row" layout-align="space-between start" style="width: 100%">
                 <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>

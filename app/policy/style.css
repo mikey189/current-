@@ -31,8 +31,9 @@
 .policy-top-file-type{
     border-bottom: solid 1px #E0E0E0;
 }
-.lightBlue{
-    color: #2196F3;
+.lightGreen{
+    color: #00E676
+;
 }
 .danger{
     color: #DD2C00;
@@ -52,4 +53,13 @@
     margin-top: 0px !important;
     margin-right: 0px !important;
     margin-left: 0px !important;
+}
+
+.top-file-icon{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.type-select-top-file-type{
+    border: solid 2px white;
 }

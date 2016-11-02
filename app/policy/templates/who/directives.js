@@ -1,26 +1,3 @@
-app.directive("showRelatedUsers", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            var tmpl = "<h1>Jonathan</h1>"
-            element.click(function () {
-                var self = $(this)
-                var icon = self.children("md-icon")
-                if (scope.ctrl.areUsersVisible) {
-                    icon.html("keyboard_arrow_right");
-                    tmpl.after(self)
-                    self.siblings(".groupUsers").addClass("hidden")
-                    scope.ctrl.areUsersVisible = false
-                } else {
-                    icon.html("keyboard_arrow_down");
-                    scope.ctrl.areUsersVisible = true;
-                    self.siblings(".groupUsers").removeClass("hidden")
-                }
-            })
-        }
-    }
-})
-
 app.directive("addChannel", function () {
     return {
         restrict: "A",
@@ -66,7 +43,7 @@ app.directive("blockEdition", function () {
             var editButton = $("#editChannels")
             var editionZone = $(".channelEditionZone");
             element.click(function () {
-                if (!scope.ctrl.isChannelEditable) {
+                if (!scope.ctrl.isWindowEditable) {
                     editButton.addClass("animated shake")
                 } else {
                     editButton.removeClass("animated shake")
@@ -84,36 +61,58 @@ app.directive("toggleEdition", function () {
                 var editionZone = $(".channelEditionZone");
                 var editButton = $("#editWhoSection");
                 var channelTopBar = $("#channelTopBar");
+                var delete_users_icon = $(".delete-users");
 
-                if (!scope.ctrl.isChannelEditable) {
+                if (!scope.ctrl.isWindowEditable) {
                     editionZone.removeClass("notEditable")
                     channelTopBar.removeClass("hidden")
-                    editButton.html("DONE")
-                    editButton.addClass("inEdition")
-                    scope.ctrl.isChannelEditable = true
+                    editButton.html("DONE");
+                    editButton.addClass("inEdition");
+                    delete_users_icon.removeClass("hidden");
+                    scope.ctrl.isWindowEditable = true
                 } else {
                     editionZone.addClass("notEditable");
                     channelTopBar.addClass("hidden")
                     editButton.html("EDIT")
                     editButton.removeClass("inEdition")
-
-                    scope.ctrl.isChannelEditable = false
+                    delete_users_icon.addClass("hidden");
+                    scope.ctrl.isWindowEditable = false
                 }
             })
         }
     }
 })
 
+app.directive("deleteUserFromPolicy", function($timeout){
+    return {
+        restrict :"A",
+        link: function(scope, element, attrs){
+            element.click(function(){
+                var self = $(this);
+                var user = self.parent(".user-user-list")
+                user.addClass("animated slideOutRight")
+                $timeout(function(){
+                    user.addClass("hidden")
+                }, 800)
+            })
+            
+        }
+    }
+})
 
-app.directive("initiateApiCallWithId", function(){
+app.directive("deleteGroupFromPolicy", function($timeout){
     return {
         restrict: "A",
         link: function(scope, element, attrs){
             element.click(function(){
-                var self = $(this);
-                scope.ctrl.policyId = parseInt(self.attr("_id"));
-                console.log(scope.ctrl.policyId)
+               var self = $(this);
+            var group  = self.parent(".user-user-list")//not the perfect name
+            group.addClass("animated slideOutLeft");
+            $timeout(function(){
+                group.addClass("hidden")
+            }, 800) 
             })
+            
         }
     }
 })

@@ -3,7 +3,7 @@
 <div id="whoGroup" md-whiteframe="6">
 
 
-    <md-list>
+    <md-list style="padding-bottom: 0px !important">
         <md-list-item layout="row" layout-align="start center">
             <div layout="row" flex="30" layout-align="start">
                 <md-icon class="purple noMarginLeft smallMarginRight material-icons md-primary">group</md-icon>
@@ -18,18 +18,15 @@
         </md-list-item>
         <md-divider></md-divider>
         <md-virtual-repeat-container id="vertical-container">
-            <div md-virtual-repeat="group in ctrl.data.groups |filter: group" class="user-user-list" layout="column" layout-align="center start">
+            <div md-virtual-repeat="group in ctrl.data.groups |filter: group" class="user-user-list" layout="row" layout-align="space-between center">
+                <!-- <md-icon class="noMarginLeft smallMarginRight material-icons expandGroups">keyboard_arrow_right</md-icon>-->
+                <md-content class="policy-who-groups">{{group.service}}</md-content>
 
-                <div layout="row" layout-align="start center" show-related-users>
-                    <md-icon class="noMarginLeft smallMarginRight material-icons expandGroups">keyboard_arrow_right</md-icon>
-                    {{group.service}}
-                </div>
-                <!--<div class="groupUsers animated fadeInDown hidden" layout-margin layout="column">
-
-                    jonathan
-
-                </div>-->
+                <md-button class="md-icon-button" ng-if="ctrl.isWindowEditable" delete-group-from-policy>
+                    <md-icon class="material-icon md-red">remove</md-icon>
+                </md-button>
             </div>
-        </md-virtual-repeat-container>
-    </md-list>
+</div>
+</md-virtual-repeat-container>
+</md-list>
 </div>

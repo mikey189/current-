@@ -1,9 +1,7 @@
-<md-toolbar hide-xs hide-sm hide-md layout='row' layout-padding class='md-whiteframe-8dp' id='toolbar2Policy' layout-align='space-around center' ng-controller = "policy as ctrl">
+<md-toolbar hide-xs hide-sm hide-md layout='row' layout-padding class='md-whiteframe-8dp' id='toolbar2Policy' layout-align='space-around center' ng-controller="policy as ctrl">
     <div layout-align='center center' layout='column' class='superPartialDivider' flex="20">
         <md-content>
-            <small>Web Policy</small><br>
-            <small>Marketing Team</small><br>
-            <small>Level 1 users</small><br>
+           {{ctrl.dashboardData.PolicyName}}
         </md-content>
     </div>
     <div layout='column' layout-align='center center' class='superPartialDivider' flex="20">
