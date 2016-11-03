@@ -1,16 +1,12 @@
 app.controller('policy', ["policyData", function (policyData) {
 
-
-
-
     var self = this;
 
-
-    self.policyId = 1;
+    self.policyId = 2;
     //dragMode for policySideNav
 
     self.draggableObjects = [];
-    
+
     policyData.getSidenav().then(function (answer) {
         self.sideNavList = answer.data
         for (i in self.sideNavList) {
@@ -35,12 +31,10 @@ app.controller('policy', ["policyData", function (policyData) {
     //API Call inside directive :"initiateApiCallWithId" 
 
 
-    //self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 1;
     policyData.getDashboard(self.policyId).then(function (answer) {
         self.dashboardData = answer.data;
-        console.log(self.dashboardData)
     })
 
-    
-    
+
+
 }])

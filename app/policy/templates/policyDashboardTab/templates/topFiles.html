@@ -13,26 +13,26 @@
     </div>
 </div>
 <md-virtual-repeat-container id="top-files-policy">
-    <div md-virtual-repeat="file in ctrl.dashboardData.BlockedFiles.TopFilesTypes" class="policy-top-file-type" flex layout="row" layout-margin>
+    <div md-virtual-repeat="f in ctrl.dashboardData.TopTenFileTypes" class="policy-top-file-type" flex layout="row" layout-margin>
         <div class="top-file-icon-holder" layout="column" layout-align="center center" layout-margin flex="10">
             <md-icon class="material-icons darkPurple">insert_drive_file</md-icon>
-            <p class="noMarginBottom">{{file.FileType}}</p>
+            <p class="noMarginBottom noMarginTop extensionName" to-uppercase>{{f.FileExtension}}</p>
         </div>
-        <div class="top-file-icon-holder" layout="row" layout-align="center center" layout-margin flex="20">
+        <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
             <md-icon class="material-icons lightGreen">check_circle</md-icon>
-            <p class="noMarginBottom">{{file.passed}} Passed Files</p>
+            <p class="noMarginBottom noMarginTop">{{f.TotalPassed}} Passed Files</p>
         </div>
-        <div class="top-file-icon-holder" layout="row" layout-align="center center" layout-margin flex="20">
+        <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
             <md-icon class="material-icons lightGreen">check_circle</md-icon>
-            <p class="noMarginBottom">{{file.sanitized}} Sanitized Files</p>
+            <p class="noMarginBottom noMarginTop">{{f.TotalModified}} Sanitized Files</p>
         </div>
-        <div class="top-file-icon-holder" layout="row" layout-align="center center" layout-margin flex="20">
+        <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
             <md-icon class="material-icons danger">block</md-icon>
-            <p class="noMarginBottom">{{file.blocked}} Blocked Files</p>
+            <p class="noMarginBottom noMarginTop">{{f.TotalBlocked}} Blocked Files</p>
         </div>
-        <div class="top-file-icon-holder" layout="row" layout-align="center center" layout-margin flex>
+        <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
             <md-icon class="material-icons green">code</md-icon>
-            <p class="noMarginBottom">{{file.total}} Total Files</p>
+            <p class="noMarginBottom noMarginTop">{{f.TotalProcessed}} Total Files</p>
         </div>
     </div>
 </md-virtual-repeat-container>

@@ -19,6 +19,7 @@
 
 #pdWrapper{
     margin-bottom : 2em;
+    margin-top: 2em;
 }
 .policyInnerWrapper{
     margin-left: 1em;
@@ -62,4 +63,7 @@
 
 .type-select-top-file-type{
     border: solid 2px white;
+}
+.marginLeft{
+    margin-left: 2em !important;
 }

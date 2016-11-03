@@ -8,7 +8,7 @@
     font-weight: 600;
 }
 .notEditable{
-        pointer-events: none;
+    pointer-events: none;
 
 }
 .strong600{
@@ -21,4 +21,15 @@
     margin-left: 0px;
     margin-bottom: 1.5em;
     margin-top: 1.5em;
+}
+.channels-chips-add-button{
+    padding-top: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.no-padding-top{
+    padding-top: 0px !important;
+}
+#available-channels{
+    padding-left: 1em;
 }
