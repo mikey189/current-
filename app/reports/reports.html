@@ -1,0 +1,163 @@
+<h1 class="center-title">UI GARAGE: pending elements in the ui</h1>
+
+<h3 class ="center-title">Who > channels : state > completed</h3>
+<div layout="column" id="channels">
+    <div layout="row" layout-align="space-between center" id="channelL1" md-whiteframe="4">
+        <div layout="row" flex="20" layout-margin>
+            <md-icon class="material-icons md48 md-primary" style="margin-left: 0px">settings_input_component</md-icon>
+            <h3>Channels</h3>
+        </div>
+        <div layout="row" flex layout-align="end center">
+            <md-button class="md-icon-button" aria-label="edit" edit-channels>
+                <md-icon>edit</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" layout-margin id="currentChannels">
+        <md-chips ng-model="ctrl.currentChannels" readonly="true">
+            <md-chip-template class="channelChip animated bounce">
+                {{$chip.key}}
+                <md-button class="md-icon-button" aria-label="remove" ng-if="ctrl.areChannelsEditable" delete-channel>
+                    <md-icon>remove</md-icon>
+                </md-button>
+            </md-chip-template>
+        </md-chips>
+    </div>
+    <div layout="row" layout-align="start center" layout-margin ng-if="ctrl.areChannelsEditable" id="availableChannels">
+        <div layout="row" flex="10">
+            <h4>Availables Channels
+                <md-tooltip md-direction="top">
+          These are all the channels currently available that you can add to use in this policy
+        </md-tooltip>
+            </h4>
+        </div>
+        <md-chips ng-model="ctrl.availableChannels" readonly="true" class="availableChannels" flex>
+            <md-chip-template class="channelChip" _value="{{$chip.value}}" _key="{{$chip.key}}">
+                {{ $chip.key }}
+                <md-button class="md-icon-button" aria-label="addChannel" add-this-channel>
+                    <md-icon>add</md-icon>
+                </md-button>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>
+
+
+<h3 class="center-title">FILETYPE TABLE : state : not completed</h3>
+<table class="table table-responsive">
+    <thead>
+        <th></th>
+        <th>Allow</th>
+        <th>Process Embeded Files</th>
+        <th>Size limit</th>
+        <th>Sandobox</th>
+    </thead>
+
+    <tbody>
+
+        <tr id="L1" ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
+            <td layout="row" layout-align="start center">
+                <md-button class="md-icon-button" aria-label="show L2" show-extensions index="{{l1.Key}}">
+                    <md-icon>keyboard_arrow_right</md-icon>
+                </md-button>
+                {{l1.Key}}
+            </td>
+            <td>
+                <md-checkbox ng-model="ctrl.types[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
+            </td>
+            <td colspan="3"></td>
+        </tr>
+
+        <tr class="L2" ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]">
+            <td>{{l2.ClassificationExtensions}}</td>
+            <td>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['isAllowed']"></md-checkbox>
+            </td>
+            <td>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['processEmbededFiles']"></md-checkbox>
+
+            </td>
+            <td layout="row">
+                <input type="number" readonly ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sizeLimit'].size" />
+                <select ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sizeLimit'].unit">
+                    <option>KB</option>
+                    <option>MB</option>
+                </select>
+
+                <md-button filetype-size-limit class="md-icon-button">
+                    <md-icon>edit</md-icon>
+                </md-button>
+            </td>
+            <td>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sandbox']"></md-checkbox>
+            </td>
+        </tr>
+        <tr ng-repeat-end></tr>
+        <tr ng-repeat-end></tr>
+
+    </tbody>
+
+</table>
+
+
+
+
+<style>
+    .center-title {
+        margin-top: 3em;
+        margin-bottom: 3em;
+        text-align: center;
+    }
+    
+    .md-icon-button {
+        padding-top: 0px !important;
+    }
+    
+    #channels {
+        background-color: white;
+    }
+    
+    #channelL1 {
+        width: 100%;
+    }
+    
+    #currentChannels {
+        margin-bottom: 0px !important;
+    }
+    
+    #availableChannels {
+        border-top: solid 1px #E0E0E0;
+    }
+    
+    #L1 {
+        background-color: yellowgreen;
+    }
+    
+    .L2 {
+        background-color: yellow;
+    }
+    
+    .availableChannels md-chip {
+        background-color: #160049;
+        color: white;
+        font-weight: 500;
+    }
+    
+    .availableChannels md-icon {
+        color: white;
+    }
+    
+    .addedChannel {
+        color: #424242;
+        background-color: #E0E0E0;
+    }
+    
+    .yellowBK {
+        background-color: yellow;
+    }
+    
+    .not-editable-chip {
+        background-color: red !important;
+        pointer-events: none;
+    }
+</style>

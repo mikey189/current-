@@ -126,6 +126,8 @@ app.factory("policyData", function ($rootScope, $http) {
     var policyDefinition = "http://localhost:3000/policyDefinition";
     var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
     var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
+    var filetype = "http://jdev01:4580/api/general/filetypes";
+    
 
     return {
         getList: function () {
@@ -184,6 +186,9 @@ app.factory("policyData", function ($rootScope, $http) {
             return $http.get(fileExtensionsDescription).then(function (response) {
                 return response.data
             })
+        },
+        getFiletypes: function(){
+            return $http.get(filetype)
         }
     }
 })

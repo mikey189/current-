@@ -1,23 +1,33 @@
 .sidebarIconHover {
-        background-color: #773EB2;
-        border-radius: 0px 100px 100px 0px;
-    }
-
- .thisButton:hover{
-        background-color: transparent !important;
-    }
-
-#dashboardToolbar{
-    border-bottom: solid 2px #F5F5F5;
- 
-
+    background-color: #773EB2;
+    border-radius: 0px 100px 100px 0px;
 }
 
-.noMarginInput{
+.thisButton:hover {
+    background-color: transparent !important;
+}
+
+#dashboardToolbar {
+    border-bottom: solid 2px #F5F5F5;
+}
+
+.noMarginInput {
     margin-top: 0px;
     margin-bottom: 0px;
 }
-.menuHolder{
+
+.menuHolder {
     margin-top: 1.5em;
 }
 
+.custom-toolip {
+    font-size: 15px;
+    opacity: 1;
+    font-family: Calibri !important;
+    font-weight: 600;
+    border-radius: 0px 5px 5px 0px !important;
+}
+
+.custom-toolip div {
+    background-color: #773EB2 !important;
+}
