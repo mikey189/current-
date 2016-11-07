@@ -18,6 +18,22 @@ app.controller("reports",["policyChannels","policyData",  function (policyChanne
     self.areExtensionsVisible = [];
     
     self.types = [];
+    self.isAdvancedModeOn = false;
+    self.isTableEditable = false;
+    
+    self.dummy = {"archive7z":{
+  "IsAllowed": false,
+  "ProcessEmbbededFiles": false,
+  "UseSandbox": false,
+  "SizeLimit": {"Size":44,"Unit":"Kb"}
+},"archiverar":{
+  "IsAllowed": false,
+  "ProcessEmbededFiles": false,
+  "UseSandbox": false,
+  "SizeLimit": {"Size":44,"Unit":"Kb"}
+}}
+    
+self.dumy = JSON.stringify(self.dummyNJS)
   
 }])
 

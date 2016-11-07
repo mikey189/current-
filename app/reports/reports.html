@@ -1,6 +1,6 @@
 <h1 class="center-title">UI GARAGE: pending elements in the ui</h1>
 
-<h3 class ="center-title">Who > channels : state > completed</h3>
+<h3 class="center-title">Who > channels : state > completed</h3>
 <div layout="column" id="channels">
     <div layout="row" layout-align="space-between center" id="channelL1" md-whiteframe="4">
         <div layout="row" flex="20" layout-margin>
@@ -44,18 +44,32 @@
 
 
 <h3 class="center-title">FILETYPE TABLE : state : not completed</h3>
-<table class="table table-responsive">
+
+<div layout="row" layout-align="space-between center" flex="100">
+
+    <md-button edit-filetype class="md-primary md-raised" id="edit-filetype-button">
+        <!--<md-icon id="lock-icon">lock_outline</md-icon>-->
+        EDIT
+    </md-button>
+    <md-button show-advanced-filetype class="md-primary md-raised hidden animated fadeIn" id="show-advanced-filetype-button">
+        SHOW ADVANCED MODE
+    </md-button>
+</div>
+
+<button post-ft>post data</button>
+
+<table class="table table-responsive notEditable table-striped" id="filetype-table" prevent-click>
     <thead>
         <th></th>
         <th>Allow</th>
-        <th>Process Embeded Files</th>
-        <th>Size limit</th>
-        <th>Sandobox</th>
+        <th class="advanced hidden">Process Embeded Files</th>
+        <th class="advanced hidden">Size limit</th>
+        <th class="advanced hidden">Sandbox</th>
     </thead>
 
     <tbody>
 
-        <tr id="L1" ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
+        <tr ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
             <td layout="row" layout-align="start center">
                 <md-button class="md-icon-button" aria-label="show L2" show-extensions index="{{l1.Key}}">
                     <md-icon>keyboard_arrow_right</md-icon>
@@ -63,33 +77,29 @@
                 {{l1.Key}}
             </td>
             <td>
-                <md-checkbox ng-model="ctrl.types[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
+                <md-checkbox ng-model="ctrl.typess[l1.Key]['GlobalAllowed']" aria-label="key is allowed" ></md-checkbox>
             </td>
-            <td colspan="3"></td>
+            <td colspan="3" class="advanced hidden"></td>
         </tr>
 
-        <tr class="L2" ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]">
+        <tr ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
             <td>{{l2.ClassificationExtensions}}</td>
             <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['isAllowed']"></md-checkbox>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['IsAllowed']" ></md-checkbox>
             </td>
-            <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['processEmbededFiles']"></md-checkbox>
+            <td class="advanced hidden">
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['ProcessEmbededFiles']"></md-checkbox>
 
             </td>
-            <td layout="row">
-                <input type="number" readonly ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sizeLimit'].size" />
-                <select ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sizeLimit'].unit">
+            <td layout="row" class="advanced hidden">
+                <input type="number" ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].size" />
+                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].unit" class="size-unit-selector">
                     <option>KB</option>
-                    <option>MB</option>
+                    <option select-option class="to-select">MB</option>
                 </select>
-
-                <md-button filetype-size-limit class="md-icon-button">
-                    <md-icon>edit</md-icon>
-                </md-button>
             </td>
-            <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationType][l2.ClassificationExtensions]['sandbox']"></md-checkbox>
+            <td class="advanced hidden">
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['UseSandbox']"></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-end></tr>
@@ -129,14 +139,6 @@
         border-top: solid 1px #E0E0E0;
     }
     
-    #L1 {
-        background-color: yellowgreen;
-    }
-    
-    .L2 {
-        background-color: yellow;
-    }
-    
     .availableChannels md-chip {
         background-color: #160049;
         color: white;
@@ -152,12 +154,35 @@
         background-color: #E0E0E0;
     }
     
-    .yellowBK {
-        background-color: yellow;
-    }
-    
     .not-editable-chip {
         background-color: red !important;
         pointer-events: none;
     }
+    
+    #show-advanced-filetype-button {
+        font-weight: 600;
+        font-family: Calibri !important;
+    }
+    
+    #edit-filetype-button {
+        font-weight: 600;
+        font-family: Calibri !important;
+    }
+    
+    .notEditable {
+        pointer-events: none;
+    }
+    
+    #filetype-table {
+        background-color: white;
+    }
+    
+    .size-unit-selector {
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px 5px 5px 0px;
+        background-color: white;
+        border-left: 0px;
+        padding: 0px 9px 0px 10px;
+    }
+
 </style>

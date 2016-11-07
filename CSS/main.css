@@ -1,3 +1,15 @@
+
+/*deleting default ugly blue contouring on buttons, inputs ...*/
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
 /*editing default select*/
 
 .defaultSelect{
