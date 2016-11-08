@@ -4,12 +4,10 @@
 
     <div id="policyFileTypeToolbar" layout="row" layout-align="space-between center" class="md-whiteframe-8dp">
         <div class="form-group has-feedback" id="PDFTSearchBox" flex="30" layout="row">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="extensions">
             <md-icon class="material-icons form-control-feedback" id="PDFTSearchIcon">search</md-icon>
         </div>
-        <md-button flex="20" id="PDFTExceptionButton" layout-align="space-between center">
-            <md-icon class="material-icons" id="PDFTExceptionButtonIcon">error</md-icon><strong>Show all exceptions</strong>
-        </md-button>
+        
     </div>
     
     <policy-definition-collapse-table></policy-definition-collapse-table>

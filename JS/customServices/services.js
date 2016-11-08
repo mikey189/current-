@@ -127,7 +127,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
     var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
     var filetype = "http://jdev01:4580/api/general/filetypes";
-    var postFiletype = "http://maorpc:4580/api/policy/PostPolicyFileTypes/1"
+    var postFiletype = "http://jdev01:4580/api/policy/PostPolicyFileTypes/"
     
 
     return {
@@ -191,16 +191,16 @@ app.factory("policyData", function ($rootScope, $http) {
         getFiletypes: function(){
             return $http.get(filetype)
         },
-        postFiletype: function (ft) {
+        postFiletype: function (id, FileType) {
        
             
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                url: postFiletype,
+                url: postFiletype + id,
                 method: "POST",
-                data: {ft}
+                data: FileType
             })
         }
     }
@@ -266,7 +266,7 @@ app.factory("policyUsers", function ($http) {
 
 app.factory("filetype", function ($http) {
     var url = "http://jdev01:4580/api/general/filetypes";
-    var topFileType = "http://localhost:3000/topFileType"
+    var topFileType = "http://localhost:3000/topFileType";
     return {
         getData: function () {
             return $http.get(url)

@@ -1,4 +1,0 @@
-app.controller("policyDefinitionSwitcher", [function () {
-    
-}])
-

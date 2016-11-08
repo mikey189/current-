@@ -1,110 +1,34 @@
-.toggleOs{
-    background-color: #C3CFE7;
-    color: #6A68EF;
-    font-weight: 600;
-    border-radius: 3px;
-}
-.toggleOs > md-icon{
-    color: #6A68EF;
-}
-
-#editButtonPolicy {
-     background-color: #23CCC7;
-     color: white;
-     margin-left: 0px;
- }
- 
- #showAdvanceButton {
-     background-color: #23CCC7;
-     color: white;
-     margin-right: 0px;
- }
- 
- #ct1stRow {
-     width: 12%;
- }
- 
- .bold {
-     font-weight: bold;
- }
- 
- #ctCollapseTable> thead {
-     background-color: white !important;
- }
-.osParent > td{
-    padding-right: 0px !important;
-}
- .executablesRow {
-     background-color: white !important;
- }
- 
- .hidden {
-     visibility: none;
- }
- 
- .ctEXName {
-     text-align: right;
- }
- 
- .notEditable {
-     pointer-events: none;
- }
- 
- .policyRowsDef> tr {
-     border-bottom: solid 2px #f1f1f1;
- }
- 
- .osParent {
-     background-color: white;
- }
- 
- .policyRowsDef> tr> td> md-checkbox {
-     margin-bottom: 0px !important;
- }
- 
- .ctInput {
-     height: 2.3em;
-     border-radius: 5px;
-     padding-left: 5px;
-     background-color: white !important;
-     margin-top: 11.2px;
-     margin-bottom: 11.2px;
-     
- }
- 
- .ctInput[disabled] {
-     background-color: #D2D9E6 !important;
- }
- 
- .ncTypeRows {
-     background-color: red !important;
-     border-bottom: solid 2px #f1f1f1 !important;
- }
- 
- .pdGreenButton {
-     background-color: #23CCC7 !important;
- }
- 
- .pdGreenButton> md-icon {
-     color: white !important;
- }
- 
- .pdExceptionRow {
-     border-left: solid 4px #E29C2F !important;
-     background-color: #F7EDE3 !important;
- }
-.pdExceptionRow > td {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
- 
- .warningEditMode {
-     background-color: #FF1744 !important;
- }
-#actionButtonsWrapper{
-    margin-bottom: 1em;
-}
-.child{
-    background-color: #f1f1f1;
-}
-
+ .md-icon-button {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+ #show-advanced-filetype-button {
+        font-weight: 600;
+        font-family: Calibri !important;
+        margin-right: 0px !important;
+    }
+ #edit-filetype-button {
+        font-weight: 600;
+        font-family: Calibri !important;
+     margin-left: 0px !important;
+    }
+    
+    .notEditable {
+        pointer-events: none;
+    }
+    
+    #filetype-table {
+        background-color: white;
+    }
+    
+    .size-unit-selector {
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px 5px 5px 0px;
+        background-color: white;
+        border-left: 0px;
+        padding: 0px 9px 0px 10px;
+    }
+    #action-container{
+        margin-top : 1.5em;
+        margin-bottom: 1.5em;
+    }

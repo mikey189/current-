@@ -56,58 +56,7 @@
     </md-button>
 </div>
 
-<button post-ft>post data</button>
 
-<table class="table table-responsive notEditable table-striped" id="filetype-table" prevent-click>
-    <thead>
-        <th></th>
-        <th>Allow</th>
-        <th class="advanced hidden">Process Embeded Files</th>
-        <th class="advanced hidden">Size limit</th>
-        <th class="advanced hidden">Sandbox</th>
-    </thead>
-
-    <tbody>
-
-        <tr ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
-            <td layout="row" layout-align="start center">
-                <md-button class="md-icon-button" aria-label="show L2" show-extensions index="{{l1.Key}}">
-                    <md-icon>keyboard_arrow_right</md-icon>
-                </md-button>
-                {{l1.Key}}
-            </td>
-            <td>
-                <md-checkbox ng-model="ctrl.typess[l1.Key]['GlobalAllowed']" aria-label="key is allowed" ></md-checkbox>
-            </td>
-            <td colspan="3" class="advanced hidden"></td>
-        </tr>
-
-        <tr ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
-            <td>{{l2.ClassificationExtensions}}</td>
-            <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['IsAllowed']" ></md-checkbox>
-            </td>
-            <td class="advanced hidden">
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['ProcessEmbededFiles']"></md-checkbox>
-
-            </td>
-            <td layout="row" class="advanced hidden">
-                <input type="number" ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].size" />
-                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].unit" class="size-unit-selector">
-                    <option>KB</option>
-                    <option select-option class="to-select">MB</option>
-                </select>
-            </td>
-            <td class="advanced hidden">
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['UseSandbox']"></md-checkbox>
-            </td>
-        </tr>
-        <tr ng-repeat-end></tr>
-        <tr ng-repeat-end></tr>
-
-    </tbody>
-
-</table>
 
 
 
@@ -158,31 +107,6 @@
         background-color: red !important;
         pointer-events: none;
     }
-    
-    #show-advanced-filetype-button {
-        font-weight: 600;
-        font-family: Calibri !important;
-    }
-    
-    #edit-filetype-button {
-        font-weight: 600;
-        font-family: Calibri !important;
-    }
-    
-    .notEditable {
-        pointer-events: none;
-    }
-    
-    #filetype-table {
-        background-color: white;
-    }
-    
-    .size-unit-selector {
-        -webkit-appearance: none;
-        -webkit-border-radius: 0px 5px 5px 0px;
-        background-color: white;
-        border-left: 0px;
-        padding: 0px 9px 0px 10px;
-    }
-
+ 
+   
 </style>

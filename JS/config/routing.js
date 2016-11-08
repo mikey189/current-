@@ -164,14 +164,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.policy.definition', {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
-            controller: 'policyDefinition',
+            controller: 'policy',
+            controllerAs: "ctrl",
             displayName: "Policy"
 
         })
         .state('app.policy.definition.fileType', {
             url: '/policyDefinitionFT',
             templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
-            controller: 'detection',
+            controller: 'policy',
             controllerAs: 'ctrl',
             displayName: "Policy > Filetype Settings"
 
@@ -179,7 +180,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.definition.detection', {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
-            controller: 'fileType',
+            controller: 'policy',
             controllerAs: 'ctrl',
             displayName: "Policy > Detection Settings"
 
@@ -187,7 +188,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
      .state('app.policy.definition.cdr', {
             url: '/policyCDR',
             templateUrl: 'app/policy/templates/CDR/CDR.html',
-            controller: 'cdr',
+            controller: 'policy',
             controllerAs: 'ctrl',
             displayName: "Policy > CDR Settings"
 
@@ -195,7 +196,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
-            controller: 'policySettings',
+            controller: 'policy',
             controllerAs: 'ctrl',
             displayName: "Policy > Settings"
 

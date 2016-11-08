@@ -36,5 +36,18 @@ app.controller('policy', ["policyData", function (policyData) {
     })
 
 
+    //filetypes
+
+    //getting filetypes
+    policyData.getFiletypes().then(function (answer) {
+            self.filetype = answer.data
+        })
+        //creating object to store properties and all changes
+    self.types = {};
+    //settings default values for DOM Manipulations
+    self.areChannelsEditable = false;
+    self.areExtensionsVisible = [];
+    self.isAdvancedModeOn = false;
+    self.isTableEditable = false;
 
 }])

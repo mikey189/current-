@@ -1,51 +1,70 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
-<div style="margin-top: 1.5em">
 
-    <div layout="row" layout-align="space-between center" id="actionButtonsWrapper">
-        <md-button edit-mode class="md-raised bold" id="editButtonPolicy">Edit</md-button>
-        <md-button show-advanced-mode class="md-raised bold" id="showAdvanceButton">SHOW ADVANCED MODE</md-button>
+<div layout="row" layout-align="space-between center" flex="100" id="action-container">
 
-    </div>
-    <table id="ctCollapseTable" class="table table-responsive notEditable animated fadeIn" not-editable-warning md-whiteframe="6">
-        <thead>
-            <th id="ct1stRow"></th>
-            <th id="ctAllow">Allow</th>
-            <th class="advanced hidden" ng-repeat="h in ctrl.headers">{{h.name}}
-                <ct-description></ct-description>
-            </th>
-        </thead>
-        <tr toggle-os>
-            <td colspan="7" class="toggleOs">
-                <md-icon>keyboard_arrow_right</md-icon>
-                Executables
+    <md-button edit-filetype class="md-primary md-raised" id="edit-filetype-button">
+        <!--<md-icon id="lock-icon">lock_outline</md-icon>-->
+        EDIT
+    </md-button>
+    <md-button show-advanced-filetype class="md-primary md-raised hidden animated fadeIn" id="show-advanced-filetype-button">
+        SHOW ADVANCED MODE
+    </md-button>
+</div>
+
+
+<table class="table table-responsive notEditable table-striped" id="filetype-table" prevent-click md-whiteframe="6" ng-cloak>
+    <thead>
+        <th></th>
+        <th>Allow</th>
+        <th class="advanced hidden">Process Embeded Files</th>
+        <th class="advanced hidden">Size limit</th>
+        <th class="advanced hidden">Sandbox</th>
+    </thead>
+  
+    
+    <tbody>
+
+        <tr ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
+            <td layout="row" layout-align="start center">
+                <md-button class="md-icon-button show-extensions-button" aria-label="show L2" show-extensions index="{{l1.Key}}">
+                    <md-icon>keyboard_arrow_right</md-icon>
+                </md-button>
+                {{l1.Key}}
+            </td>
+            <td>
+                <md-checkbox data-indeterminate-checkbox data-child-list="l1.Values" data-property="IsAllowed" ng-model="ctrl.typess[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
+            </td>
+            <td colspan="3" class="advanced hidden"></td>
+        </tr>
+
+        <tr ng-repeat-start="l2 in l1.Values | filter:extensions" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
+            <td>
+                <md-icon>empty_icon</md-icon>
+                {{l2.ClassificationExtensions}}
+            </td>
+            <td>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr].IsAllowed"></md-checkbox>
+            </td>
+            <td class="advanced hidden">
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['ProcessEmbededFiles']"></md-checkbox>
+
+            </td>
+            <td layout="row" class="advanced hidden">
+                <input type="number" ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Size" />
+                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Unit" class="size-unit-selector" placeholder="UNIT">
+                    <option>KB</option>
+                    <option>MB</option>
+                </select>
+            </td>
+            <td class="advanced hidden">
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['UseSandbox']"></md-checkbox>
             </td>
         </tr>
-        <tbody class="policyRowsDef animated fadeIn" ng-repeat="i in ctrl.dataSet" id="execBody">
-            <tr class="osParent hidden animated fadeIn" show-children>
-                <td>
-                    <md-icon class="material-icons">keyboard_arrow_right</md-icon>{{i.name}}</td>
-                <td colspan="6"></td>
-            </tr>
-            <tr class="hidden child" ng-repeat="x in i.exec" class="ncTypeRows">
-                <td class="ctEXName">{{x}}</td>
-                <td>
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['allow']" aria-label="ctrl.obj[i.name]['allow']"></md-checkbox>
-                </td>
-                <td class="advanced hidden">
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['processEmbbededFiles']" aria-label="ctrl.obj[i.name]['process']"></md-checkbox>
-                </td>
-                <td class="advanced hidden">
-                    <input disabled placeholder="size limit" ng-model="ctrl.obj[i.name][x]['sizeLimit']" type="number" class="ctInput" />
-                    <md-button edit-field>
-                        <md-icon class="material-icons">edit</md-icon>
-                    </md-button>
-                </td>
-                <td class="advanced hidden">
-                    <md-checkbox ng-model="ctrl.obj[i.name][x]['sandbox']" aria-label="ctrl.obj[i.name]['sizeLimit']"></md-checkbox>
-                </td>
-                
-            </tr>
-        </tbody>
-    </table>
-</div>
-<!-- <md-checkbox activeMe aria-label="os" ng-model="ctrl.obj[i.name]['allowExec']"></md-checkbox>-->
+        <tr ng-repeat-end></tr>
+        <tr ng-repeat-end></tr>
+
+    </tbody>
+
+</table>
+
+

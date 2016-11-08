@@ -1,7 +1,6 @@
 app.controller('detection',["policyData", function(policyData){
     var self = this; 
     self.true = true
-    console.log("wow")
     self.data;
     self.dataSet = [];
     self.obj = {};

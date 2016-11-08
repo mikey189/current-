@@ -1,6 +1,5 @@
 app.controller('policySettings', function($mdDialog, $scope){
     
-    this.test = "wow"
     this.signFiles = true
     this.blockedFiles = false
     this.incorrectExtensions = false

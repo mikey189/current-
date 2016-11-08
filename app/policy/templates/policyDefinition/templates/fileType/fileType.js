@@ -1,9 +1,0 @@
-app.controller('fileType', [function() {
-
-               
-
-        
-       
-    }]) 
-    
-

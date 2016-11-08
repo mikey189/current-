@@ -1247,6 +1247,11 @@
     },
     {
       "id": 6
+    },
+    {
+      "avira": true,
+      "clam": true,
+      "id": 7
     }
   ],
   "policyOrder": [
@@ -2040,28 +2045,111 @@
       "team": "Design"
     }
   ],
-    "topFileType": [
-        {"extension": "EXE", "passed": 190, "sanitized": 32, "blocked": 309, "total": 456},
-        {"extension": "DMG", "passed": 90, "sanitized": 40, "blocked": 19, "total": 154},
-        {"extension": "JAR", "passed": 12, "sanitized": 9, "blocked": 7, "total": 34},
-        {"extension": "PDF", "passed": 129, "sanitized": 31, "blocked": 82, "total": 211},
-        {"extension": "TXT", "passed": 22, "sanitized": 56, "blocked": 12, "total": 209},
-        {"extension": "XLS", "passed": 67, "sanitized": 90, "blocked": 84, "total": 120},
-        {"extension": "XML", "passed": 12, "sanitized": 39, "blocked": 26,  "total": 104},
-        {"extension": "HTML", "passed": 108, "sanitized": 34, "blocked": 93,  "total": 89},
-        {"extension": "PSD", "passed": 30, "sanitized": 51, "blocked": 34, "total": 157},
-        {"extension": "BASH", "passed": 23, "sanitized": 45, "blocked": 52, "total": 108}
-    ],
-    
-    "usedChannels": [{"id": 0}],
-    "availableChannels": [
-      {"key": "Mail", "value": 1},
-      {"key": "Web", "value": 2},
-      {"key": "Endpoint", "value": 3},
-      {"key": "Scan Station", "value": 4},
-      {"key": "DirWatcher", "value": 5},
-      {"key": "API", "value": 6},
-      {"key": "ICAP", "value": 7}
-
-    ]
+  "topFileType": [
+    {
+      "extension": "EXE",
+      "passed": 190,
+      "sanitized": 32,
+      "blocked": 309,
+      "total": 456
+    },
+    {
+      "extension": "DMG",
+      "passed": 90,
+      "sanitized": 40,
+      "blocked": 19,
+      "total": 154
+    },
+    {
+      "extension": "JAR",
+      "passed": 12,
+      "sanitized": 9,
+      "blocked": 7,
+      "total": 34
+    },
+    {
+      "extension": "PDF",
+      "passed": 129,
+      "sanitized": 31,
+      "blocked": 82,
+      "total": 211
+    },
+    {
+      "extension": "TXT",
+      "passed": 22,
+      "sanitized": 56,
+      "blocked": 12,
+      "total": 209
+    },
+    {
+      "extension": "XLS",
+      "passed": 67,
+      "sanitized": 90,
+      "blocked": 84,
+      "total": 120
+    },
+    {
+      "extension": "XML",
+      "passed": 12,
+      "sanitized": 39,
+      "blocked": 26,
+      "total": 104
+    },
+    {
+      "extension": "HTML",
+      "passed": 108,
+      "sanitized": 34,
+      "blocked": 93,
+      "total": 89
+    },
+    {
+      "extension": "PSD",
+      "passed": 30,
+      "sanitized": 51,
+      "blocked": 34,
+      "total": 157
+    },
+    {
+      "extension": "BASH",
+      "passed": 23,
+      "sanitized": 45,
+      "blocked": 52,
+      "total": 108
+    }
+  ],
+  "usedChannels": [
+    {
+      "id": 0
+    }
+  ],
+  "availableChannels": [
+    {
+      "key": "Mail",
+      "value": 1
+    },
+    {
+      "key": "Web",
+      "value": 2
+    },
+    {
+      "key": "Endpoint",
+      "value": 3
+    },
+    {
+      "key": "Scan Station",
+      "value": 4
+    },
+    {
+      "key": "DirWatcher",
+      "value": 5
+    },
+    {
+      "key": "API",
+      "value": 6
+    },
+    {
+      "key": "ICAP",
+      "value": 7
+    }
+  ]
 }
