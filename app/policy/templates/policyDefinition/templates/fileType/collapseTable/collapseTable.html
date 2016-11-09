@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/collapseTable/style.css" />
 
+
+
+
+
 <div layout="row" layout-align="space-between center" flex="100" id="action-container">
 
     <md-button edit-filetype class="md-primary md-raised" id="edit-filetype-button">
@@ -20,9 +24,10 @@
         <th class="advanced hidden">Size limit</th>
         <th class="advanced hidden">Sandbox</th>
     </thead>
-  
-    
+
+
     <tbody>
+
 
         <tr ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
             <td layout="row" layout-align="start center">
@@ -32,18 +37,18 @@
                 {{l1.Key}}
             </td>
             <td>
-                <md-checkbox data-indeterminate-checkbox data-child-list="l1.Values" data-property="IsAllowed" ng-model="ctrl.typess[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
+                <md-checkbox ng-model="ctrl.types[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
             </td>
             <td colspan="3" class="advanced hidden"></td>
         </tr>
 
-        <tr ng-repeat-start="l2 in l1.Values | filter:extensions" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
+        <tr ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
             <td>
                 <md-icon>empty_icon</md-icon>
                 {{l2.ClassificationExtensions}}
             </td>
             <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr].IsAllowed"></md-checkbox>
+                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr].IsAllowed" class="children-check" ng-checked="ctrl.types[l1.Key]['GlobalAllowed']"></md-checkbox>
             </td>
             <td class="advanced hidden">
                 <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['ProcessEmbededFiles']"></md-checkbox>
@@ -51,7 +56,8 @@
             </td>
             <td layout="row" class="advanced hidden">
                 <input type="number" ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Size" />
-                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Unit" class="size-unit-selector" placeholder="UNIT">
+                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Unit" class="size-unit-selector">
+                    <option value="" disabled selected hidden>Pick Unit</option>
                     <option>KB</option>
                     <option>MB</option>
                 </select>
@@ -66,5 +72,3 @@
     </tbody>
 
 </table>
-
-

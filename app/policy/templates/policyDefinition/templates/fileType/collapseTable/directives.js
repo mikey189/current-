@@ -59,7 +59,7 @@ app.directive("showExtensions", function () {
                     scope.ctrl.areExtensionsVisible[extension] = false;
                     icon.html("keyboard_arrow_right");
                 }
-
+scope.$apply()
             })
         }
     }
@@ -94,3 +94,18 @@ app.directive("showAdvancedFiletype", function () {
 //setting default value for selected option since chrome does not know how to interpret the selected attribute
 
 
+//making indeterminate checkbox
+
+app.directive("indeterminateState", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.click(function(){
+                var self = $(this)
+                var children = $(".children-check")
+                children.addClass("md-checked")
+                scope.$apply()
+            })
+        }
+    }
+})
