@@ -55,7 +55,7 @@ app.directive("showExtensions", function () {
                     scope.ctrl.areExtensionsVisible[extension] = false;
                     icon.html("keyboard_arrow_right");
                 }
-
+scope.$apply()
             })
         }
     }
@@ -102,6 +102,4 @@ app.directive("checkStatus", function(){
 })
 
 
-
-//setting default value for selected option since chrome does not know how to interpret the selected attribute
 
