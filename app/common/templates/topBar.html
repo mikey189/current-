@@ -1,5 +1,8 @@
 <md-toolbar id='dashboardToolbar' layout='row' layout-align='space-between center' layout-padding layout-sm='column' layout-xs='column' md-whiteframe="12">
-    <md-content class='md-headline darkPurple'>{{$state.current.displayName}}</md-content>
+    <md-content class='md-headline darkPurple' layout="row">
+        <md-icon md-svg-src="IMG/icons/resecLogo.svg" class="main-logo"></md-icon>
+        {{$state.current.displayName}}
+    </md-content>
     <md-input-container class="noMarginInput">
         
         <md-select ng-model='$rootScope.selectedTime' placeholder="Real Time">
@@ -11,3 +14,9 @@
         </md-select>
     </md-input-container>
 </md-toolbar>
+
+<style>
+    .main-logo{
+        margin-right: 1em;
+    }
+</style>

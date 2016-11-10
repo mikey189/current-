@@ -10,7 +10,7 @@
         SHOW ADVANCED MODE
     </md-button>
 </div>
-
+<pre>::DEBUGGING PANNEL:: {{ctrl.types}}</pre>
 
 <table class="table table-responsive notEditable table-striped" id="filetype-table" prevent-click md-whiteframe="6" ng-cloak>
     <thead>
@@ -20,8 +20,8 @@
         <th class="advanced hidden">Size limit</th>
         <th class="advanced hidden">Sandbox</th>
     </thead>
-  
-    
+
+
     <tbody>
 
         <tr ng-repeat-start="l1 in ctrl.filetype track by l1.Key">
@@ -32,7 +32,7 @@
                 {{l1.Key}}
             </td>
             <td>
-                <md-checkbox data-indeterminate-checkbox data-child-list="l1.Values" data-property="IsAllowed" ng-model="ctrl.typess[l1.Key]['GlobalAllowed']" aria-label="key is allowed"></md-checkbox>
+                <md-checkbox ng-model="ctrl.types[l1.Key]['GlobalAllowed']" aria-label="update all"></md-checkbox>
             </td>
             <td colspan="3" class="advanced hidden"></td>
         </tr>
@@ -43,7 +43,7 @@
                 {{l2.ClassificationExtensions}}
             </td>
             <td>
-                <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr].IsAllowed"></md-checkbox>
+                <md-checkbox ng-model="ctrl.types[l2.ClassificationUniqueStr]['IsAllowed']" class="check_me" aria-label="children in use"></md-checkbox>
             </td>
             <td class="advanced hidden">
                 <md-checkbox aria-label="allow extension" ng-model="ctrl.types[l2.ClassificationUniqueStr]['ProcessEmbededFiles']"></md-checkbox>
@@ -51,7 +51,8 @@
             </td>
             <td layout="row" class="advanced hidden">
                 <input type="number" ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Size" />
-                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Unit" class="size-unit-selector" placeholder="UNIT">
+                <select ng-model="ctrl.types[l2.ClassificationUniqueStr]['SizeLimit'].Unit" class="size-unit-selector">
+                    <option value="" disabled selected>Pick a Unit</option>
                     <option>KB</option>
                     <option>MB</option>
                 </select>
@@ -66,5 +67,3 @@
     </tbody>
 
 </table>
-
-

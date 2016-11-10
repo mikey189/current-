@@ -1,4 +1,4 @@
-app.controller('policy', ["policyData", function (policyData) {
+app.controller('policy', ["policyData","channelData","policyChannels", "policyUsers", function (policyData, channelData, policyChannels, policyUsers) {
 
     var self = this;
 
@@ -45,9 +45,80 @@ app.controller('policy', ["policyData", function (policyData) {
         //creating object to store properties and all changes
     self.types = {};
     //settings default values for DOM Manipulations
-    self.areChannelsEditable = false;
     self.areExtensionsVisible = [];
     self.isAdvancedModeOn = false;
     self.isTableEditable = false;
+    
+    
+    //who is using this policy settings
+    
+    channelData.getComputerList().then(function (answer) {
+        self.users = answer.data;
+    })
+     policyUsers.getData().then(function (answer) {
+        self.data = answer.data
+    })
+    policyChannels.getAvailablechannels().then(function (answer) {
 
+        self.data = answer.data;
+        self.available_channels = []
+        for (i in self.data) {
+            self.available_channels.push(self.data[i])
+        }
+    });
+
+    // setting the toggling mode for editing groups
+
+    self.are_groups_editable = false
+
+    //setting the toggling mode for editing users
+
+    self.are_users_editable = false
+
+    //making channels draggable 
+
+    self.currentChannels = []
+        //assign a channel
+
+    //available channel successfully dumped insinde current channels
+
+    self.drop_success_current_channels = function (data, event) {
+        var channel_index = self.currentChannels.indexOf(data)
+        var old_index = self.available_channels.indexOf(data)
+        if (channel_index == -1) {
+            self.currentChannels.push(data)
+        }
+        if (old_index > -1){
+            self.available_channels.splice(old_index, 1)
+        }
+    }
+
+    //successfully removed channel from current channel
+    
+    self.remove_current_channel = function(data, event){
+        var channel_index = self.currentChannels.indexOf(data)
+        if (channel_index > -1){
+            self.currentChannels.splice(channel_index, 1)
+        }
+    }
+
+//reassigning a channel into available_channels
+    
+    self.reassign_channel = function(data, event){
+        var channel_index = self.available_channels.indexOf(data)
+        if (channel_index == -1){
+            self.available_channels.push(data)
+        }
+    }
+    
+    //removing channel from available_channels
+    self.remove_channel_from_available = function(data, event){
+        var channel_index = self.available_channels.indexOf(data)
+        if (channel_index > -1){
+            self.available_channels.splice(channel_index, 1)
+        }
+    }
+    
+    
 }])
+    

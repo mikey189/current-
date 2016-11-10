@@ -2,15 +2,18 @@
 
 <md-list class="whiteBk" id="userList" md-whiteframe="6">
     <md-list-item layout="row" layout-align="start center">
-        <div layout="row" flex="30" layout-align="start">
+        <div layout="row" flex="30" layout-align="start" class="one-em-padding-left">
             <md-icon class="purple noMarginLeft smallMarginRight material-icons md-primary"><i class="material-icons">assignment_ind</i></md-icon>
             <h4 class="md-primary">Users</h4>
         </div>
-        <div layout="row" flex>
+        <div layout="row" flex="70">
             <md-input-container md-no-float flex layout="row" id="usersSearchBox" flex class="noVerticalMargin">
                 <input ng-model="user" placeholder="Search">
                 <md-icon class="material-icons greenIcon noMarginLeft">search</md-icon>
             </md-input-container>
+            <md-button class="md-icon-button" edit-policy-users>
+                <md-icon>edit</md-icon>
+            </md-button>
         </div>
     </md-list-item>
     <md-divider></md-divider>
@@ -21,7 +24,7 @@
                 {{user.name}}
             </div>
 
-            <md-button class="md-icon-button" aria-label="deletepolicyusers" ng-if="ctrl.isWindowEditable" delete-user-from-policy>
+            <md-button class="md-icon-button" aria-label="deletepolicyusers" ng-if="ctrl.are_users_editable" delete-user-from-policy>
                 <md-icon class="material-icons md-red">remove</md-icon>
             </md-button>
 

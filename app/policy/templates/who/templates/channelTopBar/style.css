@@ -1,0 +1,38 @@
+ .md-icon-button {
+        padding-top: 0px !important;
+    }
+    
+    #channels {
+        background-color: white;
+    }
+    
+    #channelL1 {
+        width: 100%;
+    }
+    
+    #currentChannels {
+        margin-bottom: 0px !important;
+    }
+    
+    #availableChannels {
+        border-top: solid 1px #E0E0E0;
+    }
+    
+    .availableChannels md-chip {
+        background-color: #160049;
+        color: white;
+        font-weight: 500;
+    }
+    
+
+ 
+ .custom-channels-chips{
+        background-color: navy;
+        color: white;
+        font-weight: 700;
+        border-radius: 50px;
+        padding: 0.5em 1em;
+    }
+    .cursor-move{
+        cursor: move;
+    }

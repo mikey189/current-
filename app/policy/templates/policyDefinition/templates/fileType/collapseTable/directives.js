@@ -12,14 +12,12 @@ app.directive("editFiletype",["policyData", function (policyData) {
             element.click(function () {
                 var self = $(this)
                 if (!scope.ctrl.isTableEditable) {
-                    console.log("first", scope.ctrl.isTableEditable)
                     advanceModeButton.removeClass("hidden")
                     table.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("DONE")
                     scope.ctrl.isTableEditable = true;
                 } else {
-                    console.log("else ", scope.ctrl.isTableEditable)
                     advanceModeButton.addClass("hidden")
                     table.addClass("notEditable")
                     self.css("background-color", "#311B92")
@@ -35,7 +33,7 @@ app.directive("editFiletype",["policyData", function (policyData) {
 }])
 
 
-//animation to notify user to click on edit before being able to edit the table
+//TO DO animation to notify user to click on edit before being able to edit the table
 
 
 
@@ -48,12 +46,10 @@ app.directive("showExtensions", function () {
                 var self = $(this);
                 var extension = self.attr("index");
                 var icon = self.find("md-icon");
-                var advancedData = $(".advanced");
 
                 if (!scope.ctrl.areExtensionsVisible[extension]) {
                     scope.ctrl.areExtensionsVisible[extension] = true;
                     icon.html("keyboard_arrow_down")
-                    advancedData.removeClass("hidden")
 
                 } else {
                     scope.ctrl.areExtensionsVisible[extension] = false;
@@ -91,6 +87,21 @@ app.directive("showAdvancedFiletype", function () {
     }
 })
 
-//setting default value for selected option since chrome does not know how to interpret the selected attribute
+app.directive("checkStatus", function(){
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.click(function(){
+                var self=  $(this)
+                var child = $(".check_me")
+                scope.ctrl.isChecked = true
+                scope.$apply()
+            })
+        }
+    }
+})
 
+
+
+//setting default value for selected option since chrome does not know how to interpret the selected attribute
 

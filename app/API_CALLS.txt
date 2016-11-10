@@ -1,0 +1,8 @@
+Policy
+
+Update groups and users 
+
+we should separate the calls -> 1 call to update users and one other call to update groups otherwise it will make  partial update and that might not be good
+
+
+
