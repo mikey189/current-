@@ -78,9 +78,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/syslog/syslog.html',
-            controller: 'CMIVSyslog',
-            controllerAs: 'controller',
-            displayName: "Channel Management"
+            controller: 'channelManagementEndpoint',
+            controllerAs: 'ctrl',
+            displayName: "Channel Management > Stations using this channel"
 
         })
 

@@ -34,3 +34,7 @@
 .notEditable {
     pointer-events: none;
 }
+
+.fireEye{
+    background-color: beige;
+}

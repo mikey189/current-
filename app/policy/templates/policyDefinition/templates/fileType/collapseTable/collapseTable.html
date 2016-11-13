@@ -44,7 +44,7 @@
             <td colspan="3" class="advanced hidden"></td>
         </tr>
 
-        <tr ng-repeat-start="l2 in l1.Values" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
+        <tr ng-repeat-start="l2 in l1.Value" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
             <td>
                 <md-icon>empty_icon</md-icon>
                 {{l2.ClassificationExtensions}}

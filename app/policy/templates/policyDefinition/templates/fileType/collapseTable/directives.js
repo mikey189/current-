@@ -46,6 +46,7 @@ app.directive("showExtensions", function () {
                 var self = $(this);
                 var extension = self.attr("index");
                 var icon = self.find("md-icon");
+                console.log(scope.ctrl.filetype)
 
                 if (!scope.ctrl.areExtensionsVisible[extension]) {
                     scope.ctrl.areExtensionsVisible[extension] = true;
@@ -55,7 +56,8 @@ app.directive("showExtensions", function () {
                     scope.ctrl.areExtensionsVisible[extension] = false;
                     icon.html("keyboard_arrow_right");
                 }
-scope.$apply()
+                scope.$apply()
+                console.log(scope.ctrl.areExtensionsVisible[extension])
             })
         }
     }

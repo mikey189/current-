@@ -1,4 +1,4 @@
-app.controller('policy', ["policyData","channelData","policyChannels", "policyUsers", function (policyData, channelData, policyChannels, policyUsers) {
+app.controller('policy', ["policyData", "channelData", "policyChannels", "policyUsers", function (policyData, channelData, policyChannels, policyUsers) {
 
     var self = this;
 
@@ -48,14 +48,14 @@ app.controller('policy', ["policyData","channelData","policyChannels", "policyUs
     self.areExtensionsVisible = [];
     self.isAdvancedModeOn = false;
     self.isTableEditable = false;
-    
-    
+
+
     //who is using this policy settings
-    
+
     channelData.getComputerList().then(function (answer) {
         self.users = answer.data;
     })
-     policyUsers.getData().then(function (answer) {
+    policyUsers.getData().then(function (answer) {
         self.data = answer.data
     })
     policyChannels.getAvailablechannels().then(function (answer) {
@@ -88,37 +88,50 @@ app.controller('policy', ["policyData","channelData","policyChannels", "policyUs
         if (channel_index == -1) {
             self.currentChannels.push(data)
         }
-        if (old_index > -1){
+        if (old_index > -1) {
             self.available_channels.splice(old_index, 1)
         }
     }
 
     //successfully removed channel from current channel
-    
-    self.remove_current_channel = function(data, event){
+
+    self.remove_current_channel = function (data, event) {
         var channel_index = self.currentChannels.indexOf(data)
-        if (channel_index > -1){
+        if (channel_index > -1) {
             self.currentChannels.splice(channel_index, 1)
         }
     }
 
-//reassigning a channel into available_channels
-    
-    self.reassign_channel = function(data, event){
+    //reassigning a channel into available_channels
+
+    self.reassign_channel = function (data, event) {
         var channel_index = self.available_channels.indexOf(data)
-        if (channel_index == -1){
+        if (channel_index == -1) {
             self.available_channels.push(data)
         }
     }
-    
+
     //removing channel from available_channels
-    self.remove_channel_from_available = function(data, event){
-        var channel_index = self.available_channels.indexOf(data)
-        if (channel_index > -1){
-            self.available_channels.splice(channel_index, 1)
+    self.remove_channel_from_available = function (data, event) {
+            var channel_index = self.available_channels.indexOf(data)
+            if (channel_index > -1) {
+                self.available_channels.splice(channel_index, 1)
+            }
         }
+        //getting list of scanners for policy defintion
+
+    policyData.get_fireEye_servers().then(function (answer) {
+        self.fireEye_servers_list = answer.data
+    })
+    policyData.get_cukoo_servers().then(function (answer) {
+            self.cukoo_servers_list = answer.data
+        })
+        //this object will store all the info changed inside the scanner list
+    
+    self.scanners_settings = {
+
+        "allowed_fireEyes" : []
+        
     }
-    
-    
+
 }])
-    

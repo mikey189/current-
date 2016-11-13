@@ -36,11 +36,12 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
-    var computerList = "http://localhost:3000/userComputers";
+    var computerList = "http://jdev01:4580/api/users/getadmachines";
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
         //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
-    var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/"
+    var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/";
+    var postChannel = "http://jdev01:4580/api/Channels/PostChannel";
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -81,6 +82,16 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         getChannelDashboard: function (id) {
             return $http.get(channelDashboard + id)
+        },
+        createChannel: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: postChannel,
+                method: "POST",
+                data: data
+            })
         }
     }
 })
@@ -127,7 +138,9 @@ app.factory("policyData", function ($rootScope, $http) {
     var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
     var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
     var filetype = "http://jdev01:4580/api/general/filetypes";
-    var postFiletype = "http://jdev01:4580/api/policy/PostPolicyFileTypes/"
+    var postFiletype = "http://jdev01:4580/api/policy/PostPolicyFileTypes/";
+    var fireEye_servers = "http://localhost:3000/fireEye_servers"
+    var cukoo_servers = "http://localhost:3000/cukoo_servers"
     
 
     return {
@@ -202,7 +215,14 @@ app.factory("policyData", function ($rootScope, $http) {
                 method: "POST",
                 data: FileType
             })
+        },
+        get_fireEye_servers: function(){
+            return $http.get(fireEye_servers)
+        },
+        get_cukoo_servers: function(){
+            return $http.get(cukoo_servers)
         }
+        
     }
 })
 

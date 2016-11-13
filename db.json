@@ -360,7 +360,7 @@
     },
     {
       "icon": "icons/ncStation.svg",
-      "name": "Station"
+      "name": "Kiosk"
     },
     {
       "icon": "icons/ncDirWatcher.svg",
@@ -2147,5 +2147,8 @@
       "key": "ICAP",
       "value": 7
     }
-  ]
+  ], 
+    "fireEye_servers": ["FE1", "FE2", "FE_Accounting", "FE_Level 3"],
+    "cukoo_servers": ["Cukoo1", "Cuko2_Finance", "Some_cukoo", "Cukoo restricted use L3"]
+    
 }

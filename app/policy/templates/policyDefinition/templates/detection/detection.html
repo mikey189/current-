@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/detection/style.css" />
-
+<p>{{ctrl.detection}}</p>
 <md-button md-ink-ripple="white" md-whiteframe="6" class="editDetection" aria-label="edit preferences" edit-preferences>EDIT</md-button>
 <div id="detectClick" check-if-editable>
     <div id="detectionWrapper" class="notEditable">
@@ -46,13 +46,13 @@
                         <md-checkbox aria-label="feSandbox" class="noMarginBottom" ng-model="ctrl.detection.fireEyeSandbox.isActive"></md-checkbox>
                     </td>
                 </tr>
-                <tr class="fireEye hidden animated fadeIn">
+                <tr class="fireEye hidden animated fadeIn" ng-repeat="fireEye in ctrl.fireEye_servers_list">
                     <td>
-                        <md-icon class="material-icons">some_icon</md-icon>
-                        Use FireEye servers in this policy
+                        <md-icon>some_icon</md-icon>
+                        {{fireEye}}
                     </td>
                     <td>
-                        <md-checkbox aria-label="use server" ng-model="ctrl.detection.fireEyeSandbox.useServers"></md-checkbox>
+                        <md-checkbox ng-model="ctrl.detection.allowed_fireEyes[fireEye].use"></md-checkbox>
                     </td>
                 </tr>
                 <tr class="fireEye hidden animated fadeIn">
