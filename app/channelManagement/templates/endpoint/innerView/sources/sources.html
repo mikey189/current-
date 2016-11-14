@@ -1,4 +1,35 @@
-<div layout="column" layout-margin>
-    <endpoint-sources-channel-type></endpoint-sources-channel-type>
-    <endpoint-sources-channel-settings-block></endpoint-sources-channel-settings-block>
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
+
+<div layout="row" layout-margin layout-align="end center">
+    <md-button class="md-primary strong margin_top md-raised" edit-inputs-and-outputs>EDIT</md-button>
+</div>
+<div layout="row">
+    <pre style="height: 200px" flex="50">debug pannel
+Inputs smb{{ctrl.ismb_list}}
+    </pre>
+    <pre style="height: 200px" flex="50">debug pannel
+Outputs smb{{ctrl.osmb_list}}
+    </pre>
+</div>
+
+<div layout="column" layout-margin class="notEditable" id="edition_section">
+
+    <div layout="row" layout-align="space-between center">
+        <md-content class="md-title">Inputs</md-content>
+        <md-content class="md-title">Outputs</md-content>
+    </div>
+
+    <div layout="row" layout-align="space-between center">
+        <channel-inputs-sources id="inputs_sources" flex="50"></channel-inputs-sources>
+        <channel-outputs-sources id="outputs_sources" flex="50"></channel-outputs-sources>
+    </div>
+
+    <div layout="row" layout-align="space-between center">
+        <div layout="column">
+            <i-smb ng-repeat="n in ctrl.ismb_list"></i-smb>
+        </div>
+        <div layout="column">
+            <o-smb ng-repeat="n in ctrl.osmb_list" class="animated fadeInUp"></o-smb>
+        </div>
+    </div>
 </div>

@@ -9,10 +9,10 @@
         <h4>Top Files Type</h4>
     </div>
 
-    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight" ng-init="ctrl.loader()">
+    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight">
     <md-list>
 
-        <div md-virtual-repeat="x in ctrl.data">
+        <div md-virtual-repeat="x in ctrl.channelDashboard.TopFilesTypeList">
 
             <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin ng-switch="ctrl.isBlocked">
                 <p flex> {{x.Filetype}}</p>

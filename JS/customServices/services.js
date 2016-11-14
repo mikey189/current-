@@ -32,16 +32,19 @@ app.factory("groupList", function ($http) {
 app.factory("channelData", function ($http, $rootScope) {
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
-    var outputListURL = "http://localhost:3000/outputList";
-    var channelsIconsURL = "http://localhost:3000/channelsIcons";
+    var input_output_list = "http://localhost:3000/input_output_list";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://jdev01:4580/api/users/getadmachines";
+        var channelsIconsURL = "http://localhost:3000/channelsIcons";
+
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
-        //var channelList = "http://localhost:3000/channelList";
+    //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
     var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/";
     var postChannel = "http://jdev01:4580/api/Channels/PostChannel";
+    var updateComputers = "http://jdev01:4580/api/channels/PostChannelComputerList/";
+    var current_computers = "http://jdev01:4580/api/Channels/getchannel/"
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -62,11 +65,8 @@ app.factory("channelData", function ($http, $rootScope) {
         getIcons: function () {
             return $http.get(channelsIconsURL)
         },
-        getInputList: function () {
-            return $http.get(inputURL)
-        },
-        getOutputList: function () {
-            return $http.get(outputListURL)
+        get_input_output_list: function () {
+            return $http.get(input_output_list)
         },
         getDashboard: function () {
             return $http.get(dashboard)
@@ -92,7 +92,21 @@ app.factory("channelData", function ($http, $rootScope) {
                 method: "POST",
                 data: data
             })
+        },
+        update_computer_list: function (id, data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: updateComputers + id,
+                method: "POST",
+                data: data
+            })
+        },
+        get_current_computers: function(id){
+            return $http.get(current_computers+id)
         }
+        
     }
 })
 

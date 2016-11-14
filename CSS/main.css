@@ -12,6 +12,10 @@ button:focus {
 .button-strong{
     font-weight: 600;
 }
+
+.notEditable{
+    pointer-events: none;
+}
 /*editing default select*/
 
 .defaultSelect{

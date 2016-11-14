@@ -1,10 +1,10 @@
-<div id="OSMBSettings" md-whiteframe="6" layout="column" class="oSMB animated fadeInUp">
+<div md-whiteframe="6" layout="column" class="iSMB animated fadeInUp countISMB ncInputSettings">
     <div layout="row" layout-align="space-between center" class="notToBeFolded">
         <div layout="row" layout-align="start center" id="ncInputTitle">
             <md-icon md-svg-src="icons/ncInputTitleSettings.svg" class="md-36"></md-icon>
             <md-content>{{n.name}}</md-content>
         </div>
-        <md-button class="md-primary ncDeleteSMBS" delete-osmb>CANCEL</md-button>
+        <md-button class="md-primary ncDeleteSMBS" delete-ismb>DELETE</md-button>
     </div>
     <div class="toBeFolded">
         <div layout="row" class="ncInputRow">
@@ -40,7 +40,7 @@
                 </md-button>
             </div>
             <div flex="15" layout-align="center end" layout="row">
-                <select class="ncInputListSelect" ng-model="n.sppedLimit['unit']">
+                <select class="ncInputListSelect" ng-model="n.speedLimit['unit']">
                     <option>Bytes</option>
                     <option ng-selected="true">MB</option>
                     <option>GB</option>
@@ -94,7 +94,7 @@
             </div>
             <div flex>
                 <select ng-model="n.useRelay" class="defaultSelect">
-                    <option ng-repeat="i in ctrl.oRelayList">{{i}}</option>
+                    <option ng-repeat="i in ctrl.iRelayList">{{i}}</option>
                 </select>
             </div>
         </div>

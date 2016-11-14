@@ -34,7 +34,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl',
             displayName: "Agent Management"
         })
-       
+
     .state('app.channelManagement', {
         url: '/channelManagement',
         templateUrl: 'app/channelManagement/channelManagement.html',
@@ -55,29 +55,37 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/CMEndpointDashboard',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             controller: 'channelManagementEndpoint',
-            controllerAs: 'controller',
+            controllerAs: 'ctrl',
             displayName: "Channel Management"
 
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
-            controller: 'CMIVSources',
-            controllerAs: 'controller',
-            displayName: "Channel Management"
+            controller: 'channelManagementEndpoint',
+            controllerAs: 'ctrl',
+            displayName: "Channel Management > Inputs and Outputs"
 
         })
-        .state('app.channelManagement.endpoint.targets', {
+        /*  .state('app.channelManagement.endpoint.targets', {
+              url: '/CMEndpointTargets',
+              templateUrl: 'app/channelManagement/templates/endpoint/innerView/targets/targets.html',
+              controller: 'CMIVTargets',
+              controllerAs: 'controller',
+              displayName: "Channel Management"
+
+          })*/
+        .state('app.channelManagement.endpoint.computers', {
             url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/targets/targets.html',
-            controller: 'CMIVTargets',
-            controllerAs: 'controller',
-            displayName: "Channel Management"
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/computers/computers.html',
+            controller: 'channelManagementEndpoint',
+            controllerAs: 'ctrl',
+            displayName: "Channel Management > Stations using this channel"
 
         })
-        .state('app.channelManagement.endpoint.settings', {
+    .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/syslog/syslog.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/computers/computers.html',
             controller: 'channelManagementEndpoint',
             controllerAs: 'ctrl',
             displayName: "Channel Management > Stations using this channel"
@@ -185,7 +193,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "Policy > Detection Settings"
 
         })
-     .state('app.policy.definition.cdr', {
+        .state('app.policy.definition.cdr', {
             url: '/policyCDR',
             templateUrl: 'app/policy/templates/CDR/CDR.html',
             controller: 'policy',

@@ -1,3 +1,44 @@
+.input_output_list{
+    border-radius: 5px;
+    margin-left: 0px !important;
+    width: 100% !important;
+}
+.strong{
+   font-weight: 600; 
+}
+.width_48{
+    width: 48% !important;
+}
+.margin_top{
+    margin-top: 3em;
+}
+.input_is_selected{
+    background-color: #311B92;
+    border-radius: 5px;
+   
+}
+
+.input_is_selected > md-content{
+color: white
+}
+
+.input_is_selected >md-icon> svg > g{
+fill: white !important;
+}
+.input_equal_width{
+    width: 32% !important;
+}
+.no-padding-left{
+    padding-left: 0px !important;
+}
+.no-padding-right{
+    padding-right: 0px !important;
+}
+.notEditable{
+    pointer-events: none;
+}
+/* old css from when this section was in "new channel" section */
+
 .ncil{
     width: 25%;
 }
