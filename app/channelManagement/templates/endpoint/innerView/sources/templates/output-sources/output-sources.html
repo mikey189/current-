@@ -1,13 +1,13 @@
 <div layout="row" layout-align="space-between center" layout-padding class="no-padding-right">
     <div layout-gt-lg="row" layout="column" class="whiteBk input_output_list" md-whiteframe="6">
         <div layout="row" layout-align="space-between center">
-            <div layout="column" ng-repeat="x in ctrl.iROW_1" layout-margin layout-align="space-between center" select-on-click>
+            <div layout="column" ng-repeat="x in ctrl.iROW_1" layout-margin layout-align="space-between center" select-output>
                 <md-icon md-svg-src="icons/{{x.icon}}"></md-icon>
                 <md-content class="md-subhead strong" _name="{{x.name}}">{{x.name}}</md-content>
             </div>
         </div>
         <div layout="row" layout-align="space-between center">
-            <div layout="column" ng-repeat="y in ctrl.iROW_2" layout-margin layout-align="space-between center" select-on-click>
+            <div layout="column" ng-repeat="y in ctrl.iROW_2" layout-margin layout-align="space-between center" select-output>
                 <md-icon md-svg-src="icons/{{y.icon}}"></md-icon>
                 <md-content class="md-subhead strong" _name="{{y.name}}">{{y.name}}</md-content>
             </div>

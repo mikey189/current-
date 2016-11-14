@@ -28,7 +28,33 @@ app.directive("oSmb", function () {
     }
 })
 
-app.directive("selectOnClick", function () {
+
+
+app.directive("selectInput", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                var self = $(this)
+                var input_name = self.find("md-content").html()
+                var input_object = {name: input_name, is_selected: true}
+                
+                self.toggleClass("input_is_selected")
+                
+                if (self.hasClass("input_is_selected")){
+                    scope.ctrl.selected_inputs.push(input_object)
+                    var ind = scope.ctrl.selected_inputs(indexOf(input_object))
+                    console.log("index", ind)
+                }else{
+                    var index = scope.ctrl.selected_inputs(indexOf(input_object))
+                    scope.ctrl.selected_inputs.splice(input_object, 1)
+                }
+
+            })
+        }
+    }
+})
+app.directive("selectOutput", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -39,6 +65,9 @@ app.directive("selectOnClick", function () {
         }
     }
 })
+
+
+
 
 app.directive("addIsmb", function () {
     return {
