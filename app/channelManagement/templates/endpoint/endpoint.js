@@ -50,3 +50,4 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     self.are_settings_editable = false
     
 }])
+
