@@ -40,11 +40,11 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         self.is_input_selected = false;
     })
     //storing selected inputs and outputs
-    self.selected_inputs = []
-    self.selected_outputs = []
+    self.selectedInputs = []
+    self.selectedOutputs = []
     
     //setting up initial array to store smbs objects
-    self.ismb_list = []
-    self.osmb_list = []
+    self.ismbList = []
+    self.osmbList = []
     
 }])

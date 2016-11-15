@@ -12,7 +12,6 @@ app.directive("channelOutputsSources", function () {
         replace: false
     }
 })
-
 app.directive("iSmb", function () {
     return {
         restrict: "E",
@@ -29,7 +28,6 @@ app.directive("oSmb", function () {
 })
 
 
-
 app.directive("selectInput", function () {
     return {
         restrict: "A",
@@ -37,17 +35,14 @@ app.directive("selectInput", function () {
             element.click(function () {
                 var self = $(this)
                 var input_name = self.find("md-content").html()
-                var input_object = {name: input_name, is_selected: true}
+                var input_object = {inputName: input_name, isSelected: true}
                 
                 self.toggleClass("input_is_selected")
                 
                 if (self.hasClass("input_is_selected")){
-                    scope.ctrl.selected_inputs.push(input_object)
-                    var ind = scope.ctrl.selected_inputs(indexOf(input_object))
-                    console.log("index", ind)
+                    scope.ctrl.selectedInputs.push(input_object)
                 }else{
-                    var index = scope.ctrl.selected_inputs(indexOf(input_object))
-                    scope.ctrl.selected_inputs.splice(input_object, 1)
+                    scope.ctrl.selectedInputs.splice(input_object, 1)
                 }
 
             })
@@ -75,7 +70,7 @@ app.directive("addIsmb", function () {
         link: function (scope, element, attrs) {
             element.click(function () {
                 var ismb = {};
-                scope.ctrl.ismb_list.push(ismb)
+                scope.ctrl.ismbList.push(ismb)
                 scope.$apply()
             })
         }
@@ -87,7 +82,7 @@ app.directive("addOsmb", function () {
         link: function (scope, element, attrs) {
             element.click(function () {
                 var osmb = {};
-                scope.ctrl.osmb_list.push(osmb)
+                scope.ctrl.osmbList.push(osmb)
                 scope.$apply()
             })
         }
@@ -128,6 +123,17 @@ app.directive("editInputsAndOutputs", function(){
                 }else{
                     edition_section.addClass("notEditable")
                     self.css("background-color", "#311B92")
+                    scope.ctrl.inputsOutputsSettings = {
+                        "inputsSettings": {
+                            "inputList": scope.ctrl.selectedInputs,
+                            "inputSMB": scope.ctrl.ismbList
+                        },
+                        "outputsSettings": {
+                            "outputList": scope.ctrl.selectedOutputs,
+                            "outputSMB": scope.ctrl.osmbList
+                        }
+                    }
+                    scope.$apply()
                     self.html("EDIT")
                     scope.ctrl.are_outputs_and_outputs_editable = false
                 }
@@ -135,3 +141,24 @@ app.directive("editInputsAndOutputs", function(){
         }
     }
 })
+
+app.directive("matchParentWidth", function(){
+    return {
+        restrict: "A",
+        priority: 1000,
+        link: function(scope, element, attrs){
+            element.ready(function(){
+                var input_element = $(".input_element")
+                var output_element = $(".output_element")
+               
+                var inputs_parents_width = $("#inputs_sources").width()/7 + "px"
+                var output_parents_width = $("#outputs_sources").width()/7 + "px"
+    
+                input_element.css("width", inputs_parents_width)
+                output_element.css("width", output_parents_width)
+              
+            })
+        }
+    }
+})
+
