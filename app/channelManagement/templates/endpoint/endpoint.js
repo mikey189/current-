@@ -29,7 +29,6 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     channelData.get_current_computers(self.rootId).then(function (answer) {
         self.current_computers_in_use = answer.data.ChannelInfo.ComputerList
     })
-    
     //setting inputs and outputs screen to not editable by default
     self.are_outputs_and_outputs_editable = false;
     //getting input and output list for "input and ouput" view
@@ -45,6 +44,9 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     
     //setting up initial array to store smbs objects
     self.ismbList = []
-    self.osmbList = []
+    self.osmbList = []  
+    
+    //making the settings not editable by default
+    self.are_settings_editable = false
     
 }])

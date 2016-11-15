@@ -85,10 +85,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
     .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/computers/computers.html',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
             controller: 'channelManagementEndpoint',
             controllerAs: 'ctrl',
-            displayName: "Channel Management > Stations using this channel"
+            displayName: "Channel Management > Settings"
 
         })
 

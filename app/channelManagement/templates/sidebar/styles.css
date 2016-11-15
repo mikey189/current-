@@ -1,0 +1,9 @@
+.create_channel_sidenav_item {
+    background-color: #039BE5;
+}
+
+.create_channel_sidenav_item:hover {
+    background-color: #0091EA;
+    border-left: solid 0.5em #EC407A
+;
+}

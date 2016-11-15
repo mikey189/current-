@@ -5,6 +5,7 @@ app.directive("channelInputsSources", function () {
         replace: false
     }
 })
+
 app.directive("channelOutputsSources", function () {
     return {
         restrict: "E",
@@ -12,6 +13,7 @@ app.directive("channelOutputsSources", function () {
         replace: false
     }
 })
+
 app.directive("iSmb", function () {
     return {
         restrict: "E",
@@ -19,6 +21,7 @@ app.directive("iSmb", function () {
         replace: false
     }
 })
+
 app.directive("oSmb", function () {
     return {
         restrict: "E",
@@ -27,28 +30,18 @@ app.directive("oSmb", function () {
     }
 })
 
-
 app.directive("selectInput", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
                 var self = $(this)
-                var input_name = self.find("md-content").html()
-                var input_object = {inputName: input_name, isSelected: true}
-                
                 self.toggleClass("input_is_selected")
-                
-                if (self.hasClass("input_is_selected")){
-                    scope.ctrl.selectedInputs.push(input_object)
-                }else{
-                    scope.ctrl.selectedInputs.splice(input_object, 1)
-                }
-
             })
         }
     }
 })
+
 app.directive("selectOutput", function () {
     return {
         restrict: "A",
@@ -60,9 +53,6 @@ app.directive("selectOutput", function () {
         }
     }
 })
-
-
-
 
 app.directive("addIsmb", function () {
     return {
@@ -76,6 +66,7 @@ app.directive("addIsmb", function () {
         }
     }
 })
+
 app.directive("addOsmb", function () {
     return {
         restrict: "A",
@@ -108,21 +99,52 @@ app.directive("editField", function () {
         }
     }
 })
-app.directive("editInputsAndOutputs", function(){
+
+app.directive("editInputsAndOutputs", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.click(function(){
+        link: function (scope, element, attrs) {
+            element.click(function () {
                 var edition_section = $("#edition_section")
                 var self = $(this)
-                if (!scope.ctrl.are_outputs_and_outputs_editable){
+                if (!scope.ctrl.are_outputs_and_outputs_editable) {
                     edition_section.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("SAVE")
                     scope.ctrl.are_outputs_and_outputs_editable = true
-                }else{
+                    //emptying arrays in case user plays too much with edit and save buttons
+                    scope.ctrl.selectedOutputs = []
+                    scope.ctrl.selectedInputs = []
+                } else {
                     edition_section.addClass("notEditable")
                     self.css("background-color", "#311B92")
+                    //recording selected inputs
+                    var input_element = $(".input_element")
+                    input_element.each(function () {
+                        var self = $(this)
+                        if (self.hasClass("input_is_selected")) {
+                            var input_name = self.find("md-content").html()
+                            var input_object = {
+                                inputName: input_name,
+                                isSelected: true
+                            }
+                            scope.ctrl.selectedInputs.push(input_object)
+                        }
+                    })
+                    //recording selected ouputs
+                    var output_elements = $(".output_element")
+                    output_elements.each(function () {
+                        var self = $(this)
+                        if (self.hasClass("input_is_selected")) {
+                            var output_name = self.find("md-content").html()
+                            var output_object = {
+                                outputName: output_name,
+                                isSelected: true
+                            }
+                            scope.ctrl.selectedOutputs.push(output_object)
+                        }
+                    })
+                    //recording the object that stores all info of the view
                     scope.ctrl.inputsOutputsSettings = {
                         "inputsSettings": {
                             "inputList": scope.ctrl.selectedInputs,
@@ -142,23 +164,22 @@ app.directive("editInputsAndOutputs", function(){
     }
 })
 
-app.directive("matchParentWidth", function(){
+app.directive("matchParentWidth", function () {
     return {
         restrict: "A",
         priority: 1000,
-        link: function(scope, element, attrs){
-            element.ready(function(){
+        link: function (scope, element, attrs) {
+            element.ready(function () {
                 var input_element = $(".input_element")
                 var output_element = $(".output_element")
-               
-                var inputs_parents_width = $("#inputs_sources").width()/7 + "px"
-                var output_parents_width = $("#outputs_sources").width()/7 + "px"
-    
+
+                var inputs_parents_width = $("#inputs_sources").width() / 7 + "px"
+                var output_parents_width = $("#outputs_sources").width() / 7 + "px"
+
                 input_element.css("width", inputs_parents_width)
                 output_element.css("width", output_parents_width)
-              
+
             })
         }
     }
 })
-

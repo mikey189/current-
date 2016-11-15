@@ -1,0 +1,34 @@
+.thead-channel-settings{
+    background-color: #39379D;
+    color: white;
+}
+.channel-settings-input{
+    border: 0px;
+    border-bottom: solid 1px #39379D;
+    width: 100%;
+}
+.channel-settings-select{
+    border: 0px !important;
+    width: 100%;
+}
+.channel-settings-body{
+    background-color: white;
+}
+.channel-settings-wrapper{
+    margin-top: 2em;
+}
+.channel-edit-button{
+    background-color: #39379D;
+    color: white;
+    font-weight: 700;
+}
+.channel-edit-button:hover{
+    background-color: #F50057!important;
+    color: white;
+}
+.channel-settings-edit-div{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-right: 0px !important;
+}
+
