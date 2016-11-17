@@ -11,6 +11,7 @@ app.directive("saveInfoGetId", function (channelData) {
                         "Description": scope.ctrl.channelDescription
                     }
                 }
+                scope.ctrl.gen_info = channelObject
                 channelData.createChannel(channelObject).then(function(answer){
                     scope.ctrl.channelId = answer.data.Id
                     console.log(scope.ctrl.channelId)

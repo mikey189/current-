@@ -83,7 +83,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "Channel Management > Stations using this channel"
 
         })
-    .state('app.channelManagement.endpoint.settings', {
+        .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
             controller: 'channelManagementEndpoint',
@@ -228,6 +228,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "Reports"
 
         })
+        .state('app.sanitization', {
+            url: '/sanitization',
+            templateUrl: 'app/reports/sanitization/sanitization.html',
+            controller: 'sanitization',
+            controllerAs: 'ctrl',
+            displayName: "Reports > Sanitization"
+
+        })
         .state('app.settings', {
             url: '/settings',
             templateUrl: 'app/settings/settings.html',
@@ -239,3 +247,4 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
 })
+

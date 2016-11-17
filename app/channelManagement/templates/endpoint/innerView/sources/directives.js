@@ -121,7 +121,11 @@ app.directive("editInputsAndOutputs", function () {
                     //recording selected inputs
                     var input_element = $(".input_element")
                     input_element.each(function () {
-                        var self = $(this)
+                        var s
+                        
+                        
+                        
+                        lf = $(this)
                         if (self.hasClass("input_is_selected")) {
                             var input_name = self.find("md-content").html()
                             var input_object = {
@@ -183,3 +187,8 @@ app.directive("matchParentWidth", function () {
         }
     }
 })
+
+
+
+
+

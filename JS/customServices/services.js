@@ -36,8 +36,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
     var computerList = "http://jdev01:4580/api/users/getadmachines";
-        var channelsIconsURL = "http://localhost:3000/channelsIcons";
-
+    var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
     //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
@@ -45,6 +44,9 @@ app.factory("channelData", function ($http, $rootScope) {
     var postChannel = "http://jdev01:4580/api/Channels/PostChannel";
     var updateComputers = "http://jdev01:4580/api/channels/PostChannelComputerList/";
     var current_computers = "http://jdev01:4580/api/Channels/getchannel/"
+    var update_inputs_outputs = "http://maorpc:4580/api/channels/PostChannelIoConfiguration/"
+    var channel_informations = "http://jdev01:4580/api/channels/"
+    
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -105,7 +107,17 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         get_current_computers: function(id){
             return $http.get(current_computers+id)
-        }
+        },
+        update_inputs_outputs: function ( id, data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: update_inputs_outputs + id,
+                method: "POST",
+                data: data
+            })
+        },
         
     }
 })
@@ -341,3 +353,28 @@ app.factory("C2CData", function () {
     }
 
 });
+
+app.factory("reports_factory", function($http){
+    var menu = "http://localhost:3000/reports_menu"
+    return {
+        get_menu : function(){
+            return $http.get(menu)
+        }
+    }
+})
+
+app.factory("sanitization_factory", function($http){
+    var data = "http://jdev01:4580/api/report/GetSanitizations"
+    var paginated_data = "http://jdev01:4580/api/report/GetSanitizationJobs?"
+    return {
+        get_data: function(){
+            return $http.get(data)
+        },
+        get_page: function(page_index, page_size){
+            return $http.get(paginated_data+"PageIndex="+page_index+"&PageSize="+page_size)
+        }
+    }
+
+})
+
+

@@ -33,12 +33,14 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     self.are_outputs_and_outputs_editable = false;
     //getting input and output list for "input and ouput" view
     channelData.get_input_output_list().then(function(answer){
+        self.all_inputs = answer.data[0].inputs
         self.iROW_1 = answer.data[0].inputs.slice(0, 3)
         self.iROW_2 = answer.data[0].inputs.slice(3, 6)
         //default property for selecting input or ouput
         self.is_input_selected = false;
     })
     //storing selected inputs and outputs
+
     self.selectedInputs = []
     self.selectedOutputs = []
     
@@ -46,8 +48,56 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     self.ismbList = []
     self.osmbList = []  
     
+    //function that add objects for iSMB and oSMB on ng-checked
+    self.addISMB = function(){
+        var iSMB = {}
+        self.ismbList.push(iSMB)
+    }
+    self.addOSMB = function(){
+        var oSMB = {}
+        self.osmbList.push(oSMB)
+    }
+    
     //making the settings not editable by default
     self.are_settings_editable = false
+    
+    self.inputConfiguration = 
+    { 
+      "SelectedIoList": [
+            {
+          "DeviceTypeName": "Removable",
+          "IsActive": true
+        },
+        {
+          "DeviceTypeName": "Documents",
+          "IsActive": true
+        },
+      
+        {
+          "DeviceTypeName": "Mobiles",
+          "IsActive": true
+        }
+      ],
+      "IoSmbConfiguration": [
+        {
+          "Name": "name",
+          "RootFolder": "root folder",
+          "Speedlimit": {
+            "Unit": "GB"
+          },
+          "Userquota": {
+            "Unit": "GB",
+            "Value": 4567
+          },
+          "HoursToKeep": 45678,
+          "FolderPermissions": "Write",
+          "UseRelay": false,
+          "OverwriteExistingFile": true,
+          "CreateZipFile": true,
+          "AllowMediaBurn": true
+        }
+      ]
+    }
     
 }])
 
