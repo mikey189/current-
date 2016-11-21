@@ -364,15 +364,17 @@ app.factory("reports_factory", function($http){
 })
 
 app.factory("sanitization_factory", function($http){
-    var data = "http://jdev01:4580/api/report/GetSanitizations"
-    var paginated_data = "http://jdev01:4580/api/report/GetSanitizationJobs?"
+    var url = "http://jdev01:4580/api/report/GetSanitizations?"
+    var filter_field = "http://localhost:3000/sanitization_filter_fields"
+
     return {
-        get_data: function(){
-            return $http.get(data)
-        },
-        get_page: function(page_index, page_size){
-            return $http.get(paginated_data+"PageIndex="+page_index+"&PageSize="+page_size)
-        }
+    
+       get_data: function(index, size, order_field){
+           return $http.get(url+"PageIndex="+index+"&PageSize="+size+"&sortField="+order_field)
+       },
+       get_filter_fields: function(){
+           return $http.get(filter_field)
+       }
     }
 
 })

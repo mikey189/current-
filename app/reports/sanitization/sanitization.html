@@ -1,12 +1,15 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
+
 <center>
     <div ng-cloak flex-gt-lg="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
-            <table md-table md-progress="promise" class="sanitization-table">
-                <thead md-head class="santization-head" md-order="ctrl.query.order">
+            <table md-table md-progress=" get_data" class="sanitization-table" ng-model="selected">
+                <thead md-head class="santization-head" md-order="query.order">
                     <tr md-row>
                         <th md-column md-numeric>
-                            <md-icon>empty_icon</md-icon>
+                            <md-button class="md-icon-button" ng-click="open_sanitization_filter()">
+                                <md-icon class="sanitization-filter-icon">filter_list</md-icon>
+                            </md-button>
                         </th>
                         <th md-column md-order-by="StartTime"><span>Start Time</span></th>
                         <th md-column md-numeric md-order-by="Duration"><span>Duration</span></th>
@@ -20,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="x in ctrl.data | filter: filter.search | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page -1) * ctrl.query.limit">
+                    <tr md-row ng-repeat="x in  data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect">
                         <td md-cell>
                             <md-button class="md-icon-button" add->
                                 <md-icon>add</md-icon>
@@ -34,12 +37,13 @@
                         <td md-cell>{{x.ProcessingServer}}</td>
                         <td md-cell>{{x.Status}}</td>
                         <td md-cell>{{x.Outcome}}</td>
-                        <td md-cell>{{x.Actins}}</td>
+                        <td md-cell>{{x.Actions}}</td>
                     </tr>
                 </tbody>
             </table>
         </md-table-container>
-        <md-table-pagination md-limit="ctrl.query.limit" md-limit-options="ctrl.limitOptions" md-page="ctrl.query.page" md-total="{{ctrl.limit}}"
-            md-page-select="ctrl.options.pageSelect" md-boundary-links="ctrl.options.boundaryLinks"></md-table-pagination>
+        <md-table-pagination md-limit="query.PageSize" md-limit-options="limitOptions" md-page="query.PageIndex" md-total="{{total_length}}"
+            md-page-select=" options.pageSelect" md-boundary-links=" options.boundaryLinks"></md-table-pagination>
     </div>
 </center>
+<!--| limitTo:  query.PageSize : ( query.PageIndex -1) *  query.PageSize-->

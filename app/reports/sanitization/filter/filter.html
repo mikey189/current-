@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="app/reports/sanitization/filter/style.css" />
+<div layout="row" flex="40">
+  <div class="md-dialog-container">
+    <md-dialog layout-padding>
+      <md-toolbar class="sanitization-filter-toolbar" layout="row">
+        <center><h3 layout-align="center center">Filters</h3></center>
+      </md-toolbar>
+      <md-list>
+        <md-list-item ng-repeat="x in sanitization_fields" layout="row" layout-align="space-between center">
+          {{x.name}}
+          <md-input-container>
+            <md-select ng-model="status" placeholder="{{x.values[1]}}">
+              <md-option ng-repeat="status in x.values" ng-value="status">
+                {{status}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </md-list-item>
+<!-- computer List -->
+        <md-list-item layout="row" layout-align="space-between center">
+          Computer
+          <md-input-container>
+            <md-select ng-model="computer" placeholder="Pick a computer from the list">
+              <md-option ng-repeat="computer in computer_list">
+                {{computer.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </md-list-item>
+
+        <div layout="row" layout-align="space-between center">
+          <md-button class="cancel-sanitization-filters" flex="50">CANCEL</md-button>
+        <md-button class="close-sanitization-filters" flex="50" ng-click="close_sanitization_filter()">FILTER</md-button>
+        </div>
+    </md-dialog>
+  </div>
+</div>

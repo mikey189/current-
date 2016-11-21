@@ -2091,6 +2091,13 @@
         {"name": "Mail", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"},
         {"name": "Scanner Status", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"},
         {"name": "System Events", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"}
-    ]
-   
+    ],
+    "sanitization_filter_fields": [{"name": "States", "values": ["All", "Failed", "Success", "Modified", "Running", "Completed"]}, {"name": "Outcome", 
+    "values": ["GlobalOutcomeUnknown", "InProgressInit", "InProgressPending", "InProgressPolicyCheck", "InProgressDecryption", "InProgressEncryption",
+     "InProgressProcessEmbedded", "InProgressReconstruction", "InProgressScanning", "InProgressSaving", "TemporaryFailGlobalFileContentRequired",
+     "OutcomePassed", "OutcomeModified", "OutcomePartiallyProcessed", "OutcomeAborted", "OutcomeFailGlobalInternalError", "OutcomeFailLicenseViolation", "OutcomeFailHashFailedToCalcHash",
+     "OutcomeFailCommunicationFailed", "OutcomeFailPolicyBlocked", "OutcomeFailEncryptedArchive", "OutcomeFailInvalidArchive", "OutcomeFailScanFailed",
+     "OutcomeFailScanInfected", "OutcomeFailTransformationFailed", "OutcomeFailSaveInvalidPath", "OutcomeFailSaveAccessToDestinationDenied", "OutcomeFailSaveIoError",
+     "OutcomeFailDecryption", "OutcomeFailEncryption", "OutcomeFailCommunicationToServerError"]}, {"name": "Channel Types", "values": ["ReZoneScanStation", 
+     "ReZoneScanAgent", "ReZoneDirectoryWatcher", "ReZoneEmail", "ReZoneIcap", "MachineSafeComponent"]}]
 }

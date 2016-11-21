@@ -232,7 +232,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/sanitization',
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',
-            controllerAs: 'ctrl',
+           // controllerAs: 'ctrl',
             displayName: "Reports > Sanitization"
 
         })
