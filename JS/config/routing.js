@@ -234,16 +234,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'sanitization',
            // controllerAs: 'ctrl',
             displayName: "Reports > Sanitization"
+        })
+        .state('app.telerik_reports', {
+            url: '/tr',
+            templateUrl: 'app/reports/telerik_reports/tr.html',
+            controller: 'telerik_reports',
+            controllerAs: 'ctrl',
+            displayName: "Reports > Reports Services"
 
         })
+
+    
         .state('app.settings', {
             url: '/settings',
             templateUrl: 'app/settings/settings.html',
             controller: 'settings',
-            controllerAs: 'settings',
+            controllerAs: 'ctrl',
             displayName: "Settings"
 
         })
+         
 
 
 })

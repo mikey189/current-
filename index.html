@@ -19,17 +19,16 @@
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.min.css" />
     <!-- data table : to load for data tables -->
-    <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
-
-
-
+    <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
+    <!--Reports CSS-->
+    <link href="ReportViewer/styles/kendo.common.min.css" rel="stylesheet" id="common-css" />
+    <link href="ReportViewer/styles/kendo.blueopal.min.css" rel="stylesheet" id="skin-css" />
     <!--<script>
         window.nodeRequire = require;
         delete window.require;
         delete window.exports;
         delete window.module;
     </script>-->
-
     <script type="text/javascript" src="JS/libraries/jquery.min.js"></script>
     <script src="JS/libraries/jquery-ui.js"></script>
     <script type='text/javascript' src='JS/libraries/bootstrap.min.js'></script>
@@ -54,19 +53,14 @@
     <script src="bower_components/ngDraggable/ngDraggable.js"></script>
     <script src="bower_components/json-formatter/dist/json-formatter.min.js"></script>
     <script type="text/javascript" src="JS/libraries/chart-loader.js"></script>
-
     <!-- bootstrap angular ui -->
-
     <script src="JS/libraries/bootstrap-ui.min.js"></script>
-
-
     <!-- Important Note: Angular Material Library rc1 version works well with list, rc2 is very unstable, the verison called here is V1.1RC01 
 
 
 
 <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
     <!-- Bootstrap and JQuery -->
-
     <!-- Local Libraries -->
     <script src='JS/module.js'></script>
     <script src='JS/config/routing.js'></script>
@@ -108,13 +102,16 @@
     <script src='app/policy/templates/who/directives.js'></script>
     <script src='app/policy/templates/who/templates/templatesDirectives.js'></script>
     <script src='app/reports/reports.js'></script>
+    <script src='app/reports/sanitization/directives.js'></script>
     <script src="app/reports/sanitization/sanitization.js"></script>
     <script src='app/settings/settings.js'></script>
     <script src="JS/libraries/checklist-model.js"></script>
+    <script src="app/reports/telerik_reports/tr.js"></script>
     <!-- load this one for data table -->
-    <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script> 
-
-
+    <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <!--Reports JS-->
+    <script src="ReportViewer/js/kendo.subset.2015.3.930.min.js"></script>
+    <script src="ReportViewer/js/telerikReportViewer-10.2.16.1025.js"></script>
 </head>
 
 <body ng-app="resec">

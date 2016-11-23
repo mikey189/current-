@@ -1,53 +1,25 @@
-app.controller('settings', function($scope){
+app.controller('settings', function (system_properties) {
 
+  var self = this;
 
- var bookmark;
-  
-  $scope.selected = [];
-  
-  $scope.filter = {
-    options: {
-      debounce: 500
-    }
-  };
+  self.allProps = [];
+  system_properties.get_properties().success(function (answer) {
+    //self.allReports = answer.data;
+    self.allProps = answer;
 
-  $scope.query = {
-    filter: '',
-    limit: '5',
-    order: 'nameToLower',
-    page: 1
-  };
-  
-
-
-
- $scope.getDesserts = function () {
-    $scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
-  };
-  
-  $scope.removeFilter = function () {
-    $scope.filter.show = false;
-    $scope.query.filter = '';
-    
-    if($scope.filter.form.$dirty) {
-      $scope.filter.form.$setPristine();
-    }
-  };
-
-
-      $scope.$watch('query.filter', function (newValue, oldValue) {
-    if(!oldValue) {
-      bookmark = $scope.query.page;
-    }
-    
-    if(newValue !== oldValue) {
-      $scope.query.page = 1;
-    }
-    
-    if(!newValue) {
-      $scope.query.page = bookmark;
-    }
-    
-    $scope.getDesserts();
+    //for (var i = 0; i < answer.data.length; i++) {
+    //    var item = answer.data[i];   
+    //    self.allProps.push({ "TabName": item.Key, "Properties": item.Value });
+    //}
+    console.log(self.allProps);
   });
+
+  self.save_properties = function () {
+    system_properties.post_properties(self.allProps).success(function (answer) {
+      self.allProps = answer;
+      console.log(answer);
+    }).error(function (err) {
+      console.log(err);
+    })
+  }
 })

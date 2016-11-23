@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="app/reports/telerik_reports/style.css" />
+<button ng-click="ctrl.post()">Show Report</button>
+<select ng-model="ctrl.selectedReport" ng-options="x.Value for x  in ctrl.allReports"></select>
+<div id="reportViewer1">
+    loading...
+</div>

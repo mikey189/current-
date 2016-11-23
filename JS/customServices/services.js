@@ -38,7 +38,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var computerList = "http://jdev01:4580/api/users/getadmachines";
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
     var channelList = "http://jdev01:4580/api/channels/getallchannels"
-    //var channelList = "http://localhost:3000/channelList";
+        //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
     var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/";
     var postChannel = "http://jdev01:4580/api/Channels/PostChannel";
@@ -46,7 +46,8 @@ app.factory("channelData", function ($http, $rootScope) {
     var current_computers = "http://jdev01:4580/api/Channels/getchannel/"
     var update_inputs_outputs = "http://maorpc:4580/api/channels/PostChannelIoConfiguration/"
     var channel_informations = "http://jdev01:4580/api/channels/"
-    
+    var channelTypes = "http://jdev01:4580/api/deployment/getDeployments"
+
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -105,10 +106,10 @@ app.factory("channelData", function ($http, $rootScope) {
                 data: data
             })
         },
-        get_current_computers: function(id){
-            return $http.get(current_computers+id)
+        get_current_computers: function (id) {
+            return $http.get(current_computers + id)
         },
-        update_inputs_outputs: function ( id, data) {
+        update_inputs_outputs: function (id, data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -118,7 +119,10 @@ app.factory("channelData", function ($http, $rootScope) {
                 data: data
             })
         },
-        
+        getChannelTypes: function () {
+            return $http.get(channelTypes)
+        }
+
     }
 })
 
@@ -159,7 +163,7 @@ app.factory("policyData", function ($rootScope, $http) {
 
     var topFiles = "http://localhost:3000/PDTopFiles";
     var topUsers = "http://localhost:3000/PDTopUsers";
-    
+
     var policyDefinition = "http://localhost:3000/policyDefinition";
     var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
     var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
@@ -167,13 +171,13 @@ app.factory("policyData", function ($rootScope, $http) {
     var postFiletype = "http://jdev01:4580/api/policy/PostPolicyFileTypes/";
     var fireEye_servers = "http://localhost:3000/fireEye_servers"
     var cukoo_servers = "http://localhost:3000/cukoo_servers"
-    
+
 
     return {
         getList: function () {
             return $http.get(policyList);
         },
-        getSidenav: function(){
+        getSidenav: function () {
             return $http.get(policySidenav)
         },
         getTopFiles: function () {
@@ -219,7 +223,7 @@ app.factory("policyData", function ($rootScope, $http) {
                 return response.data
             })
         },
-        getDashboard: function(id) {
+        getDashboard: function (id) {
             return $http.get(policyDashboard + id)
         },
         getDescriptions() {
@@ -227,12 +231,12 @@ app.factory("policyData", function ($rootScope, $http) {
                 return response.data
             })
         },
-        getFiletypes: function(){
+        getFiletypes: function () {
             return $http.get(filetype)
         },
         postFiletype: function (id, FileType) {
-       
-            
+
+
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -242,13 +246,13 @@ app.factory("policyData", function ($rootScope, $http) {
                 data: FileType
             })
         },
-        get_fireEye_servers: function(){
+        get_fireEye_servers: function () {
             return $http.get(fireEye_servers)
         },
-        get_cukoo_servers: function(){
+        get_cukoo_servers: function () {
             return $http.get(cukoo_servers)
         }
-        
+
     }
 })
 
@@ -354,29 +358,72 @@ app.factory("C2CData", function () {
 
 });
 
-app.factory("reports_factory", function($http){
+app.factory("reports_factory", function ($http) {
     var menu = "http://localhost:3000/reports_menu"
     return {
-        get_menu : function(){
+        get_menu: function () {
             return $http.get(menu)
         }
     }
 })
 
-app.factory("sanitization_factory", function($http){
+app.factory("sanitization_factory", function ($http) {
     var url = "http://jdev01:4580/api/report/GetSanitizations?"
     var filter_field = "http://localhost:3000/sanitization_filter_fields"
+    var details = "http://jdev01:4580/api/report/GetSanitizationInformation/"
+
 
     return {
-    
-       get_data: function(index, size, order_field){
-           return $http.get(url+"PageIndex="+index+"&PageSize="+size+"&sortField="+order_field)
-       },
-       get_filter_fields: function(){
-           return $http.get(filter_field)
-       }
+
+        get_data: function (index, size, order_field) {
+            return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&sortField=" + order_field)
+        },
+        get_filter_fields: function () {
+            return $http.get(filter_field)
+        },
+        /*get_filter_results: function(status, computer, channelType, fileName, jobsId, duration, processingServer, portalServer, policyId, profilId){
+            return $http.get(url + "Status="+status+"&ComputerName="+computer+"&AgentType="+channelType+"&FileName="+fileName+
+            "&JobId="+jobsId+"&Duration="+duration+"&ProcessingServer="+processingServer+"&PortalServer="+portalServer+"&PolicyId="+policyId)
+        },*/
+        get_filter_results: function (filter_query) {
+            return $http({
+                url: url,
+                method: 'GET',
+                params: filter_query
+            })
+        },
+        get_details: function (id) {
+            return $http.get(details + id)
+        }
     }
+});
+app.factory("system_properties", function ($http) {
+    var propertiesList = "http://jdev01:4580/api/SystemProperties/GetSystemProperties";
+    var propertiesPostList = "http://jdev01:4580/api/SystemProperties/PostSystemProperties";
+    return {
+        post_properties: function (props) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: propertiesPostList,
+                method: "POST",
+                data: props
+            });
+        },
+        get_properties: function () {
+            return $http.get(propertiesList);
 
+        }
+    }
+});
+
+app.factory("telerik_reports_factory", function ($http) {
+    var reportsList = "http://jdev01:4580/api/report/GetAvailableReports";
+
+    return {
+        get_report_info: function () {
+            return $http.get(reportsList);
+        }
+    }
 })
-
-
