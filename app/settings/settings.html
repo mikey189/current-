@@ -1,41 +1,22 @@
 <md-content class="md-padding">
-       <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
-           <md-tab ng-repeat="tab in ctrl.allProps"
-                   label="{{tab.TabName}}">
-               <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
- 
- 
- 
-                   <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
- 
- 
- 
-                       <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                           {{prop.DisplayName}}
-                           <md-icon class='material-icons md-48 md-primary' style='margin-right: 0.3em'>
-                               info
- 
-                               <md-tooltip>
-                                   {{prop.Comment}}
-                               </md-tooltip>
-                           </md-icon>
-                           <input flex='30' type="{{prop.InputType}}" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName}}">
-                       </md-list-item>
-                       <md-divider></md-divider>
- 
-                   </md-list>
- 
- 
- 
- 
-               </md-tab-body>
-           </md-tab>
-       </md-tabs>
-   </md-content>
-   <button ng-click="ctrl.saveProperties()">Save Changes</button>
- 
-   {{ctrl.allProps}}
-
-
-
-
+    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+        <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}">
+            <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+                <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
+                    <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                        {{prop.DisplayName}}
+                        <md-icon class='material-icons md-48 md-primary' style='margin-right: 0.3em'>
+                            info
+                            <md-tooltip>
+                                {{prop.Comment}}
+                            </md-tooltip>
+                        </md-icon>
+                        <input flex='30' type="{{prop.InputType}}" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName}}">
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</md-content>
+<button ng-click="ctrl.saveProperties()">Save Changes</button> {{ctrl.alProps}}

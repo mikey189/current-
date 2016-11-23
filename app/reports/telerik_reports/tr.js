@@ -1,4 +1,5 @@
 app.controller("telerik_reports", function (telerik_reports_factory) {
+    var self = this;
     self.allReports = [];
     telerik_reports_factory.get_report_info().then(function (answer) {
         //self.allReports = answer.data;

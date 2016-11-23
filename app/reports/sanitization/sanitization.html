@@ -23,7 +23,7 @@
                 <tbody md-body>
                     <tr md-row ng-repeat="x in  data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect">
                         <td md-cell>
-                            <md-button class="md-icon-button" get-details open-details sanitizationId="{{x['Sanitization Id']}}" ng-lick="open_details($event, x['Sanitization Id'])">
+                            <md-button class="md-icon-button" get-sanitization-id  open-sanitization-details sanitizationId="{{x['Sanitization Id']}}" ng-click="get_details(x['Sanitization Id'])">
                                 <md-icon>info_outline</md-icon>
                             </md-button>
                         </td>
