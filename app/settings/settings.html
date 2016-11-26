@@ -1,11 +1,12 @@
-<md-content class="md-padding">
-    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
-        <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}">
+<link rel="stylesheet" href="app/settings/style.css" />
+<div class="md-padding" ng-cloak>
+    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselec md-dynamic-height>
+        <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}" class="setting_tabs">
             <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
                 <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
                     <md-list-item layout='row' layout-align='space-between center' layout-padding>
                         {{prop.DisplayName}}
-                        <md-icon class='material-icons md-48 md-primary' style='margin-right: 0.3em'>
+                        <md-icon class='material-icons md-primary' style='margin-right: 0.3em'>
                             info
                             <md-tooltip>
                                 {{prop.Comment}}
@@ -18,5 +19,5 @@
             </md-tab-body>
         </md-tab>
     </md-tabs>
-</md-content>
-<button ng-click="ctrl.saveProperties()">Save Changes</button> {{ctrl.alProps}}
+    <md-button ng-click="ctrl.saveProperties()" id="save_settings_changes" md-whiteframe="6">Save Changes</md-button>
+</div>

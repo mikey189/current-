@@ -1,0 +1,16 @@
+.setting_tabs > span {
+    background-color: white !important;
+    font-weight: 700 !important;
+}
+#save_settings_changes{
+    background-color: #3D5AFE !important;
+    color: white !important;
+    font-weight: 700;
+}
+#save_settings_changes:hover{
+    background-color: #E91E63 !important;
+    
+}
+md-tab{
+    background-color: white !important;
+}

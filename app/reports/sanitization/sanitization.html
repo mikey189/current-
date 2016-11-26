@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
+<center>
     <div ng-cloak flex-gt-lg="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
             <table md-table md-progress=" get_data" class="sanitization-table" ng-model="selected">
@@ -23,7 +24,7 @@
                 <tbody md-body>
                     <tr md-row ng-repeat="x in  data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect">
                         <td md-cell>
-                            <md-button class="md-icon-button" get-sanitization-id  open-sanitization-details sanitizationId="{{x['Sanitization Id']}}" ng-click="get_details(x['Sanitization Id'])">
+                            <md-button class="md-icon-button clickMe" sanitizationId="{{x['Sanitization Id']}}" ng-click="show_details_modal_ready(x['Sanitization Id'])">
                                 <md-icon>info_outline</md-icon>
                             </md-button>
                         </td>
@@ -43,4 +44,5 @@
         <md-table-pagination md-limit="query.PageSize" md-limit-options="limitOptions" md-page="query.PageIndex" md-total="{{total_length}}"
             md-page-select=" options.pageSelect" md-boundary-links=" options.boundaryLinks"></md-table-pagination>
     </div>
+</center>
 
