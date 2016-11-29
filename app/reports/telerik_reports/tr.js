@@ -13,29 +13,34 @@ app.controller("telerik_reports", function (telerik_reports_factory) {
         var reportViewer = $("#reportViewer1").data("telerik_ReportViewer");
         if (reportViewer === undefined) {
             $("#reportViewer1")
-               .telerik_ReportViewer({
-                   serviceUrl: "http://jdev01:4580/api/reports/",
-                   templateUrl: 'ReportViewer/templates/telerikReportViewerTemplate-FA.html',
-                   //ReportSource - report description
-                   reportSource: {
-                       // The report can be set to a report file name (.trdx or .trdp report definition)
-                       // or CLR type name (report class definition).
-                       report: self.selectedReport.Value,
-                       // Parameters name value dictionary
-                       parameters: {}
-                   },
- 
-                   viewMode: telerikReportViewer.ViewModes.INTERACTIVE,
-                   scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
-                   scale: 1.0,
-               });
+                .telerik_ReportViewer({
+                    serviceUrl: "http://jdev01:4580/api/reports/",
+                    templateUrl: 'ReportViewer/templates/telerikReportViewerTemplate-FA.html',
+                    //ReportSource - report description
+                    reportSource: {
+                        // The report can be set to a report file name (.trdx or .trdp report definition)
+                        // or CLR type name (report class definition).
+                        report: self.selectedReport,
+                        // Parameters name value dictionary
+                        parameters: {}
+                    },
+                    viewMode: telerikReportViewer.ViewModes.INTERACTIVE,
+                    scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
+                    scale: 1.0,
+                });
             return;
+        } else {
+            console.log("report refreshed")
+            var reportViewer = $("#reportViewer1").data("telerik_ReportViewer");
+            reportViewer.reportSource({
+                report: self.selectedReport,
+                parameters: {},
+            });
+            reportViewer.refreshReport();
         }
-        reportViewer.reportSource({
-            report: self.selectedReport.Value,
-            parameters: {  },
-        });
-        
+        /*reportViewer.reportSource({
+            report: self.selectedReport,
+            parameters: {},
+        });*/
     }
-
 })

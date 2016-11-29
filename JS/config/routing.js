@@ -232,29 +232,46 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/sanitization',
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',
-           // controllerAs: 'ctrl',
+            // controllerAs: 'ctrl',
             displayName: "Reports > Sanitization"
         })
         .state('app.telerik_reports', {
-            url: '/tr',
+            url: '/telerik_reports',
             templateUrl: 'app/reports/telerik_reports/tr.html',
             controller: 'telerik_reports',
             controllerAs: 'ctrl',
             displayName: "Reports > Reports Services"
 
         })
-
-    
-        .state('app.settings', {
-            url: '/settings',
-            templateUrl: 'app/settings/settings.html',
-            controller: 'settings',
-            controllerAs: 'ctrl',
-            displayName: "Settings"
+        .state('app.system_events', {
+            url: '/system_events',
+            templateUrl: 'app/reports/system_events/se.html',
+            controller: 'system_events',
+            displayName: "Reports > System Events"
 
         })
-         
+        .state('app.reports_jobs', {
+            url: '/jobs',
+            templateUrl: 'app/reports/jobs/jobs.html',
+            controller: 'reports_jobs',
+            displayName: "Reports > Jobs"
 
+        })
+        .state('app.reports_emails', {
+            url: '/emails',
+            templateUrl: 'app/reports/email/email.html',
+            controller: 'reports_emails',
+            displayName: "Reports > Emails"
 
-})
+        })
 
+    .state('app.settings', {
+        url: '/settings',
+        templateUrl: 'app/settings/settings.html',
+        controller: 'settings',
+        controllerAs: 'ctrl',
+        displayName: "Settings"
+
+    })
+
+});

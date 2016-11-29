@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
 <center>
-    <div ng-cloak flex-gt-lg="95" md-whiteframe="7" class="sanitization-table-holder">
+    <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
             <table md-table md-progress=" get_data" class="sanitization-table" ng-model="selected">
                 <thead md-head class="santization-head" md-order="query.order">
@@ -10,7 +10,7 @@
                                 <md-icon md-svg-src="icons/filter.svg"></md-icon>
                             </md-button>
                         </th>
-                        <th md-column md-order-by="StartTime"><span>Start Time {{f_q}}</span></th>
+                        <th md-column md-order-by="StartTime"><span>Start Time</span></th>
                         <th md-column md-numeric md-order-by="Duration"><span>Duration</span></th>
                         <th md-column md-order-by="User">User</th>
                         <th md-column>File Name</th>
@@ -42,7 +42,6 @@
             </table>
         </md-table-container>
         <md-table-pagination md-limit="query.PageSize" md-limit-options="limitOptions" md-page="query.PageIndex" md-total="{{total_length}}"
-            md-page-select=" options.pageSelect" md-boundary-links=" options.boundaryLinks"></md-table-pagination>
+            md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></md-table-pagination>
     </div>
 </center>
-

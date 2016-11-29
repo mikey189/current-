@@ -2,7 +2,7 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
 
     return {
         checkLogin: function (username, password) {
-            var url = $rootScope.url + "/api/users/login";
+            var url = "http://jdev01:4580/api/users/login";
 
             return $http({
                 headers: {
@@ -428,4 +428,27 @@ app.factory("telerik_reports_factory", function ($http) {
     }
 })
 
-
+app.factory("system_events_factory", function ($http) {
+    var base_url = "http://jdev01:4580/api/Report/GetSystemNotifications?"
+    return {
+        get_system_events: function (index, size) {
+            return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size)
+        }
+    }
+})
+app.factory("jobs_factory", function($http){
+    var base_url = "http://jdev01:4580/api/report/GetSanitizationJobs?"
+    return {
+        get_jobs: function(index, size, order){
+            return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+        }
+    }
+})
+app.factory("emails_factory", function($http){
+    var base_url = "http://jdev01/api/report/GetEmailSanitizations"
+    return {
+        get_emails: function(index, size, order){
+            return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+        }
+    }
+})

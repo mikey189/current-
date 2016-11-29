@@ -22,4 +22,28 @@ app.controller('settings', function (system_properties) {
       console.log(err);
     })
   }
+
 })
+
+/*app.filter("int_convertor", function (number) {
+  function isNumeric(number) {
+    return (!isNaN(parseFloat(number)) && isFinite(number));
+  }
+  return function (inputNumber) {
+    console.log(inputNumber)
+    var result = isNumeric(inputNumber)
+    console.log(result)
+    if (result) {
+      console.log("translating to int")
+      return parseInt(number)
+    } else {
+      console.log("string")
+      return inputNumber
+    }
+  }
+});*/
+app.filter('num', function() {
+    return function(input) {
+      return parseInt(input, 10);
+    };
+});

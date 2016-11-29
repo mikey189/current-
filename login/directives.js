@@ -9,23 +9,33 @@ app.directive("loginButton", function () {
     }
 })
 
-app.directive("checkCredentials", ["authService", "$rootScope", "$http", function (authService, $rootScope, $http) {
+app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state", function (authService, $rootScope, $http, $state) {
     return {
         restrict: "A",
-        priority: 1000,
         link: function (scope, element, attrs) {
             element.click(function () {
+                var username = $("#username")
+                var password = $("#password")
                 scope.ctrl.defaultUrl = "http://" + scope.ctrl.server + ":4580"
                 $rootScope.url = scope.ctrl.defaultUrl;
-
                 authService.checkLogin(scope.ctrl.username,
-                    scope.ctrl.password).then(function (answer) {
-                    var token = answer.data.AccessToken
-                    $http.defaults.headers.common['Authorization'];
-                    $http.defaults.headers.common['Authorization'] = token;
-                })
+                        scope.ctrl.password)
+                    //first function handles success
+                    .then(function (answer) {
+                            console.log("token : " + answer.AccessToken)
+                            $rootScope.token = answer.AccessToken;
+                            $http.defaults.headers.common['Authorization'] = $rootScope.token;
+                            $state.go("app.dashboard")
+                        },
+                        //second function handles error
+                        function (error) {
+                            username.addClass("error animated shake")
+                            password.addClass("error animated shake")
+                            scope.ctrl.is_login_nahon = false
+                        })
 
             })
+
         }
     }
-}])
+}]);

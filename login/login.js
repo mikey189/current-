@@ -2,7 +2,7 @@ app.controller("login",["$rootScope", "authService", function ($rootScope, authS
 
     var self = this;
     
-    self.server;
+    self.is_login_nahon = true
 
    
   

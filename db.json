@@ -1,2115 +1,1782 @@
 {
-    "channels": [
-        {
-            "id": 1,
-            "name": "Endpoint",
-            "description": "Watches all XLS files received through the Endpoint channel",
-            "channelTypeName": "API",
-            "channelTypeIcon": "icons/ncApi.svg"
-    },
-        {
-            "name": "API Calls C# Team",
-            "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
-            "channelTypeName": "API",
-            "channelTypeIconUrl": "icons/ncApi.svg",
-            "id": 2
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg"
+    "channels": [{
+        "id": 1,
+        "name": "Endpoint",
+        "description": "Watches all XLS files received through the Endpoint channel",
+        "channelTypeName": "API",
+        "channelTypeIcon": "icons/ncApi.svg"
+    }, {
+        "name": "API Calls C# Team",
+        "description": "This channel watches all XLS files downloaded through API calls for the C# engineering team",
+        "channelTypeName": "API",
+        "channelTypeIconUrl": "icons/ncApi.svg",
+        "id": 2
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg"
+        },
+        "inputSettings": {
+            "type": "my documents",
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "outputSettings": {
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "id": 3
+    }, {
+        "generalInformations": {
+            "name": "Name of the channel",
+            "description": "desc of the channel",
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg"
+        },
+        "inputSettings": {
+            "type": "my documents",
+            "rootFolder": "root folder",
+            "speedLimit": {
+                "size": 3456,
+                "unit": "GB"
             },
-            "inputSettings": {
-                "type": "my documents",
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
+            "userQuota": {
+                "size": 34567,
+                "unit": "MB"
             },
-            "outputSettings": {
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
+            "hoursToKeep": 345678,
+            "permissions": "Write",
+            "useRelay": true,
+            "overwriteExistingFiles": true,
+            "createZIP": true,
+            "mediaBurn": {
+                "state": true,
+                "path": "zerthrjf"
+            }
+        },
+        "outputSettings": {
+            "type": "fixed drives",
+            "rootFolder": "sdfbsfgdnfh.c",
+            "speedLimit": {
+                "size": 4567,
+                "unit": "Bytes"
             },
-            "id": 3
-    },
-        {
-            "generalInformations": {
-                "name": "Name of the channel",
-                "description": "desc of the channel",
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg"
+            "userQuota": {
+                "size": 345678,
+                "unit": "GB"
             },
-            "inputSettings": {
-                "type": "my documents",
+            "hoursToKeep": 345678,
+            "permissions": "Write",
+            "useRelay": true,
+            "overwriteExistingFiles": true,
+            "createZIP": true,
+            "mediaBurn": {
+                "state": true,
+                "path": "qsdhbjvnlkfmblù"
+            }
+        },
+        "id": 4
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg"
+        },
+        "inputSettings": {
+            "type": "my documents",
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "outputSettings": {
+            "type": "my documents",
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "id": 5
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg"
+        },
+        "inputSettings": {
+            "type": "endpoint",
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "outputSettings": {
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "id": 6
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg"
+        },
+        "inputSettings": {
+            "type": "endpoint",
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "outputSettings": {
+            "speedLimit": {},
+            "userQuota": {},
+            "mediaBurn": {}
+        },
+        "id": 7
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg",
+            "useAsRelay": false
+        },
+        "inputsAndOutputs": {
+            "selectedInputs": [{
+                "input": "cd-rom",
+                "isActive": true
+            }, {
+                "input": "my documents",
+                "isActive": true
+            }, {
+                "input": "fixed drives",
+                "isActive": true
+            }],
+            "selectedOutputs": [{
+                "output": "cd-rom",
+                "isActive": true
+            }, {
+                "output": "my documents",
+                "isActive": true
+            }, {
+                "output": "fixed drives",
+                "isActive": true
+            }],
+            "iSMB": [{
+                "name": "SMBName for inuts",
                 "rootFolder": "root folder",
                 "speedLimit": {
-                    "size": 3456,
+                    "value": 4567,
                     "unit": "GB"
                 },
                 "userQuota": {
-                    "size": 34567,
-                    "unit": "MB"
+                    "unit": "MB",
+                    "value": 5678
                 },
-                "hoursToKeep": 345678,
-                "permissions": "Write",
-                "useRelay": true,
-                "overwriteExistingFiles": true,
-                "createZIP": true,
-                "mediaBurn": {
-                    "state": true,
-                    "path": "zerthrjf"
-                }
-            },
-            "outputSettings": {
-                "type": "fixed drives",
-                "rootFolder": "sdfbsfgdnfh.c",
+                "hoursToKeep": 5678,
+                "folderPermissions": "Write",
+                "useRelay": "Relay NC 2",
+                "overWriteExistingFile": true,
+                "createZIPFile": true
+            }],
+            "oSMB": [{
+                "name": "GFHGCJH",
+                "rootFolder": "HGJKLJM",
                 "speedLimit": {
-                    "size": 4567,
+                    "value": 45678
+                },
+                "sppedLimit": {
                     "unit": "Bytes"
                 },
                 "userQuota": {
-                    "size": 345678,
-                    "unit": "GB"
+                    "unit": "MB",
+                    "value": 6789
                 },
-                "hoursToKeep": 345678,
-                "permissions": "Write",
-                "useRelay": true,
-                "overwriteExistingFiles": true,
-                "createZIP": true,
-                "mediaBurn": {
-                    "state": true,
-                    "path": "qsdhbjvnlkfmblù"
-                }
-            },
-            "id": 4
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg"
-            },
-            "inputSettings": {
-                "type": "my documents",
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "outputSettings": {
-                "type": "my documents",
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "id": 5
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg"
-            },
-            "inputSettings": {
-                "type": "endpoint",
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "outputSettings": {
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "id": 6
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg"
-            },
-            "inputSettings": {
-                "type": "endpoint",
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "outputSettings": {
-                "speedLimit": {},
-                "userQuota": {},
-                "mediaBurn": {}
-            },
-            "id": 7
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg",
-                "useAsRelay": false
-            },
-            "inputsAndOutputs": {
-                "selectedInputs": [
-                    {
-                        "input": "cd-rom",
-                        "isActive": true
-          },
-                    {
-                        "input": "my documents",
-                        "isActive": true
-          },
-                    {
-                        "input": "fixed drives",
-                        "isActive": true
-          }
-        ],
-                "selectedOutputs": [
-                    {
-                        "output": "cd-rom",
-                        "isActive": true
-          },
-                    {
-                        "output": "my documents",
-                        "isActive": true
-          },
-                    {
-                        "output": "fixed drives",
-                        "isActive": true
-          }
-        ],
-                "iSMB": [
-                    {
-                        "name": "SMBName for inuts",
-                        "rootFolder": "root folder",
-                        "speedLimit": {
-                            "value": 4567,
-                            "unit": "GB"
-                        },
-                        "userQuota": {
-                            "unit": "MB",
-                            "value": 5678
-                        },
-                        "hoursToKeep": 5678,
-                        "folderPermissions": "Write",
-                        "useRelay": "Relay NC 2",
-                        "overWriteExistingFile": true,
-                        "createZIPFile": true
-          }
-        ],
-                "oSMB": [
-                    {
-                        "name": "GFHGCJH",
-                        "rootFolder": "HGJKLJM",
-                        "speedLimit": {
-                            "value": 45678
-                        },
-                        "sppedLimit": {
-                            "unit": "Bytes"
-                        },
-                        "userQuota": {
-                            "unit": "MB",
-                            "value": 6789
-                        },
-                        "hoursToKeep": 67890,
-                        "folderPermissions": "Write",
-                        "useRelay": "Endpoint Output Relay 1",
-                        "overWriteExistingFile": true,
-                        "createZIPFile": true
-          }
-        ]
-            },
-            "computerList": [
-        "sylvia workman",
-        "wright osborn",
-        "candace colon",
-        "marsha sanders",
-        "elma osborne"
-      ],
-            "id": 8
-    },
-        {
-            "generalInformations": {
-                "name": "DJHQBEJRHPD£¨",
-                "description": "QSDSFDGH",
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg",
-                "useAsRelay": false
-            },
-            "inputsAndOutputs": {
-                "selectedInputs": [
-                    {
-                        "input": "my documents",
-                        "isActive": true
-          }
-        ],
-                "selectedOutputs": [
-                    {
-                        "output": "mobiles",
-                        "isActive": true
-          }
-        ],
-                "iSMB": [],
-                "oSMB": []
-            },
-            "computerList": [
-        "wright osborn",
-        "marsha sanders"
-      ],
-            "id": 9
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg",
-                "useAsRelay": false
-            },
-            "inputsAndOutputs": {
-                "selectedInputs": [],
-                "selectedOutputs": [],
-                "iSMB": [
-                    {}
-        ],
-                "oSMB": []
-            },
-            "computerList": [
-        "sylvia workman",
-        "josefina gibson",
-        "loretta oneil",
-        "heidi moore"
-      ],
-            "id": 10
-    },
-        {
-            "generalInformations": {
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg",
-                "useAsRelay": false
-            },
-            "inputsAndOutputs": {
-                "selectedInputs": [
-                    {
-                        "input": "my documents",
-                        "isActive": true
-          }
-        ],
-                "selectedOutputs": [],
-                "iSMB": [
-                    {}
-        ],
-                "oSMB": []
-            },
-            "computerList": [],
-            "id": 11
-    },
-        {
-            "generalInformations": {
-                "name": "new channel",
-                "description": "this si the description",
-                "channelTypeName": "endpoint",
-                "channelTypeIconUrl": "icons/ncEndpoint.svg",
-                "useAsRelay": true
-            },
-            "inputsAndOutputs": {
-                "selectedInputs": [
-                    {
-                        "input": "cd-rom",
-                        "isActive": true
-          },
-                    {
-                        "input": "my documents",
-                        "isActive": true
-          },
-                    {
-                        "input": "mobiles",
-                        "isActive": true
-          }
-        ],
-                "selectedOutputs": [
-                    {
-                        "output": "my documents",
-                        "isActive": true
-          },
-                    {
-                        "output": "fixed drives",
-                        "isActive": true
-          }
-        ],
-                "iSMB": [
-                    {
-                        "name": ""
-          },
-                    {},
-                    {},
-                    {}
-        ],
-                "oSMB": [
-                    {},
-                    {}
-        ]
-            },
-            "computerList": [
-        "wright osborn"
-      ],
-            "id": 12
-    }
-  ],
-    "channelsIcons": [
-        {
-            "icon": "icons/ncEndpoint.svg",
-            "name": "Endpoint"
-    },
-        {
-            "icon": "icons/ncEmail.svg",
-            "name": "Mail"
-    },
-        {
-            "icon": "icons/ncStation.svg",
-            "name": "Kiosk"
-    },
-        {
-            "icon": "icons/ncDirWatcher.svg",
-            "name": "Directory Watcher"
-    },
-        {
-            "icon": "icons/ncIcap.svg",
-            "name": "ICAP"
-    },
-        {
-            "icon": "icons/ncApi.svg",
-            "name": "API"
-    }
-  ],
-    "input_output_list": [
-        {
-            "inputs": [
-                {
-                    "name": "CD-ROM",
-                    "icon": "ncCDROM.svg"
+                "hoursToKeep": 67890,
+                "folderPermissions": "Write",
+                "useRelay": "Endpoint Output Relay 1",
+                "overWriteExistingFile": true,
+                "createZIPFile": true
+            }]
         },
-                {
-                    "name": "Documents",
-                    "icon": "ncMyDocuments.svg"
+        "computerList": [
+            "sylvia workman",
+            "wright osborn",
+            "candace colon",
+            "marsha sanders",
+            "elma osborne"
+        ],
+        "id": 8
+    }, {
+        "generalInformations": {
+            "name": "DJHQBEJRHPD£¨",
+            "description": "QSDSFDGH",
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg",
+            "useAsRelay": false
         },
-                {
-                    "name": "Fixed Drives",
-                    "icon": "ncFixedDrives.svg"
+        "inputsAndOutputs": {
+            "selectedInputs": [{
+                "input": "my documents",
+                "isActive": true
+            }],
+            "selectedOutputs": [{
+                "output": "mobiles",
+                "isActive": true
+            }],
+            "iSMB": [],
+            "oSMB": []
         },
-                {
-                    "name": "Removable",
-                    "icon": "ncRemovable.svg"
+        "computerList": [
+            "wright osborn",
+            "marsha sanders"
+        ],
+        "id": 9
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg",
+            "useAsRelay": false
         },
-                {
-                    "name": "Mobiles",
-                    "icon": "ncMobileDevices.svg"
-        }
-               
-               ],
-
-            "outputs": [
-                {
-                    "name": "CD-ROM",
-                    "icon": "ncCDROM.svg"
+        "inputsAndOutputs": {
+            "selectedInputs": [],
+            "selectedOutputs": [],
+            "iSMB": [{}],
+            "oSMB": []
         },
-                {
-                    "name": "Documents",
-                    "icon": "ncMyDocuments.svg"
+        "computerList": [
+            "sylvia workman",
+            "josefina gibson",
+            "loretta oneil",
+            "heidi moore"
+        ],
+        "id": 10
+    }, {
+        "generalInformations": {
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg",
+            "useAsRelay": false
         },
-                {
-                    "name": "Fixed Drives",
-                    "icon": "ncFixedDrives.svg"
+        "inputsAndOutputs": {
+            "selectedInputs": [{
+                "input": "my documents",
+                "isActive": true
+            }],
+            "selectedOutputs": [],
+            "iSMB": [{}],
+            "oSMB": []
         },
-                {
-                    "name": "Removable",
-                    "icon": "ncRemovable.svg"
+        "computerList": [],
+        "id": 11
+    }, {
+        "generalInformations": {
+            "name": "new channel",
+            "description": "this si the description",
+            "channelTypeName": "endpoint",
+            "channelTypeIconUrl": "icons/ncEndpoint.svg",
+            "useAsRelay": true
         },
-                {
-                    "name": "Mobiles",
-                    "icon": "ncMobileDevices.svg"
-        }
-
-  ]
+        "inputsAndOutputs": {
+            "selectedInputs": [{
+                "input": "cd-rom",
+                "isActive": true
+            }, {
+                "input": "my documents",
+                "isActive": true
+            }, {
+                "input": "mobiles",
+                "isActive": true
+            }],
+            "selectedOutputs": [{
+                "output": "my documents",
+                "isActive": true
+            }, {
+                "output": "fixed drives",
+                "isActive": true
+            }],
+            "iSMB": [{
+                "name": ""
+            }, {}, {}, {}],
+            "oSMB": [{}, {}]
+        },
+        "computerList": [
+            "wright osborn"
+        ],
+        "id": 12
     }],
-    "dashboardInputs": [
-        {
-            "name": "Email",
-            "iconURL": "icons/ncEmail.svg",
-            "lowComplexity": 34,
-            "manyFiles": 30,
-            "highComplexity": 36,
-            "total": "1,458"
-    },
-        {
-            "name": "Endpoint",
-            "iconURL": "icons/ncEndpoint.svg",
-            "lowComplexity": 31,
-            "manyFiles": 27,
-            "highComplexity": 42,
-            "total": "555"
-    },
-        {
-            "name": "Cloud Mail",
-            "iconURL": "icons/ncEmail.svg",
-            "lowComplexity": 30,
-            "manyFiles": 27,
-            "highComplexity": 43,
-            "total": "1,329"
-    },
-        {
-            "name": "ScanStation",
-            "iconURL": "icons/ncStation.svg",
-            "lowComplexity": 30,
-            "manyFiles": 25,
-            "highComplexity": 45,
-            "total": "2,890"
-    },
-        {
-            "name": "ScanStation 2",
-            "iconURL": "icons/ncStation.svg",
-            "lowComplexity": 35,
-            "manyFiles": 34,
-            "highComplexity": 31,
-            "total": "988"
-    },
-        {
-            "name": "ICAP",
-            "iconURL": "icons/ncIcap.svg",
-            "lowComplexity": 43,
-            "manyFiles": 25,
-            "highComplexity": 32,
-            "total": "1,236"
-    },
-        {
-            "name": "API",
-            "iconURL": "icons/ncApi.svg",
-            "lowComplexity": 40,
-            "manyFiles": 33,
-            "highComplexity": 27,
-            "total": "1,717"
-    },
-        {
-            "name": "WEB",
-            "iconURL": "icons/ncNetworks.svg",
-            "lowComplexity": 30,
-            "manyFiles": 40,
-            "highComplexity": 30,
-            "total": "324"
-    },
-        {
-            "name": "Directory Watcher",
-            "iconURL": "icons/ncDirWatcher.svg",
-            "lowComplexity": 34,
-            "manyFiles": 23,
-            "highComplexity": 43,
-            "total": "1,908"
-    },
-        {
-            "name": "Email",
-            "iconURL": "icons/ncEmail.svg",
-            "lowComplexity": 34,
-            "manyFiles": 20,
-            "highComplexity": 46,
-            "total": "722"
-    },
-        {
-            "name": "Endpoint",
-            "iconURL": "icons/ncEndpoint.svg",
-            "lowComplexity": 20,
-            "manyFiles": 20,
-            "highComplexity": 60,
-            "total": "1,789"
-    },
-        {
-            "name": "Cloud Mail",
-            "iconURL": "icons/ncEmail.svg",
-            "lowComplexity": 30,
-            "manyFiles": 27,
-            "highComplexity": 43,
-            "total": "1,619"
-    },
-        {
-            "name": "ScanStation",
-            "iconURL": "icons/ncStation.svg",
-            "lowComplexity": 20,
-            "manyFiles": 25,
-            "highComplexity": 55,
-            "total": "880"
-    },
-        {
-            "name": "ScanStation 2",
-            "iconURL": "icons/ncStation.svg",
-            "lowComplexity": 35,
-            "manyFiles": 34,
-            "highComplexity": 31,
-            "total": "551"
-    },
-        {
-            "name": "ICAP",
-            "iconURL": "icons/ncIcap.svg",
-            "lowComplexity": 43,
-            "manyFiles": 25,
-            "highComplexity": 32,
-            "total": "343"
-    },
-        {
-            "name": "API",
-            "iconURL": "icons/ncApi.svg",
-            "lowComplexity": 20,
-            "manyFiles": 33,
-            "highComplexity": 47,
-            "total": "982"
-    },
-        {
-            "name": "WEB",
-            "iconURL": "icons/ncNetworks.svg",
-            "lowComplexity": 30,
-            "manyFiles": 40,
-            "highComplexity": 30,
-            "total": "670"
-    },
-        {
-            "name": "Directory Watcher",
-            "iconURL": "icons/ncDirWatcher.svg",
-            "lowComplexity": 34,
-            "manyFiles": 23,
-            "highComplexity": 43,
-            "total": "457"
-    }
-  ],
-    "dashboardTotalInputs": [
-        {
-            "total": "3,458",
-            "time": "00:23:17"
-    },
-        {
-            "total": "8,690",
-            "time": "01:39:05"
-    },
-        {
-            "total": "1,780",
-            "time": "00:03:41"
-    }
-  ],
-    "dashboardOutputs": [
-        {
-            "name": "Email",
-            "iconURL": "icons/ncEmail.svg",
-            "blocked": "345",
-            "passed": "209",
-            "modified": "108",
-            "total": "662"
-    },
-        {
-            "name": "Endpoint",
-            "iconURL": "icons/ncEndpoint.svg",
-            "blocked": "207",
-            "passed": "22",
-            "modified": "321",
-            "total": "550"
-    },
-        {
-            "name": "Cloud Mail",
-            "iconURL": "icons/ncEmail.svg",
-            "blocked": "189",
-            "passed": "654",
-            "modified": "230",
-            "total": "1073"
-    },
-        {
-            "name": "Scan Station",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "45",
-            "passed": "722",
-            "modified": "31",
-            "total": "798"
-    },
-        {
-            "name": "Scan Station",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "107",
-            "passed": "801",
-            "modified": "67",
-            "total": "975"
-    },
-        {
-            "name": "Scan Station 2",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "30",
-            "passed": "64",
-            "modified": "109",
-            "total": "203"
-    },
-        {
-            "name": "ICAP",
-            "iconURL": "icons/ncIcap.svg",
-            "blocked": "345",
-            "passed": "468",
-            "modified": "109",
-            "total": "922"
-    },
-        {
-            "name": "API",
-            "iconURL": "icons/ncApi.svg",
-            "blocked": "328",
-            "passed": "1798",
-            "modified": "983",
-            "total": "3109"
-    },
-        {
-            "name": "Directory Watcher",
-            "iconURL": "icons/ncDirWatcher.svg",
-            "blocked": "129",
-            "passed": "802",
-            "modified": "53",
-            "total": "984"
-    },
-        {
-            "name": "Email",
-            "iconURL": "icons/ncEmail.svg",
-            "blocked": "345",
-            "passed": "209",
-            "modified": "108",
-            "total": "662"
-    },
-        {
-            "name": "Endpoint",
-            "iconURL": "icons/ncEndpoint.svg",
-            "blocked": "207",
-            "passed": "22",
-            "modified": "321",
-            "total": "550"
-    },
-        {
-            "name": "Cloud Mail",
-            "iconURL": "icons/ncEmail.svg",
-            "blocked": "189",
-            "passed": "654",
-            "modified": "230",
-            "total": "1073"
-    },
-        {
-            "name": "Scan Station",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "45",
-            "passed": "722",
-            "modified": "31",
-            "total": "798"
-    },
-        {
-            "name": "Scan Station",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "107",
-            "passed": "801",
-            "modified": "67",
-            "total": "975"
-    },
-        {
-            "name": "Scan Station 2",
-            "iconURL": "icons/ncStation.svg",
-            "blocked": "30",
-            "passed": "64",
-            "modified": "109",
-            "total": "203"
-    },
-        {
-            "name": "ICAP",
-            "iconURL": "icons/ncIcap.svg",
-            "blocked": "345",
-            "passed": "468",
-            "modified": "109",
-            "total": "922"
-    },
-        {
-            "name": "API",
-            "iconURL": "icons/ncApi.svg",
-            "blocked": "328",
-            "passed": "1798",
-            "modified": "983",
-            "total": "3109"
-    },
-        {
-            "name": "Directory Watcher",
-            "iconURL": "icons/ncDirWatcher.svg",
-            "blocked": "129",
-            "passed": "802",
-            "modified": "53",
-            "total": "984"
-    }
-  ],
-    "policyDefinition": [
-        {
-            "name": "WINDOWS",
-            "exec": [
-        "EXE"
-      ]
-    },
-        {
-            "name": "MAC",
-            "exec": [
-        "DMG",
-        "APP"
-      ]
-    },
-        {
-            "name": "JAVA",
-            "exec": [
-        "JAR"
-      ]
-    },
-        {
-            "name": "LINUX",
-            "exec": [
-        "SH",
-        "DEB",
-        "KO",
-        "RPM",
-        ".PY"
-      ]
-    }
-  ],
-    "policyDescriptionToolip": [
-        {
-            "name": "Process embedeed Files",
-            "description": "Check this box if you want to do any processing on embbeded files"
-    },
-        {
-            "name": "Size Limit",
-            "description": "Set a size limit for the executable"
-    },
-        {
-            "name": "Sandbox",
-            "description": "Use sandbox default processes for the executable"
-    }
-  ],
-    "activeUsers": [
-        {
-            "name": "David Zaffran",
-            "team": "Finance"
-    },
-        {
-            "name": "Laureen Hazan",
-            "team": "Marketing"
-    },
-        {
-            "name": "Deborah Touati",
-            "team": "Marketing"
-    },
-        {
-            "name": "Benjamin Fedida",
-            "team": "Sales"
-    },
-        {
-            "name": "David Lafond",
-            "team": "Sales"
-    },
-        {
-            "name": "Haim Sebbag",
-            "team": "Accounting"
-    },
-        {
-            "name": "Jonathan Oliel",
-            "team": "Accounting"
-    },
-        {
-            "name": "Alex Zarouk",
-            "team": "Developement"
-    },
-        {
-            "name": "Maude Gawsewitch",
-            "team": "Marketing"
-    },
-        {
-            "name": "Abigail Avery",
-            "team": "Communication"
-    },
-        {
-            "name": "Liam Kerr",
-            "team": "CPA"
-    },
-        {
-            "name": "Marshall Mathis",
-            "team": "HR"
-    },
-        {
-            "name": "Vance Vaughan",
-            "team": "HR"
-    },
-        {
-            "name": "Perte Raul",
-            "team": "Design"
-    },
-        {
-            "name": "Sebastian Dobtincu",
-            "team": "iOS"
-    },
-        {
-            "name": "Ranush Villerd",
-            "team": "Android"
-    },
-        {
-            "name": "Gilfoy McMert",
-            "team": "Marketing"
-    },
-        {
-            "name": "Gregory House",
-            "team": "QA"
-    }
-  ],
+    "channelsIcons": [{
+        "icon": "icons/ncEndpoint.svg",
+        "name": "Endpoint"
+    }, {
+        "icon": "icons/ncEmail.svg",
+        "name": "Mail"
+    }, {
+        "icon": "icons/ncStation.svg",
+        "name": "Kiosk"
+    }, {
+        "icon": "icons/ncDirWatcher.svg",
+        "name": "Directory Watcher"
+    }, {
+        "icon": "icons/ncIcap.svg",
+        "name": "ICAP"
+    }, {
+        "icon": "icons/ncApi.svg",
+        "name": "API"
+    }],
+    "input_output_list": [{
+        "inputs": [{
+                "name": "CD-ROM",
+                "icon": "ncCDROM.svg"
+            }, {
+                "name": "Documents",
+                "icon": "ncMyDocuments.svg"
+            }, {
+                "name": "Fixed Drives",
+                "icon": "ncFixedDrives.svg"
+            }, {
+                "name": "Removable",
+                "icon": "ncRemovable.svg"
+            }, {
+                "name": "Mobiles",
+                "icon": "ncMobileDevices.svg"
+            }
+
+        ],
+
+        "outputs": [{
+                "name": "CD-ROM",
+                "icon": "ncCDROM.svg"
+            }, {
+                "name": "Documents",
+                "icon": "ncMyDocuments.svg"
+            }, {
+                "name": "Fixed Drives",
+                "icon": "ncFixedDrives.svg"
+            }, {
+                "name": "Removable",
+                "icon": "ncRemovable.svg"
+            }, {
+                "name": "Mobiles",
+                "icon": "ncMobileDevices.svg"
+            }
+
+        ]
+    }],
+    "dashboardInputs": [{
+        "name": "Email",
+        "iconURL": "icons/ncEmail.svg",
+        "lowComplexity": 34,
+        "manyFiles": 30,
+        "highComplexity": 36,
+        "total": "1,458"
+    }, {
+        "name": "Endpoint",
+        "iconURL": "icons/ncEndpoint.svg",
+        "lowComplexity": 31,
+        "manyFiles": 27,
+        "highComplexity": 42,
+        "total": "555"
+    }, {
+        "name": "Cloud Mail",
+        "iconURL": "icons/ncEmail.svg",
+        "lowComplexity": 30,
+        "manyFiles": 27,
+        "highComplexity": 43,
+        "total": "1,329"
+    }, {
+        "name": "ScanStation",
+        "iconURL": "icons/ncStation.svg",
+        "lowComplexity": 30,
+        "manyFiles": 25,
+        "highComplexity": 45,
+        "total": "2,890"
+    }, {
+        "name": "ScanStation 2",
+        "iconURL": "icons/ncStation.svg",
+        "lowComplexity": 35,
+        "manyFiles": 34,
+        "highComplexity": 31,
+        "total": "988"
+    }, {
+        "name": "ICAP",
+        "iconURL": "icons/ncIcap.svg",
+        "lowComplexity": 43,
+        "manyFiles": 25,
+        "highComplexity": 32,
+        "total": "1,236"
+    }, {
+        "name": "API",
+        "iconURL": "icons/ncApi.svg",
+        "lowComplexity": 40,
+        "manyFiles": 33,
+        "highComplexity": 27,
+        "total": "1,717"
+    }, {
+        "name": "WEB",
+        "iconURL": "icons/ncNetworks.svg",
+        "lowComplexity": 30,
+        "manyFiles": 40,
+        "highComplexity": 30,
+        "total": "324"
+    }, {
+        "name": "Directory Watcher",
+        "iconURL": "icons/ncDirWatcher.svg",
+        "lowComplexity": 34,
+        "manyFiles": 23,
+        "highComplexity": 43,
+        "total": "1,908"
+    }, {
+        "name": "Email",
+        "iconURL": "icons/ncEmail.svg",
+        "lowComplexity": 34,
+        "manyFiles": 20,
+        "highComplexity": 46,
+        "total": "722"
+    }, {
+        "name": "Endpoint",
+        "iconURL": "icons/ncEndpoint.svg",
+        "lowComplexity": 20,
+        "manyFiles": 20,
+        "highComplexity": 60,
+        "total": "1,789"
+    }, {
+        "name": "Cloud Mail",
+        "iconURL": "icons/ncEmail.svg",
+        "lowComplexity": 30,
+        "manyFiles": 27,
+        "highComplexity": 43,
+        "total": "1,619"
+    }, {
+        "name": "ScanStation",
+        "iconURL": "icons/ncStation.svg",
+        "lowComplexity": 20,
+        "manyFiles": 25,
+        "highComplexity": 55,
+        "total": "880"
+    }, {
+        "name": "ScanStation 2",
+        "iconURL": "icons/ncStation.svg",
+        "lowComplexity": 35,
+        "manyFiles": 34,
+        "highComplexity": 31,
+        "total": "551"
+    }, {
+        "name": "ICAP",
+        "iconURL": "icons/ncIcap.svg",
+        "lowComplexity": 43,
+        "manyFiles": 25,
+        "highComplexity": 32,
+        "total": "343"
+    }, {
+        "name": "API",
+        "iconURL": "icons/ncApi.svg",
+        "lowComplexity": 20,
+        "manyFiles": 33,
+        "highComplexity": 47,
+        "total": "982"
+    }, {
+        "name": "WEB",
+        "iconURL": "icons/ncNetworks.svg",
+        "lowComplexity": 30,
+        "manyFiles": 40,
+        "highComplexity": 30,
+        "total": "670"
+    }, {
+        "name": "Directory Watcher",
+        "iconURL": "icons/ncDirWatcher.svg",
+        "lowComplexity": 34,
+        "manyFiles": 23,
+        "highComplexity": 43,
+        "total": "457"
+    }],
+    "dashboardTotalInputs": [{
+        "total": "3,458",
+        "time": "00:23:17"
+    }, {
+        "total": "8,690",
+        "time": "01:39:05"
+    }, {
+        "total": "1,780",
+        "time": "00:03:41"
+    }],
+    "dashboardOutputs": [{
+        "name": "Email",
+        "iconURL": "icons/ncEmail.svg",
+        "blocked": "345",
+        "passed": "209",
+        "modified": "108",
+        "total": "662"
+    }, {
+        "name": "Endpoint",
+        "iconURL": "icons/ncEndpoint.svg",
+        "blocked": "207",
+        "passed": "22",
+        "modified": "321",
+        "total": "550"
+    }, {
+        "name": "Cloud Mail",
+        "iconURL": "icons/ncEmail.svg",
+        "blocked": "189",
+        "passed": "654",
+        "modified": "230",
+        "total": "1073"
+    }, {
+        "name": "Scan Station",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "45",
+        "passed": "722",
+        "modified": "31",
+        "total": "798"
+    }, {
+        "name": "Scan Station",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "107",
+        "passed": "801",
+        "modified": "67",
+        "total": "975"
+    }, {
+        "name": "Scan Station 2",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "30",
+        "passed": "64",
+        "modified": "109",
+        "total": "203"
+    }, {
+        "name": "ICAP",
+        "iconURL": "icons/ncIcap.svg",
+        "blocked": "345",
+        "passed": "468",
+        "modified": "109",
+        "total": "922"
+    }, {
+        "name": "API",
+        "iconURL": "icons/ncApi.svg",
+        "blocked": "328",
+        "passed": "1798",
+        "modified": "983",
+        "total": "3109"
+    }, {
+        "name": "Directory Watcher",
+        "iconURL": "icons/ncDirWatcher.svg",
+        "blocked": "129",
+        "passed": "802",
+        "modified": "53",
+        "total": "984"
+    }, {
+        "name": "Email",
+        "iconURL": "icons/ncEmail.svg",
+        "blocked": "345",
+        "passed": "209",
+        "modified": "108",
+        "total": "662"
+    }, {
+        "name": "Endpoint",
+        "iconURL": "icons/ncEndpoint.svg",
+        "blocked": "207",
+        "passed": "22",
+        "modified": "321",
+        "total": "550"
+    }, {
+        "name": "Cloud Mail",
+        "iconURL": "icons/ncEmail.svg",
+        "blocked": "189",
+        "passed": "654",
+        "modified": "230",
+        "total": "1073"
+    }, {
+        "name": "Scan Station",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "45",
+        "passed": "722",
+        "modified": "31",
+        "total": "798"
+    }, {
+        "name": "Scan Station",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "107",
+        "passed": "801",
+        "modified": "67",
+        "total": "975"
+    }, {
+        "name": "Scan Station 2",
+        "iconURL": "icons/ncStation.svg",
+        "blocked": "30",
+        "passed": "64",
+        "modified": "109",
+        "total": "203"
+    }, {
+        "name": "ICAP",
+        "iconURL": "icons/ncIcap.svg",
+        "blocked": "345",
+        "passed": "468",
+        "modified": "109",
+        "total": "922"
+    }, {
+        "name": "API",
+        "iconURL": "icons/ncApi.svg",
+        "blocked": "328",
+        "passed": "1798",
+        "modified": "983",
+        "total": "3109"
+    }, {
+        "name": "Directory Watcher",
+        "iconURL": "icons/ncDirWatcher.svg",
+        "blocked": "129",
+        "passed": "802",
+        "modified": "53",
+        "total": "984"
+    }],
+    "policyDefinition": [{
+        "name": "WINDOWS",
+        "exec": [
+            "EXE"
+        ]
+    }, {
+        "name": "MAC",
+        "exec": [
+            "DMG",
+            "APP"
+        ]
+    }, {
+        "name": "JAVA",
+        "exec": [
+            "JAR"
+        ]
+    }, {
+        "name": "LINUX",
+        "exec": [
+            "SH",
+            "DEB",
+            "KO",
+            "RPM",
+            ".PY"
+        ]
+    }],
+    "policyDescriptionToolip": [{
+        "name": "Process embedeed Files",
+        "description": "Check this box if you want to do any processing on embbeded files"
+    }, {
+        "name": "Size Limit",
+        "description": "Set a size limit for the executable"
+    }, {
+        "name": "Sandbox",
+        "description": "Use sandbox default processes for the executable"
+    }],
+    "activeUsers": [{
+        "name": "David Zaffran",
+        "team": "Finance"
+    }, {
+        "name": "Laureen Hazan",
+        "team": "Marketing"
+    }, {
+        "name": "Deborah Touati",
+        "team": "Marketing"
+    }, {
+        "name": "Benjamin Fedida",
+        "team": "Sales"
+    }, {
+        "name": "David Lafond",
+        "team": "Sales"
+    }, {
+        "name": "Haim Sebbag",
+        "team": "Accounting"
+    }, {
+        "name": "Jonathan Oliel",
+        "team": "Accounting"
+    }, {
+        "name": "Alex Zarouk",
+        "team": "Developement"
+    }, {
+        "name": "Maude Gawsewitch",
+        "team": "Marketing"
+    }, {
+        "name": "Abigail Avery",
+        "team": "Communication"
+    }, {
+        "name": "Liam Kerr",
+        "team": "CPA"
+    }, {
+        "name": "Marshall Mathis",
+        "team": "HR"
+    }, {
+        "name": "Vance Vaughan",
+        "team": "HR"
+    }, {
+        "name": "Perte Raul",
+        "team": "Design"
+    }, {
+        "name": "Sebastian Dobtincu",
+        "team": "iOS"
+    }, {
+        "name": "Ranush Villerd",
+        "team": "Android"
+    }, {
+        "name": "Gilfoy McMert",
+        "team": "Marketing"
+    }, {
+        "name": "Gregory House",
+        "team": "QA"
+    }],
     "relayList": {
         "ismb": [
-      "Endpoint Relay",
-      "Relay NC 2",
-      "Relay IN 3"
-    ],
+            "Endpoint Relay",
+            "Relay NC 2",
+            "Relay IN 3"
+        ],
         "osmb": [
-      "Endpoint Output Relay 1",
-      "Relay NC 3",
-      "Relay Out 4"
-    ]
-    },
-    "userComputers": [
-        {
-            "name": "Sylvia Workman"
-    },
-        {
-            "name": "Wright Osborn"
-    },
-        {
-            "name": "Marsha Sanders"
-    },
-        {
-            "name": "Elma Osborne"
-    },
-        {
-            "name": "Candace Colon"
-    },
-        {
-            "name": "Josefina Gibson"
-    },
-        {
-            "name": "Hancock Eaton"
-    },
-        {
-            "name": "Loretta Oneil"
-    },
-        {
-            "name": "Nadine Moody"
-    },
-        {
-            "name": "Heidi Moore"
-    },
-        {
-            "name": "Nona Roberson"
-    },
-        {
-            "name": "Frazier Howe"
-    },
-        {
-            "name": "Hensley Mcclure"
-    },
-        {
-            "name": "Yang Peck"
-    },
-        {
-            "name": "Morrison Albert"
-    },
-        {
-            "name": "Olga Wong"
-    },
-        {
-            "name": "Tonia Hall"
-    },
-        {
-            "name": "Decker Mcfadden"
-    },
-        {
-            "name": "Mayo Valenzuela"
-    },
-        {
-            "name": "Joseph Farmer"
-    },
-        {
-            "name": "Mckee Nixon"
-    },
-        {
-            "name": "Manning Larson"
-    },
-        {
-            "name": "Socorro Fleming"
-    },
-        {
-            "name": "Mcintyre Olsen"
-    },
-        {
-            "name": "Jacobs Leblanc"
-    },
-        {
-            "name": "Hart Bartlett"
-    },
-        {
-            "name": "Jordan Moss"
-    },
-        {
-            "name": "Britney Hickman"
-    },
-        {
-            "name": "Jacklyn Snyder"
-    },
-        {
-            "name": "Flossie Lynn"
-    },
-        {
-            "name": "Leslie Waller"
-    },
-        {
-            "name": "Tillman Winters"
-    },
-        {
-            "name": "Penny Mclean"
-    },
-        {
-            "name": "Juana Conway"
-    },
-        {
-            "name": "Pansy Farrell"
-    },
-        {
-            "name": "Estela Walters"
-    },
-        {
-            "name": "Willis England"
-    },
-        {
-            "name": "Landry Mclaughlin"
-    },
-        {
-            "name": "Schwartz Pollard"
-    },
-        {
-            "name": "Young Battle"
-    },
-        {
-            "name": "Liz Emerson"
-    },
-        {
-            "name": "Savannah Benjamin"
-    },
-        {
-            "name": "Sampson Benson"
-    },
-        {
-            "name": "Aurelia Rutledge"
-    },
-        {
-            "name": "Russo Mccarthy"
-    },
-        {
-            "name": "Jeanette Jensen"
-    },
-        {
-            "name": "Billie Kramer"
-    },
-        {
-            "name": "Jan Young"
-    },
-        {
-            "name": "Larson Foley"
-    },
-        {
-            "name": "Alexandra Lewis"
-    },
-        {
-            "name": "Maxine Le"
-    },
-        {
-            "name": "Cecile Terry"
-    },
-        {
-            "name": "Dodson Strong"
-    },
-        {
-            "name": "Bobbi Wooten"
-    },
-        {
-            "name": "Walton Sandoval"
-    },
-        {
-            "name": "Eddie Rosa"
-    },
-        {
-            "name": "Marquez Richard"
-    }
-  ],
-    "policyList": [
-        {
-            "name": "Web High Priority",
-            "files": 234,
-            "users": 34,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 1
-    },
-        {
-            "name": "Web Low Priority",
-            "files": 31,
-            "users": 12,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 2
-    },
-        {
-            "name": "Mail High Privilegies",
-            "files": 27,
-            "users": 4,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 3
-    },
-        {
-            "name": "Mail Low Privilegies",
-            "files": 120,
-            "users": 8,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 4
-    },
-        {
-            "name": "C# Team Google Drive",
-            "files": 301,
-            "users": 72,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 5
-    },
-        {
-            "name": "iOS Team Local Drive",
-            "files": 561,
-            "users": 56,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 6
-    },
-        {
-            "name": "Sales Local Drive",
-            "files": 207,
-            "users": 22,
-            "channels": [
-                {
-                    "name": "Endpoint"
-        },
-                {
-                    "name": "Scanner"
-        },
-                {
-                    "name": "API"
-        }
-      ],
-            "id": 7
-    }
-  ],
-    "policyDetection": [
-        {
-            "id": 1
-    },
-        {
-            "avira": true,
-            "clam": true,
-            "id": 2
-    },
-        {
-            "id": 3
-    },
-        {
-            "id": 4
-    },
-        {
-            "avira": true,
-            "id": 5
-    },
-        {
-            "id": 6
-    },
-        {
-            "avira": true,
-            "clam": true,
-            "id": 7
-    }
-  ],
-    "policyOrder": [
-        {
-            "id": 1
-    },
-    [
-      3,
-      2,
-      1,
-      4,
-      7,
-      5,
-      6
-    ],
-    [
-      3,
-      2,
-      1,
-      4,
-      7,
-      6,
-      5
-    ],
-    [
-      7,
-      2,
-      1,
-      4,
-      5,
-      6,
-      3
-    ],
-    [
-      5,
-      2,
-      1,
-      4,
-      3,
-      6,
-      7
-    ]
-  ],
-    "dashboardSidebar": [
-        {
-            "caseID": 345,
-            "severity": "High",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-08-14",
-                "time": "10:00"
-            },
-            "closeTime": {
-                "date": "2016-08-17",
-                "time": "12:00"
-            },
-            "relatedUser": "Zohar Brande"
-    },
-        {
-            "caseID": 349,
-            "severity": "Low",
-            "status": "In Progress",
-            "openTime": {
-                "date": "2016-09-24",
-                "time": "11:34"
-            },
-            "closeTime": {
-                "date": "2016-09-27",
-                "time": "08:45"
-            },
-            "relatedUser": "Jonathan Meguira"
-    },
-        {
-            "caseID": 735,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-04",
-                "time": "09:24"
-            },
-            "closeTime": {
-                "date": "2016-10-05",
-                "time": "17:45"
-            },
-            "relatedUser": "John Malkinov"
-    },
-        {
-            "caseID": 129,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-11-01",
-                "time": "13:42"
-            },
-            "closeTime": {
-                "date": "2016-11-01",
-                "time": "18:07"
-            },
-            "relatedUser": "David Zaffran"
-    },
-        {
-            "caseID": 220,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-05",
-                "time": "11:10"
-            },
-            "closeTime": {
-                "date": "2016-10-05",
-                "time": "14:22"
-            },
-            "relatedUser": "Benjamin Fedida"
-    },
-        {
-            "caseID": 101,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-06",
-                "time": "11:26"
-            },
-            "closeTime": {
-                "date": "2016-10-06",
-                "time": "14:37"
-            },
-            "relatedUser": "David Oliel"
-    },
-        {
-            "caseID": 334,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-07",
-                "time": "12:14"
-            },
-            "closeTime": {
-                "date": "2016-10-07",
-                "time": "14:56"
-            },
-            "relatedUser": "Haim Sebag"
-    },
-        {
-            "caseID": 809,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-06",
-                "time": "13:23"
-            },
-            "closeTime": {
-                "date": "2016-10-06",
-                "time": "15:52"
-            },
-            "relatedUser": "Anaelle Safira"
-    },
-        {
-            "caseID": 108,
-            "severity": "Low",
-            "status": "Opened",
-            "openTime": {
-                "date": "2016-10-08",
-                "time": "16:20"
-            },
-            "closeTime": {
-                "date": "2016-10-08",
-                "time": "18:08"
-            },
-            "relatedUser": "William Kirk"
-    }
-  ],
-    "channelList": [
-        {
-            "icon": "icons/ncEndpoint.svg",
+            "Endpoint Output Relay 1",
+            "Relay NC 3",
+            "Relay Out 4"
+        ]
+    },
+    "userComputers": [{
+        "name": "Sylvia Workman"
+    }, {
+        "name": "Wright Osborn"
+    }, {
+        "name": "Marsha Sanders"
+    }, {
+        "name": "Elma Osborne"
+    }, {
+        "name": "Candace Colon"
+    }, {
+        "name": "Josefina Gibson"
+    }, {
+        "name": "Hancock Eaton"
+    }, {
+        "name": "Loretta Oneil"
+    }, {
+        "name": "Nadine Moody"
+    }, {
+        "name": "Heidi Moore"
+    }, {
+        "name": "Nona Roberson"
+    }, {
+        "name": "Frazier Howe"
+    }, {
+        "name": "Hensley Mcclure"
+    }, {
+        "name": "Yang Peck"
+    }, {
+        "name": "Morrison Albert"
+    }, {
+        "name": "Olga Wong"
+    }, {
+        "name": "Tonia Hall"
+    }, {
+        "name": "Decker Mcfadden"
+    }, {
+        "name": "Mayo Valenzuela"
+    }, {
+        "name": "Joseph Farmer"
+    }, {
+        "name": "Mckee Nixon"
+    }, {
+        "name": "Manning Larson"
+    }, {
+        "name": "Socorro Fleming"
+    }, {
+        "name": "Mcintyre Olsen"
+    }, {
+        "name": "Jacobs Leblanc"
+    }, {
+        "name": "Hart Bartlett"
+    }, {
+        "name": "Jordan Moss"
+    }, {
+        "name": "Britney Hickman"
+    }, {
+        "name": "Jacklyn Snyder"
+    }, {
+        "name": "Flossie Lynn"
+    }, {
+        "name": "Leslie Waller"
+    }, {
+        "name": "Tillman Winters"
+    }, {
+        "name": "Penny Mclean"
+    }, {
+        "name": "Juana Conway"
+    }, {
+        "name": "Pansy Farrell"
+    }, {
+        "name": "Estela Walters"
+    }, {
+        "name": "Willis England"
+    }, {
+        "name": "Landry Mclaughlin"
+    }, {
+        "name": "Schwartz Pollard"
+    }, {
+        "name": "Young Battle"
+    }, {
+        "name": "Liz Emerson"
+    }, {
+        "name": "Savannah Benjamin"
+    }, {
+        "name": "Sampson Benson"
+    }, {
+        "name": "Aurelia Rutledge"
+    }, {
+        "name": "Russo Mccarthy"
+    }, {
+        "name": "Jeanette Jensen"
+    }, {
+        "name": "Billie Kramer"
+    }, {
+        "name": "Jan Young"
+    }, {
+        "name": "Larson Foley"
+    }, {
+        "name": "Alexandra Lewis"
+    }, {
+        "name": "Maxine Le"
+    }, {
+        "name": "Cecile Terry"
+    }, {
+        "name": "Dodson Strong"
+    }, {
+        "name": "Bobbi Wooten"
+    }, {
+        "name": "Walton Sandoval"
+    }, {
+        "name": "Eddie Rosa"
+    }, {
+        "name": "Marquez Richard"
+    }],
+    "policyList": [{
+        "name": "Web High Priority",
+        "files": 234,
+        "users": 34,
+        "channels": [{
             "name": "Endpoint"
-    },
-        {
-            "icon": "icons/ncEmail.svg",
-            "name": "Mail"
-    },
-        {
-            "icon": "icons/ncStation.svg",
-            "name": "Kiosk"
-    },
-        {
-            "icon": "icons/ncDirWatcher.svg",
-            "name": "Directory Watcher"
-    },
-        {
-            "icon": "icons/ncIcap.svg",
-            "name": "ICAP"
-    },
-        {
-            "icon": "icons/ncApi.svg",
+        }, {
+            "name": "Scanner"
+        }, {
             "name": "API"
-    }
-  ],
+        }],
+        "id": 1
+    }, {
+        "name": "Web Low Priority",
+        "files": 31,
+        "users": 12,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 2
+    }, {
+        "name": "Mail High Privilegies",
+        "files": 27,
+        "users": 4,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 3
+    }, {
+        "name": "Mail Low Privilegies",
+        "files": 120,
+        "users": 8,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 4
+    }, {
+        "name": "C# Team Google Drive",
+        "files": 301,
+        "users": 72,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 5
+    }, {
+        "name": "iOS Team Local Drive",
+        "files": 561,
+        "users": 56,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 6
+    }, {
+        "name": "Sales Local Drive",
+        "files": 207,
+        "users": 22,
+        "channels": [{
+            "name": "Endpoint"
+        }, {
+            "name": "Scanner"
+        }, {
+            "name": "API"
+        }],
+        "id": 7
+    }],
+    "policyDetection": [{
+        "id": 1
+    }, {
+        "avira": true,
+        "clam": true,
+        "id": 2
+    }, {
+        "id": 3
+    }, {
+        "id": 4
+    }, {
+        "avira": true,
+        "id": 5
+    }, {
+        "id": 6
+    }, {
+        "avira": true,
+        "clam": true,
+        "id": 7
+    }],
+    "policyOrder": [{
+            "id": 1
+        },
+        [
+            3,
+            2,
+            1,
+            4,
+            7,
+            5,
+            6
+        ],
+        [
+            3,
+            2,
+            1,
+            4,
+            7,
+            6,
+            5
+        ],
+        [
+            7,
+            2,
+            1,
+            4,
+            5,
+            6,
+            3
+        ],
+        [
+            5,
+            2,
+            1,
+            4,
+            3,
+            6,
+            7
+        ]
+    ],
+    "dashboardSidebar": [{
+        "caseID": 345,
+        "severity": "High",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-08-14",
+            "time": "10:00"
+        },
+        "closeTime": {
+            "date": "2016-08-17",
+            "time": "12:00"
+        },
+        "relatedUser": "Zohar Brande"
+    }, {
+        "caseID": 349,
+        "severity": "Low",
+        "status": "In Progress",
+        "openTime": {
+            "date": "2016-09-24",
+            "time": "11:34"
+        },
+        "closeTime": {
+            "date": "2016-09-27",
+            "time": "08:45"
+        },
+        "relatedUser": "Jonathan Meguira"
+    }, {
+        "caseID": 735,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-04",
+            "time": "09:24"
+        },
+        "closeTime": {
+            "date": "2016-10-05",
+            "time": "17:45"
+        },
+        "relatedUser": "John Malkinov"
+    }, {
+        "caseID": 129,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-11-01",
+            "time": "13:42"
+        },
+        "closeTime": {
+            "date": "2016-11-01",
+            "time": "18:07"
+        },
+        "relatedUser": "David Zaffran"
+    }, {
+        "caseID": 220,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-05",
+            "time": "11:10"
+        },
+        "closeTime": {
+            "date": "2016-10-05",
+            "time": "14:22"
+        },
+        "relatedUser": "Benjamin Fedida"
+    }, {
+        "caseID": 101,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-06",
+            "time": "11:26"
+        },
+        "closeTime": {
+            "date": "2016-10-06",
+            "time": "14:37"
+        },
+        "relatedUser": "David Oliel"
+    }, {
+        "caseID": 334,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-07",
+            "time": "12:14"
+        },
+        "closeTime": {
+            "date": "2016-10-07",
+            "time": "14:56"
+        },
+        "relatedUser": "Haim Sebag"
+    }, {
+        "caseID": 809,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-06",
+            "time": "13:23"
+        },
+        "closeTime": {
+            "date": "2016-10-06",
+            "time": "15:52"
+        },
+        "relatedUser": "Anaelle Safira"
+    }, {
+        "caseID": 108,
+        "severity": "Low",
+        "status": "Opened",
+        "openTime": {
+            "date": "2016-10-08",
+            "time": "16:20"
+        },
+        "closeTime": {
+            "date": "2016-10-08",
+            "time": "18:08"
+        },
+        "relatedUser": "William Kirk"
+    }],
+    "channelList": [{
+        "icon": "icons/ncEndpoint.svg",
+        "name": "Endpoint"
+    }, {
+        "icon": "icons/ncEmail.svg",
+        "name": "Mail"
+    }, {
+        "icon": "icons/ncStation.svg",
+        "name": "Kiosk"
+    }, {
+        "icon": "icons/ncDirWatcher.svg",
+        "name": "Directory Watcher"
+    }, {
+        "icon": "icons/ncIcap.svg",
+        "name": "ICAP"
+    }, {
+        "icon": "icons/ncApi.svg",
+        "name": "API"
+    }],
     "groupList": [
-    "iOS Group",
-    "Android",
-    "Marketing",
-    "QA",
-    "Front End",
-    "Backend Engineers",
-    "Automation",
-    "Accounting",
-    "Human Ressources"
-  ],
-    "topUsers": [
-        {
-            "name": "Gary Rudowicz",
-            "total": "10",
-            "medium": 6,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Meir Lor",
-            "total": "12",
-            "medium": 6,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Phill Murstein",
-            "total": "8",
-            "medium": 4,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Lauren Smirk",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Oren Mekori",
-            "total": "10",
-            "medium": 4,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Jenya Sedin",
-            "total": "12",
-            "medium": 5,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Eva Cohen",
-            "total": "15",
-            "medium": 9,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Sofia Samilov",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Gabriel Mama",
-            "total": "27",
-            "medium": 9,
-            "low": 8,
-            "high": 10
-    },
-        {
-            "name": "Steven Amouyal",
-            "total": "20",
-            "medium": 6,
-            "low": 7,
-            "high": 7
-    },
-        {
-            "name": "Sylvia Darmon",
-            "total": "32",
-            "medium": 12,
-            "low": 10,
-            "high": 10
-    },
-        {
-            "name": "Simon Meguira",
-            "total": "28",
-            "medium": 12,
-            "low": 20,
-            "high": 6
-    },
-        {
-            "name": "Conor McGregor",
-            "total": "29",
-            "medium": 12,
-            "low": 13,
-            "high": 16
-    },
-        {
-            "name": "Gary Rudowicz",
-            "total": "10",
-            "medium": 6,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Meir Lor",
-            "total": "12",
-            "medium": 6,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Phill Murstein",
-            "total": "8",
-            "medium": 4,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Lauren Smirk",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Oren Mekori",
-            "total": "10",
-            "medium": 4,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Jenya Sedin",
-            "total": "12",
-            "medium": 5,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Eva Cohen",
-            "total": "15",
-            "medium": 9,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Sofia Samilov",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Gabriel Mama",
-            "total": "27",
-            "medium": 9,
-            "low": 8,
-            "high": 10
-    },
-        {
-            "name": "Steven Amouyal",
-            "total": "20",
-            "medium": 6,
-            "low": 7,
-            "high": 7
-    },
-        {
-            "name": "Sylvia Darmon",
-            "total": "32",
-            "medium": 12,
-            "low": 10,
-            "high": 10
-    },
-        {
-            "name": "Simon Meguira",
-            "total": "28",
-            "medium": 12,
-            "low": 20,
-            "high": 6
-    },
-        {
-            "name": "Conor McGregor",
-            "total": "29",
-            "medium": 12,
-            "low": 13,
-            "high": 16
-    },
-        {
-            "name": "Gary Rudowicz",
-            "total": "10",
-            "medium": 6,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Meir Lor",
-            "total": "12",
-            "medium": 6,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Phill Murstein",
-            "total": "8",
-            "medium": 4,
-            "low": 2,
-            "high": 2
-    },
-        {
-            "name": "Lauren Smirk",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Oren Mekori",
-            "total": "10",
-            "medium": 4,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Jenya Sedin",
-            "total": "12",
-            "medium": 5,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Eva Cohen",
-            "total": "15",
-            "medium": 9,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Sofia Samilov",
-            "total": "9",
-            "medium": 3,
-            "low": 3,
-            "high": 3
-    },
-        {
-            "name": "Gabriel Mama",
-            "total": "27",
-            "medium": 9,
-            "low": 8,
-            "high": 10
-    },
-        {
-            "name": "Steven Amouyal",
-            "total": "20",
-            "medium": 6,
-            "low": 7,
-            "high": 7
-    },
-        {
-            "name": "Sylvia Darmon",
-            "total": "32",
-            "medium": 12,
-            "low": 10,
-            "high": 10
-    },
-        {
-            "name": "Simon Meguira",
-            "total": "28",
-            "medium": 12,
-            "low": 20,
-            "high": 6
-    },
-        {
-            "name": "Conor McGregor",
-            "total": "29",
-            "medium": 12,
-            "low": 13,
-            "high": 16
-    }
-  ],
+        "iOS Group",
+        "Android",
+        "Marketing",
+        "QA",
+        "Front End",
+        "Backend Engineers",
+        "Automation",
+        "Accounting",
+        "Human Ressources"
+    ],
+    "topUsers": [{
+        "name": "Gary Rudowicz",
+        "total": "10",
+        "medium": 6,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Meir Lor",
+        "total": "12",
+        "medium": 6,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Phill Murstein",
+        "total": "8",
+        "medium": 4,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Lauren Smirk",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Oren Mekori",
+        "total": "10",
+        "medium": 4,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Jenya Sedin",
+        "total": "12",
+        "medium": 5,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Eva Cohen",
+        "total": "15",
+        "medium": 9,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Sofia Samilov",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Gabriel Mama",
+        "total": "27",
+        "medium": 9,
+        "low": 8,
+        "high": 10
+    }, {
+        "name": "Steven Amouyal",
+        "total": "20",
+        "medium": 6,
+        "low": 7,
+        "high": 7
+    }, {
+        "name": "Sylvia Darmon",
+        "total": "32",
+        "medium": 12,
+        "low": 10,
+        "high": 10
+    }, {
+        "name": "Simon Meguira",
+        "total": "28",
+        "medium": 12,
+        "low": 20,
+        "high": 6
+    }, {
+        "name": "Conor McGregor",
+        "total": "29",
+        "medium": 12,
+        "low": 13,
+        "high": 16
+    }, {
+        "name": "Gary Rudowicz",
+        "total": "10",
+        "medium": 6,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Meir Lor",
+        "total": "12",
+        "medium": 6,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Phill Murstein",
+        "total": "8",
+        "medium": 4,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Lauren Smirk",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Oren Mekori",
+        "total": "10",
+        "medium": 4,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Jenya Sedin",
+        "total": "12",
+        "medium": 5,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Eva Cohen",
+        "total": "15",
+        "medium": 9,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Sofia Samilov",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Gabriel Mama",
+        "total": "27",
+        "medium": 9,
+        "low": 8,
+        "high": 10
+    }, {
+        "name": "Steven Amouyal",
+        "total": "20",
+        "medium": 6,
+        "low": 7,
+        "high": 7
+    }, {
+        "name": "Sylvia Darmon",
+        "total": "32",
+        "medium": 12,
+        "low": 10,
+        "high": 10
+    }, {
+        "name": "Simon Meguira",
+        "total": "28",
+        "medium": 12,
+        "low": 20,
+        "high": 6
+    }, {
+        "name": "Conor McGregor",
+        "total": "29",
+        "medium": 12,
+        "low": 13,
+        "high": 16
+    }, {
+        "name": "Gary Rudowicz",
+        "total": "10",
+        "medium": 6,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Meir Lor",
+        "total": "12",
+        "medium": 6,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Phill Murstein",
+        "total": "8",
+        "medium": 4,
+        "low": 2,
+        "high": 2
+    }, {
+        "name": "Lauren Smirk",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Oren Mekori",
+        "total": "10",
+        "medium": 4,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Jenya Sedin",
+        "total": "12",
+        "medium": 5,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Eva Cohen",
+        "total": "15",
+        "medium": 9,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Sofia Samilov",
+        "total": "9",
+        "medium": 3,
+        "low": 3,
+        "high": 3
+    }, {
+        "name": "Gabriel Mama",
+        "total": "27",
+        "medium": 9,
+        "low": 8,
+        "high": 10
+    }, {
+        "name": "Steven Amouyal",
+        "total": "20",
+        "medium": 6,
+        "low": 7,
+        "high": 7
+    }, {
+        "name": "Sylvia Darmon",
+        "total": "32",
+        "medium": 12,
+        "low": 10,
+        "high": 10
+    }, {
+        "name": "Simon Meguira",
+        "total": "28",
+        "medium": 12,
+        "low": 20,
+        "high": 6
+    }, {
+        "name": "Conor McGregor",
+        "total": "29",
+        "medium": 12,
+        "low": 13,
+        "high": 16
+    }],
     "policyUsers": {
-        "groups": [
-            {
-                "service": "Marketing",
-                "users": [
-          "Jenya Sedin",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "iOS Developers",
-                "users": [
-          "Sebastina Dobtincu",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Accounting",
-                "users": [
-          "Sean Parker",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Designers",
-                "users": [
-          "Oren Riksark",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Software Developers",
-                "users": [
-          "Martine Sebbag",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Part Time Contractors",
-                "users": [
-          "Myriam Oliel",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Data Scientists",
-                "users": [
-          "Pharell Nelyia",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Machine Learning Engineers",
-                "users": [
-          "Walter White",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Lawyers",
-                "users": [
-          "Thomas Heisenberg",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Marketing",
-                "users": [
-          "Laureen Mset",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "iOS Developers",
-                "users": [
-          "Salomé Lellouche",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Accounting",
-                "users": [
-          "Anaelle Bellalou",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Designers",
-                "users": [
-          "Roy Granot",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Software Developers",
-                "users": [
-          "Paul Sedin",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Part Time Contractors",
-                "users": [
-          "Johny Ive",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Data Scientists",
-                "users": [
-          "Maurice Chekroun",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Machine Learning Engineers",
-                "users": [
-          "Laure Laloum",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      },
-            {
-                "service": "Lawyers",
-                "users": [
-          "Nissim Abehsseira",
-          "Gabriel Mamou Mani",
-          "Sofia Samilov",
-          "William Davila",
-          "Avenr Benarous",
-          "Eliezer Guedj",
-          "Ariel Oliel",
-          "Benjamin Fedida"
-        ]
-      }
-    ]
+        "groups": [{
+            "service": "Marketing",
+            "users": [
+                "Jenya Sedin",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "iOS Developers",
+            "users": [
+                "Sebastina Dobtincu",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Accounting",
+            "users": [
+                "Sean Parker",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Designers",
+            "users": [
+                "Oren Riksark",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Software Developers",
+            "users": [
+                "Martine Sebbag",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Part Time Contractors",
+            "users": [
+                "Myriam Oliel",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Data Scientists",
+            "users": [
+                "Pharell Nelyia",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Machine Learning Engineers",
+            "users": [
+                "Walter White",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Lawyers",
+            "users": [
+                "Thomas Heisenberg",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Marketing",
+            "users": [
+                "Laureen Mset",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "iOS Developers",
+            "users": [
+                "Salomé Lellouche",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Accounting",
+            "users": [
+                "Anaelle Bellalou",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Designers",
+            "users": [
+                "Roy Granot",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Software Developers",
+            "users": [
+                "Paul Sedin",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Part Time Contractors",
+            "users": [
+                "Johny Ive",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Data Scientists",
+            "users": [
+                "Maurice Chekroun",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Machine Learning Engineers",
+            "users": [
+                "Laure Laloum",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }, {
+            "service": "Lawyers",
+            "users": [
+                "Nissim Abehsseira",
+                "Gabriel Mamou Mani",
+                "Sofia Samilov",
+                "William Davila",
+                "Avenr Benarous",
+                "Eliezer Guedj",
+                "Ariel Oliel",
+                "Benjamin Fedida"
+            ]
+        }]
     },
-    "PDTopFiles": [
-        {
-            "file": "EXE",
-            "size": 40
-    },
-        {
-            "file": "DMG",
-            "size": 30
-    },
-        {
-            "file": "HTML",
-            "size": 21
-    },
-        {
-            "file": "PNG",
-            "size": 31
-    },
-        {
-            "file": "APK",
-            "size": 12
-    },
-        {
-            "file": "SRT",
-            "size": 8.5
-    },
-        {
-            "file": "TFS",
-            "size": 43
-    },
-        {
-            "file": "DOCX",
-            "size": 23
-    },
-        {
-            "file": "XLS",
-            "size": 15
-    },
-        {
-            "file": "PPT",
-            "size": 20
-    }
-  ],
-    "PDTopUsers": [
-        {
-            "name": "Alex Slimansky",
-            "team": "Marketing"
-    },
-        {
-            "name": "Jonathan Meguira",
-            "team": "Front End Engineer"
-    },
-        {
-            "name": "Bernard Bianski",
-            "team": "Accounting"
-    },
-        {
-            "name": "Paul Elluard",
-            "team": "Design"
-    },
-        {
-            "name": "Audelia Oliel",
-            "team": "Sales"
-    },
-        {
-            "name": "Marine Lulaz",
-            "team": "Data Scientist"
-    },
-        {
-            "name": "Laurent Sebbah",
-            "team": "Sales"
-    },
-        {
-            "name": "Luc Richter",
-            "team": "Marketing"
-    },
-        {
-            "name": "Samuel Marciano",
-            "team": "Market Analysis"
-    },
-        {
-            "name": "Pearl Davis",
-            "team": "Design"
-    }
-  ],
-    "topFileType": [
-        {
-            "extension": "EXE",
-            "passed": 190,
-            "sanitized": 32,
-            "blocked": 309,
-            "total": 456
-    },
-        {
-            "extension": "DMG",
-            "passed": 90,
-            "sanitized": 40,
-            "blocked": 19,
-            "total": 154
-    },
-        {
-            "extension": "JAR",
-            "passed": 12,
-            "sanitized": 9,
-            "blocked": 7,
-            "total": 34
-    },
-        {
-            "extension": "PDF",
-            "passed": 129,
-            "sanitized": 31,
-            "blocked": 82,
-            "total": 211
-    },
-        {
-            "extension": "TXT",
-            "passed": 22,
-            "sanitized": 56,
-            "blocked": 12,
-            "total": 209
-    },
-        {
-            "extension": "XLS",
-            "passed": 67,
-            "sanitized": 90,
-            "blocked": 84,
-            "total": 120
-    },
-        {
-            "extension": "XML",
-            "passed": 12,
-            "sanitized": 39,
-            "blocked": 26,
-            "total": 104
-    },
-        {
-            "extension": "HTML",
-            "passed": 108,
-            "sanitized": 34,
-            "blocked": 93,
-            "total": 89
-    },
-        {
-            "extension": "PSD",
-            "passed": 30,
-            "sanitized": 51,
-            "blocked": 34,
-            "total": 157
-    },
-        {
-            "extension": "BASH",
-            "passed": 23,
-            "sanitized": 45,
-            "blocked": 52,
-            "total": 108
-    }
-  ],
-    "usedChannels": [
-        {
-            "id": 0
-    }
-  ],
-    "availableChannels": [
-        {
-            "key": "Mail",
-            "value": 1
-    },
-        {
-            "key": "Web",
-            "value": 2
-    },
-        {
-            "key": "Endpoint",
-            "value": 3
-    },
-        {
-            "key": "Scan Station",
-            "value": 4
-    },
-        {
-            "key": "DirWatcher",
-            "value": 5
-    },
-        {
-            "key": "API",
-            "value": 6
-    },
-        {
-            "key": "ICAP",
-            "value": 7
-    }
-  ],
+    "PDTopFiles": [{
+        "file": "EXE",
+        "size": 40
+    }, {
+        "file": "DMG",
+        "size": 30
+    }, {
+        "file": "HTML",
+        "size": 21
+    }, {
+        "file": "PNG",
+        "size": 31
+    }, {
+        "file": "APK",
+        "size": 12
+    }, {
+        "file": "SRT",
+        "size": 8.5
+    }, {
+        "file": "TFS",
+        "size": 43
+    }, {
+        "file": "DOCX",
+        "size": 23
+    }, {
+        "file": "XLS",
+        "size": 15
+    }, {
+        "file": "PPT",
+        "size": 20
+    }],
+    "PDTopUsers": [{
+        "name": "Alex Slimansky",
+        "team": "Marketing"
+    }, {
+        "name": "Jonathan Meguira",
+        "team": "Front End Engineer"
+    }, {
+        "name": "Bernard Bianski",
+        "team": "Accounting"
+    }, {
+        "name": "Paul Elluard",
+        "team": "Design"
+    }, {
+        "name": "Audelia Oliel",
+        "team": "Sales"
+    }, {
+        "name": "Marine Lulaz",
+        "team": "Data Scientist"
+    }, {
+        "name": "Laurent Sebbah",
+        "team": "Sales"
+    }, {
+        "name": "Luc Richter",
+        "team": "Marketing"
+    }, {
+        "name": "Samuel Marciano",
+        "team": "Market Analysis"
+    }, {
+        "name": "Pearl Davis",
+        "team": "Design"
+    }],
+    "topFileType": [{
+        "extension": "EXE",
+        "passed": 190,
+        "sanitized": 32,
+        "blocked": 309,
+        "total": 456
+    }, {
+        "extension": "DMG",
+        "passed": 90,
+        "sanitized": 40,
+        "blocked": 19,
+        "total": 154
+    }, {
+        "extension": "JAR",
+        "passed": 12,
+        "sanitized": 9,
+        "blocked": 7,
+        "total": 34
+    }, {
+        "extension": "PDF",
+        "passed": 129,
+        "sanitized": 31,
+        "blocked": 82,
+        "total": 211
+    }, {
+        "extension": "TXT",
+        "passed": 22,
+        "sanitized": 56,
+        "blocked": 12,
+        "total": 209
+    }, {
+        "extension": "XLS",
+        "passed": 67,
+        "sanitized": 90,
+        "blocked": 84,
+        "total": 120
+    }, {
+        "extension": "XML",
+        "passed": 12,
+        "sanitized": 39,
+        "blocked": 26,
+        "total": 104
+    }, {
+        "extension": "HTML",
+        "passed": 108,
+        "sanitized": 34,
+        "blocked": 93,
+        "total": 89
+    }, {
+        "extension": "PSD",
+        "passed": 30,
+        "sanitized": 51,
+        "blocked": 34,
+        "total": 157
+    }, {
+        "extension": "BASH",
+        "passed": 23,
+        "sanitized": 45,
+        "blocked": 52,
+        "total": 108
+    }],
+    "usedChannels": [{
+        "id": 0
+    }],
+    "availableChannels": [{
+        "key": "Mail",
+        "value": 1
+    }, {
+        "key": "Web",
+        "value": 2
+    }, {
+        "key": "Endpoint",
+        "value": 3
+    }, {
+        "key": "Scan Station",
+        "value": 4
+    }, {
+        "key": "DirWatcher",
+        "value": 5
+    }, {
+        "key": "API",
+        "value": 6
+    }, {
+        "key": "ICAP",
+        "value": 7
+    }],
     "fireEye_servers": ["FE1", "FE2", "FE_Accounting", "FE_Level 3"],
     "cukoo_servers": ["Cukoo1", "Cuko2_Finance", "Some_cukoo", "Cukoo restricted use L3"],
-    "reports_menu": [
-        {"name": "Sanitization", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "app.sanitization"},
-        {"name": "Jobs", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"},
-        {"name": "Reports", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "app.telerik_reports"},
-        {"name": "Mail", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"},
-        {"name": "Scanner Status", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"},
-        {"name": "System Events", "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages", "sref": "#"}
-    ],
-    "sanitization_filter_fields": [{"name": "States", "values": ["All", "Failed", "Success", "Modified", "Running", "Completed"]}, {"name": "Outcome", 
-    "values": ["GlobalOutcomeUnknown", "InProgressInit", "InProgressPending", "InProgressPolicyCheck", "InProgressDecryption", "InProgressEncryption",
-     "InProgressProcessEmbedded", "InProgressReconstruction", "InProgressScanning", "InProgressSaving", "TemporaryFailGlobalFileContentRequired",
-     "OutcomePassed", "OutcomeModified", "OutcomePartiallyProcessed", "OutcomeAborted", "OutcomeFailGlobalInternalError", "OutcomeFailLicenseViolation", "OutcomeFailHashFailedToCalcHash",
-     "OutcomeFailCommunicationFailed", "OutcomeFailPolicyBlocked", "OutcomeFailEncryptedArchive", "OutcomeFailInvalidArchive", "OutcomeFailScanFailed",
-     "OutcomeFailScanInfected", "OutcomeFailTransformationFailed", "OutcomeFailSaveInvalidPath", "OutcomeFailSaveAccessToDestinationDenied", "OutcomeFailSaveIoError",
-     "OutcomeFailDecryption", "OutcomeFailEncryption", "OutcomeFailCommunicationToServerError"]}, {"name": "Channel Types", "values": ["ReZoneScanStation", 
-     "ReZoneScanAgent", "ReZoneDirectoryWatcher", "ReZoneEmail", "ReZoneIcap", "MachineSafeComponent"]}]
+    "reports_menu": [{
+        "name": "Sanitization",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "app.sanitization"
+    }, {
+        "name": "Jobs",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "app.reports_jobs"
+    }, {
+        "name": "Reports",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "app.telerik_reports"
+    }, {
+        "name": "Mail",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "app.reports_emails"
+    }, {
+        "name": "Scanner Status",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "#"
+    }, {
+        "name": "System Events",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages",
+        "sref": "app.system_events"
+    }],
+    "sanitization_filter_fields": [{
+        "name": "States",
+        "values": ["All", "Failed", "Success", "Modified", "Running", "Completed"]
+    }, {
+        "name": "Outcome",
+        "values": ["GlobalOutcomeUnknown", "InProgressInit", "InProgressPending", "InProgressPolicyCheck", "InProgressDecryption", "InProgressEncryption",
+            "InProgressProcessEmbedded", "InProgressReconstruction", "InProgressScanning", "InProgressSaving", "TemporaryFailGlobalFileContentRequired",
+            "OutcomePassed", "OutcomeModified", "OutcomePartiallyProcessed", "OutcomeAborted", "OutcomeFailGlobalInternalError", "OutcomeFailLicenseViolation", "OutcomeFailHashFailedToCalcHash",
+            "OutcomeFailCommunicationFailed", "OutcomeFailPolicyBlocked", "OutcomeFailEncryptedArchive", "OutcomeFailInvalidArchive", "OutcomeFailScanFailed",
+            "OutcomeFailScanInfected", "OutcomeFailTransformationFailed", "OutcomeFailSaveInvalidPath", "OutcomeFailSaveAccessToDestinationDenied", "OutcomeFailSaveIoError",
+            "OutcomeFailDecryption", "OutcomeFailEncryption", "OutcomeFailCommunicationToServerError"
+        ]
+    }, {
+        "name": "Channel Types",
+        "values": ["ReZoneScanStation",
+            "ReZoneScanAgent", "ReZoneDirectoryWatcher", "ReZoneEmail", "ReZoneIcap", "MachineSafeComponent"
+        ]
+    }]
 }

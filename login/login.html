@@ -10,15 +10,15 @@
                     </md-input-container>
                     <md-input-container>
                         <label>User</label>
-                        <input ng-model="ctrl.username">
+                        <input ng-model="ctrl.username" id="username">
                     </md-input-container>
                     <md-input-container>
                         <label>Password</label>
-                        <input ng-model="ctrl.password" type="password">
+                        <input ng-model="ctrl.password" type="password" id="password">
                     </md-input-container>
                     <md-input-container>
                         <div layout="row" layout-sm="column" layout-margin layout-align="center center">
-                            <md-button class="md-raised md-primary" ui-sref='app.dashboard' check-credentials><strong>Login</strong></md-button>
+                            <md-button class="md-raised md-primary" check-credentials><strong>Login</strong></md-button>
                             <md-button class="md-raised"><strong>Forgot Password</strong></md-button>
                         </div>
                     </md-input-container>
@@ -26,4 +26,5 @@
             </md-whiteframe>
         </div>
     </md-content>
+    <md-content class="error_message animated fadeIn md-title" ng-if="!ctrl.is_login_nahon" layout-align="center center" layout="row">Please Check Your Credentials</md-content>
 </div>
