@@ -10,11 +10,49 @@ app.directive("policyListHover", function () {
         }
     }
 })
-
-
-//is_policy_sidenav_editable
-
-app.directive("reorderPolicyList", ["policyData", function (policyList) {
+app.directive("initNewPolicyModal", function ($mdDialog) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                scope.ctrl.new_policy_title = "";
+                $mdDialog.show({
+                    controller: "policy",
+                    controllerAs: "ctrl",
+                    scope: scope.$new(),
+                    clickOutsideToClose: true,
+                    templateUrl: "app/policy/templates/policySideNav/new_policy_modal.tmpl.html",
+                    parent: angular.element(document).find("body")
+                })
+            })
+        }
+    }
+})
+app.directive("cancelPolicyCreation", function ($mdDialog) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                $mdDialog.cancel()
+            })
+        }
+    }
+})
+app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                console.log(scope.ctrl.model)
+                policyData.create_new_policy(scope.ctrl.model)
+                $state.go("app.policy.definition.fileType")
+                $mdDialog.cancel()
+                console.log(scope.ctrl.GeneralInformations)
+            })
+        }
+    }
+})
+app.directive("reorderPolicyList", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
@@ -23,19 +61,19 @@ app.directive("reorderPolicyList", ["policyData", function (policyList) {
                 var items = $(".policyItem");
                 var policyName = $(".editPolicyName")
                 if (!scope.ctrl.dragMode) {
-                    icon.addClass("animated wobble");
+                    icon.addClass("animated  wobble");
                     icon.html("done_all");
                     icon.css("color", "#EC407A");
                     policyName.hide()
                     scope.ctrl.dragMode = true;
-                    items.addClass("animated bounce");
+                    //items.addClass("animated bounce");
                 } else {
                     icon.removeClass("animated wobble")
                     icon.html("format_line_spacing")
                     icon.css("color", "#23CCC7")
                     policyName.show();
                     scope.ctrl.dragMode = false;
-                    items.removeClass("animated bounce");
+                   // items.removeClass("animated bounce");
                     scope.ctrl.priority = [];
                     items.each(function () {
                         scope.ctrl.priority.push($(this).attr("index"))
@@ -115,26 +153,15 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyList, $
     }
 }])
 
-app.directive("continuePolicySetup", function(){
-    return {
-        restrict: "A",
-        link: function(scope, element, attr){
-            var button = $(".saveNContinue")
-            button.click(function(){
-                $(this).html("SET UP IN PROCESS ...")
-            })
-        }
-    }
-})
 
-app.directive("initiateApiCallWithId",["policyData", function(policyData){
+app.directive("initiateApiCallWithId", ["policyData", function (policyData) {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.click(function(){
+        link: function (scope, element, attrs) {
+            element.click(function () {
                 var self = $(this);
                 scope.ctrl.policyId = parseInt(self.attr("_id"));
-                policyData.getDashboard(scope.ctrl.policyId).then(function(answer){
+                policyData.getDashboard(scope.ctrl.policyId).then(function (answer) {
                     scope.ctrl.dashboardData = answer.data
                 })
                 scope.$apply();

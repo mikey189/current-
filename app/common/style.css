@@ -31,3 +31,14 @@
 .custom-toolip div {
     background-color: #773EB2 !important;
 }
+
+.main-logo {
+    margin-right: 1em;
+}
+
+.parent_url {
+    color: #262626 !important;
+}
+.preserve-ws {
+  white-space: pre;
+}

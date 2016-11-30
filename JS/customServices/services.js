@@ -135,28 +135,13 @@ app.factory("topCases", function ($http) {
     }
 })
 
-app.factory("addPolicy", function ($http, $rootScope) {
-    var url = $rootScope.url + "/api/policy/postPolicy";
-    //"http://jdev01:4580/api/Policy/PostPolicy"
-    return {
-        add: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: url,
-                method: "POST",
-                data: data
-            })
-        }
-    }
-})
-
 app.factory("policyData", function ($rootScope, $http) {
 
     var policyList = "http://jdev01:4580/api/policy/getallpolicies";
+    var new_policy_creation = "http://jdev01:4580/api/policy/postPolicy";
+
     //http://localhost:3000/policyList
-    var policyOrder = $rootScope.url + "/api/policy/reorderPolicyPriority";
+    var policyOrder = "http://jdev01:4580/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
     var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
     var policySidenav = "http://jdev01:4580/api/policy/GetPoliciesSideNav"
@@ -174,6 +159,17 @@ app.factory("policyData", function ($rootScope, $http) {
 
 
     return {
+        create_new_policy: function (data) {
+            return $http({
+
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: new_policy_creation,
+                method: "POST",
+                data: data
+            })
+        },
         getList: function () {
             return $http.get(policyList);
         },
@@ -436,18 +432,18 @@ app.factory("system_events_factory", function ($http) {
         }
     }
 })
-app.factory("jobs_factory", function($http){
+app.factory("jobs_factory", function ($http) {
     var base_url = "http://jdev01:4580/api/report/GetSanitizationJobs?"
     return {
-        get_jobs: function(index, size, order){
+        get_jobs: function (index, size, order) {
             return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
         }
     }
 })
-app.factory("emails_factory", function($http){
+app.factory("emails_factory", function ($http) {
     var base_url = "http://jdev01/api/report/GetEmailSanitizations"
     return {
-        get_emails: function(index, size, order){
+        get_emails: function (index, size, order) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
         }
     }

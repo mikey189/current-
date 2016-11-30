@@ -225,7 +225,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/reports/reports.html',
             controller: 'reports',
             controllerAs: 'ctrl',
-            displayName: "Reports"
+            displayName: "System Status"
 
         })
         .state('app.sanitization', {
@@ -233,35 +233,45 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',
             // controllerAs: 'ctrl',
-            displayName: "Reports > Sanitization"
+            displayName: "Sanitization",
+             parentUrl: "app.reports",
+            parentName: "System Status "
         })
         .state('app.telerik_reports', {
             url: '/telerik_reports',
             templateUrl: 'app/reports/telerik_reports/tr.html',
             controller: 'telerik_reports',
             controllerAs: 'ctrl',
-            displayName: "Reports > Reports Services"
+            displayName: "Reports Services",
+             parentUrl: "app.reports",
+            parentName: "System Status >"
 
         })
         .state('app.system_events', {
             url: '/system_events',
             templateUrl: 'app/reports/system_events/se.html',
             controller: 'system_events',
-            displayName: "Reports > System Events"
+            displayName: "System Events",
+            parentUrl: "app.reports",
+            parentName: "System Status >"
 
         })
         .state('app.reports_jobs', {
             url: '/jobs',
             templateUrl: 'app/reports/jobs/jobs.html',
             controller: 'reports_jobs',
-            displayName: "Reports > Jobs"
+            displayName: "Jobs",
+            parentUrl: "app.reports",
+            parentName: "System Status >"
 
         })
         .state('app.reports_emails', {
             url: '/emails',
             templateUrl: 'app/reports/email/email.html',
             controller: 'reports_emails',
-            displayName: "Reports > Emails"
+            displayName: "Emails",
+            parentUrl: "app.reports",
+            parentName: "System Status >"
 
         })
 

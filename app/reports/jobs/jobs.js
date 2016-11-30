@@ -1,21 +1,23 @@
-app.controller("reports_jobs", function($scope, jobs_factory){
+app.controller("reports_jobs", function ($scope, jobs_factory) {
 
-    $scope.query = {
+    $scope.jobs_query = {
         order: 'Time',
-        PageSize: 10,
+        PageSize: 5,
         PageIndex: 1
     };
+    
     $scope.get_data = function () {
-        jobs_factory.get_jobs($scope.query.PageIndex, $scope.query.PageSize, $scope.query.order).then(function (answer) {
+        jobs_factory.get_jobs($scope.jobs_query.PageIndex, $scope.jobs_query.PageSize, $scope.jobs_query.order).then(function (answer) {
             $scope.data = answer.data
+            console.log($scope.jobs_query)
             console.log($scope.data)
             $scope.total_length = answer.data.Total
         })
     }
-    $scope.$watchGroup(['$scope.query.PageIndex', '$scope.query.PageSize', '$scope.query.order'], function (newValues, oldValues, scope) {
-        $scope.query.PageIndex = newValues[0]
-        $scope.query.PageSize = newValues[1]
-        $scope.query.order = newValues[2]
+    $scope.$watchGroup(['$scope.jobs_query.PageIndex', '$scope.jobs_query.PageSize', '$scope.jobs_query.order'], function (newValues, oldValues, scope) {
+        $scope.jobs_query.PageIndex = newValues[0]
+        $scope.jobs_query.PageSize = newValues[1]
+        $scope.jobs_query.order = newValues[2]
         $scope.get_data()
     });
     //filter dialog
@@ -31,5 +33,5 @@ app.controller("reports_jobs", function($scope, jobs_factory){
         limitSelect: true,
         pageSelect: true
     }
-    
+
 })

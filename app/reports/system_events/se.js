@@ -1,6 +1,6 @@
 app.controller("system_events", function ($scope, system_events_factory) {
 
-      $scope.se_query = {
+  $scope.se_query = {
     order: 'StartTime',
     PageSize: 10,
     PageIndex: 1
@@ -12,7 +12,7 @@ app.controller("system_events", function ($scope, system_events_factory) {
       $scope.total_length = $scope.data.Total
     })
   }
-  $scope.$watchGroup(['query.PageIndex', 'query.PageSize', 'query.order'], function (newValues, oldValues, scope) {
+  $scope.$watchGroup(['se_query.PageIndex', 'se_query.PageSize', 'se_query.order'], function (newValues, oldValues, scope) {
     $scope.se_query.PageIndex = newValues[0]
     $scope.se_query.PageSize = newValues[1]
     $scope.se_query.order = newValues[2]
@@ -30,6 +30,6 @@ app.controller("system_events", function ($scope, system_events_factory) {
     limitSelect: true,
     pageSelect: true
   };
-    console.log("new value " + $scope.se_query.PageSize)
+  console.log("new value " + $scope.se_query.PageSize)
 
 })

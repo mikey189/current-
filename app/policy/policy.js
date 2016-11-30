@@ -13,6 +13,9 @@ app.controller('policy', ["policyData", "channelData", "policyChannels", "policy
             self.draggableObjects.push(self.sideNavList[i])
         }
     })
+    //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
+
+    self.model ={};
 
     self.onDropComplete = function (index, obj, evt) {
         var otherObj = self.draggableObjects[index];
