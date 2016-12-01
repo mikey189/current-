@@ -10,7 +10,6 @@ app.controller("reports_jobs", function ($scope, jobs_factory) {
         jobs_factory.get_jobs($scope.jobs_query.PageIndex, $scope.jobs_query.PageSize, $scope.jobs_query.order).then(function (answer) {
             $scope.data = answer.data
             console.log($scope.jobs_query)
-            console.log($scope.data)
             $scope.total_length = answer.data.Total
         })
     }

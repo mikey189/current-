@@ -377,10 +377,7 @@ app.factory("sanitization_factory", function ($http) {
         get_filter_fields: function () {
             return $http.get(filter_field)
         },
-        /*get_filter_results: function(status, computer, channelType, fileName, jobsId, duration, processingServer, portalServer, policyId, profilId){
-            return $http.get(url + "Status="+status+"&ComputerName="+computer+"&AgentType="+channelType+"&FileName="+fileName+
-            "&JobId="+jobsId+"&Duration="+duration+"&ProcessingServer="+processingServer+"&PortalServer="+portalServer+"&PolicyId="+policyId)
-        },*/
+        
         get_filter_results: function (filter_query) {
             return $http({
                 url: url,
@@ -429,6 +426,13 @@ app.factory("system_events_factory", function ($http) {
     return {
         get_system_events: function (index, size) {
             return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size)
+        },
+        get_filter_results: function (filter_query) {
+            return $http({
+                url: base_url,
+                method: 'GET',
+                params: filter_query
+            })
         }
     }
 })
@@ -445,6 +449,15 @@ app.factory("emails_factory", function ($http) {
     return {
         get_emails: function (index, size, order) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+        }
+    }
+})
+
+app.factory("notification_types", function($http){
+    var url =  "http://jdev01:4580/api/general/GetNotificationTypes"
+    return{
+        get_notifications_types: function(){
+            return $http.get(url)
         }
     }
 })

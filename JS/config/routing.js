@@ -235,7 +235,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             // controllerAs: 'ctrl',
             displayName: "Sanitization",
              parentUrl: "app.reports",
-            parentName: "System Status "
+            parentName: "System Status >"
         })
         .state('app.telerik_reports', {
             url: '/telerik_reports',

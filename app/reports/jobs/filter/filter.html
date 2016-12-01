@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="app/reports/jobs/filter/style.css" />
+<md-dialog>
+    <md-toolbar layout-padding layout="row" layout-align="space-between center">
+        Jobs Filter
+    </md-toolbar>
+    <div>
+    </div>
+</md-dialog>
+job status start date end datecomputer user agent type job id
+<md-input-container class="md-block" flex>
+    <label>Job Status</label>
+    <md-select ng-model="filter.JobStatus">
+        <md-option ng-repeat="status in job_status" value="{{status}}">
+            {{status}}
+        </md-option>
+    </md-select>
+</md-input-container>

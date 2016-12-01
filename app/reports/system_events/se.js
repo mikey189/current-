@@ -30,6 +30,6 @@ app.controller("system_events", function ($scope, system_events_factory) {
     limitSelect: true,
     pageSelect: true
   };
-  console.log("new value " + $scope.se_query.PageSize)
+  $scope.filter = {}
 
 })
