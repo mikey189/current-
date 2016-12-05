@@ -1,21 +1,19 @@
-app.controller('policy', ["policyData", "channelData", "policyChannels", "policyUsers", function (policyData, channelData, policyChannels, policyUsers) {
+app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels", "policyUsers", function ($scope, policyData, channelData, policyChannels, policyUsers) {
 
     var self = this;
 
-    self.policyId = 2;
+    self.policyId = 4;
+    
     //dragMode for policySideNav
-
     self.draggableObjects = [];
-
     policyData.getSidenav().then(function (answer) {
-        self.sideNavList = answer.data
-        for (i in self.sideNavList) {
-            self.draggableObjects.push(self.sideNavList[i])
-        }
-    })
+            self.sideNavList = answer.data
+            for (i in self.sideNavList) {
+                self.draggableObjects.push(self.sideNavList[i])
+            }
+        })
     //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
-
-    self.model ={};
+    self.PolicyInfo = {};
 
     self.onDropComplete = function (index, obj, evt) {
         var otherObj = self.draggableObjects[index];
@@ -23,25 +21,20 @@ app.controller('policy', ["policyData", "channelData", "policyChannels", "policy
         self.draggableObjects[index] = obj;
         self.draggableObjects[otherIndex] = otherObj;
     }
-
     self.dragMode = false;
     self.newPolicy = false;
     self.isEditable = false;
     self.is_policy_sidenav_editable = false;
-
-
     //getDashboard data with policyId
     //API Call inside directive :"initiateApiCallWithId" 
-
-
     policyData.getDashboard(self.policyId).then(function (answer) {
-        self.dashboardData = answer.data;
-    })
-
-
-    //filetypes
-
-    //getting filetypes
+            self.dashboardData = answer.data;
+            console.log(self.policyId)
+        })
+        //filetypes
+        //getting filetypes
+        //initiate the channel ids to send
+        self.channelIds = [];
     policyData.getFiletypes().then(function (answer) {
             self.filetype = answer.data
         })
@@ -51,45 +44,33 @@ app.controller('policy', ["policyData", "channelData", "policyChannels", "policy
     self.areExtensionsVisible = [];
     self.isAdvancedModeOn = false;
     self.isTableEditable = false;
-
-
     //who is using this policy settings
-
     channelData.getComputerList().then(function (answer) {
         self.users = answer.data;
     })
-    policyUsers.getData().then(function (answer) {
-        self.data = answer.data
+    policyData.get_groups().then(function(answer){
+        self.groups = answer.data
+        console.log(self.groups)
     })
-    policyChannels.getAvailablechannels().then(function (answer) {
-
-        self.data = answer.data;
-        self.available_channels = []
-        for (i in self.data) {
-            self.available_channels.push(self.data[i])
-        }
+    policyData.get_policy_channels(self.policyId).then(function (answer) {
+        self.available_channels = answer.data.AvailableChannels
+        self.current_channels = answer.data.CurrentChannels
+        console.log(self.current_channels)
     });
-
     // setting the toggling mode for editing groups
-
     self.are_groups_editable = false
-
-    //setting the toggling mode for editing users
-
+        //setting the toggling mode for editing users
     self.are_users_editable = false
-
-    //making channels draggable 
-
-    self.currentChannels = []
+        //making channels draggable 
+    self.current_channels = []
         //assign a channel
-
-    //available channel successfully dumped insinde current channels
+        //available channel successfully dumped insinde current channels
 
     self.drop_success_current_channels = function (data, event) {
-        var channel_index = self.currentChannels.indexOf(data)
+        var channel_index = self.current_channels.indexOf(data)
         var old_index = self.available_channels.indexOf(data)
         if (channel_index == -1) {
-            self.currentChannels.push(data)
+            self.current_channels.push(data)
         }
         if (old_index > -1) {
             self.available_channels.splice(old_index, 1)
@@ -99,9 +80,9 @@ app.controller('policy', ["policyData", "channelData", "policyChannels", "policy
     //successfully removed channel from current channel
 
     self.remove_current_channel = function (data, event) {
-        var channel_index = self.currentChannels.indexOf(data)
+        var channel_index = self.current_channels.indexOf(data)
         if (channel_index > -1) {
-            self.currentChannels.splice(channel_index, 1)
+            self.current_channels.splice(channel_index, 1)
         }
     }
 
@@ -130,11 +111,6 @@ app.controller('policy', ["policyData", "channelData", "policyChannels", "policy
             self.cukoo_servers_list = answer.data
         })
         //this object will store all the info changed inside the scanner list
-    
-    self.scanners_settings = {
 
-        "allowed_fireEyes" : []
-        
-    }
-
+  
 }])

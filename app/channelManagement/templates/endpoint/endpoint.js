@@ -3,7 +3,7 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     //setting default id for the channel
-    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 1;
+    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 2;
     //default view for dashboard is blocked
     self.isBlocked = true;
     //retrieving the dashboard according to channel id
@@ -60,44 +60,6 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     
     //making the settings not editable by default
     self.are_settings_editable = false
-    
-    self.inputConfiguration = 
-    { 
-      "SelectedIoList": [
-            {
-          "DeviceTypeName": "Removable",
-          "IsActive": true
-        },
-        {
-          "DeviceTypeName": "Documents",
-          "IsActive": true
-        },
-      
-        {
-          "DeviceTypeName": "Mobiles",
-          "IsActive": true
-        }
-      ],
-      "IoSmbConfiguration": [
-        {
-          "Name": "name",
-          "RootFolder": "root folder",
-          "Speedlimit": {
-            "Unit": "GB"
-          },
-          "Userquota": {
-            "Unit": "GB",
-            "Value": 4567
-          },
-          "HoursToKeep": 45678,
-          "FolderPermissions": "Write",
-          "UseRelay": false,
-          "OverwriteExistingFile": true,
-          "CreateZipFile": true,
-          "AllowMediaBurn": true
-        }
-      ]
-    }
     
 }])
 

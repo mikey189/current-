@@ -1,4 +1,4 @@
-app.directive("saveInfoGetId", function (channelData) {
+app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -12,10 +12,15 @@ app.directive("saveInfoGetId", function (channelData) {
                     }
                 }
                 scope.ctrl.gen_info = channelObject
-                channelData.createChannel(channelObject).then(function(answer){
-                    scope.ctrl.channelId = answer.data.Id
-                    console.log(scope.ctrl.channelId)
+                channelData.createChannel(channelObject).then(function (answer) {
+                    scope.ctrl.rootId = answer.data.Id
+                    console.log(scope.ctrl.rootId)
+                    $state.go("app.channelManagement.endpoint.dashboard")
+                    $timeout(function(){
+                        $state.reload()
+                    }, 700)
                 })
+                scope.$apply()
             })
         }
     }

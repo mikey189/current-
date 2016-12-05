@@ -16,15 +16,16 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
             element.click(function () {
                 var username = $("#username")
                 var password = $("#password")
-                scope.ctrl.defaultUrl = "http://" + scope.ctrl.server + ":4580"
-                $rootScope.url = scope.ctrl.defaultUrl;
-                authService.checkLogin(scope.ctrl.username,
-                        scope.ctrl.password)
+                localStorage.clear()
+                localStorage.setItem("serverName", scope.ctrl.serverName)
+                var serverName = localStorage.getItem("serverName")
+                console.log(serverName)
+                authService.checkLogin(scope.ctrl.username, scope.ctrl.password)
                     //first function handles success
                     .then(function (answer) {
                             console.log("token : " + answer.AccessToken)
-                            $rootScope.token = answer.AccessToken;
-                            $http.defaults.headers.common['Authorization'] = $rootScope.token;
+                            localStorage.setItem("token",  answer.AccessToken);
+                            $http.defaults.headers.common['Authorization'] = localStorage.getItem("token");
                             $state.go("app.dashboard")
                         },
                         //second function handles error
@@ -33,7 +34,6 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                             password.addClass("error animated shake")
                             scope.ctrl.is_login_nahon = false
                         })
-
             })
 
         }

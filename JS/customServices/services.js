@@ -1,8 +1,12 @@
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
+    var sname = localStorage.getItem("serverName");
+    //var snme = serverName !== null ? sname: "jdevO1"
+
     return {
         checkLogin: function (username, password) {
-            var url = "http://jdev01:4580/api/users/login";
+            console.log("service says " +sname)
+            var url = "http://"+sname+":4580/api/users/login";
 
             return $http({
                 headers: {
@@ -21,6 +25,7 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
 
 app.factory("groupList", function ($http) {
 
+
     var url = "http://localhost:3000/groupList";
     return {
         getGroups: function () {
@@ -30,23 +35,28 @@ app.factory("groupList", function ($http) {
 })
 
 app.factory("channelData", function ($http, $rootScope) {
+
+    var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+ 
+
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
     var input_output_list = "http://localhost:3000/input_output_list";
     var dashboard = "http://localhost:3000/dashboard";
     var relayList = "http://localhost:3000/relayList";
-    var computerList = "http://jdev01:4580/api/users/getadmachines";
+    var computerList = "http://"+sname+":4580/api/users/getadmachines";
     var channelsIconsURL = "http://localhost:3000/channelsIcons";
-    var channelList = "http://jdev01:4580/api/channels/getallchannels"
+    var channelList = "http://"+sname+":4580/api/channels/getallchannels/"
         //var channelList = "http://localhost:3000/channelList";
-    var channelListReal = "http://jdev01:4580/api/channels/getALLCHANNELS";
-    var channelDashboard = "http://jdev01:4580/api/channels/getchanneldashboard/";
-    var postChannel = "http://jdev01:4580/api/Channels/PostChannel";
-    var updateComputers = "http://jdev01:4580/api/channels/PostChannelComputerList/";
-    var current_computers = "http://jdev01:4580/api/Channels/getchannel/"
-    var update_inputs_outputs = "http://maorpc:4580/api/channels/PostChannelIoConfiguration/"
-    var channel_informations = "http://jdev01:4580/api/channels/"
-    var channelTypes = "http://jdev01:4580/api/deployment/getDeployments"
+    var channelListReal = "http://"+sname+":4580/api/channels/getALLCHANNELS";
+    var channelDashboard = "http://"+sname+":4580/api/channels/getchanneldashboard/";
+    var postChannel = "http://"+sname+":4580/api/Channels/PostChannel";
+    var updateComputers = "http://"+sname+":4580/api/channels/PostChannelComputerList/";
+    var current_computers = "http://"+sname+":4580/api/Channels/getchannel/"
+    var update_inputs_outputs = "http://"+sname+":4580/api/channels/PostChannelIoConfiguration/"
+    var channel_informations = "http://"+sname+":4580/api/channels/"
+    var channelTypes = "http://"+sname+":4580/api/deployment/getDeployments"
 
     return {
         getchannelList: function () {
@@ -119,8 +129,8 @@ app.factory("channelData", function ($http, $rootScope) {
                 data: data
             })
         },
-        getChannelTypes: function () {
-            return $http.get(channelTypes)
+        getChannelTypes: function (id) {
+            return $http.get(channelTypes+id)
         }
 
     }
@@ -137,26 +147,30 @@ app.factory("topCases", function ($http) {
 
 app.factory("policyData", function ($rootScope, $http) {
 
-    var policyList = "http://jdev01:4580/api/policy/getallpolicies";
-    var new_policy_creation = "http://jdev01:4580/api/policy/postPolicy";
 
+    var sname = localStorage.getItem("serverName");
+   // var sname = serverName == null ? "jdev01": sname
+
+    var policyList = "http://"+sname+":4580/api/policy/getallpolicies";
+    var new_policy_creation = "http://"+sname+":4580/api/policy/postPolicy";
     //http://localhost:3000/policyList
-    var policyOrder = "http://jdev01:4580/api/policy/reorderPolicyPriority";
+    var policyOrder = "http://"+sname+":4580/api/policy/reorderPolicyPriority";
     //"http://localhost:3000/policyOrder"
-    var deletePolicy = $rootScope.url + "/api/policy/deletepolicy";
-    var policySidenav = "http://jdev01:4580/api/policy/GetPoliciesSideNav"
-
+    var deletePolicy = "http://"+sname + ":4580/api/policy/deletepolicy";
+    var policySidenav = "http://"+sname+":4580/api/policy/GetPoliciesSideNav"
     var topFiles = "http://localhost:3000/PDTopFiles";
     var topUsers = "http://localhost:3000/PDTopUsers";
-
     var policyDefinition = "http://localhost:3000/policyDefinition";
     var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
-    var policyDashboard = "http://jdev01:4580/api/policy/GetPolicyDashboardInfo/";
-    var filetype = "http://jdev01:4580/api/general/filetypes";
-    var postFiletype = "http://jdev01:4580/api/policy/PostPolicyFileTypes/";
+    var policyDashboard = "http://"+sname+":4580/api/policy/GetPolicyDashboardInfo/";
+    var filetype = "http://"+sname+":4580/api/general/filetypes";
+    var postFiletype = "http://"+sname+":4580/api/policy/PostPolicyFileTypes/";
     var fireEye_servers = "http://localhost:3000/fireEye_servers"
     var cukoo_servers = "http://localhost:3000/cukoo_servers"
-
+    var policyChannels = "http://"+sname+":4580/api/policy/GetPolicyChannels/"
+    var update_current_channels = "http://"+sname+":4580/api/policy/PostUpdatePolicyChannels/"
+    var update_groups = "http://"+sname+":4580/api/policy/PostPolicyUsersAndGroups/"
+    var available_groups = "http://"+sname+":4580/api/users/getadusergroups"
 
     return {
         create_new_policy: function (data) {
@@ -247,6 +261,42 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         get_cukoo_servers: function () {
             return $http.get(cukoo_servers)
+        },
+        get_policy_channels: function(id) {
+            return $http.get(policyChannels+id)
+        },
+        update_current_channels: function(id, channelIds){
+           return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: update_current_channels+id,
+                method: "POST",
+                data: channelIds
+            }) 
+        },
+        update_groups: function(id, groups){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: update_groups+id,
+                method: "POST",
+                data: {selectedGroups: groups}
+            }) 
+        },
+        update_users: function(id, users){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: update_groups+id,
+                method: "POST",
+                data: {selectedUsers: users}
+            }) 
+        },
+        get_groups: function(){
+            return $http.get(available_groups)
         }
 
     }
@@ -311,7 +361,10 @@ app.factory("policyUsers", function ($http) {
 })
 
 app.factory("filetype", function ($http) {
-    var url = "http://jdev01:4580/api/general/filetypes";
+  var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/general/filetypes";
     var topFileType = "http://localhost:3000/topFileType";
     return {
         getData: function () {
@@ -364,9 +417,13 @@ app.factory("reports_factory", function ($http) {
 })
 
 app.factory("sanitization_factory", function ($http) {
-    var url = "http://jdev01:4580/api/report/GetSanitizations?"
+
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/report/GetSanitizations?"
     var filter_field = "http://localhost:3000/sanitization_filter_fields"
-    var details = "http://jdev01:4580/api/report/GetSanitizationInformation/"
+    var details = "http://"+sname+":4580/api/report/GetSanitizationInformation/"
 
 
     return {
@@ -377,7 +434,7 @@ app.factory("sanitization_factory", function ($http) {
         get_filter_fields: function () {
             return $http.get(filter_field)
         },
-        
+
         get_filter_results: function (filter_query) {
             return $http({
                 url: url,
@@ -391,8 +448,12 @@ app.factory("sanitization_factory", function ($http) {
     }
 });
 app.factory("system_properties", function ($http) {
-    var propertiesList = "http://jdev01:4580/api/SystemProperties/GetSystemProperties";
-    var propertiesPostList = "http://jdev01:4580/api/SystemProperties/PostSystemProperties";
+
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var propertiesList = "http://"+sname+":4580/api/SystemProperties/GetSystemProperties";
+    var propertiesPostList = "http://"+sname+":4580/api/SystemProperties/PostSystemProperties";
     return {
         post_properties: function (props) {
             return $http({
@@ -412,7 +473,10 @@ app.factory("system_properties", function ($http) {
 });
 
 app.factory("telerik_reports_factory", function ($http) {
-    var reportsList = "http://jdev01:4580/api/report/GetAvailableReports";
+  var sname = localStorage.getItem("serverName");
+   // var sname = serverName == null ? "jdev01": sname
+
+    var reportsList = "http://"+sname+":4580/api/report/GetAvailableReports";
 
     return {
         get_report_info: function () {
@@ -422,7 +486,11 @@ app.factory("telerik_reports_factory", function ($http) {
 })
 
 app.factory("system_events_factory", function ($http) {
-    var base_url = "http://jdev01:4580/api/Report/GetSystemNotifications?"
+
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var base_url = "http://"+sname+":4580/api/Report/GetSystemNotifications?"
     return {
         get_system_events: function (index, size) {
             return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size)
@@ -437,15 +505,27 @@ app.factory("system_events_factory", function ($http) {
     }
 })
 app.factory("jobs_factory", function ($http) {
-    var base_url = "http://jdev01:4580/api/report/GetSanitizationJobs?"
+
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var base_url = "http://"+sname+":4580/api/report/GetSanitizationJobs?"
     return {
-        get_jobs: function (index, size, order) {
-            return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+        get_jobs: function (filter_query) {
+            return $http({
+                url: base_url,
+                method: 'GET',
+                params: filter_query
+            })
         }
     }
 })
 app.factory("emails_factory", function ($http) {
-    var base_url = "http://jdev01/api/report/GetEmailSanitizations"
+
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var base_url = "http://"+sname+"/api/report/GetEmailSanitizations"
     return {
         get_emails: function (index, size, order) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
@@ -453,10 +533,58 @@ app.factory("emails_factory", function ($http) {
     }
 })
 
-app.factory("notification_types", function($http){
-    var url =  "http://jdev01:4580/api/general/GetNotificationTypes"
+app.factory("notification_types", function ($http) {
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/general/GetNotificationTypes"
+    return {
+        get_notifications_types: function () {
+            return $http.get(url)
+        }
+    }
+})
+app.factory("computer_list", function ($http) {
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/users/getadmachines"
+    return {
+        get_computers: function () {
+            return $http.get(url)
+        }
+    }
+})
+app.factory("active_users", function ($http) {
+      var sname = localStorage.getItem("serverName");
+    //var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/users/getadusers"
+    return {
+        get_users: function () {
+            return $http.get(url)
+        }
+    }
+})
+app.factory("active_agents", function ($http) {
+      var sname = localStorage.getItem("serverName");
+   // var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/Deployment/GetDeployments"
+    return {
+        get_agents: function () {
+            return $http.get(url)
+        }
+    }
+})
+
+app.factory("sanitization_status", function($http){
+      var sname = localStorage.getItem("serverName");
+ //   var sname = serverName == null ? "jdev01": sname
+
+    var url = "http://"+sname+":4580/api/general/GetSanitizationStatusesList"
     return{
-        get_notifications_types: function(){
+        get_status_list: function(){
             return $http.get(url)
         }
     }

@@ -18,11 +18,12 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($state) {
+app.directive("logout", function ($rootScope, $state) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
       element.click(function () {
+       localStorage.clear()
         $state.go("login")
       })
     }

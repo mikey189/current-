@@ -195,7 +195,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
-            templateUrl: 'app/policy/templates/CDR/CDR.html',
+            templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
             controller: 'policy',
             controllerAs: 'ctrl',
             displayName: "Policy > CDR Settings"

@@ -1,0 +1,27 @@
+not working calls / view 
+
+Policy : 
+    Get Sidenav -> error : "Object reference not set to an instance of an object."
+    GetPolicyDashboard ->error: "Policy id not found" 
+    PolicyGeneralInfirmations ("policy Name", "total users of the policy", "total blocked" etc..)-> maybe that's also included inside GetPolicyDashboard
+    PostPolicyFileType -> error probably due to the fact that no policy is currently present
+    PolicyDetection : currently from db.json, no get from JDEV and check POST to JDEV -> Post takes an id as parameter so we might have the same problem
+    CDR Settings:  not created yet
+    Advanced Settings  : POST AND GET? not on JDEV
+
+Channel Management:  
+
+    Getting channelDashboard -> error  -> {"Message":"Object reference not set to an instance of an object."}
+    
+
+    faire le point de tout ce qui ne marche pas d'un point de vue serveur demain matin 
+
+    09:30 -> 10:30 -> faire le point de tout ce qui ne marche pas d'un point du vue serveur
+    10:30 -> 12 -> s'assoir avec Maor et faire le point
+
+    12h -> 18h construire tout ce qui manque 
+    fin de la semaine objectif : toute l'application a jour avec les reports
+    Voir avec Maor, Oren ce qui se passe avec CDR -> les data a recevoir avec Maor et a quoi cela va ressemble avec Zohar, confirmer avec Oren 
+
+    appeler Stephane Benarosh 
+    

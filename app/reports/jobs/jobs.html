@@ -3,7 +3,7 @@
     <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
             <table md-table md-progress="get_data" class="sanitization-table" ng-model="selected">
-                <thead md-head class="santization-head" md-order="jobs_query.order">
+                <thead md-head class="santization-head" md-order="jobs_query.SortField">
                     <tr md-row>
                         <th md-column>
                             <md-button class="md-icon-button" open-jobs-filter>
@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  jobs_query.order | limitTo:  jobs_query.PageSize"
+                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  jobs_query.SortField | limitTo:  jobs_query.PageSize"
                         md-auto-select="options.autoSelect">
                         <td md-cell></td>
                         <td md-cell>{{x.StartTime | date:"MM/dd/yyyy ':' h:mma"}}</td>

@@ -19,7 +19,8 @@
     <md-divider></md-divider>
 
     <md-virtual-repeat-container id="vertical-container">
-        <div md-virtual-repeat="user in ctrl.users |filter:user" class="user-user-list" flex layout-padding layout="row" layout-align="space-between center">
+        <div md-virtual-repeat="user in ctrl.users |filter:user" class="user-user-list" 
+        flex layout-padding layout="row" layout-align="space-between center" user-name={{user}}>
             <div layout="row" flex="85">
                 {{user.name}}
             </div>

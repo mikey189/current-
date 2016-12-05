@@ -20,10 +20,9 @@
         </md-list-item>
         <md-divider></md-divider>
         <md-virtual-repeat-container id="vertical-container">
-            <div md-virtual-repeat="group in ctrl.data.groups |filter: group" class="user-user-list" layout="row" layout-align="space-between center">
+            <div md-virtual-repeat="group in ctrl.groups |filter: group" class="user-user-list" layout="row" layout-align="space-between center" group-name="{{group}}">
                 <!-- <md-icon class="noMarginLeft smallMarginRight material-icons expandGroups">keyboard_arrow_right</md-icon>-->
-                <md-content class="policy-who-groups">{{group.service}}</md-content>
-
+                <md-content class="policy-who-groups">{{group}}</md-content>
                 <md-button class="md-icon-button" ng-if="ctrl.are_groups_editable" delete-group-from-policy>
                     <md-icon class="material-icon md-red">remove</md-icon>
                 </md-button>
