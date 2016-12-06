@@ -171,6 +171,8 @@ app.factory("policyData", function ($rootScope, $http) {
     var update_current_channels = "http://"+sname+":4580/api/policy/PostUpdatePolicyChannels/"
     var update_groups = "http://"+sname+":4580/api/policy/PostPolicyUsersAndGroups/"
     var available_groups = "http://"+sname+":4580/api/users/getadusergroups"
+    var policy_name = "http://"+sname+":4580/api/policy/updatepolicyname?"
+    var policy_detection = "http://"+sname+":4580/api/policy/PostPolicyFileDetection/"
 
     return {
         create_new_policy: function (data) {
@@ -297,6 +299,25 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         get_groups: function(){
             return $http.get(available_groups)
+        },
+         update_policy_name: function(id, name){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: policy_name+"policyId="+id+"&policyName="+name,
+                method: "POST"
+            }) 
+        },
+        update_policy_detection: function(id, data){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: policy_detection+id,
+                method: "POST",
+                data: data
+            }) 
         }
 
     }
@@ -324,21 +345,6 @@ app.factory("dashboardData", function ($http) {
     }
 })
 
-app.factory("policyDetection", function ($http) {
-    var url = "http://localhost:3000/policyDetection"
-    return {
-        post: function (data) {
-            return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: url,
-                method: "POST",
-                data: data
-            })
-        }
-    }
-})
 
 app.factory("users", function ($http) {
     var url = "http://localhost:3000/activeUsers";

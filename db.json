@@ -1186,6 +1186,17 @@
       "clam": true,
       "useAll": true,
       "id": 8
+    },
+    {
+      "avira": true,
+      "clam": true,
+      "fireEyeSandbox": {
+        "isActive": true
+      },
+      "cukoo": {
+        "isActive": true
+      },
+      "id": 9
     }
   ],
   "policyOrder": [

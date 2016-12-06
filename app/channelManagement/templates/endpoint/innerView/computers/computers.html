@@ -12,10 +12,10 @@
                 <md-list-item search-box layout-padding>
                     <input placeholder="search computers" class="searchInput" ng-model="computer" />
                 </md-list-item>
-                <div ng-repeat="item in ctrl.computerList | filter : computer" nc-select-computer class="listHeight">
+                <div ng-repeat="computer in ctrl.computerList | filter : computer" nc-select-computer class="listHeight">
                     <div layout="row" class="ncComputerItem">
                         <md-icon class="material-icons">computer</md-icon>
-                        <md-list-item>{{item.name}}</md-list-item>
+                        <md-list-item>{{computer}}</md-list-item>
                     </div>
                     <md-divider></md-divider>
                 </div>

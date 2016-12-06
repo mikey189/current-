@@ -28,7 +28,7 @@ app.directive("checkIfEditable", function () {
     }
 })
 
-app.directive("editPreferences", ["policyDetection", function (policyDetection) {
+app.directive("editPreferences", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
@@ -43,8 +43,7 @@ app.directive("editPreferences", ["policyDetection", function (policyDetection) 
                     table.addClass("notEditable")
                     button.html("EDIT");
                     scope.ctrl.editMode = false;
-
-                    policyDetection.post(scope.ctrl.detection)
+                    policyData.update_policy_detection(scope.ctrl.policyId, scope.ctrl.detection)
                 }
             })
         }

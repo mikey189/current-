@@ -75,7 +75,7 @@ app.directive("reorderPolicyList", ["policyData", function (policyData) {
                     // items.removeClass("animated bounce");
                     scope.ctrl.priority = [];
                     items.each(function () {
-                        scope.ctrl.priority.push($(this).attr("index"))
+                        scope.ctrl.priority.push($(this).attr("_id"))
                     })
                     policyData.postOrder(scope.ctrl.priority);
                 }
@@ -84,22 +84,25 @@ app.directive("reorderPolicyList", ["policyData", function (policyData) {
     }
 }])
 
-app.directive("toggleEditableMode", function () {
+app.directive("toggleEditableMode", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
                 var icon = $(this).find("md-icon")
                 var policyName = $(this).siblings(".policyName")
+
                 if (!scope.ctrl.isEditable) {
                     icon.html("done");
                     policyName.css("color", "orange");
                     policyName.addClass("animated flash")
                     scope.ctrl.isEditable = true;
                 } else {
+                    var policyName_value = policyName.html()
+                    console.log(policyName_value)
                     icon.html("edit");
+                    policyData.update_policy_name(scope.ctrl.policyId, policyName_value)
                     policyName.removeClass("animated flash")
-
                     policyName.css("color", "white")
                     scope.ctrl.isEditable = false;
                 }
@@ -160,16 +163,18 @@ app.directive("initiateApiCallWithId", ["policyData", function (policyData) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
-                var self = $(this);
+                var self = $(this)
+                var new_policy_id = self.attr("_id")
+                console.log("new policy id : "+new_policy_id)
+                scope.ctrl.update_policy_id(new_policy_id)
+                scope.$apply()
+                /*var self = $(this);
                 scope.ctrl.policyId = parseInt(self.attr("_id"));
-                console.log("sidenav says "+scope.ctrl.policyId)
                 policyData.getDashboard(scope.ctrl.policyId).then(function (answer) {
                     scope.ctrl.dashboardData = answer.data
-                    console.log("new")
-                    console.log(scope.ctrl.dashboardData)
-                })
-
+                })*/
             })
         }
     }
 }])
+

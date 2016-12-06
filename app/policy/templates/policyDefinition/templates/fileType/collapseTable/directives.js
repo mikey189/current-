@@ -3,7 +3,7 @@
 //edit filetype
 
 
-app.directive("editFiletype",["policyData", function (policyData) {
+app.directive("editFiletype", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -21,8 +21,8 @@ app.directive("editFiletype",["policyData", function (policyData) {
                     advanceModeButton.addClass("hidden")
                     table.addClass("notEditable")
                     self.css("background-color", "#311B92")
-                    policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function(answer){
-                        console.log("server said  : ", answer)
+                    policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function (answer) {
+                        scope.ctrl.types = answer.data
                     })
                     self.html("EDIT")
                     scope.ctrl.isTableEditable = false;
@@ -89,12 +89,12 @@ app.directive("showAdvancedFiletype", function () {
     }
 })
 
-app.directive("checkStatus", function(){
+app.directive("checkStatus", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.click(function(){
-                var self=  $(this)
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                var self = $(this)
                 var child = $(".check_me")
                 scope.ctrl.isChecked = true
                 scope.$apply()
@@ -102,6 +102,3 @@ app.directive("checkStatus", function(){
         }
     }
 })
-
-
-

@@ -24,4 +24,19 @@ Channel Management:
     Voir avec Maor, Oren ce qui se passe avec CDR -> les data a recevoir avec Maor et a quoi cela va ressemble avec Zohar, confirmer avec Oren 
 
     appeler Stephane Benarosh 
-    
+
+
+
+
+
+    policy 
+    scope.ctrl.policyId
+    scanners -> arrange model -> like filetype each is an object for itself
+    filetype -> read mode (get policy from filetypeconfiguration api/policy/getpolicy/{id}
+
+
+    channel update inputs and outputs 
+   input array does not work 
+   post not in place -> make service
+   read and write mode ? 
+computers not passing from one table to the other

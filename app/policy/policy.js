@@ -2,8 +2,7 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
 
     var self = this;
 
-    self.policyId = 4;
-    
+    self.policyId = 7;
     //dragMode for policySideNav
     self.draggableObjects = [];
     policyData.getSidenav().then(function (answer) {
@@ -12,8 +11,12 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
                 self.draggableObjects.push(self.sideNavList[i])
             }
         })
-    //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
+        //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
     self.PolicyInfo = {};
+
+    self.update_policy_id = function(new_id){
+        self.policyId = new_id
+    }
 
     self.onDropComplete = function (index, obj, evt) {
         var otherObj = self.draggableObjects[index];
@@ -29,12 +32,11 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
     //API Call inside directive :"initiateApiCallWithId" 
     policyData.getDashboard(self.policyId).then(function (answer) {
             self.dashboardData = answer.data;
-            console.log(self.policyId)
         })
         //filetypes
         //getting filetypes
         //initiate the channel ids to send
-        self.channelIds = [];
+    self.channelIds = [];
     policyData.getFiletypes().then(function (answer) {
             self.filetype = answer.data
         })
@@ -48,14 +50,12 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
     channelData.getComputerList().then(function (answer) {
         self.users = answer.data;
     })
-    policyData.get_groups().then(function(answer){
+    policyData.get_groups().then(function (answer) {
         self.groups = answer.data
-        console.log(self.groups)
     })
     policyData.get_policy_channels(self.policyId).then(function (answer) {
         self.available_channels = answer.data.AvailableChannels
         self.current_channels = answer.data.CurrentChannels
-        console.log(self.current_channels)
     });
     // setting the toggling mode for editing groups
     self.are_groups_editable = false
@@ -112,5 +112,4 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
         })
         //this object will store all the info changed inside the scanner list
 
-  
 }])
