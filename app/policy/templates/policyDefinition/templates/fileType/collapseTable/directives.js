@@ -7,18 +7,16 @@ app.directive("editFiletype", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            var advanceModeButton = $("#show-advanced-filetype-button")
             var table = $("#filetype-table")
             element.click(function () {
                 var self = $(this)
                 if (!scope.ctrl.isTableEditable) {
-                    advanceModeButton.removeClass("hidden")
                     table.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("DONE")
                     scope.ctrl.isTableEditable = true;
                 } else {
-                    advanceModeButton.addClass("hidden")
+                    // advanceModeButton.addClass("hidden")
                     table.addClass("notEditable")
                     self.css("background-color", "#311B92")
                     policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function (answer) {
@@ -42,6 +40,7 @@ app.directive("showExtensions", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
+            var advanceModeButton = $("#show-advanced-filetype-button")
             element.click(function () {
                 var self = $(this);
                 var extension = self.attr("index");
@@ -49,11 +48,13 @@ app.directive("showExtensions", function () {
                 console.log(scope.ctrl.filetype)
 
                 if (!scope.ctrl.areExtensionsVisible[extension]) {
+                    advanceModeButton.removeClass("hidden")
                     scope.ctrl.areExtensionsVisible[extension] = true;
                     icon.html("keyboard_arrow_down")
 
                 } else {
                     scope.ctrl.areExtensionsVisible[extension] = false;
+                    advanceModeButton.addClass("hidden")
                     icon.html("keyboard_arrow_right");
                 }
                 scope.$apply()

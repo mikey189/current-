@@ -94,7 +94,6 @@ app.directive("editChannels", function (policyData) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
-                scope.$apply()
                 var self = $(this)
                 var icon = self.find("md-icon");
                 console.log("the current channel scope is :->->->->  "+scope.ctrl.policyId)

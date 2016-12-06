@@ -14,10 +14,6 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
         //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
     self.PolicyInfo = {};
 
-    self.update_policy_id = function(new_id){
-        self.policyId = new_id
-    }
-
     self.onDropComplete = function (index, obj, evt) {
         var otherObj = self.draggableObjects[index];
         var otherIndex = self.draggableObjects.indexOf(obj);
@@ -85,16 +81,13 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
             self.current_channels.splice(channel_index, 1)
         }
     }
-
     //reassigning a channel into available_channels
-
     self.reassign_channel = function (data, event) {
         var channel_index = self.available_channels.indexOf(data)
         if (channel_index == -1) {
             self.available_channels.push(data)
         }
     }
-
     //removing channel from available_channels
     self.remove_channel_from_available = function (data, event) {
             var channel_index = self.available_channels.indexOf(data)
@@ -103,7 +96,6 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
             }
         }
         //getting list of scanners for policy defintion
-
     policyData.get_fireEye_servers().then(function (answer) {
         self.fireEye_servers_list = answer.data
     })
@@ -111,5 +103,9 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
             self.cukoo_servers_list = answer.data
         })
         //this object will store all the info changed inside the scanner list
-
+    policyData.get_policy_info(self.policyId).then(function(answer){
+        self.policy_general_info = answer.data
+        self.detection = self.policy_general_info.PolicyInfo.FileDetectionConfigurations
+        self.types = self.policy_general_info.PolicyInfo.FileTypesConfigurations
+    })
 }])

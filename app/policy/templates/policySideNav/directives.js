@@ -163,18 +163,15 @@ app.directive("initiateApiCallWithId", ["policyData", function (policyData) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
-                var self = $(this)
-                var new_policy_id = self.attr("_id")
-                console.log("new policy id : "+new_policy_id)
-                scope.ctrl.update_policy_id(new_policy_id)
-                scope.$apply()
-                /*var self = $(this);
-                scope.ctrl.policyId = parseInt(self.attr("_id"));
-                policyData.getDashboard(scope.ctrl.policyId).then(function (answer) {
-                    scope.ctrl.dashboardData = answer.data
-                })*/
+                var self = $(this);
+                scope.$apply(function () {
+                    scope.ctrl.policyId = parseInt(self.attr("_id"));
+                    policyData.getDashboard(scope.ctrl.policyId).then(function (answer) {
+                        scope.ctrl.dashboardData = answer.data
+                    })
+                })
+
             })
         }
     }
 }])
-

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/detection/style.css" />
-<p>{{ctrl.detection}}</p>
+<json-formatter json="ctrl.detection"></json-formatter>
 <md-button md-ink-ripple="white" md-whiteframe="6" class="editDetection" aria-label="edit preferences" edit-preferences>EDIT</md-button>
 <div id="detectClick" check-if-editable>
     <div id="detectionWrapper" class="notEditable">
@@ -22,20 +22,19 @@
                 <tr class="verticalMargin">
                     <td class="this">Avira</td>
                     <td>
-                        <md-checkbox aria-label="avira" class="noMarginBottom" ng-model="ctrl.detection.avira"></md-checkbox>
+                        <md-checkbox aria-label="avira" class="noMarginBottom" ng-model="ctrl.detection.avira.IsSelected"></md-checkbox>
                     </td>
                 </tr>
                 <tr class="verticalMargin">
                     <td class="this">Clam</td>
                     <td>
-                        <md-checkbox aria-label="clam" class="noMarginBottom" ng-model="ctrl.detection.clam"></md-checkbox>
+                        <md-checkbox aria-label="clam" class="noMarginBottom" ng-model="ctrl.detection.clam.IsSelected"></md-checkbox>
                     </td>
                 </tr>
             </tbody>
         </table>
-
+        <!-- sandboxes -->
         <table md-whiteframe="6" class="detectionTables table table-responsive">
-
             <tbody>
                 <tr class="verticalMargin">
                     <td class="this" unwrapp-fireye>
@@ -43,75 +42,81 @@
                         FireEye Sandbox
                     </td>
                     <td>
-                        <md-checkbox aria-label="feSandbox" class="noMarginBottom" ng-model="ctrl.detection.fireEyeSandbox.isActive"></md-checkbox>
+                        <md-checkbox aria-label="use cuckoo" ng-model="ctrl.detection.fireEye.IsSelected"></md-checkbox>
                     </td>
                 </tr>
+                <!-- list of fireEye servers -->
                 <tr class="fireEye hidden animated fadeIn" ng-repeat="fireEye in ctrl.fireEye_servers_list">
                     <td>
                         <md-icon>some_icon</md-icon>
                         {{fireEye}}
                     </td>
                     <td>
-                        <md-checkbox ng-model="ctrl.detection.allowed_fireEyes[fireEye].use"></md-checkbox>
+                        <md-checkbox aria-label="fireEye" ng-model="ctrl.detection.FileDetectionSettings.ServerAddress[fireEye]"></md-checkbox>
                     </td>
                 </tr>
-                <tr class="fireEye hidden animated fadeIn">
-                    <td>
-                        <md-icon class="material-icons">someicon</md-icon>
-                        FileTypes To Check
-                    </td>
-                    <td>
-                        <md-checkbox aria-label="filetype" ng-model="ctrl.detection.fireEyeSandbox.filetype"></md-checkbox>
-                    </td>
-                </tr>
+                <!-- end of list of fireEye servers -->
                 <tr class="verticalMargin">
                     <td class="this" unwrapp-cukoo>
                         <md-icon class="material-icons">keyboard_arrow_right</md-icon>
                         Cukoo Sandbox
                     </td>
                     <td>
-                        <md-checkbox aria-label="cukoo" class="noMarginBottom" ng-model="ctrl.detection.cukoo.isActive"></md-checkbox>
+                        <md-checkbox aria-label="use cuckoo" ng-model="ctrl.detection.cuckoo.IsSelected"></md-checkbox>
                     </td>
                 </tr>
-                <tr class="cukoo hidden animated fadeIn">
+                <!-- list of cuckoo servers -->
+                <tr class="cukoo hidden animated fadeIn" ng-repeat="cuckoo in ctrl.cukoo_servers_list">
                     <td>
                         <md-icon class="material-icons">some_icon</md-icon>
-                        Use Cukoo servers in this policy
+                        {{cuckoo}}
                     </td>
                     <td>
-                        <md-checkbox aria-label="useServers" ng-model="ctrl.detection.cukooSandbox.useServers"></md-checkbox>
+                        <md-checkbox aria-label="useServers" ng-model="ctrl.detection.FileDetectionSettings.cuckooServers[cuckoo].IsSelected"></md-checkbox>
                     </td>
                 </tr>
+                <!-- end of list of cuckoo servers -->
+                <!-- cuckoo time -->
                 <tr class="cukoo hidden animated fadeIn">
                     <td>
                         <md-icon class="material-icons">someicon</md-icon>
-                        FileTypes To Check
+                        Timeout (Milliseconds)
                     </td>
                     <td>
-                        <md-checkbox aria-label="fileType" ng-model="ctrl.detection.cukooSandbox.filetype"></md-checkbox>
+                        <input ng-model="ctrl.detection.cukoo.FileDetectionSettings.TimeOutMillis" placeholder="milliseconds" type="number" />
+                    </td>
+                </tr>
+                <!-- cuckoo save reports -->
+                <tr class="cukoo hidden animated fadeIn">
+                    <td>
+                        <md-icon class="material-icons">someicon</md-icon>
+                        Save Reports
+                    </td>
+                    <td>
+                        <md-checkbox ng-model="ctrl.detection.cukoo.FileDetectionSettings.saveReports"></md-checkbox>
                     </td>
                 </tr>
             </tbody>
+            <!-- end of sandbox -->
         </table>
-
         <table md-whiteframe="6" class="detectionTables table table-responsive">
             <tbody>
                 <tr class="verticalMargin">
                     <td class="this">Vendor Signing</td>
                     <td>
-                        <md-checkbox aria-label="vendor" class="noMarginBottom" ng-model="ctrl.detection.vendorSigning"></md-checkbox>
+                        <md-checkbox aria-label="vendor" class="noMarginBottom" ng-model="ctrl.detection.vendorSigning.IsSelected"></md-checkbox>
                     </td>
                 </tr>
                 <tr class="verticalMargin">
                     <td class="this">XML Validation</td>
                     <td>
-                        <md-checkbox aria-label="xml" class="noMarginBottom" ng-model="ctrl.detection.xmlValidation"></md-checkbox>
+                        <md-checkbox aria-label="xml" class="noMarginBottom" ng-model="ctrl.detection.xmlValidation.IsSelected"></md-checkbox>
                     </td>
                 </tr>
                 <tr class="verticalMargin">
                     <td class="this">Regular Expression</td>
                     <td>
-                        <md-checkbox aria-label="regex" class="noMarginBottom" ng-model="ctrl.detection.regex"></md-checkbox>
+                        <md-checkbox aria-label="regex" class="noMarginBottom" ng-model="ctrl.detection.regex.IsSelected"></md-checkbox>
                     </td>
                 </tr>
             </tbody>

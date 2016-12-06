@@ -173,6 +173,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var available_groups = "http://"+sname+":4580/api/users/getadusergroups"
     var policy_name = "http://"+sname+":4580/api/policy/updatepolicyname?"
     var policy_detection = "http://"+sname+":4580/api/policy/PostPolicyFileDetection/"
+    var policy_info = "http://"+sname+":4580/api/policy/getpolicy/"
 
     return {
         create_new_policy: function (data) {
@@ -318,6 +319,9 @@ app.factory("policyData", function ($rootScope, $http) {
                 method: "POST",
                 data: data
             }) 
+        },
+        get_policy_info: function(id){
+            return $http.get(policy_info+id)
         }
 
     }
