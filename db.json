@@ -2213,23 +2213,6 @@
       ]
     }
   ],
-  "CDR_Settings": {
-    "EmailSettings": [
-      {
-        "name": "Email",
-        "settings": [
-          {
-            "remove scripts": false,
-            "HyperlinkManipulation": [
-              "None",
-              "Disable Hyperlinks",
-              "Remove Hyperlinks",
-              "Fix HyperLinks"
-            ],
-            "remove styles": false
-          }
-        ]
-      }
-    ]
-  }
+  "policy_computers": 
+  ["Jonathan Meguira", "Audelia Oliel", "Benjamin Fedida", "Elie Lotati", "Haim Sebag", "David Zaffran"]
 }

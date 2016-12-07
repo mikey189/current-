@@ -21,3 +21,10 @@ app.directive('userList', function(){
     }
 })
 
+app.directive("computersUsingThisPolicy", function(){
+    return{
+        restrict: "E",
+        templateUrl: "app/policy/templates/who/templates/computers/computers.html",
+        replace: false
+    }
+})

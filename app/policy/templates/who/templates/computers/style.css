@@ -1,0 +1,25 @@
+#all_computer{
+    background-color: white;
+    border-radius: 3px;
+}
+#policy_computers{
+    background-color: white;
+    border-radius: 3px;
+}
+
+.virtual-repeat-full-height{
+    height: 100% !important;
+}
+.virtual-repeat-div{
+    border-bottom: solid 1px #f1f1f1;
+}
+
+.computer_search_box{
+    border: 0px !important  ;
+    border-bottom: solid 1px #2196F3 !important;
+}
+.computer_search_box:focus{
+    border: 0px !important ;
+    border-bottom: solid 1px #EC407A !important;
+;
+}

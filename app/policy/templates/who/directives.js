@@ -50,7 +50,7 @@ app.directive("editPolicyGroup", function (policyData) {
         link: function (scope, element, attrs) {
             element.click(function () {
                 var self = $(this)
-  
+
                 if (!scope.ctrl.are_groups_editable) {
                     self.children("md-icon").html("done")
                     scope.ctrl.are_groups_editable = true
@@ -96,7 +96,7 @@ app.directive("editChannels", function (policyData) {
             element.click(function () {
                 var self = $(this)
                 var icon = self.find("md-icon");
-                console.log("the current channel scope is :->->->->  "+scope.ctrl.policyId)
+                console.log("the current channel scope is :->->->->  " + scope.ctrl.policyId)
                 var current_channels = $("#currentChannels")
                 if (!scope.ctrl.areChannelsEditable) {
                     scope.ctrl.areChannelsEditable = true;
@@ -108,13 +108,41 @@ app.directive("editChannels", function (policyData) {
                         scope.ctrl.channelIds.push(channelId)
                     }
                     scope.ctrl.areChannelsEditable = false;
-                    console.log("post to id: "+ scope.ctrl.policyId)
+                    console.log("post to id: " + scope.ctrl.policyId)
                     policyData.update_current_channels(scope.ctrl.policyId, scope.ctrl.channelIds)
                     current_channels.addClass("notEditable")
                     icon.html("edit");
 
                 }
             })
+        }
+    }
+})
+app.directive("editAllComputers", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.click(function () {
+                if (!scope.ctrl.are_all_computers_editable) {
+                    scope.ctrl.are_all_computers_editable = true
+
+                } else {
+                    scope.ctrl.are_all_computers_editable = false
+
+                }
+            })
+        }
+    }
+})
+app.directive("editPolicyComputers", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            if (!scope.ctrl.are_current_computers_editable) {
+                scope.ctrl.are_current_computers_editable = true
+            } else {
+                scope.ctrl.are_current_computers_editable = false
+            }
         }
     }
 })

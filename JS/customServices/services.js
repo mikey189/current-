@@ -174,6 +174,8 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_name = "http://"+sname+":4580/api/policy/updatepolicyname?"
     var policy_detection = "http://"+sname+":4580/api/policy/PostPolicyFileDetection/"
     var policy_info = "http://"+sname+":4580/api/policy/getpolicy/"
+    var computers_list = "http://localhost:3000/userComputers"
+    var policy_computers = "http://localhost:3000/policy_computers"
 
     return {
         create_new_policy: function (data) {
@@ -322,6 +324,12 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         get_policy_info: function(id){
             return $http.get(policy_info+id)
+        },
+        get_computers_list: function(){
+            return $http.get(computers_list)
+        }, 
+        get_policy_computers: function(){
+            return $http.get(policy_computers)
         }
 
     }

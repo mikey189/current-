@@ -167,12 +167,12 @@ fill: white !important;
 }
 
 .iSelected{
-    background-color: #6B69EA;
+    background-color: #2196F3;
     color: white;
     border-radius: 5px;
 }
 .oSelected{
-    background-color: #6B69EA;
+    background-color: #2196F3;
     color: white;
     border-radius: 5px;
 }
@@ -195,4 +195,12 @@ fill: white !important;
     background-color: #190051 !important;
     color: white !important;
     font-weight: bold;
+}
+#edit_IO{
+    background-color: #2196F3 !important;
+    font-weight: 600;
+    color: white;
+}
+#edit_IO:hover{
+    background-color: #EC407A !important;
 }

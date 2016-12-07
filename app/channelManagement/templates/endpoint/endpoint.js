@@ -1,4 +1,4 @@
-app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", "topCases", function (C2CData, channelData, users, topCases) {
+app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", "topCases", "$scope", function (C2CData, channelData, users, topCases, $scope) {
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
@@ -8,58 +8,61 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     self.isBlocked = true;
     //retrieving the dashboard according to channel id
     channelData.getChannelDashboard(self.rootId).then(function (answer) {
-        self.channelDashboard = answer.data
-    })  
-    //top users loading from db.json because there are more instances of users (just nice to render)
+            self.channelDashboard = answer.data
+        })
+        //top users loading from db.json because there are more instances of users (just nice to render)
     users.getUsers().then(function (response) {
-        self.users = response
-    })
-    //loading topCases from db.json as well because the names are more realistic there 
+            self.users = response
+        })
+        //loading topCases from db.json as well because the names are more realistic there 
     topCases.getTopCases().then(function (answer) {
         self.topCases = answer.data
     })
     self.label = ["Medium", "Low", "high"];
     //loading computer list 
-    channelData.getComputerList().then(function (answer) {
-        self.computerList = answer.data;
-    })
-    //making active directory computers section disabled by default
-    self.are_ad_computers_editable = false
-        //loading all computers that are currently being used by the channel
-    channelData.get_current_computers(self.rootId).then(function (answer) {
-        self.current_computers_in_use = answer.data.ChannelInfo.ComputerList
-    })
-    //setting inputs and outputs screen to not editable by default
+        //setting inputs and outputs screen to not editable by default
     self.are_outputs_and_outputs_editable = false;
     //getting input and output list for "input and ouput" view
-    channelData.get_input_output_list().then(function(answer){
-        self.all_inputs = answer.data[0].inputs
-        self.iROW_1 = answer.data[0].inputs.slice(0, 3)
-        self.iROW_2 = answer.data[0].inputs.slice(3, 6)
-        //default property for selecting input or ouput
-        self.is_input_selected = false;
-    })
-    //storing selected inputs and outputs
+    channelData.get_input_output_list().then(function (answer) {
+            self.all_inputs = answer.data[0].inputs
+            self.iROW_1 = answer.data[0].inputs.slice(0, 3)
+            self.iROW_2 = answer.data[0].inputs.slice(3, 6)
+                //default property for selecting input or ouput
+            self.is_input_selected = false;
+        })
+        //storing selected inputs and outputs
 
     self.selectedInputs = []
     self.selectedOutputs = []
-    
+
     //setting up initial array to store smbs objects
     self.ismbList = []
-    self.osmbList = []  
-    
+    self.osmbList = []
+
     //function that add objects for iSMB and oSMB on ng-checked
-    self.addISMB = function(){
+    self.addISMB = function () {
         var iSMB = {}
         self.ismbList.push(iSMB)
     }
-    self.addOSMB = function(){
+    self.addOSMB = function () {
         var oSMB = {}
         self.osmbList.push(oSMB)
     }
-    
+
     //making the settings not editable by default
     self.are_settings_editable = false
-    
-}])
 
+    self.deleteISMB = function (ISMB) {
+        var index = self.ismbList.indexOf(ISMB)
+        self.ismbList.splice(index, 1);
+        console.log("deleting ISMB")
+        $scope.$apply()
+    }
+    self.deleteOSMB = function (OSMB) {
+        var index = self.osmbList.indexOf(OSMB)
+        self.osmbList.splice(index, 1);
+        console.log("deleting OSMB")
+        $scope.$apply()
+    }
+
+}])

@@ -62,6 +62,7 @@ app.directive("addIsmb", function () {
                 var ismb = {};
                 scope.ctrl.ismbList.push(ismb)
                 scope.$apply()
+                console.log(scope.ctrl.ismbList)
             })
         }
     }
@@ -112,43 +113,39 @@ app.directive("editInputsAndOutputs", function () {
                     self.css("background-color", "red")
                     self.html("SAVE")
                     scope.ctrl.are_outputs_and_outputs_editable = true
-                    //emptying arrays in case user plays too much with edit and save buttons
+                        //emptying arrays in case user plays too much with edit and save buttons
                     scope.ctrl.selectedOutputs = []
                     scope.ctrl.selectedInputs = []
                 } else {
                     edition_section.addClass("notEditable")
                     self.css("background-color", "#311B92")
-                    //recording selected inputs
+                        //recording selected inputs
                     var input_element = $(".input_element")
                     input_element.each(function () {
-                        var s
-                        
-                        
-                        
-                        lf = $(this)
-                        if (self.hasClass("input_is_selected")) {
-                            var input_name = self.find("md-content").html()
-                            var input_object = {
-                                inputName: input_name,
-                                isSelected: true
+                            var self = $(this)
+                            if (self.hasClass("input_is_selected")) {
+                                var input_name = self.find("md-content").html()
+                                var input_object = {
+                                    inputName: input_name,
+                                    isSelected: true
+                                }
+                                scope.ctrl.selectedInputs.push(input_object)
                             }
-                            scope.ctrl.selectedInputs.push(input_object)
-                        }
-                    })
-                    //recording selected ouputs
+                        })
+                        //recording selected ouputs
                     var output_elements = $(".output_element")
                     output_elements.each(function () {
-                        var self = $(this)
-                        if (self.hasClass("input_is_selected")) {
-                            var output_name = self.find("md-content").html()
-                            var output_object = {
-                                outputName: output_name,
-                                isSelected: true
+                            var self = $(this)
+                            if (self.hasClass("input_is_selected")) {
+                                var output_name = self.find("md-content").html()
+                                var output_object = {
+                                    outputName: output_name,
+                                    isSelected: true
+                                }
+                                scope.ctrl.selectedOutputs.push(output_object)
                             }
-                            scope.ctrl.selectedOutputs.push(output_object)
-                        }
-                    })
-                    //recording the object that stores all info of the view
+                        })
+                        //recording the object that stores all info of the view
                     scope.ctrl.inputsOutputsSettings = {
                         "inputsSettings": {
                             "inputList": scope.ctrl.selectedInputs,
@@ -177,8 +174,8 @@ app.directive("matchParentWidth", function () {
                 var input_element = $(".input_element")
                 var output_element = $(".output_element")
 
-                var inputs_parents_width = $("#inputs_sources").width() / 7 + "px"
-                var output_parents_width = $("#outputs_sources").width() / 7 + "px"
+                var inputs_parents_width = $("#inputs_sources").width() / 3 + "px"
+                var output_parents_width = $("#outputs_sources").width() / 3 + "px"
 
                 input_element.css("width", inputs_parents_width)
                 output_element.css("width", output_parents_width)
@@ -187,8 +184,3 @@ app.directive("matchParentWidth", function () {
         }
     }
 })
-
-
-
-
-

@@ -13,3 +13,7 @@ not working calls / view
         post not in place -> make service
         read and write mode ? 
         computers not passing from one table to the other
+
+
+Missing API Calls inside Channels
+    - Input and Outputs GET ( currently only POST is supported )
