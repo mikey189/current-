@@ -8,12 +8,12 @@
             </md-toolbar>
             <md-content class="purpleSidebar" flex>
                 <md-input-container md-no-float flex layout="row" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" layout-margin ng-model="channel">
-                    <input ng-model="ctrl.searchQuery" placeholder="Search users, groups..">
+                    <input ng-model="Name" placeholder="Search users, groups..">
                     <md-icon class="material-icons greenIcon noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
                     <md-list-item class="create_channel_sidenav_item" md-whiteframe="2" ><a ui-sref="app.channelManagement.newChannel.step1"><strong>Create Channel</strong></a></md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.menuItems | filter: channel" class="channelSidenavItems"
+                    <md-list-item ng-repeat="x in ctrl.menuItems | filter: Name" class="channelSidenavItems"
                      md-whiteframe="2"><strong><a ui-sref="app.channelManagement.endpoint.dashboard"  get-my-id  _id="{{x.Id}}">{{x.Name}}</a></strong></md-list-item>
                 </md-list>
             </md-content>

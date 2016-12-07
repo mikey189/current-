@@ -14,9 +14,9 @@
             </md-button>
         </div>
     </div>
-    <input class="searchPolicies" placeholder="search policies" ng-model="name" />
+    <input class="searchPolicies" placeholder="search policies" ng-model="PolicyName" />
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: policy.name" layout-padding
+        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: PolicyName |orderBy : '-Priority'" layout-padding
             class="policyItem" policy-list-hover ng-drag-data="policy" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
             _id="{{policy.PolicyId}}" layout="column" layout-align="center start" initiate-api-call-with-id>
             <div layout="row" layout-align="space-between start" style="width: 100%">
