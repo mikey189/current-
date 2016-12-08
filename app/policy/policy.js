@@ -1,9 +1,10 @@
-app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels", "policyUsers", function ($scope, policyData, channelData, policyChannels, policyUsers) {
+app.controller('policy', ["$scope","$mdSidenav", "policyData", "channelData", "policyChannels", "policyUsers", function ($scope, $mdSidenav, policyData, channelData, policyChannels, policyUsers) {
 
     var self = this;
 
-    self.policyId = 7;
+    self.policyId =  7
     //dragMode for policySideNav
+
     self.draggableObjects = [];
     policyData.getSidenav().then(function (answer) {
             self.sideNavList = answer.data
@@ -13,7 +14,6 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
         })
         //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
     self.PolicyInfo = {};
-
     self.onDropComplete = function (index, obj, evt) {
         var otherObj = self.draggableObjects[index];
         var otherIndex = self.draggableObjects.indexOf(obj);
@@ -26,12 +26,14 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
     self.is_policy_sidenav_editable = false;
     //getDashboard data with policyId
     //API Call inside directive :"initiateApiCallWithId" 
-    policyData.getDashboard(self.policyId).then(function (answer) {
+    self.get_policy_data = function (id) {
+        policyData.getDashboard(id).then(function (answer) {
             self.dashboardData = answer.data;
         })
-        //filetypes
-        //getting filetypes
-        //initiate the channel ids to send
+    }
+    //filetypes
+    //getting filetypes
+    //initiate the channel ids to send
     self.channelIds = [];
     policyData.getFiletypes().then(function (answer) {
             self.filetype = answer.data
@@ -63,17 +65,16 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
         //available channel successfully dumped insinde current channels
 
     self.drop_success_current_channels = function (data, event) {
-        var channel_index = self.current_channels.indexOf(data)
-        var old_index = self.available_channels.indexOf(data)
-        if (channel_index == -1) {
-            self.current_channels.push(data)
+            var channel_index = self.current_channels.indexOf(data)
+            var old_index = self.available_channels.indexOf(data)
+            if (channel_index == -1) {
+                self.current_channels.push(data)
+            }
+            if (old_index > -1) {
+                self.available_channels.splice(old_index, 1)
+            }
         }
-        if (old_index > -1) {
-            self.available_channels.splice(old_index, 1)
-        }
-    }
-
-    //successfully removed channel from current channel
+        //successfully removed channel from current channel
 
     self.remove_current_channel = function (data, event) {
             var channel_index = self.current_channels.indexOf(data)
@@ -115,8 +116,12 @@ app.controller('policy', ["$scope", "policyData", "channelData", "policyChannels
         //making active directory computers section disabled by default
     self.are_all_computers_editable = false
     self.are_current_computers_editable = false
-
     policyData.get_policy_computers().then(function (answer) {
         self.policy_computers = answer.data
     })
+    self.getPolicyId = function (id) {
+        self.policyId = id
+        console.log(self.policyId)
+    }
+
 }])

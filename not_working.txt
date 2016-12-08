@@ -12,7 +12,6 @@ not working calls / view
         input array does not work 
         post not in place -> make service
         read and write mode ? 
-        computers not passing from one table to the other
 
 
 Missing API Calls inside Channels

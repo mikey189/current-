@@ -1,10 +1,12 @@
 #all_computer{
     background-color: white;
     border-radius: 3px;
+    margin-left: 0px !important;
 }
 #policy_computers{
     background-color: white;
     border-radius: 3px;
+    margin-right: 0px !important;
 }
 
 .virtual-repeat-full-height{
@@ -16,10 +18,27 @@
 
 .computer_search_box{
     border: 0px !important  ;
-    border-bottom: solid 1px #2196F3 !important;
+    border-bottom: solid 2px #2196F3 !important;
 }
 .computer_search_box:focus{
     border: 0px !important ;
-    border-bottom: solid 1px #EC407A !important;
-;
+    border-bottom: solid 2px #EC407A !important;
+
+}
+.no_padding_bottom{
+    padding-bottom: 0px !important;
+}
+.search-container{
+    margin-bottom: 1em !important;
+}
+.delete_computer:hover{
+    color: #E91E63 !important;
+}
+.add_computer:hover{
+    color: #2196F3; 
+}
+#computers_container{
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }

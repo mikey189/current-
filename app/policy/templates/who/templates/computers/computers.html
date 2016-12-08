@@ -1,35 +1,37 @@
 <link rel="stylesheet" href="app/policy/templates/who/templates/computers/style.css" />
-<div layout="row" layout-align="space-between start">
-    <div id="all_computer" layout="column" flex="50" layout-margin md-whiteframe="6">
-        <div layout="row" layout-align="space-between center" layout-padding>
-            <input class="computer_search_box" ng-model="name" flex="90" />
-            <md-button class="md-icon-button" edit-all-computers>
+<div layout="row" layout-align="space-between start" layout-margin id="computers_container">
+    <div id="all_computer" layout="column" flex="50" md-whiteframe="6">
+        <!-- search bar -->
+        <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+            <md-icon class="search-computers-icon md-36" flex="15">computer</md-icon>
+            <input class="computer_search_box" ng-model="computer" flex="75" placeholder="All computers available on the domain"/>
+            <md-button class="md-icon-button no_padding_bottom" edit-all-computers>
                 <md-icon>edit</md-icon>
             </md-button>
         </div>
         <md-virtual-repeat-container class="virtual-repeat-full-height">
-            <div md-virtual-repeat="computer in ctrl.all_computers | filter: name | orderBy: name" class="virtual-repeat-div"
-             layout-padding layout-align="space-between center" layout="row">
-                {{computer.name}}
+            <div md-virtual-repeat="computer in ctrl.all_computers | filter: computer | orderBy: computer" class="virtual-repeat-div" layout-padding
+                layout-align="space-between center" layout="row">
+                <md-content class="computer_name">{{computer}}</md-content>
                 <md-button ng-if="ctrl.are_all_computers_editable" class="md-icon-button animated fadeIn" add-computer-to-policy>
-                    <md-icon>add</md-icon>
+                    <md-icon class="add_computer">add</md-icon>
                 </md-button>
             </div>
         </md-virtual-repeat-container>
     </div>
-    <div id="policy_computers" layout="column" flex="50" layout-margin md-whiteframe="6">
-        <div layout="row" layout-padding layout-align="space-between center">
-            <input class="computer_search_box" ng-model="policy_computer" flex="90" placeholder="{{ctrl.test}}" />
-            <md-button class="md-icon-button" edit-policy-computers>
+    <div id="policy_computers" layout="column" flex="50" md-whiteframe="6">
+        <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+            <input class="computer_search_box" ng-model="policy_computers" flex="90" placeholder="Computers currently using this policy" />
+            <md-button class="md-icon-button no_padding_bottom" edit-policy-computers>
                 <md-icon>edit</md-icon>
             </md-button>
         </div>
         <md-virtual-repeat-container class="virtual-repeat-full-height">
             <div md-virtual-repeat="policy_computer in ctrl.policy_computers | filter: policy_computers | orderBy: policy_computers"
-            layout="row" layout-align="space-between center" class="virtual-repeat-div">
-                <md-content>{{policy_computer}}</md-content>
+                layout="row" layout-align="space-between center" class="virtual-repeat-div" layout-padding>
+                <md-content class="computer_name">{{policy_computer}}</md-content>
                 <md-button ng-if="ctrl.are_current_computers_editable" class="md-icon-button" remove-computer-from-policy>
-                    <md-icon>delete</md-icon>
+                    <md-icon class="delete_computer">remove</md-icon>
                 </md-button>
             </div>
         </md-virtual-repeat-container>

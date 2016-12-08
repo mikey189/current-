@@ -14,7 +14,7 @@ app.directive("initNewPolicyModal", function ($mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 scope.ctrl.new_policy_title = "";
                 $mdDialog.show({
                     controller: "policy",
@@ -32,7 +32,7 @@ app.directive("cancelPolicyCreation", function ($mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 $mdDialog.cancel()
             })
         }
@@ -42,7 +42,7 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 policyData.create_new_policy(scope.ctrl.PolicyInfo)
                 console.log(scope.ctrl.PolicyInfo)
                 $state.go("app.policy.definition.fileType")
@@ -55,7 +55,7 @@ app.directive("reorderPolicyList", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attr) {
-            element.click(function () {
+            element.bind("click", function () {
                 var icon = $(this).find("md-icon")
                 var items = $(".policyItem");
                 var policyName = $(".editPolicyName")
@@ -88,7 +88,7 @@ app.directive("toggleEditableMode", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 var icon = $(this).find("md-icon")
                 var policyName = $(this).siblings(".policyName")
 
@@ -116,7 +116,7 @@ app.directive("toggleNewPolicyEditableMode", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 var icon = $(this).find("md-icon")
                 var policyName = $(".newPolicyName")
                 if (!scope.ctrl.isEditable) {
@@ -141,7 +141,7 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyData, $
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 var self = $(this);
                 var cell = self.parents("md-list-item");
                 var id = parseInt(cell.attr("_id"));
@@ -158,20 +158,18 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyData, $
 }])
 
 
-app.directive("initiateApiCallWithId", ["policyData", function (policyData) {
+app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (policyData, $mdSidenav) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
+            element.bind("click", function () {
                 var self = $(this);
+                scope.ctrl.policyId = parseInt(self.attr("_id"));
                 scope.$apply(function () {
-                    scope.ctrl.policyId = parseInt(self.attr("_id"));
-                    policyData.getDashboard(scope.ctrl.policyId).then(function (answer) {
-                        scope.ctrl.dashboardData = answer.data
-                    })
+                    scope.ctrl.get_policy_data(scope.ctrl.policyId)
                 })
-
             })
         }
     }
 }])
+

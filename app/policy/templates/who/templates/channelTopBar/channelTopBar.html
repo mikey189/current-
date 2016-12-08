@@ -6,12 +6,12 @@
             <h3>Channels</h3>
         </div>
         <div layout="row" flex layout-align="end center">
-            <md-button class="md-icon-button" aria-label="edit" edit-channels policy-id="{{ctrl.policyId}}" ng-click="ctrl.updateChannels()">
-                <md-icon>edit</md-icon>
+            <md-button class="md-icon-button" aria-label="edit" edit-channels policy-id="{{ctrl.policyId}}">
+               <md-icon>edit</md-icon>
             </md-button>
         </div>
     </div>
-    <div layout="row" layout-align="start center" layout-margin id="currentChannels" ng-drop="true"  style="height: 50px;" ng-center-anchor="true"
+    <div layout="row" layout-align="start center" layout-margin id="currentChannels" ng-drop="true"  ng-center-anchor="true"
      ng-drop-success = "ctrl.drop_success_current_channels($data, event)" layout-wrap>
         <p class="custom-channels-chips cursor-move" 
         ng-repeat="x in ctrl.current_channels" ng-drag="true" ng-drag-data="x" 

@@ -162,50 +162,38 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.dashboard', {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
-            controller: "policy",
-            controllerAs: "ctrl",
             displayName: "Policy"
 
         })
-
-
     .state('app.policy.definition', {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
-            controller: 'policy',
-            controllerAs: "ctrl",
             displayName: "Policy"
-
         })
         .state('app.policy.definition.fileType', {
             url: '/policyDefinitionFT',
             templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
-            controller: 'policy',
-            controllerAs: 'ctrl',
             displayName: "Policy > Filetype Settings"
 
         })
         .state('app.policy.definition.detection', {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
-            controller: 'policy',
-            controllerAs: 'ctrl',
+       
             displayName: "Policy > Detection Settings"
 
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
             templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
-            controller: 'policy',
-            controllerAs: 'ctrl',
+           
             displayName: "Policy > CDR Settings"
 
         })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
-            controller: 'policy',
-            controllerAs: 'ctrl',
+          
             displayName: "Policy > Settings"
 
         })
@@ -214,8 +202,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.policy.who', {
         url: '/policyWho',
         templateUrl: 'app/policy/templates/who/who.html',
-        controller: 'policy',
-        controllerAs: "ctrl",
         displayName: "Policy > Who Uses This Policy"
 
     })
@@ -234,7 +220,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'sanitization',
             // controllerAs: 'ctrl',
             displayName: "Sanitization",
-             parentUrl: "app.reports",
+            parentUrl: "app.reports",
             parentName: "System Status >"
         })
         .state('app.telerik_reports', {
@@ -243,7 +229,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'telerik_reports',
             controllerAs: 'ctrl',
             displayName: "Reports Services",
-             parentUrl: "app.reports",
+            parentUrl: "app.reports",
             parentName: "System Status >"
 
         })
