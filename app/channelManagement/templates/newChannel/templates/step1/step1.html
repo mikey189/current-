@@ -5,11 +5,18 @@
 </div>
 <div layout-margin>
 <nc-channel-type></nc-channel-type>
-    <md-button id="ncNextPage" class="md-primary md-raised" save-info-get-id><strong>NEXT</strong></md-button>
+    <md-button id="ncNextPage" class="md-primary md-raised" ng-disabled="ctrl.isNextButtonDisabled" save-info-get-id md-whiteframe="4"><strong>NEXT</strong></md-button>
 </div>
 
 <style>
     #ncNextPage{
         float: right;
+        font-weight: 600;
+    }
+       #ncNextPage:not([disabled]):hover{
+        background-color: #F50057;
+    }
+    .disabled{
+        pointer-events: none !important;
     }
 </style>

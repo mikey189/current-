@@ -101,7 +101,7 @@ app.directive("editField", function () {
     }
 })
 
-app.directive("editInputsAndOutputs", function () {
+app.directive("editInputsAndOutputs", function (channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -125,10 +125,8 @@ app.directive("editInputsAndOutputs", function () {
                             var self = $(this)
                             if (self.hasClass("input_is_selected")) {
                                 var input_name = self.find("md-content").html()
-                                var input_object = {
-                                    inputName: input_name,
-                                    isSelected: true
-                                }
+                                var input_object = {}
+                                input_object[input_name] = true
                                 scope.ctrl.selectedInputs.push(input_object)
                             }
                         })
@@ -138,24 +136,30 @@ app.directive("editInputsAndOutputs", function () {
                             var self = $(this)
                             if (self.hasClass("input_is_selected")) {
                                 var output_name = self.find("md-content").html()
-                                var output_object = {
-                                    outputName: output_name,
-                                    isSelected: true
-                                }
+                                var output_object = {}
+                                output_object[output_name] = true
                                 scope.ctrl.selectedOutputs.push(output_object)
                             }
                         })
                         //recording the object that stores all info of the view
-                    scope.ctrl.inputsOutputsSettings = {
-                        "inputsSettings": {
-                            "inputList": scope.ctrl.selectedInputs,
-                            "inputSMB": scope.ctrl.ismbList
-                        },
-                        "outputsSettings": {
-                            "outputList": scope.ctrl.selectedOutputs,
-                            "outputSMB": scope.ctrl.osmbList
+                    scope.ctrl.IoConfiguration = {
+                            "inputConfiguration": {
+                                "SelectedIoList": scope.ctrl.selectedInputs,
+                                "IoSmbConfiguration": scope.ctrl.ismbList
+                            },
+                            "outputConfiguration": {
+                                "SelectedIoList": scope.ctrl.selectedOutputs,
+                                "IoSmbConfiguration": scope.ctrl.osmbList
+                            }
                         }
-                    }
+                        //posting the data to the server
+                    console.log("posting data to : " + scope.ctrl.rootId)
+                    console.log(scope.ctrl.IoConfiguration)
+                    channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
+                        console.log(success)
+                    }, function (error) {
+                        console.log(error)
+                    })
                     scope.$apply()
                     self.html("EDIT")
                     scope.ctrl.are_outputs_and_outputs_editable = false

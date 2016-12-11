@@ -182,6 +182,10 @@ app.directive("ncTypeSelectable", function () {
                 siblings.removeClass("ncTypesHover")
                 siblings.find("g").removeClass("hoveredIcon")
                 siblings.find("md-content").removeClass("ncTypesHoverTitle")
+                console.log(scope.ctrl.isTypeSelected)
+                scope.$apply(function () {
+                    scope.ctrl.isNextButtonDisabled = false
+                })
                 $(this).each(function () {
                     $(this).addClass("ncTypesHover")
                     $(this).find("g").addClass("hoveredIcon")

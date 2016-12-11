@@ -4,12 +4,14 @@ app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
         link: function (scope, element, attrs) {
             element.click(function () {
                 var channelType = $(".ncTypesHover").find(".ncTypeTitle").html()
+                var button = $("#ncNextPage")
                 var channelObject = {
                     "GeneralInformations": {
                         "Name": scope.ctrl.channelName,
                         "ChannelTypeName": channelType,
                         "Description": scope.ctrl.channelDescription
                     }
+
                 }
                 scope.ctrl.gen_info = channelObject
                 channelData.createChannel(channelObject).then(function (answer) {

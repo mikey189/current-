@@ -2,9 +2,11 @@ not working calls / view
 
     policy 
 
-        scope.ctrl.policyId --> NW
         scanners -> arrange model -> like filetype each is an object for itself -> tansforming the object before sending it ? 
         settings -> no model is currently set 
+        unify API Call -> one API call to get everytinh like http://jdev01:4580/api/policy/getpolicy/
+        with this call i should get one object per view i.e one big object for dashboard, one big object for filetype, one big object "who" 
+        and so on
         
     channel
 

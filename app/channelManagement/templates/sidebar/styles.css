@@ -4,6 +4,8 @@
 
 .create_channel_sidenav_item:hover {
     background-color: #0091EA;
-    border-left: solid 0.5em #EC407A
-;
+    border-left: solid 0.5em #EC407A;
+}
+.channelSidenavItems:active{
+    background-color: red !important;
 }

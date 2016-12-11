@@ -16,7 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/app',
         templateUrl: 'app/common/common.html',
         controller: 'common',
-        controllerAs: 'common'
+        controllerAs: 'ctrl'
 
     })
 
@@ -75,14 +75,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
               displayName: "Channel Management"
 
           })*/
-        .state('app.channelManagement.endpoint.computers', {
-            url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/computers/computers.html',
-            controller: 'channelManagementEndpoint',
-            controllerAs: 'ctrl',
-            displayName: "Channel Management > Stations using this channel"
-
-        })
+        
         .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
@@ -126,14 +119,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "New Channel"
 
         })
-        .state('app.channelManagement.newChannel.SComputerList', {
+       /* .state('app.channelManagement.newChannel.SComputerList', {
             url: '/channelManagementNewChannelS2SeparatedComputerList',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/computers/computers.html',
             controller: 'separated.computerList',
             controllerAs: 'ctrl',
             displayName: "New Channel"
 
-        })
+        })*/
         .state('app.channelManagement.newChannel.ncStep2Mixed', {
             url: '/channelManagementNewChannelS2Mixed',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
@@ -155,6 +148,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.policy', {
             url: '/policy',
+            abstract: true,
             templateUrl: 'app/policy/policy.html',
             controller: 'policy',
             controllerAs: "ctrl"
@@ -167,6 +161,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
     .state('app.policy.definition', {
             url: '/policyDefinition',
+            parent: "app.policy",
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
             displayName: "Policy"
         })

@@ -16,7 +16,6 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
             element.click(function () {
                 var username = $("#username")
                 var password = $("#password")
-                localStorage.clear()
                 localStorage.setItem("serverName", scope.ctrl.serverName)
                 var serverName = localStorage.getItem("serverName")
                 console.log(serverName)
