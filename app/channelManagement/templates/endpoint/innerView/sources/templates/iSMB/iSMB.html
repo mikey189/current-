@@ -2,7 +2,7 @@
     <div layout="row" layout-align="space-between center" class="notToBeFolded">
         <div layout="row" layout-align="start center" id="ncInputTitle">
             <md-icon md-svg-src="icons/ncInputTitleSettings.svg" class="md-36"></md-icon>
-            <md-content>{{ISMB.name}}</md-content>
+            <md-content>{{ISMB.Name}}</md-content>
         </div>
         <md-button class="md-primary ncDeleteSMBS" ng-click="ctrl.deleteISMB(ISMB)" md-whiteframe="4">DELETE</md-button>
     </div>
@@ -12,8 +12,8 @@
                 <md-content class="md-heading">Name</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding>
-                <input placeholder="Pick a Name" disabled class="ncInputListInput" ng-model="ISMB.name" />
-                <md-button edit-field aria-label="Chose a name" class="ncMdButton">
+                <input placeholder="Pick a Name" disabled class="ncInputListInput" ng-model="ISMB.Name" />
+                <md-button edit-field aria-label="Choose a Name" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>
             </div>
@@ -23,7 +23,7 @@
                 <md-content class="md-heading">Root Folder</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding>
-                <input placeholder="root folder" disabled class="ncInputListInput" ng-model="ISMB.rootFolder" />
+                <input placeholder="root folder" disabled class="ncInputListInput" ng-model="ISMB.RootFolder" />
                 <md-button edit-field aria-label="root folder" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>
@@ -34,13 +34,13 @@
                 <md-content class="md-heading">Speed Limit</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Limit" disabled class="ncInputListInput" ng-model="ISMB.speedLimit['value']" type="number" />
+                <input placeholder="Set Limit" disabled class="ncInputListInput" ng-model="ISMB.Speedlimit['value']" type="number" />
                 <md-button edit-field aria-label="Set Limit" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>
             </div>
             <div flex="15" layout-align="center end" layout="row">
-                <select class="ncInputListSelect" ng-model="ISMB.speedLimit['unit']">
+                <select class="ncInputListSelect" ng-model="ISMB.Speedlimit['unit']">
                     <option>Bytes</option>
                     <option ng-selected="true">MB</option>
                     <option>GB</option>
@@ -52,13 +52,13 @@
                 <md-content class="md-heading">User Quota</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Quota" disabled class="ncInputListInput" ng-model="ISMB.userQuota['value']" type="number" />
+                <input placeholder="Set Quota" disabled class="ncInputListInput" ng-model="ISMB.UserQuota['value']" type="number" />
                 <md-button edit-field aria-label="Set quota" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>
             </div>
             <div flex="15" layout-align="center end" layout="row">
-                <select class="ncInputListSelect" ng-model="ISMB.userQuota['unit']">
+                <select class="ncInputListSelect" ng-model="ISMB.UserQuota['unit']">
                     <option ng-selected="true">Bytes</option>
                     <option>MB</option>
                     <option>GB</option>
@@ -70,7 +70,7 @@
                 <md-content class="md-heading">Number of Hours to keep the files</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Number Of hours" disabled class="ncInputListInput" ng-model="ISMB.hoursToKeep" type="number" />
+                <input placeholder="Set Number Of hours" disabled class="ncInputListInput" ng-model="ISMB.HoursToKeep" type="number" />
                 <md-button edit-field aria-label="Set hours" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>
@@ -81,7 +81,7 @@
                 <md-content class="md-heading">New Folder Permissions</md-content>
             </div>
             <div flex layout="row" layout-align="center center" layout-padding class="ncInputNoVP">
-                <select class="ncInputListSelectFullWidth" ng-model="ISMB.folderPermissions">
+                <select class="ncInputListSelectFullWidth" ng-model="ISMB.FolderPermissions">
                     <option ng-selected="true">Read</option>
                     <option>Write</option>
                     <option>Read &amp; Write</option>
@@ -93,7 +93,7 @@
                 Use Relay
             </div>
             <div flex>
-                <select ng-model="ISMB.useRelay" class="defaultSelect">
+                <select ng-model="ISMB.UseRelay" class="defaultSelect">
                     <option ng-repeat="i in ctrl.iRelayList">{{i}}</option>
                 </select>
             </div>
@@ -103,7 +103,7 @@
                 Overwrite existing files
             </div>
             <div flex>
-                <md-switch class="customSwitch" aria-label="overwrite existing files" ng-model="ISMB.overWriteExistingFile"></md-switch>
+                <md-switch class="customSwitch" aria-label="overwrite existing files" ng-model="ISMB.OverwriteExistingFile"></md-switch>
             </div>
         </div>
         <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
@@ -111,7 +111,7 @@
                 Create a single ZIP File
             </div>
             <div flex>
-                <md-switch class="customSwitch" aria-label="create ZIP File" ng-model="ISMB.createZIPFile"></md-switch>
+                <md-switch class="customSwitch" aria-label="create ZIP File" ng-model="ISMB.CreateZipFile"></md-switch>
             </div>
         </div>
         <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
@@ -119,10 +119,10 @@
                 Allow Media Burn
             </div>
             <div flex="20">
-                <md-switch id="toggleMediaBurner" class="customSwitch" aria-label="Allow Media Burn" ng-model="ISMB.allowMediaBurn" toggle-media-burn></md-switch>
+                <md-switch id="toggleMediaBurner" class="customSwitch" aria-label="Allow Media Burn" ng-model="ISMB.AllowMediaBurn" toggle-media-burn></md-switch>
             </div>
-            <div flex class="hidden" id="mediaBurn" layout="row" layout-align="space-around center">
-                <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="ISMB.localPathForMediaBurn" />
+            <div flex ng-class="{hidden: !ISMB.AllowMediaBurn}" id="mediaBurn" layout="row" layout-align="space-around center">
+                <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="ISMB.LocalPathForMediaBurn" />
                 <md-button edit-field aria-label="Media burn" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>

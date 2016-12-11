@@ -18,3 +18,11 @@ not working calls / view
 
 Missing API Calls inside Channels
     - Input and Outputs GET ( currently only POST is supported )
+
+
+
+
+http://jdev01:4580/api/Channels/getchannel/id
+    inside IoSmbConfiguration 
+    SpeedLimit and UserQuota should be oject {value, unit}
+    add LocalPathForMediaBurn inside the object

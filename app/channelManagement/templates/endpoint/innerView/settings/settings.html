@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" />
 
+<json-formatter json="ctrl.ChannelConfiguration"></json-formatter>
+
 <div class="channel-settings-wrapper">
     <div layout="row" layout-align="end center" class="channel-settings-edit-div">
         <md-button md-whiteframe="6" class="channel-edit-button" edit-channel-settings>EDIT</md-button>
@@ -13,19 +15,19 @@
             <tr>
                 <td>Seconds to keep alive</td>
                 <td>
-                    <input placeholder="60" type = "number" class="channel-settings-input" ng-model="ctrl.channelSettings.secondsToKeepAlive"/>
+                    <input placeholder="60" type = "number" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SecondsToKeepAlive"/>
                 </td>
             </tr>
             <tr>
                 <td>Syslog Server</td>
                 <td>
-                    <input placeholder="127.0.0.0" class="channel-settings-input" ng-model="ctrl.channelSettings.syslogServer"/>
+                    <input placeholder="127.0.0.0" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SyslogServer"/>
                 </td>
             </tr>
             <tr>
                 <td>Results Format</td>
                 <td>
-                    <select class="channel-settings-select" ng-model="ctrl.channelSettings.resultFormat">
+                    <select class="channel-settings-select" ng-model="ctrl.ChannelConfiguration.ResultFormat">
                         <option>JSON</option>
                         <option>TXT</option>
                     </select>
@@ -34,38 +36,38 @@
             <tr>
                 <td>Reduce DB operations</td>
                 <td>
-                    <md-checkbox aria-label="reduce db operations" ng-model="ctrl.channelSettings.reduceDBOperations"></md-checkbox>
+                    <md-checkbox aria-label="reduce db operations" ng-model="ctrl.ChannelConfiguration.ReduceDbOperations"></md-checkbox>
                 </td>
             </tr>
             <tr ng-if="ctrl.is_kiosk_selected">
                 <td>Authenticate User on Endpoint</td>
                 <td>
-                    <md-checkbox aria-label="authenticate" ng-model="ctrl.channelSettings.authenticateUserOnEndpoint"></md-checkbox>
+                    <md-checkbox aria-label="authenticate" ng-model="ctrl.ChannelConfiguration.AuthenticateUserOnEndpoint"></md-checkbox>
                 </td>
             </tr>
             <tr ng-if="ctrl.kiosk_dirtwatcher_agent">
                 <td>Use temp folder</td>
                 <td>
-                    <md-checkbox aria-label="use temp folders" ng-model="ctrl.channelSettings.useTempFolder"></md-checkbox>
+                    <md-checkbox aria-label="use temp folders" ng-model="ctrl.ChannelConfiguration.UseTempFolder"></md-checkbox>
                 </td>
             </tr>
             <tr>
                 <td>Seconds until disconnect</td>
                 <td>
-                    <input placeholder="60" type="number" class="channel-settings-input" ng-model="ctrl.channelSettings.secondsUntilDisconnect"/>
+                    <input placeholder="60" type="number" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SecondsUntilDisconnect"/>
 
                 </td>
             </tr>
             <tr>
                 <td>Auto Reconnect</td>
                 <td>
-                    <md-checkbox aria-label="auto reconnect" ng-model="ctrl.channelSettings.autoReconnect"></md-checkbox>
+                    <md-checkbox aria-label="auto reconnect" ng-model="ctrl.ChannelConfiguration.AutoReconnect"></md-checkbox>
                 </td>
             </tr>
             <tr>
                 <td>Perform Interactive Update</td>
                 <td>
-                    <select class="channel-settings-select" ng-model="ctrl.channelSettings.performInteractiveUpdate">
+                    <select class="channel-settings-select" ng-model="ctrl.ChannelConfiguration.PerformInteractiveUpdate">
                         <option>PASSIVE</option>
                         <option>SILENT</option>
                         <option>INTERACTIVE</option>
@@ -75,30 +77,26 @@
             <tr>
                 <td>Store Blocked File Report</td>
                 <td>
-                    <md-checkbox ng-model="ctrl.channelSettings.storeBlockedFiles"></md-checkbox>
+                    <md-checkbox aria-label="store blocked fire reports" ng-model="ctrl.ChannelConfiguration.StoreBlockedFiles"></md-checkbox>
                 </td>
             </tr>
             <tr>
                 <td>Create Empty Folders</td>
                 <td>
-                    <md-checkbox ng-model="ctrl.channelSettings.createEmptyFolders"></md-checkbox>
+                    <md-checkbox aria-label="create empty folders" ng-model="ctrl.ChannelConfiguration.CreateEmptyFolders"></md-checkbox>
                 </td>
             </tr>
             <tr ng-if="ctrl.is_kiosk_selected">
                 <td>Action Log Path</td>
                 <td>
-                    <input placeholder="Log Path" type="text" class="channel-settings-input" ng-model="ctrl.channelSettings.actionLogPath"/>
+                    <input placeholder="Log Path" type="text" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.ActionLogPath"/>
 
                 </td>
             </tr>
             <tr>
                 <td>Use as Relay</td>
-                <td><md-checkbox ng-model="ctrl.channelSettings.useAsRelay"></md-checkbox></td>
+                <td><md-checkbox aria-label="use as relay" ng-model="ctrl.ChannelConfiguration.UseAsRelay"></md-checkbox></td>
             </tr>
         </tbody>
     </table>
 </div>
-<pre style="height: 200px" flex>
-<h2 class="red">MISSING API CALL</h2>
-JSON SENT TO SERVER <json-formatter json="ctrl.channelSettings" open="1"></json-formatter>
-</pre>

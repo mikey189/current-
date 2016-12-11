@@ -54,16 +54,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
-            controller: 'channelManagementEndpoint',
-            controllerAs: 'ctrl',
+            //controller: 'channelManagementEndpoint',
+            //controllerAs: 'ctrl',
             displayName: "Channel Management"
 
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
-            controller: 'channelManagementEndpoint',
-            controllerAs: 'ctrl',
+            //controller: 'channelManagementEndpoint',
+            //controllerAs: 'ctrl',
             displayName: "Channel Management > Inputs and Outputs"
 
         })
@@ -79,8 +79,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
-            controller: 'channelManagementEndpoint',
-            controllerAs: 'ctrl',
+            //controller: 'channelManagementEndpoint',
+            //controllerAs: 'ctrl',
             displayName: "Channel Management > Settings"
 
         })

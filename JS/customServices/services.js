@@ -4,15 +4,16 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
     //var snme = serverName !== null ? sname: "jdevO1"
 
     return {
-        checkLogin: function (username, password) {
-            console.log("service says " + sname)
-            var url = "http://" + sname + ":4580/api/users/login";
+        checkLogin: function (serverName, username, password) {
+            // var url = "http://" + sname + ":4580/api/users/login";
+            //not setting the url before hand and using localstorage to get serverName because it causes a delay and mutliple 
+            //refresh are needed to get the serverName to erase the localSotrage first 
 
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                url: url,
+                url: "http://" + serverName + ":4580/api/users/login",
                 method: "POST",
                 data: {
                     username: username,
@@ -38,7 +39,8 @@ app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
     //var sname = serverName == null ? "jdev01": sname
-
+    //general
+    var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
 
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
@@ -57,7 +59,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var update_inputs_outputs = "http://" + sname + ":4580/api/channels/PostChannelIoConfiguration/"
     var channel_informations = "http://" + sname + ":4580/api/channels/"
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
-
+    var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -131,6 +133,19 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         getChannelTypes: function (id) {
             return $http.get(channelTypes + id)
+        },
+        post_channel_settings: function (id, data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: channelSettings + id,
+                method: "POST",
+                data: data
+            })
+        },
+        get_channel: function (id) {
+            return $http.get(get_channel + id)
         }
 
     }

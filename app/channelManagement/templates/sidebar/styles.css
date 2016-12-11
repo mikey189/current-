@@ -9,3 +9,7 @@
 .channelSidenavItems:active{
     background-color: red !important;
 }
+.channel_type_icon{
+    fill: white !important;
+    margin-left: 0px !important;
+}

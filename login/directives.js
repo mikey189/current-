@@ -19,20 +19,16 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                 localStorage.setItem("serverName", scope.ctrl.serverName)
                 var serverName = localStorage.getItem("serverName")
                 console.log(serverName)
-                authService.checkLogin(scope.ctrl.username, scope.ctrl.password)
-                    //first function handles success
-                    .then(function (answer) {
-                            console.log("token : " + answer.AccessToken)
-                            localStorage.setItem("token",  answer.AccessToken);
-                            $http.defaults.headers.common['Authorization'] = localStorage.getItem("token");
-                            $state.go("app.dashboard")
-                        },
-                        //second function handles error
-                        function (error) {
-                            username.addClass("error animated shake")
-                            password.addClass("error animated shake")
-                            scope.ctrl.is_login_nahon = false
-                        })
+                authService.checkLogin(scope.ctrl.serverName, scope.ctrl.username, scope.ctrl.password).then(function (answer) {
+                    console.log("token : " + answer.AccessToken)
+                    localStorage.setItem("token", answer.AccessToken);
+                    $http.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+                    $state.go("app.dashboard")
+                }, function (error) {
+                    username.addClass("error animated shake")
+                    password.addClass("error animated shake")
+                    scope.ctrl.is_login_nahon = false
+                })
             })
 
         }

@@ -4,7 +4,6 @@ app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
         link: function (scope, element, attrs) {
             element.click(function () {
                 var channelType = $(".ncTypesHover").find(".ncTypeTitle").html()
-                var button = $("#ncNextPage")
                 var channelObject = {
                     "GeneralInformations": {
                         "Name": scope.ctrl.channelName,

@@ -101,7 +101,7 @@ app.directive("editField", function () {
     }
 })
 
-app.directive("editInputsAndOutputs", function (channelData) {
+app.directive("editInputsAndOutputs", function (channelData, $state) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -114,8 +114,8 @@ app.directive("editInputsAndOutputs", function (channelData) {
                     self.html("SAVE")
                     scope.ctrl.are_outputs_and_outputs_editable = true
                         //emptying arrays in case user plays too much with edit and save buttons
-                    scope.ctrl.selectedOutputs = []
-                    scope.ctrl.selectedInputs = []
+                    scope.ctrl.selectedOutputs = {}
+                    scope.ctrl.selectedInputs = {}
                 } else {
                     edition_section.addClass("notEditable")
                     self.css("background-color", "#311B92")
@@ -125,9 +125,9 @@ app.directive("editInputsAndOutputs", function (channelData) {
                             var self = $(this)
                             if (self.hasClass("input_is_selected")) {
                                 var input_name = self.find("md-content").html()
-                                var input_object = {}
-                                input_object[input_name] = true
-                                scope.ctrl.selectedInputs.push(input_object)
+                                    // var input_object = {}
+                                    //input_object[input_name] = true
+                                scope.ctrl.selectedInputs[input_name] = true
                             }
                         })
                         //recording selected ouputs
@@ -136,9 +136,9 @@ app.directive("editInputsAndOutputs", function (channelData) {
                             var self = $(this)
                             if (self.hasClass("input_is_selected")) {
                                 var output_name = self.find("md-content").html()
-                                var output_object = {}
-                                output_object[output_name] = true
-                                scope.ctrl.selectedOutputs.push(output_object)
+                                    //var output_object = {}
+                                    //output_object[output_name] = true
+                                scope.ctrl.selectedOutputs[output_name] = true
                             }
                         })
                         //recording the object that stores all info of the view
@@ -157,6 +157,9 @@ app.directive("editInputsAndOutputs", function (channelData) {
                     console.log(scope.ctrl.IoConfiguration)
                     channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
                         console.log(success)
+                        //reassign the model from the success answer and then trigger scope.$apply()
+                        //still not working but why ? find a way to "reload" the data without flickering the view or trigger $digest 'cycle'
+                        scope.ctrl.channelInfo = success.data.ChannelInfo
                     }, function (error) {
                         console.log(error)
                     })

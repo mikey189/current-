@@ -204,3 +204,6 @@ fill: white !important;
 #edit_IO:hover{
     background-color: #EC407A !important;
 }
+.selected{
+    background-color: yellow !important;
+}
