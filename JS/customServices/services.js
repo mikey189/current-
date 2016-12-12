@@ -60,6 +60,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channel_informations = "http://" + sname + ":4580/api/channels/"
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
+    var delete_channel =  "http://" + sname + ":4580/api/Channels/DeleteChannel/"
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -146,6 +147,15 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         get_channel: function (id) {
             return $http.get(get_channel + id)
+        }, 
+        delete_channel: function(id){
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: delete_channel + id,
+                method: "DELETE"
+            })
         }
 
     }

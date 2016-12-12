@@ -75,15 +75,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
               displayName: "Channel Management"
 
           })*/
-        
-        .state('app.channelManagement.endpoint.settings', {
-            url: '/CMEndpointTargets',
-            templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
-            //controller: 'channelManagementEndpoint',
-            //controllerAs: 'ctrl',
-            displayName: "Channel Management > Settings"
 
-        })
+    .state('app.channelManagement.endpoint.settings', {
+        url: '/CMEndpointTargets',
+        templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
+        //controller: 'channelManagementEndpoint',
+        //controllerAs: 'ctrl',
+        displayName: "Channel Management > Settings"
+
+    })
 
 
 
@@ -119,14 +119,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "New Channel"
 
         })
-       /* .state('app.channelManagement.newChannel.SComputerList', {
-            url: '/channelManagementNewChannelS2SeparatedComputerList',
-            templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/computers/computers.html',
-            controller: 'separated.computerList',
-            controllerAs: 'ctrl',
-            displayName: "New Channel"
+        /* .state('app.channelManagement.newChannel.SComputerList', {
+             url: '/channelManagementNewChannelS2SeparatedComputerList',
+             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/computers/computers.html',
+             controller: 'separated.computerList',
+             controllerAs: 'ctrl',
+             displayName: "New Channel"
 
-        })*/
+         })*/
         .state('app.channelManagement.newChannel.ncStep2Mixed', {
             url: '/channelManagementNewChannelS2Mixed',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
@@ -148,7 +148,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.policy', {
             url: '/policy',
-            abstract: true,
             templateUrl: 'app/policy/policy.html',
             controller: 'policy',
             controllerAs: "ctrl"
@@ -158,8 +157,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
             displayName: "Policy"
 
+
         })
-    .state('app.policy.definition', {
+        .state('app.policy.definition', {
             url: '/policyDefinition',
             parent: "app.policy",
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
@@ -174,21 +174,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.definition.detection', {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
-       
+
             displayName: "Policy > Detection Settings"
 
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
             templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
-           
+
             displayName: "Policy > CDR Settings"
 
         })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
-          
+
             displayName: "Policy > Settings"
 
         })

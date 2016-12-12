@@ -120,3 +120,10 @@ app.directive("policyDashboardTopUsers", function(){
         replace: false
     }
 })
+app.directive("treeValueModal", function(){
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDefinition/templates/settings/tree_values/tree_values.html",
+        replace: false
+    }
+})

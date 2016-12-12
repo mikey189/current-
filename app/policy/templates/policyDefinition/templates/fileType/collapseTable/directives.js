@@ -1,64 +1,72 @@
 //begin directive for extension table//
 
 //edit filetype
+app.directive("filterExtesions", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("keydown keypress", function () {
 
+                var extensions = $(".L2Section")
+                var self = $(this)
+                for (i = 0; i <= extensions.length; i++) {
+                    if (extensions[i] = self.val()) {
+                        extensions[i].removeClass("hidden")
+
+                    }
+                }
+            })
+        }
+    }
+})
 
 app.directive("editFiletype", ["policyData", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             var table = $("#filetype-table")
+            var advanceModeButton = $("#show-advanced-filetype-button")
+
             element.click(function () {
                 var self = $(this)
                 if (!scope.ctrl.isTableEditable) {
                     table.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("DONE")
-                    scope.ctrl.isTableEditable = true;
+                    advanceModeButton.removeClass("hidden")
                 } else {
-                    // advanceModeButton.addClass("hidden")
                     table.addClass("notEditable")
                     self.css("background-color", "#311B92")
+                    advanceModeButton.addClass("hidden")
                     policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function (answer) {
                         scope.ctrl.types = answer.data
                     })
                     self.html("EDIT")
                     scope.ctrl.isTableEditable = false;
+                    scope.ctrl.isAdvancedModeOn = false;
                 }
             })
         }
     }
 }])
 
-
-//TO DO animation to notify user to click on edit before being able to edit the table
-
-
-
-
 app.directive("showExtensions", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            var advanceModeButton = $("#show-advanced-filetype-button")
             element.click(function () {
                 var self = $(this);
                 var extension = self.attr("index");
                 var icon = self.find("md-icon");
-                console.log(scope.ctrl.filetype)
 
                 if (!scope.ctrl.areExtensionsVisible[extension]) {
-                    advanceModeButton.removeClass("hidden")
                     scope.ctrl.areExtensionsVisible[extension] = true;
                     icon.html("keyboard_arrow_down")
 
                 } else {
                     scope.ctrl.areExtensionsVisible[extension] = false;
-                    advanceModeButton.addClass("hidden")
                     icon.html("keyboard_arrow_right");
                 }
-                scope.$apply()
-                console.log(scope.ctrl.areExtensionsVisible[extension])
             })
         }
     }

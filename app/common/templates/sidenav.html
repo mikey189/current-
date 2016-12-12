@@ -7,7 +7,7 @@
                 <md-icon md-svg-src="icons/dashboardLogo.svg"></md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item value="Policy" ng-class="{sidebarIconHover: ctrl.$state.includes('policy')}">
+        <md-list-item value="Policy" ui-sref-active="sidebarIconHover animated pulse">
             <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="row" layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Policy</md-tooltip>
                 <md-icon md-svg-src="icons/policiesIcon.svg"></md-icon>

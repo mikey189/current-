@@ -15,7 +15,8 @@
     </md-button>
 </div>
 
-<json-formatter json="ctrl.types"></json-formatter>
+<!--<json-formatter json="ctrl.types"></json-formatter>-->
+
 
 <table class="table table-responsive notEditable table-striped" id="filetype-table" prevent-click md-whiteframe="6" ng-cloak>
     <thead>
@@ -45,7 +46,7 @@
             <td colspan="3" class="advanced hidden"></td>
         </tr>
 
-        <tr ng-repeat-start="l2 in l1.Value" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
+        <tr ng-repeat-start="l2 in l1.Value | filter: ClassificationExtensions" ng-if="ctrl.areExtensionsVisible[l1.Key]" class="L2Section">
             <td>
                 <md-icon>empty_icon</md-icon>
                 {{l2.ClassificationExtensions}}

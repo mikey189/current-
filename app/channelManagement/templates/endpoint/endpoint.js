@@ -3,7 +3,7 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     //setting default id for the channel
-    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 2;
+    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 7;
     //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []

@@ -1,0 +1,9 @@
+.policy_settings_lists{
+    width: 100% !important;
+    border-radius: 3px !important;
+    padding-top: 0px !important;
+}
+.policy_settings_key{
+    background-color: #2196F3 !important;
+    color: white !important;
+}
