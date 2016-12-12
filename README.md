@@ -18,7 +18,6 @@
           Navigate to the folder containing index.html and type in the following : http-server
           From your browser go to -> localhost:8080 
           
-  Voila! 
   
   
   
