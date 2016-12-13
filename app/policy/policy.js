@@ -1,11 +1,10 @@
 app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "policyChannels", "policyUsers", "$state", "$http", "$mdDialog",
+
     function ($scope, $mdSidenav, policyData, channelData, policyChannels, policyUsers, $state, $http, $mdDialog) {
-
         var self = this;
-
+        //initiate policy id for API Call
         self.policyId = 7
             //dragMode for policySideNav
-
         self.draggableObjects = [];
         policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
@@ -122,22 +121,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         })
         self.getPolicyId = function (id) {
             self.policyId = id
-            console.log(self.policyId)
         }
-
 
         //settings //
-
-
-
-        var policy_settings = "http://jdev01:4580/api/general/getfacets";
-
-        self.get_AllSettings = function () {
-            return $http.get(policy_settings);
-
-        }
         self.allFacets = {};
-        self.get_AllSettings().then(function (answer) {
+        policyData.get_policy_settings().then(function (answer) {
             var data = answer.data;
             var types = []
                 // self.allFacets = 
@@ -158,7 +146,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             }
                         }, files)
                         props["tree_values"] = files;
-                        console.log(props["tree_values"])
                     } else {
                         props["AvailableValues"] = props["AllowedValues"] != null ? props["AllowedValues"].split('|') : null;
                     }
@@ -174,21 +161,53 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }, self.allFacets);
         });
 
-
-        self.show_values = function (ev, data) {
-            self.tree_values = data
-                //alert(self.tree_values)
-
+        self.open_second_modal = function (ev, propValue, key, propkey) {
             $mdDialog.show({
-                templateUrl: "app/policy/templates/policyDefinition/templates/settings/tree_values/tree_values.html",
-                scope: $scope,
-                preserveScope: true,
-                parent: angular.element(document.body),
+                    controller: DialogController,
+                    templateUrl: "app/policy/templates/policyDefinition/templates/settings/tree_values/tree_values.html",
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
+                    fullscreen: true,
+                    locals: {
+                        propValue: propValue,
+                        key: key,
+                        propkey: propkey
+                    }
+                })
+                /*
+                when we open the dialog, we store all the element inside an object that sits on the $scope of the dialog ($scope.policyFacets)
+                then when we close the dialog : we re-inject the extensions oject where it belongs using it's key and propkey
+                it knows key and propkey because we inject them inside the HTML when passing the function
 
-                clickOutsideToClose: true,
-                targetEvent: ev,
-                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-            })
+                questions : 
+                1) why to inject propValue inside the DialogController?
+                2) how does the .then works? -> how is the onSave() is connected to the .then function()? onSave only console.log() and hide() the dialog
+                how does this controller(policy) then knows policyFacets extensions? without onSave func it does not.
+                */
+                .then(function (success) {
+                    self.PolicyFacets[key].Values[propkey] = success
+                }, function (cancel) {
+                    console.log(cancel)
+                })
         }
     }
 ])
+
+// file extensions dialog controller
+function DialogController($scope, $mdDialog, propValue) {
+    $scope.hide = function () {
+        $mdDialog.hide();
+    };
+    $scope.cancel = function () {
+        $mdDialog.cancel();
+    };
+    $scope.propValue = propValue;
+
+    $scope.policyFacets = {}
+
+    $scope.onSave = function (answer) {
+        console.log(answer)
+        $mdDialog.hide(answer);
+    };
+}

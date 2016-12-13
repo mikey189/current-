@@ -1,10 +1,9 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
 <div layout='column' ng-controller="policy as ctrl" id="policySettingsContainer">
-    <!--<json-formatter json="ctrl.PolicyFacets"></json-formatter>-->
+    <json-formatter json="ctrl.PolicyFacets"></json-formatter>
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
         <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
             <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
-                <md-icon class='material-icons md-primary md-36' id='settingsFileHeader'>insert_drive_file</md-icon>
                 <h4 class='md-primary'>{{Key}}</h4>
             </md-list-item>
             <md-divider></md-divider>
@@ -16,31 +15,27 @@
                         </md-switch>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-                        <!--<tree-value-modal></tree-value-modal>-->
-                        <md-button class="md-icon-button" ng-click="ctrl.show_values($event, propValue.tree_values)">
-                            <md-icon>edit</md-icon>
+                        <md-button class="md-icon-button" ng-click="ctrl.open_second_modal($event, propValue, Key, propkey )">
+                            <md-icon>playlist_add</md-icon>
                         </md-button>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int">
-                        <input type="number" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" />
+                        <input placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="number">
                     </div>
                     <div ng-switch-when=" FacetPropertyType_String">
-                        <input type="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" />
+                        <input placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text">
                     </div>
                     <div ng-switch-when="FacetPropertyType_MultiLineString">
                         <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select ng-model="ctrl.PolicyFacets[Key].Values[propkey]">
-                            <option ng-repeat="x in propValue.AvailableValues">{{x}}</option>
-                        </select>
+                        <select ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="x for x in propValue.AvailableValues track by x"></select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
-                        <input type="password" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" />
+                        <input aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password">
                     </div>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
         </md-list>
-     
     </div>

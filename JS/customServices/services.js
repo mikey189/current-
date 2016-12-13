@@ -60,7 +60,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channel_informations = "http://" + sname + ":4580/api/channels/"
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
-    var delete_channel =  "http://" + sname + ":4580/api/Channels/DeleteChannel/"
+    var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -147,8 +147,8 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         get_channel: function (id) {
             return $http.get(get_channel + id)
-        }, 
-        delete_channel: function(id){
+        },
+        delete_channel: function (id) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -201,6 +201,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_info = "http://" + sname + ":4580/api/policy/getpolicy/"
     var computers_list = "http://localhost:3000/userComputers"
     var policy_computers = "http://localhost:3000/policy_computers"
+    var policy_settings = "http://" + sname + ":4580/api/general/getfacets";
 
     return {
         create_new_policy: function (data) {
@@ -359,6 +360,9 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         get_policy_computers: function () {
             return $http.get(policy_computers)
+        },
+        get_policy_settings: function () {
+            return $http.get(policy_settings)
         }
 
     }
@@ -385,8 +389,6 @@ app.factory("dashboardData", function ($http) {
         }
     }
 })
-
-
 app.factory("users", function ($http) {
     var url = "http://localhost:3000/activeUsers";
     return {
@@ -494,6 +496,7 @@ app.factory("sanitization_factory", function ($http) {
         }
     }
 });
+
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -551,6 +554,7 @@ app.factory("system_events_factory", function ($http) {
         }
     }
 })
+
 app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -567,6 +571,7 @@ app.factory("jobs_factory", function ($http) {
         }
     }
 })
+
 app.factory("emails_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -591,6 +596,7 @@ app.factory("notification_types", function ($http) {
         }
     }
 })
+
 app.factory("computer_list", function ($http) {
     var sname = localStorage.getItem("serverName");
     //var sname = serverName == null ? "jdev01": sname
@@ -602,6 +608,7 @@ app.factory("computer_list", function ($http) {
         }
     }
 })
+
 app.factory("active_users", function ($http) {
     var sname = localStorage.getItem("serverName");
     //var sname = serverName == null ? "jdev01": sname
@@ -613,6 +620,7 @@ app.factory("active_users", function ($http) {
         }
     }
 })
+
 app.factory("active_agents", function ($http) {
     var sname = localStorage.getItem("serverName");
     // var sname = serverName == null ? "jdev01": sname

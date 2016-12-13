@@ -1,9 +1,30 @@
-  <md-dialog aria-label="Email Body" class="fullscreen-dialog">
-    <md-list>
-      <md-list-item>
-        <p>
-          {{ctrl.tree_values}}
-        </p>
-      </md-list-item>
-    </md-list>
-  </md-dialog>
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/tree_values/style.css" />
+<md-dialog aria-label="extensions modal" class="fullscreen-dialog">
+  <md-toolbar class="tree-toolbar" layout="row" layout-align="center center">File Extensions</md-toolbar>
+  <md-dialog-content>
+    <div layout="row" layout-align="center start" layout-margin>
+      <md-input-container flex="40" md-no-float class="md-block">
+        <input ng-model="ext" placeholder="Search for an extension" />
+      </md-input-container>
+    </div>
+    <table class="table table-responsive">
+      <thead>
+        <th>Extension</th>
+        <th>Allow</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="extension in propValue.tree_values | filter:ext track by $index ">
+          <td>{{extension}}</td>
+          <td>
+            <md-checkbox aria-label="extensions" ng-model="policyFacets[extension]"></md-checkbox>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button ng-click="onSave(policyFacets)">
+      save info
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>
