@@ -34,7 +34,7 @@ md-chips .md-chips.md-focused, md-chips .md-chips.md-focused{
 off -> red
 */
 md-switch.md-default-theme.md-checked ._md-bar, md-switch.md-checked ._md-bar{
-    background-color: #64D3CC;
+    background-color: #2196F3;
 }
 md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-ink-ripple{
     background-color: #FAFAFA;
@@ -42,7 +42,7 @@ md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-i
 
 
 md-switch.md-default-theme ._md-bar, md-switch ._md-bar{
-    background-color: red;
+    background-color: #E91E63;
 }
 md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
     background-color: #64D3CC !important;

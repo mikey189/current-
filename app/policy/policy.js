@@ -124,6 +124,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         //settings //
+
+        //regex validator for input for file size //
+
         self.allFacets = {};
         policyData.get_policy_settings().then(function (answer) {
             var data = answer.data;
@@ -188,6 +191,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 .then(function (success) {
                     self.PolicyFacets[key].Values[propkey] = success
                 }, function (cancel) {
+                    console.log("cancel")
                     console.log(cancel)
                 })
         }
@@ -208,6 +212,8 @@ function DialogController($scope, $mdDialog, propValue) {
 
     $scope.onSave = function (answer) {
         console.log(answer)
+            //$mdDialog.hide() resolves the promise and $mdDialog.cancel() rejects it 
         $mdDialog.hide(answer);
     };
+
 }
