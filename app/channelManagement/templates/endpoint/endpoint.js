@@ -3,17 +3,44 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     //setting default id for the channel
-    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 7;
+
+ /*-------------------- Sidebar --------------------*/
+
+   /* self.initChannelId = function () {
+        var firstChannel = angular.element(document).find(".channelSidenavItems").first().attr("channel-id")
+        console.log(firstChannel)
+        console.log("ini")
+    }*/
+    self.channel_list = []
+    self.is_edit_mode_on = false;
+    channelData.getchannelList().then(function (answer) {
+        self.menuItems = answer.data;
+        for (i = 0; i < self.menuItems.length; i++) {
+            self.channel_list.push(self.menuItems[i])
+        }
+    })
+    self.onDropComplete = function (index, obj, evt) {
+        var otherObj = self.channel_list[index];
+        var otherIndex = self.channel_list.indexOf(obj);
+        self.channel_list[index] = obj;
+        self.channel_list[otherIndex] = otherObj;
+    }
+
+    /*--------------------  Channel Input and Output --------------------*/
     //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []
-        //watching for any change in channel id
+    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 28;
+
+    //watching for any change in channel id
     $scope.$watch(angular.bind(this, function () {
         return this.rootId;
     }), function (newVal) {
-        channelData.get_channel(newVal).then(function (answer) {
-            self.channel_data = answer.data
-            self.channelInfo = answer.data.ChannelInfo
+
+        channelData.get_channel(newVal).then(function (answer2) {
+            self.channel_data = answer2.data
+            console.log(self.channel_data)
+            self.channelInfo = answer2.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
             self.InputConfiguration = self.channelInfo.InputConfiguration
@@ -24,11 +51,13 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
     });
     //default view for dashboard is blocked
     self.isBlocked = true;
-    //retrieving the dashboard according to channel id
-    channelData.getChannelDashboard(self.rootId).then(function (answer) {
-            self.channelDashboard = answer.data
+    channelData.getChannelDashboard(self.rootId).then(function (answer1) {
+            self.channelDashboard = answer1.data
+            console.log(self.channelDashboard)
         })
-        //top users loading from db.json because there are more instances of users (just nice to render)
+        //retrieving the dashboard according to channel id
+
+    //top users loading from db.json because there are more instances of users (just nice to render)
     users.getUsers().then(function (response) {
             self.users = response
         })
@@ -79,4 +108,12 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         self.osmbList.splice(index, 1);
         console.log("deleting OSMB")
     }
+
+    /*--------------------  who is using this channel --------------------*/
+
+    channelData.getComputerList().then(function (answer) {
+        self.users = answer.data;
+    })
+
+
 }])

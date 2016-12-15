@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerNav/style.css" />
 <nav class="container-fluid" id="CMEndpointInnerNav">
     <ul class="nav nav-justified md-whiteframe-z4" id="CMEndPointInnerNavUL">
-        <li><a ui-sref="app.channelManagement.endpoint.dashboard"><strong>Dashboard</strong></a></li>
+        <li><a ui-sref="app.channelManagement.endpoint.dashboard"><strong>Dashboard {{ctrl.rootId}}</strong></a></li>
         <li><a ui-sref="app.channelManagement.endpoint.sources"><strong>Inputs &amp; Outputs</strong></a></li>
         <li><a ui-sref="app.channelManagement.endpoint.settings"><strong>Settings</strong></a></li>
+        <li><a ui-sref="app.channelManagement.endpoint.who"><strong>Who Uses This Policy {{ctrl.rootId}}</strong></a></li>
     </ul>
 </nav>

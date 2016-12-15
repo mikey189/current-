@@ -1,27 +1,32 @@
 <link rel="stylesheet" href="app/channelManagement/templates/sidebar/styles.css" />
-<div ng-controller="channelManagement as ctrl" layout="column" ng-cloak id="channelSidenav">
+<div  layout="column" ng-cloak id="channelSidenav" ng-controller="channelManagementEndpoint as ctrl">
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="channelLeftSidebar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
             <md-toolbar class="purleSidebar" layout="row" layout-align="center center" id="channelSidebarToolbar">
-                <h1 class="md-toolbar-tools">Channel Management</h1>
-                <md-button class="md-icon-button" channel-sidenav-edit-mode>
-                    <md-icon aria-label="edit">edit</md-icon>
+                <h1 class="md-toolbar-tools">Channel Management : {{ctrl.rootId}}</h1>
+                <md-button class="md-icon-button " channel-sidenav-edit-mode id="reorder_channels_button">
+                    <md-icon aria-label="edit" id="reorder_channels_icon">format_line_spacing</md-icon>
                 </md-button>
             </md-toolbar>
             <md-content class="purpleSidebar" flex>
-                <md-input-container md-no-float flex layout="row" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" layout-margin
-                    ng-model="channel">
+                <md-input-container md-no-float flex layout="row" layout-align="space-between center" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar" ng-model="channel" layout-margin>
                     <input ng-model="Name" placeholder="Search users, groups..">
-                    <md-icon aria-label="search" class="material-icons greenIcon noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
+                    <md-icon aria-label="search" class="material-icons  noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
-                    <md-list-item class="create_channel_sidenav_item" md-whiteframe="2"><a ui-sref="app.channelManagement.newChannel.step1"><strong>Create Channel</strong></a></md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.menuItems | filter: Name" class="channelSidenavItems" md-whiteframe="2" layout="row" layout-align="space-between center">
+                    <md-list-item class="create_channel_sidenav_item" md-whiteframe="2">
+                        <a ui-sref="app.channelManagement.newChannel.step1">
+                            <strong>Create Channel</strong></a>
+                    </md-list-item>
+                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name | orderBy: '-Priority' track by $index" 
+                    class="channelSidenavItems" md-whiteframe="2" ng-drop="true" ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x"
+                    ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
+                        layout="row" layout-align="space-between center" init-id channel-id="{{x.Id}}">
                         <div layout="row" layout-align="start center" layout-margin>
                             <md-icon aria-label="remove channel" md-svg-src="app/channelManagement/templates/sidebar/icons/{{x.ChannelInfo.GeneralInformations.ChannelTypeName}}.svg"
                                 class="channel_type_icon"></md-icon>
                             <strong>
-                            <a ui-sref="app.channelManagement.endpoint.dashboard" get-my-id  _id="{{x.Id}}">{{x.Name}}</a>
+                            <a ui-sref="app.channelManagement.endpoint.dashboard" get-my-id  _id="{{x.Id}}">{{x.Name}} : {{x.Priority}} : {{x.Id}}</a>
                         </strong>
                         </div>
                         <md-button class="md-icon-button" ng-if="ctrl.is_edit_mode_on" delete-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">

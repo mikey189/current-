@@ -1,5 +1,6 @@
 .create_channel_sidenav_item {
     background-color: #039BE5;
+
 }
 
 .create_channel_sidenav_item:hover {
@@ -16,4 +17,19 @@
 
 .remove-icon{
     color: #E91E63 !important;
+}
+#channelSidebarSearchIcon{
+    color: #2196F3;
+}
+#reorder_channels_icon{
+    color: #2196F3;
+}
+#reorder_channels_icon:hover{
+    color: #FF4081;
+}
+#reorder_channels_button{
+    margin-right: 1em;
+}
+.editOn{
+    color: #FF4081 !important;
 }

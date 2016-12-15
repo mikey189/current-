@@ -1,3 +1,17 @@
+app.directive("getTopPolicyId", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.ready(function () {
+                var self = $(this)
+                var firstPolicyId = parseInt($(".policyItem").first().attr("policy-id"))
+                scope.ctrl.policyId = firstPolicyId
+                console.log(scope.ctrl.policyId)
+            })
+        }
+    }
+})
+
 app.directive("policyListHover", function () {
     return {
         restrict: "A",
@@ -59,25 +73,20 @@ app.directive("reorderPolicyList", ["policyData", function (policyData) {
                 var icon = $(this).find("md-icon")
                 var items = $(".policyItem");
                 var policyName = $(".editPolicyName")
-                if (!scope.ctrl.dragMode) {
+                if (!scope.ctrl.sidenav_edit_mode) {
                     icon.addClass("animated  wobble");
                     icon.html("done_all");
                     icon.css("color", "#EC407A");
                     policyName.hide()
-                    scope.ctrl.dragMode = true;
+                    scope.ctrl.sidenav_edit_mode = true;
                     //items.addClass("animated bounce");
                 } else {
                     icon.removeClass("animated wobble")
                     icon.html("format_line_spacing")
                     icon.css("color", "#23CCC7")
                     policyName.show();
-                    scope.ctrl.dragMode = false;
-                    // items.removeClass("animated bounce");
-                    scope.ctrl.priority = [];
-                    items.each(function () {
-                        scope.ctrl.priority.push($(this).attr("_id"))
-                    })
-                    policyData.postOrder(scope.ctrl.priority);
+                    scope.ctrl.sidenav_edit_mode = false;
+                    // items.removeClass("animated bounce");        
                 }
             })
         }
@@ -144,7 +153,7 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyData, $
             element.bind("click", function () {
                 var self = $(this);
                 var cell = self.parents("md-list-item");
-                var id = parseInt(cell.attr("_id"));
+                var id = parseInt(cell.attr("policy-id"));
                 console.log(id)
                 cell.addClass("animated bounceOutRight");
                 $timeout(function () {
@@ -164,7 +173,7 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.ctrl.policyId = parseInt(self.attr("_id"));
+                scope.ctrl.policyId = parseInt(self.attr("policy-id"));
                 scope.$apply(function () {
                     scope.ctrl.get_policy_data(scope.ctrl.policyId)
                 })
@@ -172,4 +181,3 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
         }
     }
 }])
-

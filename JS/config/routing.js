@@ -39,51 +39,56 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/channelManagement',
         templateUrl: 'app/channelManagement/channelManagement.html',
         controller: 'channelManagement',
-        controllerAs: 'channelManagement',
+        controllerAs: 'ctrl',
         displayName: "Channel Management"
     })
 
+
     .state('app.channelManagement.endpoint', {
             url: '/channelManagementEndpoint',
-            templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
             controller: 'channelManagementEndpoint',
             controllerAs: 'ctrl',
+            templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
             displayName: "Channel Management"
-
+        })
+        .state('app.channelManagement.endpoint.sidebar', {
+            url: '/channelManagement',
+     
+            templateUrl: 'app/channelManagement/templates/sidebar/sidebar.html',
+            displayName: "Channel Management"
+        })
+        .state('app.channelManagement.endpoint.topBar', {
+            url: '/channelManagementTopBar',
+            templateUrl: 'app/channelManagement/templates/endpoint/infoTopBar/infoTopBar.html',
+            displayName: "Channel Management"
         })
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
-            //controller: 'channelManagementEndpoint',
-            //controllerAs: 'ctrl',
             displayName: "Channel Management"
 
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
-            //controller: 'channelManagementEndpoint',
-            //controllerAs: 'ctrl',
+
             displayName: "Channel Management > Inputs and Outputs"
 
         })
-        /*  .state('app.channelManagement.endpoint.targets', {
-              url: '/CMEndpointTargets',
-              templateUrl: 'app/channelManagement/templates/endpoint/innerView/targets/targets.html',
-              controller: 'CMIVTargets',
-              controllerAs: 'controller',
-              displayName: "Channel Management"
-
-          })*/
 
     .state('app.channelManagement.endpoint.settings', {
-        url: '/CMEndpointTargets',
-        templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
-        //controller: 'channelManagementEndpoint',
-        //controllerAs: 'ctrl',
-        displayName: "Channel Management > Settings"
+            url: '/CMEndpointTargets',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
 
-    })
+            displayName: "Channel Management > Settings"
+
+        })
+        .state('app.channelManagement.endpoint.who', {
+            url: '/channelWho',
+            templateUrl: 'app/channelManagement/templates/endpoint/innerView/who/who.html',
+            displayName: "Channel Management > Who Uses This Policy"
+
+        })
 
 
 
@@ -112,29 +117,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
     .state('app.channelManagement.newChannel.SSettings', {
-            url: '/channelManagementNewChannelS2SeparatedSettings',
-            templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/settings/settings.html',
-            controller: 'separated.settings',
-            controllerAs: 'ctrl',
-            displayName: "New Channel"
+        url: '/channelManagementNewChannelS2SeparatedSettings',
+        templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/settings/settings.html',
+        controller: 'separated.settings',
+        controllerAs: 'ctrl',
+        displayName: "New Channel"
 
-        })
-        /* .state('app.channelManagement.newChannel.SComputerList', {
-             url: '/channelManagementNewChannelS2SeparatedComputerList',
-             templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/separated/computers/computers.html',
-             controller: 'separated.computerList',
-             controllerAs: 'ctrl',
-             displayName: "New Channel"
+    })
 
-         })*/
-        .state('app.channelManagement.newChannel.ncStep2Mixed', {
-            url: '/channelManagementNewChannelS2Mixed',
-            templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
-            controller: 'ncStep2Mixed',
-            controllerAs: 'ctrl',
-            displayName: "New Channel"
+    .state('app.channelManagement.newChannel.ncStep2Mixed', {
+        url: '/channelManagementNewChannelS2Mixed',
+        templateUrl: 'app/channelManagement/templates/newChannel/templates/step2/mixed/step2.html',
+        controller: 'ncStep2Mixed',
+        controllerAs: 'ctrl',
+        displayName: "New Channel"
 
-        })
+    })
 
 
     .state('app.clusterManagement', {
@@ -194,12 +192,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
-    .state('app.policy.who', {
-        url: '/policyWho',
-        templateUrl: 'app/policy/templates/who/who.html',
-        displayName: "Policy > Who Uses This Policy"
 
-    })
 
     .state('app.reports', {
             url: '/reports',

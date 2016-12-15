@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/infoTopbar/style.css" />
-<div layout="row" flex="100" layout-align="space-between center" id="CMInfoTopBar" ng-controller="channelManagementEndpoint as ctrl" layout-padding>
+<div layout="row" flex="100" layout-align="space-between center" id="CMInfoTopBar"  layout-padding md-whiteframe="4">
     <div flex="20" class="infoTopBarDiv" layout-align="center center">
-        <h3>{{ctrl.channel_data.DisplayName}}</h3>
+        <h3>{{ctrl.channelDashboard.DisplayName}} : {{ctrl.rootId}}</h3>
     </div>
     <div flex="20" class="infoTopBarDiv" layout-align="center center" layout="column">
         <h3>{{ctrl.channelDashboard.AgentsUseTheChannel}}</h3>

@@ -26,7 +26,6 @@ app.directive("editFiletype", ["policyData", function (policyData) {
         link: function (scope, element, attrs) {
             var table = $("#filetype-table")
             var advanceModeButton = $("#show-advanced-filetype-button")
-
             element.click(function () {
                 var self = $(this)
                 if (!scope.ctrl.isTableEditable) {
@@ -34,12 +33,14 @@ app.directive("editFiletype", ["policyData", function (policyData) {
                     self.css("background-color", "red")
                     self.html("DONE")
                     advanceModeButton.removeClass("hidden")
+                    scope.ctrl.isTableEditable  = true
                 } else {
                     table.addClass("notEditable")
                     self.css("background-color", "#311B92")
                     advanceModeButton.addClass("hidden")
                     policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function (answer) {
                         scope.ctrl.types = answer.data
+                        console.log("ok posted")
                     })
                     self.html("EDIT")
                     scope.ctrl.isTableEditable = false;

@@ -41,7 +41,6 @@ app.factory("channelData", function ($http, $rootScope) {
     //var sname = serverName == null ? "jdev01": sname
     //general
     var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
-
     var url = "http://localhost:3000/channels";
     var inputURL = "http://localhost:3000/inputList";
     var input_output_list = "http://localhost:3000/input_output_list";

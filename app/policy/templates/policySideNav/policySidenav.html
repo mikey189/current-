@@ -17,15 +17,15 @@
     </div>
     <input class="searchPolicies" placeholder="search policies" ng-model="PolicyName" />
     <md-list layout-padding id="policyListHolder"> 
-        <md-list-item ng-drop="true" ng-drag="ctrl.dragMode" ng-repeat="policy in ctrl.draggableObjects | filter: PolicyName |orderBy : '-Priority'" 
-        layout-padding class="policyItem" policy-list-hover ng-drag-data="policy" 
-        ng-drop-success="ctrl.onDropComplete($index, $data,$event)" _id="{{policy.PolicyId}}" layout="column" layout-align="center start" initiate-api-call-with-id>
+        <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName" policy-id={{policy.PolicyId}}
+        layout-padding class="policyItem" policy-list-hover  layout="column" layout-align="center start" get-top-policy-id
+          initiate-api-call-with-id>
             <div layout="row" layout-align="space-between start" style="width: 100%">
                 <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>
-                <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.dragMode">
+                <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.sidenav_edit_mode">
                     <md-icon flex class="pinkIcon material-icons">close</md-icon>
                 </md-button>
-                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.dragMode" toggle-editable-mode>
+                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.sidenav_edit_mode" toggle-editable-mode>
                     <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
                 </md-button>
             </div>
