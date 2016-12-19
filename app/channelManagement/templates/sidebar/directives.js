@@ -6,8 +6,8 @@ app.directive("getMyId", ["$state","C2CData","channelData", function ($state,C2C
                 var self = $(this);
                 scope.ctrl.rootId = parseInt(self.attr("_id"));
                 console.log(scope.ctrl.rootId)
+                //C2CData.set(scope.ctrl.rootId)
                 scope.$apply()
-                $state.reload("app.channelManagement.endpoint")
             })
         }
     }
@@ -15,7 +15,7 @@ app.directive("getMyId", ["$state","C2CData","channelData", function ($state,C2C
 
 app.directive("initId", function () {
     return {
-        restrict: "A",
+        restrict: "E",
         link: function (scope, element, attrs) {
             element.ready(function () {
                 scope.ctrl.rootId = parseInt($(".channelSidenavItems").first().attr("channel-id"))

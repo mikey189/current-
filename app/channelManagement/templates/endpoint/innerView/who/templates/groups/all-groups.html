@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/groups/style.css" />
+<div id="whoGroup" md-whiteframe="6">
+    <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+        <md-icon class="search-users-icon md-36" flex="15">group_work</md-icon>
+        <input class="users_search_box" ng-model="group" flex="85" placeholder="All Groups available on the domain" />
+    </div>
+    <md-list style="padding-bottom: 0px !important">
+        <md-virtual-repeat-container id="vertical-container">
+            <div md-virtual-repeat="group in ctrl.channel_groups |filter: group" class="user-user-list" layout="row" layout-align="space-between center"
+                group-name="{{group}}" layout-padding>
+                <md-content class="policy-who-groups">{{group}}</md-content>
+                <md-button class="md-icon-button" ng-if="ctrl.is_who_screen_editable" ng-hide="ctrl.isGroupInUse(group)" assign-channel-to-group
+                    group-to-add="{{group}}">
+                    <md-icon class="material-icon md-blue">add</md-icon>
+                </md-button>
+            </div>
+        </md-virtual-repeat-container>
+    </md-list>
+</div>

@@ -38,7 +38,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.channelManagement', {
         url: '/channelManagement',
         templateUrl: 'app/channelManagement/channelManagement.html',
-        controller: 'channelManagement',
+        controller: 'channels',
         controllerAs: 'ctrl',
         displayName: "Channel Management"
     })
@@ -46,51 +46,51 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.channelManagement.endpoint', {
             url: '/channelManagementEndpoint',
-            controller: 'channelManagementEndpoint',
-            controllerAs: 'ctrl',
+            //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
             displayName: "Channel Management"
         })
-        .state('app.channelManagement.endpoint.sidebar', {
-            url: '/channelManagement',
-     
+      /*  .state('app.channelManagement.endpoint.sidebar', {
+            url: '/channelManagementSidebar',
+            //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/sidebar/sidebar.html',
             displayName: "Channel Management"
         })
         .state('app.channelManagement.endpoint.topBar', {
             url: '/channelManagementTopBar',
+            parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/infoTopBar/infoTopBar.html',
             displayName: "Channel Management"
-        })
+        })*/
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
+            //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             displayName: "Channel Management"
 
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
+           // parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
-
             displayName: "Channel Management > Inputs and Outputs"
 
         })
 
     .state('app.channelManagement.endpoint.settings', {
             url: '/CMEndpointTargets',
+            //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
-
             displayName: "Channel Management > Settings"
 
         })
         .state('app.channelManagement.endpoint.who', {
             url: '/channelWho',
+            //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/who/who.html',
             displayName: "Channel Management > Who Uses This Policy"
 
         })
-
-
 
 
     .state('app.channelManagement.newChannel', {

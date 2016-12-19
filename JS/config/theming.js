@@ -12,7 +12,6 @@ app.config(function($mdThemingProvider) {
 
 //adding resec logo
 
-
 app.config(function($mdIconProvider) {
     $mdIconProvider
        .iconSet('resec', 'IMG/icons/resecLogo.svg', 24)
@@ -26,3 +25,4 @@ app.config(['ChartJsProvider', function (ChartJsProvider) {
     });
     
 }])
+

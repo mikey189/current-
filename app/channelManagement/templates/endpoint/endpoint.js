@@ -1,16 +1,10 @@
-app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", "topCases", "$scope", function (C2CData, channelData, users, topCases, $scope) {
+app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", function (C2CData, channelData, topCases, $scope) {
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     //setting default id for the channel
-
- /*-------------------- Sidebar --------------------*/
-
-   /* self.initChannelId = function () {
-        var firstChannel = angular.element(document).find(".channelSidenavItems").first().attr("channel-id")
-        console.log(firstChannel)
-        console.log("ini")
-    }*/
+    //set via directive
+    /*-------------------- Sidebar --------------------*/
     self.channel_list = []
     self.is_edit_mode_on = false;
     channelData.getchannelList().then(function (answer) {
@@ -20,54 +14,44 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         }
     })
     self.onDropComplete = function (index, obj, evt) {
-        var otherObj = self.channel_list[index];
-        var otherIndex = self.channel_list.indexOf(obj);
-        self.channel_list[index] = obj;
-        self.channel_list[otherIndex] = otherObj;
-    }
-
-    /*--------------------  Channel Input and Output --------------------*/
-    //setting up initial array to store smbs objects
+            var otherObj = self.channel_list[index];
+            var otherIndex = self.channel_list.indexOf(obj);
+            self.channel_list[index] = obj;
+            self.channel_list[otherIndex] = otherObj;
+        }
+        /*--------------------  Channel Input and Output --------------------*/
+        //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []
     self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 28;
-
     //watching for any change in channel id
     $scope.$watch(angular.bind(this, function () {
         return this.rootId;
     }), function (newVal) {
-
         channelData.get_channel(newVal).then(function (answer2) {
             self.channel_data = answer2.data
             console.log(self.channel_data)
             self.channelInfo = answer2.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
-            self.InputConfiguration = self.channelInfo.InputConfiguration
-            self.ismbList = self.InputConfiguration.IoSmbConfiguration
-            self.OutputConfiguration = self.channelInfo.OutputConfiguration
-            self.osmbList = self.OutputConfiguration.IoSmbConfiguration
+            self.InputConfiguration = (typeof self.InputConfiguration === 'undefined') ? self.channelInfo.InputConfiguration : {};
+            self.ismbList = (typeof self.ismbList === 'undefined') ? self.InputConfiguration.IoSmbConfiguration : [];
+            self.OutputConfiguration = (typeof self.OutputConfiguration === 'undefined') ? self.channelInfo.OutputConfiguration : {};
+            self.osmbList = (typeof self.osmbList === "undefined") ? self.OutputConfiguration.IoSmbConfiguration : [];
         })
     });
     //default view for dashboard is blocked
     self.isBlocked = true;
     channelData.getChannelDashboard(self.rootId).then(function (answer1) {
-            self.channelDashboard = answer1.data
-            console.log(self.channelDashboard)
-        })
-        //retrieving the dashboard according to channel id
+        self.channelDashboard = answer1.data
+        console.log(self.channelDashboard)
+    })
 
-    //top users loading from db.json because there are more instances of users (just nice to render)
-    users.getUsers().then(function (response) {
-            self.users = response
-        })
-        //loading topCases from db.json as well because the names are more realistic there 
     topCases.getTopCases().then(function (answer) {
         self.topCases = answer.data
     })
     self.label = ["Medium", "Low", "high"];
-    //loading computer list 
-    //setting inputs and outputs screen to not editable by default
+
     self.are_outputs_and_outputs_editable = false;
     //getting input and output list for "input and ouput" view
     channelData.get_input_output_list().then(function (answer) {
@@ -78,13 +62,9 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
             self.is_input_selected = false;
         })
         //storing selected inputs and outputs
-
-    // self.selectedInputs = []
-    // self.selectedOutputs = []
-
-
-
-    //function that add objects for iSMB and oSMB on ng-checked
+        // self.selectedInputs = []
+        // self.selectedOutputs = []
+        //function that add objects for iSMB and oSMB on ng-checked
     self.addISMB = function () {
         var iSMB = {}
         self.ismbList.push(iSMB)
@@ -94,9 +74,6 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         self.osmbList.push(oSMB)
     }
 
-    //making the settings not editable by default
-    self.are_settings_editable = false
-
     self.deleteISMB = function (ISMB) {
         var index = self.ismbList.indexOf(ISMB)
         console.log(self.ismbList)
@@ -104,16 +81,61 @@ app.controller("channelManagementEndpoint", ["C2CData", "channelData", "users", 
         console.log("deleting ISMB")
     }
     self.deleteOSMB = function (OSMB) {
-        var index = self.osmbList.indexOf(OSMB)
-        self.osmbList.splice(index, 1);
-        console.log("deleting OSMB")
+            var index = self.osmbList.indexOf(OSMB)
+            self.osmbList.splice(index, 1);
+            console.log("deleting OSMB")
+        }
+        //making the settings not editable by default
+    self.are_settings_editable = false
+        /*--------------------  who is using this channel --------------------*/
+
+    self.is_who_screen_editable = false;
+
+    //setting up condition to check if we are in channel type that accept single policy or mutliple policies
+    self.is_single_policy = true;
+    //getting available groups for a specific Channel
+    channelData.get_channel_groups().then(function (answer) {
+        self.channel_groups = answer.data
+    })
+    channelData.get_current_channel_groups().then(function (answer) {
+            self.current_channel_groups = answer.data
+        })
+        //checking if this group is already being used, if it is the cased, the add button should be disabled
+    self.isGroupInUse = function (group) {
+        if (self.current_channel_groups.includes(group)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    channelData.get_all_users().then(function (answer) {
+        self.all_users = answer.data
+    })
+    channelData.get_current_users().then(function (answer) {
+            self.current_users = answer.data
+        })
+        //checking is the user is already using this channel
+    self.isUserInUse = function (user) {
+        if (self.current_users.includes(user)) {
+            return true
+        } else {
+            return false
+        }
     }
 
-    /*--------------------  who is using this channel --------------------*/
-
-    channelData.getComputerList().then(function (answer) {
-        self.users = answer.data;
+    channelData.get_all_computers().then(function (answer) {
+        self.all_computers = answer.data
     })
+    channelData.get_current_computers().then(function (answer) {
+        self.current_computers = answer.data
+    })
+    self.isComputerInUse = function (computer) {
+        if (self.current_computers.includes(computer)) {
+            return true
+        } else {
+            return false
+        }
 
+    }
 
 }])

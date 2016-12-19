@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/computers/style.css" />
+<div id="all_computer" md-whiteframe="6">
+    <!-- search bar -->
+    <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+        <md-icon class="search-computers-icon md-36" flex="15">computer</md-icon>
+        <input class="computer_search_box" ng-model="current_computer" flex="85" placeholder="All computers available on the domain"/>
+    </div>
+    <md-virtual-repeat-container class="virtual-repeat-full-height">
+        <div md-virtual-repeat="current_computer in ctrl.current_computers | filter: current_computer | orderBy: current_computer"
+            class="virtual-repeat-div" layout-padding layout-align="space-between center" layout="row">
+            <md-content class="computer_name">{{current_computer}}</md-content>
+            <md-button ng-if="ctrl.is_who_screen_editable" class="md-icon-button animated fadeIn" remove-computer-from-channel computer-name="{{current_computer}}">
+                <md-icon class="delete_computer">remove</md-icon>
+            </md-button>
+        </div>
+    </md-virtual-repeat-container>
+</div>

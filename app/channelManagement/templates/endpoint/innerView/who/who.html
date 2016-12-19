@@ -1,9 +1,19 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/styles.css" />
-<div class="md-padding" layout='column' layout-padding>
+<div layout="row" layout-align="end center" layout-margin>
+    <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4">EDIT</md-button>
+</div>
+<div layout="column" layout-margin>
     <channel-top-bar></channel-top-bar>
-    <div layout="row" layout-align="space-between start" id="whoWrapper" vertalize-container>
-        <groups-list vertalize flex="50"></groups-list>
-        <user-list vertalize flex></user-list>
+    <div layout="row" layout-align="space-between " layout-margin>
+        <all-groups flex="50"></all-groups>
+        <current-groups flex="50"></current-groups>
     </div>
-    <computers-using-this-policy id="computers"></computers-using-this-policy>
+    <div layout="row" layout-align="space-between " layout-margin>
+        <all-users flex="50"></all-users>
+        <current-users flex="50"></current-users>
+    </div>
+    <div layout="row" layout-align="space-between" layout-margin style>
+        <all-computers flex="50"></all-computers>
+        <current-computers flex="50"></current-computers>
+    </div>
 </div>

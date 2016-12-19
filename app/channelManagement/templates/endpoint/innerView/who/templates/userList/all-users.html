@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/userList/style.css" />
+<div id="all_users"  md-whiteframe="6">
+    <!-- search bar -->
+    <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+        <md-icon class="search-users-icon md-36" flex="15">account_circle</md-icon>
+        <input class="users_search_box" ng-model="user" flex="85" placeholder="All users available on the domain" />
+    </div>
+    <md-virtual-repeat-container class="virtual-repeat-full-height">
+        <div md-virtual-repeat="user in ctrl.all_users | filter: user | orderBy: user" class="virtual-repeat-div" layout-padding
+            layout-align="space-between center" layout="row">
+            <md-content class="user_name">{{user}}</md-content>
+            <md-button ng-if="ctrl.is_who_screen_editable" class="md-icon-button animated fadeIn"
+             assign-user-to-channel user-name="{{user}}" ng-hide="ctrl.isUserInUse(user)"> 
+                <md-icon class="add_users">add</md-icon>
+            </md-button>
+        </div>
+    </md-virtual-repeat-container>
+</div>

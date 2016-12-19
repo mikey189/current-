@@ -166,7 +166,6 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyData, $
     }
 }])
 
-
 app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (policyData, $mdSidenav) {
     return {
         restrict: "A",

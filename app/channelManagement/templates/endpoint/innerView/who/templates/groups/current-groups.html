@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/groups/style.css" />
+<div id="whoGroup" md-whiteframe="6">
+    <div layout="row" layout-align="space-between center" layout-padding md-whiteframe="4" class="search-container">
+        <md-icon class="search-users-icon md-36" flex="15">group_work</md-icon>
+        <input class="users_search_box" ng-model="currentGroup" flex="85" placeholder="Current Groups using this channel" />
+    </div>
+    <md-list style="padding-bottom: 0px !important">
+        <md-virtual-repeat-container id="vertical-container">
+            <div md-virtual-repeat="currentGroup in ctrl.current_channel_groups |filter: currentGroup" class="user-user-list" layout="row"
+                layout-align="space-between center" group-name="{{currentGroup}}" layout-padding>
+                <md-content class="policy-who-groups">{{currentGroup}}</md-content>
+                <md-button class="md-icon-button" ng-if="ctrl.is_who_screen_editable" delete-group-from-channel group-to-delete="{{currentGroup}}">
+                    <md-icon class="material-icon removeButton">remove</md-icon>
+                </md-button>
+            </div>
+        </md-virtual-repeat-container>
+    </md-list>
+</div>

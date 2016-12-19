@@ -16,8 +16,8 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
                 url: "http://" + serverName + ":4580/api/users/login",
                 method: "POST",
                 data: {
-                    username: username,
-                    password: password
+                    UserName: username,
+                    Password: password
                 }
             })
         }
@@ -60,6 +60,16 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
     var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
+
+    var channel_groups = "http://localhost:3000/channel_groups"
+    var current_channel_groups  ="http://localhost:3000/current_channel_groups"
+    var all_ips = "http://localhost:3000/all_ips"
+    var current_ips = "http://localhost:3000/current_ips"
+    var all_users = "http://localhost:3000/all_users"
+    var current_users = "http://localhost:3000/current_users"
+    var all_computers = "http://localhost:3000/all_computers"
+    var current_computers = "http://localhost:3000/current_computers"
+
     return {
         getchannelList: function () {
             return $http.get(channelList)
@@ -155,6 +165,30 @@ app.factory("channelData", function ($http, $rootScope) {
                 url: delete_channel + id,
                 method: "DELETE"
             })
+        }, 
+        get_channel_groups: function(){
+            return $http.get(channel_groups)
+        },
+        get_current_channel_groups: function(){
+            return $http.get(current_channel_groups)
+        },
+        get_all_ips: function(){
+            return $http.get(all_ips)
+        },
+        get_current_ips: function(){
+            return $http.get(current_ips)
+        },
+        get_all_users: function(){
+            return $http.get(all_users)
+        }, 
+        get_current_users: function(){
+            return $http.get(current_users)
+        }, 
+        get_all_computers: function(){
+            return $http.get(all_computers)
+        }, 
+        get_current_computers: function(){
+            return $http.get(current_computers)
         }
 
     }
@@ -266,7 +300,7 @@ app.factory("policyData", function ($rootScope, $http) {
         getDashboard: function (id) {
             return $http.get(policyDashboard + id)
         },
-        getDescriptions() {
+        getDescriptions: function() {
             return $http.get(fileExtensionsDescription).then(function (response) {
                 return response.data
             })
