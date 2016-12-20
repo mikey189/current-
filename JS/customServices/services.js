@@ -62,13 +62,16 @@ app.factory("channelData", function ($http, $rootScope) {
     var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
 
     var channel_groups = "http://localhost:3000/channel_groups"
-    var current_channel_groups  ="http://localhost:3000/current_channel_groups"
+    var current_channel_groups = "http://localhost:3000/current_channel_groups"
     var all_ips = "http://localhost:3000/all_ips"
     var current_ips = "http://localhost:3000/current_ips"
     var all_users = "http://localhost:3000/all_users"
     var current_users = "http://localhost:3000/current_users"
     var all_computers = "http://localhost:3000/all_computers"
     var current_computers = "http://localhost:3000/current_computers"
+    var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
+    var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
+
 
     return {
         getchannelList: function () {
@@ -165,30 +168,43 @@ app.factory("channelData", function ($http, $rootScope) {
                 url: delete_channel + id,
                 method: "DELETE"
             })
-        }, 
-        get_channel_groups: function(){
+        },
+        get_channel_groups: function () {
             return $http.get(channel_groups)
         },
-        get_current_channel_groups: function(){
+        get_current_channel_groups: function () {
             return $http.get(current_channel_groups)
         },
-        get_all_ips: function(){
+        get_all_ips: function () {
             return $http.get(all_ips)
         },
-        get_current_ips: function(){
+        get_current_ips: function () {
             return $http.get(current_ips)
         },
-        get_all_users: function(){
+        get_all_users: function () {
             return $http.get(all_users)
-        }, 
-        get_current_users: function(){
+        },
+        get_current_users: function () {
             return $http.get(current_users)
-        }, 
-        get_all_computers: function(){
+        },
+        get_all_computers: function () {
             return $http.get(all_computers)
-        }, 
-        get_current_computers: function(){
+        },
+        get_current_computers: function () {
             return $http.get(current_computers)
+        },
+        get_policy_list: function () {
+            return $http.get(policyList)
+        },
+        reorder_channel_priority: function (policyOrder) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: reorderChannelOrder,
+                method: "POST",
+                data: policyOrder
+            })
         }
 
     }
@@ -300,7 +316,7 @@ app.factory("policyData", function ($rootScope, $http) {
         getDashboard: function (id) {
             return $http.get(policyDashboard + id)
         },
-        getDescriptions: function() {
+        getDescriptions: function () {
             return $http.get(fileExtensionsDescription).then(function (response) {
                 return response.data
             })

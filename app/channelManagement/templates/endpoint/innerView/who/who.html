@@ -5,15 +5,18 @@
 <div layout="column" layout-margin>
     <channel-top-bar></channel-top-bar>
     <div layout="row" layout-align="space-between " layout-margin>
-        <all-groups flex="50"></all-groups>
-        <current-groups flex="50"></current-groups>
+        <current-groups flex></current-groups>
+        <all-groups flex="50" ng-if="ctrl.is_who_screen_editable"></all-groups>
     </div>
     <div layout="row" layout-align="space-between " layout-margin>
-        <all-users flex="50"></all-users>
-        <current-users flex="50"></current-users>
+        <current-users flex></current-users>
+        <all-users flex="50"  ng-if="ctrl.is_who_screen_editable"></all-users>
     </div>
-    <div layout="row" layout-align="space-between" layout-margin style>
-        <all-computers flex="50"></all-computers>
-        <current-computers flex="50"></current-computers>
+    <div layout="row" layout-align="space-between" layout-margin>
+        <current-computers flex></current-computers>
+        <all-computers flex="50"  ng-if="ctrl.is_who_screen_editable"></all-computers>
+    </div>
+    <div layout="row" layout-align="space-between" layout-margin>
+        <current-ips flex></current-ips>
     </div>
 </div>

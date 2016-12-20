@@ -1,0 +1,53 @@
+#whoGroup {
+    background-color: white;
+    border-radius: 3px;
+}
+
+.expandGroups {
+    margin-left: 0.5em !important;
+}
+
+.policy-who-groups {
+    margin-left: 0.5em;
+}
+
+.one-em-padding-left {
+    padding-left: 1em;
+}
+
+.md-blue {
+    color: #2196F3;
+}
+
+.table-icon {
+    color: #0D47A1;
+}
+
+.remove-ip {
+    color: #E91E63 !important;
+}
+
+#addIp {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-left-color: solid 2px #2196F3;
+    border-bottom-color: solid 2px #2196F3;
+    border-right-color: solid 2px #2196F3;
+}
+#add-ip-input{
+    border-radius: 3px !important;
+    border: solid 2px #2196F3 !important;
+}
+#add-ip-label{
+    color: #0D47A1 !important;
+    font-weight: 600 !important;
+}
+#add-ip-btn{
+    padding-bottom: 0px !important;
+}
+#add-ip-btn > md-icon{
+    color: #2196F3 !important;
+}
+#ip-search-box{
+    margin-bottom: 0px !important;
+}

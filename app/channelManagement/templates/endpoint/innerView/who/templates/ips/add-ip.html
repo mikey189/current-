@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/ips/style.css" />
+
+<div id="addIp" class="animated fadeInDown" flex layout-padding layout="row" layout-align="space-between center" md-whiteframe="4">
+    <md-content id="add-ip-label" flex="20">IP ADDRESS TO ADD</md-content>
+    <input ng-model="ctrl.ipToAdd" flex="70" id="add-ip-input" placeholder="Add an IP Address to associate to this channel"/>
+    <md-button class="md-icon-button" ip-address="{{ctrl.ipToAdd}}" add-ip-to-channel flex id="add-ip-btn"> 
+        <md-icon>add</md-icon>
+    </md-button>
+</div>

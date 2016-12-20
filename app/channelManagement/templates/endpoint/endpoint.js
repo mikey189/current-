@@ -4,7 +4,11 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     //setting default id for the channel
     //set via directive
+
+
     /*-------------------- Sidebar --------------------*/
+
+
     self.channel_list = []
     self.is_edit_mode_on = false;
     channelData.getchannelList().then(function (answer) {
@@ -13,6 +17,7 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
             self.channel_list.push(self.menuItems[i])
         }
     })
+    
     self.onDropComplete = function (index, obj, evt) {
             var otherObj = self.channel_list[index];
             var otherIndex = self.channel_list.indexOf(obj);
@@ -20,7 +25,10 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
             self.channel_list[otherIndex] = otherObj;
         }
         /*--------------------  Channel Input and Output --------------------*/
-        //setting up initial array to store smbs objects
+
+
+
+    //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []
     self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 28;
@@ -30,7 +38,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     }), function (newVal) {
         channelData.get_channel(newVal).then(function (answer2) {
             self.channel_data = answer2.data
-            console.log(self.channel_data)
             self.channelInfo = answer2.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
@@ -44,7 +51,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     self.isBlocked = true;
     channelData.getChannelDashboard(self.rootId).then(function (answer1) {
         self.channelDashboard = answer1.data
-        console.log(self.channelDashboard)
     })
 
     topCases.getTopCases().then(function (answer) {
@@ -76,18 +82,20 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
 
     self.deleteISMB = function (ISMB) {
         var index = self.ismbList.indexOf(ISMB)
-        console.log(self.ismbList)
         self.ismbList.splice(index, 1);
-        console.log("deleting ISMB")
     }
     self.deleteOSMB = function (OSMB) {
             var index = self.osmbList.indexOf(OSMB)
             self.osmbList.splice(index, 1);
-            console.log("deleting OSMB")
         }
         //making the settings not editable by default
     self.are_settings_editable = false
-        /*--------------------  who is using this channel --------------------*/
+
+
+
+    /*--------------------  who is using this channel --------------------*/
+
+
 
     self.is_who_screen_editable = false;
 
@@ -138,4 +146,14 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
 
     }
 
+    channelData.get_current_ips().then(function (answer) {
+            self.current_ips = answer.data
+        })
+        //retrieving policy list
+    channelData.get_policy_list().then(function (answer) {
+        self.policyList = answer.data
+    })
+    self.current_policy = (typeof self.current_policy === 'undefined') ? self.current_policy : "no policy is yet associated to this channel";
+    //in case we have multiple current policies 
+    self.multipleCurrentPolicies = []
 }])

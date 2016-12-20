@@ -19,9 +19,10 @@
                         <a ui-sref="app.channelManagement.newChannel.step1">
                             <strong>Create Channel</strong></a>
                     </md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name | orderBy: '-Priority' track by $index" class="channelSidenavItems"
-                        md-whiteframe="2" ng-drop="true" ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
-                        layout="row" layout-align="space-between center" channel-id="{{x.Id}}">
+                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " class="channelSidenavItems"
+                        md-whiteframe="2" layout="row" layout-align="space-between center" 
+                        channel-id="{{x.Id}}" ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
+                         ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x"  draggable="false" channel-type="{{x.ChannelType}}">
                         <div layout="row" layout-align="start center" layout-margin>
                             <md-icon aria-label="remove channel" md-svg-src="app/channelManagement/templates/sidebar/icons/{{x.ChannelInfo.GeneralInformations.ChannelTypeName}}.svg"
                                 class="channel_type_icon"></md-icon>

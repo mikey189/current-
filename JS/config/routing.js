@@ -50,18 +50,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
             displayName: "Channel Management"
         })
-      /*  .state('app.channelManagement.endpoint.sidebar', {
-            url: '/channelManagementSidebar',
-            //parent: "app.channelManagement",
-            templateUrl: 'app/channelManagement/templates/sidebar/sidebar.html',
-            displayName: "Channel Management"
-        })
-        .state('app.channelManagement.endpoint.topBar', {
-            url: '/channelManagementTopBar',
-            parent: "app.channelManagement",
-            templateUrl: 'app/channelManagement/templates/endpoint/infoTopBar/infoTopBar.html',
-            displayName: "Channel Management"
-        })*/
+        /*  .state('app.channelManagement.endpoint.sidebar', {
+              url: '/channelManagementSidebar',
+              //parent: "app.channelManagement",
+              templateUrl: 'app/channelManagement/templates/sidebar/sidebar.html',
+              displayName: "Channel Management"
+          })
+          .state('app.channelManagement.endpoint.topBar', {
+              url: '/channelManagementTopBar',
+              parent: "app.channelManagement",
+              templateUrl: 'app/channelManagement/templates/endpoint/infoTopBar/infoTopBar.html',
+              displayName: "Channel Management"
+          })*/
         .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
             //parent: "app.channelManagement",
@@ -71,7 +71,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
-           // parent: "app.channelManagement",
+            // parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
             displayName: "Channel Management > Inputs and Outputs"
 
@@ -159,7 +159,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('app.policy.definition', {
             url: '/policyDefinition',
-            parent: "app.policy",
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
             displayName: "Policy"
         })
@@ -172,21 +171,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.definition.detection', {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
-
             displayName: "Policy > Detection Settings"
 
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
-            templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
 
+            templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
             displayName: "Policy > CDR Settings"
 
         })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
-            templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
 
+            templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
             displayName: "Policy > Settings"
 
         })

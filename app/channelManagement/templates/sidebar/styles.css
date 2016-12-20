@@ -1,6 +1,5 @@
 .create_channel_sidenav_item {
     background-color: #039BE5;
-
 }
 
 .create_channel_sidenav_item:hover {
@@ -8,28 +7,38 @@
     border-left: solid 0.5em #EC407A;
 }
 
-.channel_type_icon{
+.channel_type_icon {
     margin-left: 0px !important;
 }
-.channel_type_icon  svg  g{
+
+.channel_type_icon svg g {
     fill: white !important;
 }
 
-.remove-icon{
+.remove-icon {
     color: #E91E63 !important;
 }
-#channelSidebarSearchIcon{
+
+#channelSidebarSearchIcon {
     color: #2196F3;
 }
-#reorder_channels_icon{
+
+#reorder_channels_icon {
     color: #2196F3;
 }
-#reorder_channels_icon:hover{
+
+#reorder_channels_icon:hover {
     color: #FF4081;
 }
-#reorder_channels_button{
+
+#reorder_channels_button {
     margin-right: 1em;
 }
-.editOn{
+
+.editOn {
     color: #FF4081 !important;
+}
+
+[ng-drop].drag-enter {
+    border: solid 3px #2196F3;
 }

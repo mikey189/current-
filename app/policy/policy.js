@@ -16,6 +16,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         //getDashboard data with policyId
         //API Call inside directive :"initiateApiCallWithId" 
         self.get_policy_data = function (id) {
+            self.policyId = id;
                 policyData.getDashboard(id).then(function (answer) {
                     self.dashboardData = answer.data;
                 })

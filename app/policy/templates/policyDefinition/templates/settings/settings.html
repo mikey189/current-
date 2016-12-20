@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
-<div layout='column' ng-controller="policy as ctrl" id="policySettingsContainer">
+<div layout='column'  id="policySettingsContainer">
     <json-formatter json="ctrl.PolicyFacets"></json-formatter>
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
         <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">

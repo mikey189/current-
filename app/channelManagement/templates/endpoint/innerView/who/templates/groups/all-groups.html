@@ -9,7 +9,7 @@
             <div md-virtual-repeat="group in ctrl.channel_groups |filter: group" class="user-user-list" layout="row" layout-align="space-between center"
                 group-name="{{group}}" layout-padding>
                 <md-content class="policy-who-groups">{{group}}</md-content>
-                <md-button class="md-icon-button" ng-if="ctrl.is_who_screen_editable" ng-hide="ctrl.isGroupInUse(group)" assign-channel-to-group
+                <md-button class="md-icon-button" ng-if="ctrl.is_who_screen_editable" ng-hide="ctrl.isGroupInUse(group)" assign-group-to-channel
                     group-to-add="{{group}}">
                     <md-icon class="material-icon md-blue">add</md-icon>
                 </md-button>

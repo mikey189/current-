@@ -48,3 +48,17 @@ app.directive("currentComputers", function(){
         replace: false
     }
 })
+app.directive("currentIps", function(){
+    return{
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/who/templates/ips/current-ips.html",
+        replace: false
+    }
+})
+app.directive("addIpToChannelTmpl", function(){
+    return{
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/who/templates/ips/add-ip.html",
+        replace: false
+    }
+})

@@ -1,13 +1,19 @@
-app.directive("getMyId", ["$state","C2CData","channelData", function ($state,C2CData, channelData) {
+app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, C2CData, channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
                 scope.ctrl.rootId = parseInt(self.attr("_id"));
-                console.log(scope.ctrl.rootId)
                 //C2CData.set(scope.ctrl.rootId)
-                scope.$apply()
+                var channelType = self.attr("channel-type")
+                scope.$apply(function () {
+                    if (channelType == 3) {
+                        scope.ctrl.is_single_policy = false
+                    } else {
+                        scope.ctrl.is_single_policy = true;
+                    }
+                })
             })
         }
     }
@@ -19,12 +25,12 @@ app.directive("initId", function () {
         link: function (scope, element, attrs) {
             element.ready(function () {
                 scope.ctrl.rootId = parseInt($(".channelSidenavItems").first().attr("channel-id"))
-                console.log(scope.ctrl.rootId)
                 scope.$apply()
             })
         }
     }
 })
+
 app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
     return {
         restrict: "A",
@@ -43,34 +49,43 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
                     .cancel('Cancel deletion');
                 $mdDialog.show(confirm).then(function () {
                     channelData.delete_channel(channel_id).then(function (answer) {
-                        console.log(answer)
                         cell.addClass("animated fadeOutRight")
                         $timeout(function () {
                             cell.addClass("hidden")
 
                         }, 700)
                     });
-                }, function () {
-                    console.log('You have cancelled.');
-                });
+                }, function () {});
             })
         }
     }
 })
 
-app.directive("channelSidenavEditMode", function () {
+app.directive("channelSidenavEditMode", function (channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
+
                 var editIcon = $("#reorder_channels_icon")
+                var channels = $(".channelSidenavItems")
+
                 if (!scope.ctrl.is_edit_mode_on) {
                     scope.ctrl.is_edit_mode_on = true
                     editIcon.addClass("editOn")
                 } else {
                     scope.ctrl.is_edit_mode_on = false
+                    var channelsOrder = []
+                    channels.each(function () {
+                        var channelID = parseInt($(this).attr("channel-id"))
+                        channelsOrder.push(channelID)
+                    })
+                    channelData.reorder_channel_priority(channelsOrder).then(function (success) {
+                        alert("order successfully saved " + success.data)
+                    }, function (error) {
+                        alert("an error occured : " + error.data.Message)
+                    })
                     editIcon.removeClass("editOn")
-
                 }
             })
         }
