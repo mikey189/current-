@@ -4,15 +4,9 @@ app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, 
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.ctrl.rootId = parseInt(self.attr("_id"));
                 //C2CData.set(scope.ctrl.rootId)
-                var channelType = self.attr("channel-type")
                 scope.$apply(function () {
-                    if (channelType == 3) {
-                        scope.ctrl.is_single_policy = false
-                    } else {
-                        scope.ctrl.is_single_policy = true;
-                    }
+                    scope.ctrl.rootId = parseInt(self.attr("_id"));
                 })
             })
         }
@@ -61,7 +55,7 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
     }
 })
 
-app.directive("channelSidenavEditMode", function (channelData) {
+app.directive("channelSidenavEditMode", function (channelData, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -81,11 +75,81 @@ app.directive("channelSidenavEditMode", function (channelData) {
                         channelsOrder.push(channelID)
                     })
                     channelData.reorder_channel_priority(channelsOrder).then(function (success) {
-                        alert("order successfully saved " + success.data)
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('CONGRATS!')
+                            .textContent('The ne priorities were successfully saved')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('AWSOME!')
+                        );
                     }, function (error) {
-                        alert("an error occured : " + error.data.Message)
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('OOPS, ERROR')
+                            .textContent('There was an error while updating the priorities : ' + error.data.Message)
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Got it!')
+                        );
                     })
                     editIcon.removeClass("editOn")
+                }
+            })
+        }
+    }
+})
+
+app.directive("renameChannel", function (channelData, $mdDialog) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                var self = $(this)
+                var channel_name = self.parents("md-list-item").find("a")
+                var editIcon = self.find("md-icon")
+                var channelID = self.attr("channel-id")
+
+                if (!scope.ctrl.is_channelName_editable) {
+                    channel_name.addClass("edit-name")
+                    editIcon.addClass("icon-edit-name-active")
+                    scope.ctrl.is_channelName_editable = true
+                } else {
+                    var newChannelName = channel_name.html()
+                    if (newChannelName.length < 1) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Invalid Format')
+                            .textContent('You must pick a valid name')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Got it!')
+                        );
+                    } else {
+                        channelData.updateChannelName(channelID, newChannelName).then(function (success) {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Name successfully updated')
+                                .textContent('Your channel name was successfully updated to : ' + newChannelName)
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('COOL!')
+                            );
+                        }, function (error) {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Critical Error')
+                                .textContent('An error occured while updating the channel name : ' + error.data.Message)
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('OKAY!')
+                            );
+                        })
+                        scope.ctrl.is_channelName_editable = false
+                        channel_name.removeClass("edit-name")
+                        editIcon.removeClass("icon-edit-name-active")
+                    }
+
                 }
             })
         }

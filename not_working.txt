@@ -1,7 +1,8 @@
 not working calls / view 
 
   reorder channel order -> post not working (see alert message)
+  updateChanneName: does the post but then the data that is returned when clicking on one of the item is not pdated (maor)
 
   toDo: when calling a policy or channel load all views related to it at the same time (dashboard, settings, etc...)
-  get channel type when clicking on sidenav to see if it's a single type or not (if it's email type then it can take more than one policy)
-not working with directive
+
+

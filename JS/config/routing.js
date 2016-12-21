@@ -11,7 +11,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl'
 
         })
-
+        
     .state('app', {
         url: '/app',
         templateUrl: 'app/common/common.html',
@@ -154,8 +154,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
             displayName: "Policy"
-
-
         })
         .state('app.policy.definition', {
             url: '/policyDefinition',
@@ -164,6 +162,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('app.policy.definition.fileType', {
             url: '/policyDefinitionFT',
+           // parent: "app.policy.defintion",
             templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
             displayName: "Policy > Filetype Settings"
 

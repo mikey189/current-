@@ -109,3 +109,7 @@
     padding-right: 0px !important;
     border-radius: 3px !important;
 }
+.policy-name-edit{
+    border-bottom: solid 2px #E040FB;
+    padding-bottom: 2px;
+}

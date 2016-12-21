@@ -3,7 +3,7 @@
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="channelLeftSidebar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
             <md-toolbar class="purleSidebar" layout="row" layout-align="center center" id="channelSidebarToolbar">
-                <h1 class="md-toolbar-tools">Channel list</h1>
+                <h1 class="md-toolbar-tools">Channels List</h1>
                 <md-button class="md-icon-button " channel-sidenav-edit-mode id="reorder_channels_button">
                     <md-icon aria-label="edit" id="reorder_channels_icon">format_line_spacing</md-icon>
                 </md-button>
@@ -19,20 +19,25 @@
                         <a ui-sref="app.channelManagement.newChannel.step1">
                             <strong>Create Channel</strong></a>
                     </md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " class="channelSidenavItems"
-                        md-whiteframe="2" layout="row" layout-align="space-between center" 
-                        channel-id="{{x.Id}}" ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
-                         ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x"  draggable="false" channel-type="{{x.ChannelType}}">
+                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " class="channelSidenavItems" md-whiteframe="2" layout="row"
+                        layout-align="space-between center" channel-id="{{x.Id}}" ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
+                        ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x" draggable="false" layout-wrap>
                         <div layout="row" layout-align="start center" layout-margin>
                             <md-icon aria-label="remove channel" md-svg-src="app/channelManagement/templates/sidebar/icons/{{x.ChannelInfo.GeneralInformations.ChannelTypeName}}.svg"
                                 class="channel_type_icon"></md-icon>
                             <strong>
-                            <a ui-sref="app.channelManagement.endpoint.dashboard" get-my-id  _id="{{x.Id}}">{{x.Name}}</a>
+                            <a ui-sref="app.channelManagement.endpoint.dashboard" class="channel-name-editable" 
+                            contenteditable="{{ctrl.is_channelName_editable}}" get-my-id  _id="{{x.Id}}">{{x.Name}}</a>
                         </strong>
                         </div>
-                        <md-button class="md-icon-button" ng-if="ctrl.is_edit_mode_on" delete-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">
-                            <md-icon class="remove-icon" aria-label="remove icon">remove</md-icon>
-                        </md-button>
+                        <div layout="row">
+                            <md-button class="md-icon-button" ng-if="!ctrl.is_edit_mode_on" rename-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">
+                                <md-icon class="rename-icon" aria-label="remove icon">title</md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-if="ctrl.is_edit_mode_on" delete-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">
+                                <md-icon class="remove-icon" aria-label="remove icon">remove</md-icon>
+                            </md-button>
+                        </div>
                     </md-list-item>
                     <init-id></init-id>
                 </md-list>

@@ -6,13 +6,13 @@
                 <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
                     <md-list-item layout='row' layout-align='space-between center' layout-padding>
                         {{prop.DisplayName}}
-                        <md-icon class='material-icons md-primary' style='margin-right: 0.3em'>
+                        <md-icon class='material-icons detail-toolip' style='margin-right: 0.3em'>
                             info
                             <md-tooltip>
-                                {{prop.Comment}}
+                                {{prop.Comment}} : {{prop.InputType}}
                             </md-tooltip>
                         </md-icon>
-                        <input flex='30' type="{{prop.InputType}}" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName}}">
+                        <input flex='30' type="{{ctrl.defineType(prop.InputType)}}" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" pleholder="{{prop.DisplayName}}">
                     </md-list-item>
                     <md-divider></md-divider>
                 </md-list>
@@ -21,6 +21,3 @@
     </md-tabs>
     <md-button ng-click="ctrl.saveProperties()" id="save_settings_changes" md-whiteframe="6">Save Changes</md-button>
 </div>
-
-
-{{jhkgfjhkgjhk}}

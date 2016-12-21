@@ -103,16 +103,14 @@ app.directive("toggleEditableMode", function (policyData) {
 
                 if (!scope.ctrl.isEditable) {
                     icon.html("done");
-                    policyName.css("color", "orange");
-                    policyName.addClass("animated flash")
+                    policyName.addClass("policy-name-edit")
                     scope.ctrl.isEditable = true;
                 } else {
                     var policyName_value = policyName.html()
                     console.log(policyName_value)
                     icon.html("edit");
+                    policyName.removeClass("policy-name-edit")
                     policyData.update_policy_name(scope.ctrl.policyId, policyName_value)
-                    policyName.removeClass("animated flash")
-                    policyName.css("color", "white")
                     scope.ctrl.isEditable = false;
                 }
             })

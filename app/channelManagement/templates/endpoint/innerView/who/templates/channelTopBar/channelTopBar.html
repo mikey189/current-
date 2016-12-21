@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/templates/channelTopBar/style.css">
-<div id="channel-container" md-whiteframe="4" ng-switch="ctrl.is_single_policy">
-    <div ng-switch-when="true" layout="column" layout-padding>
+<div id="channel-container" md-whiteframe="4">
+    <div layout="column" layout-padding>
         <h3 class="policy-header">Pick one policy to associate to this channel</h3>
         <h4>Current Policy associated : <span class="current-policy"> {{ctrl.current_policy | uppercase}}</span></h4>
         <div layout-wrap layout="row" layout-margin layout-wrap>
@@ -8,25 +8,6 @@
                 ng-show="ctrl.is_who_screen_editable" layout-margin>
                 <p class="policy-chip">{{policy.Name | uppercase}}</p>
                 <md-icon class="add-icon" add-policy-to-channel policy-name="{{policy.Name}}">add</md-icon>
-            </div>
-        </div>
-    </div>
-    <!-- _________________________ IN THE CASE WE ARE IN A CHANNEL TYPE THAT CAN ACCOMODATE MUTLPIPLE POLICIES ______________-->
-    <div ng-switch-when="false" layout="column" layout-padding>
-        <h3 class="policy-header">Pick one policy to associate to this channel</h3>
-        <div layout="column">
-            <h4>Current Policies associated : </h4>
-            <div layout="row" layout-align="space-between center" class="animated fadeInDown policy-chip-container" 
-            ng-repeat="currentPolicy in ctrl.multipleCurrentPolicies" layout-margin>
-                <p class="policy-chip">{{currentPolicy | uppercase}}</p>
-                <md-icon class="close-icon remove-policy" ng-show="ctrl.is_who_screen_editable" remove-policy-from-channel policy-name="{{currentPolicy}}">close</md-icon>
-            </div>
-        </div>
-        <div layout-wrap layout="row" layout-margin layout-wrap>
-            <div layout="row" layout-align="space-between center" class="animated fadeInDown policy-chip-container" ng-repeat="policy in ctrl.policyList"
-                ng-show="ctrl.is_who_screen_editable" layout-margin>
-                <p class="policy-chip">{{policy.Name | uppercase}}</p>
-                <md-icon class="add-icon" add-multiple-policies-to-channel policy-name="{{policy.Name}}">add</md-icon>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     //set via directive
 
 
-    /*-------------------- Sidebar --------------------*/
+    /*-------------------- Sidebar ----------------------*/
 
 
     self.channel_list = []
@@ -17,15 +17,19 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
             self.channel_list.push(self.menuItems[i])
         }
     })
-    
-    self.onDropComplete = function (index, obj, evt) {
-            var otherObj = self.channel_list[index];
-            var otherIndex = self.channel_list.indexOf(obj);
-            self.channel_list[index] = obj;
-            self.channel_list[otherIndex] = otherObj;
-        }
-        /*--------------------  Channel Input and Output --------------------*/
 
+    self.onDropComplete = function (index, obj, evt) {
+        var otherObj = self.channel_list[index];
+        var otherIndex = self.channel_list.indexOf(obj);
+        self.channel_list[index] = obj;
+        self.channel_list[otherIndex] = otherObj;
+    }
+    //making channelNm non editable by default
+    self.is_channelName_editable = false;
+
+    
+
+    /*--------------------  Channel Input and Output --------------------*/
 
 
     //setting up initial array to store smbs objects
@@ -99,8 +103,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
 
     self.is_who_screen_editable = false;
 
-    //setting up condition to check if we are in channel type that accept single policy or mutliple policies
-    self.is_single_policy = true;
     //getting available groups for a specific Channel
     channelData.get_channel_groups().then(function (answer) {
         self.channel_groups = answer.data
@@ -155,5 +157,4 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     })
     self.current_policy = (typeof self.current_policy === 'undefined') ? self.current_policy : "no policy is yet associated to this channel";
     //in case we have multiple current policies 
-    self.multipleCurrentPolicies = []
 }])

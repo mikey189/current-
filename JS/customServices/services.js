@@ -71,7 +71,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var current_computers = "http://localhost:3000/current_computers"
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
-
+    var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
 
     return {
         getchannelList: function () {
@@ -204,6 +204,15 @@ app.factory("channelData", function ($http, $rootScope) {
                 url: reorderChannelOrder,
                 method: "POST",
                 data: policyOrder
+            })
+        },
+        updateChannelName: function (id, name) {
+            return $http({
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                url: updateChannelName + "channelId=" + id + "&channelName=" + name,
+                method: "POST"
             })
         }
 
