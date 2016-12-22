@@ -13,21 +13,23 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     self.is_edit_mode_on = false;
     channelData.getchannelList().then(function (answer) {
         self.menuItems = answer.data;
+        //retriving the first ID of the list
+        self.rootId = self.menuItems[0].Id;
         for (i = 0; i < self.menuItems.length; i++) {
             self.channel_list.push(self.menuItems[i])
         }
     })
 
     self.onDropComplete = function (index, obj, evt) {
-        var otherObj = self.channel_list[index];
-        var otherIndex = self.channel_list.indexOf(obj);
-        self.channel_list[index] = obj;
-        self.channel_list[otherIndex] = otherObj;
-    }
-    //making channelNm non editable by default
+            var otherObj = self.channel_list[index];
+            var otherIndex = self.channel_list.indexOf(obj);
+            self.channel_list[index] = obj;
+            self.channel_list[otherIndex] = otherObj;
+        }
+        //making channelNm non editable by default
     self.is_channelName_editable = false;
 
-    
+
 
     /*--------------------  Channel Input and Output --------------------*/
 
@@ -35,20 +37,21 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []
-    self.rootId = typeof (C2CData.get()) == "number" ? C2CData.get() : 28;
+
     //watching for any change in channel id
     $scope.$watch(angular.bind(this, function () {
         return this.rootId;
     }), function (newVal) {
-        channelData.get_channel(newVal).then(function (answer2) {
-            self.channel_data = answer2.data
-            self.channelInfo = answer2.data.ChannelInfo
+        channelData.get_channel(newVal).then(function (answer) {
+            self.channel_data = answer.data
+            self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
-            self.InputConfiguration = (typeof self.InputConfiguration === 'undefined') ? self.channelInfo.InputConfiguration : {};
-            self.ismbList = (typeof self.ismbList === 'undefined') ? self.InputConfiguration.IoSmbConfiguration : [];
-            self.OutputConfiguration = (typeof self.OutputConfiguration === 'undefined') ? self.channelInfo.OutputConfiguration : {};
-            self.osmbList = (typeof self.osmbList === "undefined") ? self.OutputConfiguration.IoSmbConfiguration : [];
+            self.InputConfiguration = self.channelInfo.InputConfiguration
+            self.ismbList = self.InputConfiguration.IoSmbConfiguration
+            console.log(self.ismbList)
+            self.OutputConfiguration = self.channelInfo.OutputConfiguration
+            self.osmbList = self.OutputConfiguration.IoSmbConfiguration
         })
     });
     //default view for dashboard is blocked

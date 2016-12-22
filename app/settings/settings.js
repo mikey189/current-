@@ -1,4 +1,4 @@
-app.controller('settings', function (system_properties) {
+app.controller('settings', function (system_properties, $scope) {
 
   var self = this;
 
@@ -6,38 +6,6 @@ app.controller('settings', function (system_properties) {
   system_properties.get_properties().success(function (answer) {
     self.allProps = answer;
 
-   /*
-   attempting to parse type numbers but without success
-    angular.forEach(self.allProps, function (value, key) {
-
-      var parser = function (value) {
-        console.log(parseInt(value.match(/\d+/g)))
-        value = parseInt(value.match(/\d+/g));
-        return value
-      }
-
-      var myObject = {
-        value: value,
-        key: key
-      }
-      var Properties = myObject.value.Properties
-
-      angular.forEach(Properties, function (value, key) {
-        var propObject = {
-          value: value,
-          key: key
-        }
-        var inputValues = propObject.value
-        var type = inputValues.InputType
-        var value = inputValues.Value
-        angular.forEach(inputValues, function () {
-          if (inputValues.InputType === "number") {
-            return parser(inputValues.Value)
-          }
-        })
-      })
-      console.log(self.allProps)
-  })*/
   });
 
   self.save_properties = function () {
@@ -71,3 +39,22 @@ app.controller('settings', function (system_properties) {
   }
 
 })
+
+
+app.directive("dta", function () {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function (scope, element, attr, ngModel) {
+
+      ngModel.$formatters.push(function (value) {
+        if (value === "number") {
+          value = parseInt(value.match(/\d+/g));
+        }
+        console.log(value)
+        return value
+      });
+
+    }
+  };
+});

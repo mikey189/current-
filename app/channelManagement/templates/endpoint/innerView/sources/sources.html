@@ -1,28 +1,22 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
-
 <div layout="row" layout-margin layout-align="end center">
     <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
 </div>
-<div layout="row">
+<!--<div layout="row">
     <pre style="height: 200px" flex>
         DEBUG_PANNEL
-        GLOBAL OBJECT  <json-formatter json="ctrl.IoConfiguration" open="1"></json-formatter>
+        <json-formatter json="ctrl.IoConfiguration" open="1"></json-formatter>
     </pre>
-</div>
-
-
-<div layout="column" layout-margin class="notEditable" id="edition_section">
-
+</div>-->
+<div layout="column" layout-margin class="notEditable" id="edition_section" ng-cloak>
     <div layout="row" layout-align="space-between center">
         <md-content class="md-title">Inputs</md-content>
         <md-content class="md-title">Outputs</md-content>
     </div>
-
     <div layout="row" layout-align="space-between center">
         <channel-inputs-sources id="inputs_sources" flex="50" match-parent-width></channel-inputs-sources>
         <channel-outputs-sources id="outputs_sources" flex="50" match-parent-width></channel-outputs-sources>
     </div>
-
     <div layout="row" layout-align="space-between center" layout-margin>
         <div layout="column" flex>
             <i-smb ng-repeat="ISMB in ctrl.ismbList"></i-smb>
@@ -32,5 +26,3 @@
         </div>
     </div>
 </div>
-
-

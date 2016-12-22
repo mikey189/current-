@@ -128,20 +128,3 @@ app.directive("treeValueModal", function(){
     }
 })
 
-
-app.directive('input', function() {
-    return {
-        restrict: 'E',
-        require: '?ngModel',
-        link: function (scope, element, attr, ngModel) {
-          if (attr.type !== 'filesize') return;
-          element.unbind('input');
-          element.bind('input', function () {
-            var path = this.value.replace(/\D/g,'');
-            scope.$apply(function () {
-              ngModel.$setViewValue(path);
-            });
-          });
-        }
-    };
-});

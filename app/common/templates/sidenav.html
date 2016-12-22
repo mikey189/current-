@@ -7,7 +7,7 @@
                 <md-icon md-svg-src="icons/dashboardLogo.svg"></md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item value="Policy" ui-sref-active="sidebarIconHover animated pulse">
+        <md-list-item value="Policy" ng-class="{'sidebarIconHover': $state.current.classSelector === 'policy'}">
             <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="row" layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Policy</md-tooltip>
                 <md-icon md-svg-src="icons/policiesIcon.svg"></md-icon>
@@ -25,7 +25,7 @@
                 <md-icon class="material-icons md-light">assignment</md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Channel Management">
+        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management">
             <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="row"
                 layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Channel Management</md-tooltip>

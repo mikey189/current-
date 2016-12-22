@@ -6,3 +6,9 @@ not working calls / view
   toDo: when calling a policy or channel load all views related to it at the same time (dashboard, settings, etc...)
 
 
+Policy Settings does not update 
+ISMB and OSMB : 
+AllowMediaBurn is an object not a boolean value {isActive: Bool, RootPath: string}
+Speedlimit does not have value only unit ? 
+Settings not updating, returning error, always returns the same settings
+Who uses this channel -> not call for it at the moment

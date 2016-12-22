@@ -101,7 +101,7 @@ app.directive("editField", function () {
     }
 })
 
-app.directive("editInputsAndOutputs", function (channelData, $state) {
+app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -157,11 +157,25 @@ app.directive("editInputsAndOutputs", function (channelData, $state) {
                     console.log(scope.ctrl.IoConfiguration)
                     channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
                         console.log(success)
-                        //reassign the model from the success answer and then trigger scope.$apply()
-                        //still not working but why ? find a way to "reload" the data without flickering the view or trigger $digest 'cycle'
-                        scope.ctrl.channelInfo = success.data.ChannelInfo
+                            //reassign the model from the success answer and then trigger scope.$apply()
+                            //still not working but why ? find a way to "reload" the data without flickering the view or trigger $digest 'cycle'
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('YAY')
+                            .textContent('Channel Settings were successfully updated')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('AWSOME!')
+                        );
                     }, function (error) {
-                        console.log(error)
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('ERROR')
+                            .textContent("An error occured while updating the settings : " + error.data.Message + ". Please contact RESEC")
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('CLOSE')
+                        );
                     })
                     scope.$apply()
                     self.html("EDIT")

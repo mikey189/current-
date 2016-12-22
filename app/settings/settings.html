@@ -12,7 +12,7 @@
                                 {{prop.Comment}} : {{prop.InputType}}
                             </md-tooltip>
                         </md-icon>
-                        <input flex='30' type="{{ctrl.defineType(prop.InputType)}}" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" pleholder="{{prop.DisplayName}}">
+                        <input flex='30' type="{{ctrl.defineType(prop.InputType)}}" dta="prop.Value" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName}}" >
                     </md-list-item>
                     <md-divider></md-divider>
                 </md-list>

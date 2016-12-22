@@ -3,10 +3,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
     function ($scope, $mdSidenav, policyData, channelData, policyUsers, $state, $http, $mdDialog) {
         var self = this;
         //initiate policy id for API Call
-        self.policyId = 8
-            //dragMode for policySideNav
+        //self.policyId = 8
+        //dragMode for policySideNav
         policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
+                    //getting the first item of the list to launch API call
+                self.policyId = self.sideNavList[0].PolicyId
+                self.get_policy_data(self.policyId)
+                console.log(self.policyId)
             })
             //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
         self.PolicyInfo = {};
@@ -16,9 +20,10 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         //getDashboard data with policyId
         //API Call inside directive :"initiateApiCallWithId" 
         self.get_policy_data = function (id) {
-            self.policyId = id;
+                self.policyId = id;
                 policyData.getDashboard(id).then(function (answer) {
                     self.dashboardData = answer.data;
+                    console.log(self.dashboardData)
                 })
             }
             //filetypes
@@ -53,46 +58,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.getPolicyId = function (id) {
                 self.policyId = id
             }
-            //settings //
-
-        //regex validator for input for file size //
-
-        self.allFacets = {};
-        policyData.get_policy_settings().then(function (answer) {
-            var data = answer.data;
-            var types = []
-                // self.allFacets = 
-                //   console.log(self.allFacets);
-            var log = [];
-            angular.forEach(data, function (value, key) {
-                var newProps = {};
-                angular.forEach(value.Properties, function (props, propkey) {
-                    props["isTreeType"] = props["AdditionalInfo"] != null;
-                    if (props["isTreeType"] == true) {
-                        props["AvailableValues"] = props["AdditionalInfo"] != null ? props["AdditionalInfo"].split('|') : null;
-                        var files = []
-                        angular.forEach(props["AvailableValues"], function (file_value, file_key) {
-                            if (file_value.indexOf(':') !== -1) {
-                                this.push(file_value.split(":")[3])
-                            } else {
-                                this.push(file_value)
-                            }
-                        }, files)
-                        props["tree_values"] = files;
-                    } else {
-                        props["AvailableValues"] = props["AllowedValues"] != null ? props["AllowedValues"].split('|') : null;
-                    }
-                    //props["isTreeType"] = props["AddionalInfo"] != null;
-                    props["DefaultValue"] = props["Type"].includes("FacetPropertyType_MultiChoice") ? props["DefaultValue"].split('|') : props["DefaultValue"];
-                    newProps[propkey] = props;
-                    types.push({
-                        "name": props["Type"]
-                    })
-                }, newProps);
-                value.Properties = newProps;
-                this[key] = value;
-            }, self.allFacets);
-        });
+            /*______________________________________settings______________________________________*/
 
         self.open_second_modal = function (ev, propValue, key, propkey) {
             $mdDialog.show({
@@ -125,8 +91,40 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     console.log(cancel)
                 })
         }
+
+        /*__________________________  CDR SETTINGS _____________ _____________ */
+        self.allFacets = {};
+        policyData.get_policy_settings("PolicySettings").then(function (answer) {
+            var data = answer.data;
+            self.allFacets = data;
+        });
+
+        self.cdrFacets = {};
+        policyData.get_policy_settings("PolicyCdrSettings").then(function (answer) {
+            var data = answer.data;
+            self.cdrFacets = data;
+        });
+        self.post_policy_settings = function (ev) {
+            console.log("policy facets:");
+
+            var postdata = [];
+            angular.forEach(self.PolicyFacets, function (v, k) {
+                this.push({
+                    'Description': k,
+                    'Values': v['Values']
+                })
+            }, postdata);
+            console.log(postdata);
+            policyData.post_policy_settings(self.policyId, postdata).then(function (answer) {
+
+
+                console.log("answer:" + answer);
+            });
+        };
     }
 ])
+
+
 
 // file extensions dialog controller
 function DialogController($scope, $mdDialog, propValue) {

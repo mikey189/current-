@@ -1,16 +1,4 @@
-app.directive("getTopPolicyId", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.ready(function () {
-                var self = $(this)
-                var firstPolicyId = parseInt($(".policyItem").first().attr("policy-id"))
-                scope.ctrl.policyId = firstPolicyId
-                console.log(scope.ctrl.policyId)
-            })
-        }
-    }
-})
+
 
 app.directive("policyListHover", function () {
     return {
@@ -65,33 +53,6 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         }
     }
 })
-app.directive("reorderPolicyList", ["policyData", function (policyData) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attr) {
-            element.bind("click", function () {
-                var icon = $(this).find("md-icon")
-                var items = $(".policyItem");
-                var policyName = $(".editPolicyName")
-                if (!scope.ctrl.sidenav_edit_mode) {
-                    icon.addClass("animated  wobble");
-                    icon.html("done_all");
-                    icon.css("color", "#EC407A");
-                    policyName.hide()
-                    scope.ctrl.sidenav_edit_mode = true;
-                    //items.addClass("animated bounce");
-                } else {
-                    icon.removeClass("animated wobble")
-                    icon.html("format_line_spacing")
-                    icon.css("color", "#23CCC7")
-                    policyName.show();
-                    scope.ctrl.sidenav_edit_mode = false;
-                    // items.removeClass("animated bounce");        
-                }
-            })
-        }
-    }
-}])
 
 app.directive("toggleEditableMode", function (policyData) {
     return {
@@ -134,7 +95,6 @@ app.directive("toggleNewPolicyEditableMode", function () {
                 } else {
                     icon.html("edit");
                     policyName.removeClass("animated flash")
-
                     policyName.css("color", "white")
                     scope.ctrl.isEditable = false;
                 }
@@ -170,8 +130,8 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.ctrl.policyId = parseInt(self.attr("policy-id"));
                 scope.$apply(function () {
+                    scope.ctrl.policyId = parseInt(self.attr("policy-id"));
                     scope.ctrl.get_policy_data(scope.ctrl.policyId)
                 })
             })

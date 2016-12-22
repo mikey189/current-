@@ -259,7 +259,10 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_info = "http://" + sname + ":4580/api/policy/getpolicy/"
     var computers_list = "http://localhost:3000/userComputers"
     var policy_computers = "http://localhost:3000/policy_computers"
-    var policy_settings = "http://" + sname + ":4580/api/general/getfacets";
+    var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
+    var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
+
+
 
     return {
         create_new_policy: function (data) {
@@ -419,9 +422,21 @@ app.factory("policyData", function ($rootScope, $http) {
         get_policy_computers: function () {
             return $http.get(policy_computers)
         },
-        get_policy_settings: function () {
-            return $http.get(policy_settings)
+        get_policy_settings: function (section) {
+            return $http.get(policy_settings + section);
+        },
+        post_policy_settings: function (id, data) {
+
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: post_policy_settings + id,
+                method: "POST",
+                data: data
+            });
         }
+
 
     }
 })

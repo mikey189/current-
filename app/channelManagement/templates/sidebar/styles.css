@@ -52,3 +52,13 @@
 .icon-edit-name-active{
     color: #FF4081 !important;
 }
+.channelSidenavItems:hover {
+    background-color: #38359C;
+    color: white;
+    border-left: solid 0.5em #706BE2;
+}
+.sidenavItemHoverState {
+    background-color: #38359C;
+    color: white;
+    border-left: solid 0.5em #706BE2;
+}

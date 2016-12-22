@@ -113,3 +113,6 @@
     border-bottom: solid 2px #E040FB;
     padding-bottom: 2px;
 }
+.selectedPolicy {
+    background-color: #3A389D;
+}

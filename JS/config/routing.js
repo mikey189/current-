@@ -11,7 +11,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl'
 
         })
-        
+
     .state('app', {
         url: '/app',
         templateUrl: 'app/common/common.html',
@@ -40,40 +40,37 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/channelManagement/channelManagement.html',
         controller: 'channels',
         controllerAs: 'ctrl',
-        displayName: "Channel Management"
+        displayName: "Channel Management",
+        classSelector: "channel"
+
     })
 
 
     .state('app.channelManagement.endpoint', {
-            url: '/channelManagementEndpoint',
-            //parent: "app.channelManagement",
-            templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
-            displayName: "Channel Management"
-        })
-        /*  .state('app.channelManagement.endpoint.sidebar', {
-              url: '/channelManagementSidebar',
-              //parent: "app.channelManagement",
-              templateUrl: 'app/channelManagement/templates/sidebar/sidebar.html',
-              displayName: "Channel Management"
-          })
-          .state('app.channelManagement.endpoint.topBar', {
-              url: '/channelManagementTopBar',
-              parent: "app.channelManagement",
-              templateUrl: 'app/channelManagement/templates/endpoint/infoTopBar/infoTopBar.html',
-              displayName: "Channel Management"
-          })*/
-        .state('app.channelManagement.endpoint.dashboard', {
+        url: '/channelManagementEndpoint',
+        //parent: "app.channelManagement",
+        templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
+        displayName: "Channel Management",
+        classSelector: "channel"
+
+    })
+
+    .state('app.channelManagement.endpoint.dashboard', {
             url: '/CMEndpointDashboard',
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
-            displayName: "Channel Management"
+            displayName: "Channel Management",
+            classSelector: "channel"
+
 
         })
         .state('app.channelManagement.endpoint.sources', {
             url: '/CMEndpointSources',
             // parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
-            displayName: "Channel Management > Inputs and Outputs"
+            displayName: "Channel Management > Inputs and Outputs",
+            classSelector: "channel"
+
 
         })
 
@@ -81,14 +78,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/CMEndpointTargets',
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
-            displayName: "Channel Management > Settings"
+            displayName: "Channel Management > Settings",
+            classSelector: "channel"
+
 
         })
         .state('app.channelManagement.endpoint.who', {
             url: '/channelWho',
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/who/who.html',
-            displayName: "Channel Management > Who Uses This Policy"
+            displayName: "Channel Management > Who Uses This Policy",
+            classSelector: "channel"
+
 
         })
 
@@ -98,7 +99,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/channelManagement/templates/newChannel/common/common.html',
             controller: 'ncCommon',
             controllerAs: 'ctrl',
-            displayName: "New Channel"
+            displayName: "New Channel",
+            classSelector: "channel"
+
 
         })
         .state('app.channelManagement.newChannel.step1', {
@@ -106,7 +109,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step1/step1.html',
             controller: 'ncStep1',
             controllerAs: 'ctrl',
-            displayName: "New Channel"
+            displayName: "New Channel",
+            classSelector: "channel"
+
         })
         .state('app.channelManagement.newChannel.SInputs', {
             url: '/channelManagementNewChannelS2SeparatedInputs',
@@ -148,43 +153,52 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/policy',
             templateUrl: 'app/policy/policy.html',
             controller: 'policy',
-            controllerAs: "ctrl"
+            controllerAs: "ctrl",
+            classSelector: "policy"
         })
         .state('app.policy.dashboard', {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
-            displayName: "Policy"
+            displayName: "Policy",
+            classSelector: "policy"
+
         })
         .state('app.policy.definition', {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
-            displayName: "Policy"
+            displayName: "Policy",
+            classSelector: "policy"
+
         })
         .state('app.policy.definition.fileType', {
             url: '/policyDefinitionFT',
-           // parent: "app.policy.defintion",
             templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
-            displayName: "Policy > Filetype Settings"
+            displayName: "Policy > Filetype Settings",
+            classSelector: "policy"
+
 
         })
         .state('app.policy.definition.detection', {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
-            displayName: "Policy > Detection Settings"
+            displayName: "Policy > Detection Settings",
+            classSelector: "policy"
+
 
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
-
+            classSelector: "policy",
             templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
             displayName: "Policy > CDR Settings"
 
         })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
-
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
-            displayName: "Policy > Settings"
+            displayName: "Policy > Settings",
+            classSelector: "policy"
+
 
         })
 

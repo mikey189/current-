@@ -13,17 +13,16 @@
     margin-top: 3em;
 }
 .input_is_selected{
-    background-color: #311B92;
+    background-color: #0D47A1;
     border-radius: 5px;
    
 }
-
 .input_is_selected > md-content{
 color: white
 }
 
-.input_is_selected >md-icon> svg > g{
-fill: white !important;
+.input_is_selected >md-icon{
+color: white !important;
 }
 .input_equal_width{
     width: 32% !important;
