@@ -12,7 +12,19 @@
                                 {{prop.Comment}} : {{prop.InputType}}
                             </md-tooltip>
                         </md-icon>
-                        <input flex='30' type="{{ctrl.defineType(prop.InputType)}}" dta="prop.Value" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName}}" >
+                        <div ng-switch="prop.InputType" flex="30">
+                            <div ng-switch-when="number" flex='100' layout="row">
+                                <input flex="70" type="number" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
+                                    formatter="prop.Value" >
+                                <select ng-if="prop.IsComplex" flex="30" >
+                                    <option>KB</option>
+                                    <option>MB</option>
+                                    <option>GB</option>
+                                </select>
+                            </div>
+                            <input ng-switch-default flex='100' type="{{ctrl.sortType(prop.InputType) }}" class="form-control" ng-model="prop.Value"
+                                ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName }}: {{prop.InputType}}">
+                        </div>
                     </md-list-item>
                     <md-divider></md-divider>
                 </md-list>

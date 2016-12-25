@@ -15,14 +15,12 @@ app.controller('settings', function (system_properties, $scope) {
       alert("There was an error loading this page : " + error.data.Message);
     })
   }
-  self.defineType = function (propType) {
+  self.sortType = function (propType) {
     switch (propType) {
       case "text":
         return "text"
         break;
-      case "number":
-        return "number"
-        break;
+
       case "datetime":
         return "date"
         break;
@@ -40,21 +38,23 @@ app.controller('settings', function (system_properties, $scope) {
 
 })
 
+//data size filter 
 
-app.directive("dta", function () {
+app.directive("formatter", function ($timeout) {
   return {
     restrict: 'A',
-    require: 'ngModel',
+    require: "ngModel",
     link: function (scope, element, attr, ngModel) {
-
+      var el = element
       ngModel.$formatters.push(function (value) {
-        if (value === "number") {
-          value = parseInt(value.match(/\d+/g));
+        var parsed = parseInt(value.replace(/\D/g, ''));
+        if(ngModel.$$rawModelValue.match(/[a-z]/i)){
+          var str = value.match(/[0-9]/)
+          console.log(str)
         }
-        console.log(value)
-        return value
-      });
+        return parsed
+      })
 
     }
-  };
-});
+  }
+})

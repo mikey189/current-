@@ -72,6 +72,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
+    var whoIsUsing = "http://jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
 
     return {
         getchannelList: function () {
@@ -214,6 +215,9 @@ app.factory("channelData", function ($http, $rootScope) {
                 url: updateChannelName + "channelId=" + id + "&channelName=" + name,
                 method: "POST"
             })
+        }, 
+        whoIsUsing: function(){
+            return $http.get(whoIsUsing)
         }
 
     }

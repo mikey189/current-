@@ -1,22 +1,115 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/styles.css" />
 <div layout="row" layout-align="end center" layout-margin>
+    <h2 style="color: red">click here to see data</h2>
     <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4">EDIT</md-button>
 </div>
-<div layout="column" layout-margin>
-    <channel-top-bar></channel-top-bar>
-    <div layout="row" layout-align="space-between " layout-margin>
-        <current-groups flex></current-groups>
-        <all-groups flex="50" ng-if="ctrl.is_who_screen_editable"></all-groups>
-    </div>
-    <div layout="row" layout-align="space-between " layout-margin>
-        <current-users flex></current-users>
-        <all-users flex="50"  ng-if="ctrl.is_who_screen_editable"></all-users>
-    </div>
-    <div layout="row" layout-align="space-between" layout-margin>
-        <current-computers flex></current-computers>
-        <all-computers flex="50"  ng-if="ctrl.is_who_screen_editable"></all-computers>
-    </div>
-    <div layout="row" layout-align="space-between" layout-margin>
-        <current-ips flex></current-ips>
+<json-formatter json="ctrl.whoData"></json-formatter>
+<div layout-margin>
+    <div ng-repeat="(L1Key, L1Value) in ctrl.whoData['Channel Usage Settings'].Properties" class="card" md-whiteframe="4">
+        <h3 class="title">{{L1Value.DisplayName}}</h3>
+        <div ng-switch="L1Value.Type">
+            <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel _______________________-->
+            <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_SingleChoice" layout-margin>
+                <div id="current-policy">
+                    <h3>Current Policy Associated to this Channel : {{L1Value.DefaultValue.Value}}</h3>
+                </div>
+                <div layout="row" layout-align="space-between center" layout-wrap ng-if="ctrl.is_who_screen_editable">
+                    <p class="custom-chips" ng-repeat="L2Value in L1Value.AvailableValues" layout="row" layout-align="center center"> {{L2Value.Value}}
+                        <md-button class="md-icon-button" ng-click="L1Value.DefaultValue = L2Value">
+                            <md-icon>add</md-icon>
+                        </md-button>
+                    </p>
+                </div>
+            </div>
+            <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice _______________________-->
+            <div ng-switch-when="FacetPropertyType_MultiChoice">
+                <div layout="row" layout-margin layout-align="space-between start">
+                    <div id="current" flex>
+                        <input class="search-box" type="text" ng-model="currentValue" />
+                        <md-virtual-repeat-container id="vertical-container" ng-init="L1Value.DefaultValue = []">
+                            <!-- Here i init L1Value.defaultValue as an empty array to be able to work with it in the meantime otherwise it's impossible
+                        to push more than one value-->
+                            <div md-virtual-repeat="default in L1Value.DefaultValue |filter: currentValue" class="repeated-item" layout="row" layout-align="space-between center"
+                                layout-padding flex="100">
+                                {{default}}
+                                <md-button class="md-icon-button no-padding-no-margin" ng-if="ctrl.is_who_screen_editable" ng-show="!all.includes(default)"
+                                    ng-click="L1Value.DefaultValue.splice(default, 1)">
+                                    <md-icon class="remove-icon">remove</md-icon>
+                                </md-button>
+                            </div>
+                        </md-virtual-repeat-container>
+                    </div>
+                    <div id="all" flex="50" ng-if="ctrl.is_who_screen_editable">
+                        <input class="search-box" type="text" ng-model="allValue" />
+                        <md-virtual-repeat-container layout-margin>
+                            <div md-virtual-repeat="all in L1Value.AvailableValues |filter: allValue" class="repeated-item" layout="row" layout-align="space-between center"
+                                layout-padding flex="100">
+                                {{all}}
+                                <md-button class="md-icon-button no-padding-no-margin" ng-show="!L1Value.DefaultValue.includes(all)" ng-click="L1Value.DefaultValue.push(all)">
+                                    <md-icon class="add-icon">add</md-icon>
+                                </md-button>
+                            </div>
+                            <!--ctrl.addElement(all, L1Value.DefaultValue)-->
+                        </md-virtual-repeat-container>
+                    </div>
+                </div>
+            </div>
+            <!--________________________ type = IP will go here _______________________-->
+        </div>
     </div>
 </div>
+<style>
+   
+    
+    .custom-chips {
+        background-color: #2196F3;
+        color: white;
+        padding-left: 15px;
+        padding-right: 6px;
+        border-radius: 50px;
+        font-weight: 700;
+    }
+    
+    .no-padding-no-margin {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    
+    .repeated-item {
+        border-bottom: solid 1px #E0E0E0;
+    }
+    
+    .title {
+        background-color: #2196F3;
+        color: white;
+        text-align: center;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 4px;
+    }
+    
+    #current-policy {
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    
+    md-virtual-repeat-container {
+        min-height: 100%;
+    }
+    .search-box{
+        border: solid 0px !important;
+        width: 100% !important;
+        border-bottom : solid 2px #2196F3 !important;
+    }
+    .search-box:focus{
+        border-bottom: solid 2px #F06292 !important;
+    }
+    #all{
+        border-left: solid 2px #E0E0E0;
+        padding-left: 1em;
+    }
+</style>

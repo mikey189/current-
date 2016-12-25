@@ -78,11 +78,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 when we open the dialog, we store all the element inside an object that sits on the $scope of the dialog ($scope.policyFacets)
                 then when we close the dialog : we re-inject the extensions oject where it belongs using it's key and propkey
                 it knows key and propkey because we inject them inside the HTML when passing the function
-
-                questions : 
-                1) why to inject propValue inside the DialogController?
-                2) how does the .then works? -> how is the onSave() is connected to the .then function()? onSave only console.log() and hide() the dialog
-                how does this controller(policy) then knows policyFacets extensions? without onSave func it does not.
                 */
                 .then(function (success) {
                     self.PolicyFacets[key].Values[propkey] = success
@@ -96,6 +91,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.allFacets = {};
         policyData.get_policy_settings("PolicySettings").then(function (answer) {
             var data = answer.data;
+            console.log(data)
+            console.log("policy data")
             self.allFacets = data;
         });
 

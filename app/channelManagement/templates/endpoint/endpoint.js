@@ -49,7 +49,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
             self.generalInformations = self.channelInfo.GeneralInformations
             self.InputConfiguration = self.channelInfo.InputConfiguration
             self.ismbList = self.InputConfiguration.IoSmbConfiguration
-            console.log(self.ismbList)
             self.OutputConfiguration = self.channelInfo.OutputConfiguration
             self.osmbList = self.OutputConfiguration.IoSmbConfiguration
         })
@@ -97,7 +96,7 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
         }
         //making the settings not editable by default
     self.are_settings_editable = false
-
+    self.PolicyFacets = {}
 
 
     /*--------------------  who is using this channel --------------------*/
@@ -106,58 +105,18 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
 
     self.is_who_screen_editable = false;
 
-    //getting available groups for a specific Channel
-    channelData.get_channel_groups().then(function (answer) {
-        self.channel_groups = answer.data
-    })
-    channelData.get_current_channel_groups().then(function (answer) {
-            self.current_channel_groups = answer.data
-        })
-        //checking if this group is already being used, if it is the cased, the add button should be disabled
-    self.isGroupInUse = function (group) {
-        if (self.current_channel_groups.includes(group)) {
-            return true
-        } else {
-            return false
-        }
-    }
-    channelData.get_all_users().then(function (answer) {
-        self.all_users = answer.data
-    })
-    channelData.get_current_users().then(function (answer) {
-            self.current_users = answer.data
-        })
-        //checking is the user is already using this channel
-    self.isUserInUse = function (user) {
-        if (self.current_users.includes(user)) {
-            return true
-        } else {
-            return false
-        }
-    }
 
-    channelData.get_all_computers().then(function (answer) {
-        self.all_computers = answer.data
+    channelData.whoIsUsing().then(function (answer) {
+        self.whoData = answer.data
     })
-    channelData.get_current_computers().then(function (answer) {
-        self.current_computers = answer.data
-    })
-    self.isComputerInUse = function (computer) {
-        if (self.current_computers.includes(computer)) {
-            return true
-        } else {
-            return false
-        }
 
-    }
 
-    channelData.get_current_ips().then(function (answer) {
-            self.current_ips = answer.data
-        })
-        //retrieving policy list
-    channelData.get_policy_list().then(function (answer) {
-        self.policyList = answer.data
-    })
-    self.current_policy = (typeof self.current_policy === 'undefined') ? self.current_policy : "no policy is yet associated to this channel";
-    //in case we have multiple current policies 
 }])
+
+
+//to maor 
+
+/* current element need to be of type array instead of object otherwise it make it more complicated and cumbersome
+this is true for all types BUT for policy -> channel association where each channel can only be linked to One single policy, 
+so defaultValue for policy should be one single object {id: int, name: string}
+need special TYPE for IPs as it is functionning is different */
