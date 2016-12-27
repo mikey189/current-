@@ -1,10 +1,12 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/tree_values/style.css" />
 
 
-
 <md-dialog aria-label="extensions modal" class="fullscreen-dialog">
+  <json-formatter json="propValue.Avail"></json-formatter>
+
   <md-toolbar class="tree-toolbar" layout="row" layout-align="center center">File Extensions</md-toolbar>
   <md-dialog-content>
+
     <div layout="row" layout-align="center start" layout-margin>
       <md-input-container flex="40" md-no-float class="md-block" id="search-file-extensions">
         <input ng-model="ext" placeholder="Search for an extension" />
@@ -16,10 +18,10 @@
         <th>Allow</th>
       </thead>
       <tbody>
-        <tr ng-repeat="extension in propValue.tree_values | filter:ext track by $index ">
+        <tr ng-repeat="(extension, value) in propValue.AvailableValues ">
           <td>{{extension}}</td>
           <td>
-            <md-checkbox aria-label="extensions" ng-model="policyFacets[extension]"></md-checkbox>
+            <md-checkbox aria-label="extensions" ng-model="value"></md-checkbox>
           </td>
         </tr>
       </tbody>

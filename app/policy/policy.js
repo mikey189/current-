@@ -2,33 +2,31 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
     function ($scope, $mdSidenav, policyData, channelData, policyUsers, $state, $http, $mdDialog) {
         var self = this;
-        //initiate policy id for API Call
-        //self.policyId = 8
-        //dragMode for policySideNav
+
+        self.sidenav_edit_mode = false;
+
         policyData.getSidenav().then(function (answer) {
-                self.sideNavList = answer.data
-                    //getting the first item of the list to launch API call
-                self.policyId = self.sideNavList[0].PolicyId
-                self.get_policy_data(self.policyId)
-                console.log(self.policyId)
+            self.sideNavList = answer.data
+                //getting the first item of the list to launch API call
+            self.policyId = self.sideNavList[0].PolicyId
+            self.getPolicyInfo(self.policyId)
+
+        })
+
+        self.getPolicyInfo = function (id) {
+            policyData.get_policy_info(id).then(function (answer) {
+                self.policy = answer.data
             })
-            //initiating the object to send the name to API when creating channel -> only PolicyName is required from server
+        }
         self.PolicyInfo = {};
         self.newPolicy = false;
         self.isEditable = false;
         self.is_policy_sidenav_editable = false;
         //getDashboard data with policyId
         //API Call inside directive :"initiateApiCallWithId" 
-        self.get_policy_data = function (id) {
-                self.policyId = id;
-                policyData.getDashboard(id).then(function (answer) {
-                    self.dashboardData = answer.data;
-                    console.log(self.dashboardData)
-                })
-            }
-            //filetypes
-            //getting filetypes
-            //initiate the channel ids to send
+        //filetypes
+        //getting filetypes
+        //initiate the channel ids to send
         self.channelIds = [];
         policyData.getFiletypes().then(function (answer) {
                 self.filetype = answer.data
@@ -45,9 +43,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             self.fireEye_servers_list = answer.data
         })
         policyData.get_cukoo_servers().then(function (answer) {
-                self.cukoo_servers_list = answer.data
-            })
-            //this object will store all the info changed inside the scanner list
+            self.cukoo_servers_list = answer.data
+        })
+
         policyData.get_policy_info(self.policyId).then(function (answer) {
                 self.policy_general_info = answer.data
                 self.detection = self.policy_general_info.PolicyInfo.FileDetectionConfigurations
@@ -55,12 +53,19 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             })
             //who > computers -> retrieving data from relevant service ( channelData )
 
-        self.getPolicyId = function (id) {
-                self.policyId = id
-            }
-            /*______________________________________settings______________________________________*/
 
-        self.open_second_modal = function (ev, propValue, key, propkey) {
+        /*______________________________________settings______________________________________*/
+
+
+         self.allFacets = {};
+        policyData.get_policy_settings("PolicySettings").then(function (answer) {
+            var data = answer.data;
+            console.log(data)
+            console.log("policy data")
+            self.allFacets = data;
+        });
+
+        self.open_second_modal = function (ev, key, propkey, propValue) {
             $mdDialog.show({
                     controller: DialogController,
                     templateUrl: "app/policy/templates/policyDefinition/templates/settings/tree_values/tree_values.html",
@@ -69,9 +74,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     clickOutsideToClose: true,
                     fullscreen: true,
                     locals: {
-                        propValue: propValue,
                         key: key,
-                        propkey: propkey
+                        propkey: propkey,
+                        propValue: propValue
                     }
                 })
                 /*
@@ -88,40 +93,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         /*__________________________  CDR SETTINGS _____________ _____________ */
-        self.allFacets = {};
-        policyData.get_policy_settings("PolicySettings").then(function (answer) {
-            var data = answer.data;
-            console.log(data)
-            console.log("policy data")
-            self.allFacets = data;
-        });
+        
 
-        self.cdrFacets = {};
-        policyData.get_policy_settings("PolicyCdrSettings").then(function (answer) {
-            var data = answer.data;
-            self.cdrFacets = data;
-        });
-        self.post_policy_settings = function (ev) {
-            console.log("policy facets:");
+        policyData.getCDRFacets().then(function (answer) {
+            self.cdr = answer.data
+        })
+        self.deleteObject = function(property, object){
+            property = null
+            console.log(object)
+        }
 
-            var postdata = [];
-            angular.forEach(self.PolicyFacets, function (v, k) {
-                this.push({
-                    'Description': k,
-                    'Values': v['Values']
-                })
-            }, postdata);
-            console.log(postdata);
-            policyData.post_policy_settings(self.policyId, postdata).then(function (answer) {
-
-
-                console.log("answer:" + answer);
-            });
-        };
     }
 ])
-
-
 
 // file extensions dialog controller
 function DialogController($scope, $mdDialog, propValue) {
@@ -136,9 +119,24 @@ function DialogController($scope, $mdDialog, propValue) {
     $scope.policyFacets = {}
 
     $scope.onSave = function (answer) {
-        console.log(answer)
-            //$mdDialog.hide() resolves the promise and $mdDialog.cancel() rejects it 
+        //$mdDialog.hide() resolves the promise and $mdDialog.cancel() rejects it 
         $mdDialog.hide(answer);
     };
 
+
 }
+app.filter('filterObject', function() {
+  return function(input, search) {
+    if (!input) return input;
+    if (!search) return input;
+    var expected = ('' + search).toLowerCase();
+    var result = {};
+    angular.forEach(input, function(value, key) {
+      var actual = ('' + value).toLowerCase();
+      if (actual.indexOf(expected) !== -1) {
+        result[key] = value;
+      }
+    });
+    return result;
+  }
+});

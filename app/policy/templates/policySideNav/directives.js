@@ -132,9 +132,24 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
                 var self = $(this);
                 scope.$apply(function () {
                     scope.ctrl.policyId = parseInt(self.attr("policy-id"));
-                    scope.ctrl.get_policy_data(scope.ctrl.policyId)
+                    scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
                 })
             })
         }
     }
 }])
+
+app.directive("editPolicySidenav", function(){
+    return{
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.bind("click", function(){
+                if (!scope.ctrl.sidenav_edit_mode){
+                    scope.ctrl.sidenav_edit_mode = true
+                }else{
+                    scope.ctrl.sidenav_edit_mode = false
+                }
+            })
+        }
+    }
+})

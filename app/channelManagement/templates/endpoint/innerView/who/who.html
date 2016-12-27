@@ -25,6 +25,7 @@
             <div ng-switch-when="FacetPropertyType_MultiChoice">
                 <div layout="row" layout-margin layout-align="space-between start">
                     <div id="current" flex>
+                        <md-icon>search</md-icon>
                         <input class="search-box" type="text" ng-model="currentValue" />
                         <md-virtual-repeat-container id="vertical-container" ng-init="L1Value.DefaultValue = []">
                             <!-- Here i init L1Value.defaultValue as an empty array to be able to work with it in the meantime otherwise it's impossible
@@ -109,7 +110,7 @@
         border-bottom: solid 2px #F06292 !important;
     }
     #all{
-        border-left: solid 2px #E0E0E0;
+        border-left: solid 2px #2196F3;
         padding-left: 1em;
     }
 </style>

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
+<md-button ng-click="ctrl.saveSettings(ctrl.PolicyFacets)" class="md-primary">refresh policy settings object</md-button>
 <div layout='column'  id="policySettingsContainer">
-    <json-formatter json="ctrl.PolicyFacets"></json-formatter>
+    <json-formatter json="ctrl.policySettingsObject"></json-formatter>
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
         <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
             <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
@@ -15,8 +16,7 @@
                         </md-switch>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-                        <p>{{ctrl.PolicyFacets[Key].Values[propkey]}}</p>
-                        <md-button class="md-icon-button" ng-click="ctrl.open_second_modal($event, propValue, Key, propkey)">
+                        <md-button class="md-icon-button" ng-click="ctrl.open_second_modal($event, Key, propkey, propValue)">
                             <md-icon class="see_file_extensions_icon">playlist_add</md-icon>
                         </md-button>
                     </div>

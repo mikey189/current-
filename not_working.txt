@@ -12,3 +12,41 @@ AllowMediaBurn is an object not a boolean value {isActive: Bool, RootPath: strin
 Speedlimit does not have value only unit ? 
 Settings not updating, returning error, always returns the same settings
 Who uses this channel -> not call for it at the moment
+
+passing data to the modal inside policy settings 
+
+make connection between facets template and policy/chanenel related data
+
+channel settings not updating -> always the same
+
+
+Maor
+
+General Problem
+Facets are general, we need to find a way to make them per channel/policy
+
+Channel Management
+
+On API call receive all info relative to the channel inside channels/getChannel/id
+DaShboard info (blocked and no blocked)
+topBar info
+input and output
+settings
+who is using this channel: 
+  settings do not save, after post it's like nothing has changed
+  who uses this channel : binding -> info related to channel and not general 
+
+Policy: 
+On API call receive all info relative to the policy inside policy/getpolicy/id
+policy top bar
+dashboard (sorted top files by : passed, blocked, passed files) -> possible orderBy? 
+
+
+
+
+
+
+
+Jonathan
+
+Channel : input and output : sudden issue with layout, weird

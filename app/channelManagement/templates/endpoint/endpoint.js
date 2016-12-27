@@ -43,6 +43,7 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
         return this.rootId;
     }), function (newVal) {
         channelData.get_channel(newVal).then(function (answer) {
+            console.log(answer.data)
             self.channel_data = answer.data
             self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration

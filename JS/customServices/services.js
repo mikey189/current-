@@ -265,6 +265,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_computers = "http://localhost:3000/policy_computers"
     var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
+    var cdrFacetsTemplate = "http://jdev01:4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
 
 
 
@@ -439,6 +440,9 @@ app.factory("policyData", function ($rootScope, $http) {
                 method: "POST",
                 data: data
             });
+        },
+        getCDRFacets: function(){
+            return $http.get(cdrFacetsTemplate)
         }
 
 
