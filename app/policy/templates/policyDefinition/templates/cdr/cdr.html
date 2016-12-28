@@ -1,85 +1,33 @@
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
+
 <json-formatter json="ctrl.cdr"></json-formatter>
-<input ng-model="L1Key.Name" />
-<div ng-repeat="(L1Key, L1Value) in ctrl.cdr | filterObject:L1Value.Name" class="cards" md-whiteframe="6">
-    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L1Value.showValues = false">
-        <h4 layout-padding> {{L1Key}}</h4>
-        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L1Value.showValues">
+
+<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
+    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+        <h4 layout-padding><strong> {{L0Key}}<strong></h4>
+        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues">
             <md-icon class="white">edit</md-icon>
         </md-button>
     </div>
-    <div layout="row" layout-margin>
-        <div flex="20">
-            <h5>Current Actions : </h5>
-        </div>
-        <div flex layout-wrap layout-margin ng-init="L1Value.DefaultValue = {}">
-            <span class="action-chips" ng-repeat="(actionKey, actionValue) in L1Value.DefaultValue"> {{actionValue.ActionName}}
-            <md-icon ng-show="L1Value.showValues" class="white" ng-click="ctrl.deleteObject(actionValue, L1Value.DefaultValue)">remove</md-icon>
-        </span>
-        </div>
-    </div>
-    <div ng-repeat="(L2Key, L2Value) in L1Value.Properties">
-        <div ng-repeat="(L3Key, L3Value) in L2Value.AvailableValues" layout="column" layout-padding>
+        <div layout="row" layout-margin flex="100" layout-wrap ng-init="L0Value.DefaultValue = {}">
+            <span class="action-chips" ng-repeat="(actionKey, actionValue) in L0Value.DefaultValue" ng-class="{'HIGH': actionValue.ActionSeverity === 'HIGH', 'MEDIUM': actionValue.ActionSeverity === 'MEDIUM',
+                'LOW': actionValue.ActionSeverity === 'LOW' }" md-whiteframe="2">
+                <span style="color: #333">{{actionValue.TransforamtionActionStr | splitter: ':': 1}}</span> : {{actionValue.TransforamtionActionStr | splitter: ':': 2}}
+                <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
+                <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Value.DefaultValue)">remove</md-icon>
+            </span>
+        </div>  
+
+        <div ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" layout="column" layout-padding  ng-if="L0Value.showValues">
             <div class="action-pannel" layout="colum" layout-align="start center">
-                <h5 class="action-category">{{L3Key}}</h5>
+                <h5 class="action-category">{{L1Key}}</h5>
             </div>
-            <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-show="L1Value.showValues">
-                <span class="action-chips" ng-repeat="action in L3Value">
-                    {{action.ActionName}}
-                    <md-icon class="white" ng-click="L1Value.DefaultValue[L3Key] = action" ng-if="L1Value.DefaultValue[L3Key] != action">add</md-icon>
+            <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap>
+                <span class="action-chips" ng-repeat="action in L1Value" ng-class="{'HIGH': action.ActionSeverity === 'HIGH',
+                 'MEDIUM': action.ActionSeverity === 'MEDIUM', 'LOW': action.ActionSeverity === 'LOW' }">
+                    {{action.ActionName}}<md-tooltip ng-if="action.ActionDescription.length > 0" md-direction="top">{{action.ActionDescription}}</md-tooltip>
+                    <md-icon class="white" ng-click="L0Value.DefaultValue[L1Key] = action" ng-if="L0Value.DefaultValue[L1Key] != action">add</md-icon>
                 </span>
             </div>
         </div>
-    </div>
 </div>
-
-
-
-<style>
-    .action-chips {
-        background-color: #2196F3;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.13em;
-        border: solid 1px white;
-        color: white;
-        padding: 0.5em 1em;
-    }
-    
-    .default-values {
-        width: 100%;
-    }
-    
-    .cards {
-        background-color: white;
-        border-radius: 4px;
-        margin-bottom: 2em;
-    }
-    
-    .white {
-        color: white !important;
-    }
-    
-    .card-title {
-        background-color: #2196F3;
-        color: white;
-    }
-    
-    .action-pannel {
-        border-bottom: solid 1.5px #EEEEEE;
-    }
-    
-    .action-category {
-        color: #0D47A1;
-        font-weight: 600;
-    }
-    
-    .actions {
-        margin-left: 0px !important;
-        padding-left: 0px !important;
-        margin-top: 0px !important;
-        padding-top: 0px !important;
-        margin-bottom: 0px !important;
-        padding-bottom: 0px !important;
-        border-bottom: solid 1.5px #EEEEEE;
-    }
-</style>

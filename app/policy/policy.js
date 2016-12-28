@@ -60,8 +60,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
          self.allFacets = {};
         policyData.get_policy_settings("PolicySettings").then(function (answer) {
             var data = answer.data;
-            console.log(data)
-            console.log("policy data")
             self.allFacets = data;
         });
 
@@ -93,14 +91,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         /*__________________________  CDR SETTINGS _____________ _____________ */
-        
-
         policyData.getCDRFacets().then(function (answer) {
             self.cdr = answer.data
         })
-        self.deleteObject = function(property, object){
-            property = null
-            console.log(object)
+        self.DeleteAction = function(key, object){
+            delete object[key]
         }
 
     }
@@ -140,3 +135,10 @@ app.filter('filterObject', function() {
     return result;
   }
 });
+app.filter("splitter", function(){
+    return function(string, char, index){
+        var splitted = string.split(char)[index]
+        string = splitted.split(/(?=[A-Z])/).join(" "); 
+        return string
+    }
+})

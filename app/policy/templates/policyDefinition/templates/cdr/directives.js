@@ -1,19 +1,20 @@
-app.directive("toggleCdrEdition", function(){
-    return{
+app.directive("toggleCdrEdition", function () {
+    return {
         restrict: "A",
         scope: {
             bindedValue: "="
         },
-        link: function(scope, element, attrs){
-            element.bind("click", function(){
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
                 var self = $(this)
                 var icon = self.find("md-icon")
-                if (!scope.bindedValue){
+                if (!scope.bindedValue) {
                     scope.bindedValue = true
                     icon.html("save")
-                }else{
+
+                } else {
                     scope.bindedValue = false
-                    icon.html("edit") 
+                    icon.html("edit")
                 }
             })
         }
