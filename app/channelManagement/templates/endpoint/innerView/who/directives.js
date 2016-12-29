@@ -17,21 +17,27 @@ app.directive("editWhoScreen", function (channelData) {
                     scope.ctrl.is_who_screen_editable = false
                     edit_button.html("EDIT")
                     edit_button.removeClass("inEdition")
-                    var postData = {}
+                    var L0object = {}
+                    var L1object = {}
+                    angular.forEach(scope.ctrl.whoData, function (L0Value, L0Key) {
+                        L0object.key = L0Key
+                        L0object.value = L0Value
+                        angular.forEach(L0object.value.Properties, function (L1Value, L1Key) {
+                            if (L1Key == "StrPropType_ChannelPolicyToUse") {
+                                L1object[L1Key] = L1Value.DefaultValue.Key
+                            } else {
+                                var str = ""
+                                for (var i in L1Value.DefaultValue) {
+                                    var i = L1Value.DefaultValue[i] + "|"
+                                    str += i
+                                }
+                                L1object[L1Key] = str
+                            }
+                        })
 
-                    angular.forEach(scope.ctrl.whoData['Channel Usage Settings'].Properties, function (v, k) {
-
-                        postData[k] = v.DefaultValue;
-
-                    }, postData);
-
-                    
-                    var object = {
-                        "Description": "Channel Usage Settings",
-                        "Values": postData
-                    }
-                    console.log(object)
-                    channelData.updateWhoIsUsing(scope.ctrl.rootId, [object])
+                    })
+                    console.log(L1object)
+                        //channelData.updateWhoIsUsing(scope.ctrl.rootId, [object])
                 }
             })
         }

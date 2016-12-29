@@ -11,12 +11,11 @@
             <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel _______________________-->
             <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_SingleChoice" layout-margin>
                 <div id="current-policy">
-                    <h3>Current Policy Associated to this Channel : {{L1Value.DefaultValue.Value}} : {{L1Value.AvailableValues[ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]]}}</h3>
+                    <h3>Current Policy Associated to this Channel : {{L1Value.DefaultValue.Value }} </h3>
                 </div>
                 <div layout="row" layout-align="space-between center" layout-wrap ng-if="ctrl.is_who_screen_editable">
                     <p class="custom-chips" ng-repeat="L2Value in L1Value.AvailableValues" layout="row" layout-align="center center"> {{L2Value.Value}}
-                        <md-button class="md-icon-button" ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] = L2Value.Key">
-
+                        <md-button class="md-icon-button" ng-click="L1Value.DefaultValue = L2Value">
                             <md-icon>add</md-icon>
                         </md-button>
                     </p>
@@ -61,8 +60,6 @@
     </div>
 </div>
 <style>
-   
-    
     .custom-chips {
         background-color: #2196F3;
         color: white;
@@ -102,15 +99,18 @@
     md-virtual-repeat-container {
         min-height: 100%;
     }
-    .search-box{
+    
+    .search-box {
         border: solid 0px !important;
         width: 100% !important;
-        border-bottom : solid 2px #2196F3 !important;
+        border-bottom: solid 2px #2196F3 !important;
     }
-    .search-box:focus{
+    
+    .search-box:focus {
         border-bottom: solid 2px #F06292 !important;
     }
-    #all{
+    
+    #all {
         border-left: solid 2px #2196F3;
         padding-left: 1em;
     }
