@@ -72,7 +72,8 @@ app.factory("channelData", function ($http, $rootScope) {
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
-    var whoIsUsing = "http://jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
+    var whoIsUsing = "http://" + sname + ":4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
+    var updateWhoIsUsing = "http://" + sname + ":4580/api/channels/postChannelUsageSettings/"
 
     return {
         getchannelList: function () {
@@ -215,9 +216,19 @@ app.factory("channelData", function ($http, $rootScope) {
                 url: updateChannelName + "channelId=" + id + "&channelName=" + name,
                 method: "POST"
             })
-        }, 
-        whoIsUsing: function(){
+        },
+        whoIsUsing: function () {
             return $http.get(whoIsUsing)
+        },
+        updateWhoIsUsing: function (id, data) {
+            return $http({
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                url: updateWhoIsUsing + id,
+                data: data,
+                method: "POST"
+            })
         }
 
     }
@@ -265,7 +276,8 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_computers = "http://localhost:3000/policy_computers"
     var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
-    var cdrFacetsTemplate = "http://jdev01:4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
+    var cdrFacetsTemplate = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
+
 
 
 
@@ -441,7 +453,7 @@ app.factory("policyData", function ($rootScope, $http) {
                 data: data
             });
         },
-        getCDRFacets: function(){
+        getCDRFacets: function () {
             return $http.get(cdrFacetsTemplate)
         }
 

@@ -50,3 +50,51 @@ dashboard (sorted top files by : passed, blocked, passed files) -> possible orde
 Jonathan
 
 Channel : input and output : sudden issue with layout, weird
+
+reorganize channel facets before posting 
+reprganize cdr facets so that i get updated values after post
+
+
+<!--
+    <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
+<json-formatter json="ctrl.policy"></json-formatter>
+
+<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
+
+ 
+    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+        <h4 layout-padding><strong> {{L0Key}}<strong></h4>
+        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" value="L0Value.DefaultValue" policy-id="ctrl.policyId" key="L0Key">
+            <md-icon class="white">edit</md-icon>
+        </md-button>
+    </div>
+    
+        <div layout="row" layout-margin flex="100" layout-wrap ng-init="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] == null ? L0Value.DefaultValue :  ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]">
+
+            <json-formatter json="L0Value.DefaultValue"></json-formatter>
+
+            <span class="action-chips" ng-repeat="(actionKey, actionValue) in L0Value.DefaultValue" ng-class="{'HIGH': actionValue.ActionSeverity === 'HIGH', 'MEDIUM': actionValue.ActionSeverity === 'MEDIUM',
+                'LOW': actionValue.ActionSeverity === 'LOW' }" md-whiteframe="2">
+                <span ng-if="!L0Value.showValues" style="color: #333">{{actionValue.TransforamtionActionStr | splitter: ':': 1}} : </span> {{actionValue.TransforamtionActionStr | splitter: ':': 2}}
+                <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
+                <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Value.DefaultValue)">remove</md-icon>
+            </span>
+        </div>  
+
+        <div ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" layout="column" layout-padding  ng-if="L0Value.showValues">
+            <div class="action-pannel" layout="colum" layout-align="start center">
+                <h5 class="action-category">{{L1Key}}</h5>
+            </div>
+            <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap>
+                <span class="action-chips" ng-repeat="action in L1Value" ng-class="{'HIGH': action.ActionSeverity === 'HIGH',
+                 'MEDIUM': action.ActionSeverity === 'MEDIUM', 'LOW': action.ActionSeverity === 'LOW' }">
+                    {{action.ActionName}}<md-tooltip ng-if="action.ActionDescription.length > 0" md-direction="top">{{action.ActionDescription}}</md-tooltip>
+                    <md-icon class="white" ng-click="L0Value.DefaultValue[L1Key] = action.TransforamtionActionStr" ng-if="L0Value.DefaultValue[L1Key] != action">add</md-icon>
+                </span>
+            </div>
+        </div>
+
+</div>
+
+<button ng-click="ctrl.post_policy_settings()">save data </button>
+-->

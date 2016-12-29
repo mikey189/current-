@@ -16,6 +16,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.getPolicyInfo = function (id) {
             policyData.get_policy_info(id).then(function (answer) {
                 self.policy = answer.data
+                self.PolicyFacets = self.policy.PolicyFacets
+                console.log(self.PolicyFacets)
             })
         }
         self.PolicyInfo = {};
@@ -27,6 +29,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         //filetypes
         //getting filetypes
         //initiate the channel ids to send
+
+
+
+
+
         self.channelIds = [];
         policyData.getFiletypes().then(function (answer) {
                 self.filetype = answer.data
@@ -57,7 +64,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         /*______________________________________settings______________________________________*/
 
 
-         self.allFacets = {};
+        self.allFacets = {};
         policyData.get_policy_settings("PolicySettings").then(function (answer) {
             var data = answer.data;
             self.allFacets = data;
@@ -91,12 +98,35 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         /*__________________________  CDR SETTINGS _____________ _____________ */
+        self.post_policy_settings = function (values) {
+            //formatting dict to list
+            var postData = []
+            angular.forEach(values, function (v, k) {
+                this.push({
+                    "Description": k,
+                    "Values": v['Values']
+                })
+            }, postData);
+            //posting the list
+            console.log(postData)
+            policyData.post_policy_settings(self.policyId, postData).then(function (success) {
+                self.returned = success
+            }, function (error) {
+                alert(error.data)
+            })
+        }
+
+
+        self.cdrFacets = [];
+
+
         policyData.getCDRFacets().then(function (answer) {
             self.cdr = answer.data
         })
-        self.DeleteAction = function(key, object){
+        self.DeleteAction = function (key, object) {
             delete object[key]
         }
+
 
     }
 ])
@@ -116,29 +146,30 @@ function DialogController($scope, $mdDialog, propValue) {
     $scope.onSave = function (answer) {
         //$mdDialog.hide() resolves the promise and $mdDialog.cancel() rejects it 
         $mdDialog.hide(answer);
+        console.log(answer)
     };
 
 
 }
-app.filter('filterObject', function() {
-  return function(input, search) {
-    if (!input) return input;
-    if (!search) return input;
-    var expected = ('' + search).toLowerCase();
-    var result = {};
-    angular.forEach(input, function(value, key) {
-      var actual = ('' + value).toLowerCase();
-      if (actual.indexOf(expected) !== -1) {
-        result[key] = value;
-      }
-    });
-    return result;
-  }
+app.filter('filterObject', function () {
+    return function (input, search) {
+        if (!input) return input;
+        if (!search) return input;
+        var expected = ('' + search).toLowerCase();
+        var result = {};
+        angular.forEach(input, function (value, key) {
+            var actual = ('' + value).toLowerCase();
+            if (actual.indexOf(expected) !== -1) {
+                result[key] = value;
+            }
+        });
+        return result;
+    }
 });
-app.filter("splitter", function(){
-    return function(string, char, index){
+app.filter("splitter", function () {
+    return function (string, char, index) {
         var splitted = string.split(char)[index]
-        string = splitted.split(/(?=[A-Z])/).join(" "); 
+        string = splitted.split(/(?=[A-Z])/).join(" ");
         return string
     }
 })

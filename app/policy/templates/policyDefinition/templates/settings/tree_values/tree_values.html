@@ -2,7 +2,7 @@
 
 
 <md-dialog aria-label="extensions modal" class="fullscreen-dialog">
-  <json-formatter json="propValue.Avail"></json-formatter>
+  <json-formatter json="propValue.AvailableValues"></json-formatter>
 
   <md-toolbar class="tree-toolbar" layout="row" layout-align="center center">File Extensions</md-toolbar>
   <md-dialog-content>
@@ -17,18 +17,19 @@
         <th>Extension</th>
         <th>Allow</th>
       </thead>
-      <tbody>
-        <tr ng-repeat="(extension, value) in propValue.AvailableValues ">
-          <td>{{extension}}</td>
+      <tbody ng-repeat="x in propValue.AvailableValues">
+
+        <tr ng-repeat="val in x.Value ">
+          <td> {{val.ClassificationExtensions}}</td>
           <td>
-            <md-checkbox aria-label="extensions" ng-model="value"></md-checkbox>
+            <md-checkbox aria-label="extensions" ng-model="val.ClassificationUniqueStr"></md-checkbox>
           </td>
         </tr>
       </tbody>
     </table>
   </md-dialog-content>
   <md-dialog-actions layout="row">
-    <md-button ng-click="onSave(policyFacets)">
+    <md-button ng-click="onSave(propValue)">
       save info
     </md-button>
     <md-button ng-click="onCancel()">cancel</md-button>

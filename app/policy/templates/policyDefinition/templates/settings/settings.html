@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
-<md-button ng-click="ctrl.saveSettings(ctrl.PolicyFacets)" class="md-primary">refresh policy settings object</md-button>
-<div layout='column'  id="policySettingsContainer">
-    <json-formatter json="ctrl.policySettingsObject"></json-formatter>
-    <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
+<md-button ng-click="ctrl.post_policy_settings(ctrl.PolicyFacets)" class="md-primary">refresh policy settings object</md-button>
+<div layout='column' id="policySettingsContainer">
+    original
+    <json-formatter json="ctrl.PolicyFacets"></json-formatter>
+    returned
+    <json-formatter json="ctrl.returned"></json-formatter>
+    <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets" >
         <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
             <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
                 <h4 class='card-title'>{{Key}}</h4>
@@ -12,7 +15,7 @@
                 <p>{{propValue.DisplayName}}</p>
                 <div ng-switch="propValue.Type" ng-init=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
                     <div ng-switch-when="FacetPropertyType_Bool">
-                        <md-switch  class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" aria-label="file Sign switch">
+                        <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" aria-label="file Sign switch">
                         </md-switch>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
@@ -30,8 +33,10 @@
                         <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select" ng-init="ctrl.PolicyFacets[Key].Values[propkey] = x[$index]"
-                         ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="x for x in propValue.AvailableValues track by $index" md-whiteframe="3"></select>
+                        <select class="custom-select" ng-init="ctrl.PolicyFacets[Key].Values[propkey] = $index" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
+                            md-whiteframe="3" >
+                         <option ng-repeat="x in propValue.AvailableValues track by $index" ng-selected = "ctrl.PolicyFacets[Key].Values[propkey]" value="{{$index}}" >{{x}}</option>
+                         </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
                         <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password"
