@@ -1,16 +1,18 @@
-app.directive("ediPolicySettings", function () {
+app.directive("savePolicySettings", function () {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                console.log("clicked")
-                scope.ctrl.policySettingsObject = {
-                    "PolicyId": scope.ctrl.PolicyId,
-                    "Settings": scope.ctrl.PolicyFacets
+                var self = $(this)
+                if (!scope.ctrl.areSettingsEditable) {
+                    self.html("SAVE")
+                    scope.ctrl.areSettingsEditable = true
+                } else {
+                    self.html("EDIT")
+                    scope.ctrl.areSettingsEditable = false
+                    scope.ctrl.post_policy_settings(scope.ctrl.PolicyFacets)
                 }
-                console.log(scope.ctrl.policySettingsObject)
             })
-
         }
     }
 })

@@ -33,3 +33,15 @@
 .see_file_extensions_icon{
     color: #2196F3 !important;
 }
+
+.save-settings{
+    background-color: #2196F3 !important;
+    font-weight: 700 !important;
+    color: white;
+}
+.not-editable{
+    pointer-events: none;
+}
+
+
+

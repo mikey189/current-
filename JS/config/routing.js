@@ -20,6 +20,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     })
 
+
+    .state('app.testPage', {
+        url: '/app',
+        templateUrl: 'app/cases/test.html',
+        controller: 'cases',
+        controllerAs: 'ctrl'
+
+    })
+
     .state('app.dashboard', {
             url: '/dashboard',
             templateUrl: 'app/dashboard/dashboard.html',

@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
 <div layout="row" layout-margin layout-align="end center">
+    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+
     <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
 </div>
 <!--<div layout="row">
@@ -13,7 +15,7 @@
         <md-content class="md-title">Inputs</md-content>
         <md-content class="md-title">Outputs</md-content>
     </div>
-    <div layout="row" layout-align="space-between center">
+    <div layout="row" layout-align="space-between center" layout-margin>
         <channel-inputs-sources id="inputs_sources" flex="50" match-parent-width></channel-inputs-sources>
         <channel-outputs-sources id="outputs_sources" flex="50" match-parent-width></channel-outputs-sources>
     </div>

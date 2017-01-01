@@ -1,48 +1,29 @@
-not working calls / view 
-
+ 
+channel Management: 
   reorder channel order -> post not working (see alert message)
   updateChanneName: does the post but then the data that is returned when clicking on one of the item is not pdated (maor)
-
-  toDo: when calling a policy or channel load all views related to it at the same time (dashboard, settings, etc...)
-
-
-Policy Settings does not update 
-ISMB and OSMB : 
-AllowMediaBurn is an object not a boolean value {isActive: Bool, RootPath: string}
-Speedlimit does not have value only unit ? 
-Settings not updating, returning error, always returns the same settings
-Who uses this channel -> not call for it at the moment
-
-passing data to the modal inside policy settings 
-
-make connection between facets template and policy/chanenel related data
-
-channel settings not updating -> always the same
+  ISMB and OSMB : 
+    AllowMediaBurn is an object not a boolean value {isActive: Bool, RootPath: string}
+    Speedlimit does not have value only unit ? 
+    Settings not updating, returning error, always returns the same settings·
+    Who is using this channel: 
+        impossible to update channel who is using : error: Value can not be null when the object that is being sent contains Value Property
+    settings: 
+    Update does not work anymore for some weird reason 
 
 
-Maor
+Policies : 
 
-General Problem
-Facets are general, we need to find a way to make them per channel/policy
-
-Channel Management
-
-On API call receive all info relative to the channel inside channels/getChannel/id
-DaShboard info (blocked and no blocked)
-topBar info
-input and output
-settings
-who is using this channel: 
-  settings do not save, after post it's like nothing has changed
-  who uses this channel : binding -> info related to channel and not general 
-
-Policy: 
-On API call receive all info relative to the policy inside policy/getpolicy/id
-policy top bar
-dashboard (sorted top files by : passed, blocked, passed files) -> possible orderBy? 
+    CDR Facets : 
+        impossible to add actions to cdr defaultvalues when they are already set, or to delete them because they are just a string
+        and we deal with objects  
 
 
 
+General 
+
+Facets 
+    We deal with objects when displaying them but then we send strings and dealing with both is not really feasible
 
 
 
@@ -51,50 +32,5 @@ Jonathan
 
 Channel : input and output : sudden issue with layout, weird
 
-reorganize channel facets before posting 
-reprganize cdr facets so that i get updated values after post
 
 
-<!--
-    <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
-<json-formatter json="ctrl.policy"></json-formatter>
-
-<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
-
- 
-    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
-        <h4 layout-padding><strong> {{L0Key}}<strong></h4>
-        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" value="L0Value.DefaultValue" policy-id="ctrl.policyId" key="L0Key">
-            <md-icon class="white">edit</md-icon>
-        </md-button>
-    </div>
-    
-        <div layout="row" layout-margin flex="100" layout-wrap ng-init="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] == null ? L0Value.DefaultValue :  ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]">
-
-            <json-formatter json="L0Value.DefaultValue"></json-formatter>
-
-            <span class="action-chips" ng-repeat="(actionKey, actionValue) in L0Value.DefaultValue" ng-class="{'HIGH': actionValue.ActionSeverity === 'HIGH', 'MEDIUM': actionValue.ActionSeverity === 'MEDIUM',
-                'LOW': actionValue.ActionSeverity === 'LOW' }" md-whiteframe="2">
-                <span ng-if="!L0Value.showValues" style="color: #333">{{actionValue.TransforamtionActionStr | splitter: ':': 1}} : </span> {{actionValue.TransforamtionActionStr | splitter: ':': 2}}
-                <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
-                <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Value.DefaultValue)">remove</md-icon>
-            </span>
-        </div>  
-
-        <div ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" layout="column" layout-padding  ng-if="L0Value.showValues">
-            <div class="action-pannel" layout="colum" layout-align="start center">
-                <h5 class="action-category">{{L1Key}}</h5>
-            </div>
-            <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap>
-                <span class="action-chips" ng-repeat="action in L1Value" ng-class="{'HIGH': action.ActionSeverity === 'HIGH',
-                 'MEDIUM': action.ActionSeverity === 'MEDIUM', 'LOW': action.ActionSeverity === 'LOW' }">
-                    {{action.ActionName}}<md-tooltip ng-if="action.ActionDescription.length > 0" md-direction="top">{{action.ActionDescription}}</md-tooltip>
-                    <md-icon class="white" ng-click="L0Value.DefaultValue[L1Key] = action.TransforamtionActionStr" ng-if="L0Value.DefaultValue[L1Key] != action">add</md-icon>
-                </span>
-            </div>
-        </div>
-
-</div>
-
-<button ng-click="ctrl.post_policy_settings()">save data </button>
--->

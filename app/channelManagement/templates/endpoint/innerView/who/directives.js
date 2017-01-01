@@ -3,7 +3,7 @@
 //channel groups: splaitting avaialable channels and current channels
 
 
-app.directive("editWhoScreen", function (channelData) {
+app.directive("editWhoScreen", function (channelData, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -19,9 +19,11 @@ app.directive("editWhoScreen", function (channelData) {
                     edit_button.removeClass("inEdition")
                     var L0object = {}
                     var L1object = {}
+                    var objectToSend = {}
                     angular.forEach(scope.ctrl.whoData, function (L0Value, L0Key) {
                         L0object.key = L0Key
                         L0object.value = L0Value
+
                         angular.forEach(L0object.value.Properties, function (L1Value, L1Key) {
                             if (L1Key == "StrPropType_ChannelPolicyToUse") {
                                 L1object[L1Key] = L1Value.DefaultValue.Key
@@ -32,12 +34,32 @@ app.directive("editWhoScreen", function (channelData) {
                                     str += i
                                 }
                                 L1object[L1Key] = str
+                                objectToSend.Description = "Channel Usage Settings"
+                                 objectToSend.Value =  L1object
                             }
                         })
 
                     })
-                    console.log(L1object)
-                        //channelData.updateWhoIsUsing(scope.ctrl.rootId, [object])
+                    console.log(objectToSend)
+                    channelData.updateWhoIsUsing(scope.ctrl.rootId, objectToSend).then(function (success) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Success')
+                            .textContent('Your changes were successfully saved.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Got it!')
+                        );
+                    }, function (error) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('An error occured while updating the changes you made : ' + error.data.Message)
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Got it!')
+                        );
+                    })
                 }
             })
         }

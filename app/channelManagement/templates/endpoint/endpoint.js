@@ -43,7 +43,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
         return this.rootId;
     }), function (newVal) {
         channelData.get_channel(newVal).then(function (answer) {
-            console.log(answer.data)
             self.channel_data = answer.data
             self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
@@ -69,8 +68,8 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
     //getting input and output list for "input and ouput" view
     channelData.get_input_output_list().then(function (answer) {
             self.all_inputs = answer.data[0].inputs
-            self.iROW_1 = answer.data[0].inputs.slice(0, 3)
-            self.iROW_2 = answer.data[0].inputs.slice(3, 6)
+            //self.iROW_1 = answer.data[0].inputs.slice(0, 3)
+            //self.iROW_2 = answer.data[0].inputs.slice(3, 6)
                 //default property for selecting input or ouput
             self.is_input_selected = false;
         })

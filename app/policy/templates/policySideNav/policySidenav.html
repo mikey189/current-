@@ -1,5 +1,6 @@
 <md-sidenav layout-padding md-component-id='policySidenav' id='policySidenav' md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left"
     md-whiteframe="6">
+    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
     <link rel="stylesheet" href="app/policy/templates/policySideNav/style.css" />
     <div layout='row' layout-align='start center' id="policySidenavTop">
         <h4 flex='66' class='white'><strong>Available Policies</strong></h4>
@@ -17,8 +18,7 @@
     <input class="searchPolicies" placeholder="search policies" ng-model="PolicyName" />
     <md-list layout-padding id="policyListHolder">
         <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName" policy-id={{policy.PolicyId}} layout-padding class="policyItem"
-            policy-list-hover layout="column" layout-align="center start" initiate-api-call-with-id
-            ng-class="{'selectedPolicy': ctrl.policyId === policy.PolicyId}">
+            policy-list-hover layout="column" layout-align="center start" initiate-api-call-with-id ng-class="{'selectedPolicy': ctrl.policyId === policy.PolicyId}">
             <div layout="row" layout-align="space-between start" style="width: 100%">
                 <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>
                 <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.sidenav_edit_mode">

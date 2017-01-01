@@ -1,9 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
 <json-formatter json="ctrl.policy"></json-formatter>
-
+<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
-
- 
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
         <h4 layout-padding><strong> {{L0Key}}<strong></h4>
         <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" value="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]" policy-id="ctrl.policyId" key="L0Key">
@@ -19,7 +17,6 @@
                 <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
                 <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Value.DefaultValue)">remove</md-icon>
             </span>
-            
         </div>  
 
         <div ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" layout="column" layout-padding  ng-if="L0Value.showValues">
@@ -34,13 +31,4 @@
                 </span>
             </div>
         </div>
-
-</div>
-
-
-
-
-
-
-
-
+    </div>  

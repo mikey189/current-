@@ -1,9 +1,32 @@
 app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "policyUsers", "$state", "$http", "$mdDialog",
 
     function ($scope, $mdSidenav, policyData, channelData, policyUsers, $state, $http, $mdDialog) {
+
         var self = this;
 
         self.sidenav_edit_mode = false;
+
+        self.show_success_dialog = function(message){
+            $mdDialog.show(
+                    $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('Success')
+                    .textContent(message)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Got it!')
+                );
+        }
+        self.show_error_dialog = function(message, errorMessage){
+            var str = message + " : "+errorMessage
+            $mdDialog.show(
+                    $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('Error')
+                    .textContent(str)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Got it!')
+                );
+        }
 
         policyData.getSidenav().then(function (answer) {
             self.sideNavList = answer.data
@@ -12,12 +35,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             self.getPolicyInfo(self.policyId)
 
         })
+//________________________MAIN CALL ____________________________________________________///////////
 
         self.getPolicyInfo = function (id) {
             policyData.get_policy_info(id).then(function (answer) {
                 self.policy = answer.data
                 self.PolicyFacets = self.policy.PolicyFacets
-                console.log(self.PolicyFacets)
+                self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
             })
         }
         self.PolicyInfo = {};
@@ -29,10 +53,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         //filetypes
         //getting filetypes
         //initiate the channel ids to send
-
-
-
-
 
         self.channelIds = [];
         policyData.getFiletypes().then(function (answer) {
@@ -52,13 +72,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         policyData.get_cukoo_servers().then(function (answer) {
             self.cukoo_servers_list = answer.data
         })
-
-        policyData.get_policy_info(self.policyId).then(function (answer) {
-                self.policy_general_info = answer.data
-                self.detection = self.policy_general_info.PolicyInfo.FileDetectionConfigurations
-                self.types = self.policy_general_info.PolicyInfo.FileTypesConfigurations
-            })
-            //who > computers -> retrieving data from relevant service ( channelData )
 
 
         /*______________________________________settings______________________________________*/
@@ -92,12 +105,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 .then(function (success) {
                     self.PolicyFacets[key].Values[propkey] = success
                 }, function (cancel) {
-                    console.log("cancel")
-                    console.log(cancel)
+                    console.log("canceled")
                 })
         }
 
-        /*__________________________  CDR SETTINGS _____________ _____________ */
+        /*__________________________  CDR // SETTINGS _____________ _____________ */
+        //settings not editable by default
+        self.areSettingsEditable = false;
+        //this function is called through directive to allow further DOM manipulations
         self.post_policy_settings = function (values) {
             //formatting dict to list
             var postData = []
@@ -108,25 +123,21 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 })
             }, postData);
             //posting the list
-            console.log(postData)
             policyData.post_policy_settings(self.policyId, postData).then(function (success) {
-                self.returned = success
+                self.show_success_dialog("Your changes were successfuly saved")
             }, function (error) {
-                alert(error.data)
+                self.show_error_dialog("An error occured while saving your changes : ",error.data.Message )
             })
         }
-
-
         self.cdrFacets = [];
-
-
         policyData.getCDRFacets().then(function (answer) {
             self.cdr = answer.data
         })
         self.DeleteAction = function (key, object) {
+            console.log("deleting..")
             delete object[key]
+            
         }
-
 
     }
 ])
