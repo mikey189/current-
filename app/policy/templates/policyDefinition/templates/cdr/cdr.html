@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
 <json-formatter json="ctrl.policy"></json-formatter>
+<p> cdr facets</p>
+<json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
@@ -9,13 +11,12 @@
         </md-button>
     </div>
     
-        <div layout="row" layout-margin flex="100" layout-wrap ng-init="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] == null 
-        ? L0Value.DefaultValue :  ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] ">
+        <div layout="row" layout-margin flex="100" layout-wrap>
             <span class="action-chips" ng-repeat="(actionKey, actionValue) in ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]" ng-class="{'HIGH': actionValue.includes('HIGH'), 'MEDIUM': actionValue.includes('MEDIUM'),
                 'LOW': actionValue.includes('LOW') }" md-whiteframe="2">
                 <span ng-if="!L0Value.showValues" style="color: #333">{{actionKey }} : </span> {{actionValue | splitter : ':' : 2 }}
                 <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
-                <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Value.DefaultValue)">remove</md-icon>
+                <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Key)">remove</md-icon>
             </span>
         </div>  
 
@@ -31,4 +32,4 @@
                 </span>
             </div>
         </div>
-    </div>  
+    </div>

@@ -35,13 +35,13 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                                 }
                                 L1object[L1Key] = str
                                 objectToSend.Description = "Channel Usage Settings"
-                                 objectToSend.Value =  L1object
+                                 objectToSend.Values =  L1object
                             }
                         })
 
                     })
                     console.log(objectToSend)
-                    channelData.updateWhoIsUsing(scope.ctrl.rootId, objectToSend).then(function (success) {
+                    channelData.updateWhoIsUsing(scope.ctrl.rootId, [objectToSend]).then(function (success) {
                         $mdDialog.show(
                             $mdDialog.alert()
                             .clickOutsideToClose(true)

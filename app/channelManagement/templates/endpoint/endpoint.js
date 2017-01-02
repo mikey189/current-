@@ -40,75 +40,94 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
 
     //watching for any change in channel id
     $scope.$watch(angular.bind(this, function () {
-        return this.rootId;
-    }), function (newVal) {
-        channelData.get_channel(newVal).then(function (answer) {
-            self.channel_data = answer.data
-            self.channelInfo = answer.data.ChannelInfo
-            self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
-            self.generalInformations = self.channelInfo.GeneralInformations
-            self.InputConfiguration = self.channelInfo.InputConfiguration
-            self.ismbList = self.InputConfiguration.IoSmbConfiguration
-            self.OutputConfiguration = self.channelInfo.OutputConfiguration
-            self.osmbList = self.OutputConfiguration.IoSmbConfiguration
-        })
+            return this.rootId;
+        }), function (newVal) {
+            channelData.get_channel(newVal).then(function (answer) {
+                    self.channel_data = answer.data
+                    self.channelInfo = answer.data.ChannelInfo
+                    self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
+                    self.generalInformations = self.channelInfo.GeneralInformations
+                    self.InputConfiguration = self.channelInfo.InputConfiguration
+                    self.ismbList = self.InputConfiguration.IoSmbConfiguration
+                    self.OutputConfiguration = self.channelInfo.OutputConfiguration
+                    self.osmbList = self.OutputConfiguration.IoSmbConfiguration
+                    self.ChannelFacets = self.channel_data.ChannelFacets || {
+                        "Channel Usage Settings": {
+                            "Values": {}
+                        }
+                    }
+
+                    channelData.whoIsUsing().then(function (answer) {
+                            self.whoData = answer.data
+                            angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
+                                    if (self.ChannelFacets['Channel Usage Settings'].Values[key] == null || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
+                                        self.ChannelFacets['Channel Usage Settings'].Values[key] = value.DefaultValue
+                                        console.log(value.DefaultValue)
+                                    } else {
+                                        //do nothing
+                                    }
+                                }
+                                /* */
+                            )
+                    })
+
+
+            })
     });
-    //default view for dashboard is blocked
-    self.isBlocked = true;
-    channelData.getChannelDashboard(self.rootId).then(function (answer1) {
-        self.channelDashboard = answer1.data
-    })
+//default view for dashboard is blocked
+self.isBlocked = true;
+channelData.getChannelDashboard(self.rootId).then(function (answer1) {
+    self.channelDashboard = answer1.data
+})
 
-    topCases.getTopCases().then(function (answer) {
-        self.topCases = answer.data
-    })
-    self.label = ["Medium", "Low", "high"];
+topCases.getTopCases().then(function (answer) {
+    self.topCases = answer.data
+})
+self.label = ["Medium", "Low", "high"];
 
-    self.are_outputs_and_outputs_editable = false;
-    //getting input and output list for "input and ouput" view
-    channelData.get_input_output_list().then(function (answer) {
-            self.all_inputs = answer.data[0].inputs
-            //self.iROW_1 = answer.data[0].inputs.slice(0, 3)
-            //self.iROW_2 = answer.data[0].inputs.slice(3, 6)
-                //default property for selecting input or ouput
-            self.is_input_selected = false;
-        })
-        //storing selected inputs and outputs
-        // self.selectedInputs = []
-        // self.selectedOutputs = []
-        //function that add objects for iSMB and oSMB on ng-checked
-    self.addISMB = function () {
-        var iSMB = {}
-        self.ismbList.push(iSMB)
-    }
-    self.addOSMB = function () {
-        var oSMB = {}
-        self.osmbList.push(oSMB)
-    }
+self.are_outputs_and_outputs_editable = false;
+//getting input and output list for "input and ouput" view
+channelData.get_input_output_list().then(function (answer) {
+    self.all_inputs = answer.data[0].inputs
+        //self.iROW_1 = answer.data[0].inputs.slice(0, 3)
+        //self.iROW_2 = answer.data[0].inputs.slice(3, 6)
+        //default property for selecting input or ouput
+    self.is_input_selected = false;
+})
+//storing selected inputs and outputs
+// self.selectedInputs = []
+// self.selectedOutputs = []
+//function that add objects for iSMB and oSMB on ng-checked
+self.addISMB = function () {
+    var iSMB = {}
+    self.ismbList.push(iSMB)
+}
+self.addOSMB = function () {
+    var oSMB = {}
+    self.osmbList.push(oSMB)
+}
 
-    self.deleteISMB = function (ISMB) {
-        var index = self.ismbList.indexOf(ISMB)
-        self.ismbList.splice(index, 1);
-    }
-    self.deleteOSMB = function (OSMB) {
-            var index = self.osmbList.indexOf(OSMB)
-            self.osmbList.splice(index, 1);
-        }
-        //making the settings not editable by default
-    self.are_settings_editable = false
-    self.PolicyFacets = {}
-
-
-    /*--------------------  who is using this channel --------------------*/
+self.deleteISMB = function (ISMB) {
+    var index = self.ismbList.indexOf(ISMB)
+    self.ismbList.splice(index, 1);
+}
+self.deleteOSMB = function (OSMB) {
+    var index = self.osmbList.indexOf(OSMB)
+    self.osmbList.splice(index, 1);
+}
+//making the settings not editable by default
+self.are_settings_editable = false
+self.PolicyFacets = {}
 
 
+/*--------------------  who is using this channel --------------------*/
 
-    self.is_who_screen_editable = false;
 
 
-    channelData.whoIsUsing().then(function (answer) {
-        self.whoData = answer.data
-    })
+self.is_who_screen_editable = false;
+
+
+
 
 
 }])

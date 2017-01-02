@@ -6,42 +6,69 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         self.sidenav_edit_mode = false;
 
-        self.show_success_dialog = function(message){
+        self.show_success_dialog = function (message) {
             $mdDialog.show(
-                    $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Success')
-                    .textContent(message)
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                );
+                $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title('Success')
+                .textContent(message)
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Got it!')
+            );
         }
-        self.show_error_dialog = function(message, errorMessage){
-            var str = message + " : "+errorMessage
+        self.show_error_dialog = function (message, errorMessage) {
+            var str = message + " : " + errorMessage
             $mdDialog.show(
-                    $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Error')
-                    .textContent(str)
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                );
+                $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title('Error')
+                .textContent(str)
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Got it!')
+            );
         }
 
         policyData.getSidenav().then(function (answer) {
-            self.sideNavList = answer.data
-                //getting the first item of the list to launch API call
-            self.policyId = self.sideNavList[0].PolicyId
-            self.getPolicyInfo(self.policyId)
+                self.sideNavList = answer.data
+                    //getting the first item of the list to launch API call
+                self.policyId = self.sideNavList[0].PolicyId
+                self.getPolicyInfo(self.policyId)
 
-        })
-//________________________MAIN CALL ____________________________________________________///////////
+            })
+            //________________________MAIN CALL ____________________________________________________///////////
 
         self.getPolicyInfo = function (id) {
             policyData.get_policy_info(id).then(function (answer) {
                 self.policy = answer.data
                 self.PolicyFacets = self.policy.PolicyFacets
+                console.log(self.PolicyFacets)
                 self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
+                policyData.getCDRFacets().then(function (answer) {
+                    self.cdr = answer.data
+                    angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
+                        
+                        //making the match between self.cdr and self.policyFacets.defaultValue
+                        
+                         
+                        if (self.PolicyFacets['Policy CDR Settings'].Values[key] == null || self.PolicyFacets['Policy CDR Settings'].Values[key] === "") {
+                            self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue
+
+                        } else {
+                            var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
+
+                            angular.forEach(splittedByPipe, function(L2Val, L2Key){
+                                var splittedByEqual = L2Val.split("=")
+                                var object = {}
+                                object[splittedByEqual[0]] = splittedByEqual[1]
+                                //console.log(object)
+                                self.PolicyFacets['Policy CDR Settings'].Values[key] = object
+                                console.log( self.PolicyFacets['Policy CDR Settings'].Values[key])
+                                
+                            })
+                        }
+                    })
+
+                })
             })
         }
         self.PolicyInfo = {};
@@ -104,12 +131,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 */
                 .then(function (success) {
                     self.PolicyFacets[key].Values[propkey] = success
-                }, function (cancel) {
-                    console.log("canceled")
-                })
+                }, function (cancel) {})
         }
 
         /*__________________________  CDR // SETTINGS _____________ _____________ */
+        self.formatStrings = function (obj) {}
+
+
         //settings not editable by default
         self.areSettingsEditable = false;
         //this function is called through directive to allow further DOM manipulations
@@ -126,17 +154,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             policyData.post_policy_settings(self.policyId, postData).then(function (success) {
                 self.show_success_dialog("Your changes were successfuly saved")
             }, function (error) {
-                self.show_error_dialog("An error occured while saving your changes : ",error.data.Message )
+                self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
             })
         }
         self.cdrFacets = [];
-        policyData.getCDRFacets().then(function (answer) {
-            self.cdr = answer.data
-        })
-        self.DeleteAction = function (key, object) {
-            console.log("deleting..")
-            delete object[key]
-            
+
+        self.DeleteAction = function (key, L0Key) {
+            console.log(L0Key)
+            console.log(key)
+            delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
+
         }
 
     }
@@ -157,7 +184,6 @@ function DialogController($scope, $mdDialog, propValue) {
     $scope.onSave = function (answer) {
         //$mdDialog.hide() resolves the promise and $mdDialog.cancel() rejects it 
         $mdDialog.hide(answer);
-        console.log(answer)
     };
 
 
