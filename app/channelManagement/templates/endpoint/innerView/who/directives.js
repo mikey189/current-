@@ -67,6 +67,3 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
 
 })
 
-//format
-
-//{"StrPrototypeChannelPolicyToUse": 16, "Channel groups": "A | B | c", the same for the rest, "IP": "1234.234 | 23.34"}
