@@ -160,8 +160,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.cdrFacets = [];
 
         self.DeleteAction = function (key, L0Key) {
-            console.log(L0Key)
-            console.log(key)
+           
             delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
 
         }
@@ -205,6 +204,9 @@ app.filter('filterObject', function () {
 });
 app.filter("splitter", function () {
     return function (string, char, index) {
+        if (string == undefined || string === "" || string == null ){
+            return 
+        }
         var splitted = string.split(char)[index]
         string = splitted.split(/(?=[A-Z])/).join(" ");
         return string

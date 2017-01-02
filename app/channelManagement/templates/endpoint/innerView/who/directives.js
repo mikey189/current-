@@ -17,31 +17,29 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                     scope.ctrl.is_who_screen_editable = false
                     edit_button.html("EDIT")
                     edit_button.removeClass("inEdition")
-                    var L0object = {}
+                    var facets = []
                     var L1object = {}
-                    var objectToSend = {}
-                    angular.forEach(scope.ctrl.whoData, function (L0Value, L0Key) {
-                        L0object.key = L0Key
-                        L0object.value = L0Value
 
-                        angular.forEach(L0object.value.Properties, function (L1Value, L1Key) {
-                            if (L1Key == "StrPropType_ChannelPolicyToUse") {
-                                L1object[L1Key] = L1Value.DefaultValue.Key
-                            } else {
-                                var str = ""
-                                for (var i in L1Value.DefaultValue) {
-                                    var i = L1Value.DefaultValue[i] + "|"
-                                    str += i
-                                }
-                                L1object[L1Key] = str
-                                objectToSend.Description = "Channel Usage Settings"
-                                 objectToSend.Values =  L1object
-                            }
+                    var L1object = {}
+                    angular.forEach(scope.ctrl.ChannelFacets, function (L1Value, L1Key) {
+
+                        
+                        angular.forEach(L1Value.Values, function (L2Value, L2Key) {
+                            var str = ""
+
+                            angular.forEach(L2Value, function (L3Value, L3Key) {
+                                str += L3Value + "|"
+
+                            })
+
+                            L1object[L2Key] = str
+
                         })
+                        facets.push({"Description": L1Key, "Values": L1object})
 
                     })
-                    console.log(objectToSend)
-                    channelData.updateWhoIsUsing(scope.ctrl.rootId, [objectToSend]).then(function (success) {
+                    console.log(facets)
+                    channelData.updateWhoIsUsing(scope.ctrl.rootId, facets).then(function (success) {
                         $mdDialog.show(
                             $mdDialog.alert()
                             .clickOutsideToClose(true)
@@ -67,3 +65,27 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
 
 })
 
+
+app.directive("addIp", function () {
+    return {
+        restrict: "A",
+        scope: {
+            value: "=",
+            container: "="
+        },
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                console.log(scope.value)
+                if (!scope.container.includes(scope.value)) {
+                    scope.$apply(function () {
+                        scope.container.push(scope.value)
+                    })
+                } else {
+                    alert(scope.value + " already exists !")
+                }
+
+                console.log(scope.container)
+            })
+        }
+    }
+})
