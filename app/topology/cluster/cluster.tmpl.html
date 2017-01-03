@@ -16,9 +16,10 @@
                 {{server.Status}}
             </td>
             <td ng-init="GraphArray = [server.CurrentRunningJobs.History.length]">
-                <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray"
-                    chart-series="['serie A']">
-                </canvas>
+                <div id="chart">
+                    <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray" chart-series="['serie A']">
+                    </canvas>
+                </div>
             </td>
             <td>{{server.JobType}}</td>
             <td>
@@ -57,5 +58,12 @@
     
     #running-jobs-graph {
         height: 10
+    }
+    #chart{
+        height: 10%;
+        width: 100%;
+        padding-right: 0px !important;
+        margin-right: 0px !important;
+        
     }
 </style>
