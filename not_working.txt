@@ -1,36 +1,5 @@
  
 channel Management: 
   reorder channel order -> post not working (see alert message)
-  updateChanneName: does the post but then the data that is returned when clicking on one of the item is not pdated (maor)
-  ISMB and OSMB : 
-    AllowMediaBurn is an object not a boolean value {isActive: Bool, RootPath: string}
-    Speedlimit does not have value only unit ? 
-    Settings not updating, returning error, always returns the same settings·
-    Who is using this channel: 
-        impossible to update channel who is using : error: Value can not be null when the object that is being sent contains Value Property
-    settings: 
-    Update does not work anymore for some weird reason 
-
-
-Policies : 
-
-    CDR Facets : 
-        impossible to add actions to cdr defaultvalues when they are already set, or to delete them because they are just a string
-        and we deal with objects  
-
-
-
-General 
-
-Facets 
-    We deal with objects when displaying them but then we send strings and dealing with both is not really feasible
-
-
-
-
-Jonathan
-
-Channel : input and output : sudden issue with layout, weird
-
-
+  updateChanneName: does the post but then the data that is returned when clicking on one of the item is not updated (maor)
 

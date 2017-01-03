@@ -66,7 +66,6 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
                                 arr.push(v)
                             }, arr)
                             self.ChannelFacets['Channel Usage Settings'].Values[key] = arr
-                            console.log(value.DefaultValue)
                         } else {
                             self.ChannelFacets['Channel Usage Settings'].Values[key] = self.ChannelFacets['Channel Usage Settings'].Values[key].split("|")
                         }

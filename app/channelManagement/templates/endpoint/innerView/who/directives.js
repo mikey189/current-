@@ -38,7 +38,6 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                         facets.push({"Description": L1Key, "Values": L1object})
 
                     })
-                    console.log(facets)
                     channelData.updateWhoIsUsing(scope.ctrl.rootId, facets).then(function (success) {
                         $mdDialog.show(
                             $mdDialog.alert()
@@ -75,7 +74,6 @@ app.directive("addIp", function () {
         },
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                console.log(scope.value)
                 if (!scope.container.includes(scope.value)) {
                     scope.$apply(function () {
                         scope.container.push(scope.value)
@@ -84,7 +82,6 @@ app.directive("addIp", function () {
                     alert(scope.value + " already exists !")
                 }
 
-                console.log(scope.container)
             })
         }
     }

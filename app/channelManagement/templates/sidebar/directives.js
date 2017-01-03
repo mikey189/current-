@@ -33,7 +33,6 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
                 var self = $(this)
                 var channel_id = self.attr("channel-id")
                 var cell = self.closest("md-list-item")
-                console.log(channel_id)
                 var channel_name = self.attr("channel-name")
                 var confirm = $mdDialog.confirm()
                     .title('You are about to delete a channel')

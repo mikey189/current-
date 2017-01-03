@@ -9,7 +9,6 @@ app.controller("reports_emails", function($scope, emails_factory){
     $scope.get_data = function () {
         emails_factory.get_emails($scope.email_query.PageIndex, $scope.email_query.PageSize, $scope.email_query.order).then(function (answer) {
             $scope.data = answer.data
-            console.log($scope.data)
             $scope.total_length = answer.data.Total
         })
     }

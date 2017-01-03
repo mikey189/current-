@@ -5,9 +5,11 @@ app.directive("toggleCdrEdition", function (policyData) {
             bindedValue: "=",
             value: "=value",
             policyId: "=policyId",
-            key: "="
+            key: "=",
+            global: "=global"
         },
         link: function (scope, element, attrs) {
+
             element.bind("click", function () {
                 var self = $(this)
                 var icon = self.find("md-icon")
@@ -21,17 +23,19 @@ app.directive("toggleCdrEdition", function (policyData) {
                     var postData = {}
                     angular.forEach(scope.value, function (v, k) {
                         postData[k] = v;
-                    }, postData);
+                    });
 
                     var firstObject = {}
                     firstObject[scope.key] = postData
                     var object = {
                         "Description": "Policy CDR Settings",
-                        "Values": firstObject
+                        "Values": scope.global
                     }
-                    console.log(object)
+                    var object2send = []
+                    object2send.push(object)
 
-                    policyData.post_policy_settings(scope.policyId, [object])
+
+                    policyData.post_policy_settings(scope.policyId, object2send)
                     icon.html("edit")
                 }
             })

@@ -17,6 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/common/common.html',
         controller: 'common',
         controllerAs: 'ctrl'
+        
 
     })
 
@@ -30,19 +31,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
 
     .state('app.dashboard', {
-            url: '/dashboard',
-            templateUrl: 'app/dashboard/dashboard.html',
-            controller: 'dashboard',
-            controllerAs: "ctrl",
-            displayName: "Dashboard"
-        })
-        .state('app.agentManagement', {
-            url: '/agentManagement',
-            templateUrl: 'app/topology/agents/agentManagement.html',
-            controller: 'agentManagement',
-            controllerAs: 'ctrl',
-            displayName: "Agent Management"
-        })
+        url: '/dashboard',
+        templateUrl: 'app/dashboard/dashboard.html',
+        controller: 'dashboard',
+        controllerAs: "ctrl",
+        displayName: "Dashboard"
+    })
 
     .state('app.channelManagement', {
         url: '/channelManagement',
@@ -151,10 +145,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.clusterManagement', {
         url: '/clusterManagement',
-        templateUrl: 'app/topology/cluster/clusterManagement.html',
-        controller: 'clusterManagement',
-        controllerAs: 'clusterManagement',
-        displayName: "Topology"
+        templateUrl: 'app/topology/cluster/cluster.tmpl.html',
+        controller: 'cluster',
+        controllerAs: 'ctrl',
+        displayName: "Cluster Management"
+
+    })
+    .state('app.agentManagement', {
+        url: '/clusterManagement',
+        templateUrl: 'app/topology/agent/agent.tmpl.html',
+        controller: 'agent',
+        controllerAs: 'ctrl',
+        displayName: "Cluster Management"
 
     })
 

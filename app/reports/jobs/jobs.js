@@ -6,7 +6,6 @@ app.controller("reports_jobs", function ($scope, jobs_factory, computer_list, ac
         PageIndex: 1
     };
     $scope.get_data = function () {
-        console.log("first time")
         jobs_factory.get_jobs($scope.jobs_query).then(function (answer) {
             $scope.data = answer.data
             $scope.total_length = answer.data.Total

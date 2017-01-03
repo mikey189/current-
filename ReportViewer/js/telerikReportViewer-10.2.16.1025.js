@@ -350,7 +350,6 @@
         function ensureTokenIfNeeded() {
             if (options.useReportServer && !authToken) {
                 if (!loginCred(options.credentials.username, options.credentials.password)) {
-                    console.log("Error obtaining authentication token!");
                 }
             }
         }

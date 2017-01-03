@@ -1,0 +1,60 @@
+<h1>cluster</h1>
+<json-formatter json="ctrl.DemoData"></json-formatter>
+<table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6">
+    <thead>
+        <th>Server Name</th>
+        <th>Status</th>
+        <th>Current Running Jobs</th>
+        <th>Jobs Type</th>
+        <th >CPU Load</th>
+        <th>Disk Space</th>
+    </thead>
+    <tbody>
+        <tr class="cluster-row" ng-repeat="server in ctrl.DemoData">
+            <td>{{server.ServerName}}</td>
+            <td ng-class="{'online': server.Status.toLowerCase().includes('online'), 'offline': server.Status.toLowerCase().includes('offline')}">
+                {{server.Status}}
+            </td>
+            <td>
+                <div layout="column" layout-align="center start" google-chart chart="ctrl.GetGaugeChart('Jobs', server.CurrentRunningJobs.Now)"
+                    style="height:100px; width:100%;"></div>
+            </td>
+            <td>{{server.JobType}}</td>
+            <td>
+                <div google-chart layout="column" layout-align="center start" chart="ctrl.GetGaugeChart('CPU', server.CPULoad.Now)" style="height:100px; width:100%;"></div>
+            </td>
+            <td>{{server.DiskSpace}} GB</td>
+        </tr>
+    </tbody>
+</table>
+<style>
+    .cluster-table {
+        background-color: white;
+    }
+    
+    .cluster-row {
+        border-bottom: solid 1px #EEE;
+    }
+    
+    .cluster-row:last-child {
+        border-bottom: solid 0px white;
+    }
+    
+    .online {
+        color: #4CAF50;
+        font-weight: 700 !important;
+    }
+    
+    .offline {
+        color: #D32F2F;
+        font-weight: 700 !important;
+    }
+    
+    .graph-holder {
+        border-radius: 5px;
+    }
+    
+    #running-jobs-graph {
+        height: 10
+    }
+</style>

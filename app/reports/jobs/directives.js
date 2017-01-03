@@ -30,9 +30,6 @@ app.directive("filterJobs", function (jobs_factory) {
         link: function (scope, element, attrs) {
             element.click(function () {
                 jobs_factory.get_filter_results(scope.jobs_query).then(function (answer) {
-                    console.log(scope.jobs_query)
-                    console.log("filtered results :")
-                    console.log(answer.data)
                 })
             })
         }

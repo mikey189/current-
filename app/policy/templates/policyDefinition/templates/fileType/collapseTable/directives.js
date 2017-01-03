@@ -40,7 +40,6 @@ app.directive("editFiletype", ["policyData", function (policyData) {
                     advanceModeButton.addClass("hidden")
                     policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.types).then(function (answer) {
                         scope.ctrl.types = answer.data
-                        console.log("ok posted")
                     })
                     self.html("EDIT")
                     scope.ctrl.isTableEditable = false;

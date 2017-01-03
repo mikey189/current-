@@ -15,7 +15,6 @@ app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
                 scope.ctrl.gen_info = channelObject
                 channelData.createChannel(channelObject).then(function (answer) {
                     scope.ctrl.rootId = answer.data.Id
-                    console.log(scope.ctrl.rootId)
                     $state.go("app.channelManagement.endpoint.dashboard")
                     $timeout(function(){
                         $state.reload()

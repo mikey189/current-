@@ -46,7 +46,6 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 policyData.create_new_policy(scope.ctrl.PolicyInfo)
-                console.log(scope.ctrl.PolicyInfo)
                 $state.go("app.policy.definition.fileType")
                 $mdDialog.cancel()
             })
@@ -68,7 +67,6 @@ app.directive("toggleEditableMode", function (policyData) {
                     scope.ctrl.isEditable = true;
                 } else {
                     var policyName_value = policyName.html()
-                    console.log(policyName_value)
                     icon.html("edit");
                     policyName.removeClass("policy-name-edit")
                     policyData.update_policy_name(scope.ctrl.policyId, policyName_value)
@@ -112,7 +110,6 @@ app.directive("deletePolicy", ["policyData", "$timeout", function (policyData, $
                 var self = $(this);
                 var cell = self.parents("md-list-item");
                 var id = parseInt(cell.attr("policy-id"));
-                console.log(id)
                 cell.addClass("animated bounceOutRight");
                 $timeout(function () {
                     cell.addClass("hidden")

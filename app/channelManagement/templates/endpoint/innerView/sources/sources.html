@@ -1,15 +1,9 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
-<div layout="row" layout-margin layout-align="end center">
-    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-
+<div layout="row" layout-margin layout-align="end center" ng-cloak>
+    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
     <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
 </div>
-<!--<div layout="row">
-    <pre style="height: 200px" flex>
-        DEBUG_PANNEL
-        <json-formatter json="ctrl.IoConfiguration" open="1"></json-formatter>
-    </pre>
-</div>-->
+
 <div layout="column" layout-margin class="notEditable" id="edition_section" ng-cloak>
     <div layout="row" layout-align="space-between center">
         <md-content class="md-title">Inputs</md-content>

@@ -23,7 +23,7 @@ app.directive("logout", function ($rootScope, $state) {
     restrict: "A",
     link: function (scope, element, attrs) {
       element.click(function () {
-       localStorage.clear()
+        localStorage.clear()
         $state.go("login")
       })
     }
@@ -41,3 +41,4 @@ app.directive("refresh", function ($state) {
     }
   }
 })
+

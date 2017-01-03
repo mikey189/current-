@@ -737,3 +737,19 @@ app.factory("sanitization_status", function ($http) {
         }
     }
 })
+
+app.factory("$cluster", function($http){
+    var sname = localStorage.getItem("serverName");
+
+    var ClusterData = "http://"+sname+":4580/api/Cluster/GetClusterStatus";
+    var DemoData = "  http://localhost:3000/Cluster"
+
+    return{
+        GetClusterData: function(){
+            return $http.get(ClusterData)
+        },
+        GetDemoData: function(){
+            return $http.get(DemoData)
+        }
+    }
+})

@@ -41,30 +41,29 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             policyData.get_policy_info(id).then(function (answer) {
                 self.policy = answer.data
                 self.PolicyFacets = self.policy.PolicyFacets
-                console.log(self.PolicyFacets)
                 self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
                 policyData.getCDRFacets().then(function (answer) {
                     self.cdr = answer.data
                     angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
-                        
+
                         //making the match between self.cdr and self.policyFacets.defaultValue
-                        
-                         
-                        if (self.PolicyFacets['Policy CDR Settings'].Values[key] == null || self.PolicyFacets['Policy CDR Settings'].Values[key] === "") {
-                            self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue
+
+
+                        if (self.PolicyFacets['Policy CDR Settings'].Values[key] == undefined || self.PolicyFacets['Policy CDR Settings'].Values[key] === "") {
+                            self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue[0]
 
                         } else {
                             var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
-
-                            angular.forEach(splittedByPipe, function(L2Val, L2Key){
-                                var splittedByEqual = L2Val.split("=")
                                 var object = {}
+
+                            angular.forEach(splittedByPipe, function (L2Val, L2Key) {
+                                var splittedByEqual = L2Val.split("=")
                                 object[splittedByEqual[0]] = splittedByEqual[1]
-                                //console.log(object)
-                                self.PolicyFacets['Policy CDR Settings'].Values[key] = object
-                                console.log( self.PolicyFacets['Policy CDR Settings'].Values[key])
-                                
+
                             })
+                            
+                            self.PolicyFacets['Policy CDR Settings'].Values[key] = object
+
                         }
                     })
 
@@ -160,7 +159,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.cdrFacets = [];
 
         self.DeleteAction = function (key, L0Key) {
-           
+
             delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
 
         }
@@ -204,8 +203,8 @@ app.filter('filterObject', function () {
 });
 app.filter("splitter", function () {
     return function (string, char, index) {
-        if (string == undefined || string === "" || string == null ){
-            return 
+        if (string == undefined || string === "" || string == null) {
+            return
         }
         var splitted = string.split(char)[index]
         string = splitted.split(/(?=[A-Z])/).join(" ");

@@ -116,11 +116,9 @@
             <div flex="40">
                 Allow Media Burn
             </div>
-            <div flex="20">
-                <md-switch id="toggleMediaBurner" class="customSwitch" aria-label="Allow Media Burn" ng-model="ISMB.AllowMediaBurn" toggle-media-burn></md-switch>
-            </div>
-            <div flex ng-class="{hidden: !ISMB.AllowMediaBurn}" id="mediaBurn" layout="row" layout-align="space-around center">
-                <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="ISMB.LocalPathForMediaBurn" />
+            
+            <div flex  id="mediaBurn" layout="row" layout-align="space-around center">
+                <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="ISMB.AllowMediaBurn" />
                 <md-button edit-field aria-label="Media burn" class="ncMdButton">
                     <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
                 </md-button>

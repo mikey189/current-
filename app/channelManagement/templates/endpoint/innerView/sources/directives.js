@@ -62,7 +62,6 @@ app.directive("addIsmb", function () {
                 var ismb = {};
                 scope.ctrl.ismbList.push(ismb)
                 scope.$apply()
-                console.log(scope.ctrl.ismbList)
             })
         }
     }
@@ -153,10 +152,7 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                             }
                         }
                         //posting the data to the server
-                    console.log("posting data to : " + scope.ctrl.rootId)
-                    console.log(scope.ctrl.IoConfiguration)
                     channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
-                        console.log(success)
                             //reassign the model from the success answer and then trigger scope.$apply()
                             //still not working but why ? find a way to "reload" the data without flickering the view or trigger $digest 'cycle'
                         $mdDialog.show(

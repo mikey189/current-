@@ -50,7 +50,6 @@ app.directive("formatter", function ($timeout) {
         var parsed = parseInt(value.replace(/\D/g, ''));
         if(ngModel.$$rawModelValue.match(/[a-z]/i)){
           var str = value.match(/[0-9]/)
-          console.log(str)
         }
         return parsed
       })

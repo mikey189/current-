@@ -13,11 +13,8 @@ app.directive("editChannelSettings", function (channelData) {
                     //MAKE API CALL TO SEND DATA 
                     self.html("EDIT")
                     settings_table.addClass("notEditable")                    
-                    console.log(scope.ctrl.ChannelConfiguration)
                     channelData.post_channel_settings(scope.ctrl.rootId, scope.ctrl.ChannelConfiguration).then(function (success) {
-                        console.log(success)
                     }, function (error) {
-                        console.log(error)
                     })
                     scope.ctrl.are_settings_editable = false
                 }

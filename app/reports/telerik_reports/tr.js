@@ -30,7 +30,6 @@ app.controller("telerik_reports", function (telerik_reports_factory) {
                 });
             return;
         } else {
-            console.log("report refreshed")
             var reportViewer = $("#reportViewer1").data("telerik_ReportViewer");
             reportViewer.reportSource({
                 report: self.selectedReport,

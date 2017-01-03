@@ -34,14 +34,9 @@ app.directive("confirmSystemEventsFilter", function (system_events_factory) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
-                console.log(scope.filter)
                 system_events_factory.get_filter_results(scope.se_query).then(function (answer) {
                     scope.data = answer.data
-                    console.log("new data ")
-                    console.log(scope.data)
-                }, function (error) {
-                    console.log("error " + error)
-                })
+                }, function (error) {})
                 scope.$apply()
             })
         }

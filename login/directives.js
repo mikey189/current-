@@ -20,7 +20,6 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                 var serverName = localStorage.getItem("serverName")
                 console.log(serverName)
                 authService.checkLogin(scope.ctrl.serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
-                    console.log("token : " + answer.AccessToken)
                     localStorage.setItem("token", answer.AccessToken);
                     $http.defaults.headers.common['Authorization'] = localStorage.getItem("token");
                     $state.go("app.dashboard")

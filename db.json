@@ -1947,5 +1947,13 @@
     "ACCUFARM",
     "BIZMATIC",
     "SPHERIX"
+  ],
+  "Cluster": [
+    {"ServerName": "Jdev01", "Status": "Online", "CurrentRunningJobs":{"Now": "12", "History": [12, 14, 15, 10, 9]}, "JobType": "High", "CPULoad": {"Now": "32", "History": [12, 14, 15, 10, 9]}, "DiskSpace": "84"}, 
+    {"ServerName": "MaorPc", "Status": "Online", "CurrentRunningJobs":{"Now": "24", "History": [12, 14, 15, 10, 9]}, "JobType": "Many", "CPULoad": {"Now": "20", "History": [12, 14, 15, 10, 9]}, "DiskSpace": "45"}, 
+    {"ServerName": "Home", "Status": "Offline", "CurrentRunningJobs":{"Now": "66", "History": [12, 14, 15, 10, 9]}, "JobType": "Low", "CPULoad": {"Now": "8", "History": [12, 14, 15, 10, 9]}, "DiskSpace": "34"}, 
+    {"ServerName": "Work", "Status": "Online", "CurrentRunningJobs":{"Now": "52", "History": [12, 14, 15, 10, 9]}, "JobType": "High", "CPULoad": {"Now": "80", "History": [12, 14, 15, 10, 9]}, "DiskSpace": "122"}, 
+    {"ServerName": "Central/.dev", "Status": "Offline", "CurrentRunningJobs":{"Now": "26", "History": [12, 14, 15, 10, 9]}, "JobType": "Many", "CPULoad": {"Now": "16", "History": [12, 14, 15, 10, 9]}, "DiskSpace": "1024"}
   ]
+  
 }
