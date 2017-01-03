@@ -1,12 +1,12 @@
 <h1>cluster</h1>
-<json-formatter json="ctrl.DemoData"></json-formatter>
+<json-formatter json="ctrl.ClusterData"></json-formatter>
 <table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6">
     <thead>
         <th>Server Name</th>
         <th>Status</th>
         <th>Current Running Jobs</th>
         <th>Jobs Type</th>
-        <th >CPU Load</th>
+        <th>CPU Load</th>
         <th>Disk Space</th>
     </thead>
     <tbody>
@@ -15,9 +15,10 @@
             <td ng-class="{'online': server.Status.toLowerCase().includes('online'), 'offline': server.Status.toLowerCase().includes('offline')}">
                 {{server.Status}}
             </td>
-            <td>
-                <div layout="column" layout-align="center start" google-chart chart="ctrl.GetGaugeChart('Jobs', server.CurrentRunningJobs.Now)"
-                    style="height:100px; width:100%;"></div>
+            <td ng-init="GraphArray = [server.CurrentRunningJobs.History.length]">
+                <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray"
+                    chart-series="['serie A']">
+                </canvas>
             </td>
             <td>{{server.JobType}}</td>
             <td>

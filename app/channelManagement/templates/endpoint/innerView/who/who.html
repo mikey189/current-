@@ -3,7 +3,6 @@
     <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4">EDIT</md-button>
 </div>
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-<json-formatter json="ctrl.ChannelFacets"></json-formatter>
 <div layout-margin>
     <div ng-repeat="(L1Key, L1Value) in ctrl.whoData['Channel Usage Settings'].Properties" class="card" md-whiteframe="4">
         <h3 class="title">{{L1Value.DisplayName}}</h3>
