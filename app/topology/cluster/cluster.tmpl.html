@@ -1,5 +1,17 @@
 <h1>cluster</h1>
 <json-formatter json="ctrl.ClusterData"></json-formatter>
+<div layout="row" layout-margin flex="100" layout-align="center center">
+    <h3>Time Frame</h3>
+    <md-input-container>
+        <md-select ng-model='ctrl.selectedTime' placeholder="5 Minutes Ago" id="time-picker">
+            <md-option><small>5 Minutes</small></md-option>
+            <md-option selected><small>30 Minutes</small></md-option>
+            <md-option><small>1 Hour</small></md-option>
+            <md-option><small>90 Minutes</small></md-option>
+            <md-option><small>2 Hours</small></md-option>
+        </md-select>
+    </md-input-container>
+</div>
 <table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6">
     <thead>
         <th>Server Name</th>
@@ -23,7 +35,10 @@
             </td>
             <td>{{server.JobType}}</td>
             <td>
-                <div google-chart layout="column" layout-align="center start" chart="ctrl.GetGaugeChart('CPU', server.CPULoad.Now)" style="height:100px; width:100%;"></div>
+                <div id="chart">
+                    <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray" chart-series="['serie A']">
+                    </canvas>
+                </div>
             </td>
             <td>{{server.DiskSpace}} GB</td>
         </tr>
@@ -59,11 +74,16 @@
     #running-jobs-graph {
         height: 10
     }
-    #chart{
-        height: 10%;
+    
+    #chart {
+        height: 90%;
         width: 100%;
         padding-right: 0px !important;
         margin-right: 0px !important;
-        
+    }
+    
+    #time-picker {
+        border-radius: 3px !important;
+        background-color: white !important;
     }
 </style>

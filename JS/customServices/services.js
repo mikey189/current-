@@ -738,24 +738,19 @@ app.factory("sanitization_status", function ($http) {
     }
 })
 
-app.factory("$cluster", function($http){
+app.factory("$cluster", function ($http) {
     var sname = localStorage.getItem("serverName");
 
-    var ClusterData = "http://"+sname+":4580/api/Cluster/GetClusterTopology?";
+    var ClusterData = "http://" + sname + ":4580/api/Cluster/GetClusterTopology?";
     var DemoData = "  http://localhost:3000/Cluster"
 
-    return{
-        GetClusterData: function(StartTime, EndTime){
+    return {
+        GetClusterData: function (StartTime, EndTime) {
             //we use post to get the data beause it takes a long time
-           return $http({
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                url: ClusterData+"sdate="+StartTime+"&edate="+EndTime,
-                method: "POST"
-            });
+            return $http.get(ClusterData + "sdate=" + StartTime + "&edate=" + EndTime)
+
         },
-        GetDemoData: function(){
+        GetDemoData: function () {
             return $http.get(DemoData)
         }
     }

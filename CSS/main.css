@@ -542,10 +542,10 @@ md-chips .md-chips {
 md-select.md-default-theme ._md-select-value,
 md-select ._md-select-value {
     color: black;
-    border-radius: 100px;
+    border-radius: 5px;
     padding-left: 1em;
     padding-right: 1em;
-    border: solid 2px #773EB2;
+    /*border: solid 1.5px #2196F3;*/
     padding-top: 0.3em;
     padding-bottom: 0.3em;
 }
