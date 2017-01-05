@@ -1,4 +1,4 @@
-app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", function (C2CData, channelData, topCases, $scope) {
+app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CData, channelData, $scope) {
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
@@ -83,9 +83,9 @@ app.controller("channels", ["C2CData", "channelData", "topCases", "$scope", func
         self.channelDashboard = answer1.data
     })
 
-    topCases.getTopCases().then(function (answer) {
+   /* topCases.getTopCases().then(function (answer) {
         self.topCases = answer.data
-    })
+    })*/
     self.label = ["Medium", "Low", "high"];
 
     self.are_outputs_and_outputs_editable = false;

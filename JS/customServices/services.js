@@ -222,14 +222,7 @@ app.factory("channelData", function ($http, $rootScope) {
     }
 })
 
-app.factory("topCases", function ($http) {
-    var url = "  http://localhost:3000/topUsers";
-    return {
-        getTopCases: function () {
-            return $http.get(url)
-        }
-    }
-})
+
 
 app.factory("policyData", function ($rootScope, $http) {
 
