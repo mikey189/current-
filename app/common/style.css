@@ -42,3 +42,6 @@
 .preserve-ws {
   white-space: pre;
 }
+.avoid-clicks {
+  pointer-events: none;
+}

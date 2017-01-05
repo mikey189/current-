@@ -29,7 +29,7 @@
     }
     
     #chart {
-        height: 90%;
+        height: 80%;
         width: 100%;
         padding-right: 0px !important;
         margin-right: 0px !important;
@@ -38,4 +38,7 @@
     #time-picker {
         border-radius: 3px !important;
         background-color: white !important;
+    }
+    #page-title{
+        text-align: center;
     }

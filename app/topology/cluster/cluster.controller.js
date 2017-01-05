@@ -31,18 +31,39 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
         $cluster.GetClusterData(self.StartDate, self.EndDate)
             .then(function (answer) {
-                self.ClusterData = answer.data.CpuMeasurementList
-                self.data = {}
-
+                console.log(answer.data)
+                var status = answer.data.ClusterStatusInfo.Status
+                var CpuMeasurementList = answer.data.CpuMeasurementList
+                self.ClusterData = []
                 var cpus = []
                 var currentLow = []
-                var currentHight = []
-                var currentMedium = []
-                angular.forEach(self.ClusterData, function (value, key) {
-                    console.log(key)
-                    self.data[key]= key
+                var currentHigh = []
+                var currentMany = []
+                var currentJobsMeasures = []
+
+                angular.forEach(CpuMeasurementList, function (value, key) {
+                    var data = {}
+                    data.Label = key
+                    data.ClusterStatus = status
+                    data.JobType = "Missing Info"
+                    angular.forEach(value, function (v, k) {
+                        currentHigh.push(v.HighComplexityRunningSanitizations)
+                        currentLow.push(v.LowComplexityRunningSanitizations)
+                        currentMany.push(v.ManyComplexityRunningSanitizations)
+                        cpus.push(v.CpuLoad)
+                        data.JobType
+                    })
+                    currentJobsMeasures.push(currentHigh)
+                    currentJobsMeasures.push(currentMany)
+                    currentJobsMeasures.push(currentLow)
+                    data.currentJobs = currentJobsMeasures
+                    data.cpu = cpus
+
+                    self.ClusterData.push(data)
 
                 })
+                console.log(self.ClusterData)
+
             })
     });
 
@@ -50,10 +71,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
 
 
-    self.GetDynamicChartLabels = function (data) {
-        var length = data.length
-        var LabelArray = new Array(length)
-        return LabelArray
-    };
+   
 
 }]);

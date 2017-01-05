@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/topology/cluster/style.css" />
-<h1>cluster</h1>
-<json-formatter json="ctrl.data"></json-formatter>
-<json-formatter json="ctrl.ClusterData"></json-formatter>
+
+<h2 id="page-title">Cluster</h2>
+
 <div layout="row" layout-margin flex="100" layout-align="center center">
     <h3>Time Frame</h3>
     <md-input-container>
@@ -21,28 +21,26 @@
         <th>Current Running Jobs</th>
         <th>Jobs Type</th>
         <th>CPU Load</th>
-        <th>Disk Space</th>
     </thead>
     <tbody>
-        <tr class="cluster-row" ng-repeat="(key, value) in ctrl.ClusterData">
-            <td> {{key}} </td>
-            <td ngclass="{'online': value.ClusterStatus.toLowerCase().includes('online'), 'offline': value.ClusterStatus.toLowerCase().includes('offline')}">
-                {{value}}
+        <tr class="cluster-row" ng-repeat="cluster in ctrl.ClusterData">
+            <td> {{cluster.Label}} </td>
+            <td ng-class="{'online': cluster.ClusterStatus.toLowerCase() === 'connected', 'offline': cluster.ClusterStatus.toLowerCase() === 'Disconnected'}">
+                {{cluster.ClusterStatus}}
             </td>
-            <td ng-init="GraphArray = [server.CurrentRunningJobs.History.length]">
-                <div id="chart">
-                    <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray" chart-series="['serie A']">
-                    </canvas>
-                </div>
-            </td>
-            <td>{{server.JobType}}</td>
             <td>
                 <div id="chart">
-                    <canvas id="line" class="chart chart-line" chart-data="server.CurrentRunningJobs.History" chart-labels="GraphArray" chart-series="['serie A']">
+                    <canvas id="line" class="chart chart-line" chart-data="cluster.currentJobs" chart-labels="['Time']" chart-series="['High Complexity', 'Many Complexity', 'Low Complexity']">
                     </canvas>
                 </div>
             </td>
-            <td>{{server.DiskSpace}} GB</td>
+            <td>{{cluster.JobType}}</td>
+            <td>
+                <div id="chart">
+                    <canvas id="line" class="chart chart-line" chart-data="cluster.cpu" chart-labels="['Time']" chart-series="['serie A']">
+                    </canvas>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>

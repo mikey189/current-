@@ -148,11 +148,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/topology/cluster/cluster.tmpl.html',
         controller: 'cluster',
         controllerAs: 'ctrl',
-        displayName: "Cluster Management"
+        displayName: "Cluster Management",
+        classSelector: "cluster"
 
     })
     .state('app.agentManagement', {
-        url: '/clusterManagement',
+        url: '/agentManagement',
         templateUrl: 'app/topology/agent/agent.tmpl.html',
         controller: 'agent',
         controllerAs: 'ctrl',
