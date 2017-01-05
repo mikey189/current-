@@ -1,6 +1,6 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "policyUsers", "$state", "$http", "$mdDialog",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  "$state", "$http", "$mdDialog",
 
-    function ($scope, $mdSidenav, policyData, channelData, policyUsers, $state, $http, $mdDialog) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog) {
 
         var self = this;
 

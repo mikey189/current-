@@ -1,16 +1,14 @@
 <md-sidenav layout-padding md-component-id='policySidenav' id='policySidenav' md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left"
     md-whiteframe="6">
     <link rel="stylesheet" href="app/policy/templates/policySideNav/style.css" />
-    <div layout='row' layout-align='start center' id="policySidenavTop">
-        <h4 flex='66' class='white'><strong>Available Policies</strong></h4>
-        <div flex='33' layout='row'>
-            <md-button class='fullWidthButton' init-new-policy-modal>
-                <md-tooltip md-direction="bottom">add</md-tooltip>
-                <md-icon class='material-icons greenIcon'>add</md-icon>
+    <div layout='row' layout-align='space-between center' id="policySidenavTop">
+        <h4 flex='50' class='white'><strong>Available Policies</strong></h4>
+        <div flex layout='row'>
+            <md-button id="new-channel-button" init-new-policy-modal md-whiteframe="4">
+                ADD CHANNEL
             </md-button>
-            <md-button class='fullWidthButton' edit-policy-sidenav>
-                <md-tooltip md-direction="bottom">Click here to rename, delete or reorder policies</md-tooltip>
-                <md-icon ng-click='showSearchBar()' class='material-icons greenIcon'>format_line_spacing</md-icon>
+            <md-button class="md-icon-button" ng-click="ctrl.sidenav_edit_mode =! ctrl.sidenav_edit_mode">
+                <md-icon style="color: white">edit</md-icon>
             </md-button>
         </div>
     </div>
@@ -23,8 +21,8 @@
                 <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.sidenav_edit_mode">
                     <md-icon flex class="pinkIcon material-icons">close</md-icon>
                 </md-button>
-                <md-button class="fullWidthButton noMarginTop" ng-show="!ctrl.sidenav_edit_mode" toggle-editable-mode>
-                    <md-icon class="material-icons editPolicyName greenIcon">edit</md-icon>
+                <md-button class="fullWidthButton noMarginTop" ng-show="ctrl.sidenav_edit_mode" toggle-editable-mode>
+                    <md-icon class="material-icons editPolicyName greenIcon">title</md-icon>
                 </md-button>
             </div>
             <div layout="row" layout-align="space-between start">

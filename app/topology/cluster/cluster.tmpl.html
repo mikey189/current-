@@ -1,11 +1,13 @@
+<link rel="stylesheet" href="app/topology/cluster/style.css" />
 <h1>cluster</h1>
+<json-formatter json="ctrl.data"></json-formatter>
 <json-formatter json="ctrl.ClusterData"></json-formatter>
 <div layout="row" layout-margin flex="100" layout-align="center center">
     <h3>Time Frame</h3>
     <md-input-container>
         <md-select ng-model='ctrl.selectedTime' placeholder="5 Minutes Ago" id="time-picker">
-            <md-option><small>5 Minutes</small></md-option>
-            <md-option selected><small>30 Minutes</small></md-option>
+            <md-option selected><small>5 Minutes</small></md-option>
+            <md-option ><small>30 Minutes</small></md-option>
             <md-option><small>1 Hour</small></md-option>
             <md-option><small>90 Minutes</small></md-option>
             <md-option><small>2 Hours</small></md-option>
@@ -22,10 +24,10 @@
         <th>Disk Space</th>
     </thead>
     <tbody>
-        <tr class="cluster-row" ng-repeat="server in ctrl.DemoData">
-            <td>{{server.ServerName}}</td>
-            <td ng-class="{'online': server.Status.toLowerCase().includes('online'), 'offline': server.Status.toLowerCase().includes('offline')}">
-                {{server.Status}}
+        <tr class="cluster-row" ng-repeat="(key, value) in ctrl.ClusterData">
+            <td> {{key}} </td>
+            <td ngclass="{'online': value.ClusterStatus.toLowerCase().includes('online'), 'offline': value.ClusterStatus.toLowerCase().includes('offline')}">
+                {{value}}
             </td>
             <td ng-init="GraphArray = [server.CurrentRunningJobs.History.length]">
                 <div id="chart">
@@ -44,46 +46,3 @@
         </tr>
     </tbody>
 </table>
-<style>
-    .cluster-table {
-        background-color: white;
-    }
-    
-    .cluster-row {
-        border-bottom: solid 1px #EEE;
-    }
-    
-    .cluster-row:last-child {
-        border-bottom: solid 0px white;
-    }
-    
-    .online {
-        color: #4CAF50;
-        font-weight: 700 !important;
-    }
-    
-    .offline {
-        color: #D32F2F;
-        font-weight: 700 !important;
-    }
-    
-    .graph-holder {
-        border-radius: 5px;
-    }
-    
-    #running-jobs-graph {
-        height: 10
-    }
-    
-    #chart {
-        height: 90%;
-        width: 100%;
-        padding-right: 0px !important;
-        margin-right: 0px !important;
-    }
-    
-    #time-picker {
-        border-radius: 3px !important;
-        background-color: white !important;
-    }
-</style>

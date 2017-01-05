@@ -38,18 +38,14 @@ app.factory("groupList", function ($http) {
 app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
-    //general
+
     var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
-    var url = "http://localhost:3000/channels";
-    var inputURL = "http://localhost:3000/inputList";
-    var input_output_list = "http://localhost:3000/input_output_list";
-    var dashboard = "http://localhost:3000/dashboard";
-    var relayList = "http://localhost:3000/relayList";
+    
+    var input_output_list = "http://" + sname + ":4580/api/jsonserver/input_output_list";
+
     var computerList = "http://" + sname + ":4580/api/users/getadmachines";
-    var channelsIconsURL = "http://localhost:3000/channelsIcons";
+    var channelsIconsURL = "http://" + sname + ":4580/api/jsonserver/channelsIcons";
     var channelList = "http://" + sname + ":4580/api/channels/getallchannels/"
-        //var channelList = "http://localhost:3000/channelList";
     var channelListReal = "http://" + sname + ":4580/api/channels/getALLCHANNELS";
     var channelDashboard = "http://" + sname + ":4580/api/channels/getchanneldashboard/";
     var postChannel = "http://" + sname + ":4580/api/Channels/PostChannel";
@@ -61,14 +57,6 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
     var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
 
-    var channel_groups = "http://localhost:3000/channel_groups"
-    var current_channel_groups = "http://localhost:3000/current_channel_groups"
-    var all_ips = "http://localhost:3000/all_ips"
-    var current_ips = "http://localhost:3000/current_ips"
-    var all_users = "http://localhost:3000/all_users"
-    var current_users = "http://localhost:3000/current_users"
-    var all_computers = "http://localhost:3000/all_computers"
-    var current_computers = "http://localhost:3000/current_computers"
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
@@ -247,7 +235,6 @@ app.factory("policyData", function ($rootScope, $http) {
 
 
     var sname = localStorage.getItem("serverName");
-    // var sname = serverName == null ? "jdev01": sname
 
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var new_policy_creation = "http://" + sname + ":4580/api/policy/postPolicy";
@@ -256,15 +243,12 @@ app.factory("policyData", function ($rootScope, $http) {
     //"http://localhost:3000/policyOrder"
     var deletePolicy = "http://" + sname + ":4580/api/policy/deletepolicy";
     var policySidenav = "http://" + sname + ":4580/api/policy/GetPoliciesSideNav"
-    var topFiles = "http://localhost:3000/PDTopFiles";
-    var topUsers = "http://localhost:3000/PDTopUsers";
-    var policyDefinition = "http://localhost:3000/policyDefinition";
-    var fileExtensionsDescription = "http://localhost:3000/policyDescriptionToolip";
+   
     var policyDashboard = "http://" + sname + ":4580/api/policy/GetPolicyDashboardInfo/";
     var filetype = "http://" + sname + ":4580/api/general/filetypes";
     var postFiletype = "http://" + sname + ":4580/api/policy/PostPolicyFileTypes/";
-    var fireEye_servers = "http://localhost:3000/fireEye_servers"
-    var cukoo_servers = "http://localhost:3000/cukoo_servers"
+    var fireEye_servers = "http://" + sname + ":4580/api/jsonserver/fireEye_servers"
+    var cukoo_servers = "http://" + sname + ":4580/api/jsonserver/cukoo_servers"
     var policyChannels = "http://" + sname + ":4580/api/policy/GetPolicyChannels/"
     var update_current_channels = "http://" + sname + ":4580/api/policy/PostUpdatePolicyChannels/"
     var update_groups = "http://" + sname + ":4580/api/policy/PostPolicyUsersAndGroups/"
@@ -272,8 +256,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_name = "http://" + sname + ":4580/api/policy/updatepolicyname?"
     var policy_detection = "http://" + sname + ":4580/api/policy/PostPolicyFileDetection/"
     var policy_info = "http://" + sname + ":4580/api/policy/getpolicy/"
-    var computers_list = "http://localhost:3000/userComputers"
-    var policy_computers = "http://localhost:3000/policy_computers"
+
     var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
     var cdrFacetsTemplate = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
@@ -462,75 +445,31 @@ app.factory("policyData", function ($rootScope, $http) {
 })
 
 app.factory("dashboardData", function ($http) {
-    var inputURL = "http://localhost:3000/dashboardInputs";
-    var totalInputURL = "http://localhost:3000/dashboardTotalInputs";
-    var outputURL = "http://localhost:3000/dashboardOutputs";
-    var casesSidebar = "http://localhost:3000/dashboardSidebar";
 
-    return {
-        getInput: function () {
-            return $http.get(inputURL)
-        },
-        getTotalInput: function () {
-            return $http.get(totalInputURL)
-        },
-        getOutput: function () {
-            return $http.get(outputURL)
-        },
-        getCasesSidebar: function () {
-            return $http.get(casesSidebar)
+        var sname = localStorage.getItem("serverName");
+
+
+        var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
+        var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
+        var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
+        var casesSidebar = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardSidebar";
+
+        return {
+            getInput: function () {
+                return $http.get(inputURL)
+            },
+            getTotalInput: function () {
+                return $http.get(totalInputURL)
+            },
+            getOutput: function () {
+                return $http.get(outputURL)
+            },
+            getCasesSidebar: function () {
+                return $http.get(casesSidebar)
+            }
         }
-    }
-})
-app.factory("users", function ($http) {
-    var url = "http://localhost:3000/activeUsers";
-    return {
-        getUsers: function () {
-            return $http.get(url).then(function (answer) {
-                return answer.data;
-            })
-        }
-    }
-})
-
-app.factory("policyUsers", function ($http) {
-    var url = "http://localhost:3000/policyUsers";
-    return {
-        getData: function () {
-            return $http.get(url)
-        }
-    }
-})
-
-app.factory("filetype", function ($http) {
-    var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
-
-    var url = "http://" + sname + ":4580/api/general/filetypes";
-    var topFileType = "http://localhost:3000/topFileType";
-    return {
-        getData: function () {
-            return $http.get(url)
-        },
-        getTopFileType: function () {
-            return $http.get(topFileType)
-        }
-    }
-})
-
-app.factory("policyChannels", function ($http) {
-
-    var usedPolicies = "http://localhost:3000/usedChannels";
-    var availableChannels = "http://localhost:3000/availableChannels";
-
-    return {
-        getAvailablechannels: function () {
-            return $http.get(availableChannels)
-        }
-    }
-
-})
-
+    })
+   
 app.factory("C2CData", function () {
     var savedData = {}
 
@@ -550,7 +489,8 @@ app.factory("C2CData", function () {
 });
 
 app.factory("reports_factory", function ($http) {
-    var menu = "http://localhost:3000/reports_menu"
+    var sname = localStorage.getItem("serverName");
+    var menu = "http://" + sname + ":4580/api/jsonserver/reports?q=reports_menu"
     return {
         get_menu: function () {
             return $http.get(menu)
@@ -564,7 +504,7 @@ app.factory("sanitization_factory", function ($http) {
     //var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/report/GetSanitizations?"
-    var filter_field = "http://localhost:3000/sanitization_filter_fields"
+    var filter_field = "http://" + sname + ":4580/api/jsonserver/sanitizations?q=sanitization_filter_fields"
     var details = "http://" + sname + ":4580/api/report/GetSanitizationInformation/"
 
 
@@ -593,7 +533,6 @@ app.factory("sanitization_factory", function ($http) {
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
     var propertiesPostList = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
@@ -617,7 +556,6 @@ app.factory("system_properties", function ($http) {
 
 app.factory("telerik_reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
-    // var sname = serverName == null ? "jdev01": sname
 
     var reportsList = "http://" + sname + ":4580/api/report/GetAvailableReports";
 
@@ -631,7 +569,6 @@ app.factory("telerik_reports_factory", function ($http) {
 app.factory("system_events_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var base_url = "http://" + sname + ":4580/api/Report/GetSystemNotifications?"
     return {
@@ -651,7 +588,6 @@ app.factory("system_events_factory", function ($http) {
 app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs?"
     return {
@@ -668,9 +604,8 @@ app.factory("jobs_factory", function ($http) {
 app.factory("emails_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
-    var base_url = "http://" + sname + "/api/report/GetEmailSanitizations"
+    var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations"
     return {
         get_emails: function (index, size, order) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
@@ -680,7 +615,6 @@ app.factory("emails_factory", function ($http) {
 
 app.factory("notification_types", function ($http) {
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/general/GetNotificationTypes"
     return {
@@ -692,7 +626,6 @@ app.factory("notification_types", function ($http) {
 
 app.factory("computer_list", function ($http) {
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/users/getadmachines"
     return {
@@ -704,7 +637,6 @@ app.factory("computer_list", function ($http) {
 
 app.factory("active_users", function ($http) {
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/users/getadusers"
     return {
@@ -716,7 +648,6 @@ app.factory("active_users", function ($http) {
 
 app.factory("active_agents", function ($http) {
     var sname = localStorage.getItem("serverName");
-    // var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/Deployment/GetDeployments"
     return {
@@ -728,7 +659,6 @@ app.factory("active_agents", function ($http) {
 
 app.factory("sanitization_status", function ($http) {
     var sname = localStorage.getItem("serverName");
-    //   var sname = serverName == null ? "jdev01": sname
 
     var url = "http://" + sname + ":4580/api/general/GetSanitizationStatusesList"
     return {
@@ -742,16 +672,12 @@ app.factory("$cluster", function ($http) {
     var sname = localStorage.getItem("serverName");
 
     var ClusterData = "http://" + sname + ":4580/api/Cluster/GetClusterTopology?";
-    var DemoData = "  http://localhost:3000/Cluster"
 
     return {
         GetClusterData: function (StartTime, EndTime) {
             //we use post to get the data beause it takes a long time
             return $http.get(ClusterData + "sdate=" + StartTime + "&edate=" + EndTime)
 
-        },
-        GetDemoData: function () {
-            return $http.get(DemoData)
         }
     }
 })

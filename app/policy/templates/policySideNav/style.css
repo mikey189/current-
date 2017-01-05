@@ -116,3 +116,9 @@
 .selectedPolicy {
     background-color: #3A389D;
 }
+
+#new-channel-button{
+    background-color: #2196F3;
+    font-weight: 700;
+    color: white;
+}

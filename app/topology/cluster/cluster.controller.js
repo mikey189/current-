@@ -5,11 +5,13 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
     self.EndDate = Math.floor(Date.now() / 60000);
     self.StartDate = self.EndDate - 5;
     //watching any change in StartDate and EndDate and then trigger $cluster call
+
     $scope.$watch(angular.bind(this, function () {
         return this.selectedTime;
     }), function (NewValue) {
+        self.data = {}
         switch (NewValue) {
-            
+
             case "5 Minutes":
                 self.StartDate = self.EndDate - 5
                 break;
@@ -26,20 +28,28 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                 self.StartDate = self.EndDate - 120
                 break;
         }
-        console.log(self.StartDate)
-           $cluster.GetClusterData(self.StartDate, self.EndDate)
-        .then(function (answer) {
-            self.ClusterData = answer.data
-        })
+
+        $cluster.GetClusterData(self.StartDate, self.EndDate)
+            .then(function (answer) {
+                self.ClusterData = answer.data.CpuMeasurementList
+                self.data = {}
+
+                var cpus = []
+                var currentLow = []
+                var currentHight = []
+                var currentMedium = []
+                angular.forEach(self.ClusterData, function (value, key) {
+                    console.log(key)
+                    self.data[key]= key
+
+                })
+            })
     });
 
 
-    
- 
-    $cluster.GetDemoData()
-        .then(function (answer) {
-            self.DemoData = answer.data
-        })
+
+
+
     self.GetDynamicChartLabels = function (data) {
         var length = data.length
         var LabelArray = new Array(length)
