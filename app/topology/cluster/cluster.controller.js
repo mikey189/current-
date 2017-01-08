@@ -40,7 +40,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                 var currentHigh = []
                 var currentMany = []
                 var currentJobsMeasures = []
-
                 angular.forEach(CpuMeasurementList, function (value, key) {
                     var data = {}
                     data.Label = key

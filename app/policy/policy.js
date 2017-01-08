@@ -4,8 +4,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
 
         var self = this;
 
-        self.sidenav_edit_mode = false;
 
+        self.sidenav_edit_mode = false;
+        self.test = "valie"
         self.show_success_dialog = function (message) {
             $mdDialog.show(
                 $mdDialog.alert()

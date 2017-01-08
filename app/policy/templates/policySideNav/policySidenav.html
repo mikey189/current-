@@ -14,14 +14,14 @@
     </div>
     <input class="searchPolicies" placeholder="search policies" ng-model="PolicyName" />
     <md-list layout-padding id="policyListHolder">
-        <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName" policy-id={{policy.PolicyId}} layout-padding class="policyItem"
+        <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName track by $index" policy-id={{policy.PolicyId}} layout-padding class="policyItem"
             policy-list-hover layout="column" layout-align="center start" initiate-api-call-with-id ng-class="{'selectedPolicy': ctrl.policyId === policy.PolicyId}">
-            <div layout="row" layout-align="space-between start" style="width: 100%">
-                <p contenteditable="{{ctrl.isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>
+            <div layout="row" layout-align="space-between start" style="width: 100%" ng-init="policy[$index].isEditable = false">
+                <p contenteditable="{{policy[$index].isEditable}}" flex="95" class="md-subhead white bold policyName">{{policy.PolicyName}}</p>
                 <md-button class="fullWidthButton noMarginTop" delete-policy ng-show="ctrl.sidenav_edit_mode">
                     <md-icon flex class="pinkIcon material-icons">close</md-icon>
                 </md-button>
-                <md-button class="fullWidthButton noMarginTop" ng-show="ctrl.sidenav_edit_mode" toggle-editable-mode>
+                <md-button class="fullWidthButton noMarginTop" ng-show="ctrl.sidenav_edit_mode" rename-policy index = "{{policy[$index].isEditable}}">
                     <md-icon class="material-icons editPolicyName greenIcon">title</md-icon>
                 </md-button>
             </div>

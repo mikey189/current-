@@ -1,5 +1,3 @@
-
-
 app.directive("policyListHover", function () {
     return {
         restrict: "A",
@@ -52,31 +50,29 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         }
     }
 })
-
-app.directive("toggleEditableMode", function (policyData) {
+app.directive("renamePolicy", function () {
     return {
         restrict: "A",
+
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                var icon = $(this).find("md-icon")
-                var policyName = $(this).siblings(".policyName")
-
-                if (!scope.ctrl.isEditable) {
-                    icon.html("done");
-                    policyName.addClass("policy-name-edit")
-                    scope.ctrl.isEditable = true;
+                var self = $(this)
+                var index = self.attr("index")
+                console.log(index)
+                if (index = false) {
+                    index = true;
+                    console.log(index)
                 } else {
-                    var policyName_value = policyName.html()
-                    icon.html("edit");
-                    policyName.removeClass("policy-name-edit")
-                    policyData.update_policy_name(scope.ctrl.policyId, policyName_value)
-                    scope.ctrl.isEditable = false;
+                    index = false;
+                    console.log(index)
                 }
             })
-
         }
     }
 })
+
+
+
 
 app.directive("toggleNewPolicyEditableMode", function () {
     return {
@@ -136,14 +132,14 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
     }
 }])
 
-app.directive("editPolicySidenav", function(){
-    return{
+app.directive("editPolicySidenav", function () {
+    return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            element.bind("click", function(){
-                if (!scope.ctrl.sidenav_edit_mode){
+        link: function (scope, element, attrs) {
+            element.bind("click", function () {
+                if (!scope.ctrl.sidenav_edit_mode) {
                     scope.ctrl.sidenav_edit_mode = true
-                }else{
+                } else {
                     scope.ctrl.sidenav_edit_mode = false
                 }
             })

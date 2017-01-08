@@ -20,7 +20,6 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                     var facets = []
                     var L1object = {}
 
-                    var L1object = {}
                     angular.forEach(scope.ctrl.ChannelFacets, function (L1Value, L1Key) {
 
                         

@@ -528,14 +528,14 @@ app.factory("system_properties", function ($http) {
     var sname = localStorage.getItem("serverName");
 
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
-    var propertiesPostList = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
+    var UpdateSettings = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
     return {
-        post_properties: function (props) {
+        UpdateSettings: function (props) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                url: propertiesPostList,
+                url: UpdateSettings,
                 method: "POST",
                 data: props
             });

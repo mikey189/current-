@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
-<p> cdr facets</p>
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">

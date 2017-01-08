@@ -1,4 +1,4 @@
-app.controller('settings', function (system_properties, $scope) {
+app.controller('settings', function (system_properties, $scope, $mdDialog) {
 
   var self = this;
 
@@ -8,11 +8,27 @@ app.controller('settings', function (system_properties, $scope) {
 
   });
 
-  self.save_properties = function () {
-    system_properties.post_properties(self.allProps).success(function (answer) {
+  self.SaveSettings = function () {
+    system_properties.UpdateSettings(self.allProps).success(function (answer) {
       self.allProps = answer;
+      $mdDialog.show(
+        $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('success')
+        .textContent('Settings were successfully updated')
+        .ariaLabel('Alert Dialog Demo')
+        .ok('OKAY!')
+      );
     }).error(function (err) {
-      alert("There was an error loading this page : " + error.data.Message);
+      $mdDialog.show(
+        $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Error')
+        .textContent('Settings could not be updated : ' + error.data.Message)
+        .ariaLabel('Alert Dialog Demo')
+        .ok('OK!')
+      );
+
     })
   }
   self.sortType = function (propType) {
@@ -48,7 +64,7 @@ app.directive("formatter", function ($timeout) {
       var el = element
       ngModel.$formatters.push(function (value) {
         var parsed = parseInt(value.replace(/\D/g, ''));
-        if(ngModel.$$rawModelValue.match(/[a-z]/i)){
+        if (ngModel.$$rawModelValue.match(/[a-z]/i)) {
           var str = value.match(/[0-9]/)
         }
         return parsed
