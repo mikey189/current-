@@ -50,6 +50,7 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         }
     }
 })
+
 app.directive("renamePolicy", function () {
     return {
         restrict: "A",
@@ -57,14 +58,17 @@ app.directive("renamePolicy", function () {
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this)
-                var index = self.attr("index")
-                console.log(index)
+                var index = Boolean(self.attr("index"))
+                var PolicyName = self.siblings(".policyName")
+                var PolicyId = self.attr("policy-id")
                 if (index = false) {
                     index = true;
-                    console.log(index)
+                    PolicyName.addClass("name-in-edition")
                 } else {
+                    PolicyName.removeClass("name-in-edition")
                     index = false;
                     console.log(index)
+
                 }
             })
         }

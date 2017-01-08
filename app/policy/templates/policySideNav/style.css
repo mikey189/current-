@@ -122,3 +122,7 @@
     font-weight: 700;
     color: white;
 }
+
+.name-in-edition{
+    border-bottom : solid 2px #E040FB!important;
+}

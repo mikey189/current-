@@ -18,13 +18,19 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($rootScope, $state) {
+app.directive("logout", function ($rootScope, $state, ipCookie) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
+    var sname = localStorage.getItem("serverName");
       element.click(function () {
-        localStorage.clear()
-        $state.go("login")
+        ipCookie.remove(sname);
+
+       
+        $state.go("login", {}, {
+          reload: true
+        })
+        
       })
     }
   }
@@ -41,4 +47,3 @@ app.directive("refresh", function ($state) {
     }
   }
 })
-

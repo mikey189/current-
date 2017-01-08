@@ -14,6 +14,12 @@
         </md-select>
     </md-input-container>
 </div>
+<div flex="30" class="legend" md-whiteframe="4" layout="row">
+        <div class="high" flex="33"> High Complexity</div>
+        <div class="many" flex="33"> Many Complexity</div>
+        <div class="low" flex="33"> Low Complexity</div>
+</div>
+
 <table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6">
     <thead>
         <th>Server Name</th>
@@ -30,7 +36,7 @@
             </td>
             <td>
                 <div id="chart">
-                    <canvas id="line" class="chart chart-line" chart-data="cluster.currentJobs" chart-labels="['Time']" chart-series="['High Complexity', 'Many Complexity', 'Low Complexity']">
+                    <canvas id="line" class="chart chart-line" chart-data="cluster.currentJobs" chart-labels="ctrl.GetDynamicLabels(cluster.currentJobs)" chart-series="['High Complexity', 'Many Complexity', 'Low Complexity']">
                     </canvas>
                 </div>
             </td>

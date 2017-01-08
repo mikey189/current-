@@ -31,7 +31,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
         $cluster.GetClusterData(self.StartDate, self.EndDate)
             .then(function (answer) {
-                console.log(answer.data)
                 var status = answer.data.ClusterStatusInfo.Status
                 var CpuMeasurementList = answer.data.CpuMeasurementList
                 self.ClusterData = []
@@ -61,10 +60,13 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                     self.ClusterData.push(data)
 
                 })
-                console.log(self.ClusterData)
 
             })
     });
    
-
+    self.GetDynamicLabels = function(data){
+        var arr = new Array(data.length)
+        console.log(arr)
+        return arr
+    }
 }]);
