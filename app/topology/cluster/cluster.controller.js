@@ -66,11 +66,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
             })
     });
-
-
-
-
-
    
 
 }]);
