@@ -1,5 +1,28 @@
- 
-channel Management: 
-  reorder channel order -> post not working (see alert message)
-  updateChanneName: does the post but then the data that is returned when clicking on one of the item is not updated (maor)
+Dashboard
 
+
+
+
+
+New channel -> not working (bad request) when channel type is kiosk || dirwatcher
+
+SMB and ISMB -> no edit button should be editable by default
+
+New channel -> already has informations inside why? (new smb)
+
+angular.forEach needed before sending info to server in who is using  (policy using this channel)
+
+reformat properly info (extra | causes lots of bugs)
+
+
+Rename Policy
+
+
+
+Maor
+
+Need to get real data from server
+Cluster -> Job types -> Missing
+Policy -> filetypes -> invert to facets
+Reports -> Scanner Status -> missing data
+Reorder channel Priority -> error on POST

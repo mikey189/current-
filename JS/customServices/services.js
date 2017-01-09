@@ -1,5 +1,6 @@
 
 
+
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
     var sname = localStorage.getItem("serverName");
@@ -40,6 +41,7 @@ app.factory("groupList", function ($http) {
 app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
     
@@ -208,6 +210,7 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         whoIsUsing: function () {
+            console.log(sname)
             return $http.get(whoIsUsing)
         },
         updateWhoIsUsing: function (id, data) {
@@ -230,6 +233,7 @@ app.factory("policyData", function ($rootScope, $http) {
 
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var new_policy_creation = "http://" + sname + ":4580/api/policy/postPolicy";
@@ -443,6 +447,7 @@ app.factory("dashboardData", function ($http) {
 
         var sname = localStorage.getItem("serverName");
 
+    console.log(sname)
 
         var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
         var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
@@ -485,6 +490,8 @@ app.factory("C2CData", function () {
 
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
+        console.log(sname)
+
     var menu = "http://" + sname + ":4580/api/jsonserver/reports?q=reports_menu"
     return {
         get_menu: function () {
@@ -496,7 +503,7 @@ app.factory("reports_factory", function ($http) {
 app.factory("sanitization_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-    //var sname = serverName == null ? "jdev01": sname
+    console.log(sname)
 
     var url = "http://" + sname + ":4580/api/report/GetSanitizations?"
     var filter_field = "http://" + sname + ":4580/api/jsonserver/sanitizations?q=sanitization_filter_fields"
@@ -528,6 +535,7 @@ app.factory("sanitization_factory", function ($http) {
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
     var UpdateSettings = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
@@ -564,6 +572,7 @@ app.factory("telerik_reports_factory", function ($http) {
 app.factory("system_events_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var base_url = "http://" + sname + ":4580/api/Report/GetSystemNotifications?"
     return {
@@ -583,6 +592,7 @@ app.factory("system_events_factory", function ($http) {
 app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs?"
     return {
@@ -599,6 +609,7 @@ app.factory("jobs_factory", function ($http) {
 app.factory("emails_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations"
     return {
@@ -610,6 +621,7 @@ app.factory("emails_factory", function ($http) {
 
 app.factory("notification_types", function ($http) {
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var url = "http://" + sname + ":4580/api/general/GetNotificationTypes"
     return {
@@ -621,6 +633,7 @@ app.factory("notification_types", function ($http) {
 
 app.factory("computer_list", function ($http) {
     var sname = localStorage.getItem("serverName");
+    console.log(sname)
 
     var url = "http://" + sname + ":4580/api/users/getadmachines"
     return {
@@ -664,7 +677,9 @@ app.factory("sanitization_status", function ($http) {
 })
 
 app.factory("$cluster", function ($http) {
-    var sname = localStorage.getItem("serverName");
+
+    var sname = localStorage.getItem("serverName")
+    console.log(sname)
 
     var ClusterData = "http://" + sname + ":4580/api/Cluster/GetClusterTopology?";
 

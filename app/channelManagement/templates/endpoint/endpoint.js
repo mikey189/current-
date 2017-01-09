@@ -5,7 +5,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     //setting default id for the channel
     //set via directive
 
-
     /*-------------------- Sidebar ----------------------*/
 
 
@@ -33,32 +32,33 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     /*--------------------  Channel Input and Output --------------------*/
 
-
     //setting up initial array to store smbs objects
     self.ismbList = []
     self.osmbList = []
 
-    //watching for any change in channel id
-    $scope.$watch(angular.bind(this, function () {
-        return this.rootId;
-    }), function (newVal) {
+    //this function is called everytime channel ID changes or after channel creation
+
+    self.UpdateChannelData = function (newVal) {
         channelData.get_channel(newVal).then(function (answer) {
+
             self.channel_data = answer.data
-            self.channelInfo = answer.data.ChannelInfo
+
+            self.channelInfo = answer.data.ChannelInfo 
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
-            self.InputConfiguration = self.channelInfo.InputConfiguration
-            self.ismbList = self.InputConfiguration.IoSmbConfiguration
-            self.OutputConfiguration = self.channelInfo.OutputConfiguration
-            self.osmbList = self.OutputConfiguration.IoSmbConfiguration
-            self.ChannelFacets = self.channel_data.ChannelFacets || {
+            self.InputConfiguration =  self.channelInfo.InputConfiguration ? self.channelInfo.InputConfiguration :  {}
+            self.ismbList = (typeof (self.InputConfiguration.IoSmbConfiguration == null) ) ?  {} : self.InputConfiguration.IoSmbConfiguration 
+            self.OutputConfiguration = (typeof (self.channelInfo.OutputConfiguration == null )) ?    {} : self.channelInfo.OutputConfiguration
+            console.log(self.OutputConfiguration)
+            self.osmbList = (typeof (self.OutputConfiguration.IoSmbConfiguration == null)) ?   {} : self.OutputConfiguration.IoSmbConfiguration
+            self.ChannelFacets = ((typeof self.channel_data.ChannelFacets == null)) ?    {
                 "Channel Usage Settings": {
                     "Values": {}
                 }
-            }
-
+            } : self.channel_data.ChannelFacets
             channelData.whoIsUsing().then(function (answer) {
                 self.whoData = answer.data
+                console.log(self.whoData)
                 angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
                         if (self.ChannelFacets['Channel Usage Settings'].Values[key] == null || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
                             var arr = [];
@@ -70,12 +70,20 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
                             self.ChannelFacets['Channel Usage Settings'].Values[key] = self.ChannelFacets['Channel Usage Settings'].Values[key].split("|")
                         }
                     }
-                    /* */
+
                 )
             })
 
 
         })
+    }
+
+    //watching for any change in channel id
+
+    $scope.$watch(angular.bind(this, function () {
+        return this.rootId;
+    }), function (newValue) {
+        self.UpdateChannelData(newValue)
     });
     //default view for dashboard is blocked
     self.isBlocked = true;
@@ -83,9 +91,9 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         self.channelDashboard = answer1.data
     })
 
-   /* topCases.getTopCases().then(function (answer) {
-        self.topCases = answer.data
-    })*/
+    /* topCases.getTopCases().then(function (answer) {
+         self.topCases = answer.data
+     })*/
     self.label = ["Medium", "Low", "high"];
 
     self.are_outputs_and_outputs_editable = false;
@@ -122,23 +130,19 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     self.are_settings_editable = false
     self.PolicyFacets = {}
 
-
     /*--------------------  who is using this channel --------------------*/
 
 
-
     self.is_who_screen_editable = false;
+    /*--------------------  New Channel --------------------*/
 
 
-
-
+    self.useAsRelay = false;
+    self.channel = {};
+    channelData.getIcons().then(function (response) {
+        self.channelIcons = response.data
+        self.ncTypeWidth = (100 / self.channelIcons.length);
+    })
+    self.isNextButtonDisabled = true;
 
 }])
-
-
-//to maor 
-
-/* current element need to be of type array instead of object otherwise it make it more complicated and cumbersome
-this is true for all types BUT for policy -> channel association where each channel can only be linked to One single policy, 
-so defaultValue for policy should be one single object {id: int, name: string}
-need special TYPE for IPs as it is functionning is different */

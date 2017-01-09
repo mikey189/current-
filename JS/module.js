@@ -11,13 +11,6 @@
          var sname = localStorage.getItem("serverName");
          httpMethodInterceptorProvider.whitelistDomain(sname);
      }
+     
  ])
 
- $httpProvider.interceptors.push(function($q, $cookies) {
-    return {
-     'request': function(config) {
-          config.headers['Token'] = $cookies.token;
-          return config;
-      }
-    };
-  });

@@ -18,19 +18,19 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($rootScope, $state, ipCookie) {
+app.directive("logout", function ($rootScope, $state) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
-    var sname = localStorage.getItem("serverName");
+      var sname = localStorage.getItem("serverName");
       element.click(function () {
-        ipCookie.remove(sname);
-
-       
-        $state.go("login", {}, {
-          reload: true
-        })
-        
+        localStorage.clear("token")
+        localStorage.clear("serverName")
+          //does not seem to be working, test later on especially for scope in throws injectiion error if throwing "$scope"
+          //$rootScope = $rootScope.$new(true);
+          //scope = scope.$new(true);
+        $state.go("login")
+          //this empties the cache so that when logging out and reloging in we do not use cached data
       })
     }
   }

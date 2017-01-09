@@ -10,17 +10,18 @@ app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
                         "ChannelTypeName": channelType,
                         "Description": scope.ctrl.channelDescription
                     }
-
                 }
                 scope.ctrl.gen_info = channelObject
-                channelData.createChannel(channelObject).then(function (answer) {
-                    scope.ctrl.rootId = answer.data.Id
-                    $state.go("app.channelManagement.endpoint.dashboard")
-                    $timeout(function(){
-                        $state.reload()
-                    }, 700)
-                })
-                scope.$apply()
+                channelData.createChannel(channelObject)
+                    .then(function (answer) {
+                        console.log(answer.data.Id)
+                        scope.ctrl.UpdateChannelData(answer.data.Id)
+                        $state.go("app.channelManagement.endpoint.dashboard")
+                        location.reload(true)
+                    }),
+                    function (error) {
+                        alert("there was an error : " + error.data.Message)
+                    }
             })
         }
     }

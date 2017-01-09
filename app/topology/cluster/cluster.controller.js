@@ -66,7 +66,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
    
     self.GetDynamicLabels = function(data){
         var arr = new Array(data.length)
-        console.log(arr)
         return arr
     }
 }]);
