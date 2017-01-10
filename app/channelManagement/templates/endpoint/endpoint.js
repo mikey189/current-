@@ -39,25 +39,31 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     //this function is called everytime channel ID changes or after channel creation
 
     self.UpdateChannelData = function (newVal) {
-        channelData.get_channel(newVal).then(function (answer) {
-//this code is the source of major issues fix the if/else inline statements 
-            self.channel_data = answer.data
 
+
+        channelData.get_channel(newVal).then(function (answer) {
+            //this code is the source of major issues fix the if/else inline statements 
+            self.channel_data = answer.data
+            var ChannelFacetsIfNull = {
+                "Channel Usage Settings": {
+                    "Values": {}
+                }
+            }
+            console.log(ChannelFacetsIfNull)
             self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
 
-            self.InputConfiguration = (self.channelInfo.InputConfiguration === null ) ?  new Object() : self.channelInfo.InputConfiguration  
-            //Object.keys(self.channelInfo.InputConfiguration).length === 0
-            self.ismbList = (self.InputConfiguration.IoSmbConfiguration === null ) ? [] : self.InputConfiguration.IoSmbConfiguration 
-            self.OutputConfiguration = (self.channelInfo.OutputConfiguration === null ) ? {} : self.channelInfo.OutputConfiguration
+            self.InputConfiguration = (self.channelInfo.InputConfiguration === null) ? new Object() : self.channelInfo.InputConfiguration
+                //Object.keys(self.channelInfo.InputConfiguration).length === 0
+            self.ismbList = (self.InputConfiguration.IoSmbConfiguration === null) ? [] : self.InputConfiguration.IoSmbConfiguration
+            self.OutputConfiguration = (self.channelInfo.OutputConfiguration === null) ? {} : self.channelInfo.OutputConfiguration
             self.osmbList = (self.OutputConfiguration.IoSmbConfiguration === null) ? [] : self.OutputConfiguration.IoSmbConfiguration
-            self.ChannelFacets =  (self.channel_data.ChannelFacets === null) ?  {
-                "Channel Usage Settings": {
-                    "Values": {}
-                }
-            } : self.channel_data.ChannelFacets 
-        
+            self.ChannelFacets = (Object.keys(self.channel_data.ChannelFacets === 0)) ? ChannelFacetsIfNull : self.channel_data.ChannelFacets
+
+            console.log(self.ChannelFacets)
+
+
             channelData.whoIsUsing().then(function (answer) {
                 self.whoData = answer.data
                 angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {

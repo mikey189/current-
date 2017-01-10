@@ -16,6 +16,8 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
             element.click(function () {
                 window.localStorage.clear()
                 var serverName = document.getElementById("ServerName").value
+                var username = $("#username")
+                var password = $("#password")
                 console.log(serverName)
                 authService.checkLogin(scope.ctrl.serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
                     var token = "Bearer " + answer.data.AccessToken
