@@ -40,25 +40,26 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     self.UpdateChannelData = function (newVal) {
         channelData.get_channel(newVal).then(function (answer) {
-
+//this code is the source of major issues fix the if/else inline statements 
             self.channel_data = answer.data
 
-            self.channelInfo = answer.data.ChannelInfo 
+            self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
-            self.InputConfiguration =  self.channelInfo.InputConfiguration ? self.channelInfo.InputConfiguration :  {}
-            self.ismbList = (typeof (self.InputConfiguration.IoSmbConfiguration == null) ) ?  {} : self.InputConfiguration.IoSmbConfiguration 
-            self.OutputConfiguration = (typeof (self.channelInfo.OutputConfiguration == null )) ?    {} : self.channelInfo.OutputConfiguration
-            console.log(self.OutputConfiguration)
-            self.osmbList = (typeof (self.OutputConfiguration.IoSmbConfiguration == null)) ?   {} : self.OutputConfiguration.IoSmbConfiguration
-            self.ChannelFacets = ((typeof self.channel_data.ChannelFacets == null)) ?    {
+
+            self.InputConfiguration = (typeof self.channelInfo.InputConfiguration === "undefined" ) ?  {} : self.channelInfo.InputConfiguration  
+            //Object.keys(self.channelInfo.InputConfiguration).length === 0
+            self.ismbList = (Object.keys(self.InputConfiguration.IoSmbConfiguration).length > 0) ? self.InputConfiguration.IoSmbConfiguration : []
+            self.OutputConfiguration = (Object.keys(self.channelInfo.OutputConfiguration).length === 0) ? {} : self.channelInfo.OutputConfiguration
+            self.osmbList = (Object.keys(self.OutputConfiguration.IoSmbConfiguration).length === 0) ? [] : self.OutputConfiguration.IoSmbConfiguration
+            self.ChannelFacets =  (Object.keys(self.channel_data.ChannelFacets).length === 0) ?  {
                 "Channel Usage Settings": {
                     "Values": {}
                 }
-            } : self.channel_data.ChannelFacets
+            } : self.channel_data.ChannelFacets 
+        
             channelData.whoIsUsing().then(function (answer) {
                 self.whoData = answer.data
-                console.log(self.whoData)
                 angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
                         if (self.ChannelFacets['Channel Usage Settings'].Values[key] == null || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
                             var arr = [];
@@ -73,7 +74,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
                 )
             })
-
 
         })
     }
@@ -132,10 +132,8 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     /*--------------------  who is using this channel --------------------*/
 
-
     self.is_who_screen_editable = false;
     /*--------------------  New Channel --------------------*/
-
 
     self.useAsRelay = false;
     self.channel = {};

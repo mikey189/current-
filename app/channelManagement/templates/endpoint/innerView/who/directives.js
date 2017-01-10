@@ -19,25 +19,38 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                     edit_button.removeClass("inEdition")
                     var facets = []
                     var L1object = {}
-
                     angular.forEach(scope.ctrl.ChannelFacets, function (L1Value, L1Key) {
 
-                        
                         angular.forEach(L1Value.Values, function (L2Value, L2Key) {
-                            var str = ""
 
-                            angular.forEach(L2Value, function (L3Value, L3Key) {
-                                str += L3Value + "|"
+                            if (L2Key === "StrPropType_ChannelPolicyToUse") {
 
-                            })
+                                L1object[L2Key] = parseInt(L2Value)
 
-                            L1object[L2Key] = str
+                            } else {
+
+                                var str = ""
+
+                                angular.forEach(L2Value, function (L3Value, L3Key) {
+
+                                    str += L3Value + "|"
+
+                                })
+
+                                L1object[L2Key] = str
+                                //removes last ("|") inserted at the end of str
+                                L1object[L2Key] = L1object[L2Key].substring(0, L1object[L2Key].length - 1);
+                            }
 
                         })
-                        facets.push({"Description": L1Key, "Values": L1object})
-
+                        facets.push({
+                            "Description": L1Key,
+                            "Values": L1object
+                        })
+                        console.log(facets)
                     })
                     channelData.updateWhoIsUsing(scope.ctrl.rootId, facets).then(function (success) {
+
                         $mdDialog.show(
                             $mdDialog.alert()
                             .clickOutsideToClose(true)

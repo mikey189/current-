@@ -1,4 +1,10 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
+
+
+<json-formatter json="ctrl.InputConfiguration"></json-formatter>
+
+<json-formatter json="ctrl.OutputConfiguration"></json-formatter>
+
 <div layout="row" layout-margin layout-align="end center" ng-cloak>
     <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
     <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>

@@ -41,7 +41,6 @@ app.factory("groupList", function ($http) {
 app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
-    console.log(sname)
 
     var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
     
@@ -210,7 +209,6 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         whoIsUsing: function () {
-            console.log(sname)
             return $http.get(whoIsUsing)
         },
         updateWhoIsUsing: function (id, data) {
