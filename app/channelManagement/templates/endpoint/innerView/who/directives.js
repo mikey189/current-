@@ -50,7 +50,7 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                         console.log(facets)
                     })
                     channelData.updateWhoIsUsing(scope.ctrl.rootId, facets).then(function (success) {
-
+                        scope.ctrl.rootId = scope.ctrl.rootId
                         $mdDialog.show(
                             $mdDialog.alert()
                             .clickOutsideToClose(true)

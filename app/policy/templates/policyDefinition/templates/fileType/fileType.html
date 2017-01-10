@@ -1,16 +1,39 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
-
 <div layout='column' ng-cloak id="fileTypeMain">
-
     <div id="policyFileTypeToolbar" layout="row" layout-align="space-between center" class="md-whiteframe-8dp">
         <div class="form-group has-feedback" id="PDFTSearchBox" flex="30" layout="row">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="ClassificationExtensions" filter-extensions>
             <md-icon class="material-icons form-control-feedback" id="PDFTSearchIcon">search</md-icon>
         </div>
-        
     </div>
-    
-    <policy-definition-collapse-table></policy-definition-collapse-table>
-    
+    <!-- <policy-definition-collapse-table></policy-definition-collapse-table>-->
+    <json-formatter json="ctrl.FiletypeFacets"></json-formatter>
+    <table class="table table-responsive  table-striped" id="filetype-table" md-whiteframe="6" ng-cloak>
+        <thead>
+            <th></th>
+            <th>Allow</th>
+            <th class="advanced ">Process Embeded Files</th>
+            <th class="advanced ">Size limit</th>
+            <th class="advanced ">Sandbox</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat-start="(L0Key, L0Value) in ctrl.FiletypeFacets track by L0Value.DisplayName" ng-init="L0Value.isHidden = true">
+                <td>
+                    <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.isHidden =! L0Value.isHidden">
+                        <md-icon ng-show="L0Value.isHidden">keyboard_arrow_right</md-icon>
+                        <md-icon ng-show="!L0Value.isHidden">keyboard_arrow_down</md-icon>
+                    </md-button>
+                    {{L0Value.DisplayName}}
+                </td>
+                <td colspan="4"></td>
+            </tr>
+            <tr ng-repeat-start="value in L0Value.AvailableValues track by $index" ng-hide="L0Value.isHidden">
+                <td>{{value | splitter : ":" : "1"}}</td>
+                <td><md-checkbox aria-label="isAloowed" ng-model="value.IsAllowed"></md-checkbox></td>
+                <td colspan="3"></td>
+            </tr>
+            <tr ng-repeat-end></tr>
+            <tr ng-repeat-end></tr>
+        </tbody>
+    </table>
 </div>
-

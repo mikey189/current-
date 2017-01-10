@@ -4,7 +4,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
 
         var self = this;
 
-
         self.sidenav_edit_mode = false;
         self.test = "valie"
         self.show_success_dialog = function (message) {
@@ -46,9 +45,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
                 policyData.getCDRFacets().then(function (answer) {
                     self.cdr = answer.data
                     angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
-
                         //making the match between self.cdr and self.policyFacets.defaultValue
-
 
                         if (self.PolicyFacets['Policy CDR Settings'].Values[key] == undefined || self.PolicyFacets['Policy CDR Settings'].Values[key] === "") {
                             self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue[0]
@@ -75,16 +72,19 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
         self.newPolicy = false;
         self.isEditable = false;
         self.is_policy_sidenav_editable = false;
-        //getDashboard data with policyId
-        //API Call inside directive :"initiateApiCallWithId" 
-        //filetypes
-        //getting filetypes
-        //initiate the channel ids to send
+        
 
         self.channelIds = [];
         policyData.getFiletypes().then(function (answer) {
                 self.filetype = answer.data
             })
+
+        policyData.GetFiletypeFacets().then(function(answer){
+            //self.FiletypeFacets = answer.data
+            angular.forEach(answer.data, function(value, key){
+                self.FiletypeFacets = value
+            })
+        })
             //creating object to store properties and all changes
         self.types = {};
         //settings default values for DOM Manipulations
@@ -212,3 +212,5 @@ app.filter("splitter", function () {
         return string
     }
 })
+
+

@@ -18,7 +18,7 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($rootScope, $state) {
+app.directive("logout", function ($rootScope, $state, $timeout) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
@@ -26,11 +26,12 @@ app.directive("logout", function ($rootScope, $state) {
       element.click(function () {
         localStorage.clear("token")
         localStorage.clear("serverName")
-          //does not seem to be working, test later on especially for scope in throws injectiion error if throwing "$scope"
-          //$rootScope = $rootScope.$new(true);
-          //scope = scope.$new(true);
-        $state.go("login")
-          //this empties the cache so that when logging out and reloging in we do not use cached data
+
+        location.reload(true)
+        $timeout(function () {
+          $state.go("login")
+
+        })
       })
     }
   }

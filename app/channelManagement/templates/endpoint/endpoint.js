@@ -2,8 +2,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
-    //setting default id for the channel
-    //set via directive
 
     /*-------------------- Sidebar ----------------------*/
 
@@ -28,63 +26,51 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         //making channelNm non editable by default
     self.is_channelName_editable = false;
 
-
-
-    /*--------------------  Channel Input and Output --------------------*/
-
-    //setting up initial array to store smbs objects
-    self.ismbList = []
-    self.osmbList = []
-
-    //this function is called everytime channel ID changes or after channel creation
+    /*--------------------  Watching for changes in channel ID --------------------*/
 
     self.UpdateChannelData = function (newVal) {
 
-
-        channelData.get_channel(newVal).then(function (answer) {
-            //this code is the source of major issues fix the if/else inline statements 
-            self.channel_data = answer.data
-            var ChannelFacetsIfNull = {
-                "Channel Usage Settings": {
-                    "Values": {}
-                }
-            }
-            self.channelInfo = answer.data.ChannelInfo
-            self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
-            self.generalInformations = self.channelInfo.GeneralInformations
-
-            self.InputConfiguration = (self.channelInfo.InputConfiguration === null) ? new Object() : self.channelInfo.InputConfiguration
-                //Object.keys(self.channelInfo.InputConfiguration).length === 0
-            self.ismbList = (self.InputConfiguration.IoSmbConfiguration === null) ? [] : self.InputConfiguration.IoSmbConfiguration
-            self.OutputConfiguration = (self.channelInfo.OutputConfiguration === null) ? {} : self.channelInfo.OutputConfiguration
-            self.osmbList = (self.OutputConfiguration.IoSmbConfiguration === null) ? [] : self.OutputConfiguration.IoSmbConfiguration
-            self.ChannelFacets = (Object.keys(self.channel_data.ChannelFacets === 0)) ? ChannelFacetsIfNull : self.channel_data.ChannelFacets
-
-            console.log(self.ChannelFacets)
-
-
-            channelData.whoIsUsing().then(function (answer) {
-                self.whoData = answer.data
-                angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
-                        if (self.ChannelFacets['Channel Usage Settings'].Values[key] == null || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
-                            var arr = [];
-                            angular.forEach(value.DefaultValue, function (v, k) {
-                                arr.push(v)
-                            }, arr)
-                            self.ChannelFacets['Channel Usage Settings'].Values[key] = arr
-                        } else {
-                            self.ChannelFacets['Channel Usage Settings'].Values[key] = self.ChannelFacets['Channel Usage Settings'].Values[key].split("|")
-                        }
+            channelData.get_channel(newVal).then(function (answer) {
+                //this code is the source of major issues fix the if/else inline statements 
+                self.channel_data = answer.data
+                self.ChannelFacetsIfNull = {
+                    "Channel Usage Settings": {
+                        "Values": {}
                     }
+                }
+                self.channelInfo = answer.data.ChannelInfo
+                self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
+                self.generalInformations = self.channelInfo.GeneralInformations
 
-                )
+                self.InputConfiguration = (self.channelInfo.InputConfiguration == null) ? {} : self.channelInfo.InputConfiguration
+                self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
+                self.OutputConfiguration = (self.channelInfo.OutputConfiguration == null) ? {} : self.channelInfo.OutputConfiguration
+                self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
+                self.ChannelFacets = self.channel_data.ChannelFacets || self.ChannelFacetsIfNull;
+
+
+                channelData.whoIsUsing().then(function (answer) {
+                    self.whoData = answer.data
+                    angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
+                            if (self.ChannelFacets['Channel Usage Settings'].Values[key] == undefined || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
+                                var arr = [];
+                                angular.forEach(value.DefaultValue, function (v, k) {
+                                    arr.push(v)
+                                }, arr)
+                                self.ChannelFacets['Channel Usage Settings'].Values[key] = arr
+                            } else {
+                                self.ChannelFacets['Channel Usage Settings'].Values[key] = self.ChannelFacets['Channel Usage Settings'].Values[key].split("|")
+                            }
+                        }
+
+                    )
+                    console.log(self.ChannelFacets)
+
+                })
+
             })
-
-        })
-    }
-
-    //watching for any change in channel id
-
+        }
+        //Actual $watch function
     $scope.$watch(angular.bind(this, function () {
         return this.rootId;
     }), function (newValue) {
@@ -96,24 +82,17 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         self.channelDashboard = answer1.data
     })
 
-    /* topCases.getTopCases().then(function (answer) {
-         self.topCases = answer.data
-     })*/
-    self.label = ["Medium", "Low", "high"];
+    /*--------------------  Channel Input and Output --------------------*/
 
     self.are_outputs_and_outputs_editable = false;
-    //getting input and output list for "input and ouput" view
     channelData.get_input_output_list().then(function (answer) {
-            self.all_inputs = answer.data[0].inputs
-                //self.iROW_1 = answer.data[0].inputs.slice(0, 3)
-                //self.iROW_2 = answer.data[0].inputs.slice(3, 6)
-                //default property for selecting input or ouput
-            self.is_input_selected = false;
-        })
-        //storing selected inputs and outputs
-        // self.selectedInputs = []
-        // self.selectedOutputs = []
-        //function that add objects for iSMB and oSMB on ng-checked
+        self.all_inputs = answer.data[0].inputs
+        self.is_input_selected = false;
+    })
+
+    self.DataUnits = ["KB", "MB", "GB", "TB"]
+    self.FolderPermissions = ["Read", "Write", "Read & Write"]
+
     self.addISMB = function () {
         var iSMB = {}
         self.ismbList.push(iSMB)
@@ -128,16 +107,16 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         self.ismbList.splice(index, 1);
     }
     self.deleteOSMB = function (OSMB) {
-            var index = self.osmbList.indexOf(OSMB)
-            self.osmbList.splice(index, 1);
-        }
-        //making the settings not editable by default
+        var index = self.osmbList.indexOf(OSMB)
+        self.osmbList.splice(index, 1);
+    }
     self.are_settings_editable = false
     self.PolicyFacets = {}
 
     /*--------------------  who is using this channel --------------------*/
 
     self.is_who_screen_editable = false;
+
     /*--------------------  New Channel --------------------*/
 
     self.useAsRelay = false;

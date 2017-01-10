@@ -12,10 +12,7 @@
                 <md-content class="md-heading">Name</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding>
-                <input placeholder="Pick a Name" disabled class="ncInputListInput" ng-model="OSMB.Name" />
-                <md-button edit-field aria-label="Chose a name" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+                <input placeholder="Pick a Name" class="ncInputListInput" ng-model="OSMB.Name" />
             </div>
         </div>
         <div layout="row" class="ncInputRow">
@@ -23,10 +20,7 @@
                 <md-content class="md-heading">Root Folder</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding>
-                <input placeholder="root folder" disabled class="ncInputListInput" ng-model="OSMB.RootFolder" />
-                <md-button edit-field aria-label="root folder" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+                <input placeholder="root folder" class="ncInputListInput" ng-model="OSMB.RootFolder" />
             </div>
         </div>
         <div layout="row" layout-align="start center" class="ncInputRow">
@@ -34,17 +28,10 @@
                 <md-content class="md-heading">Speed Limit</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Limit" disabled class="ncInputListInput" ng-model="OSMB.Speedlimit['Value']" type="number" />
-                <md-button edit-field aria-label="Set Limit" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+                <input placeholder="Set Limit" class="ncInputListInput" ng-model="OSMB.Speedlimit['Value']" type="number" />
             </div>
             <div flex="15" layout-align="center end" layout="row">
-                <select class="ncInputListSelect" ng-model="OSMB.Speedlimit['Unit']">
-                    <option>Bytes</option>
-                    <option ng-selected="true">MB</option>
-                    <option>GB</option>
-                </select>
+                <select class="ncInputListSelect" ng-init="OSMB.Speedlimit['Unit'] || ctrl.DataUnits[1]" ng-model="OSMB.Speedlimit['Unit']" ng-options="unit for unit in ctrl.DataUnits"></select>
             </div>
         </div>
         <div layout="row" layout-align="start center" class="ncInputRow">
@@ -52,17 +39,10 @@
                 <md-content class="md-heading">User Quota</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Quota" disabled class="ncInputListInput" ng-model="OSMB.Userquota['Value']" type="number" />
-                <md-button edit-field aria-label="Set quota" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+                <input placeholder="Set Quota" class="ncInputListInput" ng-model="OSMB.Userquota['Value']" type="number" />
             </div>
             <div flex="15" layout-align="center end" layout="row">
-                <select class="ncInputListSelect" ng-model="OSMB.Userquota['Unit']">
-                    <option ng-selected="true">Bytes</option>
-                    <option>MB</option>
-                    <option>GB</option>
-                </select>
+                <select class="ncInputListSelect" ng-init="OSMB.Userquota['Unit'] || ctrl.DataUnits[1]" ng-model="OSMB.Userquota['Unit']" ng-options="unit for unit in ctrl.DataUnits"></select>
             </div>
         </div>
         <div layout="row" layout-align="start center" class="ncInputRow">
@@ -70,10 +50,7 @@
                 <md-content class="md-heading">Number of Hours to keep the files</md-content>
             </div>
             <div flex layout="row" layout-align="space-between center" layout-padding class="ncInputNoVP">
-                <input placeholder="Set Number Of hours" disabled class="ncInputListInput" ng-model="OSMB.HoursToKeep" type="number" />
-                <md-button edit-field aria-label="Set hours" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+                <input placeholder="Set Number Of hours" class="ncInputListInput" ng-model="OSMB.HoursToKeep" type="number" />
             </div>
         </div>
         <div layout="row" layout-align="start center" class="ncInputRow">
@@ -81,11 +58,7 @@
                 <md-content class="md-heading">New Folder Permissions</md-content>
             </div>
             <div flex layout="row" layout-align="center center" layout-padding class="ncInputNoVP">
-                <select class="ncInputListSelectFullWidth" ng-model="OSMB.FolderPermissions">
-                    <option ng-selected="true">Read</option>
-                    <option>Write</option>
-                    <option>Read &amp; Write</option>
-                </select>
+                <select class="ncInputListSelectFullWidth" ng-init="OSMB.FolderPermissions || ctrl.FolderPermissions[0]" ng-model="OSMB.FolderPermissions" ng-options="permission for permission in ctrl.FolderPermissions"></select>
             </div>
         </div>
         <div class="ncInputRow" layout="row" layout-align="start center" layout-padding>
@@ -116,12 +89,8 @@
             <div flex="40">
                 Allow Media Burn
             </div>
-            
-            <div flex  id="mediaBurn" layout="row" layout-align="space-around center">
-                <input placeholder="Local Path for media Burn" disabled class="ncInputListInput" ng-model="OSMB.AllowMediaBurn" />
-                <md-button edit-field aria-label="Media burn" class="ncMdButton">
-                    <md-icon class="material-icon ncIconNoMargin">edit</md-icon>
-                </md-button>
+            <div flex id="mediaBurn" layout="row" layout-align="space-around center">
+                <input placeholder="Local Path for media Burn" class="ncInputListInput" ng-model="OSMB.AllowMediaBurn" />
             </div>
         </div>
     </div>

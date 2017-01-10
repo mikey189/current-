@@ -43,9 +43,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var sname = localStorage.getItem("serverName");
 
     var get_channel = "http://" + sname + ":4580/api/Channels/getchannel/"
-    
     var input_output_list = "http://" + sname + ":4580/api/jsonserver/input_output_list";
-
     var computerList = "http://" + sname + ":4580/api/users/getadmachines";
     var channelsIconsURL = "http://" + sname + ":4580/api/jsonserver/channelsIcons";
     var channelList = "http://" + sname + ":4580/api/channels/getallchannels/"
@@ -59,7 +57,6 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
     var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
-
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
@@ -235,9 +232,7 @@ app.factory("policyData", function ($rootScope, $http) {
 
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var new_policy_creation = "http://" + sname + ":4580/api/policy/postPolicy";
-    //http://localhost:3000/policyList
     var policyOrder = "http://" + sname + ":4580/api/policy/reorderPolicyPriority";
-    //"http://localhost:3000/policyOrder"
     var deletePolicy = "http://" + sname + ":4580/api/policy/deletepolicy";
     var policySidenav = "http://" + sname + ":4580/api/policy/GetPoliciesSideNav"
    
@@ -258,7 +253,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
     var cdrFacetsTemplate = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
 
-
+    var FiletypeFacets = "http://localhost:3000/PolicyFileTypesSettings"
 
 
     return {
@@ -272,6 +267,9 @@ app.factory("policyData", function ($rootScope, $http) {
                 method: "POST",
                 data: data
             })
+        },
+        GetFiletypeFacets: function(){
+            return $http.get(FiletypeFacets)
         },
         getList: function () {
             return $http.get(policyList);
