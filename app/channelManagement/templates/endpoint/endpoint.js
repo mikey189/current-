@@ -47,12 +47,12 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
 
-            self.InputConfiguration = (typeof self.channelInfo.InputConfiguration === "undefined" ) ?  {} : self.channelInfo.InputConfiguration  
+            self.InputConfiguration = (self.channelInfo.InputConfiguration === null ) ?  new Object() : self.channelInfo.InputConfiguration  
             //Object.keys(self.channelInfo.InputConfiguration).length === 0
-            self.ismbList = (Object.keys(self.InputConfiguration.IoSmbConfiguration).length > 0) ? self.InputConfiguration.IoSmbConfiguration : []
-            self.OutputConfiguration = (Object.keys(self.channelInfo.OutputConfiguration).length === 0) ? {} : self.channelInfo.OutputConfiguration
-            self.osmbList = (Object.keys(self.OutputConfiguration.IoSmbConfiguration).length === 0) ? [] : self.OutputConfiguration.IoSmbConfiguration
-            self.ChannelFacets =  (Object.keys(self.channel_data.ChannelFacets).length === 0) ?  {
+            self.ismbList = (self.InputConfiguration.IoSmbConfiguration === null ) ? [] : self.InputConfiguration.IoSmbConfiguration 
+            self.OutputConfiguration = (self.channelInfo.OutputConfiguration === null ) ? {} : self.channelInfo.OutputConfiguration
+            self.osmbList = (self.OutputConfiguration.IoSmbConfiguration === null) ? [] : self.OutputConfiguration.IoSmbConfiguration
+            self.ChannelFacets =  (self.channel_data.ChannelFacets === null) ?  {
                 "Channel Usage Settings": {
                     "Values": {}
                 }
