@@ -1,4 +1,4 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  "$state", "$http", "$mdDialog",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog",
 
     function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog) {
 
@@ -40,7 +40,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
         self.getPolicyInfo = function (id) {
             policyData.get_policy_info(id).then(function (answer) {
                 self.policy = answer.data
-                self.PolicyFacets = self.policy.PolicyFacets
+                var PolicyFacetsIfNull = {
+                    "Policy CDR Settings": {
+                        "Values": {}
+                    }
+                }
+                self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? PolicyFacetsIfNull : self.policy.PolicyFacets;
                 self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
                 policyData.getCDRFacets().then(function (answer) {
                     self.cdr = answer.data
@@ -52,14 +57,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
 
                         } else {
                             var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
-                                var object = {}
+                            var object = {}
 
                             angular.forEach(splittedByPipe, function (L2Val, L2Key) {
                                 var splittedByEqual = L2Val.split("=")
                                 object[splittedByEqual[0]] = splittedByEqual[1]
 
                             })
-                            
+
                             self.PolicyFacets['Policy CDR Settings'].Values[key] = object
 
                         }
@@ -72,19 +77,19 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
         self.newPolicy = false;
         self.isEditable = false;
         self.is_policy_sidenav_editable = false;
-        
+
 
         self.channelIds = [];
         policyData.getFiletypes().then(function (answer) {
-                self.filetype = answer.data
-            })
-
-        policyData.GetFiletypeFacets().then(function(answer){
-            //self.FiletypeFacets = answer.data
-            angular.forEach(answer.data, function(value, key){
-                self.FiletypeFacets = value
-            })
+            self.filetype = answer.data
         })
+
+        policyData.GetFiletypeFacets().then(function (answer) {
+                //self.FiletypeFacets = answer.data
+                angular.forEach(answer.data, function (value, key) {
+                    self.FiletypeFacets = value
+                })
+            })
             //creating object to store properties and all changes
         self.types = {};
         //settings default values for DOM Manipulations
@@ -133,6 +138,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData",  
                     self.PolicyFacets[key].Values[propkey] = success
                 }, function (cancel) {})
         }
+
+
+        /*__________________________  detection // SETTINGS _____________ _____________ */
+
+
+        policyData.get_policy_settings("PolicyFileDetectionSettings").then(function (answer) {
+            var data = answer.data;
+            self.DetectionFacets = data;
+           
+        });
+
+
 
         /*__________________________  CDR // SETTINGS _____________ _____________ */
         self.formatStrings = function (obj) {}
@@ -212,5 +229,3 @@ app.filter("splitter", function () {
         return string
     }
 })
-
-

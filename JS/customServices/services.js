@@ -252,7 +252,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
     var cdrFacetsTemplate = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
-
+     
     var FiletypeFacets = "http://localhost:3000/PolicyFileTypesSettings"
 
 

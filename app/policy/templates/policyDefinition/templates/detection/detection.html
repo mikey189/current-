@@ -1,7 +1,56 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/detection/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <md-button md-ink-ripple="white" md-whiteframe="6" class="editDetection" aria-label="edit preferences" edit-preferences>EDIT</md-button>
-<div id="detectClick" check-if-editable>
+<json-formatter json="ctrl.PolicyFacets"></json-formatter>
+<div layout='column' id="policySettingsContainer">
+    <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.DetectionFacets">
+        <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
+            <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
+                <h4 class='card-title'>{{Key}}</h4>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item layout='row' layout-align='space-between center' ng-repeat="(propkey, propValue) in value.Properties">
+                <p>
+                    <button ng-show="propValue.Type === 'FacetPropertyType_Bool, FacetPropertyType_MultiChoice'">show</button>
+                    {{propValue.DisplayName}}
+                </p>
+                <div ng-switch="propValue.Type" ng-init=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
+                    <div ng-switch-when="FacetPropertyType_Bool">
+                        <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
+                            aria-label="file Sign switch">
+                        </md-switch>
+                    </div>
+                    <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice" ng-init="propValue.AvailableValues = ['something1', 'something2']">
+                        <md-list-item ng-repeat="x in propValue.AvailableValues">
+                            {{x}}
+                            <md-checkbox ng-model="ctrl.PolicyFacets[Key].Values[propkey][x]"></md-checkbox>
+                        </md-list-item>
+                    </div>
+                    <div ng-switch-when="FacetPropertyType_Int" name="file">
+                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
+                    </div>
+                    <div ng-switch-when=" FacetPropertyType_String">
+                        <input class="custom-input" placeholder="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
+                    </div>
+                    <div ng-switch-when="FacetPropertyType_MultiLineString">
+                        <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
+                    </div>
+                    <div ng-switch-when="FacetPropertyType_SingleChoice">
+                        <select class="custom-select" ng-init="ctrl.PolicyFacets[Key].Values[propkey] = $index" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
+                            md-whiteframe="3">
+                         <option ng-repeat="x in propValue.AvailableValues track by $index" ng-selected = "ctrl.PolicyFacets[Key].Values[propkey]" value="{{$index}}" >{{x}}</option>
+                         </select>
+                    </div>
+                    <div ng-switch-when=" FacetPropertyType_Password">
+                        <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password"
+                        />
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+    </div>
+    <!--<div id="detectClick" check-if-editable>
     <div id="detectionWrapper" class="notEditable">
         <table md-whiteframe="6" class="detectionTables table table-responsive" match-width>
             <thead>
@@ -33,7 +82,7 @@
                 </tr>
             </tbody>
         </table>
-        <!-- sandboxes -->
+       
         <table md-whiteframe="6" class="detectionTables table table-responsive">
             <tbody>
                 <tr class="verticalMargin">
@@ -45,7 +94,7 @@
                         <md-checkbox aria-label="use cuckoo" ng-model="ctrl.detection.fireEye.IsSelected"></md-checkbox>
                     </td>
                 </tr>
-                <!-- list of fireEye servers -->
+                
                 <tr class="fireEye hidden animated fadeIn" ng-repeat="fireEye in ctrl.fireEye_servers_list">
                     <td>
                         <md-icon>some_icon</md-icon>
@@ -55,7 +104,7 @@
                         <md-checkbox aria-label="fireEye" ng-model="ctrl.detection.FileDetectionSettings.ServerAddress[fireEye]"></md-checkbox>
                     </td>
                 </tr>
-                <!-- end of list of fireEye servers -->
+               
                 <tr class="verticalMargin">
                     <td class="this" unwrapp-cukoo>
                         <md-icon class="material-icons">keyboard_arrow_right</md-icon>
@@ -65,7 +114,7 @@
                         <md-checkbox aria-label="use cuckoo" ng-model="ctrl.detection.cuckoo.IsSelected"></md-checkbox>
                     </td>
                 </tr>
-                <!-- list of cuckoo servers -->
+                
                 <tr class="cukoo hidden animated fadeIn" ng-repeat="cuckoo in ctrl.cukoo_servers_list">
                     <td>
                         <md-icon class="material-icons">some_icon</md-icon>
@@ -75,8 +124,7 @@
                         <md-checkbox aria-label="useServers" ng-model="ctrl.detection.FileDetectionSettings.cuckooServers[cuckoo].IsSelected"></md-checkbox>
                     </td>
                 </tr>
-                <!-- end of list of cuckoo servers -->
-                <!-- cuckoo time -->
+           
                 <tr class="cukoo hidden animated fadeIn">
                     <td>
                         <md-icon class="material-icons">someicon</md-icon>
@@ -86,7 +134,7 @@
                         <input ng-model="ctrl.detection.cukoo.FileDetectionSettings.TimeOutMillis" placeholder="milliseconds" type="number" />
                     </td>
                 </tr>
-                <!-- cuckoo save reports -->
+          
                 <tr class="cukoo hidden animated fadeIn">
                     <td>
                         <md-icon class="material-icons">someicon</md-icon>
@@ -97,7 +145,7 @@
                     </td>
                 </tr>
             </tbody>
-            <!-- end of sandbox -->
+          
         </table>
         <table md-whiteframe="6" class="detectionTables table table-responsive">
             <tbody>
@@ -122,4 +170,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>-->

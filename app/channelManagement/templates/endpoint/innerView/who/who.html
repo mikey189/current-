@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/styles.css" />
 <json-formatter json="ctrl.channel_data"></json-formatter>
+<json-formatter json="ctrl.ChannelFacets"></json-formatter>
 <div layout="row" layout-align="end center" layout-margin>
     <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4">EDIT</md-button>
 </div>
@@ -13,7 +14,7 @@
                 <div id="current-policy">
                     <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues[ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]] }} </h3>
                 </div>
-                <div layout="row" layout-align="space-between center" layout-wrap ng-if="ctrl.is_who_screen_editable">
+                <div layout="row" layout-align="start center" layout-wrap ng-if="ctrl.is_who_screen_editable" layout-margin>
                     <p class="custom-chips" ng-repeat="(L2Key, L2Value) in L1Value.AvailableValues" layout="row" layout-align="center center">
                     {{L2Value}}
                         <md-button class="md-icon-button" ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] = L2Key">

@@ -23,10 +23,8 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                     var token = "Bearer " + answer.data.AccessToken
                     localStorage.setItem("serverName", serverName)
                     localStorage.setItem("token", token);
-                    localStorage.getItem(token)
-                    localStorage.getItem(serverName)
-                    var LocalToken = localStorage.getItem("token");
-                    $http.defaults.headers.common.Authorization = LocalToken
+               
+                    $http.defaults.headers.common.Authorization = token
                     $state.go("app.dashboard")
 
                 }, function (error) {

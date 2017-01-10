@@ -25,7 +25,7 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
 
                             if (L2Key === "StrPropType_ChannelPolicyToUse") {
 
-                                L1object[L2Key] = parseInt(L2Value)
+                                L1object[L2Key] = L2Value
 
                             } else {
 
@@ -50,7 +50,7 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                         console.log(facets)
                     })
                     channelData.updateWhoIsUsing(scope.ctrl.rootId, facets).then(function (success) {
-                        scope.ctrl.rootId = scope.ctrl.rootId
+                        console.log(success)
                         $mdDialog.show(
                             $mdDialog.alert()
                             .clickOutsideToClose(true)

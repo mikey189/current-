@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
 <md-button class="save-settings" save-policy-settings>EDIT</md-button>
+<json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html"></div>
 
     <div layout='column' id="policySettingsContainer">

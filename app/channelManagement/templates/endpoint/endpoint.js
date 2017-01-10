@@ -33,11 +33,12 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
             channelData.get_channel(newVal).then(function (answer) {
                 //this code is the source of major issues fix the if/else inline statements 
                 self.channel_data = answer.data
-                self.ChannelFacetsIfNull = {
+                var ChannelFacetsIfNull =  {
                     "Channel Usage Settings": {
                         "Values": {}
                     }
                 }
+
                 self.channelInfo = answer.data.ChannelInfo
                 self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
                 self.generalInformations = self.channelInfo.GeneralInformations
@@ -46,7 +47,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
                 self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
                 self.OutputConfiguration = (self.channelInfo.OutputConfiguration == null) ? {} : self.channelInfo.OutputConfiguration
                 self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
-                self.ChannelFacets = self.channel_data.ChannelFacets || self.ChannelFacetsIfNull;
+                self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty("Channel Usage Settings") ) ?  self.channel_data.ChannelFacets: ChannelFacetsIfNull ;
 
 
                 channelData.whoIsUsing().then(function (answer) {

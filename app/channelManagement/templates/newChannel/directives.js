@@ -12,6 +12,8 @@ app.directive("saveInfoGetId", function (channelData, $state, $timeout) {
                     }
                 }
                 scope.ctrl.gen_info = channelObject
+                console.log("about to ")
+
                 channelData.createChannel(channelObject)
                     .then(function (answer) {
                         console.log(answer.data.Id)
