@@ -43,9 +43,12 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                policyData.create_new_policy(scope.ctrl.PolicyInfo)
-                $state.go("app.policy.definition.fileType")
-                $mdDialog.cancel()
+                policyData.create_new_policy(scope.ctrl.PolicyInfo).then(function (success) {
+                    $state.go("app.policy.definition.fileType")
+                    location.reload(true)
+                    $mdDialog.cancel()
+
+                })
             })
         }
     }

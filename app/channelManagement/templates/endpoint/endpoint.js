@@ -49,7 +49,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
                     "Values": {}
                 }
             }
-            console.log(ChannelFacetsIfNull)
             self.channelInfo = answer.data.ChannelInfo
             self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
             self.generalInformations = self.channelInfo.GeneralInformations
