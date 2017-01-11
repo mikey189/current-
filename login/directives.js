@@ -1,31 +1,17 @@
-app.directive("loginButton", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.hover(function () {
-                $(this).addClass("md-whiteframe-14dp");
-            })
-        }
-    }
-})
 
-app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state", "$cacheFactory", function (authService, $rootScope, $http, $state, $cacheFactory) {
+app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state",
+ function (authService, $rootScope, $http, $state) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click(function () {
-                window.localStorage.clear()
+            element.bind("click", function () {
                 var serverName = document.getElementById("ServerName").value
                 var username = $("#username")
-                var password = $("#password")
-                var encoded = btoa(password)
-                console.log(encoded)
-                console.log(serverName)
+                var password = $("#password")           
                 authService.checkLogin(scope.ctrl.serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
                     var token = "Bearer " + answer.data.AccessToken
                     localStorage.setItem("serverName", serverName)
                     localStorage.setItem("token", token);
-                    $http.defaults.headers.common.Authorization = token
                     $state.go("app.dashboard")
 
                 }, function (error) {

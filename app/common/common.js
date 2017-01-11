@@ -14,12 +14,11 @@ app.run(['$rootScope','$http', '$state', '$stateParams',
 	function ($rootScope,$http, $state, $stateParams) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams
+		//injecting token inside common headers for $http call
 		var token = localStorage.getItem("token")
 		console.log(token)
 		$http.defaults.headers.common.Authorization = token
 
 	}
-
-
 
 ])

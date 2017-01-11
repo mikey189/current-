@@ -5,8 +5,9 @@ app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, 
             element.bind("click", function () {
                 var self = $(this);
                 //C2CData.set(scope.ctrl.rootId)
+                console.log("pressed")
                 scope.$apply(function () {
-                    scope.ctrl.rootId = parseInt(self.attr("_id"));
+                    scope.ctrl.rootId = parseInt(self.attr("channel-id"));
                 })
             })
         }

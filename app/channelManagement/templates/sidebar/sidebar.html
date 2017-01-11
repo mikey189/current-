@@ -19,7 +19,7 @@
                         <a ui-sref="app.channelManagement.newChannel.step1">
                             <strong>Create Channel</strong></a>
                     </md-list-item>
-                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " class="channelSidenavItems" md-whiteframe="2" layout="row"
+                    <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " get-my-id class="channelSidenavItems" md-whiteframe="2" layout="row"
                         layout-align="space-between center" channel-id="{{x.Id}}" ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"
                         ng-drag="ctrl.is_edit_mode_on" ng-drag-data="x" draggable="false" layout-wrap ng-class="{'sidenavItemHoverState': ctrl.rootId === x.Id}">
                         <div layout="row" layout-align="start center" layout-margin>
@@ -27,7 +27,7 @@
                                 class="channel_type_icon"></md-icon>
                             <strong>
                             <a ui-sref="app.channelManagement.endpoint.dashboard" class="channel-name-editable" 
-                            contenteditable="{{ctrl.is_channelName_editable}}" get-my-id  _id="{{x.Id}}">{{x.Name}}</a>
+                            contenteditable="{{ctrl.is_channelName_editable}}"   _id="{{x.Id}}">{{x.Name}}</a>
                         </strong>
                         </div>
                         <div layout="row">

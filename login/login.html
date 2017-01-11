@@ -6,15 +6,15 @@
                 <md-content layout='column' layout-align='center stretch' layout-margin>
                     <md-input-container>
                         <label>Server</label>
-                        <input ng-model="ctrl.serverName" id="ServerName">
+                        <input ng-model="ctrl.serverName" id="ServerName" ng-keypress="ctrl.LogUserInOnEnter($event)">
                     </md-input-container>
                     <md-input-container>
                         <label>User</label>
-                        <input ng-model="ctrl.UserName" id="username">
+                        <input ng-model="ctrl.UserName" id="username" ng-keypress="ctrl.LogUserInOnEnter($event)">
                     </md-input-container>
                     <md-input-container>
                         <label>Password</label>
-                        <input ng-model="ctrl.Password" type="password" id="password">
+                        <input ng-model="ctrl.Password" type="password" id="password" ng-keypress="ctrl.LogUserInOnEnter($event)">
                     </md-input-container>
                     <md-input-container>
                         <div layout="row" layout-sm="column" layout-margin layout-align="center center">
