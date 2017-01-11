@@ -5,12 +5,34 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     /*-------------------- Sidebar ----------------------*/
 
-    self.RefreshView = function(id){
+    self.RefreshView = function (id) {
         console.log("refreshing view..")
-            
-            self.UpdateChannelData(id)
-            $scope.$apply()
-        
+            //self.UpdateChannelData(id)
+        $scope.$apply()
+    }
+
+  
+    
+
+    self.UpdateSettings = function () {
+        var settings_table = $(".channel-settings-table")
+        if (!self.are_settings_editable) {
+            settings_table.removeClass("notEditable")
+            self.are_settings_editable = true
+        } else {
+            //MAKE API CALL TO SEND DATA 
+            settings_table.addClass("notEditable")
+
+            channelData.post_channel_settings(self.rootId, self.ChannelConfiguration).then(function (success) {
+                //location.reload(true)
+                self.ChannelConfiguration = success.data.ChannelInfo.ChannelConfiguration
+            }, function (error) {
+                alert("error : " + error.data.Message)
+            })
+
+            self.are_settings_editable = false
+
+        }
     }
 
     self.channel_list = []
@@ -38,11 +60,8 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     self.UpdateChannelData = function (newVal) {
 
             channelData.get_channel(newVal).then(function (answer) {
-                console.log("updating channel data")
-                //this code is the source of major issues fix the if/else inline statements 
-                console.log(self.channel_data)
                 self.channel_data = answer.data
-                var ChannelFacetsIfNull =  {
+                var ChannelFacetsIfNull = {
                     "Channel Usage Settings": {
                         "Values": {}
                     }
@@ -50,13 +69,14 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
                 var channelInfo = answer.data.ChannelInfo
                 self.ChannelConfiguration = channelInfo.ChannelConfiguration
+                console.log(self.ChannelConfiguration)
                 self.generalInformations = channelInfo.GeneralInformations
 
                 self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration
                 self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
                 self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration
                 self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
-                self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty("Channel Usage Settings") ) ?  self.channel_data.ChannelFacets: ChannelFacetsIfNull ;
+                self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty("Channel Usage Settings")) ? self.channel_data.ChannelFacets : ChannelFacetsIfNull;
 
                 channelData.whoIsUsing().then(function (answer) {
                     self.whoData = answer.data
@@ -73,7 +93,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
                         }
 
                     )
-                    console.log(self.ChannelFacets)
 
                 })
 

@@ -11,7 +11,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
             var serverName = document.getElementById("ServerName").value
             var username = $("#username")
             var password = $("#password")
-            authService.checkLogin(self.serverName, self.UserName, self.Password).then(function (answer) {
+            authService.checkLogin(serverName, self.UserName, self.Password).then(function (answer) {
                 var token = "Bearer " + answer.data.AccessToken
                 localStorage.setItem("serverName", serverName)
                 localStorage.setItem("token", token);

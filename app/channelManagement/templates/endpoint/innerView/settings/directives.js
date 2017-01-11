@@ -13,12 +13,14 @@ app.directive("editChannelSettings", function (channelData, $timeout) {
                     //MAKE API CALL TO SEND DATA 
                     self.html("EDIT")
                     settings_table.addClass("notEditable")
+                    var NewConfiguration = scope.ctrl.ChannelConfiguration
+                    console.log(NewConfiguration)
                     channelData.post_channel_settings(scope.ctrl.rootId, scope.ctrl.ChannelConfiguration).then(function (success) {
                         //location.reload(true)
                         $timeout(function () {
-                            //scope.ctrl.RefreshView(success.data.Id)
-
-                        }, 3000 )
+                            scope.ctrl.ChannelConfiguration = NewConfiguration
+                            scope.ctrl.RefreshView()
+                        })
                     }, function (error) {
                         alert("error : " + error.data.Message)
                     })

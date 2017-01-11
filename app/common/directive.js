@@ -24,9 +24,9 @@ app.directive("logout", function ($rootScope, $state, $timeout) {
     link: function (scope, element, attrs) {
       var sname = localStorage.getItem("serverName");
       element.click(function () {
-        localStorage.clear("token")
-        localStorage.clear("serverName")
-        location.reload(true)
+       
+        //location.reload(true)
+        localStorage.clear()
         $timeout(function () {
           $state.go("login")
 

@@ -169,9 +169,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 })
             }, postData);
             //posting the list
+            console.log("data posted :")
+            console.log(postData)
             policyData.post_policy_settings(self.policyId, postData).then(function (success) {
                 $timeout(function () {
-                    //do nothing
+
                 })
                 self.show_success_dialog("Your changes were successfuly saved")
 
