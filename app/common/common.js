@@ -10,10 +10,14 @@ app.controller('common', function ($rootScope, $state, $stateParams) {
 
 })
 
-app.run(['$rootScope', '$state', '$stateParams',
-	function ($rootScope, $state, $stateParams) {
+app.run(['$rootScope','$http', '$state', '$stateParams',
+	function ($rootScope,$http, $state, $stateParams) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams
+		var token = localStorage.getItem("token")
+		console.log(token)
+		$http.defaults.headers.common.Authorization = token
+
 	}
 
 

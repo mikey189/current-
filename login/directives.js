@@ -18,12 +18,13 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                 var serverName = document.getElementById("ServerName").value
                 var username = $("#username")
                 var password = $("#password")
+                var encoded = btoa(password)
+                console.log(encoded)
                 console.log(serverName)
                 authService.checkLogin(scope.ctrl.serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
                     var token = "Bearer " + answer.data.AccessToken
                     localStorage.setItem("serverName", serverName)
                     localStorage.setItem("token", token);
-               
                     $http.defaults.headers.common.Authorization = token
                     $state.go("app.dashboard")
 

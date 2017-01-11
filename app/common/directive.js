@@ -18,7 +18,7 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($rootScope, $state, $timeout, $cacheFactory) {
+app.directive("logout", function ($rootScope, $state, $timeout) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
@@ -26,8 +26,6 @@ app.directive("logout", function ($rootScope, $state, $timeout, $cacheFactory) {
       element.click(function () {
         localStorage.clear("token")
         localStorage.clear("serverName")
-        $cacheFactory('templates').removeAll();
-
         location.reload(true)
         $timeout(function () {
           $state.go("login")

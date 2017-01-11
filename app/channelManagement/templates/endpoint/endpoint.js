@@ -5,6 +5,13 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     /*-------------------- Sidebar ----------------------*/
 
+    self.RefreshView = function(id){
+        console.log("refreshing view..")
+            
+            self.UpdateChannelData(id)
+            $scope.$apply()
+        
+    }
 
     self.channel_list = []
     self.is_edit_mode_on = false;
@@ -31,7 +38,9 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     self.UpdateChannelData = function (newVal) {
 
             channelData.get_channel(newVal).then(function (answer) {
+                console.log("updating channel data")
                 //this code is the source of major issues fix the if/else inline statements 
+                console.log(self.channel_data)
                 self.channel_data = answer.data
                 var ChannelFacetsIfNull =  {
                     "Channel Usage Settings": {
@@ -39,16 +48,15 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
                     }
                 }
 
-                self.channelInfo = answer.data.ChannelInfo
-                self.ChannelConfiguration = self.channelInfo.ChannelConfiguration
-                self.generalInformations = self.channelInfo.GeneralInformations
+                var channelInfo = answer.data.ChannelInfo
+                self.ChannelConfiguration = channelInfo.ChannelConfiguration
+                self.generalInformations = channelInfo.GeneralInformations
 
-                self.InputConfiguration = (self.channelInfo.InputConfiguration == null) ? {} : self.channelInfo.InputConfiguration
+                self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration
                 self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
-                self.OutputConfiguration = (self.channelInfo.OutputConfiguration == null) ? {} : self.channelInfo.OutputConfiguration
+                self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration
                 self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
                 self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty("Channel Usage Settings") ) ?  self.channel_data.ChannelFacets: ChannelFacetsIfNull ;
-
 
                 channelData.whoIsUsing().then(function (answer) {
                     self.whoData = answer.data

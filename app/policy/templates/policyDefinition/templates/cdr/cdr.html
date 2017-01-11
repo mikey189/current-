@@ -15,7 +15,7 @@
         <div layout="row" layout-margin flex="100" layout-wrap>
             <span  class="action-chips" ng-repeat="(actionKey, actionValue) in ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] track by $index"
              ng-class="{'HIGH': actionValue.includes('HIGH'), 'MEDIUM': actionValue.includes('MEDIUM'),
-                'LOW': actionValue.includes('LOW') }" md-whiteframe="2" ng-if="actionKey !=='' ">
+                'LOW': actionValue.includes('LOW') }" md-whiteframe="2" ng-if="actionKey !==''">
                 <span ng-if="!L0Value.showValues" style="color: #333">{{actionKey }} &nbsp </span> {{actionValue | splitter : ':' : 2 }}
                 <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
                 <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Key)">remove</md-icon>

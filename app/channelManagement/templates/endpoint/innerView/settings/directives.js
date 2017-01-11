@@ -16,9 +16,9 @@ app.directive("editChannelSettings", function (channelData, $timeout) {
                     channelData.post_channel_settings(scope.ctrl.rootId, scope.ctrl.ChannelConfiguration).then(function (success) {
                         //location.reload(true)
                         $timeout(function () {
-                            scope.ctrl.ChannelConfiguration = success.data.ChannelInfo.ChannelConfiguration
-                        }, 1)
-                        console.log(scope.ctrl.ChannelConfiguration)
+                            //scope.ctrl.RefreshView(success.data.Id)
+
+                        }, 3000 )
                     }, function (error) {
                         alert("error : " + error.data.Message)
                     })
