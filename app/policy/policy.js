@@ -1,6 +1,6 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout",
 
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout) {
 
         var self = this;
 
@@ -56,17 +56,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue[0]
 
                         } else {
-                            var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
-                            var object = {}
+                            if (self.PolicyFacets['Policy CDR Settings'].Values[key].length >  0) {
+                                var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
+                                var object = {}
 
-                            angular.forEach(splittedByPipe, function (L2Val, L2Key) {
-                                var splittedByEqual = L2Val.split("=")
-                                object[splittedByEqual[0]] = splittedByEqual[1]
+                                angular.forEach(splittedByPipe, function (L2Val, L2Key) {
+                                    var splittedByEqual = L2Val.split("=")
+                                    object[splittedByEqual[0]] = splittedByEqual[1]
 
-                            })
+                                })
 
-                            self.PolicyFacets['Policy CDR Settings'].Values[key] = object
-
+                                self.PolicyFacets['Policy CDR Settings'].Values[key] = object
+                            }
                         }
                     })
 
@@ -146,7 +147,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         policyData.get_policy_settings("PolicyFileDetectionSettings").then(function (answer) {
             var data = answer.data;
             self.DetectionFacets = data;
-           
+
         });
 
 
@@ -169,7 +170,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }, postData);
             //posting the list
             policyData.post_policy_settings(self.policyId, postData).then(function (success) {
+                $timeout(function () {
+                    //do nothing
+                })
                 self.show_success_dialog("Your changes were successfuly saved")
+
             }, function (error) {
                 self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
             })

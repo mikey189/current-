@@ -48,3 +48,58 @@
     color: #E91E63 !important;
 }
 
+   .custom-chips {
+        background-color: #2196F3;
+        color: white;
+        padding-left: 15px;
+        padding-right: 6px;
+        border-radius: 50px;
+        font-weight: 700;
+    }
+    
+    .no-padding-no-margin {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    
+    .repeated-item {
+        border-bottom: solid 1px #E0E0E0;
+    }
+    
+    .title {
+        background-color: #2196F3;
+        color: white;
+        text-align: center;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 4px;
+    }
+    
+    #current-policy {
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    
+    md-virtual-repeat-container {
+        min-height: 100%;
+    }
+    
+    .search-box {
+        border: solid 0px !important;
+        width: 100% !important;
+        border-bottom: solid 2px #2196F3 !important;
+    }
+    
+    .search-box:focus {
+        border-bottom: solid 2px #F06292 !important;
+    }
+    
+    #all {
+        border-left: solid 2px #2196F3;
+        padding-left: 1em;
+    }
+    

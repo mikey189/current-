@@ -1,8 +1,3 @@
-//new directives after I moved who is using this .. inside channels
-
-//channel groups: splaitting avaialable channels and current channels
-
-
 app.directive("editWhoScreen", function (channelData, $mdDialog) {
     return {
         restrict: "A",
@@ -32,14 +27,16 @@ app.directive("editWhoScreen", function (channelData, $mdDialog) {
                                 var str = ""
 
                                 angular.forEach(L2Value, function (L3Value, L3Key) {
-
-                                    str += L3Value + "|"
+                                    //do not insert "|" before first and last element
+                                    if (L3Key === 0 || L3Key === L2Value.length -1) {
+                                        str += L3Value
+                                    } else {
+                                        str += L3Value + "|"
+                                    }
 
                                 })
 
                                 L1object[L2Key] = str
-                                //removes last ("|") inserted at the end of str
-                                L1object[L2Key] = L1object[L2Key].substring(0, L1object[L2Key].length - 1);
                             }
 
                         })
