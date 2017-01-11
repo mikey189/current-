@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+<json-formatter json="ctrl.PolicyFacets['Policy CDR Settings']"></json-formatter>
+
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
         <h4 layout-padding><strong> {{L0Key}}<strong></h4>
-        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" value="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]" policy-id="ctrl.policyId" key="L0Key" global="ctrl.PolicyFacets['Policy CDR Settings'].Values">
+        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues"
+         value="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]"
+         policy-id="ctrl.policyId" key="L0Key" global="ctrl.PolicyFacets['Policy CDR Settings'].Values">
             <md-icon class="white">edit</md-icon>
         </md-button>
     </div>
@@ -11,7 +15,7 @@
         <div layout="row" layout-margin flex="100" layout-wrap>
             <span  class="action-chips" ng-repeat="(actionKey, actionValue) in ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] track by $index"
              ng-class="{'HIGH': actionValue.includes('HIGH'), 'MEDIUM': actionValue.includes('MEDIUM'),
-                'LOW': actionValue.includes('LOW') }" md-whiteframe="2" ng-hide="actionValue.includes('None') ">
+                'LOW': actionValue.includes('LOW') }" md-whiteframe="2" ng-if="actionKey !=='' ">
                 <span ng-if="!L0Value.showValues" style="color: #333">{{actionKey }} &nbsp </span> {{actionValue | splitter : ':' : 2 }}
                 <md-tooltip md-direction="top" ng-if="actionValue.ActionDescription.length > 0">{{actionValue.ActionDescription}}</md-tooltip>
                 <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Key)">remove</md-icon>
@@ -24,10 +28,11 @@
             </div>
             <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap>
                 <span class="action-chips" ng-repeat="action in L1Value" ng-class="{'HIGH': action.ActionSeverity === 'HIGH',
-                 'MEDIUM': action.ActionSeverity === 'MEDIUM', 'LOW': action.ActionSeverity === 'LOW' }" ng-hide="action.ActionName.includes('None') ">
+                 'MEDIUM': action.ActionSeverity === 'MEDIUM', 'LOW': action.ActionSeverity === 'LOW' }" ng-hide="action.ActionName.includes('None') " >
                     {{action.ActionName}}
                     <md-tooltip ng-if="action.ActionDescription.length > 0" md-direction="top">{{action.ActionDescription}}</md-tooltip>
-                    <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] = action.TransforamtionActionStr" ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L1Key] != action">add</md-icon>
+                    <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] = action.TransformationActionStr"
+                     ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L1Key] != action">add</md-icon>
                 </span>
             </div>
         </div>
