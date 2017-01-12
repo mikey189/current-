@@ -27,9 +27,9 @@ app.directive("logout", function ($rootScope, $state, $timeout) {
        
         //location.reload(true)
         localStorage.clear()
+        $rootScope.ThirtyMinutesCountdownHasStarted = false;
         $timeout(function () {
           $state.go("login")
-
         })
       })
     }

@@ -11,11 +11,11 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                         var token = "Bearer " + answer.data.AccessToken
                         localStorage.setItem("serverName", serverName)
                         localStorage.setItem("token", token);
-                        $timeout(function () {
+                        var tokenFromLocalStorage = localStorage.getItem("token")
+                        $rootScope.ThirtyMinutesCountdownHasStarted = true;
+                        if (tokenFromLocalStorage.length > 10) {
                             $state.go("app.dashboard")
-
-                        })
-
+                        } //if contains more than "Bearer" and space
                     }, function (error) {
                         username.addClass("error animated shake")
                         password.addClass("error animated shake")

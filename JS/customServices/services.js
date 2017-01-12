@@ -1,5 +1,18 @@
+/*
+app.service('authInterceptor', function($q, $state, $mdDialog) {
+    var service = this;
+    service.responseError = function(response) {
+        if (response.status == 401){
+            window.location = "/login";
+        }
+        return $q.reject(response);
+    };
+})
+.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+}])
 
-
+*/
 
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 

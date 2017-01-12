@@ -1,10 +1,8 @@
 app.controller("login", ["$rootScope", "authService", "$state", "$timeout", function ($rootScope, authService, $state, $timeout) {
     var self = this;
-    self.is_login_nahon = true
-
+    self.is_login_nahon = true;
     var token = localStorage.getItem("token")
     var ServerName = localStorage.getItem("serverName")
-
     self.LogUserInOnEnter = function ($event) {
         var keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {
@@ -15,19 +13,15 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
                 var token = "Bearer " + answer.data.AccessToken
                 localStorage.setItem("serverName", serverName)
                 localStorage.setItem("token", token);
-                console.log(token)
-                $timeout(function () {
+                var tokenFromLocalStorage = localStorage.getItem("token")
+                if (tokenFromLocalStorage.length > 10) {
                     $state.go("app.dashboard")
-
-                })
+                } //if contains more than "Bearer" and space
             }, function (error) {
                 username.addClass("error animated shake")
                 password.addClass("error animated shake")
                 self.is_login_nahon = false
             })
         }
-
     }
-
-
 }])
