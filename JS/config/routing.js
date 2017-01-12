@@ -17,7 +17,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/app',
         templateUrl: 'app/common/common.html',
         controller: 'common',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        resolve: {
+            CheckToken: function(){
+                var token = localStorage.getItem("token")
+                var pass;
+                if (token.length > 10){
+                    pass =  true
+                }else{
+                    pass = false
+                }
+                return pass
+            }
+              
+        }
         
 
     })
