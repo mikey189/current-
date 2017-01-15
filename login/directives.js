@@ -1,5 +1,5 @@
-app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state", "$timeout",
-    function (authService, $rootScope, $http, $state, $timeout) {
+app.directive("checkCredentials", ["authService", "$rootScope",  "$state", "$timeout",
+    function (authService, $rootScope,  $state, $timeout, $mdDialog) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
@@ -12,10 +12,20 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$http", "$state
                         localStorage.setItem("serverName", serverName)
                         localStorage.setItem("token", token);
                         var tokenFromLocalStorage = localStorage.getItem("token")
-                        $rootScope.ThirtyMinutesCountdownHasStarted = true;
                         if (tokenFromLocalStorage.length > 10) {
-                            $state.go("app.dashboard")
-                        } //if contains more than "Bearer" and space
+                            $state.go("app.dashboard", {}, {
+                                reload: true
+                            });
+                        } else {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Error')
+                                .textContent('We are sorry but we could not retrieve the token for this session')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('OK')
+                            )
+                        }
                     }, function (error) {
                         username.addClass("error animated shake")
                         password.addClass("error animated shake")

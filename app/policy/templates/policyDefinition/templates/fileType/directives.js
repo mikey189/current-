@@ -46,7 +46,7 @@ app.directive("saveFiletypes", function () {
                         })
                         console.log(object)
                     })
-
+                    scope.ctrl.isFiletypeEditable = false;
                 }
             })
         }

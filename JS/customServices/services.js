@@ -1,18 +1,4 @@
-/*
-app.service('authInterceptor', function($q, $state, $mdDialog) {
-    var service = this;
-    service.responseError = function(response) {
-        if (response.status == 401){
-            window.location = "/login";
-        }
-        return $q.reject(response);
-    };
-})
-.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptor');
-}])
 
-*/
 
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
@@ -248,7 +234,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policyOrder = "http://" + sname + ":4580/api/policy/reorderPolicyPriority";
     var deletePolicy = "http://" + sname + ":4580/api/policy/deletepolicy";
     var policySidenav = "http://" + sname + ":4580/api/policy/GetPoliciesSideNav"
-   
+
     var policyDashboard = "http://" + sname + ":4580/api/policy/GetPolicyDashboardInfo/";
     var filetype = "http://" + sname + ":4580/api/general/filetypes";
     var postFiletype = "http://" + sname + ":4580/api/policy/PostPolicyFileTypes/";
@@ -265,7 +251,7 @@ app.factory("policyData", function ($rootScope, $http) {
     var policy_settings = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=";
     var post_policy_settings = "http://" + sname + ":4580/api/Policy/PostPolicySettings/";
     var cdrFacetsTemplate = "http://" + sname + ":4580/api/policy/GetSettingsFacets?section=PolicyCdrSettings"
-     
+
     var FiletypeFacets = "http://localhost:3000/PolicyFileTypesSettings"
 
 
@@ -281,7 +267,7 @@ app.factory("policyData", function ($rootScope, $http) {
                 data: data
             })
         },
-        GetFiletypeFacets: function(){
+        GetFiletypeFacets: function () {
             return $http.get(FiletypeFacets)
         },
         getList: function () {
@@ -454,31 +440,31 @@ app.factory("policyData", function ($rootScope, $http) {
 
 app.factory("dashboardData", function ($http) {
 
-        var sname = localStorage.getItem("serverName");
+    var sname = localStorage.getItem("serverName");
 
     console.log(sname)
 
-        var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
-        var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
-        var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
-        var casesSidebar = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardSidebar";
+    var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
+    var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
+    var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
+    var casesSidebar = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardSidebar";
 
-        return {
-            getInput: function () {
-                return $http.get(inputURL)
-            },
-            getTotalInput: function () {
-                return $http.get(totalInputURL)
-            },
-            getOutput: function () {
-                return $http.get(outputURL)
-            },
-            getCasesSidebar: function () {
-                return $http.get(casesSidebar)
-            }
+    return {
+        getInput: function () {
+            return $http.get(inputURL)
+        },
+        getTotalInput: function () {
+            return $http.get(totalInputURL)
+        },
+        getOutput: function () {
+            return $http.get(outputURL)
+        },
+        getCasesSidebar: function () {
+            return $http.get(casesSidebar)
         }
-    })
-   
+    }
+})
+
 app.factory("C2CData", function () {
     var savedData = {}
 
@@ -499,7 +485,7 @@ app.factory("C2CData", function () {
 
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
-        console.log(sname)
+    console.log(sname)
 
     var menu = "http://" + sname + ":4580/api/jsonserver/reports?q=reports_menu"
     return {

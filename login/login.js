@@ -3,7 +3,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
     self.is_login_nahon = true;
     var token = localStorage.getItem("token")
     var ServerName = localStorage.getItem("serverName")
-    self.LogUserInOnEnter = function ($event) {
+    self.LogUserInOnEnter = function ($event, $http) {
         var keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {
             var serverName = document.getElementById("ServerName").value
@@ -14,6 +14,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
                 localStorage.setItem("serverName", serverName)
                 localStorage.setItem("token", token);
                 var tokenFromLocalStorage = localStorage.getItem("token")
+
                 if (tokenFromLocalStorage.length > 10) {
                     $state.go("app.dashboard")
                 } //if contains more than "Bearer" and space
@@ -25,3 +26,14 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
         }
     }
 }])
+
+app.run(['$rootScope', '$http', '$state', '$stateParams',
+    function ($rootScope, $http, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams
+    }
+])
+app.config(function ($httpProvider) {
+    var token = localStorage.getItem("token")
+    $httpProvider.defaults.headers.common.Authorization = token;
+})

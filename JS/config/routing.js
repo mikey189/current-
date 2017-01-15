@@ -19,6 +19,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'common',
         controllerAs: 'ctrl',
         resolve: {
+            //does not work yet 
             CheckToken: function(){
                 var token = localStorage.getItem("token")
                 var pass;

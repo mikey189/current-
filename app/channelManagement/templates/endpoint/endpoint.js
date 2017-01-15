@@ -7,34 +7,9 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     self.RefreshView = function (id) {
         console.log("refreshing view..")
-            //self.UpdateChannelData(id)
+        //self.UpdateChannelData(id)
         $scope.$apply()
     }
-
-  
-    
-
-    self.UpdateSettings = function () {
-        var settings_table = $(".channel-settings-table")
-        if (!self.are_settings_editable) {
-            settings_table.removeClass("notEditable")
-            self.are_settings_editable = true
-        } else {
-            //MAKE API CALL TO SEND DATA 
-            settings_table.addClass("notEditable")
-
-            channelData.post_channel_settings(self.rootId, self.ChannelConfiguration).then(function (success) {
-                //location.reload(true)
-                self.ChannelConfiguration = success.data.ChannelInfo.ChannelConfiguration
-            }, function (error) {
-                alert("error : " + error.data.Message)
-            })
-
-            self.are_settings_editable = false
-
-        }
-    }
-
     self.channel_list = []
     self.is_edit_mode_on = false;
     channelData.getchannelList().then(function (answer) {
@@ -45,7 +20,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
             self.channel_list.push(self.menuItems[i])
         }
     })
-
     self.onDropComplete = function (index, obj, evt) {
             var otherObj = self.channel_list[index];
             var otherIndex = self.channel_list.indexOf(obj);
@@ -60,7 +34,11 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     self.UpdateChannelData = function (newVal) {
 
             channelData.get_channel(newVal).then(function (answer) {
+                console.log("new id is : ")
+                console.log(newVal)
                 self.channel_data = answer.data
+                console.log("new data")
+                console.log(self.channel_data)
                 var ChannelFacetsIfNull = {
                     "Channel Usage Settings": {
                         "Values": {}

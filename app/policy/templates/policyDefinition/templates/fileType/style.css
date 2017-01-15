@@ -66,6 +66,7 @@ md-checkbox {
 .custom-input:focus {
     border-bottom: solid 2px #FF1744 !important;
 }
+
 .custom-select {
     background-color: #2196F3 !important;
     padding: 8px !important;
@@ -73,14 +74,45 @@ md-checkbox {
     border: solid 0px white !important;
     font-weight: 800 !important;
 }
-table{
+
+table {
     background-color: white;
 }
-thead{
+
+thead {
     background-color: #2196F3 !important;
     color: white !important;
 }
-.parent-row{
+
+.parent-row {
     background-color: #E8EAF6 !important;
     color: #333 !important;
+}
+
+.not-editable {
+    pointer-events: none !important;
+}
+
+.filetype-not-edited {
+    background-color: #3F51B5 !important;
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.filetype-in-edition {
+    background-color: #D50000 !important;
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.advanced-mode-button {
+    background-color: #2196F3 !important;
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.basic-mode-button {
+    background-color: #3F51B5 !important;
+    color: white !important;
+    font-weight: 700 !important;
 }

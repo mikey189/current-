@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-
 <div layout='column' ng-cloak id="fileTypeMain">
     <div id="policyFileTypeToolbar" layout="row" layout-align="space-between center" class="md-whiteframe-8dp">
         <div class="form-group has-feedback" id="PDFTSearchBox" flex="30" layout="row">
@@ -8,47 +7,61 @@
             <md-icon class="material-icons form-control-feedback" id="PDFTSearchIcon">search</md-icon>
         </div>
     </div>
-<json-formatter json="ctrl.FiletypeFacets"></json-formatter>
+    <json-formatter json="ctrl.FiletypeFacets"></json-formatter>
 
     <div layout="row" layout-align="space-between center">
-        <md-button save-filetypes>Save Data</md-button>
-        <md-button ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON">Toggle Advanced Mode</md-button>
+        <md-button md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
+            <span ng-if="ctrl.isFiletypeEditable">SAVE</span>
+            <span ng-if="!ctrl.isFiletypeEditable">EDIT</span>
+        </md-button>
+        <md-button md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON" ng-class="{'basic-mode-button': !ctrl.isFileTypesAdvanceModeON, 'advanced-mode-button': ctrl.isFileTypesAdvanceModeON}"> 
+            <span ng-if="ctrl.isFileTypesAdvanceModeON">Basic Mode</span>
+            <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
+        </md-button>
     </div>
-    <table class="table table-responsive" id="filetype-table" md-whiteframe="6" ng-cloak ng-init="ctrl.FiletypeInitConditions()">
+
+    <table ng-class="{'not-editable': !ctrl.isFiletypeEditable }" class="table table-responsive" id="filetype-table" md-whiteframe="6" ng-cloak ng-init="ctrl.FiletypeInitConditions()">
         <thead>
             <th>Category</th>
             <th>Allow</th>
-            <th ng-show="ctrl.isFileTypesAdvanceModeON">Process Embeded Files</th>
-            <th ng-show="ctrl.isFileTypesAdvanceModeON">Size limit</th>
-            <th ng-show="ctrl.isFileTypesAdvanceModeON">Sandbox</th>
+            <th ng-if="ctrl.isFileTypesAdvanceModeON">Process Embeded Files</th>
+            <th ng-if="ctrl.isFileTypesAdvanceModeON">Size limit</th>
+            <th ng-if="ctrl.isFileTypesAdvanceModeON">Sandbox</th>
         </thead>
         <tbody>
-            <tr class="parent-row" ng-repeat-start="(L0Key, L0Value) in ctrl.FiletypeFacets['Policy File Types Settings'].Properties" ng-init="L0Value.isHidden = true">
+            <tr class="parent-row" ng-repeat-start="(L0Key, L0Value) in ctrl.FiletypeFacets['Policy File Types Settings'].Properties"
+                ng-init="L0Value.isHidden = true">
                 <td>
                     <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.isHidden =! L0Value.isHidden">
-                        <md-icon ng-show="L0Value.isHidden">keyboard_arrow_right</md-icon>
-                        <md-icon ng-show="!L0Value.isHidden">keyboard_arrow_down</md-icon>
+                        <md-icon ng-if="L0Value.isHidden">keyboard_arrow_right</md-icon>
+                        <md-icon ng-if="!L0Value.isHidden">keyboard_arrow_down</md-icon>
                     </md-button>
                     {{L0Value.DisplayName}}
                 </td>
-                <td colspan="4"><md-checkbox aria-label="is Allowed" ng-click="ctrl.ToggleChildrenState(ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key])"></md-checkbox></td>
+                <td colspan="4">
+                    <md-checkbox aria-label="is Allowed" ng-click="ctrl.ToggleChildrenState(ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key])"></md-checkbox>
+                </td>
             </tr>
             <tr ng-repeat-start="value in L0Value.AvailableValues track by $index" ng-hide="L0Value.isHidden" ng-init="extension = (value | splitter : ':' : '1') ">
                 <td>{{extension}}</td>
-                <td><md-checkbox aria-label="is Allowed" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed" 
-                ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed || false"></md-checkbox></td>
-                <td ng-show="ctrl.isFileTypesAdvanceModeON"><md-checkbox aria-label="Process Embeded Files" 
-                ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles" 
-                 ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles || false"></md-checkbox></td>
-                <td ng-show="ctrl.isFileTypesAdvanceModeON">
-                    <input class="custom-input" type="number" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Size"/>
-                    <select class="custom-select" ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit || ctrl.ComputingUnits[1]"
-                     ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
+                <td>
+                    <md-checkbox aria-label="is Allowed" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed"
+                        ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].isAllowed || false"></md-checkbox>
                 </td>
-                <td ng-show="ctrl.isFileTypesAdvanceModeON">
+                <td ng-if="ctrl.isFileTypesAdvanceModeON">
+                    <md-checkbox aria-label="Process Embeded Files" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles"
+                        ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].ProcessEmbbededFiles || false"></md-checkbox>
+                </td>
+                <td ng-if="ctrl.isFileTypesAdvanceModeON">
+                    <input class="custom-input" type="number" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Size"
+                    />
+                    <select class="custom-select" ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit || ctrl.ComputingUnits[1]"
+                        ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].SizeLimit.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
+                </td>
+                <td ng-if="ctrl.isFileTypesAdvanceModeON">
                     <md-checkbox aria-label="Sandbox" ng-model="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].Sandbox"
-                    ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].Sandbox = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].Sandbox || false"></md-checkbox>
-                    </td>
+                        ng-init="ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].Sandbox = ctrl.PolicyFacets['Policy Filetypes Settings'].Values[L0Key][extension].Sandbox || false"></md-checkbox>
+                </td>
             </tr>
             <tr ng-repeat-end></tr>
             <tr ng-repeat-end></tr>

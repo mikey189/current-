@@ -10,7 +10,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
     self.is_policy_sidenav_editable = false;
     self.channelIds = [];
     self.types = {};
-    
+
     self.FiletypeInitConditions = function () {
         self.isAdvancedModeOn = false;
         self.isTableEditable = false;
@@ -194,7 +194,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 }])
 
 
-
+/* ______________________________________   End Of controller    ______________________________________*/
 
 
 

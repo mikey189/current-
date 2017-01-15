@@ -3,9 +3,12 @@
 <json-formatter json="ctrl.ChannelConfiguration"></json-formatter>
 <div class="channel-settings-wrapper">
     <div layout="row" layout-align="end center" class="channel-settings-edit-div">
-        <md-button md-whiteframe="6" class="channel-edit-button" editchannel-settings ng-click="ctrl.UpdateSettings()">EDIT</md-button>
+        <md-button md-whiteframe="6" class="channel-edit-button" edit-channel-settings>
+            <span ng-if="ctrl.are_settings_editable">SAVE</span>
+            <span ng-if="!ctrl.are_settings_editable">EDIT</span>
+        </md-button>
     </div>
-    <table class="table table-responsive notEditable channel-settings-table" md-whiteframe="6">
+    <table class="table table-responsive channel-settings-table" md-whiteframe="6" ng-class="{'notEditable': !ctrl.are_settings_editable}">
         <thead class="thead-channel-settings">
             <th>NAME</th>
             <th>VALUE</th>

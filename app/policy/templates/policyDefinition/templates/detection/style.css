@@ -1,51 +1,57 @@
-.detectionTables{
+.detectionTables {
     background-color: white;
     border-radius: 3px;
     margin-top: 2em;
 }
-.noMargin{
+
+.noMargin {
     margin-left: 0px;
     margin-right: 1em;
 }
-.noMarginBottom{
+
+.noMarginBottom {
     margin-bottom: 0px !important;
 }
-.verticalMargin{
+
+.verticalMargin {
     padding-top: 1em !important;
     padding-bottom: 1em !important;
 }
-.emptyRow{
+
+.emptyRow {
     height: 3em;
     background-color: none;
 }
 
-.editDetection{
+.editDetection {
     background-color: #190051;
     color: white;
     font-weight: 600;
     margin-left: 0px;
     margin-top: 2em;
 }
-.editDetection:hover{
+
+.editDetection:hover {
     background-color: #FF1744 !important;
     color: white;
     font-weight: 600;
 }
-.notEditable {
+
+.not-editable {
     pointer-events: none;
 }
 
-.fireEye{
+.fireEye {
     background-color: #EDE7F6;
 }
-.cukoo{
-    background-color: #EDE7F6;
-}
-.no-padding-margin{
 
+.cukoo {
+    background-color: #EDE7F6;
+}
+
+.no-padding-margin {
     padding-left: 0px !important;
     margin-left: 0px !important;
     padding-right: 0px !important;
     margin-right: 0px !important;
-
 }
