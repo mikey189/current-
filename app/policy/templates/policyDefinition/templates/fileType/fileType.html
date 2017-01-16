@@ -7,8 +7,12 @@
             <md-icon class="material-icons form-control-feedback" id="PDFTSearchIcon">search</md-icon>
         </div>
     </div>
-    <json-formatter json="ctrl.policy"></json-formatter>
-    <p>sent to server : </p><json-formatter json="ctrl.ObjectThatIsSentToServer"></json-formatter>
+    <p> get from </p>
+    <json-formatter json="ctrl.FiletypeFacets"></json-formatter>
+    <p>Middle man</p>
+    <json-formatter json="ctrl.FileTypeMiddleMan"></json-formatter>
+    <p>sent to server : </p>
+    <json-formatter json="ctrl.ObjectThatIsSentToServer"></json-formatter>
 
     <div layout="row" layout-align="space-between center">
         <md-button md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
@@ -40,28 +44,28 @@
                     {{L0Value.DisplayName}}
                 </td>
                 <td colspan="4">
-                    <md-checkbox aria-label="is Allowed" ng-click="ctrl.ToggleChildrenState(ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key])"></md-checkbox>
+                    <md-checkbox aria-label="is Allowed" ng-click="ctrl.ToggleChildrenState(ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName])"></md-checkbox>
                 </td>
             </tr>
             <tr ng-repeat-start="value in L0Value.AvailableValues track by $index" ng-hide="L0Value.isHidden" ng-init="extension = (value | splitter : ':' : '1') ">
                 <td>{{extension}}</td>
                 <td>
-                    <md-checkbox aria-label="is Allowed" ng-model="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].isAllowed"
-                        ng-init="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].isAllowed = ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].isAllowed || false"></md-checkbox>
+                    <md-checkbox aria-label="is Allowed" ng-model="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].isAllowed"
+                        ng-init="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].isAllowed = ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].isAllowed || false"></md-checkbox>
                 </td>
                 <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                    <md-checkbox aria-label="Process Embeded Files" ng-model="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].ProcessEmbbededFiles"
-                        ng-init="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].ProcessEmbbededFiles = (typeof(ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].ProcessEmbbededFiles) !== undefined) ? ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].ProcessEmbbededFiles : false"></md-checkbox>
+                    <md-checkbox aria-label="Process Embeded Files" ng-model="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].ProcessEmbbededFiles"
+                        ng-init="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].ProcessEmbbededFiles = (typeof(ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].ProcessEmbbededFiles) !== undefined) ? ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].ProcessEmbbededFiles : false"></md-checkbox>
                 </td>
                 <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                    <input class="custom-input" type="number" ng-model="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].SizeLimit.Size"
+                    <input class="custom-input" type="number" ng-model="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].SizeLimit.Size"
                     />
-                    <select class="custom-select" ng-init="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].SizeLimit.Unit = ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].SizeLimit.Unit || ctrl.ComputingUnits[1]"
-                        ng-model="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].SizeLimit.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
+                    <select class="custom-select" ng-init="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].SizeLimit.Unit = ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].SizeLimit.Unit || ctrl.ComputingUnits[1]"
+                        ng-model="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].SizeLimit.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
                 </td>
                 <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                    <md-checkbox aria-label="Sandbox" ng-model="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].Sandbox"
-                        ng-init="ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].Sandbox = ctrl.PolicyFacets['Policy File Types Settings'].Values[L0Key][extension].Sandbox || false"></md-checkbox>
+                    <md-checkbox aria-label="Sandbox" ng-model="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].Sandbox"
+                        ng-init="ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].Sandbox = ctrl.FileTypeMiddleMan['Policy File Types Settings'].Values[L0Value.DisplayName][extension].Sandbox || false"></md-checkbox>
                 </td>
             </tr>
             <tr ng-repeat-end></tr>

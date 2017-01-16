@@ -43,7 +43,7 @@ app.directive("editPreferences", ["policyData", function (policyData) {
                     table.addClass("notEditable")
                     button.html("EDIT");
                     scope.ctrl.editMode = false;
-                    policyData.update_policy_detection(scope.ctrl.policyId, scope.ctrl.detection)
+                    scope.ctrl.post_policy_settings(scope.ctrl.PolicyFacets)
                 }
             })
         }

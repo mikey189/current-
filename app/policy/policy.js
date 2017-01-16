@@ -1,8 +1,6 @@
 app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout) {
 
     var self = this;
-    //basic variables for DOM Purpose 
-
     self.sidenav_edit_mode = false;
     self.PolicyInfo = {};
     self.newPolicy = false;
@@ -10,14 +8,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
     self.is_policy_sidenav_editable = false;
     self.channelIds = [];
     self.types = {};
-
     self.FiletypeInitConditions = function () {
         self.isAdvancedModeOn = false;
         self.isTableEditable = false;
-    }
-
-    self.ComputingUnits = ["KB", "MB", "GB", "TB"]
-
+    };
+    self.ComputingUnits = ["KB", "MB", "GB", "TB"];
     self.show_success_dialog = function (message) {
         $mdDialog.show(
             $mdDialog.alert()
@@ -80,11 +75,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 }, function (cancel) {})
         }
         /*__________________________  detection  _____________ _____________ */
-    policyData.get_policy_settings("PolicyFileDetectionSettings").then(function (answer) {
-        var data = answer.data;
-        self.DetectionFacets = data;
-    });
-    /*__________________________  formatting facets for post _____________ _____________ */
+
+
+    /*__________________________  formatting facets for post __________________________ */
     //settings not editable by default
     self.areSettingsEditable = false;
     //this function is called through directive to allow further DOM manipulations
@@ -123,8 +116,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
             self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? PolicyFacetsIfNull : self.policy.PolicyFacets;
             self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
+                //file detection settings__________________________________________//
 
+            policyData.get_policy_settings("PolicyFileDetectionSettings").then(function (answer) {
+                var data = answer.data;
+                self.DetectionFacets = data;
+                self.InitFacets("PolicyFileDetectionSettings", "DetectionFacets");
+                console.log(self.PolicyFacets)
+            });
             //______________________________________retrieving CDR Facets__________________________________________//
+
 
             policyData.getCDRFacets().then(function (answer) {
                     self.cdr = answer.data
@@ -154,9 +155,10 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 //______________________________________retrieving Filetypes Facets__________________________________________//
 
             policyData.get_policy_settings("PolicyFileTypesSettings").then(function (answer) {
+                
                 self.FiletypeFacets = answer.data
 
-                angular.forEach(self.FiletypeFacets['Policy File Types Settings'].Properties, function (value, key) {
+                /*angular.forEach(self.FiletypeFacets['Policy File Types Settings'].Properties, function (value, key) {
 
                     var PolicyFacetsFileTypesIfNull = {
                         "Values": {}
@@ -165,10 +167,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     self.PolicyFacets["Policy File Types Settings"] = self.PolicyFacets["Policy File Types Settings"] || PolicyFacetsFileTypesIfNull;
 
                     if (self.PolicyFacets['Policy File Types Settings'].Values[key] == undefined || self.PolicyFacets['Policy File Types Settings'].Values[key] === "") {
+                        var tmp = value.DefaultValue;
                         self.PolicyFacets['Policy File Types Settings'].Values[key] = value.DefaultValue[0]
+                        console.log("first")
                     } else {
 
                         if (self.PolicyFacets['Policy File Types Settings'].Values[key].length > 0) {
+                            console.log(self.PolicyFacets['Policy File Types Settings'].Values[key])
                             var splittedByPipe = self.PolicyFacets['Policy File Types Settings'].Values[key].split("|")
                             var object = {}
 
@@ -182,12 +187,43 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         }
                     }
 
-                })
+            })*/
 
             })
 
         })
     }
+
+    self.InitFacets = function (FacetName, FacetOriginalContainerName) {
+   
+        console.log(FacetOriginalContainerName)
+        var FacetIfNotExistant = {};
+
+        FacetIfNotExistant = {
+            "Values": {}
+        };
+
+        var FacetExistButIsEmpty = {};
+        self.PolicyFacets = (jQuery.isEmptyObject(self.PolicyFacets)) ? {} : self.PolicyFacets;
+        //check if we need to dive in the c-fucntion if policyFacet[facetName] exist
+        //check if object contains values inside
+
+        angular.forEach(self[FacetOriginalContainerName], function (L0Values, L0Key) {
+            self.PolicyFacets[L0Key] = self.PolicyFacets[L0Key] || FacetIfNotExistant;
+            self.PolicyFacets[L0Key].Values = self.PolicyFacets[L0Key].Values || FacetExistButIsEmpty;
+            if (Object.keys(self.PolicyFacets[L0Key].Values).length == 0) {
+                angular.forEach(L0Values.Properties, function (L1Value, L1Key) {
+                    if (!L1Value.IsHidden){
+                    self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue || "";
+
+                    }
+                })
+            }
+
+        })
+    }
+
+
 
 }])
 

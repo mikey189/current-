@@ -5,7 +5,7 @@
 <md-button md-ink-ripple="white" md-whiteframe="6" class="editDetection" aria-label="edit preferences" edit-preferences>EDIT</md-button>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <div id="policySettingsContainer" ng-class="{'not-editable': !ctrl.editMode}">
-    <md-list layout='row' layout-margin ng-repeat="(Key, value) in ctrl.DetectionFacets" flex="100">
+    <md-list  layout-margin ng-repeat="(Key, value) in ctrl.DetectionFacets">
         <div class='whiteBk policy_settings_lists' md-whiteframe="4" flex>
             <md-toolbar layout='row' layout-align='start center' class="policy_settings_key">
                 <h4 class='card-title' layout-margin>{{Key}}</h4>
@@ -19,7 +19,7 @@
                             aria-label="file Sign switch">
                         </md-switch>
                     </div>
-                    <div style="width: 100%" ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice" ng-init="propValue.AvailableValues = ['something1', 'something2']" >
+                    <div style="width: 100%" ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice"  >
                         <md-content layout="row" ng-init="propValue.isHidden = true" layout-align="start center">
                             <md-button ng-click="propValue.isHidden =! propValue.isHidden" class="md-icon-button no-padding-margin" >
                                 <md-icon ng-show="propValue.isHidden">keyboard_arrow_right</md-icon>
@@ -27,10 +27,10 @@
                             </md-button>
                             <p style="margin-bottom: 0px">{{propValue.DisplayName}}</p>
                         </md-content>
-                        <div ng-repeat="x in propValue.AvailableValues" ng-hide="propValue.isHidden" layout="row" layout-align="space-between center">
+                        <!--<div ng-repeat="x in propValue.AvailableValues" ng-hide="propValue.isHidden" layout="row" layout-align="space-between center">
                             {{x}}
                             <md-checkbox ng-model="ctrl.PolicyFacets[Key].Values[propkey][x]"></md-checkbox>
-                        </div>
+                        </div>-->
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int" name="file" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
