@@ -155,10 +155,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             policyData.get_policy_settings("PolicyFileTypesSettings").then(function (answer) {
                 self.FiletypeFacets = answer.data
+
                 angular.forEach(self.FiletypeFacets['Policy File Types Settings'].Properties, function (value, key) {
-
-
-                    //checking if slef.Policyfacets has a filetype property 
 
                     var PolicyFacetsFileTypesIfNull = {
                         "Values": {}

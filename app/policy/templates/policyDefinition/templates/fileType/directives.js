@@ -6,7 +6,31 @@ app.directive("saveFiletypes", function () {
                 if (!scope.ctrl.isFiletypeEditable) {
                     scope.ctrl.isFiletypeEditable = true
                 } else {
-                    angular.forEach(scope.ctrl.PolicyFacets["Policy Filetypes Settings"], function (L0Value, L0Key) {
+                    var NewFileTypeFacets = []
+                   angular.forEach(scope.ctrl.PolicyFacets['Policy File Types Settings'].Values, function(L0Value, L0Key){
+                       var FacetStr = "";
+                       var FirstKeyOfFacet = L0Key;
+                       FacetStr += FirstKeyOfFacet;
+                       angular.forEach(L0Value, function(L1Value, L1Key){
+                           FacetStr+=":"+L1Key
+                           angular.forEach(L1Value, function(L2Value, L2Key){
+                               FacetStr+=":"+L2Value
+                           })
+                       })
+                       NewFileTypeFacets.push(FacetStr)
+                       scope.ctrl.PolicyFacets['Policy File Types Facets'].Values = NewFileTypeFacets;
+                       
+                   })
+                }
+            })
+        }
+    }
+})
+
+
+
+
+                    /*angular.forEach(scope.ctrl.PolicyFacets["Policy File Types Settings"].Values, function (L0Value, L0Key) {
                         var object = {}
                         angular.forEach(L0Value, function (L1Value, L1Key) {
                             var ExtensionValues = ""
@@ -35,20 +59,16 @@ app.directive("saveFiletypes", function () {
 
                                     })
                                     //extracting the name of parent category for L1Key
-                                var regexKey = L1Key.match("[^_]*$")
-                                var ext = regexKey + ":" + L2Key + ":" + str
+                                    //this causes an error
+                                //var regexKey = L1Key.match("[^_]*$")
+                                var ext = L1Key + ":" + L2Key + ":" + str
                                     //removing last ':'
                                 ext = ext.substring(0, ext.length - 1);
                                 biggerArr.push(ext)
                             })
                             object[L1Key] = biggerArr
-
+                            scope.ctrl.ObjectThatIsSentToServer = object
                         })
-                        console.log(object)
                     })
                     scope.ctrl.isFiletypeEditable = false;
-                }
-            })
-        }
-    }
-})
+            scope.ctrl.post_policy_settings(scope.ctrl.PolicyFacets)*/

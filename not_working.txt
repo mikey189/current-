@@ -1,28 +1,42 @@
-Dashboard
+to do 
+
+post filetype (post entire facets)
+then check that what I get in return and check that the binding is alright 
+ 
+ currently detection and filetype have no support whatsoever
+ detection has no support like : angular.forEach to check if available values already exist
+
+How many maximum labels for graph? currently 15.
+
+tfs
+
+Issues : 
+when posting policy filetype settings, I get two objects
+
+the first one that is a litteral object and the second one that is an object compaosed of arrays in the form of facets
+which one should I send considering the fact that contrary to CDR where values where not booleans, here values or booleans a I can't extrapolate
+model state from facets (litteral strings)
+
+the other object, is the object that works with the DOM itself and this recognizable by DOM elements
+
+which one to post ? how can we work with facets when string interpolation is not possible given the fact that in this specific screen (filetype)
+we are facing 90 % booleans values ? 
+
+
+sum up : 
+I post two objects for policy facets filetype settings when only one is expected ? 
+What object to post ? how to make the binding back? 
+
+
+Issue is that im not writing into the proper object, instead of writing inside the first object that contains the template, I'm writing into the 
+second object that is created on the fly. 
+
+in all other facets we write inside the object that we get (the one that contains the template object as well) and here it seems to 
+create an another object. 
+
+On one hand this is what is causing the issue, on the other hand, it's not like the other facets as i do need to recreate
+some other object as we are working 90% with booleans.
 
 
 
-
-
-New channel -> not working (bad request) when channel type is kiosk || dirwatcher
-
-SMB and ISMB -> no edit button should be editable by default
-
-New channel -> already has informations inside why? (new smb)
-
-angular.forEach needed before sending info to server in who is using  (policy using this channel)
-
-reformat properly info (extra | causes lots of bugs)
-
-
-Rename Policy
-
-
-
-Maor
-
-Need to get real data from server
-Cluster -> Job types -> Missing
-Policy -> filetypes -> invert to facets
-Reports -> Scanner Status -> missing data
-Reorder channel Priority -> error on POST
+the two objects creation was due to a typo mistake, it is now resolved

@@ -4,6 +4,7 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
     self.EndDate = Math.floor(Date.now() / 60000);
     self.StartDate = self.EndDate - 5;
+    self.DynamicLabels = new Array(5);
     //watching any change in StartDate and EndDate and then trigger $cluster call
 
     $scope.$watch(angular.bind(this, function () {
@@ -14,18 +15,28 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
             case "5 Minutes":
                 self.StartDate = self.EndDate - 5
+                self.DynamicLabels = new Array(5);
+
                 break;
             case "30 Minutes":
                 self.StartDate = self.EndDate - 30
+                self.DynamicLabels = new Array(15);
+
                 break;
             case "1 Hour":
                 self.StartDate = self.EndDate - 60
+                self.DynamicLabels = new Array(15);
+
                 break;
             case "90 Minutes":
                 self.StartDate = self.EndDate - 90
+                self.DynamicLabels = new Array(15);
+
                 break;
             case "2 Hours":
                 self.StartDate = self.EndDate - 120
+                self.DynamicLabels = new Array(15);
+
                 break;
         }
 
@@ -39,18 +50,23 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                 var currentHigh = []
                 var currentMany = []
                 var currentJobsMeasures = []
+
                 angular.forEach(CpuMeasurementList, function (value, key) {
                     var data = {}
                     data.Label = key
                     data.ClusterStatus = status
-                    data.JobType = "Missing Info"
+                    data.JobType = "Missing Info";
+
                     angular.forEach(value, function (v, k) {
+
                         currentHigh.push(v.HighComplexityRunningSanitizations)
                         currentLow.push(v.LowComplexityRunningSanitizations)
                         currentMany.push(v.ManyComplexityRunningSanitizations)
                         cpus.push(v.CpuLoad)
                         data.JobType
+
                     })
+
                     currentJobsMeasures.push(currentHigh)
                     currentJobsMeasures.push(currentMany)
                     currentJobsMeasures.push(currentLow)
@@ -58,14 +74,11 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                     data.cpu = cpus
 
                     self.ClusterData.push(data)
-
+                    
                 })
+
 
             })
     });
-   
-    self.GetDynamicLabels = function(data){
-        var arr = new Array(data.length)
-        return arr
-    }
+
 }]);

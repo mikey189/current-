@@ -5,11 +5,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     /*-------------------- Sidebar ----------------------*/
 
-    self.RefreshView = function (id) {
-        console.log("refreshing view..")
-        //self.UpdateChannelData(id)
-        $scope.$apply()
-    }
+   
     self.channel_list = []
     self.is_edit_mode_on = false;
     channelData.getchannelList().then(function (answer) {
@@ -32,22 +28,16 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
     /*--------------------  Watching for changes in channel ID --------------------*/
 
     self.UpdateChannelData = function (newVal) {
-
             channelData.get_channel(newVal).then(function (answer) {
-                console.log("new id is : ")
-                console.log(newVal)
+                
                 self.channel_data = answer.data
-                console.log("new data")
-                console.log(self.channel_data)
                 var ChannelFacetsIfNull = {
                     "Channel Usage Settings": {
                         "Values": {}
                     }
                 }
-
                 var channelInfo = answer.data.ChannelInfo
                 self.ChannelConfiguration = channelInfo.ChannelConfiguration
-                console.log(self.ChannelConfiguration)
                 self.generalInformations = channelInfo.GeneralInformations
 
                 self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration

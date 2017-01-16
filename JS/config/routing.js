@@ -19,21 +19,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'common',
         controllerAs: 'ctrl',
         resolve: {
-            //does not work yet 
-            CheckToken: function(){
-                var token = localStorage.getItem("token")
-                var pass;
-                if (token.length > 10){
-                    pass =  true
-                }else{
-                    pass = false
-                }
-                return pass
+            token: function () {
+                console.log("from reslve")
+                return localStorage.getItem("token")
             }
-              
         }
-        
-
     })
 
 
@@ -159,22 +149,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
     .state('app.clusterManagement', {
-        url: '/clusterManagement',
-        templateUrl: 'app/topology/cluster/cluster.tmpl.html',
-        controller: 'cluster',
-        controllerAs: 'ctrl',
-        displayName: "Cluster Management",
-        classSelector: "cluster"
+            url: '/clusterManagement',
+            templateUrl: 'app/topology/cluster/cluster.tmpl.html',
+            controller: 'cluster',
+            controllerAs: 'ctrl',
+            displayName: "Cluster Management",
+            classSelector: "cluster"
 
-    })
-    .state('app.agentManagement', {
-        url: '/agentManagement',
-        templateUrl: 'app/topology/agent/agent.tmpl.html',
-        controller: 'agent',
-        controllerAs: 'ctrl',
-        displayName: "Cluster Management"
+        })
+        .state('app.agentManagement', {
+            url: '/agentManagement',
+            templateUrl: 'app/topology/agent/agent.tmpl.html',
+            controller: 'agent',
+            controllerAs: 'ctrl',
+            displayName: "Cluster Management"
 
-    })
+        })
 
     .state('app.policy', {
             url: '/policy',

@@ -1,5 +1,3 @@
-
-
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
     var sname = localStorage.getItem("serverName");
@@ -147,7 +145,7 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         get_channel: function (id) {
-            return $http.get(get_channel + id)
+            return $http.get(get_channel + id, {cache: false})
         },
         delete_channel: function (id) {
             return $http({
@@ -408,7 +406,7 @@ app.factory("policyData", function ($rootScope, $http) {
             })
         },
         get_policy_info: function (id) {
-            return $http.get(policy_info + id)
+            return $http.get(policy_info + id, {cache: false})
         },
         get_computers_list: function () {
             return $http.get(computers_list)

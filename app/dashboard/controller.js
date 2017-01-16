@@ -19,7 +19,8 @@ app.controller("dashboard", ["$scope","dashboardData", function ($scope, dashboa
         self.casesInfo = answer.data;
         self.totalCases = self.casesInfo.length;
     })
- 
+    
+    self.token = localStorage.getItem("token")
 }]);
 
 
