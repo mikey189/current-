@@ -145,7 +145,7 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         get_channel: function (id) {
-            return $http.get(get_channel + id, {cache: false})
+            return $http.get(get_channel + id)
         },
         delete_channel: function (id) {
             return $http({
@@ -335,7 +335,7 @@ app.factory("policyData", function ($rootScope, $http) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                url: postFiletype + id,
+                url: (postFiletype + id),
                 method: "POST",
                 data: FileType
             })

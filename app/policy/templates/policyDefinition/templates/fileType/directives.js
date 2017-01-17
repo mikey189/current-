@@ -1,4 +1,4 @@
-app.directive("saveFiletypes", function () {
+app.directive("saveFiletypes", function (policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -6,10 +6,12 @@ app.directive("saveFiletypes", function () {
                 if (!scope.ctrl.isFiletypeEditable) {
                     scope.ctrl.isFiletypeEditable = true
                 } else {
-
-                    scope.ctrl.post_policy_settings(scope.ctrl.FileTypeMiddleMan["Policy File Types Settings"].Values)
                     scope.ctrl.isFiletypeEditable = false;
-
+                    policyData.postFiletype(scope.ctrl.policyId, scope.ctrl.Filetypes).then(function(success){
+                        alert("success")
+                    }, function(error){
+                        alert(error.data.Message)
+                    })
                 }
             })
         }
