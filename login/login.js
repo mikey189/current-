@@ -3,6 +3,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
     self.is_login_nahon = true;
     var token = localStorage.getItem("token")
     var ServerName = localStorage.getItem("serverName")
+    self.password = "P04531418"
     self.LogUserInOnEnter = function ($event, $http) {
         var keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {

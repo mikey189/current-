@@ -43,6 +43,8 @@ app.directive("editPreferences", ["policyData", function (policyData) {
                     table.addClass("notEditable")
                     button.html("EDIT");
                     scope.ctrl.editMode = false;
+                    var values = scope.ctrl.PolicyFacets
+                    console.log(values)
                     scope.ctrl.post_policy_settings(scope.ctrl.PolicyFacets)
                 }
             })
@@ -91,4 +93,16 @@ app.directive("unwrappCukoo", function () {
     }
 })
 
-
+.directive('stringToNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(value) {
+        return '' + value;
+      });
+      ngModel.$formatters.push(function(value) {
+        return parseFloat(value);
+      });
+    }
+  };
+});

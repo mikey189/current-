@@ -44,7 +44,7 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) 
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 policyData.create_new_policy(scope.ctrl.PolicyInfo).then(function (success) {
-                                        $mdDialog.cancel()
+                    $mdDialog.cancel()
 
                     $state.go("app.policy.definition.fileType")
                     location.reload(true)
@@ -133,7 +133,6 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
                 var self = $(this);
                 scope.$apply(function () {
                     scope.ctrl.policyId = parseInt(self.attr("policy-id"));
-                    scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
                 })
             })
         }

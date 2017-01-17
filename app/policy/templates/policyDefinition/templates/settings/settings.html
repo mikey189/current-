@@ -11,19 +11,15 @@
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center' ng-repeat="(propkey, propValue) in value.Properties">
                 <p>{{propValue.DisplayName}}</p>
-                <div ng-switch="propValue.Type" ng-init=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
+                <div ng-switch="propValue.Type" nginit=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
                     <div ng-switch-when="FacetPropertyType_Bool">
                         <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
                             aria-label="file Sign switch">
                         </md-switch>
                     </div>
-                    <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-                        <md-button class="md-icon-button" ng-click="ctrl.open_second_modal($event, Key, propkey, propValue)">
-                            <md-icon class="see_file_extensions_icon">playlist_add</md-icon>
-                        </md-button>
-                    </div>
+                   
                     <div ng-switch-when="FacetPropertyType_Int" name="file">
-                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
+                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="number" string-to-number />
                     </div>
                     <div ng-switch-when=" FacetPropertyType_String">
                         <input class="custom-input" placeholder="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
@@ -32,8 +28,8 @@
                         <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" 
-                            ng-options="x for x in propValue.AvailableValues"></select>
+                        <select class="custom-select" number-to-string ng-model = "ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
+                        </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
                         <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password"

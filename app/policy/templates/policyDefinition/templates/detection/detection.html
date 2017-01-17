@@ -12,7 +12,7 @@
             </md-toolbar>
             <md-divider></md-divider>
             <md-content layout='row' ng-repeat="(propkey, propValue) in value.Properties">
-                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type" ng-init=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
+                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type" nginit=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
                     <div ng-switch-when="FacetPropertyType_Bool" layout="row" layout-align="space-between center" flex>
                         <p>{{propValue.DisplayName}}</p>
                         <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
@@ -34,7 +34,7 @@
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int" name="file" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
-                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
+                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey] " string-to-number type="number" />
                     </div>
                     <div ng-switch-when=" FacetPropertyType_String" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
