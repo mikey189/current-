@@ -86,8 +86,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.getPolicyInfo = function (id) {
 
                 policyData.get_policy_info(id).then(function (answer) {
-                    //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
                     console.log(answer)
+                    //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
                     self.policy = answer.data
                     var PolicyFacetsIfNull = {
@@ -96,18 +96,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         }
                     }
                     self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? PolicyFacetsIfNull : self.policy.PolicyFacets;
-                    //file detection settings__________________________________________//
+                    //__________________________________________file detection settings__________________________________________//
 
                     policyData.get_policy_settings("PolicyFileDetectionSettings").then(function (answer) {
                         var data = answer.data;
                         self.DetectionFacets = data;
-                        self.InitFacets("DetectionFacets");
+                        self.InitFacets(self.DetectionFacets);
                     });
                     /*______________________________________settings______________________________________*/
                     policyData.get_policy_settings("PolicySettings").then(function (answer) {
                         var data = answer.data;
                         self.allFacets = data;
-                        self.InitFacets("allFacets");
+                        self.InitFacets(self.allFacets);
 
                     });
 
@@ -161,6 +161,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 
             angular.forEach(RetrievedData, function (L0Value, L0Key) {
+
                 if (self.PolicyFacets[L0Key] == !undefined && self.PolicyFacets[L0Key].length == !0) {
                     //do nothing for now
                     return self.PolicyFacets[L0Key]
@@ -222,6 +223,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 /* ______________________________________   End Of controller    ______________________________________*/
 
+/* ______________________________________   Custom Filters    ______________________________________*/
+
+
 
 app.filter('filterObject', function () {
     return function (input, search) {
@@ -249,34 +253,3 @@ app.filter("splitter", function () {
     }
 })
 
-app.directive('stringToNumber', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModel) {
-            ngModel.$parsers.push(function (value) {
-                return '' + value;
-            });
-            ngModel.$formatters.push(function (value) {
-                var floated = parseFloat(value)
-                var str = ""
-                str = +floated
-                return str;
-            });
-        }
-    };
-});
-app.directive('numberToString', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModel) {
-            ngModel.$parsers.push(function (value) {
-                return '' + value;
-            });
-            ngModel.$formatters.push(function (value) {
-                var str = ""
-                str = +value
-                return str;
-            });
-        }
-    };
-});

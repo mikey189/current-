@@ -128,3 +128,35 @@ app.directive("treeValueModal", function(){
     }
 })
 
+app.directive('stringToNumber', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function (value) {
+                return '' + value;
+            });
+            ngModel.$formatters.push(function (value) {
+                var floated = parseFloat(value)
+                var str = ""
+                str = +floated
+                return str;
+            });
+        }
+    };
+});
+
+app.directive('numberToString', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function (value) {
+                return '' + value;
+            });
+            ngModel.$formatters.push(function (value) {
+                var str = ""
+                str = +value
+                return str;
+            });
+        }
+    };
+});

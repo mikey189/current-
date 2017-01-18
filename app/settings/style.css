@@ -29,3 +29,6 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
   color: #2196F3 !important;
   font-weight: 700 !important;
 }
+.setting_tabs{
+    background-color: #455A64 !important;
+}

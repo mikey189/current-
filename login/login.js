@@ -4,7 +4,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
     var token = localStorage.getItem("token")
     var ServerName = localStorage.getItem("serverName")
     self.password = "P04531418"
-    self.LogUserInOnEnter = function ($event, $http) {
+    self.LogUserInOnEnter = function ($event, $http, $httpProvider) {
         var keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {
             var serverName = document.getElementById("ServerName").value
@@ -14,11 +14,11 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
                 var token = "Bearer " + answer.data.AccessToken
                 localStorage.setItem("serverName", serverName)
                 localStorage.setItem("token", token);
-                var tokenFromLocalStorage = localStorage.getItem("token")
+                console.log($http)
 
-                if (tokenFromLocalStorage.length > 10) {
-                    $state.go("app.dashboard")
-                } //if contains more than "Bearer" and space
+
+                $state.go("app.dashboard")
+
             }, function (error) {
                 username.addClass("error animated shake")
                 password.addClass("error animated shake")
@@ -37,4 +37,5 @@ app.run(['$rootScope', '$http', '$state', '$stateParams',
 app.config(function ($httpProvider) {
     var token = localStorage.getItem("token")
     $httpProvider.defaults.headers.common.Authorization = token;
+
 })

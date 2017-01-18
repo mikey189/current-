@@ -73,3 +73,33 @@ app.directive("formatter", function ($timeout) {
     }
   }
 })
+
+app.directive('stringToDate', function () {
+  return {
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+
+      function hasNumbers(t) {
+        return /\d/.test(t);
+      }
+
+      function isDate(number) {
+        Date.parse(number)
+        if (isNaN(number))
+          return false
+        else
+          return true
+
+      }
+
+      /*ngModel.$parsers.push(function (value) {
+        return value.toUTCString();
+      });*/
+      ngModel.$formatters.push(function (value) {
+        if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
+          return value
+        }
+      });
+    }
+  };
+});

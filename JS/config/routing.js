@@ -17,13 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/app',
         templateUrl: 'app/common/common.html',
         controller: 'common',
-        controllerAs: 'ctrl',
-        resolve: {
-            token: function () {
-                console.log("from reslve")
-                return localStorage.getItem("token")
-            }
-        }
+        controllerAs: 'ctrl'
     })
 
 
