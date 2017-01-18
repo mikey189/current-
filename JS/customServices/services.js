@@ -181,7 +181,7 @@ app.factory("channelData", function ($http, $rootScope) {
             return $http.get(current_computers)
         },
         get_policy_list: function () {
-            return $http.get(policyList)
+            return $http.get(policyList, {cache: false})
         },
         reorder_channel_priority: function (policyOrder) {
             return $http({
@@ -269,10 +269,10 @@ app.factory("policyData", function ($rootScope, $http) {
             return $http.get(FiletypeFacets)
         },
         getList: function () {
-            return $http.get(policyList);
+            return $http.get(policyList, {cache: false});
         },
         getSidenav: function () {
-            return $http.get(policySidenav)
+            return $http.get(policySidenav, {cache: false})
         },
         getTopFiles: function () {
             return $http.get(topFiles)

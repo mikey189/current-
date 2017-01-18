@@ -2,11 +2,11 @@
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <json-formatter json="ctrl.Filetypes"></json-formatter>
 <div layout="row" layout-align="space-between center">
-    <md-button md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
+    <md-button  aria-label="advanced mode" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
         <span ng-show="!ctrl.isFiletypeEditable">EDIT</span>
     </md-button>
-    <md-button md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON" ng-class="{'basic-mode-button': !ctrl.isFileTypesAdvanceModeON, 'advanced-mode-button': ctrl.isFileTypesAdvanceModeON}">
+    <md-button aria-label="advanced mode" md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON" ng-class="{'basic-mode-button': !ctrl.isFileTypesAdvanceModeON, 'advanced-mode-button': ctrl.isFileTypesAdvanceModeON}">
         <span ng-if="ctrl.isFileTypesAdvanceModeON">Basic Mode</span>
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>

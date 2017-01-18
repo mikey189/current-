@@ -8,11 +8,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.is_policy_sidenav_editable = false;
         self.channelIds = [];
         self.types = {};
+        //self.PolicyFacets = self.PolicyFacets || {};
 
-                    self.allFacets = {};
-
-
-
+        self.allFacets = {};
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
@@ -53,7 +51,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         policyData.getSidenav().then(function (answer) {
             self.sideNavList = answer.data
             self.policyId = self.sideNavList[0].PolicyId
-            self.getPolicyInfo(self.policyId)
         })
 
         /*__________________________  formatting facets for post __________________________ */
@@ -64,25 +61,25 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //formatting dict to list
             var postData = []
             angular.forEach(values, function (v, k) {
-                console.log(v)
-                console.log(k)
+
                 postData.push({
                     "Description": k,
                     "Values": v['Values']
                 })
             });
-            console.log("post data")
-            console.log(postData)
-            /*policyData.post_policy_settings(self.policyId, postData).then(function (success) {
+
+            policyData.post_policy_settings(self.policyId, postData).then(function (success) {
                 self.show_success_dialog("Your changes were successfuly saved")
             }, function (error) {
                 self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
-            })*/
+            })
         }
         self.cdrFacets = [];
         self.DeleteAction = function (key, L0Key) {
             delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
         }
+
+
 
         //________________________CDR FACETS and checking if defaultvalues are not null ___________________________
 
@@ -90,6 +87,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                 policyData.get_policy_info(id).then(function (answer) {
                     //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
+                    console.log(answer)
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
                     self.policy = answer.data
                     var PolicyFacetsIfNull = {
@@ -150,34 +148,72 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
-        self.InitFacets = function (FacetOriginalContainerName) {
+        self.InitFacets = function (RetrievedData) {
 
-            var FacetIfNotExistant = {};
+            /*we retrieve some data
+                - we iterrate over that data to get the keys 
+                then we check if PolicyFacets contains thoses keys : 
+                    if it does && they are not empty -> do nothing 
+                    else 
+                    PolicyFacets[key].Values = RetrievedData.Properties
+
+            */
+
+
+            angular.forEach(RetrievedData, function (L0Value, L0Key) {
+                if (self.PolicyFacets[L0Key] == !undefined && self.PolicyFacets[L0Key].length == !0) {
+                    //do nothing for now
+                    return self.PolicyFacets[L0Key]
+                } else {
+                    self.PolicyFacets[L0Key] = {
+                        "Values": {}
+                    }
+                    angular.forEach(L0Value.Properties, function (L1Value, L1Key) {
+                        if (L1Value.IsHidden == false) {
+                            self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue
+                        }
+                    })
+                }
+            })
+
+
+
+
+
+
+
+
+            /* var FacetIfNotExistant = {};
 
             FacetIfNotExistant = {
                 "Values": {}
             };
 
             var FacetExistButIsEmpty = {};
-            self.PolicyFacets = (jQuery.isEmptyObject(self.PolicyFacets)) ? {} : self.PolicyFacets;
-            //check if we need to dive in the c-fucntion if policyFacet[facetName] exist
-            //check if object contains values inside
-
-            angular.forEach(self[FacetOriginalContainerName], function (L0Values, L0Key) {
+           // self.PolicyFacets = (jQuery.isEmptyObject(self.PolicyFacets)) ? {} : self.PolicyFacets;
+      
+            //if PolicyFacets contains the container with values then use them \\ dive into the facet properties 
+           /* angular.forEach(FacetOriginalContainerName, function (L0Values, L0Key) {
+                //Example of L0Key = "Cuckoo Sandbox"
+                //example of L0Value =  StrPropType_CuckooServerAddress: {description: "", IsHidden: Bool, ..Properties: {}}
+                //console.log(L0Values.Properties)
                 self.PolicyFacets[L0Key] = self.PolicyFacets[L0Key] || FacetIfNotExistant;
-
                 self.PolicyFacets[L0Key].Values = self.PolicyFacets[L0Key].Values || FacetExistButIsEmpty;
-                console.log(Object.keys(self.PolicyFacets[L0Key].Values).length)
-                if (Object.keys(self.PolicyFacets[L0Key].Values).length == 0) {
-                    console.log(L0Values.Properties)
+                //console.log( self.PolicyFacets[L0Key])
+                //if(jQuery.isEmptyObject(self.PolicyFacets[L0Key].Values)){
+                if (self.PolicyFacets[L0Key].Values.length === 0) {
+                    console.log(self.PolicyFacets[L0Key].Values)
                     angular.forEach(L0Values.Properties, function (L1Value, L1Key) {
+                        //console.log(L1Value)
+                        console.log(L0Key+":"+L1Key)
                         if (L1Value.IsHidden == false) {
-                            self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue || "";
+                            self.PolicyFacets[L0Key].Values = L1Value.DefaultValue || "";
                         }
                     })
+              //  }
                 }
 
-            })
+})*/
         }
 
     }
@@ -223,7 +259,7 @@ app.directive('stringToNumber', function () {
             ngModel.$formatters.push(function (value) {
                 var floated = parseFloat(value)
                 var str = ""
-                str =+ floated
+                str = +floated
                 return str;
             });
         }
@@ -238,7 +274,7 @@ app.directive('numberToString', function () {
             });
             ngModel.$formatters.push(function (value) {
                 var str = ""
-                str =+ value
+                str = +value
                 return str;
             });
         }
