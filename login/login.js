@@ -1,4 +1,4 @@
-app.controller("login", ["$rootScope", "authService", "$state", "$timeout", function ($rootScope, authService, $state, $timeout) {
+app.controller("login", ["$rootScope", "authService", "$state", "$timeout",  function ($rootScope, authService, $state, $timeout) {
     var self = this;
     self.is_login_nahon = true;
     var token = localStorage.getItem("token")
@@ -14,11 +14,10 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", func
                 var token = "Bearer " + answer.data.AccessToken
                 localStorage.setItem("serverName", serverName)
                 localStorage.setItem("token", token);
-                console.log($http)
-
+                var tokenFromLocalStorage = localStorage.getItem("token")
+              //  $http.defaults.headers.common['Authorization'] = tokenFromLocalStorage
 
                 $state.go("app.dashboard")
-
             }, function (error) {
                 username.addClass("error animated shake")
                 password.addClass("error animated shake")
@@ -32,10 +31,8 @@ app.run(['$rootScope', '$http', '$state', '$stateParams',
     function ($rootScope, $http, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams
+        var token = localStorage.getItem("token")
+    $http.defaults.headers.common['Authorization'] = token
+
     }
 ])
-app.config(function ($httpProvider) {
-    var token = localStorage.getItem("token")
-    $httpProvider.defaults.headers.common.Authorization = token;
-
-})

@@ -1,5 +1,5 @@
-app.directive("checkCredentials", ["authService", "$rootScope",  "$state", "$timeout",
-    function (authService, $rootScope,  $state, $timeout, $mdDialog) {
+app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$timeout",
+    function (authService, $rootScope, $state, $timeout, $mdDialog) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
@@ -12,6 +12,7 @@ app.directive("checkCredentials", ["authService", "$rootScope",  "$state", "$tim
                         localStorage.setItem("serverName", serverName)
                         localStorage.setItem("token", token);
                         var tokenFromLocalStorage = localStorage.getItem("token")
+
                         if (tokenFromLocalStorage.length > 10) {
                             $state.go("app.dashboard", {}, {
                                 reload: true

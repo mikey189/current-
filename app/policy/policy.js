@@ -80,6 +80,28 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
 
+        self.mkstr = function (value) {
+            var values = {};
+            var obj = value;
+            for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if (!obj.hasOwnProperty(prop)) continue;
+                values[prop] = "";
+                var isFirst = true;
+                // iterate over property object
+                var obj2 = obj[prop];
+                for (var prop2 in obj2) {
+                    if (!obj2.hasOwnProperty(prop2)) continue;
+                    var cdrAction = obj2[prop2];
+                    var cdrActionStr = cdrAction;
+                    values[prop] += (!isFirst ? "|" : "") + cdrActionStr;
+                    //console.log(prop2 + " = " + JSON.stringify(obj2[prop2]));
+                    isFirst = false;
+                }
+
+            }
+            return values
+        }
 
         //________________________CDR FACETS and checking if defaultvalues are not null ___________________________
 
@@ -87,7 +109,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                 policyData.get_policy_info(id).then(function (answer) {
                     console.log(answer)
-                    //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
+                        //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
                     self.policy = answer.data
                     var PolicyFacetsIfNull = {
@@ -123,18 +145,34 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                             } else {
 
+                             
                                 if (self.PolicyFacets['Policy CDR Settings'].Values[key].length > 0) {
                                     var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
                                     var object = {}
 
-                                    angular.forEach(splittedByPipe, function (L2Val, L2Key) {
-                                        var splittedByEqual = L2Val.split("=")
-                                        object[splittedByEqual[0]] = splittedByEqual[1]
+                                    angular.forEach(splittedByPipe, function(L2Val, L2Key) {
+                                        var splittedByEqual = L2Val.split("=");
+                                        var cdrActionSplited = splittedByEqual[1].split(':');
+                                        var cdrAction = {
+                                                "Product": cdrActionSplited[0],
+                                                "Category": cdrActionSplited[1],
+                                                "ActionName": cdrActionSplited[2],
+                                                "RiskLevel": cdrActionSplited[3],
+                                                "Description": cdrActionSplited[4]
+
+
+
+                                            }
+                                            //var cdrAction = JSON.parse(cdrActionSplited)
+                                        object[splittedByEqual[0]] = cdrAction;
 
                                     })
 
                                     self.PolicyFacets['Policy CDR Settings'].Values[key] = object
                                 }
+
+
+
                             }
                         })
 
@@ -252,4 +290,3 @@ app.filter("splitter", function () {
         return string
     }
 })
-
