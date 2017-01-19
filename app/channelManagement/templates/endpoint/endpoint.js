@@ -2,71 +2,48 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+    /*--------------------  Init FacetContainer --------------------*/
 
-    /*-------------------- Sidebar ----------------------*/
-
-   
-    self.channel_list = []
-    self.is_edit_mode_on = false;
-    channelData.getchannelList().then(function (answer) {
-        self.menuItems = answer.data;
-        //retriving the first ID of the list
-        self.rootId = self.menuItems[0].Id;
-        for (i = 0; i < self.menuItems.length; i++) {
-            self.channel_list.push(self.menuItems[i])
-        }
-    })
-    self.onDropComplete = function (index, obj, evt) {
-            var otherObj = self.channel_list[index];
-            var otherIndex = self.channel_list.indexOf(obj);
-            self.channel_list[index] = obj;
-            self.channel_list[otherIndex] = otherObj;
-        }
-        //making channelNm non editable by default
-    self.is_channelName_editable = false;
+    self.InitFacets = function (FacetContainer) {
+        angular.forEach(FacetContainer, function (L0Value, L0Key) {
+            //self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty(L0Key)) ? self.channel_data.ChannelFacets : {[L0Key]: { "Values": {} }};
+            self.ChannelFacets = self.channel_data.ChannelFacets || {}
+            self.ChannelFacets[L0Key] = self.channel_data.ChannelFacets[L0Key] || {
+                "Values": {}
+            };
+            angular.forEach(FacetContainer[L0Key].Properties, function (value, key) {
+                if (self.ChannelFacets[L0Key].Values[key] == undefined || self.ChannelFacets[L0Key].Values[key] == "") {
+                    var arr = [];
+                    angular.forEach(value.DefaultValue, function (v, k) {
+                        arr.push(v)
+                    }, arr)
+                    self.ChannelFacets[L0Key].Values[key] = arr
+                } else {
+                    self.ChannelFacets[L0Key].Values[key] = self.ChannelFacets[L0Key].Values[key].split("|")
+                }
+            })
+        })
+    }
 
     /*--------------------  Watching for changes in channel ID --------------------*/
 
     self.UpdateChannelData = function (newVal) {
-            channelData.get_channel(newVal).then(function (answer) {
-                
-                self.channel_data = answer.data
-                var ChannelFacetsIfNull = {
-                    "Channel Usage Settings": {
-                        "Values": {}
-                    }
-                }
-                var channelInfo = answer.data.ChannelInfo
-                self.ChannelConfiguration = channelInfo.ChannelConfiguration
-                self.generalInformations = channelInfo.GeneralInformations
-
-                self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration
-                self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
-                self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration
-                self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
-                self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty("Channel Usage Settings")) ? self.channel_data.ChannelFacets : ChannelFacetsIfNull;
-
-                channelData.whoIsUsing().then(function (answer) {
-                    self.whoData = answer.data
-                    angular.forEach(self.whoData['Channel Usage Settings'].Properties, function (value, key) {
-                            if (self.ChannelFacets['Channel Usage Settings'].Values[key] == undefined || self.ChannelFacets['Channel Usage Settings'].Values[key] == "") {
-                                var arr = [];
-                                angular.forEach(value.DefaultValue, function (v, k) {
-                                    arr.push(v)
-                                }, arr)
-                                self.ChannelFacets['Channel Usage Settings'].Values[key] = arr
-                            } else {
-                                self.ChannelFacets['Channel Usage Settings'].Values[key] = self.ChannelFacets['Channel Usage Settings'].Values[key].split("|")
-                            }
-                        }
-
-                    )
-
-                })
-
+        channelData.get_channel(newVal).then(function (answer) {
+            self.channel_data = answer.data
+            var channelInfo = answer.data.ChannelInfo
+            self.ChannelConfiguration = channelInfo.ChannelConfiguration
+            self.generalInformations = channelInfo.GeneralInformations
+            self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration
+            self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
+            self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration
+            self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
+            channelData.ChannelFacets().then(function (answer) {
+                self.whoData = answer.data
+                self.InitFacets(self.whoData)
             })
-        }
-        //Actual $watch function
+
+        })
+    }
     $scope.$watch(angular.bind(this, function () {
         return this.rootId;
     }), function (newValue) {
@@ -122,5 +99,28 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         self.ncTypeWidth = (100 / self.channelIcons.length);
     })
     self.isNextButtonDisabled = true;
+
+
+    /*-------------------- Sidebar ----------------------*/
+
+
+    self.channel_list = []
+    self.is_edit_mode_on = false;
+    channelData.getchannelList().then(function (answer) {
+        self.menuItems = answer.data;
+        //retriving the first ID of the list
+        self.rootId = self.menuItems[0].Id;
+        for (i = 0; i < self.menuItems.length; i++) {
+            self.channel_list.push(self.menuItems[i])
+        }
+    })
+    self.onDropComplete = function (index, obj, evt) {
+            var otherObj = self.channel_list[index];
+            var otherIndex = self.channel_list.indexOf(obj);
+            self.channel_list[index] = obj;
+            self.channel_list[otherIndex] = otherObj;
+        }
+        //making channelNm non editable by default
+    self.is_channelName_editable = false;
 
 }])

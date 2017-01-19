@@ -1,107 +1,27 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-<json-formatter json="ctrl.ChannelConfiguration"></json-formatter>
-<div class="channel-settings-wrapper">
-    <div layout="row" layout-align="end center" class="channel-settings-edit-div">
-        <md-button md-whiteframe="6" class="channel-edit-button" edit-channel-settings aria-label="edit settings">
-            <span ng-if="ctrl.are_settings_editable">SAVE</span>
-            <span ng-if="!ctrl.are_settings_editable">EDIT</span>
-        </md-button>
-    </div>
-    <table class="table table-responsive channel-settings-table" md-whiteframe="6" ng-class="{'notEditable': !ctrl.are_settings_editable}">
-        <thead class="thead-channel-settings">
-            <th>NAME</th>
-            <th>VALUE</th>
-        </thead>
-        <tbody class="channel-settings-body">
-            <tr>
-                <td>Seconds to keep alive</td>
-                <td>
-                    <input placeholder="60" type="number" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SecondsToKeepAlive"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <td>Syslog Server</td>
-                <td>
-                    <input placeholder="127.0.0.0" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SyslogServer" />
-                </td>
-            </tr>
-            <tr>
-                <td>Results Format</td>
-                <td>
-                    <select class="channel-settings-select" ng-model="ctrl.ChannelConfiguration.ResultFormat">
-                        <option>JSON</option>
-                        <option>TXT</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Reduce DB operations</td>
-                <td>
-                    <md-checkbox aria-label="reduce db operations" ng-model="ctrl.ChannelConfiguration.ReduceDbOperations"></md-checkbox>
-                </td>
-            </tr>
-            <tr ng-if="ctrl.is_kiosk_selected">
-                <td>Authenticate User on Endpoint</td>
-                <td>
-                    <md-checkbox aria-label="authenticate" ng-model="ctrl.ChannelConfiguration.AuthenticateUserOnEndpoint"></md-checkbox>
-                </td>
-            </tr>
-            <tr ng-if="ctrl.kiosk_dirtwatcher_agent">
-                <td>Use temp folder</td>
-                <td>
-                    <md-checkbox aria-label="use temp folders" ng-model="ctrl.ChannelConfiguration.UseTempFolder"></md-checkbox>
-                </td>
-            </tr>
-            <tr>
-                <td>Seconds until disconnect</td>
-                <td>
-                    <input placeholder="60" type="number" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.SecondsUntilDisconnect"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <td>Auto Reconnect</td>
-                <td>
-                    <md-checkbox aria-label="auto reconnect" ng-model="ctrl.ChannelConfiguration.AutoReconnect"></md-checkbox>
-                </td>
-            </tr>
-            <tr>
-                <td>Perform Interactive Update</td>
-                <td>
-                    <select class="channel-settings-select" ng-model="ctrl.ChannelConfiguration.PerformInteractiveUpdate">
-                        <option>PASSIVE</option>
-                        <option>SILENT</option>
-                        <option>INTERACTIVE</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Store Blocked File Report</td>
-                <td>
-                    <md-checkbox aria-label="store blocked fire reports" ng-model="ctrl.ChannelConfiguration.StoreBlockedFiles"></md-checkbox>
-                </td>
-            </tr>
-            <tr>
-                <td>Create Empty Folders</td>
-                <td>
-                    <md-checkbox aria-label="create empty folders" ng-model="ctrl.ChannelConfiguration.CreateEmptyFolders"></md-checkbox>
-                </td>
-            </tr>
-            <tr ng-if="ctrl.is_kiosk_selected">
-                <td>Action Log Path</td>
-                <td>
-                    <input placeholder="Log Path" type="text" class="channel-settings-input" ng-model="ctrl.ChannelConfiguration.ActionLogPath"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <td>Use as Relay</td>
-                <td>
-                    <md-checkbox aria-label="use as relay" ng-model="ctrl.ChannelConfiguration.UseAsRelay"></md-checkbox>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<json-formatter json="ctrl.ChannelFacets"></json-formatter>
+
+<json-formatter json="ctrl.whoData"></json-formatter>
+
+
+<md-list md-whiteframe="4">
+    <md-toolbar>Agent Settings</md-toolbar>
+    <md-list-item ng-repeat="(L0Key, L0Value) in ctrl.whoData['Agent Settings'].Properties" ng-switch="L0Value.Type">
+        {{L0Value.DisplayName}}
+
+        <div ng-switch-when="FacetPropertyType_String" type="text">
+            <input ng-model="ctrl.ChannelFacets[L0Key].Values[L0Value]"/>
+        </div>
+        <div ng-switch-when="FacetPropertyType_Bool">
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets[L0Key].Values[L0Value]"></md-switch>
+        </div>
+        <div ng-switch-when="FacetPropertyType_Int">
+            <input ng-model="ctrl.ChannelFacets[L0Key].Values[L0Value]" type="number"/>
+        </div>
+        <div ng-switch-when="FacetPropertyType_SingleChoice">
+           <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets[L0Key].Values[L0Value]"></select>
+        </div>
+    </md-list-item>
+
+</md-list>

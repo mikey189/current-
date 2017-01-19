@@ -145,12 +145,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                             } else {
 
-                             
+
                                 if (self.PolicyFacets['Policy CDR Settings'].Values[key].length > 0) {
                                     var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|")
                                     var object = {}
 
-                                    angular.forEach(splittedByPipe, function(L2Val, L2Key) {
+                                    angular.forEach(splittedByPipe, function (L2Val, L2Key) {
                                         var splittedByEqual = L2Val.split("=");
                                         var cdrActionSplited = splittedByEqual[1].split(':');
                                         var cdrAction = {
@@ -159,20 +159,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                                                 "ActionName": cdrActionSplited[2],
                                                 "RiskLevel": cdrActionSplited[3],
                                                 "Description": cdrActionSplited[4]
-
-
-
                                             }
                                             //var cdrAction = JSON.parse(cdrActionSplited)
                                         object[splittedByEqual[0]] = cdrAction;
-
                                     })
-
                                     self.PolicyFacets['Policy CDR Settings'].Values[key] = object
                                 }
-
-
-
                             }
                         })
 
@@ -188,19 +180,10 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         });
         self.InitFacets = function (RetrievedData) {
 
-            /*we retrieve some data
-                - we iterrate over that data to get the keys 
-                then we check if PolicyFacets contains thoses keys : 
-                    if it does && they are not empty -> do nothing 
-                    else 
-                    PolicyFacets[key].Values = RetrievedData.Properties
-
-            */
-
 
             angular.forEach(RetrievedData, function (L0Value, L0Key) {
 
-                if (self.PolicyFacets[L0Key] == !undefined && self.PolicyFacets[L0Key].length == !0) {
+                if (self.PolicyFacets[L0Key] !== undefined && self.PolicyFacets[L0Key].length !== 0) {
                     //do nothing for now
                     return self.PolicyFacets[L0Key]
                 } else {
@@ -215,44 +198,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 }
             })
 
-
-
-
-
-
-
-
-            /* var FacetIfNotExistant = {};
-
-            FacetIfNotExistant = {
-                "Values": {}
-            };
-
-            var FacetExistButIsEmpty = {};
-           // self.PolicyFacets = (jQuery.isEmptyObject(self.PolicyFacets)) ? {} : self.PolicyFacets;
-      
-            //if PolicyFacets contains the container with values then use them \\ dive into the facet properties 
-           /* angular.forEach(FacetOriginalContainerName, function (L0Values, L0Key) {
-                //Example of L0Key = "Cuckoo Sandbox"
-                //example of L0Value =  StrPropType_CuckooServerAddress: {description: "", IsHidden: Bool, ..Properties: {}}
-                //console.log(L0Values.Properties)
-                self.PolicyFacets[L0Key] = self.PolicyFacets[L0Key] || FacetIfNotExistant;
-                self.PolicyFacets[L0Key].Values = self.PolicyFacets[L0Key].Values || FacetExistButIsEmpty;
-                //console.log( self.PolicyFacets[L0Key])
-                //if(jQuery.isEmptyObject(self.PolicyFacets[L0Key].Values)){
-                if (self.PolicyFacets[L0Key].Values.length === 0) {
-                    console.log(self.PolicyFacets[L0Key].Values)
-                    angular.forEach(L0Values.Properties, function (L1Value, L1Key) {
-                        //console.log(L1Value)
-                        console.log(L0Key+":"+L1Key)
-                        if (L1Value.IsHidden == false) {
-                            self.PolicyFacets[L0Key].Values = L1Value.DefaultValue || "";
-                        }
-                    })
-              //  }
-                }
-
-})*/
         }
 
     }

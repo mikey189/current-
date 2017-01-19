@@ -24,6 +24,8 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
     }
 }])
 
+http://jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
+
 app.factory("groupList", function ($http) {
 
 
@@ -57,7 +59,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
-    var whoIsUsing = "http://" + sname + ":4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
+    var ChannelFacets = "http://" + sname + ":4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
     var updateWhoIsUsing = "http://" + sname + ":4580/api/channels/postChannelUsageSettings/"
 
     return {
@@ -202,8 +204,8 @@ app.factory("channelData", function ($http, $rootScope) {
                 method: "POST"
             })
         },
-        whoIsUsing: function () {
-            return $http.get(whoIsUsing)
+        ChannelFacets: function () {
+            return $http.get(ChannelFacets)
         },
         updateWhoIsUsing: function (id, data) {
             return $http({
