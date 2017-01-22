@@ -48,13 +48,15 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
         }
 
-        policyData.getSidenav().then(function (answer) {
-            self.sideNavList = answer.data
-            self.policyId = self.sideNavList[0].PolicyId
-        })
-
-        /*__________________________  formatting facets for post __________________________ */
-        //settings not editable by default
+        self.RefreshSidenav = function () {
+            policyData.getSidenav().then(function (answer) {
+                self.sideNavList = answer.data
+                self.policyId = self.sideNavList[0].PolicyId
+            })
+        }
+        self.RefreshSidenav()
+            /*__________________________  formatting facets for post __________________________ */
+            //settings not editable by default
         self.areSettingsEditable = false;
         //this function is called through directive to allow further DOM manipulations
         self.post_policy_settings = function (values) {
@@ -135,7 +137,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                     //______________________________________retrieving CDR Facets__________________________________________//
 
-
                     policyData.getCDRFacets().then(function (answer) {
                         self.cdr = answer.data
                         angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
@@ -178,6 +179,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
+
+        //______________________________________Formatting Facets__________________________________________//
+
         self.InitFacets = function (RetrievedData) {
 
 

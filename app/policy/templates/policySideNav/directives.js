@@ -38,18 +38,18 @@ app.directive("cancelPolicyCreation", function ($mdDialog) {
         }
     }
 })
-app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state) {
+app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state, $timeout) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 policyData.create_new_policy(scope.ctrl.PolicyInfo).then(function (success) {
                     policyData.getSidenav().then(function (success) {
-                        location.reload(true)
+                        scope.ctrl.RefreshSidenav()
                     })
-                    $state.go("app.policy.definition.fileType")
-                        //location.reload(true)
-
+                    $timeout(function () {
+                            $state.go("app.policy.definition.fileType")
+                        })
                 })
             })
         }

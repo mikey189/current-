@@ -1,7 +1,41 @@
-app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CData, channelData, $scope) {
+app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", function (C2CData, channelData, $scope, $mdDialog) {
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+
+
+    //init the settings table as non editable by default 
+
+    self.AreSettingsEditable = false;
+
+    //dialogs to show for error and success
+    self.HTTP_Dialogs = {
+
+        ShowSuccessDialog: function () {
+            $mdDialog.show(
+                $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title('Success')
+                .textContent('Your changes were successfully saved.')
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Got it!')
+            )
+        },
+        ShowErrorDialog: function (ErrorMessage) {
+            $mdDialog.show(
+                $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title('Error')
+                .textContent('An error occured while updating the changes you made : ' + ErrorMessage)
+                .ariaLabel('Alert Dialog Demo')
+                .ok('Got it!')
+            )
+        }
+    }
+
+
+
+
     /*--------------------  Init FacetContainer --------------------*/
 
     self.InitFacets = function (FacetContainer) {
@@ -13,11 +47,19 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
             };
             angular.forEach(FacetContainer[L0Key].Properties, function (value, key) {
                 if (self.ChannelFacets[L0Key].Values[key] == undefined || self.ChannelFacets[L0Key].Values[key] == "") {
-                    var arr = [];
-                    angular.forEach(value.DefaultValue, function (v, k) {
-                        arr.push(v)
-                    }, arr)
-                    self.ChannelFacets[L0Key].Values[key] = arr
+
+                    if (value.Type !== "FacetPropertyType_SingleChoice" || value.Type !== "FacetPropertyType_MultiChoice") {
+
+                        self.ChannelFacets[L0Key].Values[key] = value.DefaultValue
+
+
+                    } else {
+                        var arr = [];
+                        angular.forEach(value.DefaultValue, function (v, k) {
+                            arr.push(v)
+                        }, arr)
+                        self.ChannelFacets[L0Key].Values[key] = arr
+                    }
                 } else {
                     self.ChannelFacets[L0Key].Values[key] = self.ChannelFacets[L0Key].Values[key].split("|")
                 }
@@ -122,5 +164,60 @@ app.controller("channels", ["C2CData", "channelData", "$scope", function (C2CDat
         }
         //making channelNm non editable by default
     self.is_channelName_editable = false;
+
+
+    /*-------------------- Formatting facets before POST ----------------------*/
+
+    self.FormatChannelFacetsBeforePOST = function () {
+
+        self.FacetsToPost = []
+        var ChannelUsageObject = {}
+        var ChannelSettingsObject = {}
+
+        angular.forEach(self.ChannelFacets, function (L1Value, L1Key) {
+
+            //L1Key = Channel Usage Settings || Agent Settings
+
+            angular.forEach(L1Value.Values, function (L2Value, L2Key) {
+
+                if (!Array.isArray(L2Value)) {
+                    //L2Key === "StrPropType_ChannelPolicyToUse" || L2Key === "StrPropType_DetailsMessage"
+
+                    (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = L2Value: ChannelSettingsObject[L2Key] = L2Value
+
+                } else {
+                    var str = "";
+                    angular.forEach(L2Value, function (L3Value, L3Key) {
+                        str += L3Value + "|";
+                    })
+                    str = str.slice(0, str.lastIndexOf("|"));
+                    (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = str: ChannelSettingsObject[L2Key] = str
+
+                    //L1object[L2Key] = str
+                }
+            })
+            self.FacetsToPost[0] = {
+                "Description": "Channel Usage Settings",
+                "Values": ChannelUsageObject
+            }
+            self.FacetsToPost[1] = {
+                "Description": "Agent Settings",
+                "Values": ChannelSettingsObject
+            }
+            console.log(self.FacetsToPost)
+
+        })
+
+    }
+    self.ToBoolean = function (value) {
+        var bool; 
+        for (i in value) {
+            console.log(value[i])
+            bool = value[i] === "True";
+        }
+        console.log(bool)
+        return bool
+    }
+
 
 }])
