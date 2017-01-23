@@ -11,13 +11,24 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'login',
             controllerAs: 'ctrl'
 
+
         })
 
     .state('app', {
         url: '/app',
         templateUrl: 'app/common/common.html',
         controller: 'common',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        abstract: true,
+        resolve: {
+            TokenIsInHeader: function ($http) {
+                var TokenFromLocalStorage = localStorage.getItem("token")
+                var TokenIsInHeader;
+                TokenIsInHeader = ( $http.defaults.headers.common.Authorization === TokenFromLocalStorage ) ? true : false
+                console.log("from routing "+TokenIsInHeader)
+                return TokenIsInHeader
+            }
+        }
     })
 
 

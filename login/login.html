@@ -1,6 +1,4 @@
 <div ng-http-loader methods="['GET']" template="app/common/templates/loader.html" ttl="1"></div>
-
-
 <div layout="column" flex layout-fill id="loginBody" role="main">
     <md-content layout="column" id="content">
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
@@ -13,11 +11,13 @@
                     </md-input-container>
                     <md-input-container>
                         <label>User</label>
-                        <input ng-model="ctrl.UserName" id="username" ng-keypress="ctrl.LogUserInOnEnter($event)">
+                        <input ng-model="ctrl.UserName" id="username" ng-keypress="ctrl.LogUserInOnEnter($event)" 
+                        ng-class="{'error animated shake': !ctrl.is_login_nahon}">
                     </md-input-container>
                     <md-input-container>
                         <label>Password</label>
-                        <input ng-model="ctrl.Password" type="password" id="password" ng-keypress="ctrl.LogUserInOnEnter($event)">
+                        <input ng-model="ctrl.Password" type="password" id="password" ng-keypress="ctrl.LogUserInOnEnter($event)" 
+                        ng-class="{'error animated shake': !ctrl.is_login_nahon}">
                     </md-input-container>
                     <md-input-container>
                         <div layout="row" layout-sm="column" layout-margin layout-align="center center">

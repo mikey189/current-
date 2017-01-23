@@ -24,12 +24,9 @@ app.directive("logout", function ($rootScope, $state, $timeout, $http) {
     link: function (scope, element, attrs) {
       var sname = localStorage.getItem("serverName");
       element.click(function () {
-       
         //location.reload(true)
-        delete $http.defaults.headers.common.Authorization
+        $http.defaults.headers.common.Authorization = "";
         localStorage.clear()
-      
-        $rootScope.ThirtyMinutesCountdownHasStarted = false;
         $timeout(function () {
           $state.go("login")
         })

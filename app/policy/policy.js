@@ -55,7 +55,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             })
         }
         self.RefreshSidenav()
-            /*__________________________  formatting facets for post __________________________ */
+        /*__________________________  formatting facets for post __________________________ */
             //settings not editable by default
         self.areSettingsEditable = false;
         //this function is called through directive to allow further DOM manipulations
@@ -203,7 +203,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             })
 
         }
-
+/* ______________________________________   confirm policy creation   ______________________________________*/
 
         self.confirmPolicyCreation = function () {
             policyData.create_new_policy(self.PolicyInfo).then(function (success) {
@@ -216,7 +216,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
     }
 ])
-
 
 /* ______________________________________   End Of controller    ______________________________________*/
 

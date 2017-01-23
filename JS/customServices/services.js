@@ -1,3 +1,18 @@
+app.factory("HTTPHeaders", function($http){
+    var token = localStorage.getItem("token")
+
+    return {
+
+        WriteHTTPHeadersWithToken: function(){
+            $http.defaults.headers.common.Authorization = token
+        }
+
+    }
+})
+
+
+
+
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
     var sname = localStorage.getItem("serverName");
