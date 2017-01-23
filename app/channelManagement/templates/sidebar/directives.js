@@ -14,18 +14,6 @@ app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, 
     }
 }])
 
-app.directive("initId", function () {
-    return {
-        restrict: "E",
-        link: function (scope, element, attrs) {
-            element.ready(function () {
-                scope.ctrl.rootId = parseInt($(".channelSidenavItems").first().attr("channel-id"))
-                scope.$apply()
-            })
-        }
-    }
-})
-
 app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
     return {
         restrict: "A",

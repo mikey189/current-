@@ -1,8 +1,7 @@
-app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", function (C2CData, channelData, $scope, $mdDialog) {
+app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$state", function (C2CData, channelData, $scope, $mdDialog, $state) {
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
-
 
     //init the settings table as non editable by default 
 
@@ -32,9 +31,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
             )
         }
     }
-
-
-
 
     /*--------------------  Init FacetContainer --------------------*/
 
@@ -90,6 +86,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
         return this.rootId;
     }), function (newValue) {
         self.UpdateChannelData(newValue)
+        console.log("new id for channel from $watch " + newValue)
     });
     //default view for dashboard is blocked
     self.isBlocked = true;
@@ -134,28 +131,31 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
 
     /*--------------------  New Channel --------------------*/
 
+    self.ChannelCreationHasRequiredFields = false;
     self.useAsRelay = false;
     self.channel = {};
     channelData.getIcons().then(function (response) {
         self.channelIcons = response.data
         self.ncTypeWidth = (100 / self.channelIcons.length);
     })
-    self.isNextButtonDisabled = true;
-
 
     /*-------------------- Sidebar ----------------------*/
 
-
     self.channel_list = []
     self.is_edit_mode_on = false;
-    channelData.getchannelList().then(function (answer) {
-        self.menuItems = answer.data;
-        //retriving the first ID of the list
-        self.rootId = self.menuItems[0].Id;
-        for (i = 0; i < self.menuItems.length; i++) {
-            self.channel_list.push(self.menuItems[i])
-        }
-    })
+    self.LoadSidenav = function () {
+        channelData.getchannelList().then(function (answer) {
+            self.menuItems = answer.data;
+            //retrieving the first ID of the list if not already defined
+            self.rootId = $state.params.ChannelId || self.menuItems[0].Id 
+            for (i = 0; i < self.menuItems.length; i++) {
+                self.channel_list.push(self.menuItems[i])
+            }
+        })
+    }
+    self.LoadSidenav()
+    console.log(self.channel_list)
+
     self.onDropComplete = function (index, obj, evt) {
             var otherObj = self.channel_list[index];
             var otherIndex = self.channel_list.indexOf(obj);
@@ -164,7 +164,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
         }
         //making channelNm non editable by default
     self.is_channelName_editable = false;
-
 
     /*-------------------- Formatting facets before POST ----------------------*/
 
@@ -210,7 +209,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
 
     }
     self.ToBoolean = function (value) {
-        var bool; 
+        var bool;
         for (i in value) {
             console.log(value[i])
             bool = value[i] === "True";
@@ -218,6 +217,5 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", fun
         console.log(bool)
         return bool
     }
-
 
 }])

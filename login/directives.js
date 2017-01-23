@@ -1,4 +1,4 @@
-app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$timeout","$http","HTTPHeaders",
+app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$timeout", "$http", "HTTPHeaders",
     function (authService, $rootScope, $state, $timeout, $mdDialog, $http, HTTPHeaders) {
         return {
             restrict: "A",
@@ -20,13 +20,7 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$time
 
                         localStorage.setItem("token", token); 
 
-                        HTTPHeaders.WriteHTTPHeadersWithToken();
-
-                        $timeout(function () {
-
-                            $state.go("app.dashboard")
-
-                        })
+                        $state.go("app.dashboard")
 
 
                     }, function (error) {

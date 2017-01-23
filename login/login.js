@@ -1,7 +1,10 @@
 app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTTPHeaders", function ($rootScope, authService, $state, $timeout, HTTPHeaders) {
     var self = this;
+
     self.is_login_nahon = true;
+
     var token = localStorage.getItem("token")
+
     var ServerName = localStorage.getItem("serverName")
         //password = "P04531418";
     self.LogUserInOnEnter = function ($event, $http) {
@@ -24,13 +27,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
                 localStorage.setItem("token", token); 
 
-                HTTPHeaders.WriteHTTPHeadersWithToken();
-
-                $timeout(function () {
-
-                    $state.go("app.dashboard")
-
-                })
+                $state.go("app.dashboard")
 
 
             }, function (error) {
@@ -43,14 +40,8 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 }])
 
 
-app.run(['$rootScope', '$http', '$state', '$stateParams', function ($rootScope, $http, $state, $stateParams) {
+app.config(["$httpProvider", function ($httpProvider) {
 
-    $rootScope.$state = $state;
-
-    $rootScope.$stateParams = $stateParams
-
-    var token = localStorage.getItem("token")
-
-    $http.defaults.headers.common.Authorization = token
+    $httpProvider.defaults.cache = false
 
 }])

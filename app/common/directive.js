@@ -18,14 +18,13 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", function ($rootScope, $state, $timeout, $http) {
+app.directive("logout", function ($rootScope, $state, $timeout, HTTPHeaders) {
   return {
     restrict: "A",
     link: function (scope, element, attrs) {
       var sname = localStorage.getItem("serverName");
       element.click(function () {
-        //location.reload(true)
-        $http.defaults.headers.common.Authorization = "";
+        HTTPHeaders.DeleteTokenFromHeader()
         localStorage.clear()
         $timeout(function () {
           $state.go("login")

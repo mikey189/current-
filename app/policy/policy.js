@@ -51,11 +51,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.RefreshSidenav = function () {
             policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
-                self.policyId = self.sideNavList[0].PolicyId
+                self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId
             })
         }
         self.RefreshSidenav()
-        /*__________________________  formatting facets for post __________________________ */
+            /*__________________________  formatting facets for post __________________________ */
             //settings not editable by default
         self.areSettingsEditable = false;
         //this function is called through directive to allow further DOM manipulations
@@ -185,33 +185,54 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.InitFacets = function (RetrievedData) {
 
 
-            angular.forEach(RetrievedData, function (L0Value, L0Key) {
+                angular.forEach(RetrievedData, function (L0Value, L0Key) {
 
-                if (self.PolicyFacets[L0Key] !== undefined && self.PolicyFacets[L0Key].length !== 0) {
-                    //do nothing for now
-                    return self.PolicyFacets[L0Key]
-                } else {
-                    self.PolicyFacets[L0Key] = {
-                        "Values": {}
-                    }
-                    angular.forEach(L0Value.Properties, function (L1Value, L1Key) {
-                        if (L1Value.IsHidden == false) {
-                            self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue
+                    if (self.PolicyFacets[L0Key] !== undefined && self.PolicyFacets[L0Key].length !== 0) {
+                        //do nothing for now
+                        return self.PolicyFacets[L0Key]
+                    } else {
+                        self.PolicyFacets[L0Key] = {
+                            "Values": {}
                         }
-                    })
-                }
-            })
-
-        }
-/* ______________________________________   confirm policy creation   ______________________________________*/
-
-        self.confirmPolicyCreation = function () {
-            policyData.create_new_policy(self.PolicyInfo).then(function (success) {
-                location.reload(true)
-                $timeout(function () {
-                    $state.go("app.policy.definition.fileType")
+                        angular.forEach(L0Value.Properties, function (L1Value, L1Key) {
+                            if (L1Value.IsHidden == false) {
+                                self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue
+                            }
+                        })
+                    }
                 })
-            })
+
+            }
+            /* ______________________________________   confirm policy creation   ______________________________________*/
+
+        self.CreatePolicy = function () {
+
+            policyData.create_new_policy(self.PolicyInfo)
+
+                .then(function (success) {
+
+                        $mdDialog.cancel()
+
+                        $state.go('app.policy.definition.fileType', {
+
+                            PolicyID: success.data.Id
+
+                        }, {
+
+                            reload: true
+
+                        });
+
+                        console.log("transitioned")
+
+                    },
+
+                    function (error) {
+
+                        alert("there was an error : " + error.data.Message)
+
+                    })
+
         }
 
     }

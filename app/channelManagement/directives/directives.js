@@ -179,6 +179,13 @@ app.directive("ncTypeSelectable", function () {
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var siblings = $(this).siblings(".ncTypesItems")
+                var channelName = scope.ctrl.channelName
+                var channelType = $("#NewChannelType").html()
+                if (channelName !== undefined && channelType !== ""){
+                    scope.ctrl.ChannelCreationHasRequiredFields = true
+                }else{
+                    scope.ctrl.ChannelCreationHasRequiredFields = false
+                }
                 siblings.removeClass("ncTypesHover")
                 siblings.find("g").removeClass("hoveredIcon")
                 siblings.find("md-content").removeClass("ncTypesHoverTitle")
@@ -197,3 +204,4 @@ app.directive("ncTypeSelectable", function () {
         }
     }
 })
+

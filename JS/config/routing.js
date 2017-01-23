@@ -2,6 +2,7 @@
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -14,31 +15,30 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 
-    .state('app', {
-        url: '/app',
-        templateUrl: 'app/common/common.html',
-        controller: 'common',
-        controllerAs: 'ctrl',
-        abstract: true,
-        resolve: {
-            TokenIsInHeader: function ($http) {
-                var TokenFromLocalStorage = localStorage.getItem("token")
-                var TokenIsInHeader;
-                TokenIsInHeader = ( $http.defaults.headers.common.Authorization === TokenFromLocalStorage ) ? true : false
-                console.log("from routing "+TokenIsInHeader)
-                return TokenIsInHeader
+        .state('app', {
+            url: '/app',
+            templateUrl: 'app/common/common.html',
+            controller: 'common',
+            controllerAs: 'ctrl',
+            abstract: true,
+            resolve: {
+                HeaderHasToken: function ($http) {
+                    var token = localStorage.getItem("token")
+                    $http.defaults.headers.common.Authorization = token
+                    console.log($http.defaults.headers.common.Authorization)
+                    return $http.defaults.headers.common.Authorization;
+                }
             }
-        }
-    })
 
+        })
+        
+        .state('app.testPage', {
+            url: '/app',
+            templateUrl: 'app/cases/test.html',
+            controller: 'cases',
+            controllerAs: 'ctrl'
 
-    .state('app.testPage', {
-        url: '/app',
-        templateUrl: 'app/cases/test.html',
-        controller: 'cases',
-        controllerAs: 'ctrl'
-
-    })
+        })
 
     .state('app.dashboard', {
         url: '/dashboard',
@@ -82,7 +82,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             // parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
             displayName: "Channel Management > Inputs and Outputs",
-            classSelector: "channel"
+            classSelector: "channel",
+            params: {
+                ChannelId: null
+            }
 
 
         })
@@ -189,7 +192,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
             displayName: "Policy",
-            classSelector: "policy"
+            classSelector: "policy",
+            params: {
+                PolicyID: null
+            }
 
         })
         .state('app.policy.definition.fileType', {

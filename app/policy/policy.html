@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="app/policy/style.css"/>
 
-<div layout='column' layout-gt-sm='column' id='policyMainContent' ng-cloak layout-fill ng-init="ctrl.get_policy_data(ctrl.policyId)">  
+<div layout='column' layout-gt-sm='column' id='policyMainContent' ng-cloak layout-fill>  
     <md-content layout='row' flex>
         <policy-sidenav layout-fill></policy-sidenav>
         <md-content layout-fill layout='column' id="policyNotScrollable">
@@ -11,7 +11,6 @@
                 <ul class="nav nav-justified" id="policyNav">
                     <li><a ui-sref=".dashboard" ui-sref-active="UISelectedNav"><strong>POLICY DASHBOARD</strong></a></li>
                     <li><a ui-sref=".definition.fileType" ui-sref-active="UISelectedNav"><strong>WHAT IS THIS POLICY</strong></a></li>
-                   <!-- <li><a ui-sref=".who" ui-sref-active="UISelectedNav"><strong>WHO USES THIS POLICY?</strong></a></li>-->
                 </ul>
             </nav>
             <md-content data-ui-view ng-cloak id="policyDefintionView"></md-content>

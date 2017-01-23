@@ -28,17 +28,18 @@ app.directive("initNewPolicyModal", function ($mdDialog) {
         }
     }
 })
+
 app.directive("cancelPolicyCreation", function ($mdDialog) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("click", function () {
-                $mdDialog.cancel()
-            })
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+                element.bind("click", function () {
+                    $mdDialog.cancel()
+                })
+            }
         }
-    }
-})
-//create policy call from controller
+    })
+    //create policy call from controller
 
 app.directive("renamePolicy", function () {
     return {
