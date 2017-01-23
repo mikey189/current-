@@ -44,12 +44,10 @@ app.directive("confirmPolicyCreation", function ($mdDialog, policyData, $state, 
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 policyData.create_new_policy(scope.ctrl.PolicyInfo).then(function (success) {
-                    policyData.getSidenav().then(function (success) {
-                        scope.ctrl.RefreshSidenav()
-                    })
+                    scope.ctrl.RefreshSidenav()
                     $timeout(function () {
-                            $state.go("app.policy.definition.fileType")
-                        })
+                        $state.go("app.policy.definition.fileType")
+                    })
                 })
             })
         }

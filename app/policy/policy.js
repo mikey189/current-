@@ -204,6 +204,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         }
 
+
+        self.confirmPolicyCreation = function () {
+            policyData.create_new_policy(self.PolicyInfo).then(function (success) {
+                location.reload(true)
+                $timeout(function () {
+                    $state.go("app.policy.definition.fileType")
+                })
+            })
+        }
+
     }
 ])
 
