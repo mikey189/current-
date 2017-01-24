@@ -6,6 +6,7 @@ background-color: #E0E9F7;
 #loginForm{
     background-color: white;
     margin-bottom: 3em;
+    border-radius: 5px;
 }
 
 .md-150{
@@ -26,4 +27,17 @@ background-color: #E0E9F7;
 }
 input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+#remember-me{
+    margin-bottom: 0px !important;
+}
+
+md-checkbox.md-default-theme.md-checked ._md-icon, md-checkbox.md-checked ._md-icon{
+        background-color: #9C27B0 !important;
+}
+#login-button{
+    /*background-color: #0D47A1 !important;*/
+    /* Rectangle: */
+background-image: linear-gradient(90deg, #6A1B9A 0%, #9C27B0 100%);
+    color: white;
 }

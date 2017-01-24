@@ -113,7 +113,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
                         // checking child state for "AllowOption" Property
                     angular.forEach(self.Filetypes, function (value, key) {
-                        console.log(value)
                         if (value.AllowOption == false) {
                             key.ChildrenAreNotAllAllowed = true
                         } else {
@@ -231,7 +230,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                     });
 
-                    console.log("transitioned")
 
                 },
 

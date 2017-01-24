@@ -1,4 +1,4 @@
-app.directive("toggleCdrEdition", function (policyData) {
+app.directive("toggleCdrEdition", function (policyData, $mdDialog) {
     return {
         restrict: "A",
         scope: {
@@ -14,13 +14,16 @@ app.directive("toggleCdrEdition", function (policyData) {
                 var self = $(this)
                 var icon = self.find("md-icon")
                 if (!scope.bindedValue) {
-                    scope.bindedValue = true
+                    scope.$apply(function () {
+                        scope.bindedValue = true
+                    })
                     icon.html("save")
 
                 } else {
 
-
-                    scope.bindedValue = false
+                    scope.$apply(function () {
+                        scope.bindedValue = false
+                    })
                     var postData = {}
                     angular.forEach(scope.value, function (v, k) {
                         postData[k] = v;
@@ -68,16 +71,28 @@ app.directive("toggleCdrEdition", function (policyData) {
                     var object2send = []
                     object2send.push(object)
 
-                    console.log("sent to server")
-                    console.log(object2send)
 
-                    policyData.post_policy_settings(scope.policyId, object2send).then(function(success){
-                        scope.ctrl.show_success_dialog()
-                        scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
-                    }, function(error){
-                        scope.ctrl.show_error_dialog("Your Changes could not be saved", error.data.Message)
+                    policyData.post_policy_settings(scope.policyId, object2send).then(function (success) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Success')
+                            .textContent("CDR Settings have successfully been saved")
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('OK')
+                        );
+                        policyData.get_policy_info(scope.policyId)
+                    }, function (error) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent()
+                            .ariaLabel('Could not save CDR Settings, Error : ' + error.data.Message)
+                            .ok('Error')
+                        );
                     })
-                    
+
                     icon.html("edit")
 
 
