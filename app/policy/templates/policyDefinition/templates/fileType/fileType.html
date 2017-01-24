@@ -23,7 +23,7 @@
             <th ng-if="ctrl.isFileTypesAdvanceModeON">Vendor Signature</th>
         </thead>
         <tbody>
-            <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes">
+            <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index">
                 <td>
                     <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.AreChildrenHidden =! L0Value.AreChildrenHidden">
                         <md-icon ng-show="!L0Value.AreChildrenHidden">keyboard_arrow_right</md-icon>
@@ -32,7 +32,8 @@
                     {{::L0Key}}
                 </td>
                 <td colspan="7">
-                    <md-checkbox aria-label="check all" class="custom-checkbox" children="Ext.AllowOption" ng-disabled="!ctrl.isFiletypeEditable" toggle-children-states></md-checkbox>
+                    <md-checkbox aria-label="check all" class="custom-checkbox" ng-model="$index" ng-disabled="!ctrl.isFiletypeEditable"
+                     toggle-children-states self-reference = "$index" children-access-point="L0Value"></md-checkbox>
                 </td>
             </tr>
             <tr ng-repeat-start="Ext in L0Value" ng-if="L0Value.AreChildrenHidden" ng-init="L0Value.AreChildrenHidden = true">

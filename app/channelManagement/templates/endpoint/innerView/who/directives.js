@@ -16,6 +16,8 @@ app.directive("editWhoScreen", function (channelData, $mdDialog, $timeout) {
                     $timeout(function () {
                         channelData.updateWhoIsUsing(scope.ctrl.rootId, scope.ctrl.FacetsToPost).then(function (success) {
                             scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()
+                            scope.ctrl.UpdateChannelData(success.data.Id)
+
                         }, function (error) {
                             scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message) //->parameter is the error message to disply inside the Dialog
                         })

@@ -122,3 +122,7 @@ thead {
 md-checkbox.md-checked ._md-icon{
     background-color: #2196F3 !important;
 }
+
+.indeterminate-state{
+    background-color: red !important;
+}

@@ -15,30 +15,30 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 
-        .state('app', {
-            url: '/app',
-            templateUrl: 'app/common/common.html',
-            controller: 'common',
-            controllerAs: 'ctrl',
-            abstract: true,
-            resolve: {
-                HeaderHasToken: function ($http) {
-                    var token = localStorage.getItem("token")
-                    $http.defaults.headers.common.Authorization = token
-                    console.log($http.defaults.headers.common.Authorization)
-                    return $http.defaults.headers.common.Authorization;
-                }
+    .state('app', {
+        url: '/app',
+        templateUrl: 'app/common/common.html',
+        controller: 'common',
+        controllerAs: 'ctrl',
+        abstract: true,
+        resolve: {
+            HeaderHasToken: function ($http) {
+                var token = localStorage.getItem("token")
+                $http.defaults.headers.common.Authorization = token
+                console.log($http.defaults.headers.common.Authorization)
+                return $http.defaults.headers.common.Authorization;
             }
+        }
 
-        })
-        
-        .state('app.testPage', {
-            url: '/app',
-            templateUrl: 'app/cases/test.html',
-            controller: 'cases',
-            controllerAs: 'ctrl'
+    })
 
-        })
+    .state('app.testPage', {
+        url: '/app',
+        templateUrl: 'app/cases/test.html',
+        controller: 'cases',
+        controllerAs: 'ctrl'
+
+    })
 
     .state('app.dashboard', {
         url: '/dashboard',
@@ -73,7 +73,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             displayName: "Channel Management",
-            classSelector: "channel"
+            classSelector: "channel",
+            ParentID: "ChannelDashboard"
+
 
 
         })
@@ -82,10 +84,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             // parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/sources.html',
             displayName: "Channel Management > Inputs and Outputs",
-            classSelector: "channel",
             params: {
                 ChannelId: null
-            }
+            },
+            classSelector: "channel",
+            ParentID: "ChannelSources"
+
+
 
 
         })
@@ -95,7 +100,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/settings/settings.html',
             displayName: "Channel Management > Settings",
-            classSelector: "channel"
+            classSelector: "channel",
+            ParentID: "ChannelSettings"
+
 
 
         })
@@ -104,7 +111,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/who/who.html',
             displayName: "Channel Management > Who Uses This Policy",
-            classSelector: "channel"
+            classSelector: "channel",
+            ParentID: "ChannelUsage"
+
 
 
         })
@@ -192,17 +201,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/policyDefinition',
             templateUrl: 'app/policy/templates/policyDefinition/policyDefinition.html',
             displayName: "Policy",
-            classSelector: "policy",
             params: {
                 PolicyID: null
-            }
+            },
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
+
+
 
         })
         .state('app.policy.definition.fileType', {
             url: '/policyDefinitionFT',
             templateUrl: 'app/policy/templates/policyDefinition/templates/fileType/fileType.html',
             displayName: "Policy > Filetype Settings",
-            classSelector: "policy"
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
 
 
         })
@@ -210,28 +223,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/policyDefinitionDetect',
             templateUrl: 'app/policy/templates/policyDefinition/templates/detection/detection.html',
             displayName: "Policy > Detection Settings",
-            classSelector: "policy"
-
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
 
         })
         .state('app.policy.definition.cdr', {
             url: '/policyCDR',
             classSelector: "policy",
             templateUrl: 'app/policy/templates/policyDefinition/templates/cdr/cdr.html',
-            displayName: "Policy > CDR Settings"
+            displayName: "Policy > CDR Settings",
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
 
         })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',
             displayName: "Policy > Settings",
-            classSelector: "policy"
-
-
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
         })
-
-
-
 
     .state('app.reports', {
             url: '/reports',

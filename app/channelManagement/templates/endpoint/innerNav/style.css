@@ -19,3 +19,8 @@
 #CMEndPointInnerNavUL > li{
     border-right: solid 1px white;
 }
+
+.SelectedTab{
+    background-color: #39379D;
+    color: white;
+}

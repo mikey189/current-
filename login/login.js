@@ -45,3 +45,10 @@ app.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.defaults.cache = false
 
 }])
+
+app.run(["$rootScope", "$state", function ( $rootScope, $state) {
+
+    $rootScope.$state = $state
+
+
+}])

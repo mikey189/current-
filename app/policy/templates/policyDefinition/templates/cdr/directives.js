@@ -71,7 +71,13 @@ app.directive("toggleCdrEdition", function (policyData) {
                     console.log("sent to server")
                     console.log(object2send)
 
-                    policyData.post_policy_settings(scope.policyId, object2send)
+                    policyData.post_policy_settings(scope.policyId, object2send).then(function(success){
+                        scope.ctrl.show_success_dialog()
+                        scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
+                    }, function(error){
+                        scope.ctrl.show_error_dialog("Your Changes could not be saved", error.data.Message)
+                    })
+                    
                     icon.html("edit")
 
 

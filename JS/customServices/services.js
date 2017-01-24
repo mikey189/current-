@@ -2,7 +2,6 @@ app.factory("HTTPHeaders", function ($http, $state, $timeout) {
     var token = localStorage.getItem("token")
 
     return {
-
         DeleteTokenFromHeader: function () {
             $http.defaults.headers.common.Authorization = "";
         }

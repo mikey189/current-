@@ -38,20 +38,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             );
         }
 
-        self.AllowAllExtensions = function (Parent) {
-            for (i in self.Filetypes[Parent]) {
-                if (self.Filetypes[Parent][i].AllowOption = true) {
-                    self.Filetypes[Parent][i].AllowOption = true
-                } else {
-                    self.Filetypes[Parent][i].AllowOption = false
-                }
-            }
-        }
+
 
         self.RefreshSidenav = function () {
             policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
+                if (self.sideNavList.length > 0) {
+                    self.NoPolicyExists = false;
+                } else {
+                    self.NoPolicyExists = true;
+                }
                 self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId
+
             })
         }
         self.RefreshSidenav()
@@ -72,6 +70,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             policyData.post_policy_settings(self.policyId, postData).then(function (success) {
                 self.show_success_dialog("Your changes were successfuly saved")
+                self.getPolicyInfo(self.policyId)
             }, function (error) {
                 self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
             })
@@ -110,9 +109,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.getPolicyInfo = function (id) {
 
                 policyData.get_policy_info(id).then(function (answer) {
-                    console.log(answer)
-                        //self.detection = answer.data.PolicyInfo.FileDetectionConfigurations
+
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
+                        // checking child state for "AllowOption" Property
+                    angular.forEach(self.Filetypes, function (value, key) {
+                        console.log(value)
+                        if (value.AllowOption == false) {
+                            key.ChildrenAreNotAllAllowed = true
+                        } else {
+                            key.ChildrenAreNotAllAllowed = false
+                        }
+                    })
+                    
                     self.policy = answer.data
                     var PolicyFacetsIfNull = {
                         "Policy CDR Settings": {
@@ -209,29 +217,29 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             policyData.create_new_policy(self.PolicyInfo)
 
-                .then(function (success) {
+            .then(function (success) {
 
-                        $mdDialog.cancel()
+                    $mdDialog.cancel()
 
-                        $state.go('app.policy.definition.fileType', {
+                    $state.go('app.policy.definition.fileType', {
 
-                            PolicyID: success.data.Id
+                        PolicyID: success.data.Id
 
-                        }, {
+                    }, {
 
-                            reload: true
+                        reload: true
 
-                        });
+                    });
 
-                        console.log("transitioned")
+                    console.log("transitioned")
 
-                    },
+                },
 
-                    function (error) {
+                function (error) {
 
-                        alert("there was an error : " + error.data.Message)
+                    alert("there was an error : " + error.data.Message)
 
-                    })
+                })
 
         }
 
