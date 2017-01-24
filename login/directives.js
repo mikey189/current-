@@ -18,7 +18,7 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$time
 
                         localStorage.setItem("serverName", serverName)
 
-                        localStorage.setItem("token", token); 
+                        localStorage.setItem("token", token) 
 
                         $state.go("app.dashboard")
 
