@@ -7,6 +7,8 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
         var self = this;
 
+
+
         self.CheckIfCookies = function () {
 
             var CookieStorage = {
@@ -14,12 +16,15 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                 username: $cookies.get('UserName'),
                 password: $cookies.get('Password')
             }
+
             self.serverName = CookieStorage.servername || "";
             self.UserName = CookieStorage.UserName || "";
             self.Password = CookieStorage.Password || "";
-
+            
+            self.IsRememberMe = (CookieStorage.servername !== "" && CookieStorage.UserName !== "" && CookieStorage.Password !== "") ? true : false;
 
         }
+
 
 
 
