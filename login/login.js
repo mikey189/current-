@@ -1,6 +1,6 @@
-app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTTPHeaders", "ngCookies",
+app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTTPHeaders", "$cookies",
 
-    function ($rootScope, authService, $state, $timeout, HTTPHeaders, ngCookies) {
+    function ($rootScope, authService, $state, $timeout, HTTPHeaders, $cookies) {
 
 
 
