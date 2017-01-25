@@ -53,7 +53,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                     localStorage.setItem("serverName", serverName)
 
                     localStorage.setItem("token", token)
-
+                    
                     $state.go("app.dashboard")
 
 

@@ -45,10 +45,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 self.sideNavList = answer.data
                 if (self.sideNavList.length > 0) {
                     self.NoPolicyExists = false;
+                    self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId
+
                 } else {
                     self.NoPolicyExists = true;
                 }
-                self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId
 
             })
         }
@@ -121,7 +122,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             key.ChildrenAreNotAllAllowed = false
                         }
                     })
-                    
+
                     self.policy = answer.data
                     var PolicyFacetsIfNull = {
                         "Policy CDR Settings": {
@@ -138,7 +139,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     });
 
 
-              /*______________________________________settings______________________________________*/
+                    /*______________________________________settings______________________________________*/
                     policyData.get_policy_settings("PolicySettings").then(function (answer) {
                         var data = answer.data;
                         self.allFacets = data;
