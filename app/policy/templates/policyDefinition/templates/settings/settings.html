@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
 <md-button class="save-settings" save-policy-settings md-whiteframe="4">EDIT</md-button>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
+<json-formatter json="ctrl.AllTheFacets"></json-formatter>
+
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <div layout='column' id="policySettingsContainer" class="not-editable">
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">

@@ -134,6 +134,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         self.DetectionFacets = data;
                         self.InitFacets(self.DetectionFacets);
                     });
+
+policyData.get_policy_settings().then(function(res){
+    self.AllTheFacets = res.data
+})
+
+
+
+
+
+
                     /*______________________________________settings______________________________________*/
                     policyData.get_policy_settings("PolicySettings").then(function (answer) {
                         var data = answer.data;
