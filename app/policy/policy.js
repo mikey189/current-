@@ -110,6 +110,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                 policyData.get_policy_info(id).then(function (answer) {
 
+                    console.log("getting info callnack")
+
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings
                         // checking child state for "AllowOption" Property
                     angular.forEach(self.Filetypes, function (value, key) {
@@ -135,16 +137,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         self.InitFacets(self.DetectionFacets);
                     });
 
-policyData.get_policy_settings().then(function(res){
-    self.AllTheFacets = res.data
-})
 
-
-
-
-
-
-                    /*______________________________________settings______________________________________*/
+              /*______________________________________settings______________________________________*/
                     policyData.get_policy_settings("PolicySettings").then(function (answer) {
                         var data = answer.data;
                         self.allFacets = data;
@@ -171,6 +165,7 @@ policyData.get_policy_settings().then(function(res){
                                     angular.forEach(splittedByPipe, function (L2Val, L2Key) {
                                         var splittedByEqual = L2Val.split("=");
                                         var cdrActionSplited = splittedByEqual[1].split(':');
+                                        console.log(cdrActionSplited)
                                         var cdrAction = {
                                                 "Product": cdrActionSplited[0],
                                                 "Category": cdrActionSplited[1],

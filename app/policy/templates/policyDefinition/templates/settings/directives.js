@@ -1,4 +1,4 @@
-app.directive("savePolicySettings", function (FacetFormatter) {
+app.directive("savePolicySettings", function (FacetFormatter, policyData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -13,8 +13,19 @@ app.directive("savePolicySettings", function (FacetFormatter) {
                     self.html("EDIT")
                     scope.ctrl.areSettingsEditable = false
                     settingsDOMElement.addClass("not-editable")
-                    //FacetFormatter.FormatForPOST(scope.ctrl.PolicyFacets)
-                    scope.ctrl.post_policy_settings(scope.ctrl.PolicyFacets)
+                    var formatted =
+                        FacetFormatter.FormatForPOST(scope.ctrl.PolicyFacets)
+                    policyData.post_policy_settings(scope.ctrl.policyId, formatted).then(function () {
+
+                        scope.ctrl.show_success_dialog("congrats")
+                        scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
+
+                    }, function (error) {
+                        scope.ctrl.show_error_dialog("error", error.data.Message)
+
+                    })
+
+
                 }
             })
         }
