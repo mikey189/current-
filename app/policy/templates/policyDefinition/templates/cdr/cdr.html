@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <json-formatter json="ctrl.PolicyFacets['Policy CDR Settings']"></json-formatter>
-<json-formatter json="ctrl.cdr['Policy CDR Settings']"></json-formatter>
+<json-formatter json="ctrl.cdr"></json-formatter>
 
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
         <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
         <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues"
          value="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]"
-         policy-id="ctrl.policyId" key="L0Key" global="ctrl.PolicyFacets['Policy CDR Settings'].Values">
+         policy-id="ctrl.policyId" key="L0Key" global="ctrl.PolicyFacets['Policy CDR Settings'].Values" post-facets-from-cdr ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">
             <md-icon class="white">edit</md-icon>
         </md-button>
     </div>

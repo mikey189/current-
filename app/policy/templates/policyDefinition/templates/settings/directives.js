@@ -13,19 +13,7 @@ app.directive("savePolicySettings", function (FacetFormatter, policyData) {
                     self.html("EDIT")
                     scope.ctrl.areSettingsEditable = false
                     settingsDOMElement.addClass("not-editable")
-                    var formatted =
-                        FacetFormatter.FormatForPOST(scope.ctrl.PolicyFacets)
-                    policyData.post_policy_settings(scope.ctrl.policyId, formatted).then(function () {
-
-                        scope.ctrl.show_success_dialog("congrats")
-                        scope.ctrl.getPolicyInfo(scope.ctrl.policyId)
-
-                    }, function (error) {
-                        scope.ctrl.show_error_dialog("error", error.data.Message)
-
-                    })
-
-
+                    scope.ctrl.FormatForPOST()
                 }
             })
         }
