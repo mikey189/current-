@@ -4,3 +4,4 @@ app.controller("reports", function(reports_factory){
         self.menu = answer.data
     })
 })
+// url to insert app.reports_scanners

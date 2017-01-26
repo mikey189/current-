@@ -15,9 +15,8 @@
                     <md-icon aria-label="search" class="material-icons  noMarginLeft" id="channelSidebarSearchIcon">search</md-icon>
                 </md-input-container>
                 <md-list layout-margin id="sidebarNavLinks">
-                    <md-list-item class="create_channel_sidenav_item" md-whiteframe="2">
-                        <a ui-sref="app.channelManagement.newChannel.step1">
-                            <strong>Create Channel</strong></a>
+                    <md-list-item class="create_channel_sidenav_item" md-whiteframe="2" go-to-channel-creation>
+                            <strong>Create Channel</strong>
                     </md-list-item>
                     <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " get-my-id class="channelSidenavItems" md-whiteframe="2" layout="row"
                         layout-align="space-between center" channel-id="{{x.Id}}" ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)"

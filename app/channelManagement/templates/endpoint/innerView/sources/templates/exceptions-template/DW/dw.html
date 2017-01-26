@@ -1,0 +1,36 @@
+<link href="app/channelManagement/templates/endpoint/innerView/sources/templates/exceptions-template/DW/style.css" rel="stylesheet"/>
+
+<json-formatter json="ctrl.DW"></json-formatter>
+
+<md-button edit-dw-sources aria-label="edit dr">
+    <span ng-if="ctrl.AreSettingsEditable">SAVE</span>
+    <span ng-if="!ctrl.AreSettingsEditable">EDIT</span>
+</md-button>
+
+<table class="table table-responsive" id="DirWatcherTable" md-whiteframe="4" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
+    <thead>
+        <th>
+            <md-button aria-label="add-row" class="md-icon-button" ng-click="ctrl.CreateNewDirWatcherSourcesEntry()">
+                <md-icon>add</md-icon>
+            </md-button>
+        </th>
+        <th>Input Source(s)</th>
+        <th>Output Source(s)</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="DW in ctrl.DW.Sources track by $index">
+            <td>
+                <md-button ng-if="ctrl.AreSettingsEditable" aria-label="add-row" class="md-icon-button" ng-click="ctrl.RemoveDirWatcherSourcesEntry($index)">
+                    <md-icon>remove</md-icon>
+                </md-button>
+            </td>
+            <td>
+                <input class="input-source" placeholder="please type an input source" ng-model="DW.Inputs" />
+            </td>
+            <td>
+                <input class="output-source" placeholder="please type an output source" ng-model="DW.Outputs" />
+                <button ng-click="ctrl.AddOutputToDW(DW.Outputs)">pass context</button>
+            </td>
+        </tr>  
+    </tbody>
+</table>

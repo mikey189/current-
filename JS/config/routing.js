@@ -299,6 +299,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 
+        .state('app.reports_scanners', {
+            url: '/scannerreports',
+            templateUrl: 'app/reports/scanners/scanners.html',
+            controller: 'reports_scanners',
+            displayName: "Scanners",
+            parentUrl: "app.reports",
+            parentName: "System Status >"
+
+        })
+
     .state('app.settings', {
         url: '/settings',
         templateUrl: 'app/settings/settings.html',

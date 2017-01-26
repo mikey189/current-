@@ -12,6 +12,16 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$time
 
                     var password = $("#password")
 
+                    if (scope.ctrl.IsRememberMe) {
+
+                        $cookies.put('serverName', scope.ctrl.serverName);
+
+                        $cookies.put('UserName', scope.ctrl.UserName);
+
+                        $cookies.put('Password', scope.ctrl.Password);
+                        
+                    }
+
                     authService.checkLogin(serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
 
                         var token = "Bearer " + answer.data.AccessToken

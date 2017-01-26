@@ -2,12 +2,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
     function ($rootScope, authService, $state, $timeout, HTTPHeaders, $cookies) {
 
-
-
-
         var self = this;
-
-
 
         self.CheckIfCookies = function () {
 
@@ -20,13 +15,10 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
             self.serverName = CookieStorage.servername || "";
             self.UserName = CookieStorage.UserName || "";
             self.Password = CookieStorage.Password || "";
-            
+
             self.IsRememberMe = (CookieStorage.servername !== "" && CookieStorage.UserName !== "" && CookieStorage.Password !== "") ? true : false;
 
         }
-
-
-
 
         self.is_login_nahon = true;
 
@@ -46,6 +38,16 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
                 var password = $("#password")
 
+                if (self.IsRememberMe) {
+
+                    $cookies.put('serverName', self.serverName);
+
+                    $cookies.put('UserName', self.UserName);
+
+                    $cookies.put('Password', self.Password);
+
+                }
+
                 authService.checkLogin(serverName, self.UserName, self.Password).then(function (answer) {
 
                     var token = "Bearer " + answer.data.AccessToken
@@ -53,7 +55,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                     localStorage.setItem("serverName", serverName)
 
                     localStorage.setItem("token", token)
-                    
+
                     $state.go("app.dashboard")
 
 
@@ -64,17 +66,6 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                 })
             }
         }
-
-
-        self.RememberMe = function () {
-
-            $cookies.put('serverName', self.serverName);
-            $cookies.put('UserName', self.UserName);
-            $cookies.put('Password', self.Password);
-
-        }
-
-
     }
 ])
 

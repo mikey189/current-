@@ -2,6 +2,48 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
 
     var self = this;
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+    //setting template conditions //
+    self.TemplateConditions = {
+            isDirWatcher: true,
+            isEndpoint: false
+        }
+        //setting up objects to store properties per channel 
+
+    //__________________DirWatchers ______________________
+
+    self.DW = {
+        "Sources": []
+    };
+    //add an entry to dir watcher sources
+    self.CreateNewDirWatcherSourcesEntry = function () {
+        self.DW.Sources.push({
+            "Inputs": "",
+            "Outputs": {
+
+            }
+        });
+    };
+    self.AddOutputToDW = function (context) {
+            $mdDialog.show({
+                controller: function Ctrl() {
+                    var self = this;
+                    self.test = function () {
+                        console.log(self.smb)
+                    }
+                },
+                controllerAs: 'ctrl',
+                templateUrl: 'dialog1.tmpl.html',
+                locals: {
+                    smb: context
+                }
+            });
+        }
+        //remove entry from dirwatcher sources
+    self.RemoveDirWatcherSourcesEntry = function (index) {
+        self.DW.Sources.splice(index, 1);
+    };
+
+    //__________________End of DirWatchers ______________________
 
     //init the settings table as non editable by default 
 

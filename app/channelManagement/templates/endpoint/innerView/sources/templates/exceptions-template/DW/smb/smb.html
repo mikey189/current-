@@ -1,0 +1,43 @@
+<md-dialog>
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>SET UP SMB</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ctrl.test()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-list>
+            <md-list-item>
+                Name
+                <input ng-model="Output.Name" type="text" />
+            </md-list-item>
+            <md-list-item>
+                Rejected Folder
+                <input ng-model="Output.RejectedFolder" type="text" />
+            </md-list-item>
+            <md-list-item>
+                Temp Folder
+                <input ng-model="Output.TempFolder" type="text" />
+            </md-list-item>
+            <md-list-item>
+                Include Folder Mask
+                <input ng-model="Output.IncludeFolderMask" type="text" />
+            </md-list-item>
+            <md-list-item>
+                Enable Periodic File Check
+                <md-switch aria-label="enable Periodic" ng-model="Output.EnablePeriodicFileCheck"></md-switch>
+            </md-list-item>
+            <md-list-item>
+                Os Hook Interval
+                <input ng-model="Output.OsHookInterval" type="number" />
+            </md-list-item>
+            <md-list-item>
+                Process Pre-existing Files
+                <md-switch aria-label="enable Periodic" ng-model="Output.ProcessPreexistingFiles"></md-switch>
+            </md-list-item>
+        </md-list>
+    </form>
+</md-dialog>

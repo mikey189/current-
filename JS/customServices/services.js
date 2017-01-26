@@ -630,6 +630,41 @@ app.factory("emails_factory", function ($http) {
     }
 })
 
+app.factory("scanners_factory", function ($http) {
+
+    var sname = localStorage.getItem("serverName");
+    var base_url = "http://" + sname + ":4580/api/scanners/"
+    return {
+        get_scanners_status: function (numOfScanners) {
+            var addedUrl = (!isNaN(numOfScanners)) ? "?numberOfScanners=" + numOfScanners : "";
+            return $http.get(base_url + "Getscannersstatus" + addedUrl)
+        },
+        get_scanners_offline_updates_status: function () {
+            return $http.get(base_url + "GetScannerOfflineUpdateStatus");
+        },
+        post_scanners_collect_updates: function () {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: base_url + "PostScannerCollectUpdates",
+                method: "POST"
+            });
+        },
+        post_scanners_apply_updates: function () {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: base_url + "PostScannerApplyUpdates",
+                method: "POST"
+            });
+        }
+    }
+})
+
+
+
 app.factory("notification_types", function ($http) {
     var sname = localStorage.getItem("serverName");
 

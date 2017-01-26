@@ -14,6 +14,19 @@ app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, 
     }
 }])
 
+
+app.directive("goToChannelCreation", function($state){
+    return{
+        restrict: "A",
+        link: function(scope, element, attrs){
+            element.bind("click", function(){
+                $state.go("app.channelManagement.newChannel.step1");
+            })
+        }
+    }
+})
+
+
 app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
     return {
         restrict: "A",

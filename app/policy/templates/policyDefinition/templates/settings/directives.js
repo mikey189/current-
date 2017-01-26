@@ -11,9 +11,9 @@ app.directive("savePolicySettings", function (FacetFormatter, policyData) {
                     settingsDOMElement.removeClass("not-editable")
                 } else {
                     self.html("EDIT")
-                    scope.ctrl.areSettingsEditable = false
                     settingsDOMElement.addClass("not-editable")
                     scope.ctrl.FormatForPOST()
+                    self.areSettingsEditable = false;
                 }
             })
         }

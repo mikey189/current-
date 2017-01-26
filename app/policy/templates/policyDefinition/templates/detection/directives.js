@@ -43,7 +43,7 @@ app.directive("editPreferences", ["policyData", "FacetFormatter", function (poli
                     table.addClass("notEditable")
                     button.html("EDIT");
                     scope.ctrl.editMode = false;
-                   scope.ctrl.FormatForPOST()
+                    scope.ctrl.FormatForPOST()
                 }
             })
         }

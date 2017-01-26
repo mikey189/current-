@@ -1,16 +1,11 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
-
-
-<json-formatter json="ctrl.InputConfiguration"></json-formatter>
-
-<json-formatter json="ctrl.OutputConfiguration"></json-formatter>
-
-<div layout="row" layout-margin layout-align="end center" ng-cloak>
-    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
-    <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
-</div>
-
-<div layout="column" layout-margin class="notEditable" id="edition_section" ng-cloak>
+<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
+<div layout="column" layout-margin class="notEditable" id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
+    <json-formatter json="ctrl.InputConfiguration"></json-formatter>
+    <json-formatter json="ctrl.OutputConfiguration"></json-formatter>
+    <div layout="row" layout-margin layout-align="end center" ng-cloak>
+        <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
+    </div>
     <div layout="row" layout-align="space-between center">
         <md-content class="md-title">Inputs</md-content>
         <md-content class="md-title">Outputs</md-content>
@@ -27,4 +22,7 @@
             <o-smb ng-repeat="OSMB in ctrl.osmbList" class="animated fadeInUp"></o-smb>
         </div>
     </div>
+</div>
+<div ng-if="ctrl.TemplateConditions.isDirWatcher">
+    <dw-sources></dw-sources>
 </div>
