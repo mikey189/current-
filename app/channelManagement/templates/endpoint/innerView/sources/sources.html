@@ -1,10 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
 
-<button ng-click="ctrl.DisplayDWView()">see dir watcher view</button>
-<button ng-click="ctrl.DisplayEndpointView()">see endpoint view</button>
-
-<div layout="column" layout-margin class="notEditable" id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
+<div layout="column" layout-margin ng-class="{'notEditable': !ctrl.EndpointSourcesAreEditable}" id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
     <json-formatter json="ctrl.InputConfiguration"></json-formatter>
     <json-formatter json="ctrl.OutputConfiguration"></json-formatter>
     <div layout="row" layout-margin layout-align="end center" ng-cloak>

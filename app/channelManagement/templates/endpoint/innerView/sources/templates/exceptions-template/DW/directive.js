@@ -3,10 +3,10 @@ app.directive("editDwSources", function(){
         restrict: "A",
         link: function(scope, element, attrs){
             element.bind("click", function(){
-                if (!scope.ctrl.AreSettingsEditable){
-                    scope.ctrl.AreSettingsEditable = true;
+                if (!scope.ctrl.DWSourcesAreEditable){
+                    scope.ctrl.DWSourcesAreEditable = true;
                 }else{
-                    scope.ctrl.AreSettingsEditable = false;
+                    scope.ctrl.DWSourcesAreEditable = false;
                 }
             })
         }

@@ -3,27 +3,29 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
 
         var self = this;
         self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
-        //setting template conditions //
-        self.TemplateConditions = {
+        //setting switcher function to switch templates
+        self.TemplateConditions = {};
+        self.TemplateSwitcher = function (ChannelType) {
+            switch (ChannelType) {
+                // endpoint
 
-                isDirWatcher: true,
-                isEndpoint: false
+                case 2:
+                    self.TemplateConditions.isDirWatcher = false;
+                    self.TemplateConditions.isEndpoint = true;
+                    self.EndpointSourcesAreEditable = false;
+                    console.log("inside switcher")
+                    console.log(ChannelType)
+                    break;
+                    //case is dirwatcher
+                case 3:
+                    self.TemplateConditions.isDirWatcher = true;
+                    self.TemplateConditions.isEndpoint = false;
+                    self.DWSourcesAreEditable = false;
+                    console.log("inside switcher")
+                    console.log(ChannelType)
+                    break;
             }
-
-
-            self.DisplayDWView = function(){
-
-                self.TemplateConditions.isDirWatcher = true
-                self.TemplateConditions.isEndpoint = false
-
-            }
-            self.DisplayEndpointView = function(){
-
-                self.TemplateConditions.isDirWatcher = false
-                self.TemplateConditions.isEndpoint = true
-
-            }
-            //setting up objects to store properties per channel 
+        }
 
         //__________________DirWatchers ______________________
 
@@ -32,41 +34,8 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         };
         //add an entry to dir watcher sources
         self.CreateNewDirWatcherSourcesEntry = function () {
-            self.DW.Sources.push({
-                "Inputs": "",
-                "Outputs": {
-
-                }
-            });
+            self.DW.Sources.push({})
         };
-        self.AddOutputToDW = function (index) {
-            $mdDialog.show({
-                    controller: DWSMBController,
-                    clickOutsideToClose: false,
-                    templateUrl: 'app/channelManagement/templates/endpoint/innerView/sources/templates/exceptions-template/DW/smb/smb.html'
-                })
-                .then(function (answer) {
-                    self.DW.Sources[index].Outputs = answer ;
-                    console.log(self.DW)
-                }, function () {
-                    $scope.status = 'You cancelled the dialog.';
-                });
-
-        }
-
-        function DWSMBController($scope, $mdDialog) {
-            
-
-            $scope.cancel = function () {
-                $mdDialog.cancel();
-            };
-
-            $scope.answer = function (answer) {
-                $mdDialog.hide(answer);
-            };
-        }
-
-
         //remove entry from dirwatcher sources
         self.RemoveDirWatcherSourcesEntry = function (index) {
             self.DW.Sources.splice(index, 1);
@@ -140,14 +109,15 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             channelData.get_channel(newVal).then(function (answer) {
                 self.channel_data = answer.data
                 var channelInfo = answer.data.ChannelInfo
-                self.ChannelConfiguration = channelInfo.ChannelConfiguration
-                self.generalInformations = channelInfo.GeneralInformations
-                self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration
-                self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration
-                self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration
-                self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration
+                self.TemplateSwitcher(answer.data.AgentType);
+                self.ChannelConfiguration = channelInfo.ChannelConfiguration;
+                self.generalInformations = channelInfo.GeneralInformations;
+                self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration;
+                self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration;
+                self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration;
+                self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration;
                 channelData.ChannelFacets().then(function (answer) {
-                    self.whoData = answer.data
+                    self.whoData = answer.data;
                     self.InitFacets(self.whoData)
                 })
 
@@ -193,7 +163,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             var index = self.osmbList.indexOf(OSMB)
             self.osmbList.splice(index, 1);
         }
-        self.are_settings_editable = false
         self.PolicyFacets = {}
 
         /*--------------------  who is using this channel --------------------*/
@@ -221,9 +190,13 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
                     self.NoChannelExists = false;
                     //retrieving the first ID of the list if not already defined
                     self.rootId = $state.params.ChannelId || self.menuItems[0].Id
+                    var ChannelType = self.menuItems[0].AgentType
+                    console.log(ChannelType)
                     for (i = 0; i < self.menuItems.length; i++) {
                         self.channel_list.push(self.menuItems[i])
                     }
+                    //self.TemplateSwitcher(self.channel_list[0].AgentType)
+
                 } else {
                     self.NoChannelExists = true;
                 }

@@ -107,11 +107,11 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
             element.click(function () {
                 var edition_section = $("#edition_section")
                 var self = $(this)
-                if (!scope.ctrl.are_outputs_and_outputs_editable) {
+                if (!scope.ctrl.EndpointSourcesAreEditable) {
                     edition_section.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("SAVE")
-                    scope.ctrl.are_outputs_and_outputs_editable = true
+                    scope.ctrl.EndpointSourcesAreEditable = true
                         //emptying arrays in case user plays too much with edit and save buttons
                     scope.ctrl.selectedOutputs = {}
                     scope.ctrl.selectedInputs = {}
@@ -162,7 +162,7 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                     })
                     scope.$apply()
                     self.html("EDIT")
-                    scope.ctrl.are_outputs_and_outputs_editable = false
+                    scope.ctrl.EndpointSourcesAreEditable = false
                 }
             })
         }
