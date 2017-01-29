@@ -52,6 +52,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
         self.RefreshSidenav();
 
+        //delete cdr
+
+        self.DeleteAction = function (key, L0Key) {
+            delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
+        }
+
         //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = function (id) {

@@ -1,12 +1,9 @@
-<md-dialog>
+<md-dialog style="width: 50%">
     <form ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>SET UP SMB</h2>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="ctrl.test()">
-                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-                </md-button>
             </div>
         </md-toolbar>
         <md-list>
@@ -39,5 +36,9 @@
                 <md-switch aria-label="enable Periodic" ng-model="Output.ProcessPreexistingFiles"></md-switch>
             </md-list-item>
         </md-list>
+        <div layout="row" layout-align="space-between center" style="margin-top: 3em">
+            <md-button ng-click="cancel()" class="save-smb-button" flex>CANCEL</md-button>
+            <md-button ng-click="answer(Output)" class="save-smb-button" flex="50">SAVE SMB</md-button>
+        </div>
     </form>
 </md-dialog>

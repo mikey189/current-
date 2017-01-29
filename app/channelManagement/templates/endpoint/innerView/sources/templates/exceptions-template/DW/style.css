@@ -30,3 +30,9 @@
 .not-editable {
     pointer-events: none;
 }
+
+.save-smb-button{
+    background-color : #2979FF !important;
+    font-weight: 700; 
+    color: white;
+}

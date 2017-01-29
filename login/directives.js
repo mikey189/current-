@@ -1,16 +1,17 @@
-app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$timeout", "$http", "HTTPHeaders",
-    function (authService, $rootScope, $state, $timeout, $mdDialog, $http, HTTPHeaders) {
+app.directive("checkCredentials", ["authService", "$state", "$cookies",
+    function (authService, $state, $cookies) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
 
                 element.bind("click", function () {
 
-                    var serverName = document.getElementById("ServerName").value
 
-                    var username = $("#username")
+                    var serverName = document.getElementById("ServerName").value;
 
-                    var password = $("#password")
+                    var username = $("#username");
+
+                    var password = $("#password");
 
                     if (scope.ctrl.IsRememberMe) {
 
@@ -19,7 +20,7 @@ app.directive("checkCredentials", ["authService", "$rootScope", "$state", "$time
                         $cookies.put('UserName', scope.ctrl.UserName);
 
                         $cookies.put('Password', scope.ctrl.Password);
-                        
+
                     }
 
                     authService.checkLogin(serverName, scope.ctrl.UserName, scope.ctrl.Password).then(function (answer) {
