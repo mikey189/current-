@@ -5,7 +5,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
         //setting switcher function to switch templates
         self.TemplateConditions = {};
-        self.TemplateSwitcher = function (ChannelType) {
+        self.TemplateSwitcher = function (ChannelType, channelInfo) {
             switch (ChannelType) {
                 // endpoint
 
@@ -13,6 +13,11 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
                     self.TemplateConditions.isDirWatcher = false;
                     self.TemplateConditions.isEndpoint = true;
                     self.EndpointSourcesAreEditable = false;
+                    self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration;
+                    self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration;
+                    self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration;
+                    self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration;
+
                     console.log("inside switcher")
                     console.log(ChannelType)
                     break;
@@ -21,6 +26,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
                     self.TemplateConditions.isDirWatcher = true;
                     self.TemplateConditions.isEndpoint = false;
                     self.DWSourcesAreEditable = false;
+                    self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
                     console.log("inside switcher")
                     console.log(ChannelType)
                     break;
@@ -109,13 +115,9 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             channelData.get_channel(newVal).then(function (answer) {
                 self.channel_data = answer.data
                 var channelInfo = answer.data.ChannelInfo
-                self.TemplateSwitcher(answer.data.AgentType);
+                self.TemplateSwitcher(answer.data.AgentType, channelInfo);
                 self.ChannelConfiguration = channelInfo.ChannelConfiguration;
                 self.generalInformations = channelInfo.GeneralInformations;
-                self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration;
-                self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration;
-                self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration;
-                self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration;
                 channelData.ChannelFacets().then(function (answer) {
                     self.whoData = answer.data;
                     self.InitFacets(self.whoData)
@@ -127,7 +129,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             return this.rootId;
         }), function (newValue) {
             self.UpdateChannelData(newValue)
-            console.log("new id for channel from $watch " + newValue)
         });
         //default view for dashboard is blocked
         self.isBlocked = true;
@@ -191,7 +192,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
                     //retrieving the first ID of the list if not already defined
                     self.rootId = $state.params.ChannelId || self.menuItems[0].Id
                     var ChannelType = self.menuItems[0].AgentType
-                    console.log(ChannelType)
                     for (i = 0; i < self.menuItems.length; i++) {
                         self.channel_list.push(self.menuItems[i])
                     }
@@ -204,7 +204,6 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             })
         }
         self.LoadSidenav()
-        console.log(self.channel_list)
 
         self.onDropComplete = function (index, obj, evt) {
                 var otherObj = self.channel_list[index];
@@ -224,49 +223,50 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             var ChannelSettingsObject = {}
 
             angular.forEach(self.ChannelFacets, function (L1Value, L1Key) {
-
+                var facet = {
+                    Description: "",
+                    Values: {}
+                };
                 //L1Key = Channel Usage Settings || Agent Settings
-
+                facet.Description = L1Key;
                 angular.forEach(L1Value.Values, function (L2Value, L2Key) {
 
-                    if (!Array.isArray(L2Value)) {
-                        //L2Key === "StrPropType_ChannelPolicyToUse" || L2Key === "StrPropType_DetailsMessage"
+                        if (!Array.isArray(L2Value)) {
+                            //L2Key === "StrPropType_ChannelPolicyToUse" || L2Key === "StrPropType_DetailsMessage"
+                            facet.Values[L2Key] = L2Value;
+                            //                        (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = L2Value: ChannelSettingsObject[L2Key] = L2Value
 
-                        (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = L2Value: ChannelSettingsObject[L2Key] = L2Value
+                        } else {
+                            var str = "";
+                            angular.forEach(L2Value, function (L3Value, L3Key) {
+                                str += L3Value + "|";
+                            })
+                            str = str.slice(0, str.lastIndexOf("|"));
+                            //(L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = str: ChannelSettingsObject[L2Key] = str
+                            facet.Values[L2Key] = str;
 
-                    } else {
-                        var str = "";
-                        angular.forEach(L2Value, function (L3Value, L3Key) {
-                            str += L3Value + "|";
-                        })
-                        str = str.slice(0, str.lastIndexOf("|"));
-                        (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = str: ChannelSettingsObject[L2Key] = str
-
-                        //L1object[L2Key] = str
+                            //L1object[L2Key] = str
+                        }
+                    })
+                    /*self.FacetsToPost[0] = {
+                        "Description": "Channel Usage Settings",
+                        "Values": ChannelUsageObject
                     }
-                })
-                self.FacetsToPost[0] = {
-                    "Description": "Channel Usage Settings",
-                    "Values": ChannelUsageObject
-                }
-                self.FacetsToPost[1] = {
-                    "Description": "Agent Settings",
-                    "Values": ChannelSettingsObject
-                }
-                console.log(self.FacetsToPost)
-
+                    self.FacetsToPost[1] = {
+                        "Description": "Agent Settings",
+                        "Values": ChannelSettingsObject
+                    }*/
+                self.FacetsToPost.push(facet)
             })
+            console.log(self.FacetsToPost)
+        };
 
-        }
         self.ToBoolean = function (value) {
             var bool;
             for (i in value) {
-                console.log(value[i])
                 bool = value[i] === "True";
             }
-            console.log(bool)
             return bool
-        }
-
+        };
     }
 ])

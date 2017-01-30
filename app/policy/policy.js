@@ -137,7 +137,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         })
 
                     })
-
                 })
             }
             //watching for change//
@@ -154,7 +153,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             angular.forEach(RetrievedData, function (L0Value, L0Key) {
 
                 if (self.PolicyFacets[L0Key] !== undefined && self.PolicyFacets[L0Key].length !== 0) {
-                    //do nothing for now
+                    //turn into objects
+
+                    /* 
+                    split by = and then by :
+
+                    if length of splitted by :  > 1 => cdr else turn to true/false*/
                     return self.PolicyFacets[L0Key];
                 } else {
                     self.PolicyFacets[L0Key] = {

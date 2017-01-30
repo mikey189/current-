@@ -31,6 +31,7 @@
     color: #FF4081;
 }
 
+
 #reorder_channels_button {
     margin-right: 1em;
 }
@@ -64,4 +65,11 @@
 }
 .white-icon{
     color: white !important;
+}
+.red-icon{
+    color: #FF4081 !important;
+
+}
+.channel-name-in-edtion{
+    border-bottom: solid 2px #FF4081;
 }
