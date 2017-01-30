@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <json-formatter json="ctrl.sideNavList"></json-formatter>
-<div layout="row" layout-align="space-between center">
+<div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
         <span ng-show="!ctrl.isFiletypeEditable">EDIT</span>
@@ -12,9 +12,7 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-
-<input ng-model="ctrl.extension"/>
-
+<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension"/>
 <table class="table table-responsive" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
         <th>Category</th>
@@ -39,9 +37,10 @@
                     self-reference="$index" children-access-point="L0Value"></md-checkbox>
             </td>
         </tr>
-        <tr ng-repeat-start="Ext in L0Value" ng-if="L0Value.AreChildrenHidden" ng-init="L0Value.AreChildrenHidden = true">
+        <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
+            ng-init="L0Value.AreChildrenHidden = true">
             <td>
-                <span class="extensions">{{::Ext.Extension | filter: extension}}</span>
+                <span class="extensions">{{::Ext.Extension }}</span>
             </td>
             <td>
                 <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption"></md-checkbox>
