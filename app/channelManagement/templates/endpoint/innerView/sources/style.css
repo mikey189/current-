@@ -206,3 +206,7 @@ color: white !important;
 .selected{
     background-color: yellow !important;
 }
+#sources-smb-counter{
+    font-weight: 700;
+    color: red !important;
+}

@@ -1,3 +1,31 @@
+app.factory("401Error", function ($q, $injector) {
+    return {
+        responseError: function (rejection) {
+            if (rejection.status === 401) {
+                var $mdDialog = $injector.get("$mdDialog");
+                var $state = $injector.get("$state");
+                var $timeout = $injector.get("$timeout");
+
+                var alert = $mdDialog.alert()
+
+                .title('Session Expired')
+                    .textContent('Your session has expired, please log back in')
+                    .ariaLabel('expired session')
+                    .ok('Log Back in')
+
+                $mdDialog.show(alert).then(function () {
+                    localStorage.removeItem("serverName")
+                    $timeout(function () {
+                        $state.go("login")
+                    })
+                });
+            }
+            return $q.reject(rejection)
+        }
+    }
+});
+
+
 
 app.factory("HTTPHeaders", function ($http, $state, $timeout) {
     var token = localStorage.getItem("token")
@@ -9,8 +37,6 @@ app.factory("HTTPHeaders", function ($http, $state, $timeout) {
 
     }
 })
-
-
 
 
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
@@ -455,7 +481,9 @@ app.factory("policyData", function ($rootScope, $http) {
             });
         },
         getCDRFacets: function () {
-            return $http.get(cdrFacetsTemplate)
+            return $http.get(cdrFacetsTemplate, {
+                cache: false
+            })
         }
 
 

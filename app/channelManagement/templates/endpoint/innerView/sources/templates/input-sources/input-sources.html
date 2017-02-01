@@ -1,13 +1,16 @@
-<div layout="row" layout-wrap layout-margin  class="whiteBk input_output_list" md-whiteframe="6" layout-align="space-between center">
+<div layout="row" layout-wrap layout-margin class="whiteBk input_output_list" md-whiteframe="6" layout-align="space-between center">
     <div layout="column" layout-align="center center" ng-repeat="x in ctrl.all_inputs" flex="25" ng-class="{input_is_selected: ctrl.InputConfiguration.SelectedIoList[x.name]}"
         layout-margin select-input class="input_element">
         <md-icon md-svg-src="icons/{{x.icon}}"></md-icon>
         <md-content class="md-subhead strong" _name="{{x.name}}">{{x.name}}</md-content>
     </div>
-    <div  layout-align="center center" flex="25" ng-class="{input_is_selected: ctrl.InputConfiguration.SelectedIoList[x.name]}"
+    <div layout-align="center center" flex="25" ng-class="{input_is_selected: ctrl.InputConfiguration.SelectedIoList[x.name]}"
         layout-margin select-on-click add-ismb class="input_element" layout="column" layout-align="center center">
         <md-icon md-svg-src="icons/ncRelay.svg"></md-icon>
-        <md-content class="md-subhead strong" _name="iSMB">SMB</md-content>
+        <md-content class="md-subhead strong" _name="iSMB">
+             <span id="sources-smb-counter" ng-if="ctrl.NumberOFiSMBs > 0">{{ctrl.NumberOFiSMBs}}</span>
+              SMB
+        </md-content>
     </div>
 </div>
 <!--

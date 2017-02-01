@@ -25,9 +25,10 @@ app.directive("logout", function ($rootScope, $state, $timeout, HTTPHeaders) {
       var sname = localStorage.getItem("serverName");
       element.click(function () {
         HTTPHeaders.DeleteTokenFromHeader()
-        localStorage.clear()
+        localStorage.removeItem("token");
+        localStorage.removeItem("serverName");
         $timeout(function () {
-          $state.go("login")
+          $state.go("login", {reload: true})
         })
       })
     }

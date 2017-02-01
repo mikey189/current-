@@ -61,6 +61,7 @@ app.directive("addIsmb", function () {
             element.click(function () {
                 var ismb = {};
                 scope.ctrl.ismbList.push(ismb)
+                scope.ctrl.NumberOFiSMBs ++;
                 scope.$apply()
             })
         }
@@ -74,6 +75,7 @@ app.directive("addOsmb", function () {
             element.click(function () {
                 var osmb = {};
                 scope.ctrl.osmbList.push(osmb)
+                scope.ctrl.NumberOFoSMBs ++;
                 scope.$apply()
             })
         }

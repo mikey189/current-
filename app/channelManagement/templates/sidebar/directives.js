@@ -17,8 +17,9 @@ app.directive("goToChannelCreation", function ($state) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.bind("click", function () {
-                $state.go("app.channelManagement.newChannel.step1");
+            element.click( function () {
+                console.log("foufoif")
+                $state.go("app.channelManagement.newChannel");
             })
         }
     }

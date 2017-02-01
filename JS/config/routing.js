@@ -119,7 +119,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
-    .state('app.channelManagement.newChannel', {
+    /*.state('app.channelManagement.newChannel', {
             url: '/channelManagementNewChannel',
             templateUrl: 'app/channelManagement/templates/newChannel/common/common.html',
             controller: 'ncCommon',
@@ -128,12 +128,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             classSelector: "channel"
 
 
-        })
-        .state('app.channelManagement.newChannel.step1', {
+        })*/
+        
+        .state('app.channelManagement.newChannel', {
             url: '/channelManagementNewChannelS1',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step1/step1.html',
-            controller: 'channels',
-            controllerAs: 'ctrl',
+            //controller: 'endpo',
+            //controllerAs: 'ctrl',
             displayName: "New Channel",
             classSelector: "channel"
 

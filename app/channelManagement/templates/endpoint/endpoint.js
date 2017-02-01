@@ -110,37 +110,42 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         }
 
         /*--------------------  Watching for changes in channel ID --------------------*/
+        if (!self.NoChannelExists)  {
+            console.log("inside")
+            self.UpdateChannelData = function (newVal) {
+                channelData.get_channel(newVal).then(function (answer) {
+                    self.channel_data = answer.data
+                    var channelInfo = answer.data.ChannelInfo
+                    self.NumberOFiSMBs = channelInfo.InputConfiguration.IoSmbConfiguration.length;
+                    self.NumberOFoSMBs = channelInfo.OutputConfiguration.IoSmbConfiguration.length;
+                    self.TemplateSwitcher(answer.data.AgentType, channelInfo);
+                    self.ChannelConfiguration = channelInfo.ChannelConfiguration;
+                    self.generalInformations = channelInfo.GeneralInformations;
+                    channelData.ChannelFacets().then(function (answer) {
+                        self.whoData = answer.data;
+                        self.InitFacets(self.whoData)
+                    })
 
-        self.UpdateChannelData = function (newVal) {
-            channelData.get_channel(newVal).then(function (answer) {
-                self.channel_data = answer.data
-                var channelInfo = answer.data.ChannelInfo
-                self.TemplateSwitcher(answer.data.AgentType, channelInfo);
-                self.ChannelConfiguration = channelInfo.ChannelConfiguration;
-                self.generalInformations = channelInfo.GeneralInformations;
-                channelData.ChannelFacets().then(function (answer) {
-                    self.whoData = answer.data;
-                    self.InitFacets(self.whoData)
                 })
+            }
 
+            $scope.$watch(angular.bind(this, function () {
+                return this.rootId;
+            }), function (newValue) {
+                self.UpdateChannelData(newValue)
+            });
+            //default view for dashboard is blocked
+            self.isBlocked = true;
+            channelData.getChannelDashboard(self.rootId).then(function (answer1) {
+                self.channelDashboard = answer1.data
             })
         }
-        $scope.$watch(angular.bind(this, function () {
-            return this.rootId;
-        }), function (newValue) {
-            self.UpdateChannelData(newValue)
-        });
-        //default view for dashboard is blocked
-        self.isBlocked = true;
-        channelData.getChannelDashboard(self.rootId).then(function (answer1) {
-            self.channelDashboard = answer1.data
-        })
-
         /*--------------------  Channel Input and Output --------------------*/
 
         self.are_outputs_and_outputs_editable = false;
         channelData.get_input_output_list().then(function (answer) {
             self.all_inputs = answer.data[0].inputs
+            console.log(self.all_inputs)
             self.is_input_selected = false;
         })
 
@@ -150,19 +155,23 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         self.addISMB = function () {
             var iSMB = {}
             self.ismbList.push(iSMB)
+            self.NumberOFiSMBs++;
         }
         self.addOSMB = function () {
             var oSMB = {}
-            self.osmbList.push(oSMB)
+            self.osmbList.push(oSMB);
+            self.NumberOFoSMBs ++;
         }
 
         self.deleteISMB = function (ISMB) {
             var index = self.ismbList.indexOf(ISMB)
             self.ismbList.splice(index, 1);
+            self.NumberOFiSMBs--;
         }
         self.deleteOSMB = function (OSMB) {
             var index = self.osmbList.indexOf(OSMB)
             self.osmbList.splice(index, 1);
+            self.NumberOFoSMBs --;
         }
         self.PolicyFacets = {}
 
