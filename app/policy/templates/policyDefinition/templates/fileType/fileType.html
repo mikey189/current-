@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-<json-formatter json="ctrl.sideNavList"></json-formatter>
+<json-formatter json="ctrl.policy.PolicyFacets"></json-formatter>
+<json-formatter json="ctrl.PolicyFacets"></json-formatter>
+
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>

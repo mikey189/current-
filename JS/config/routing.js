@@ -110,7 +110,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/channelWho',
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/who/who.html',
-            displayName: "Channel Management > Who Uses This Policy",
+            displayName: "Channel Management > Who Uses This Channel",
             classSelector: "channel",
             ParentID: "ChannelUsage"
 
@@ -193,7 +193,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.dashboard', {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
-            displayName: "Policy",
+            displayName: "Policy",            
             classSelector: "policy"
 
         })

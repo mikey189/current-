@@ -31,10 +31,11 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this)
-                var channel_id = self.attr("channel-id")
-                var cell = self.parents("md-list-item")
+                var channel_id = self.attr("channel-id");
+                var p1 = self.parents();
+                var cell = p1.closest("md-list-item")
                 var channel_name = self.attr("channel-name")
-                console.log(cell)
+                console.log(p1);
                 var confirm = $mdDialog.confirm()
                     .title('You are about to delete a channel')
                     .textContent('You are about to delete the channel ' + channel_name)
@@ -48,7 +49,7 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
                             cell.addClass("hidden")
                         }, 700)
                     });
-                }, function () {});
+                })
             })
         }
     }

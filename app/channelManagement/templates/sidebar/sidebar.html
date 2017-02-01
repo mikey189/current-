@@ -31,7 +31,7 @@
                             contenteditable="{{x.is_channelName_editable}}" _id="{{x.Id}}" ng-class="{'channel-name-in-edtion': x.is_channelName_editable}">{{x.Name}}</a>
                             </strong>
                         </div>
-                        <div flex layout="row" layout-align="center center">
+                        <div flex layout="row" layout-align="end center" id="first">
                             <md-button class="md-icon-button" ng-if="x.is_channelName_editable" ng-click="x.is_channelName_editable = false" rename-channel >
                                 <md-icon class="red-icon">done</md-icon>
                             </md-button>

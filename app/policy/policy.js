@@ -1,6 +1,5 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout",
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout) {
-
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", "FacetFormatter",
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, FacetFormatter) {
         var self = this;
         self.sidenav_edit_mode = false;
         self.PolicyInfo = {};
@@ -11,6 +10,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.types = {};
         self.areSettingsEditable = false;
         self.allFacets = {};
+        self.CustPF = {};
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
@@ -93,6 +93,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     /*______________________________________settings______________________________________*/
                     policyData.get_policy_settings("PolicySettings").then(function (answer) {
                         var data = answer.data;
+
                         self.allFacets = data;
                         self.InitFacets(self.allFacets);
 
@@ -105,13 +106,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         self.cdrContainer = {};
 
                         self.cdr = answer.data;
-                        angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
+                        self.InitFacets(self.cdr)
+                            /*
+                            angular.forEach(self.cdr['Policy CDR Settings'].Properties, function (value, key) {
 
                             if (self.PolicyFacets['Policy CDR Settings'].Values[key] == undefined || self.PolicyFacets['Policy CDR Settings'].Values[key] === "") {
                                 self.PolicyFacets['Policy CDR Settings'].Values[key] = value.DefaultValue[0];
 
                             } else {
-
 
                                 if (self.PolicyFacets['Policy CDR Settings'].Values[key].length > 0) {
                                     var splittedByPipe = self.PolicyFacets['Policy CDR Settings'].Values[key].split("|");
@@ -134,45 +136,118 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                                     self.PolicyFacets['Policy CDR Settings'].Values[key] = object
                                 }
                             }
-                        })
-
+                    })*/
                     })
                 })
             }
             //watching for change//
         $scope.$watch(angular.bind(this, function () {
             return this.policyId;
-        }), function (newVal) {
-            self.getPolicyInfo(newVal);
+        }), function (newVal, oldVal) {
+            if (newVal && newVal !== oldVal) {
+                self.getPolicyInfo(newVal);
+            }
         });
 
         //______________________________________Formatting Facets to display in DOM______________
 
+
         self.InitFacets = function (RetrievedData) {
+            //retrieved data= facets straight from server
 
             angular.forEach(RetrievedData, function (L0Value, L0Key) {
 
                 if (self.PolicyFacets[L0Key] !== undefined && self.PolicyFacets[L0Key].length !== 0) {
-                    //turn into objects
+                    //do nothing for now
+                    //policyfacets already contain definition
+                    angular.forEach(L0Value.Properties, function (value, key) {
 
-                    /* 
-                    split by = and then by :
+                        if (self.PolicyFacets[L0Key].Values[key] == undefined || self.PolicyFacets[L0Key].Values[key] === "") {
+                            self.PolicyFacets[L0Key].Values[key] = value.DefaultValue[0];
 
-                    if length of splitted by :  > 1 => cdr else turn to true/false*/
-                    return self.PolicyFacets[L0Key];
+                        } else {
+
+                            if (self.PolicyFacets[L0Key].Values[key].length > 0) {
+                                if (value.Type.includes("FacetPropertyType_MultiChoice")) {
+                                    var splittedByPipe = self.PolicyFacets[L0Key].Values[key].split("|");
+                                    var object = {};
+
+                                    angular.forEach(splittedByPipe, function (L2Val, L2Key) {
+                                        var splittedByEqual = L2Val.split("=");
+                                        var cdrActionSplited = splittedByEqual[1].split(':');
+                                        if (cdrActionSplited.length == 1) //non object type=> contain True or False
+                                        {
+                                            object[splittedByEqual[0]] = cdrActionSplited[0] === "True" ? true : false;
+                                        } else {
+                                    console.log(cdrActionSplited)
+
+
+                                            var cdrAction = {
+                                                "Product": cdrActionSplited[0],
+                                                "Category": cdrActionSplited[1],
+                                                "ActionName": cdrActionSplited[2],
+                                                "RiskLevel": cdrActionSplited[3],
+                                                "Description": cdrActionSplited[5]
+                                            };
+
+                                            //var cdrAction = JSON.parse(cdrActionSplited)
+                                            object[splittedByEqual[0]] = cdrAction;
+                                        }
+                                    })
+                                    self.PolicyFacets[L0Key].Values[key] = object
+                                }
+                            }
+                        }
+                    })
+
+
+
+                    // return self.PolicyFacets[L0Key];
                 } else {
                     self.PolicyFacets[L0Key] = {
                         "Values": {}
                     };
                     angular.forEach(L0Value.Properties, function (L1Value, L1Key) {
                         if (L1Value.IsHidden == false) {
-                            self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue
+                            var splittedByPipe = self.PolicyFacets[L0Key].Values[L1Key].split("|");
+                            var object = {};
+
+                            angular.forEach(splittedByPipe, function (L2Val, L2Key) {
+                                var splittedByEqual = L2Val.split("=");
+                                var cdrActionSplited = splittedByEqual[1].split(':');
+                                if (cdrActionSplited.length == 1) //non object type=> contain True or False
+                                {
+                                    object[splittedByEqual[0]] = cdrActionSplited[0] === "True" ? true : false;
+                                } else {
+
+                                    console.log(cdrActionSplited)
+                                    var cdrAction = {
+                                        "Product": cdrActionSplited[0],
+                                        "Category": cdrActionSplited[1],
+                                        "ActionName": cdrActionSplited[2],
+                                        "RiskLevel": cdrActionSplited[3],
+                                        "Description": cdrActionSplited[5]
+                                    };
+
+                                    //var cdrAction = JSON.parse(cdrActionSplited)
+                                    object[splittedByEqual[0]] = cdrAction;
+                                }
+                            })
+                            self.PolicyFacets[L0Key].Values[L1Key] = object
+
+                            //self.PolicyFacets[L0Key].Values[L1Key] = L1Value.DefaultValue
                         };
                     });
                 };
             });
 
         };
+
+
+
+
+
+
         // ______________________________________   confirm policy creation   __________________________
 
         self.CreatePolicy = function () {
@@ -220,6 +295,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     }
                 })
                 Facets2POST.push(NewFacet);
+                console.log(Facets2POST)
             })
             policyData.post_policy_settings(self.policyId, Facets2POST).then(function (success) {
                 self.show_success_dialog("Your changes were successfuly saved")

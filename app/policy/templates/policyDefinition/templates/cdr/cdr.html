@@ -17,7 +17,7 @@
             <span  class="action-chips" ng-repeat="(actionKey, actionValue) in ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] track by $index"
              ng-class="{'HIGH': actionValue.RiskLevel.includes('High'), 'MEDIUM': actionValue.RiskLevel.includes('Medium'),
                 'LOW': actionValue.RiskLevel.includes('Low') }" md-whiteframe="2" ng-if="actionKey !==''">
-                <span ng-if="!L0Value.showValues" style="color: #333">{{actionValue.Category }} &nbsp : &nbsp </span> {{actionValue.ActionName}}
+                <span style="color: #333">{{actionValue.Category }} &nbsp : &nbsp </span> {{actionValue.ActionName}}
                 <md-tooltip md-direction="top" ng-if="actionValue.Description.length > 0">{{actionValue.Description}}</md-tooltip>
                 <md-icon  class="white" ng-if="L0Value.showValues" ng-click="ctrl.DeleteAction(actionKey, L0Key)">remove</md-icon>
             </span>
