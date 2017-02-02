@@ -65,6 +65,15 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 policyData.get_policy_info(id).then(function (answer) {
 
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
+
+
+                    //checkbox state for parent of extensions
+
+                    self.FiletypeIsIndeterminate = function (value) {
+                        return (value.AllowOption.length !== 0 && value.AllowOption.length !== value.length);
+                    }
+
+
                     // checking child state for "AllowOption" Property
                     angular.forEach(self.Filetypes, function (value, key) {
                         if (value.AllowOption == false) {
@@ -179,7 +188,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                                         {
                                             object[splittedByEqual[0]] = cdrActionSplited[0] === "True" ? true : false;
                                         } else {
-                                    console.log(cdrActionSplited)
+                                            console.log(cdrActionSplited)
 
 
                                             var cdrAction = {
@@ -242,11 +251,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             });
 
         };
-
-
-
-
-
 
         // ______________________________________   confirm policy creation   __________________________
 

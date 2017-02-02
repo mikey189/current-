@@ -13,23 +13,33 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
                     self.TemplateConditions.isDirWatcher = false;
                     self.TemplateConditions.isEndpoint = true;
                     self.EndpointSourcesAreEditable = false;
-                    self.InputConfiguration = (channelInfo.InputConfiguration == null) ? {} : channelInfo.InputConfiguration;
-                    self.ismbList = (self.InputConfiguration.IoSmbConfiguration == null) ? [] : self.InputConfiguration.IoSmbConfiguration;
-                    self.OutputConfiguration = (channelInfo.OutputConfiguration == null) ? {} : channelInfo.OutputConfiguration;
-                    self.osmbList = (self.OutputConfiguration.IoSmbConfiguration == null) ? [] : self.OutputConfiguration.IoSmbConfiguration;
+                    self.TemplateConditions.isAPI = false;
 
-                    console.log("inside switcher")
-                    console.log(ChannelType)
+                    self.InputConfiguration = channelInfo.InputConfiguration || {};
+                    self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
+                    self.OutputConfiguration = channelInfo.OutputConfiguration || {};
+                    self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+
+                    self.NumberOFiSMBs = self.ismbList.length || 0;
+                    self.NumberOFoSMBs = self.osmbList.length || 0;
+
                     break;
                     //case is dirwatcher
                 case 3:
+
                     self.TemplateConditions.isDirWatcher = true;
                     self.TemplateConditions.isEndpoint = false;
+                    self.TemplateConditions.isAPI = false;
                     self.DWSourcesAreEditable = false;
                     self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
-                    console.log("inside switcher")
-                    console.log(ChannelType)
+
                     break;
+                case 100:
+
+                    self.TemplateConditions.isAPI = true;
+                    self.TemplateConditions.isDirWatcher = false;
+                    self.TemplateConditions.isEndpoint = false;
+
             }
         }
 
@@ -110,16 +120,16 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         }
 
         /*--------------------  Watching for changes in channel ID --------------------*/
-        if (!self.NoChannelExists)  {
+        if (!self.NoChannelExists) {
             console.log("inside")
             self.UpdateChannelData = function (newVal) {
                 channelData.get_channel(newVal).then(function (answer) {
                     self.channel_data = answer.data
                     var channelInfo = answer.data.ChannelInfo
-                    self.NumberOFiSMBs = channelInfo.InputConfiguration.IoSmbConfiguration.length;
-                    self.NumberOFoSMBs = channelInfo.OutputConfiguration.IoSmbConfiguration.length;
+                    console.log(channelInfo)
                     self.TemplateSwitcher(answer.data.AgentType, channelInfo);
-                    self.ChannelConfiguration = channelInfo.ChannelConfiguration;
+
+                    self.ChannelConfiguration = channelInfo.ChannelConfiguration || {};
                     self.generalInformations = channelInfo.GeneralInformations;
                     channelData.ChannelFacets().then(function (answer) {
                         self.whoData = answer.data;
@@ -160,7 +170,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         self.addOSMB = function () {
             var oSMB = {}
             self.osmbList.push(oSMB);
-            self.NumberOFoSMBs ++;
+            self.NumberOFoSMBs++;
         }
 
         self.deleteISMB = function (ISMB) {
@@ -171,7 +181,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
         self.deleteOSMB = function (OSMB) {
             var index = self.osmbList.indexOf(OSMB)
             self.osmbList.splice(index, 1);
-            self.NumberOFoSMBs --;
+            self.NumberOFoSMBs--;
         }
         self.PolicyFacets = {}
 

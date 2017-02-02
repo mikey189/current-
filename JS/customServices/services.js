@@ -190,7 +190,7 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         get_channel: function (id) {
-            return $http.get(get_channel + id)
+            return $http.get(get_channel + id, {cache: false})
         },
         delete_channel: function (id) {
             return $http({
@@ -567,6 +567,7 @@ app.factory("sanitization_factory", function ($http) {
             return $http({
                 url: url,
                 method: 'GET',
+                cache: false,
                 params: filter_query
             })
         },

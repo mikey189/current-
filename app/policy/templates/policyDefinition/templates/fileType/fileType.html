@@ -14,7 +14,10 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension"/>
+
+
+<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"/>
+
 <table class="table table-responsive" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
         <th>Category</th>
@@ -35,8 +38,7 @@
                 {{::L0Key}}
             </td>
             <td colspan="7">
-                <md-checkbox aria-label="check all" class="custom-checkbox" ng-model="$index" ng-disabled="!ctrl.isFiletypeEditable" toggle-children-states
-                    self-reference="$index" children-access-point="L0Value"></md-checkbox>
+                <md-checkbox aria-label="check all" class="custom-checkbox" ng-model="$index" md-indeterminate="ctrl.FiletypeIsIndeterminate(L0Value)"></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
@@ -68,3 +70,6 @@
         <tr ng-repeat-end></tr>
     </tbody>
 </table>
+
+<!--ng-disabled="!ctrl.isFiletypeEditable" toggle-children-states
+                    self-reference="$index" children-access-point="L0Value"-->
