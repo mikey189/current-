@@ -58,6 +58,39 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             delete self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key]
         }
 
+        //checkbox state for parent of extensions
+
+        self.FiletypeIsIndeterminate = function (value) {
+            var z = 0;
+            for (i = 0; i < value.length; i++) {
+                if (value[i].AllowOption == true) {
+                    z = z + 1;
+                } else {
+                    z = z
+                }
+            }
+            return (z !== value.length && z !== 0);
+        }
+        self.AllExtIsChecked = function (value) {
+            var z = 0;
+
+            for (i = 0; i < value.length; i++) {
+                if (value[i].AllowOption == true) {
+                    z = z + 1;
+                } else {
+                    z = z;
+                }
+            }
+            return z === value.length;
+        }
+        self.CheckAllExtensions = function (value) {
+
+            for (i = 0; i < value.length; i++) {
+                value[i].AllowOption !== value[i].AllowOption;
+            }
+
+        }
+
         //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = function (id) {
@@ -65,14 +98,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 policyData.get_policy_info(id).then(function (answer) {
 
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
-
-
-                    //checkbox state for parent of extensions
-
-                    self.FiletypeIsIndeterminate = function (value) {
-                        return (value.AllowOption.length !== 0 && value.AllowOption.length !== value.length);
-                    }
-
 
                     // checking child state for "AllowOption" Property
                     angular.forEach(self.Filetypes, function (value, key) {

@@ -38,13 +38,14 @@
                 {{::L0Key}}
             </td>
             <td colspan="7">
-                <md-checkbox aria-label="check all" class="custom-checkbox" ng-model="$index" md-indeterminate="ctrl.FiletypeIsIndeterminate(L0Value)"></md-checkbox>
+                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value)"
+                 ng-checked = "ctrl.AllExtIsChecked(L0Value)" md-indeterminate="ctrl.FiletypeIsIndeterminate(L0Value)"></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
             ng-init="L0Value.AreChildrenHidden = true">
             <td>
-                <span class="extensions">{{::Ext.Extension }}</span>
+                <span class="extensions">{{::Ext.Extension }} </span>
             </td>
             <td>
                 <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption"></md-checkbox>
