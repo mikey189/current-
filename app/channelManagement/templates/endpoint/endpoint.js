@@ -1,5 +1,5 @@
-app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$state",
-    function (C2CData, channelData, $scope, $mdDialog, $state) {
+app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q",
+    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q) {
 
         var self = this;
         self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
@@ -88,68 +88,51 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             }
         }
 
-        /*--------------------  Init FacetContainer --------------------*/
-
-        self.InitFacets = function (FacetContainer) {
-            angular.forEach(FacetContainer, function (L0Value, L0Key) {
-                //self.ChannelFacets = (self.channel_data.ChannelFacets.hasOwnProperty(L0Key)) ? self.channel_data.ChannelFacets : {[L0Key]: { "Values": {} }};
-                self.ChannelFacets = self.channel_data.ChannelFacets || {}
-                self.ChannelFacets[L0Key] = self.channel_data.ChannelFacets[L0Key] || {
-                    "Values": {}
-                };
-                angular.forEach(FacetContainer[L0Key].Properties, function (value, key) {
-                    if (self.ChannelFacets[L0Key].Values[key] == undefined || self.ChannelFacets[L0Key].Values[key] == "") {
-
-                        if (value.Type !== "FacetPropertyType_SingleChoice" || value.Type !== "FacetPropertyType_MultiChoice") {
-
-                            self.ChannelFacets[L0Key].Values[key] = value.DefaultValue
-
-
-                        } else {
-                            var arr = [];
-                            angular.forEach(value.DefaultValue, function (v, k) {
-                                arr.push(v)
-                            }, arr)
-                            self.ChannelFacets[L0Key].Values[key] = arr
-                        }
-                    } else {
-                        self.ChannelFacets[L0Key].Values[key] = self.ChannelFacets[L0Key].Values[key].split("|")
-                    }
-                })
-            })
-        }
-
         /*--------------------  Watching for changes in channel ID --------------------*/
         if (!self.NoChannelExists) {
-            console.log("inside")
             self.UpdateChannelData = function (newVal) {
-                channelData.get_channel(newVal).then(function (answer) {
-                    self.channel_data = answer.data
-                    var channelInfo = answer.data.ChannelInfo
-                    console.log(channelInfo)
-                    self.TemplateSwitcher(answer.data.AgentType, channelInfo);
+                channelData.get_channel(newVal).then(answer => {
+                    var deferred = $q.defer();
+                    var $q2 = channelData.ChannelFacets();
 
-                    self.ChannelConfiguration = channelInfo.ChannelConfiguration || {};
-                    self.generalInformations = channelInfo.GeneralInformations;
-                    channelData.ChannelFacets().then(function (answer) {
-                        self.whoData = answer.data;
-                        self.InitFacets(self.whoData)
-                    })
-
+                    $q.all({
+                        $q2
+                    }).then(data => {
+                        self.channel_data = answer.data;
+                        self.ChannelFacets = (jQuery.isEmptyObject(self.channel_data.ChannelFacets)) ? {} : self.channel_data.ChannelFacets;
+                        var ChannelInfo = self.channel_data.ChannelInfo;
+                        self.ServerFacetTemplates = {};
+                        var AgentType = self.channel_data.AgentType;
+                        self.TemplateSwitcher(AgentType, ChannelInfo);
+                        self.ChannelConfiguration = ChannelInfo.ChannelConfiguration;
+                        self.generalInformations = ChannelInfo.GeneralInformations;
+                        self.ServerFacetTemplates = data.$q2.data;
+                        console.log(self.ServerFacetTemplates)
+                        self.whoData = FacetFormatter.FormatFacetTemplates(self.ServerFacetTemplates);
+                        var facetsVm = FacetFormatter.InitFacets(self.whoData, self.ChannelFacets);
+                        deferred.resolve(facetsVm)
+                    });
+                    return deferred.promise;
+                }).then(res => {
+                    console.log("here comes res")
+                    console.log(res)
+                    self.ChannelFacets = res.EntityFacets
                 })
             }
+        };
+        $scope.$watch(angular.bind(this, function () {
+            return this.rootId;
+        }), function (newValue) {
+            self.UpdateChannelData(newValue)
+            console.log("new id for channel from $watch " + newValue)
+        });
+        //default view for dashboard is blocked
+        self.isBlocked = true;
+        channelData.getChannelDashboard(self.rootId).then(function (answer1) {
+            self.channelDashboard = answer1.data
+        })
 
-            $scope.$watch(angular.bind(this, function () {
-                return this.rootId;
-            }), function (newValue) {
-                self.UpdateChannelData(newValue)
-            });
-            //default view for dashboard is blocked
-            self.isBlocked = true;
-            channelData.getChannelDashboard(self.rootId).then(function (answer1) {
-                self.channelDashboard = answer1.data
-            })
-        }
+
         /*--------------------  Channel Input and Output --------------------*/
 
         self.are_outputs_and_outputs_editable = false;
@@ -159,7 +142,7 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
             self.is_input_selected = false;
         })
 
-        self.DataUnits = ["KB", "MB", "GB", "TB"]
+        self.DataUnits = ["KB", "MB", "GB", "TB"];
         self.FolderPermissions = ["Read", "Write", "Read & Write"]
 
         self.addISMB = function () {
@@ -237,47 +220,9 @@ app.controller("channels", ["C2CData", "channelData", "$scope", "$mdDialog", "$s
 
         self.FormatChannelFacetsBeforePOST = function () {
 
-            self.FacetsToPost = []
-            var ChannelUsageObject = {}
-            var ChannelSettingsObject = {}
-
-            angular.forEach(self.ChannelFacets, function (L1Value, L1Key) {
-                var facet = {
-                    Description: "",
-                    Values: {}
-                };
-                //L1Key = Channel Usage Settings || Agent Settings
-                facet.Description = L1Key;
-                angular.forEach(L1Value.Values, function (L2Value, L2Key) {
-
-                        if (!Array.isArray(L2Value)) {
-                            //L2Key === "StrPropType_ChannelPolicyToUse" || L2Key === "StrPropType_DetailsMessage"
-                            facet.Values[L2Key] = L2Value;
-                            //                        (L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = L2Value: ChannelSettingsObject[L2Key] = L2Value
-
-                        } else {
-                            var str = "";
-                            angular.forEach(L2Value, function (L3Value, L3Key) {
-                                str += L3Value + "|";
-                            })
-                            str = str.slice(0, str.lastIndexOf("|"));
-                            //(L1Key === "Channel Usage Settings") ? ChannelUsageObject[L2Key] = str: ChannelSettingsObject[L2Key] = str
-                            facet.Values[L2Key] = str;
-
-                            //L1object[L2Key] = str
-                        }
-                    })
-                    /*self.FacetsToPost[0] = {
-                        "Description": "Channel Usage Settings",
-                        "Values": ChannelUsageObject
-                    }
-                    self.FacetsToPost[1] = {
-                        "Description": "Agent Settings",
-                        "Values": ChannelSettingsObject
-                    }*/
-                self.FacetsToPost.push(facet)
-            })
-            console.log(self.FacetsToPost)
+            self.Facets2POST = FacetFormatter.FormatForPOST(self, "ChannelFacets", "ServerFacetTemplates");
+            console.log(self.Facets2POST)
+            return self.Facets2POST;
         };
 
         self.ToBoolean = function (value) {

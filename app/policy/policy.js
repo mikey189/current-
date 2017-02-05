@@ -175,8 +175,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
             var confirmPost = confirm("Post To Server?");
-            if (confirmPost) {
 
+            if (confirmPost) {
 
                 policyData.post_policy_settings(self.policyId, Facets2POST).then(function(success) {
                     self.show_success_dialog("Your changes were successfuly saved")

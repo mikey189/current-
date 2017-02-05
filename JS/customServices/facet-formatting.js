@@ -5,6 +5,7 @@ app.factory("FacetFormatter", function () {
             //format facets by its properties type
             //for property type of 'FacetPropertyType_MultiChoice' we will get string with '|' and maybe ':' so we need to convert from string to array of objects 
             var formattedFacets = {};
+            console.log(RetrievedData)
             angular.forEach(RetrievedData, function (L0Value, L0Key) {
                 //L0Key='Policy CDR Settings' for example
                 formattedFacets[L0Key] = {
@@ -71,12 +72,8 @@ app.factory("FacetFormatter", function () {
                                 specialObj["Key"] = itemStr;
                                 specialObj["Value"] = splittedByDots;
                                 availableValues[itemStr] = splittedByDots;
-
-
                             }
                         }
-
-
                         formattedFacets[L0Key].Properties[key]["AvailableValues"] = availableValues;
                     } else if (type.includes("FacetPropertyType_SingleChoice")) {
 
@@ -130,7 +127,7 @@ app.factory("FacetFormatter", function () {
         },
         InitFacets: function (newRetrievedData, EntityFacets) {
 
-            //after format facetTemplates we need to set policyFacets values=> default values if facet not exist inside entity
+            //after format facetTemplates we need to set policyFacets values => default values if facet not exist inside entity
             var EntityParsedFacets = {};
             if (EntityFacets == null) {
                 //return model
@@ -142,7 +139,7 @@ app.factory("FacetFormatter", function () {
                 return result;
 
             }
-            //iterate over facets templates and check if entity contain data. if not init with defaults. if yes than parse correctley from string and by type
+            //iterate over facets templates and check if entity contain data. if not init with defaults. if yes then parse correctly from string and by type
             angular.forEach(newRetrievedData, function (L0Value, L0Key) {
                 //first level=> get facet name
                 //init parsed object 
@@ -157,8 +154,8 @@ app.factory("FacetFormatter", function () {
 
                 //check if entity facet contain definition for this facet
                 if (!(L0Key in EntityFacets)) {
-                    //facet definition not exist in entity so init EntityParsedFacets from template
-                    //run over parsed template and take defaults=> iterate over L0Value which is parsed template
+                    //facet definition does not exist in entity so init EntityParsedFacets from template
+                    //run over parsed template and take defaults => iterate over L0Value which is parsed template
                     //create values dictionary
                     var values = {};
                     // continue;
@@ -238,11 +235,12 @@ app.factory("FacetFormatter", function () {
             return result;
 
         },
-        FormatForPOST: function (cotrollerData, EntityFacetsFieldName, ServerFacetTemplatesFieldName) {
+        FormatForPOST: function (controllerData, EntityFacetsFieldName, ServerFacetTemplatesFieldName) {
             var Facets2POST = [];
-            angular.forEach(cotrollerData[EntityFacetsFieldName], function (L0Value, L0Key) {
+            console.log(controllerData[EntityFacetsFieldName])
+            angular.forEach(controllerData[EntityFacetsFieldName], function (L0Value, L0Key) {
                 var NewFacet = {
-                    "Template": cotrollerData[ServerFacetTemplatesFieldName][L0Key],
+                    "Template": controllerData[ServerFacetTemplatesFieldName][L0Key],
                     "Description": L0Key,
                     "Values": {}
                 };
@@ -277,7 +275,7 @@ app.factory("FacetFormatter", function () {
                         }
 
                     } else if (type.includes("FacetPropertyType_Int") || type === "FacetPropertyType_SingleChoice") {
-                         //int type or single choice with int 
+                        //int type or single choice with int 
                         formattedStr = "" + L1Value + "";
                     } else if (type === "FacetPropertyType_Bool") {
                         //boolean 

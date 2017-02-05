@@ -15,11 +15,11 @@ all channel data objet
             <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel _______________________-->
             <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_SingleChoice" layout-margin>
                 <div id="current-policy">
-                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues[ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]] }} </h3>
+                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues[ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]].Value }} </h3>
                 </div>
                 <div layout="row" layout-align="start center" layout-wrap ng-if="ctrl.is_who_screen_editable" layout-margin>
                     <p class="custom-chips" ng-repeat="(L2Key, L2Value) in L1Value.AvailableValues" layout="row" layout-align="center center">
-                    {{L2Value}}
+                    {{L2Value.Value}}
                         <md-button class="md-icon-button" ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] = L2Key">
                             <md-icon>add</md-icon>
                         </md-button>
