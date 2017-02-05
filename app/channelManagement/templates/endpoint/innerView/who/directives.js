@@ -14,7 +14,7 @@ app.directive("editWhoScreen", function (channelData, $mdDialog, $timeout) {
                     edit_button.removeClass("inEdition")
                     scope.ctrl.FormatChannelFacetsBeforePOST()
                     $timeout(function () {
-                        channelData.updateWhoIsUsing(scope.ctrl.rootId, scope.ctrl.FacetsToPost).then(function (success) {
+                        channelData.updateWhoIsUsing(scope.ctrl.rootId, scope.ctrl.Facets2POST).then(function (success) {
                             scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()
                             scope.ctrl.UpdateChannelData(success.data.Id)
 
