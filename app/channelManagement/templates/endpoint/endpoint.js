@@ -98,7 +98,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         $q2
                     }).then(data => {
                         self.channel_data = answer.data;
-                        console.log(answer.data)
                         self.ChannelFacets = (jQuery.isEmptyObject(self.channel_data.ChannelFacets)) ? {} : self.channel_data.ChannelFacets;
                         var ChannelInfo = self.channel_data.ChannelInfo;
                         self.ServerFacetTemplates = {};
@@ -113,7 +112,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     });
                     return deferred.promise;
                 }).then(res => {
-        
+                    console.log(res)
                     self.ChannelFacets = res.EntityFacets
                 })
             }

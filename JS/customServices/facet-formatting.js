@@ -158,12 +158,12 @@ app.factory("FacetFormatter", function () {
                     //run over parsed template and take defaults => iterate over L0Value which is parsed template
                     //create values dictionary
                     var values = {};
-                    // continue;
-                    //angular.forEach(L0Value.Properties, function(propVal, propKey) {
 
-                    //   values[propKey] = propVal.DefaultValues;
-                    // })
-                    //  EntityParsedFacets[L0Key]["Values"] = values;
+                    angular.forEach(L0Value.Properties, function (propVal, propKey) {
+
+                        values[propKey] = propVal.DefaultValues;
+                    })
+                    EntityParsedFacets[L0Key]["Values"] = values;
 
                 } else {
                     //facet is exit but need to be parsed
