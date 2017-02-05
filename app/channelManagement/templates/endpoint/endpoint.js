@@ -220,9 +220,9 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.FormatChannelFacetsBeforePOST = function () {
 
-            self.Facets2POST = FacetFormatter.FormatForPOST(self, "ChannelFacets", "ServerFacetTemplates");
-            console.log(self.Facets2POST)
-            return self.Facets2POST;
+            var Facets2POST = FacetFormatter.FormatForPOST(self, "ChannelFacets", "ServerFacetTemplates");
+            console.log(Facets2POST)
+            return Facets2POST;
         };
 
         self.ToBoolean = function (value) {
