@@ -42,7 +42,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
             }
         }
-
         //__________________DirWatchers ______________________
 
         self.DW = {
@@ -99,6 +98,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         $q2
                     }).then(data => {
                         self.channel_data = answer.data;
+                        console.log(answer.data)
                         self.ChannelFacets = (jQuery.isEmptyObject(self.channel_data.ChannelFacets)) ? {} : self.channel_data.ChannelFacets;
                         var ChannelInfo = self.channel_data.ChannelInfo;
                         self.ServerFacetTemplates = {};
@@ -107,15 +107,13 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.ChannelConfiguration = ChannelInfo.ChannelConfiguration;
                         self.generalInformations = ChannelInfo.GeneralInformations;
                         self.ServerFacetTemplates = data.$q2.data;
-                        console.log(self.ServerFacetTemplates)
                         self.whoData = FacetFormatter.FormatFacetTemplates(self.ServerFacetTemplates);
                         var facetsVm = FacetFormatter.InitFacets(self.whoData, self.ChannelFacets);
                         deferred.resolve(facetsVm)
                     });
                     return deferred.promise;
                 }).then(res => {
-                    console.log("here comes res")
-                    console.log(res)
+        
                     self.ChannelFacets = res.EntityFacets
                 })
             }
@@ -124,7 +122,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             return this.rootId;
         }), function (newValue) {
             self.UpdateChannelData(newValue)
-            console.log("new id for channel from $watch " + newValue)
         });
         //default view for dashboard is blocked
         self.isBlocked = true;
@@ -138,7 +135,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.are_outputs_and_outputs_editable = false;
         channelData.get_input_output_list().then(function (answer) {
             self.all_inputs = answer.data[0].inputs
-            console.log(self.all_inputs)
             self.is_input_selected = false;
         })
 
@@ -197,8 +193,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     for (i = 0; i < self.menuItems.length; i++) {
                         self.channel_list.push(self.menuItems[i])
                     }
-                    //self.TemplateSwitcher(self.channel_list[0].AgentType)
-
+                    //self.TemplateSwitcher(self.channel_list[0].AgentType);
                 } else {
                     self.NoChannelExists = true;
                 }
@@ -219,9 +214,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         /*-------------------- Formatting facets before POST ----------------------*/
 
         self.FormatChannelFacetsBeforePOST = function () {
-
             var Facets2POST = FacetFormatter.FormatForPOST(self, "ChannelFacets", "ServerFacetTemplates");
-            console.log(Facets2POST)
             return Facets2POST;
         };
 

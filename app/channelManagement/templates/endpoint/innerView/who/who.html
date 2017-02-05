@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/who/styles.css" />
 <json-formatter json="ctrl.whoData"></json-formatter>
-all channel data objet
-<json-formatter json="ctrl.channel_data"></json-formatter>
+ctrl.ChannelFacets
+<json-formatter json="ctrl.ChannelFacets"></json-formatter>
 
 
 <div layout="row" layout-align="end center" layout-margin>
@@ -32,12 +32,15 @@ all channel data objet
                     <div id="current" flex>
                         <md-icon>search</md-icon>
                         <input class="search-box" type="text" ng-model="currentValue" />
-                        <md-virtual-repeat-container id="vertical-container">
-                            <!-- Here i init L1Value.defaultValue as an empty array to be able to work with it in the meantime otherwise it's impossible
-                        to push more than one value-->
-                            <div md-virtual-repeat="default in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] " class="repeated-item" layout="row"
+                        <md-virtual-repeat-container id="vertical-container" ng-init="index =  ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]">
+                        {{index}}  
+                        <div ng-repeat="(key, value) in index">
+                            => {{key}} =>{{value}}
+                            <p ng-if="value == true">{{ L1Value.AvailableValues[key]}}</p>
+                        </div>
+                            <div md-virtual-repeat="default in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] "   class="repeated-item" layout="row"
                                 layout-align="space-between center" layout-padding flex="100" ng-hide="default === '' ">
-                                {{default}}
+                                {{default}} coucoux: {{index}}
                                 <md-button class="md-icon-button no-padding-no-margin" ng-if="ctrl.is_who_screen_editable" ng-show="!all.includes(default)"
                                     ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].splice(default, 1)">
                                     <md-icon class="remove-icon">remove</md-icon>
@@ -56,7 +59,6 @@ all channel data objet
                                     <md-icon class="add-icon">add</md-icon>
                                 </md-button>
                             </div>
-                            <!--ctrl.addElement(all, L1Value.DefaultValue)-->
                         </md-virtual-repeat-container>
                     </div>
                 </div>
@@ -64,8 +66,7 @@ all channel data objet
             <!--________________________ type = IP will go here _______________________-->
             <div ng-switch-when="FacetPropertyType_String">
                 <md-virtual-repeat-container id="vertical-container">
-                    <!-- Here i init L1Value.defaultValue as an empty array to be able to work with it in the meantime otherwise it's impossible
-                        to push more than one value-->
+                  
                     <div>
                         <input type="text" ng-model="ctrl.ipToAdd" ng-ip-address/>
                         <button add-ip value = "ctrl.ipToAdd" container="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]">add ip</button>
