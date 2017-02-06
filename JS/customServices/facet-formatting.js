@@ -237,7 +237,6 @@ app.factory("FacetFormatter", function () {
         },
         FormatForPOST: function (controllerData, EntityFacetsFieldName, ServerFacetTemplatesFieldName) {
             var Facets2POST = [];
-            console.log(controllerData[EntityFacetsFieldName])
             angular.forEach(controllerData[EntityFacetsFieldName], function (L0Value, L0Key) {
                 var NewFacet = {
                     "Template": controllerData[ServerFacetTemplatesFieldName][L0Key],
@@ -257,14 +256,12 @@ app.factory("FacetFormatter", function () {
                         L0Value.Values[propKey] = propVal.DefaultValues;
                     }
                 });
-
-
                 angular.forEach(L0Value.Values, function (L1Value, L1Key) {
-                    //L0Value.Values=> all values in current facet. L1Key is property name(InternalName)
+                    //L0Value.Values => all values in current facet. L1Key is property name(InternalName)
                     var type = L0Value.Template.Properties[L1Key]["Type"];
                     var formattedStr = "";
                     ///start reformat by type               
-                    if (type.includes("FacetPropertyType_MultiChoice")) {
+                    if (type.includes("FacetPropertyType_MultiChoice")  ) {
                         //multichoice
                         //convert from {"A:B:C:D":true,"E:F:G:H":false} to "A:B:C:D=True|E:F:G:H=False"
                         var currentValue = L1Value;
@@ -280,7 +277,8 @@ app.factory("FacetFormatter", function () {
                     } else if (type === "FacetPropertyType_Bool") {
                         //boolean 
                         formattedStr = (L1Value ? "True" : "False");
-                    } else {
+                    } 
+                    else {
                         //all other types 
                         formattedStr = L1Value;
                     }

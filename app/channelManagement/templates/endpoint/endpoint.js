@@ -6,43 +6,43 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         //setting switcher function to switch templates
         self.TemplateConditions = {};
         self.TemplateSwitcher = function (ChannelType, channelInfo) {
-            switch (ChannelType) {
-                // endpoint
+                switch (ChannelType) {
+                    // endpoint
 
-                case 2:
-                    self.TemplateConditions.isDirWatcher = false;
-                    self.TemplateConditions.isEndpoint = true;
-                    self.EndpointSourcesAreEditable = false;
-                    self.TemplateConditions.isAPI = false;
+                    case 2:
+                        self.TemplateConditions.isDirWatcher = false;
+                        self.TemplateConditions.isEndpoint = true;
+                        self.EndpointSourcesAreEditable = false;
+                        self.TemplateConditions.isAPI = false;
 
-                    self.InputConfiguration = channelInfo.InputConfiguration || {};
-                    self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
-                    self.OutputConfiguration = channelInfo.OutputConfiguration || {};
-                    self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+                        self.InputConfiguration = channelInfo.InputConfiguration || {};
+                        self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
+                        self.OutputConfiguration = channelInfo.OutputConfiguration || {};
+                        self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
 
-                    self.NumberOFiSMBs = self.ismbList.length || 0;
-                    self.NumberOFoSMBs = self.osmbList.length || 0;
+                        self.NumberOFiSMBs = self.ismbList.length || 0;
+                        self.NumberOFoSMBs = self.osmbList.length || 0;
 
-                    break;
-                    //case is dirwatcher
-                case 3:
+                        break;
+                        //case is dirwatcher
+                    case 3:
 
-                    self.TemplateConditions.isDirWatcher = true;
-                    self.TemplateConditions.isEndpoint = false;
-                    self.TemplateConditions.isAPI = false;
-                    self.DWSourcesAreEditable = false;
-                    self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
+                        self.TemplateConditions.isDirWatcher = true;
+                        self.TemplateConditions.isEndpoint = false;
+                        self.TemplateConditions.isAPI = false;
+                        self.DWSourcesAreEditable = false;
+                        self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
 
-                    break;
-                case 100:
+                        break;
+                    case 100:
 
-                    self.TemplateConditions.isAPI = true;
-                    self.TemplateConditions.isDirWatcher = false;
-                    self.TemplateConditions.isEndpoint = false;
+                        self.TemplateConditions.isAPI = true;
+                        self.TemplateConditions.isDirWatcher = false;
+                        self.TemplateConditions.isEndpoint = false;
 
+                }
             }
-        }
-        //__________________DirWatchers ______________________
+            //__________________DirWatchers ______________________
 
         self.DW = {
             "Sources": []
@@ -226,3 +226,14 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         };
     }
 ])
+
+app.filter("ReturnValInKey", function(){
+    return function(policy, KeyFROMModel){
+       for (i in policy){
+           while (policy[i].Key === KeyFROMModel){
+               return policy[i].Value
+           }
+           
+       }
+    }
+})
