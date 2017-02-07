@@ -10,20 +10,15 @@ app.factory("FacetFormatter", function() {
                 //need to parse by splitting '|' and then by ':' if exist
                 if (EntityL0Value != null) {
                     var splittedByPipe = EntityL0Value.split('|');
-
                     if (EntityL0Value.includes('=')) {
                         //case Cuckoo1=True|Cuckoo2=True
                         var retObj = {};
                         for (x in splittedByPipe) {
                             var strItem = splittedByPipe[x];
-
                             var keyValObj = strItem.split('=');
                             if (type === "FacetPropertyType_String, FacetPropertyType_MultiChoice") { retObj[keyValObj[0]] = keyValObj[1] } else {
-
                                 retObj[keyValObj[0]] = keyValObj[1] === "True" ? true : false;
                             }
-
-
                         }
                         parsedValue = retObj;
 
@@ -35,7 +30,6 @@ app.factory("FacetFormatter", function() {
                     parsedValue = null;
 
                 }
-
             } else if (type.includes("FacetPropertyType_Int") || type === "FacetPropertyType_SingleChoice") {
                 //int type or single choice with int
                 parsedValue = (!isNaN(EntityL0Value) ? parseInt(EntityL0Value) : "");

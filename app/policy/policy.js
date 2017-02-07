@@ -73,7 +73,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         function ActivateAllChildren(element, index, array) {
-            element.AllowOption = true;
+            return element.AllowOption = true;
         }
 
         function DisactivateAllChildren(element, index, array) {
@@ -206,20 +206,15 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 
             var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
-            var confirmPost = confirm("Post To Server?");
 
-            if (confirmPost) {
 
-                policyData.post_policy_settings(self.policyId, Facets2POST).then(function (success) {
-                    self.show_success_dialog("Your changes were successfuly saved")
-                    self.getPolicyInfo(self.policyId)
-                }, function (error) {
-                    self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
-                })
-            } else {
-                console.log('bypassed post operation of object:')
-                console.log(Facets2POST)
-            }
+            policyData.post_policy_settings(self.policyId, Facets2POST).then(function (success) {
+                self.show_success_dialog("Your changes were successfuly saved")
+                self.getPolicyInfo(self.policyId)
+            }, function (error) {
+                self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
+            })
+
 
         }
 

@@ -5,20 +5,19 @@ app.factory("401Error", function ($q, $injector) {
                 var $mdDialog = $injector.get("$mdDialog");
                 var $state = $injector.get("$state");
                 var $timeout = $injector.get("$timeout");
-
                 var alert = $mdDialog.alert()
-
-                .title('Session Expired')
+                    .title('Session Expired')
                     .textContent('Your session has expired, please log back in')
                     .ariaLabel('expired session')
                     .ok('Log Back in')
+                $mdDialog.show(alert)
+                    .then(() => {
+                        localStorage.clear();
 
-                $mdDialog.show(alert).then(function () {
-                    localStorage.removeItem("serverName")
-                    $timeout(function () {
+                    })
+                    .then(() => {
                         $state.go("login")
                     })
-                });
             }
             return $q.reject(rejection)
         }
@@ -65,7 +64,7 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
     }
 }])
 
-http: //jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
+//http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
 
     app.factory("groupList", function ($http) {
 
@@ -190,7 +189,9 @@ app.factory("channelData", function ($http, $rootScope) {
             })
         },
         get_channel: function (id) {
-            return $http.get(get_channel + id, {cache: false})
+            return $http.get(get_channel + id, {
+                cache: false
+            })
         },
         delete_channel: function (id) {
             return $http({

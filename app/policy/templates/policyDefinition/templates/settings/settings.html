@@ -17,11 +17,10 @@
                 <p>{{propValue.DisplayName}}</p>
                 <div ng-switch="propValue.Type" nginit=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
                     <div ng-switch-when="FacetPropertyType_Bool">
-                        <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
+                        <md-switch  class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
                             aria-label="file Sign switch">
                         </md-switch>
                     </div>
-                   
                     <div ng-switch-when="FacetPropertyType_Int" name="file">
                         <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="number" string-to-number />
                     </div>
