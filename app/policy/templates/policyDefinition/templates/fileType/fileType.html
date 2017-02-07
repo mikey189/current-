@@ -37,7 +37,7 @@
             </td>
             <td colspan="7">
                 <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value)"
-                 ng-checked = "ctrl.AreAllChildrenSelected()" ></md-checkbox>
+                 ng-checked = "ctrl.AreAllChildrenSelected(L0Value)" md-indeterminate = "{{ctrl.Indeterminate}}"></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"

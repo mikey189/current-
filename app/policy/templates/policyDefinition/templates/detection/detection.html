@@ -15,11 +15,10 @@
             </md-toolbar>
             <md-divider></md-divider>
             <md-content layout='row' ng-repeat="(propkey, propValue) in value.Properties">
-                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type" nginit=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
+                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type">
                     <div ng-switch-when="FacetPropertyType_Bool" layout="row" layout-align="space-between center" flex>
                         <p>{{propValue.DisplayName}}</p>
-                        <md-switch ng-true-value="'True'" ng-false-value="'False'" class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
-                            aria-label="file Sign switch">
+                        <md-switch class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" aria-label="file Sign switch">
                         </md-switch>
                     </div>
                     <div style="width: 100%" ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
@@ -30,10 +29,6 @@
                             </md-button>
                             <p style="margin-bottom: 0px">{{propValue.DisplayName}}</p>
                         </md-content>
-                        <!--<div ng-repeat="x in propValue.AvailableValues" ng-hide="propValue.isHidden" layout="row" layout-align="space-between center">
-                            {{x}}
-                            <md-checkbox ng-model="ctrl.PolicyFacets[Key].Values[propkey][x]"></md-checkbox>
-                        </div>-->
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int" name="file" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>

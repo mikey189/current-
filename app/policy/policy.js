@@ -71,29 +71,25 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         function CheckChildrenState(element, index, array) {
             return element.AllowOption;
         }
-
-        function ActivateAllChildren(element, index, array) {
-            return element.AllowOption = true;
-        }
-
-        function DisactivateAllChildren(element, index, array) {
-            element.AllowOption = false;
-        }
         self.CheckAllExtensions = (Parent) => {
             var ChildrenState = Parent.every(CheckChildrenState);
             console.log(ChildrenState)
-            if (ChildrenState) {
-                Parent.every(ActivateAllChildren)
-            } else {
-                Parent.every(DisactivateAllChildren)
-
+            for (i in Parent) {
+                if (ChildrenState) {
+                    Parent[i].AllowOption = false
+                } else {
+                    Parent[i].AllowOption = true
+                }
             }
             return Parent;
         }
 
         self.AreAllChildrenSelected = (Children) => {
-            Children.every(CheckChildrenState);
+            var ChildrenState = Children.every(CheckChildrenState);
+            return ChildrenState;
         }
+
+        self.Indeterminate = true;
 
         //________________________Get policy and format it's facets ___________________________
 
