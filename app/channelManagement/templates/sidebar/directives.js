@@ -17,8 +17,7 @@ app.directive("goToChannelCreation", function ($state) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            element.click( function () {
-                console.log("foufoif")
+            element.click(function () {
                 $state.go("app.channelManagement.newChannel");
             })
         }
@@ -26,30 +25,30 @@ app.directive("goToChannelCreation", function ($state) {
 })
 
 
-app.directive("deleteChannel", function ($mdDialog, channelData, $timeout) {
+app.directive("deleteChannel", function ($mdDialog, channelData, $q) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this)
                 var channel_id = self.attr("channel-id");
-                var p1 = self.parents();
-                var cell = p1.closest("md-list-item")
                 var channel_name = self.attr("channel-name")
-                console.log(p1);
                 var confirm = $mdDialog.confirm()
                     .title('You are about to delete a channel')
                     .textContent('You are about to delete the channel ' + channel_name)
                     .ariaLabel('delete channel')
                     .ok('Yes, delete this channel')
                     .cancel('Cancel deletion');
-                $mdDialog.show(confirm).then(function () {
-                    channelData.delete_channel(channel_id).then(function (answer) {
-                        cell.addClass("animated fadeOutRight")
-                        $timeout(function () {
-                            cell.addClass("hidden")
-                        }, 700)
-                    });
+                $mdDialog.show(confirm).then(() => {
+                    console.log("about to delete ", channel_id)
+                    channelData.delete_channel(channel_id).then(result => {
+                        console.log("successfully deleted channel : ", channel_id)
+                            .then(() => {
+                                scope.ctrl.LoadSidenav();
+                            })
+                    }, error => {
+                        scope.ctrl.HTTP_Dialogs.ShowErrorDialog("We could not delete this channel", error.data.Message);
+                    })
                 })
             })
         }

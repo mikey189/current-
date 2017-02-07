@@ -1,10 +1,12 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
-<md-button class="save-settings" save-policy-settings md-whiteframe="4">EDIT</md-button>
+<md-button class="save-settings" save-policy-settings md-whiteframe="4">
+    <span ng-if="ctrl.areSettingsEditable">SAVE</span>
+    <span ng-if="!ctrl.areSettingsEditable">EDIT</span>
+</md-button>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <json-formatter json="ctrl.AllTheFacets"></json-formatter>
 
-<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-<div layout='column' id="policySettingsContainer" class="not-editable">
+<div layout='column' id="policySettingsContainer" ng-class="{'not-editable': !ctrl.areSettingsEditable}">
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
         <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
             <md-list-item layout='row' layout-align='start center' class="policy_settings_key">

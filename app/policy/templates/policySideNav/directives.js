@@ -65,7 +65,7 @@ app.directive("renamePolicy", function (policyData) {
 
 
 
-app.directive("deletePolicy", ["policyData", "$timeout", "$mdDialog", function (policyData, $timeout, $mdDialog) {
+app.directive("deletePolicy", ["policyData", "$q", "$mdDialog", function (policyData, $q, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -74,7 +74,7 @@ app.directive("deletePolicy", ["policyData", "$timeout", "$mdDialog", function (
                 var cell = self.parents().closest(".policyItem");
                 var PolicyName = self.attr("policy-name");
                 var id = parseInt(self.attr("policy-id"));
-        
+
                 var confirm = $mdDialog.confirm()
                     .title('You are about to delete a channel')
                     .textContent('You are about to delete the Policy ' + PolicyName)
@@ -82,14 +82,13 @@ app.directive("deletePolicy", ["policyData", "$timeout", "$mdDialog", function (
                     .ok('Yes, delete this policy')
                     .cancel('Cancel');
                 $mdDialog.show(confirm).then(function () {
-                    policyData.deletePolicy(id)
-                        .then(function (answer) {
-                            cell.addClass("animated fadeOutRight")
-                            
-                            $timeout(function () {
-                                cell.addClass("hidden")
-                            }, 700)
-                        });
+                    policyData.deletePolicy(id).then(success => {
+                        console.log(success)
+                        console.log("policy successfuly delete " + id)
+                        scope.ctrl.RefreshSidenav();
+                    }, error => {
+                        scope.ctrl.show_error_dialog("This policy could not be delete ", error.data.Message)
+                    })
                 })
             })
         }
@@ -112,6 +111,3 @@ app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (po
         }
     }
 }])
-
-
-

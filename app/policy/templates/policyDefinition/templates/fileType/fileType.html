@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
-<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <json-formatter json="ctrl.policy.PolicyFacets"></json-formatter>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
-
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
@@ -39,7 +37,7 @@
             </td>
             <td colspan="7">
                 <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value)"
-                 ng-checked = "ctrl.AllExtIsChecked(L0Value)" md-indeterminate="ctrl.FiletypeIsIndeterminate(L0Value)"></md-checkbox>
+                 ng-checked = "ctrl.AreAllChildrenSelected()" ></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
@@ -71,6 +69,3 @@
         <tr ng-repeat-end></tr>
     </tbody>
 </table>
-
-<!--ng-disabled="!ctrl.isFiletypeEditable" toggle-children-states
-                    self-reference="$index" children-access-point="L0Value"-->

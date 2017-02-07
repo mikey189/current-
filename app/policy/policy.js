@@ -1,6 +1,6 @@
 app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter",
 
-    function($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter) {
 
         var self = this;
         self.sidenav_edit_mode = false;
@@ -12,16 +12,17 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.types = {};
         self.areSettingsEditable = false;
         self.allFacets = {};
-        self.isChecked = function(ftypes) {
+        self.PolicyIsInCreation = false;
+        self.isChecked = function (ftypes) {
             console.log(ftypes);
             return true;
         }
-        self.FiletypeInitConditions = function() {
+        self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
         };
         self.ComputingUnits = ["Kb", "Mb", "Gb", "Tb"];
-        self.show_success_dialog = function(message) {
+        self.show_success_dialog = function (message) {
             $mdDialog.show(
                 $mdDialog.alert()
                 .clickOutsideToClose(true)
@@ -31,7 +32,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 .ok('Got it!')
             );
         };
-        self.show_error_dialog = function(message, errorMessage) {
+        self.show_error_dialog = function (message, errorMessage) {
             var str = message + " : " + errorMessage
             $mdDialog.show(
                 $mdDialog.alert()
@@ -42,8 +43,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 .ok('Got it!')
             );
         };
-        self.RefreshSidenav = function() {
-            policyData.getSidenav().then(function(answer) {
+        self.RefreshSidenav = function () {
+            policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
                 if (self.sideNavList.length > 0) {
                     self.NoPolicyExists = false;
@@ -58,25 +59,55 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.RefreshSidenav();
 
 
-        self.DeleteAction = function(key, L0Key) {
+        self.DeleteAction = function (key, L0Key) {
             //set false
             self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
 
         }
 
+
+        //__________________________Filetypes children check __________________________
+
+        function CheckChildrenState(element, index, array) {
+            return element.AllowOption;
+        }
+
+        function ActivateAllChildren(element, index, array) {
+            element.AllowOption = true;
+        }
+
+        function DisactivateAllChildren(element, index, array) {
+            element.AllowOption = false;
+        }
+        self.CheckAllExtensions = (Parent) => {
+            var ChildrenState = Parent.every(CheckChildrenState);
+            console.log(ChildrenState)
+            if (ChildrenState) {
+                Parent.every(ActivateAllChildren)
+            } else {
+                Parent.every(DisactivateAllChildren)
+
+            }
+            return Parent;
+        }
+
+        self.AreAllChildrenSelected = (Children) => {
+            Children.every(CheckChildrenState);
+        }
+
         //________________________Get policy and format it's facets ___________________________
 
-        self.getPolicyInfo = function(id) {
+        self.getPolicyInfo = function (id) {
                 var deferred = $q.defer();
-                self.PolicyFacets = {}; 
+                self.PolicyFacets = {};
                 self.ServerFacetTemplates = {};
                 self.ParsedPolicyFacets = {};
                 self.FacetTemplatesContainer = {};
-                policyData.get_policy_info(id).then(function(answer) {
+                policyData.get_policy_info(id).then(function (answer) {
 
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
                     // checking child state for "AllowOption" Property
-                    angular.forEach(self.Filetypes, function(value, key) {
+                    angular.forEach(self.Filetypes, function (value, key) {
                         if (value.AllowOption == false) {
                             key.ChildrenAreNotAllAllowed = true;
                         } else {
@@ -92,16 +123,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     //__________________________________________file detection settings__________________________________________//
 
                     var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
-                 
+
 
                     /*______________________________________settings______________________________________*/
                     var q2 = policyData.get_policy_settings("PolicySettings");
-                    
+
 
                     //______________________________________retrieving CDR Facets__________________________________________//
 
                     var q3 = policyData.getCDRFacets();
-                  
+
                     $q.all({
                         q1,
                         q2,
@@ -122,7 +153,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         deferred.resolve(FacetVm);
                     });
                     return deferred.promise;
-                }).then(function(answer) {
+                }).then(function (answer) {
                     console.log("FacetVm");
                     console.log(answer);
                     self.PolicyFacets = answer.EntityFacets;
@@ -131,16 +162,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 })
             }
             //watching for change//
-        $scope.$watch(angular.bind(this, function() {
+        $scope.$watch(angular.bind(this, function () {
             return this.policyId;
-        }), function(newVal) {
+        }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
 
         //______________________________________Formatting Facets to display in DOM______________
 
         //______________________________________Formatting Facets to display in DOM______________
-        self.FormatFacetTemplates = function(RetrievedData) {
+        self.FormatFacetTemplates = function (RetrievedData) {
 
             return FacetFormatter.FormatFacetTemplates(RetrievedData);
 
@@ -148,14 +179,15 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         //RetrievedData= FacetsTemplates from server after parsing and formatting them
         //EntityFacets= all entity(policy or channel) facets contains Raw data
-        self.InitFacets = function(newRetrievedData, EntityFacets) {
+        self.InitFacets = function (newRetrievedData, EntityFacets) {
             return FacetFormatter.InitFacets(newRetrievedData, EntityFacets);
         };
         // ______________________________________   confirm policy creation   __________________________
 
-        self.CreatePolicy = function() {
+        self.CreatePolicy = function () {
+                self.PolicyIsInCreation = true;
                 policyData.create_new_policy(self.PolicyInfo)
-                    .then(function(success) {
+                    .then(function (success) {
                             $mdDialog.cancel();
                             $state.go('app.policy.definition.fileType', {
                                 PolicyID: success.data.Id
@@ -164,13 +196,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                             });
                         },
-                        function(error) {
+                        function (error) {
                             alert("there was an error : " + error.data.Message);
                         })
             }
             // ______________________________________   format to post facets   ________________________
 
-        self.FormatForPOST = function() {
+        self.FormatForPOST = function () {
 
 
             var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
@@ -178,10 +210,10 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             if (confirmPost) {
 
-                policyData.post_policy_settings(self.policyId, Facets2POST).then(function(success) {
+                policyData.post_policy_settings(self.policyId, Facets2POST).then(function (success) {
                     self.show_success_dialog("Your changes were successfuly saved")
                     self.getPolicyInfo(self.policyId)
-                }, function(error) {
+                }, function (error) {
                     self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
                 })
             } else {
@@ -192,7 +224,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         //save cdr settings__________________________________________
-        self.SaveFacetsInCDR = function(DOMValue) {
+        self.SaveFacetsInCDR = function (DOMValue) {
                 if (!DOMValue) {
                     self.FormatForPOST();
                 } else {
@@ -202,7 +234,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
             // ______________________________________   End Of formatting to post    __________________________
             // ______________________________________   Special filter    __________________________
-        self.myFilter = function(item) {
+        self.myFilter = function (item) {
             console.log('my filter');
             console.log(item);
             return true;
@@ -217,13 +249,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 
 
-app.filter('filterObject', function() {
-    return function(input, search) {
+app.filter('filterObject', function () {
+    return function (input, search) {
         if (!input) return input;
         if (!search) return input;
         var expected = ('' + search).toLowerCase();
         var result = {};
-        angular.forEach(input, function(value, key) {
+        angular.forEach(input, function (value, key) {
             var actual = ('' + value).toLowerCase();
             if (actual.indexOf(expected) !== -1) {
                 result[key] = value;
@@ -232,8 +264,8 @@ app.filter('filterObject', function() {
         return result;
     }
 });
-app.filter("splitter", function() {
-    return function(string, char, index) {
+app.filter("splitter", function () {
+    return function (string, char, index) {
         if (string == undefined || string === "" || string == null) {
             return;
         }
@@ -243,8 +275,8 @@ app.filter("splitter", function() {
         return string;
     }
 })
-app.filter('split', function() {
-    return function(input, splitChar, splitIndex) {
+app.filter('split', function () {
+    return function (input, splitChar, splitIndex) {
         // do some bounds checking here to ensure it has that index
         return input.split(splitChar)[splitIndex];
     }

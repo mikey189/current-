@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="app/channelManagement/templates/sidebar/styles.css" />
+<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+
 <div layout="column" ng-cloak id="channelSidenav">
+        <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="channelLeftSidebar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
             <md-toolbar class="purleSidebar" layout="row" layout-align="center center" id="channelSidebarToolbar">

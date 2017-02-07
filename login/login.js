@@ -12,11 +12,12 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                 password: $cookies.get('Password')
             }
 
-            self.serverName = CookieStorage.servername || "";
+            self.serverName = CookieStorage.servername || [];
             self.UserName = CookieStorage.UserName || "";
             self.Password = CookieStorage.Password || "";
 
-            self.IsRememberMe = (CookieStorage.servername !== "" && CookieStorage.UserName !== "" && CookieStorage.Password !== "") ? true : false;
+            self.IsRememberMe = (CookieStorage.servername !== [] && CookieStorage.UserName !== "" && CookieStorage.Password !== "") ? true : false;
+            self.NoPreviousServerSet = (CookieStorage.servername !== []) ? false : true;
 
         }
 
@@ -25,14 +26,16 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
         var token = localStorage.getItem("token")
 
         var ServerName = localStorage.getItem("serverName")
-            //password = "P04531418";
+
+        //password = "P04531418";
+
         self.LogUserInOnEnter = function ($event, $http) {
 
             var keyCode = $event.which || $event.keyCode;
 
             if (keyCode === 13) {
 
-                var serverName = document.getElementById("ServerName").value
+                var serverName = document.getElementById("ServerName").value;
 
                 var username = $("#username")
 
@@ -40,7 +43,8 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
                 if (self.IsRememberMe) {
 
-                    $cookies.put('serverName', self.serverName);
+                   
+                    $cookies.put('serverName', serverName);
 
                     $cookies.put('UserName', self.UserName);
 
@@ -66,6 +70,22 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                 })
             }
         }
+
+        self.requireMatch = false;
+
+        self.searchQueries = [];
+
+        self.displayAnswer = function () {
+
+            var answer;
+            self.queryArray = [];
+
+            for (i in self.searchQueries) {
+                answer = self.searchQueries[i].answer
+            }
+            self.queryArray.push(answer)
+        }
+
     }
 ])
 

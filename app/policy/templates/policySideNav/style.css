@@ -180,3 +180,8 @@
 .green-icon{
     color: #ffd600;
 }
+.disabled-button{
+    background-color: #333 !important;
+    color: white !important;
+    pointer-events: none !important;
+}

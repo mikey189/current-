@@ -167,6 +167,14 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.is_who_screen_editable = false;
 
+        self.AddIPToChannel = (IP) => {
+            var str = IP.toString();
+            console.log(str)
+            self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"][str] = true;
+            console.log(self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"])
+        }
+
+
         /*--------------------  New Channel --------------------*/
 
         self.ChannelCreationHasRequiredFields = false;
@@ -227,13 +235,13 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
     }
 ])
 
-app.filter("ReturnValInKey", function(){
-    return function(policy, KeyFROMModel){
-       for (i in policy){
-           while (policy[i].Key === KeyFROMModel){
-               return policy[i].Value
-           }
-           
-       }
+app.filter("ReturnValInKey", function () {
+    return (policy, KeyFROMModel) => {
+        for (i in policy) {
+            while (policy[i].Key === KeyFROMModel) {
+                return policy[i].Value
+            }
+
+        }
     }
 })
