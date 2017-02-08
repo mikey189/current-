@@ -4,6 +4,8 @@ app.factory("401Error", function ($q, $injector) {
             if (rejection.status === 401) {
                 var $mdDialog = $injector.get("$mdDialog");
                 var $state = $injector.get("$state");
+                localStorage.removeItem("token");
+                localStorage.removeItem("serverName");
                 var $timeout = $injector.get("$timeout");
                 var alert = $mdDialog.alert()
                     .title('Session Expired')
@@ -12,11 +14,9 @@ app.factory("401Error", function ($q, $injector) {
                     .ok('Log Back in')
                 $mdDialog.show(alert)
                     .then(() => {
-                        localStorage.clear();
-
-                    })
-                    .then(() => {
-                        $state.go("login")
+                        $state.go("login", {
+                            reload: true
+                        })
                     })
             }
             return $q.reject(rejection)
@@ -66,16 +66,16 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
 
 //http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
 
-    app.factory("groupList", function ($http) {
+app.factory("groupList", function ($http) {
 
 
-        var url = "http://localhost:3000/groupList";
-        return {
-            getGroups: function () {
-                return $http.get(url)
-            }
+    var url = "http://localhost:3000/groupList";
+    return {
+        getGroups: function () {
+            return $http.get(url)
         }
-    })
+    }
+})
 
 app.factory("channelData", function ($http, $rootScope) {
 

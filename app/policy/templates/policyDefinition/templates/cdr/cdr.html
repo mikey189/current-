@@ -3,7 +3,7 @@
 <json-formatter json="ctrl.PolicyFacets['Policy CDR Settings']"></json-formatter>
 <p>ctrl.cdr</p>
 <json-formatter json="ctrl.cdr"></json-formatter>
-<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5">
+<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5" ng-cloak>
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
         <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
         <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues"
@@ -26,12 +26,12 @@
 
 <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-if="L0Value.showValues">
                 <span class="action-chips" ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" ng-class="{'HIGH': L1Value[3]=== 'High',
-                 'MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide="L1Value[2].includes('None') " >
+                 'MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide=" L1Value.length == 0 || L1Value[2].includes('None')" >
                     {{L1Value[1]}}:{{L1Value[2]}}
 
                     <md-tooltip ng-if="L1Value[4].length > 0" md-direction="top">{{L1Value[4]}}</md-tooltip>
                     <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] =true"
-                     ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] ==false">add</md-icon>
+                     ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] == false">add</md-icon>
                 </span>
             </div>
    

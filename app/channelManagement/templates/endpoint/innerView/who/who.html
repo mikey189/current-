@@ -63,15 +63,16 @@ channel facets Values
             </div>
             <!--________________________ type = IP will go here _______________________-->
             <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-                <md-virtual-repeat-container id="vertical-container">
-                  
+              
+                <md-virtual-repeat-container id="vertical-container" >
                     <div>
+                        {{ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]}}
                         <input type="text" ng-model="ipToAdd" ng-ip-address/>
-                        <button ng-click="ctrl.AddIPToChannel(ipToAdd)">add ip</button>
+                        <button ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key][ipToAdd] = true ">add ip</button>
                     </div>
-                    <div md-virtual-repeat="default in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] " class="repeated-item" layout="row"
-                        layout-align="space-between center" layout-padding flex="100">
-                        {{default}}
+                    <div md-virtual-repeat="x in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] " class="repeated-item" layout="row"
+                        layout-align="space-between center" layout-padding flex="100" ng-if="default !== ''">
+                        {{ip}} => {{val}}
                         <md-button class="md-icon-button no-padding-no-margin" ng-if="ctrl.is_who_screen_editable" ng-show="!all.includes(default)"
                             ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].splice(default, 1)">
                             <md-icon class="remove-icon">remove</md-icon>

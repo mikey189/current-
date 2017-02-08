@@ -82,6 +82,7 @@ app.factory("FacetFormatter", function() {
                         "IntenalName": "",
                         "IsHidden": false
                     };
+
                     formattedFacets[L0Key].Properties[key]["Description"] = value.Description;
                     formattedFacets[L0Key].Properties[key]["DisplayName"] = value.DisplayName;
                     formattedFacets[L0Key].Properties[key]["InternalName"] = value.InternalName;
@@ -94,7 +95,7 @@ app.factory("FacetFormatter", function() {
                         var defaultValues = {};
 
                         //handle defaults
-                        if (value["DefaultValue"] != null) {
+                        if (value["DefaultValue"] != null && value["DefaultValue"] !== "" ) {
                             var defaultsSplittedByPipe = value["DefaultValue"].split('|');
                             for (item in defaultsSplittedByPipe) {
                                 var itemStr = defaultsSplittedByPipe[item];

@@ -94,11 +94,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = function (id) {
+
+                //LoadFacetTemplate: Boolean;
                 var deferred = $q.defer();
                 self.PolicyFacets = {};
                 self.ServerFacetTemplates = {};
                 self.ParsedPolicyFacets = {};
                 self.FacetTemplatesContainer = {};
+                //   if (LoadFacetTemplate) {
                 policyData.get_policy_info(id).then(function (answer) {
 
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
@@ -153,9 +156,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     console.log("FacetVm");
                     console.log(answer);
                     self.PolicyFacets = answer.EntityFacets;
-
-
                 })
+
             }
             //watching for change//
         $scope.$watch(angular.bind(this, function () {
@@ -206,7 +208,22 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             policyData.post_policy_settings(self.policyId, Facets2POST).then(function (success) {
                 self.show_success_dialog("Your changes were successfuly saved")
-                self.getPolicyInfo(self.policyId)
+                var deferred = $q.defer();
+                var $cdr = policyData.getCDRFacets();
+                $q.all({$cdr}).then(data => {
+                    console.log(data.$$state)
+                    self.cdr = self.FormatFacetTemplates(data.$cdr.data);
+                    Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, cdr)
+                    var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
+                    deferred.resolve(FacetVm);
+                });
+                return deferred.promise;
+            }).then(function (answer) {
+                console.log("FacetVm");
+                console.log(answer);
+                self.PolicyFacets = answer.EntityFacets;
+
+
             }, function (error) {
                 self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
             })

@@ -168,12 +168,9 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.is_who_screen_editable = false;
 
         self.AddIPToChannel = (IP) => {
-            var str = IP.toString();
-            console.log(str)
-            self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"][str] = true;
-            console.log(self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"])
+            console.log(IP);
+            self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"][IP] = true;
         }
-
 
         /*--------------------  New Channel --------------------*/
 
