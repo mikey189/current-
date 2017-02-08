@@ -167,8 +167,12 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.is_who_screen_editable = false;
 
         self.AddIPToChannel = (IP) => {
-            console.log(IP);
-            self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"][IP] = true;
+            var IpArray = self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"];
+            if (!IpArray.includes(IP) && IP !== "") {
+                IpArray.push(IP);
+            }else{
+                alert("This Ip Adress is already in use");
+            }
         }
 
         /*--------------------  New Channel --------------------*/
@@ -231,13 +235,3 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
     }
 ])
 
-app.filter("ReturnValInKey", function () {
-    return (policy, KeyFROMModel) => {
-        for (i in policy) {
-            while (policy[i].Key === KeyFROMModel) {
-                return policy[i].Value
-            }
-
-        }
-    }
-})

@@ -22,10 +22,10 @@ After init
             <input ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" />
         </div>
         <div ng-switch-when="FacetPropertyType_Bool">
-            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" string-to-boolean></md-switch>
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"></md-switch>
         </div>
         <div ng-switch-when="FacetPropertyType_Int">
-            <input ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" string-to-number type="number" />
+            <input ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" type="number" />
         </div>
         <div ng-switch-when="FacetPropertyType_SingleChoice">
             <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"></select>
