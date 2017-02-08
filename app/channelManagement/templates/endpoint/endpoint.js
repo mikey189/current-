@@ -112,7 +112,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     });
                     return deferred.promise;
                 }).then(res => {
-                    console.log(res)
                     self.ChannelFacets = res.EntityFacets
                 })
             }

@@ -213,7 +213,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 $q.all({$cdr}).then(data => {
                     console.log(data.$$state)
                     self.cdr = self.FormatFacetTemplates(data.$cdr.data);
-                    Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, cdr)
+                    Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                     var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
                     deferred.resolve(FacetVm);
                 });
