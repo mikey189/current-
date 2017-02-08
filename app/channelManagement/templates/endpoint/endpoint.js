@@ -168,10 +168,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.AddIPToChannel = (IP) => {
             var IpArray = self.ChannelFacets['Channel Usage Settings'].Values["StrPropType_ChannelIpsSelection"];
-            if (!IpArray.includes(IP) && IP !== "") {
+            var IsValidIp = (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(IP)) ? true : false;
+            if (!IpArray.includes(IP) && IsValidIp) {
                 IpArray.push(IP);
-            }else{
-                alert("This Ip Adress is already in use");
+            } else {
+                alert("This IP Adress is not valid or may already be used in this Channel");
             }
         }
 
@@ -235,3 +236,14 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
     }
 ])
 
+
+app.filter("ReturnPolicyName", () => {
+    return (Policy, Key) => {
+        for (i in Policy){
+            if (Policy[i].Key === Key){
+                return Policy[i].Value;
+            }
+        }
+    }
+
+})

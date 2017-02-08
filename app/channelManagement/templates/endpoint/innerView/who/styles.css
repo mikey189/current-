@@ -118,6 +118,9 @@ md-virtual-repeat-container {
     color: white !important;
     font-weight: 700 !important;
 }
+.blue-btn:hover{
+    background-color: #E91E63 !important;
+}
 .ip-field:focus{
     border-bottom: solid 2px #F06292 !important; 
 }

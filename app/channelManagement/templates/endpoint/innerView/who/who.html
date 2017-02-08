@@ -14,7 +14,7 @@ channel facets Values
             <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel ________________-->
             <div ng-switch-when="StrPropType_ChannelPolicyToUse" layout-margin>
                 <div id="current-policy">
-                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues | ReturnValInKey : ctrl.ChannelFacets['Channel
+                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues | ReturnPolicyName : ctrl.ChannelFacets['Channel
                         Usage Settings'].Values[L1Key] }} </h3>
                 </div>
                 <!--{Key : ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] } -->
@@ -31,8 +31,10 @@ channel facets Values
             <div ng-switch-default>
                 <div layout="row" layout-margin layout-align="space-between start">
                     <div id="current" flex>
-                        <md-icon>search</md-icon>
-                        <input class="search-box" type="text" ng-model="currentValue" />
+                        <div layout="row">
+                            <input class="search-box" type="text" ng-model="currentValue" />
+                            <md-icon>search</md-icon>
+                        </div>
                         <md-virtual-repeat-container id="vertical-container">
                             <div ng-repeat="x in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] track by $index" class="repeateditem" layout="row"
                                 layout-align="space-between center" layout-padding flex="100" ng-if="x !== ''">
@@ -62,8 +64,8 @@ channel facets Values
             <div ng-switch-when="StrPropType_ChannelIpsSelection">
                 <md-virtual-repeat-container id="vertical-container">
                     <div layout="row" class="add-ip" md-whiteframe="4" layout-align="space-between center">
-                        <input type="text" ng-model="ipToAdd" ng-ip-address flex="85" class="ip-field"/>
-                        <md-button ng-click="ctrl.AddIPToChannel(ipToAdd)"  flex class="blue-btn">ASSIGN IP</md-button>
+                        <input type="text" ng-model="ipToAdd" flex="85" class="ip-field" />
+                        <md-button md-whiteframe="3" ng-click="ctrl.AddIPToChannel(ipToAdd)" flex class="blue-btn">ASSIGN IP</md-button>
                     </div>
                     <div md-virtual-repeat="ip in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]  " class="repeated-item" layout="row"
                         layout-align="space-between center" layout-padding flex="100">
