@@ -127,28 +127,30 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     /*______________________________________settings______________________________________*/
                     var q2 = policyData.get_policy_settings("PolicySettings");
 
-
-                    //______________________________________retrieving CDR Facets__________________________________________//
+                        //______________________________________retrieving CDR Facets__________________________________________//
 
                     var q3 = policyData.getCDRFacets();
+                    var q4 = policyData.get_policy_settings("PolicyFileTypesSettings");
 
                     $q.all({
                         q1,
                         q2,
-                        q3
+                        q3,
+                        q4
                     }).then(data => {
                         console.log('Both promises have resolved', data);
                         var detectionFacets = data.q1.data;
                         var allFacets = data.q2.data;
                         var cdr = data.q3.data;
+                        var filtetype = data.q4.data;
                         //merge all facets templates into one object.
-                        Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
+                        Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr, filtetype);
                         self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
                         self.allFacets = self.FormatFacetTemplates(allFacets);
                         self.cdr = self.FormatFacetTemplates(cdr);
+                        self.filetypeFacets = self.FormatFacetTemplates(filtetype);
                         Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                         var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
-
                         deferred.resolve(FacetVm);
                     });
                     return deferred.promise;
@@ -210,7 +212,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 self.show_success_dialog("Your changes were successfuly saved")
                 var deferred = $q.defer();
                 var $cdr = policyData.getCDRFacets();
-                $q.all({$cdr}).then(data => {
+                $q.all({
+                    $cdr
+                }).then(data => {
                     console.log(data.$$state)
                     self.cdr = self.FormatFacetTemplates(data.$cdr.data);
                     Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
