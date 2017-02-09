@@ -13,9 +13,8 @@ channel facets Values
         <div ng-switch="L1Value.InternalName">
             <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel ________________-->
             <div ng-switch-when="StrPropType_ChannelPolicyToUse" layout-margin>
-                <div id="current-policy">
-                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues | ReturnPolicyName : ctrl.ChannelFacets['Channel
-                        Usage Settings'].Values[L1Key] }} </h3>
+                <div id="current-policy" ng-init="PolicyKey = ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]">
+                    <h3>Current Policy Associated to this Channel : {{L1Value.AvailableValues | ReturnPolicyName : PolicyKey }} </h3>
                 </div>
                 <!--{Key : ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] } -->
                 <div layout="row" layout-align="start center" layout-wrap ng-if="ctrl.is_who_screen_editable" layout-margin>
