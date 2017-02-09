@@ -49,9 +49,10 @@
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
-                        <select ng-init="ctrl.PolicyFacets[Key].Values[propkey] = $index[0]" class="custom-select" ng-options="x as x for x in propValue.AvailableValues track by $index"
+                        <select ng-init="ctrl.PolicyFacets[Key].Values[propkey] " class="custom-select" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues"
                             ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></select>
                     </div>
+                        
                     <div ng-switch-when=" FacetPropertyType_Password" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
                         <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password"
