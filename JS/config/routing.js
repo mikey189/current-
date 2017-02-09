@@ -23,9 +23,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         abstract: true,
         resolve: {
             HeaderHasToken: function ($http) {
-                var token = localStorage.getItem("token")
-                $http.defaults.headers.common.Authorization = token
-                console.log($http.defaults.headers.common.Authorization)
+                var token = localStorage.getItem("token");
+                var serverName = localStorage.getItem("serverName");
+                $http.defaults.headers.common.Authorization = token;
                 return $http.defaults.headers.common.Authorization;
             }
         }

@@ -26,7 +26,6 @@
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Size limit</th>
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Sandbox</th>
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Regex Scanner</th>
-        <th ng-if="ctrl.isFileTypesAdvanceModeON">Vendor Signature</th>
     </thead>
     <tbody>
         <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index">
@@ -63,9 +62,7 @@
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
                 <md-checkbox aria-label="Regex Scanner" ng-model="Ext.RegularExpressionScannerAllowedFileTypesOption" ng-disabled="Ext.RegularExpressionScannerAllowedFileTypesOption == null"></md-checkbox>
             </td>
-            <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Vendor Signature" ng-model="Ext.VendorSignatureValidationScannerFileTypesOption" ng-disabled="Ext.VendorSignatureValidationScannerFileTypesOption == null"></md-checkbox>
-            </td>
+         
         </tr>
         <tr ng-repeat-end></tr>
         <tr ng-repeat-end></tr>

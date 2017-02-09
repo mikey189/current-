@@ -5,7 +5,6 @@ app.factory("401Error", function ($q, $injector) {
                 var $mdDialog = $injector.get("$mdDialog");
                 var $state = $injector.get("$state");
                 localStorage.removeItem("token");
-                localStorage.removeItem("serverName");
                 var $timeout = $injector.get("$timeout");
                 var alert = $mdDialog.alert()
                     .title('Session Expired')
