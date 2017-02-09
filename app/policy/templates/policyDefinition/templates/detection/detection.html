@@ -15,19 +15,23 @@
             </md-toolbar>
             <md-divider></md-divider>
             <md-content layout='row' ng-repeat="(propkey, propValue) in value.Properties">
-                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type">
+                <md-list-item flex layout-align='space-between center' ng-switch="propValue.Type" >
                     <div ng-switch-when="FacetPropertyType_Bool" layout="row" layout-align="space-between center" flex>
                         <p>{{propValue.DisplayName}}</p>
                         <md-switch class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" aria-label="file Sign switch">
                         </md-switch>
                     </div>
-                    <div style="width: 100%" ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
+                    <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice" class="collapsed-elements">
                         <md-content layout="row" ng-init="propValue.isHidden = true" layout-align="start center">
                             <md-button ng-click="propValue.isHidden =! propValue.isHidden" class="md-icon-button no-padding-margin">
                                 <md-icon ng-show="propValue.isHidden">keyboard_arrow_right</md-icon>
                                 <md-icon ng-show="!propValue.isHidden">keyboard_arrow_down</md-icon>
                             </md-button>
                             <p style="margin-bottom: 0px">{{propValue.DisplayName}}</p>
+                        </md-content>
+                        <md-content ng-if="!propValue.isHidden" ng-repeat="(k, v) in propValue.DefaultValues" layout="row" layout-align="space-between center" class="default-values">
+                            <p>{{k}}</p>
+                            <md-switch ng-model="ctrl.PolicyFacets[Key].Values[propkey][k]"></md-switch>
                         </md-content>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int" name="file" layout="row" flex layout-align="space-between center">

@@ -57,13 +57,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
         self.RefreshSidenav();
 
-
         self.DeleteAction = function (key, L0Key) {
             //set false
             self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
 
         }
-
 
         //__________________________Filetypes children check __________________________
 
@@ -134,6 +132,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         q2,
                         q3
                     }).then(data => {
+                        self.RawData = data;
                         var detectionFacets = data.q1.data;
                         var allFacets = data.q2.data;
                         var cdr = data.q3.data;

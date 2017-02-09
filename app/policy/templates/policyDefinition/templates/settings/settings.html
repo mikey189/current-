@@ -4,7 +4,7 @@
     <span ng-if="!ctrl.areSettingsEditable">EDIT</span>
 </md-button>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
-<json-formatter json="ctrl.AllTheFacets"></json-formatter>
+<json-formatter json="ctrl.RawData"></json-formatter>
 <div layout='column' id="policySettingsContainer" ng-class="{'not-editable': !ctrl.areSettingsEditable}">
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
         <md-list class='whiteBk policy_settings_lists shadow-on-section-hover' md-whiteframe="4">
@@ -30,7 +30,7 @@
                         <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select" number-to-string ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
+                        <select class="custom-select"  ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
                         </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
