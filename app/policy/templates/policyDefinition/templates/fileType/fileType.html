@@ -2,7 +2,6 @@
 <json-formatter json="ctrl.filetypeFacets"></json-formatter>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <json-formatter json="ctrl.Filetypes"></json-formatter>
-
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
@@ -14,16 +13,14 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-
-
-<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6" class="shadow-on-section-hover"/>
-
+<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
+    class="shadow-on-section-hover" />
 <table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
         <th>Category</th>
         <th>Allow</th>
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Do Not Process Embeded Files</th>
-        <th ng-if="ctrl.isFileTypesAdvanceModeON">Size limit</th>
+        <th ng-if="ctrl.isFileTypesAdvanceModeON">Size Limit</th>
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Sandbox</th>
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Regex Scanner</th>
     </thead>
@@ -37,9 +34,10 @@
                 {{::L0Key}}
             </td>
             <td colspan="7">
-                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value)"
-                 ng-checked = "ctrl.AreAllChildrenSelected(L0Value)" md-indeterminate = "{{ctrl.Indeterminate}}"></md-checkbox>
+                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value)" ng-checked="ctrl.AreAllChildrenSelected(L0Value)"
+                    md-indeterminate="{{ctrl.Indeterminate}}"></md-checkbox>
             </td>
+           
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
             ng-init="L0Value.AreChildrenHidden = true">
@@ -47,22 +45,21 @@
                 <span class="extensions">{{::Ext.Extension }} </span>
             </td>
             <td>
-                <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption" ng-disabled = "Ext.AllowOption == null"></md-checkbox>
+                <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption" ng-disabled="Ext.AllowOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Do Not Process Embeded Files" ng-model="Ext.ProcessEmbeddedFilesOption" ng-disabled = "Ext.ProcessEmbeddedFilesOption == null"></md-checkbox>
+                <md-checkbox aria-label="Do Not Process Embeded Files" ng-model="Ext.ProcessEmbeddedFilesOption" ng-disabled="Ext.ProcessEmbeddedFilesOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
                 <input class="custom-input" type="number" ng-model="Ext.SizeLimitOption.Size" />
                 <select class="custom-select" ng-model="Ext.SizeLimitOption.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Sandbox" ng-model="Ext.SandboxAllowedFileTypesOption" ng-disabled = "Ext.SandboxAllowedFileTypesOption == null"></md-checkbox>
+                <md-checkbox aria-label="Sandbox" ng-model="Ext.SandboxAllowedFileTypesOption" ng-disabled="Ext.SandboxAllowedFileTypesOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
                 <md-checkbox aria-label="Regex Scanner" ng-model="Ext.RegularExpressionScannerAllowedFileTypesOption" ng-disabled="Ext.RegularExpressionScannerAllowedFileTypesOption == null"></md-checkbox>
             </td>
-         
         </tr>
         <tr ng-repeat-end></tr>
         <tr ng-repeat-end></tr>

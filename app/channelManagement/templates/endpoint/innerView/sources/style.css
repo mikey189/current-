@@ -210,3 +210,11 @@ color: white !important;
     font-weight: 700;
     color: red !important;
 }
+.SMBSelected{
+   background-color: #0D47A1;
+   color: white !important;
+    border-radius: 5px;
+}
+.SMBSelected md-content {
+    color: white !important;
+}
