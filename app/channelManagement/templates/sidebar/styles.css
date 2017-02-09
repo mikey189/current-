@@ -84,3 +84,10 @@
 .channel-name-in-edtion {
     border-bottom: solid 2px #FF4081;
 }
+.search-field{
+    border: solid 0px !important;
+    border-bottom: solid 2px #4285F4 !important;
+}
+.search-field:focus{
+    border-bottom: solid 2px #FF4081 !important;
+}

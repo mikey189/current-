@@ -27,13 +27,16 @@
 }
 
 .searchPolicies {
-    border-radius: 10px;
     background-color: transparent;
     margin-top: 2em;
     margin-bottom: 2em;
-    border: solid 2px #2196F3 !important;
+    border: solid 0px !important;
+    border-bottom: solid 2px #2196F3 !important;
     color: white;
     width: 98%;
+}
+.searchPolicies:focus{
+    border-bottom: solid 2px #EC407A !important;
 }
 
 .searchPolicies:focus {

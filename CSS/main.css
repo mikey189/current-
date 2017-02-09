@@ -866,11 +866,9 @@ policy-graph-toolbar {
     background-color: #0D0F47;
     margin-top: 0.7em;
     padding-right: 0.7em;*/
-    border-radius: 10px;
     background-color: transparent;
     margin-top: 2em;
     margin-bottom: 2em;
-    border: solid 2px #2196F3 !important;
     color: white;
     width: 93%;
 }
