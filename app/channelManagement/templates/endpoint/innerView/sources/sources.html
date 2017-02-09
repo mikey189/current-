@@ -4,7 +4,7 @@
     <json-formatter json="ctrl.channel_data"></json-formatter>
     <json-formatter json="ctrl.OutputConfiguration"></json-formatter>
     <div layout="row" layout-margin layout-align="end center" ng-cloak>
-        <md-button class="strong margin_top md-raised" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
+        <md-button class="strong margin_top md-raised shadow-on-hover" id="edit_IO" edit-inputs-and-outputs>EDIT</md-button>
     </div>
     <div ng-class="{'notEditable': !ctrl.EndpointSourcesAreEditable}">
         <div layout="row" layout-align="space-between center">
@@ -13,11 +13,11 @@
         </div>
         <div layout="row" layout-align="space-between center" layout-margin>
             <channel-inputs-sources id="inputs_sources" flex="50" match-parent-width></channel-inputs-sources>
-            <channel-outputs-sources id="outputs_sources" flex="50" match-parent-width></channel-outputs-sources>
+            <channel-outputs-sources id="outputs_sources" flex="50"  match-parent-width></channel-outputs-sources>
         </div>
         <div layout="row" layout-align="space-between center" layout-margin>
             <div layout="column" flex = "50">
-                <i-smb ng-repeat="ISMB in ctrl.ismbList"></i-smb>
+                <i-smb ng-repeat="ISMB in ctrl.ismbList" ></i-smb>
             </div>
             <div layout="column" flex = "50" >
                 <o-smb ng-repeat="OSMB in ctrl.osmbList" ></o-smb>
@@ -26,5 +26,5 @@
     </div>
 </div>
 <div ng-if="ctrl.TemplateConditions.isDirWatcher">
-    <dw-sources></dw-sources>
+    <dw-sources ></dw-sources>
 </div>

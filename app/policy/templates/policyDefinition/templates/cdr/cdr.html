@@ -3,7 +3,7 @@
 <json-formatter json="ctrl.PolicyFacets['Policy CDR Settings']"></json-formatter>
 <p>ctrl.cdr</p>
 <json-formatter json="ctrl.cdr"></json-formatter>
-<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards" md-whiteframe="5" ng-cloak>
+<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5" ng-cloak>
     <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
         <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
         <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues"

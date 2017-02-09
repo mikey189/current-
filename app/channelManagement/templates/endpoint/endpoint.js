@@ -238,9 +238,10 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
 
 app.filter("ReturnPolicyName", () => {
-    return (Policy, Key) => {
+    return (Policy, DefaultKey) => {
         for (i in Policy){
-            if (Policy[i].Key === Key){
+            if (Policy[i].Key === DefaultKey){
+                console.log(Policy[i].Value)
                 return Policy[i].Value;
             }
         }

@@ -1,28 +1,27 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
-<md-button class="save-settings" save-policy-settings md-whiteframe="4">
+<md-button class="save-settings shadow-on-hover" save-policy-settings md-whiteframe="4"  >
     <span ng-if="ctrl.areSettingsEditable">SAVE</span>
     <span ng-if="!ctrl.areSettingsEditable">EDIT</span>
 </md-button>
 <json-formatter json="ctrl.PolicyFacets"></json-formatter>
 <json-formatter json="ctrl.AllTheFacets"></json-formatter>
-
 <div layout='column' id="policySettingsContainer" ng-class="{'not-editable': !ctrl.areSettingsEditable}">
     <div layout='row' layout-margin ng-repeat="(Key, value) in ctrl.allFacets">
-        <md-list class='whiteBk policy_settings_lists' md-whiteframe="4">
+        <md-list class='whiteBk policy_settings_lists shadow-on-section-hover' md-whiteframe="4">
             <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
                 <h4 class='card-title'>{{Key}}</h4>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item layout='row' layout-align='space-between center' ng-repeat="(propkey, propValue) in value.Properties">
                 <p>{{propValue.DisplayName}}</p>
-                <div ng-switch="propValue.Type" nginit=" ctrl.PolicyFacets[Key].Values[propkey] = ctrl.PolicyFacets[Key].Values[propkey] == null ? propValue.DefaultValue :  ctrl.PolicyFacets[Key].Values[propkey]">
+                <div ng-switch="propValue.Type">
                     <div ng-switch-when="FacetPropertyType_Bool">
-                        <md-switch  class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]"
-                            aria-label="file Sign switch">
+                        <md-switch class="custom-switch" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" aria-label="file Sign switch">
                         </md-switch>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Int" name="file">
-                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="number" string-to-number />
+                        <input class="custom-input" placeholder="int" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="number" string-to-number
+                        />
                     </div>
                     <div ng-switch-when=" FacetPropertyType_String">
                         <input class="custom-input" placeholder="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
@@ -31,7 +30,7 @@
                         <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select" number-to-string ng-model = "ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
+                        <select class="custom-select" number-to-string ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
                         </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
@@ -43,4 +42,38 @@
             </md-list-item>
         </md-list>
     </div>
+    Email template
+    <md-list md-whiteframe="4" class="whiteBk policy_settings_lists shadow-on-section-hover">
+        <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
+            <h4 class='card-title'>Email Settings</h4>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item layout-align='space-between center' ng-if="!ctrl.EmailSettings.QueryAD">
+            <p>Hardcoded Email Adress</p>
+            <input class="custom-input" ng-model="ctrl.EmailSettings.HCEmail" />
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item layout-align='space-between center' >
+            <p>Query Active Directory Users</p>
+            <md-switch aria-label="query ad" ng-model="ctrl.EmailSettings.QueryAD"></md-switch>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item layout-align='space-between center' >
+            <p> Condition </p>
+            <select class="custom-select">
+                <option>Always</option>
+                <option>Never</option>
+            </select>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item >
+            <p>Email Subject</p>
+            <input class="custom-input" />
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item layout="column"  layout-align="start start">
+            <h4>Email Body</h4>
+            <textarea to-html ng-model="ctrl.EmailBody" class="form-control email-body" rows="5" id="comment" md-whiteframe="2"></textarea>
+        </md-list-item>
+    </md-list>
 </div>

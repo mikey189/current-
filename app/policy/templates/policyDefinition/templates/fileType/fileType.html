@@ -4,11 +4,11 @@
 <json-formatter json="ctrl.Filetypes"></json-formatter>
 
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
-    <md-button aria-label="advanced mode" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
+    <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
         <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
         <span ng-show="!ctrl.isFiletypeEditable">EDIT</span>
     </md-button>
-    <md-button aria-label="advanced mode" md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON"
+    <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON"
         ng-class="{'basic-mode-button': !ctrl.isFileTypesAdvanceModeON, 'advanced-mode-button': ctrl.isFileTypesAdvanceModeON}">
         <span ng-if="ctrl.isFileTypesAdvanceModeON">Basic Mode</span>
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
@@ -16,9 +16,9 @@
 </div>
 
 
-<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"/>
+<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6" class="shadow-on-section-hover"/>
 
-<table class="table table-responsive" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
+<table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
         <th>Category</th>
         <th>Allow</th>
@@ -48,23 +48,23 @@
                 <span class="extensions">{{::Ext.Extension }} </span>
             </td>
             <td>
-                <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption" ng-if="Ext.AllowOption !== null"></md-checkbox>
+                <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption" ng-disabled = "Ext.AllowOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Do Not Process Embeded Files" ng-model="Ext.ProcessEmbeddedFilesOption" ng-if="Ext.ProcessEmbeddedFilesOption !== null"></md-checkbox>
+                <md-checkbox aria-label="Do Not Process Embeded Files" ng-model="Ext.ProcessEmbeddedFilesOption" ng-disabled = "Ext.ProcessEmbeddedFilesOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
                 <input class="custom-input" type="number" ng-model="Ext.SizeLimitOption.Size" />
                 <select class="custom-select" ng-model="Ext.SizeLimitOption.Unit" ng-options="unit for unit  in ctrl.ComputingUnits"></select>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Sandbox" ng-model="Ext.SandboxAllowedFileTypesOption" ng-if="Ext.SandboxAllowedFileTypesOption !== null"></md-checkbox>
+                <md-checkbox aria-label="Sandbox" ng-model="Ext.SandboxAllowedFileTypesOption" ng-disabled = "Ext.SandboxAllowedFileTypesOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Regex Scanner" ng-model="Ext.RegularExpressionScannerAllowedFileTypesOption" ng-if="Ext.RegularExpressionScannerAllowedFileTypesOption !== null"></md-checkbox>
+                <md-checkbox aria-label="Regex Scanner" ng-model="Ext.RegularExpressionScannerAllowedFileTypesOption" ng-disabled="Ext.RegularExpressionScannerAllowedFileTypesOption == null"></md-checkbox>
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="Vendor Signature" ng-model="Ext.VendorSignatureValidationScannerFileTypesOption" ng-if="Ext.VendorSignatureValidationScannerFileTypesOption !== null"></md-checkbox>
+                <md-checkbox aria-label="Vendor Signature" ng-model="Ext.VendorSignatureValidationScannerFileTypesOption" ng-disabled="Ext.VendorSignatureValidationScannerFileTypesOption == null"></md-checkbox>
             </td>
         </tr>
         <tr ng-repeat-end></tr>

@@ -61,7 +61,7 @@ app.directive("addIsmb", function () {
             element.click(function () {
                 var ismb = {};
                 scope.ctrl.ismbList.push(ismb)
-                scope.ctrl.NumberOFiSMBs ++;
+                scope.ctrl.NumberOFiSMBs++;
                 scope.$apply()
             })
         }
@@ -75,7 +75,7 @@ app.directive("addOsmb", function () {
             element.click(function () {
                 var osmb = {};
                 scope.ctrl.osmbList.push(osmb)
-                scope.ctrl.NumberOFoSMBs ++;
+                scope.ctrl.NumberOFoSMBs++;
                 scope.$apply()
             })
         }
@@ -155,7 +155,7 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                         }
                         //posting the data to the server
                     channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
-                      
+
                         scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()
                         scope.ctrl.UpdateChannelData(success.data.Id)
                     }, function (error) {
@@ -190,3 +190,4 @@ app.directive("matchParentWidth", function () {
         }
     }
 })
+

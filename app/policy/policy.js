@@ -14,7 +14,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.allFacets = {};
         self.PolicyIsInCreation = false;
         self.isChecked = function (ftypes) {
-            console.log(ftypes);
             return true;
         }
         self.FiletypeInitConditions = function () {
@@ -73,7 +72,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
         self.CheckAllExtensions = (Parent) => {
             var ChildrenState = Parent.every(CheckChildrenState);
-            console.log(ChildrenState)
             for (i in Parent) {
                 if (ChildrenState) {
                     Parent[i].AllowOption = false
@@ -130,33 +128,27 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         //______________________________________retrieving CDR Facets__________________________________________//
 
                     var q3 = policyData.getCDRFacets();
-                    var q4 = policyData.get_policy_settings("PolicyFileTypesSettings");
 
                     $q.all({
                         q1,
                         q2,
-                        q3,
-                        q4
+                        q3
                     }).then(data => {
-                        console.log('Both promises have resolved', data);
                         var detectionFacets = data.q1.data;
                         var allFacets = data.q2.data;
                         var cdr = data.q3.data;
-                        var filtetype = data.q4.data;
                         //merge all facets templates into one object.
-                        Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr, filtetype);
+                        Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
                         self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
                         self.allFacets = self.FormatFacetTemplates(allFacets);
                         self.cdr = self.FormatFacetTemplates(cdr);
-                        self.filetypeFacets = self.FormatFacetTemplates(filtetype);
                         Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                         var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
                         deferred.resolve(FacetVm);
                     });
                     return deferred.promise;
                 }).then(function (answer) {
-                    console.log("FacetVm");
-                    console.log(answer);
+             
                     self.PolicyFacets = answer.EntityFacets;
                 })
 
@@ -215,7 +207,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 $q.all({
                     $cdr
                 }).then(data => {
-                    console.log(data.$$state)
                     self.cdr = self.FormatFacetTemplates(data.$cdr.data);
                     Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                     var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
@@ -223,8 +214,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 });
                 return deferred.promise;
             }).then(function (answer) {
-                console.log("FacetVm");
-                console.log(answer);
+           
                 self.PolicyFacets = answer.EntityFacets;
 
 
@@ -239,16 +229,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.SaveFacetsInCDR = function (DOMValue) {
                 if (!DOMValue) {
                     self.FormatForPOST();
-                } else {
-                    console.log("childrens are visible");
-                    console.log(DOMValue);
-                }
+                } 
             }
             // ______________________________________   End Of formatting to post    __________________________
             // ______________________________________   Special filter    __________________________
         self.myFilter = function (item) {
-            console.log('my filter');
-            console.log(item);
+      
             return true;
         };
     }

@@ -1,17 +1,15 @@
-<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" />
-
-Transformed Facets
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" /> Transformed Facets
 <json-formatter json="ctrl.whoData"></json-formatter>
 After init
 <json-formatter json="ctrl.ChannelFacets"></json-formatter>
 <div layout="row" layout-align="end start">
     <md-button edit-channel-settings md-whiteframe="4" ng-class="{'edit-mode-on': ctrl.AreSettingsEditable, 'edit-mode-off': !ctrl.AreSettingsEditable}"
-        aria-label="edit settings">
+        aria-label="edit settings" class="shadow-on-hover">
         <span ng-if="ctrl.AreSettingsEditable">DONE</span>
         <span ng-if="!ctrl.AreSettingsEditable">EDIT</span>
     </md-button>
 </div>
-<md-list md-whiteframe="4" class="settings" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
+<md-list md-whiteframe="4" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
     <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
         <span>Agent Settings</span>
     </md-toolbar>
@@ -21,14 +19,15 @@ After init
         <div ng-switch-when="FacetPropertyType_String" type="text" flex>
             <input class="material-input" flex ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" />
         </div>
-        <div ng-switch-when="FacetPropertyType_Bool" flex layout="row" layout-align=" end" >
-            <md-switch  aria-label="bool"  ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"></md-switch>
+        <div ng-switch-when="FacetPropertyType_Bool" flex layout="row" layout-align=" end">
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"></md-switch>
         </div>
         <div ng-switch-when="FacetPropertyType_Int" flex>
             <input class="material-input" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" type="number" />
         </div>
         <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
-            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" class="select"></select>
+            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"
+                class="select"></select>
         </div>
     </md-list-item>
 </md-list>

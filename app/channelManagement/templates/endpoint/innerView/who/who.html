@@ -5,10 +5,10 @@ ctrl.ChannelFacets
 channel facets Values
 <json-formatter json="ctrl.ChannelFacets['Channel Usage Settings'].Values"></json-formatter>
 <div layout="row" layout-align="end center" layout-margin>
-    <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4">EDIT</md-button>
+    <md-button id="edit-who-screen" edit-who-screen md-whiteframe="4" class="shadow-on-hover">EDIT</md-button>
 </div>
 <div layout-margin>
-    <div ng-repeat="(L1Key, L1Value) in ctrl.whoData['Channel Usage Settings'].Properties" class="card" md-whiteframe="4">
+    <div ng-repeat="(L1Key, L1Value) in ctrl.whoData['Channel Usage Settings'].Properties" class="card shadow-on-section-hover" md-whiteframe="4">
         <h3 class="title">{{L1Value.DisplayName}}</h3>
         <div ng-switch="L1Value.InternalName">
             <!--________________________ type = FacetPropertyType_Bool, FacetPropertyType_SingleChoice -> assing policy to channel ________________-->
