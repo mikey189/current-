@@ -152,6 +152,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             self.is_input_selected = false;
         })
 
+        self.EditNullOption = () => {
+            self.NullOptionIsEditable = true;
+            self.selectedOutputs["null"] = self.selectedOutputs["null"] || " ";
+        }
+
         self.DataUnits = ["KB", "MB", "GB", "TB"];
         self.FolderPermissions = ["Read", "Write", "Read & Write"]
 
@@ -255,11 +260,8 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
 app.filter("ReturnPolicyName", () => {
     return (Policy, DefaultKey) => {
-        for (i in Policy){
-            console.log(Policy[i].Key)
-            console.log(DefaultKey)
-            if (Policy[i].Key === DefaultKey){
-                console.log(Policy[i].Value)
+        for (i in Policy) {
+            if (Policy[i].Key === DefaultKey) {
                 return Policy[i].Value;
             }
         }

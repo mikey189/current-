@@ -4,11 +4,17 @@
         <md-icon md-svg-src="icons/{{x.icon}}"></md-icon>
         <md-content class="md-subhead strong" _name="{{x.name}}">{{x.name}}</md-content>
     </div>
-    <div layout="column" layout-align="center center" flex="25" ng-class="{SMBSelected: ctrl.NumberOFoSMBs > 0}"
-        layout-margin select-on-click add-osmb class="output_element">
+    <div layout="column" layout-align="center center" flex="25" ng-class="{SMBSelected: ctrl.NumberOFoSMBs > 0}" layout-margin
+        select-on-click add-osmb class="output_element">
         <md-icon md-svg-src="icons/ncRelay.svg"></md-icon>
         <md-content class="md-subhead strong" _name="iSMB">
             <span id="sources-smb-counter" ng-if="ctrl.NumberOFoSMBs > 0">{{ctrl.NumberOFoSMBs}}</span> SMB
         </md-content>
+    </div>
+    <div flex="100" layout="row" layout-align="space-between center" ng-init="ctrl.NullOptionIsEditable = false">
+        <md-button ng-click="ctrl.EditNullOption()" flex="20" >
+            <md-icon class="material-icons md-48">do_not_disturb</md-icon>
+        </md-button>
+        <input ng-if="ctrl.selectedOutputs['null']" flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.selectedOutputs['null']" />
     </div>
 </div>
