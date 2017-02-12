@@ -20,7 +20,7 @@
                 <i-smb ng-repeat="ISMB in ctrl.ismbList"></i-smb>
             </div>
             <div layout="column" flex="50">
-                <div ng-if="ctrl.NullStoreName" layout="row" layout-align="space-between center" class="null-container">
+                <div ng-if="ctrl.NullOptionIsEditable" layout="row" layout-align="space-between center" class="null-container" >
                     <p>Null Store Name</p>
                     <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.NullStoreName">
                 </div>

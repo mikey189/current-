@@ -19,10 +19,10 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
-                        
+                        self.NullStoreName = self.OutputConfiguration.NullStoreName ;
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
-                     
+
 
                         break;
 
@@ -37,10 +37,12 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+                        self.NullStoreName = self.OutputConfiguration.NullStoreName;
+
 
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
-                        
+
 
                         break;
                         //case is dirwatcher
@@ -51,6 +53,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isAPI = false;
                         self.DWSourcesAreEditable = false;
                         self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
+
 
                         break;
                     case 100:
@@ -156,9 +159,8 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         })
 
         self.EditNullOption = () => {
-            self.NullOptionIsEditable = true;
-            self.NullStoreName = self.NullStoreName || " ";
-        }
+            self.NullOptionIsEditable = (self.NullOptionIsEditable) ? false : true;
+        };
 
         self.DataUnits = ["KB", "MB", "GB", "TB"];
         self.FolderPermissions = ["Read", "Write", "Read & Write"]
@@ -185,7 +187,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             self.NumberOFoSMBs--;
         }
 
-       
+
         self.PolicyFacets = {}
 
         /*--------------------  who is using this channel --------------------*/

@@ -221,3 +221,10 @@ color: white !important;
 .null-container{
     margin-bottom: 2em !important;
 }
+.null-activated{
+   background-color: #0D47A1;
+    border-radius: 5px; 
+}
+.null-activated .md-icon{
+   color: white;
+}

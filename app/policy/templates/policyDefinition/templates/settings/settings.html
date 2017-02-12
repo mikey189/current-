@@ -26,8 +26,8 @@
                     <div ng-switch-when=" FacetPropertyType_String">
                         <input class="custom-input" placeholder="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
                     </div>
-                    <div ng-switch-when="FacetPropertyType_MultiLineString">
-                        <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
+                    <div ng-switch-when="FacetPropertyType_MultiLineString" layout="column">
+                        <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]" to-html></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
                         <select class="custom-select"  ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
@@ -42,38 +42,5 @@
             </md-list-item>
         </md-list>
     </div>
-    Email template
-    <md-list md-whiteframe="4" class="whiteBk policy_settings_lists shadow-on-section-hover">
-        <md-list-item layout='row' layout-align='start center' class="policy_settings_key">
-            <h4 class='card-title'>Email Settings</h4>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item layout-align='space-between center' ng-if="!ctrl.EmailSettings.QueryAD">
-            <p>Hardcoded Email Adress</p>
-            <input class="custom-input" ng-model="ctrl.EmailSettings.HCEmail" />
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item layout-align='space-between center' >
-            <p>Query Active Directory Users</p>
-            <md-switch aria-label="query ad" ng-model="ctrl.EmailSettings.QueryAD"></md-switch>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item layout-align='space-between center' >
-            <p> Condition </p>
-            <select class="custom-select">
-                <option>Always</option>
-                <option>Never</option>
-            </select>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item >
-            <p>Email Subject</p>
-            <input class="custom-input" />
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item layout="column"  layout-align="start start">
-            <h4>Email Body</h4>
-            <textarea to-html ng-model="ctrl.EmailBody" class="form-control email-body" rows="5" id="comment" md-whiteframe="2"></textarea>
-        </md-list-item>
-    </md-list>
+    
 </div>
