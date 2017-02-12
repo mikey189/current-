@@ -21,9 +21,9 @@
                 <i-ftp ng-repeat="IFTP in ctrl.IFTPList track by $index"></i-ftp>
             </div>
             <div layout="column" flex="50">
-                <div ng-if="ctrl.selectedOutputs['NullStoreName']" layout="row" layout-align="space-between center" class="null-container">
+                <div ng-if="ctrl.NullStoreName" layout="row" layout-align="space-between center" class="null-container">
                     <p>Null Store Name</p>
-                    <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.selectedOutputs['NullStoreName']">
+                    <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.NullStoreName">
                 </div>
                 <o-smb ng-repeat="OSMB in ctrl.osmbList"></o-smb>
                 <o-ftp ng-repeat="OFTP in ctrl.OFTPList track by $index"></o-ftp>

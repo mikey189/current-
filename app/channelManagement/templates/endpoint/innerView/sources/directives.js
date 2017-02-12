@@ -161,11 +161,15 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                     scope.ctrl.IoConfiguration = {
                             "inputConfiguration": {
                                 "SelectedIoList": scope.ctrl.selectedInputs,
-                                "IoSmbConfiguration": scope.ctrl.ismbList
+                                "IoSmbConfiguration": scope.ctrl.ismbList,
+                                "IoFtpConfiguration": scope.ctrl.iFTPList
                             },
                             "outputConfiguration": {
                                 "SelectedIoList": scope.ctrl.selectedOutputs,
-                                "IoSmbConfiguration": scope.ctrl.osmbList
+                                "IoSmbConfiguration": scope.ctrl.osmbList,
+                                "IoFtpConfiguration": scope.ctrl.OFTPList,
+                                "NullStoreName": scope.ctrl.NullStoreName
+
                             }
                         }
                         //posting the data to the server
@@ -205,4 +209,3 @@ app.directive("matchParentWidth", function () {
         }
     }
 })
-

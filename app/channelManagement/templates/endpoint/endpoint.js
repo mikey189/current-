@@ -17,11 +17,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
-                        self.IFTPList = self.InputConfiguration.FTPConfiguration || [];
+                        self.IFTPList = self.InputConfiguration.IoFtpConfiguration || [];
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
-                        self.OFTPList = self.OutputConfiguration.FTPConfiguration || [];
-
+                        self.OFTPList = self.OutputConfiguration.IoFtpConfiguration || [];
+                        
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
                         self.NumberOFoFTPs = self.OFTPList.length || 0;
@@ -37,11 +37,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
-                        self.IFTPList = self.InputConfiguration.FTPConfiguration || [];
+                        self.IFTPList = self.InputConfiguration.IoFtpConfiguration || [];
 
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
-                        self.OFTPList = self.OutputConfiguration.FTPConfiguration || [];
+                        self.OFTPList = self.OutputConfiguration.IoFtpConfiguration || [];
 
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
@@ -163,7 +163,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.EditNullOption = () => {
             self.NullOptionIsEditable = true;
-            self.selectedOutputs["NullStoreName"] = self.selectedOutputs["NullStoreName"] || " ";
+            self.NullStoreName = self.NullStoreName || " ";
         }
 
         self.DataUnits = ["KB", "MB", "GB", "TB"];
