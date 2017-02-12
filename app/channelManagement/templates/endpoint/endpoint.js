@@ -163,7 +163,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.EditNullOption = () => {
             self.NullOptionIsEditable = true;
-            self.selectedOutputs["null"] = self.selectedOutputs["null"] || " ";
+            self.selectedOutputs["NullStoreName"] = self.selectedOutputs["NullStoreName"] || " ";
         }
 
         self.DataUnits = ["KB", "MB", "GB", "TB"];

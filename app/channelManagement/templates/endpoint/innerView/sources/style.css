@@ -218,3 +218,6 @@ color: white !important;
 .SMBSelected md-content {
     color: white !important;
 }
+.null-container{
+    margin-bottom: 2em !important;
+}
