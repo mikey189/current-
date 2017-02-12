@@ -24,6 +24,22 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.NumberOFoSMBs = self.osmbList.length || 0;
 
                         break;
+
+                    case 1:
+                        self.TemplateConditions.isDirWatcher = false;
+                        self.TemplateConditions.isEndpoint = true;
+                        self.EndpointSourcesAreEditable = false;
+                        self.TemplateConditions.isAPI = false;
+
+                        self.InputConfiguration = channelInfo.InputConfiguration || {};
+                        self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
+                        self.OutputConfiguration = channelInfo.OutputConfiguration || {};
+                        self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+
+                        self.NumberOFiSMBs = self.ismbList.length || 0;
+                        self.NumberOFoSMBs = self.osmbList.length || 0;
+
+                        break;
                         //case is dirwatcher
                     case 3:
 

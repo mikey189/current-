@@ -246,21 +246,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 
 
-app.filter('filterObject', function () {
-    return function (input, search) {
-        if (!input) return input;
-        if (!search) return input;
-        var expected = ('' + search).toLowerCase();
-        var result = {};
-        angular.forEach(input, function (value, key) {
-            var actual = ('' + value).toLowerCase();
-            if (actual.indexOf(expected) !== -1) {
-                result[key] = value;
-            }
-        });
-        return result;
-    }
-});
 app.filter("splitter", function () {
     return function (string, char, index) {
         if (string == undefined || string === "" || string == null) {
@@ -278,3 +263,10 @@ app.filter('split', function () {
         return input.split(splitChar)[splitIndex];
     }
 });
+
+app.filter("GetValueFromIndex", function(){
+    return (index) => {
+        console.log(index);
+        return 1;
+    }
+})

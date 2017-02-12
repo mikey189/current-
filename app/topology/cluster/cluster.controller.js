@@ -42,6 +42,7 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
         $cluster.GetClusterData(self.StartDate, self.EndDate)
             .then(function (answer) {
+                self.stats = answer.data;
                 var status = answer.data.ClusterStatusInfo.Status
                 var CpuMeasurementList = answer.data.CpuMeasurementList
                 self.ClusterData = []

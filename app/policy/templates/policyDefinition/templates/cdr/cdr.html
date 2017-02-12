@@ -4,16 +4,14 @@
 <p>ctrl.cdr</p>
 <json-formatter json="ctrl.cdr"></json-formatter>
 <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5"
-    ng-cloak>
-    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
-        <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
-        <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues"
-         value="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]"
-         policy-id="ctrl.policyId" key="L0Key" global="ctrl.PolicyFacets['Policy CDR Settings'].Values" post-facets-from-cdr ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">
-            <md-icon class="white">edit</md-icon>
-        </md-button>
-    </div>
-
+    ng-cloak ng-switch="L0Value.Type">
+    <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
+        <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+            <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
+            <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">
+                <md-icon class="white">edit</md-icon>
+            </md-button>
+        </div>
         <div layout="row" layout-margin flex="100"  layout-wrap>
             <span class="action-chips"  ng-class="{'HIGH':L0Value.AvailableValues[actionKey][3]=== 'High',
                  'MEDIUM': L0Value.AvailableValues[actionKey][3] === 'Medium', 'LOW':L0Value.AvailableValues[actionKey][3] === 'Low'  }"  md-whiteframe="2" 
@@ -26,15 +24,52 @@
         </div>  
 
         <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-if="L0Value.showValues">
-                <span class="action-chips" ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" ng-class="{'HIGH': L1Value[3]=== 'High',
-                 'MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide=" L1Value.length == 0 || L1Value[2].includes('None')" >
-                    {{L1Value[1]}}:{{L1Value[2]}}
-
-                    <md-tooltip ng-if="L1Value[4].length > 0" md-direction="top">{{L1Value[4]}}</md-tooltip>
-                    <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] =true"
-                     ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] == false">add</md-icon>
-                </span>
-            </div>
+            <span class="action-chips" ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" ng-class="{'HIGH': L1Value[3]=== 'High','MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide=" L1Value.length == 0 || L1Value[2].includes('None')" >
+                {{L1Value[1]}}:{{L1Value[2]}}
+                <md-tooltip ng-if="L1Value[4].length > 0" md-direction="top">{{L1Value[4]}}</md-tooltip>
+                <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] = true" ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] == false">add</md-icon>
+            </span>
+        </div>
     </div>
 
-    CDR FAIL ACTIONS
+
+    <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable">
+         <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+            <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
+            <md-button class="md-icon-button" toggle-cdr-fail-actions-edition ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRFailActionsEditable)">
+                <md-icon class="white" ng-if="!ctrl.CDRFailActionsEditable">edit</md-icon>
+                <md-icon class="white" ng-if="ctrl.CDRFailActionsEditable">save</md-icon>     
+            </md-button>
+        </div>
+
+        <div layout="row" layout-margin flex="100"  layout-wrap>
+            <span class="action-chips"   md-whiteframe="2">
+                {{L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] }}
+            </span>
+        </div> 
+
+        <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-if="ctrl.CDRFailActionsEditable" >
+            <span class="action-chips" ng-repeat="y in L0Value.AvailableValues track by $index">
+                {{y}}
+                <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = $index" >add</md-icon>
+            </span>
+        </div> 
+    </div>
+</div>
+
+<md-list class="cards shadow-on-section-hover" style="padding-top: 0px" md-whiteframe="5" ng-init="ctrl.CDRHyperLinkEditable = false">
+    <div class="card-title" layout-padding layout="row" layout-align="space-betwwen center">
+        <h4 flex><strong> Hyperlink Regex </strong></h4>
+            <md-button toggle-regex-edition class="md-icon-button" ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRHyperLinkEditable)">
+                <md-icon class="white" ng-if="!ctrl.CDRHyperLinkEditable">edit</md-icon>
+                <md-icon class="white" ng-if="ctrl.CDRHyperLinkEditable">save</md-icon>
+            </md-button>
+        </div>
+        <md-list-item ng-repeat="(k, v) in ctrl.cdr['Hyperlink Regex'].Properties" layout="row" layout-align="space-between center">
+            <p>{{v.DisplayName}}</p>
+            <input ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_String'" ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]"
+            />
+            <md-switch ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_Bool'" aria-label="use google safe browsing"
+                ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]"></md-switch>
+        </md-list-item>
+        </md-list>
