@@ -29,6 +29,21 @@ app.directive("oSmb", function () {
         replace: false
     }
 })
+app.directive("oFtp", function () {
+    return {
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/ftp/oftp.template.html",
+        replace: false
+    }
+})
+
+app.directive("iFtp", function () {
+    return {
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/ftp/iftp.template.html",
+        replace: false
+    }
+})
 
 app.directive("selectInput", function () {
     return {

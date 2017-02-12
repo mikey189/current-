@@ -1,0 +1,39 @@
+<link href="app/channelManagement/templates/endpoint/innerView/sources/templates/FTP/style.css" rel="stylesheet"/>
+<md-list class="ftp-list shadow-on-section-hover" md-whiteframe="4">
+    <md-toolbar layout-padding class="ftp-toolbar" layout="row" layout-align="space-between center">
+        <div>FTP Settings <span ng-if="OFTP.FileStoreName"> : {{OFTP.FileStoreName}}</span></div>
+    <md-button class="md-icon-button" ng-click="ctrl.DeleteOFTP(OFTP)"><md-icon>delete_sweep</md-icon></md-button>
+    </md-toolbar>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>File Store Name</p>
+        <input flex="40" class="material-input" ng-model="OFTP.FileStoreName" type="text" />
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>Server Address</p>
+        <input flex="40" class="material-input" ng-model="OFTP.ServerAddress" type="text" placeholder="name or IP"/>
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>Folder</p>
+        <input flex="40" class="material-input" ng-model="OFTP.Folder" type="text" />
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>UserName</p>
+        <input flex="40" class="material-input" ng-model="OFTP.UserName" type="text" />
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>Password</p>
+        <input flex="40" class="material-input" ng-model="OFTP.Password" type="password" />
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>Passive Mode</p>
+        <md-switch aria-label="passive mode" ng-model="OFTP.PassiveMode"></md-switch>
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>SSL Mode</p>
+        <md-switch aria-label="passive mode" ng-model="OFTP.SSLMode"></md-switch>
+    </md-list-item>
+    <md-list-item layout="row" layout-align="space-between center">
+        <p>Overwrite existing File on write</p>
+        <md-switch aria-label="passive mode" ng-model="OFTP.OverwriteExistingFile"></md-switch>
+    </md-list-item>
+</md-list>

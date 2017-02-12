@@ -17,11 +17,15 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
+                        self.IFTPList = self.InputConfiguration.FTPConfiguration || [];
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+                        self.OFTPList = self.OutputConfiguration.FTPConfiguration || [];
 
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
+                        self.NumberOFoFTPs = self.OFTPList.length || 0;
+                        self.NumberOFiFTPs = self.IFTPList.length || 0;
 
                         break;
 
@@ -33,11 +37,16 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
+                        self.IFTPList = self.InputConfiguration.FTPConfiguration || [];
+
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
                         self.osmbList = self.OutputConfiguration.IoSmbConfiguration || [];
+                        self.OFTPList = self.OutputConfiguration.FTPConfiguration || [];
 
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
+                        self.NumberOFoFTPs = self.OFTPList.length || 0;
+                        self.NumberOFiFTPs = self.IFTPList.length || 0;
 
                         break;
                         //case is dirwatcher
@@ -180,6 +189,27 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             var index = self.osmbList.indexOf(OSMB)
             self.osmbList.splice(index, 1);
             self.NumberOFoSMBs--;
+        }
+
+        self.AddOFTP = (OFTP) => {
+            self.OFTPList.push(OFTP);
+            self.NumberOFoFTPs++;
+        }
+        self.AddIFTP = (IFTP) => {
+            self.IFTPList.push(IFTP);
+            self.NumberOFiFTPs++;
+        }
+        self.DeleteIFTP = (IFTP) => {
+            var index = self.IFTPList.indexOf(IFTP);
+            self.IFTPList.splice(index, 1);
+            self.NumberOFiFTPs--;
+
+        }
+        self.DeleteOFTP = (OFTP) => {
+            var index = self.OFTPList.indexOf(OFTP);
+            self.OFTPList.splice(index, 1);
+            self.NumberOFoFTPs--;
+
         }
         self.PolicyFacets = {}
 

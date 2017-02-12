@@ -11,10 +11,13 @@
             <span id="sources-smb-counter" ng-if="ctrl.NumberOFoSMBs > 0">{{ctrl.NumberOFoSMBs}}</span> SMB
         </md-content>
     </div>
-    <div flex="100" layout="row" layout-align="space-between center" ng-init="ctrl.NullOptionIsEditable = false">
-        <md-button ng-click="ctrl.EditNullOption()" flex="20" >
-            <md-icon class="material-icons md-48">do_not_disturb</md-icon>
-        </md-button>
-        <input ng-if="ctrl.selectedOutputs['null']" flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.selectedOutputs['null']" />
+    <div flex="25" ng-init="ctrl.NullOptionIsEditable = false" layout="row" layout-align="center center">
+        <md-icon class="material-icons md-48" ng-click="ctrl.EditNullOption()">do_not_disturb</md-icon>
+    </div>
+     <div layout="column" layout-align="center center"  flex="25" layout-margin select-input class="output_element" ng-class="{'input_is_selected': ctrl.NumberOFoFTPs>0}" ng-click="ctrl.AddOFTP()">
+        <md-icon md-svg-src="icons/ftp.svg" ></md-icon>
+        <md-content class="md-subhead strong" >
+            <span id="sources-smb-counter" ng-if="ctrl.NumberOFoFTPs > 0">{{ctrl.NumberOFoFTPs}}</span>
+            FTP</md-content>
     </div>
 </div>
