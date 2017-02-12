@@ -161,13 +161,11 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                     scope.ctrl.IoConfiguration = {
                             "inputConfiguration": {
                                 "SelectedIoList": scope.ctrl.selectedInputs,
-                                "IoSmbConfiguration": scope.ctrl.ismbList,
-                                "IoFtpConfiguration": scope.ctrl.iFTPList
+                                "IoSmbConfiguration": scope.ctrl.ismbList
                             },
                             "outputConfiguration": {
                                 "SelectedIoList": scope.ctrl.selectedOutputs,
                                 "IoSmbConfiguration": scope.ctrl.osmbList,
-                                "IoFtpConfiguration": scope.ctrl.OFTPList,
                                 "NullStoreName": scope.ctrl.NullStoreName
 
                             }

@@ -18,7 +18,6 @@
         <div layout="row" layout-align="space-between center" layout-margin>
             <div layout="column" flex="50">
                 <i-smb ng-repeat="ISMB in ctrl.ismbList"></i-smb>
-                <i-ftp ng-repeat="IFTP in ctrl.IFTPList track by $index"></i-ftp>
             </div>
             <div layout="column" flex="50">
                 <div ng-if="ctrl.NullStoreName" layout="row" layout-align="space-between center" class="null-container">
@@ -26,7 +25,6 @@
                     <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.NullStoreName">
                 </div>
                 <o-smb ng-repeat="OSMB in ctrl.osmbList"></o-smb>
-                <o-ftp ng-repeat="OFTP in ctrl.OFTPList track by $index"></o-ftp>
             </div>
         </div>
     </div>
