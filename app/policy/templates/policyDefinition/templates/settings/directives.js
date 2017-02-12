@@ -22,11 +22,8 @@ app.directive('toHtml', function () {
       
       //format text going to user (model to view)
       ngModel.$formatters.push(function(value) {
-
         return  value.match(/<p>(.*)<\/p>/).pop();
-
       });
-      
       //format text from the user (view to model)
       ngModel.$parsers.push(function(value) {
           var formatted = "<html><head></head><body><p>"+value+"</p></body></html>";

@@ -73,3 +73,15 @@
      color: white !important;
      font-weight: 650 !important;
  }
+ 
+ .job-type-high .md-checked ._md-icon {
+     background-color: #2D90EA !important;
+ }
+ 
+ .job-type-low .md-checked ._md-icon {
+     background-color: #E15F64 !important;
+ }
+ 
+ .job-type-many .md-checked ._md-icon {
+     background-color: #BD9C55 !important;
+ }
