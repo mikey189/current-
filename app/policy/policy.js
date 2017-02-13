@@ -58,34 +58,31 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.RefreshSidenav();
 
         self.DeleteAction = function (key, L0Key) {
-            //set false
-            self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
-
+                //set false
+                self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
+            }
+            //__________________________Filetypes children check __________________________
+        self.CheckChildrenState = (Option) => {
+          return (element, index, array) => {
+                return element[Option];
+            }
         }
 
-        //__________________________Filetypes children check __________________________
-
-        function CheckChildrenState(element, index, array) {
-            return element.AllowOption;
-        }
-        self.CheckAllExtensions = (Parent) => {
-            var ChildrenState = Parent.every(CheckChildrenState);
+        self.CheckAllExtensions = (Parent, Option) => {
+            var ChildrenState = Parent.every(self.CheckChildrenState(Option));
             for (i in Parent) {
                 if (ChildrenState) {
-                    Parent[i].AllowOption = false
+                    Parent[i][Option] = false
                 } else {
-                    Parent[i].AllowOption = true
+                    Parent[i][Option] = true
                 }
             }
             return Parent;
         }
-
-        self.AreAllChildrenSelected = (Children) => {
-            var ChildrenState = Children.every(CheckChildrenState);
+        self.AreAllChildrenSelected = (Children, Option) => {
+            var ChildrenState = Children.every(self.CheckChildrenState(Option));
             return ChildrenState;
         }
-
-        self.Indeterminate = true;
 
         //________________________Get policy and format it's facets ___________________________
 
@@ -109,9 +106,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             key.ChildrenAreNotAllAllowed = false;
                         }
                     });
-
                     self.policy = answer.data;
-
                     //init PolicyFacets
                     self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? {} : self.policy.PolicyFacets;
 
@@ -119,11 +114,24 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
                     var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
 
+                    self.OpenEmailTemplate = () => {
+                        $mdDialog.show({
+                                controller: "EmailNotificationTemplateController",
+                                templateUrl: 'app/policy/templates/policyDefinition/templates/settings/email.template.html',
+                                parent: angular.element(document.body),
+                                clickOutsideToClose: true,
+                            })
+                            .then((answer) => {
+                                $scope.status = 'You said the information was "' + answer + '".';
+                            }, () => {
+                                $scope.status = 'You cancelled the dialog.';
+                            });
+                    }
 
                     /*______________________________________settings______________________________________*/
                     var q2 = policyData.get_policy_settings("PolicySettings");
 
-                        //______________________________________retrieving CDR Facets__________________________________________//
+                    //______________________________________retrieving CDR Facets__________________________________________//
 
                     var q3 = policyData.getCDRFacets();
 
@@ -147,7 +155,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     });
                     return deferred.promise;
                 }).then(function (answer) {
-             
+
                     self.PolicyFacets = answer.EntityFacets;
                 })
 
@@ -213,7 +221,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 });
                 return deferred.promise;
             }).then(function (answer) {
-           
+
                 self.PolicyFacets = answer.EntityFacets;
 
 
@@ -228,14 +236,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.SaveFacetsInCDR = function (DOMValue) {
                 if (!DOMValue) {
                     self.FormatForPOST();
-                } 
+                }
             }
             // ______________________________________   End Of formatting to post    __________________________
             // ______________________________________   Special filter    __________________________
         self.myFilter = function (item) {
-      
+
             return true;
         };
+
+
     }
 
 ])
@@ -264,7 +274,7 @@ app.filter('split', function () {
     }
 });
 
-app.filter("GetValueFromIndex", function(){
+app.filter("GetValueFromIndex", function () {
     return (index) => {
         console.log(index);
         return 1;

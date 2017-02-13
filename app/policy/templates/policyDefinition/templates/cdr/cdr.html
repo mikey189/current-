@@ -33,7 +33,8 @@
     </div>
 
 
-    <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable">
+    <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable" style="border-top: solid 2px red">
+        
          <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
             <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
             <md-button class="md-icon-button" toggle-cdr-fail-actions-edition ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRFailActionsEditable)">

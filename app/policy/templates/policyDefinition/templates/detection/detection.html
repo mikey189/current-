@@ -22,7 +22,7 @@
                         </md-switch>
                     </div>
                     <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice" class="collapsed-elements">
-                        <md-content layout="row" ng-init="propValue.isHidden = true" layout-align="start center">
+                        <md-content layout="row" ng-init="propValue.isHidden = false" layout-align="start center">
                             <md-button ng-click="propValue.isHidden =! propValue.isHidden" class="md-icon-button no-padding-margin">
                                 <md-icon ng-show="propValue.isHidden">keyboard_arrow_right</md-icon>
                                 <md-icon ng-show="!propValue.isHidden">keyboard_arrow_down</md-icon>
