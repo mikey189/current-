@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
-<md-button class="save-settings shadow-on-hover" save-policy-settings md-whiteframe="4"  >
+<md-button class="save-settings shadow-on-hover" save-policy-settings md-whiteframe="4">
     <span ng-if="ctrl.areSettingsEditable">SAVE</span>
     <span ng-if="!ctrl.areSettingsEditable">EDIT</span>
 </md-button>
@@ -27,20 +27,69 @@
                         <input class="custom-input" placeholder="text" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="text" />
                     </div>
                     <div ng-switch-when="FacetPropertyType_MultiLineString" layout="column">
-                        <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]" to-html></textarea>
+                        <textarea ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></textarea>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select"  ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
+                        <select class="custom-select" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
                         </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">
-                        <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password"
-                        />
+                        <input class="custom-input" aria-label="key" placeholder="" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" type="password">
                     </div>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
         </md-list>
     </div>
-    
 </div>
+
+
+
+
+
+
+
+<html>
+<head>
+<style>
+</style>
+</head>
+<body bgcolor='#EAF1DD' lang=EN-US style='tab-interval:36.0pt'>
+<p>Dear <rs_property>user</rs_property>,</p>
+<p>Here are your scan results:</p>
+<table border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+<tr>
+  <td width=200 valign=top style='width:147.15pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p>File name</p>
+  </td>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p>Scan outcome</p>
+  </td>
+  <td width=177 valign=top style='width:132.6pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p>File location</p>
+  </td>
+ </tr>
+ <rs_table>
+ <tr>
+  <td width=196 valign=top style='padding:0cm 5.4pt 0cm 5.4pt'>
+  <p><rs_property>file_name</rs_property></p>
+  </td>
+  <td width=196 valign=top style='padding:0cm 5.4pt 0cm 5.4pt'>
+  <p><rs_property>outcome</rs_property></p>
+  </td>
+  <td width=196 valign=top style='padding:0cm 5.4pt 0cm 5.4pt'>
+  <p><rs_condition><rs_property>is_successful</rs_property><rs_?><a href='file://<rs_property>destination_store_path</rs_property>\<rs_property>file_relative_path</rs_property>'>
+  <rs_property>destination_store_path</rs_property>\<rs_property>file_relative_path</rs_property></a><rs_:>N/A</rs_condition></p>
+  </td>
+ </tr>
+ </rs_table>
+</table>
+<p>Thank you for using ReSecure!</p>
+</body>
+</html>
