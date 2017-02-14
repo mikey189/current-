@@ -32,7 +32,7 @@
                         </md-button>
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice">
-                        <select class="custom-select" ng-model="ctrl.PolicyFacets[Key].Values[propkey]" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
+                        <select class="custom-select" ng-model="ctrl.PolicyFacets[Key].Values[propkey] " string-to-number ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues">
                         </select>
                     </div>
                     <div ng-switch-when=" FacetPropertyType_Password">

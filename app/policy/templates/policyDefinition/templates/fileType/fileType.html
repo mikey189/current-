@@ -34,16 +34,15 @@
                 {{::L0Key}}
             </td>
             <td >
-                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value, AllowOption)" ng-checked="ctrl.AreAllChildrenSelected(L0Value, AllowOption)" 
-                md-indeterminate="{{ctrl.Indeterminate}}"></md-checkbox>
+                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(L0Value, 'AllowOption')" ng-checked="ctrl.AreAllChildrenSelected(L0Value, 'AllowOption')" ></md-checkbox>
             </td>
-            <td colspan="2" ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, ProcessEmbeddedFilesOption)" ng-checked="ctrl.AreAllChildrenSelected(L0Value, ProcessEmbeddedFilesOption)">
+            <td colspan="2" ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, 'ProcessEmbeddedFilesOption')" ng-checked="ctrl.AreAllChildrenSelected(L0Value, 'ProcessEmbeddedFilesOption')">
                 <md-checkbox aria-label="txt"></md-checkbox>
             </td>
-             <td ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, SandboxAllowedFileTypesOption)" ng-checked="ctrl.AreAllChildrenSelected(L0Value, SandboxAllowedFileTypesOption)">
+             <td ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, 'SandboxAllowedFileTypesOption')" ng-checked="ctrl.AreAllChildrenSelected(L0Value, 'SandboxAllowedFileTypesOption')">
                 <md-checkbox aria-label="txt"></md-checkbox>
             </td>
-             <td ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, RegularExpressionScannerAllowedFileTypesOption)" ng-checked="ctrl.AreAllChildrenSelected(L0Value, RegularExpressionScannerAllowedFileTypesOption)">
+             <td ng-if="ctrl.isFileTypesAdvanceModeON" ng-click="ctrl.CheckAllExtensions(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')" ng-checked="ctrl.AreAllChildrenSelected(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
                 <md-checkbox aria-label="txt"></md-checkbox>
             </td>
            

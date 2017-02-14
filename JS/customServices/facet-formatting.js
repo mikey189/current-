@@ -10,7 +10,8 @@ app.factory("FacetFormatter", function () {
                 //need to parse by splitting '|' and then by ':' if exist
 
                 if (EntityL0Value != null) {
-                    var splittedByPipe = EntityL0Value.split('|');
+                        var splittedByPipe = EntityL0Value.split('|');
+                    
                     if (EntityL0Value.includes('=')) {
                         //case Cuckoo1=True|Cuckoo2=True
 

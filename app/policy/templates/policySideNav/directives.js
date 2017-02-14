@@ -17,9 +17,8 @@ app.directive("initNewPolicyModal", function ($mdDialog) {
             element.bind("click", function () {
                 scope.ctrl.new_policy_title = "";
                 $mdDialog.show({
-                    controller: "policy",
-                    controllerAs: "ctrl",
-                    scope: scope.$new(),
+                
+                    scope: scope,
                     clickOutsideToClose: true,
                     templateUrl: "app/policy/templates/policySideNav/new_policy_modal.tmpl.html",
                     parent: angular.element(document).find("body")

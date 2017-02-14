@@ -49,7 +49,7 @@
                     </div>
                     <div ng-switch-when="FacetPropertyType_SingleChoice" layout="row" flex layout-align="space-between center">
                         <p>{{propValue.DisplayName}}</p>
-                        <select ng-init="ctrl.PolicyFacets[Key].Values[propkey] " class="custom-select" ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues"
+                        <select ng-init="ctrl.PolicyFacets[Key].Values[propkey] " class="custom-select" string-to-number ng-options="propValue.AvailableValues.indexOf(x) as x for x in  propValue.AvailableValues"
                             ng-model="ctrl.PolicyFacets[Key].Values[propkey]"></select>
                     </div>
                         
