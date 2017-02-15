@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
-<json-formatter json="ctrl.filetypeFacets"></json-formatter>
-<json-formatter json="ctrl.PolicyFacets"></json-formatter>
+
+
 <json-formatter json="ctrl.Filetypes"></json-formatter>
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
@@ -13,7 +13,7 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input ng-show="ctrl.isFiletypeEditable" ng-model="extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
+<input ng-show="ctrl.isFiletypeEditable" ng-model="Extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
     class="shadow-on-section-hover" />
 <table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
@@ -25,7 +25,7 @@
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Regex Scanner</th>
     </thead>
     <tbody>
-        <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index">
+        <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index ">
             <td>
                 <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.AreChildrenHidden =! L0Value.AreChildrenHidden">
                     <md-icon ng-show="!L0Value.AreChildrenHidden">keyboard_arrow_right</md-icon>
@@ -51,7 +51,7 @@
                     ng-model="regexModel" ng-checked = "ctrl.ChildrenState(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
             </td>
         </tr>
-        <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
+        <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  Extension ===  Ext.Extension"
             ng-init="L0Value.AreChildrenHidden = true">
             <td>
                 <span class="extensions" layout="column"> 

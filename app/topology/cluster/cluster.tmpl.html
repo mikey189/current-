@@ -23,7 +23,7 @@
         <th>Server Name</th>
         <th>Status</th>
         <th>Current Running Jobs</th>
-        <th>Jobs Type</th>
+        <th  style="text-align:center">Jobs Type</th>
         <th>CPU Load</th>
     </thead>
     <tbody>
@@ -39,7 +39,11 @@
                 </div>
             </td>
             <td>
-                <md-checkbox ng-disabled="true" aria-label="job type" ng-repeat="x in cluster.JobTypes" ng-model="x" ng-class="{'job-type-high': x === 'High', 'job-type-medium': x === 'Medium', 'job-type-low': x === 'Low'}"></md-checkbox>
+                <div layout="row" layout-margin layout-align="space-between center">
+                    <div class="jt-high" ng-if="cluster.JobTypes.High"></div>
+                    <div class="jt-many" ng-if="cluster.JobTypes.Many"></div>
+                    <div class="jt-low" ng-if="cluster.JobTypes.Low"></div>
+                </div>
             </td>
             <td>
                 <div id="chart">

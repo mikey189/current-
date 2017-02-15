@@ -93,7 +93,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             })
             
             var TrueElements = [];
-            console.log(ar.length)
             var ParentLen = ar.length;
             for (var i = 0, len = Parent.length; i < len; i++) {
                 if (Parent[i][Property] == true) {
@@ -104,6 +103,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             ModelState = (len < ParentLen && len > 1) ? true : false;
             return ModelState;
         }
+
+      
+
 
         //________________________Get policy and format it's facets ___________________________
 
@@ -294,7 +296,6 @@ app.filter('split', function () {
 
 app.filter("GetValueFromIndex", function () {
     return (index) => {
-        console.log(index);
         return 1;
     }
 })
