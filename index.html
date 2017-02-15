@@ -60,6 +60,7 @@
     <script src="bower_components/json-formatter/dist/json-formatter.min.js?q=1"></script>
     <script src="bower_components/ng-ip-address/src/ngIpAddress.js?q=1"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.min.js?q=1"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-indeterminate/dist/indeterminate.js?q=1"></script>
     <script type="text/javascript" src="JS/libraries/chart-loader.js?q=1"></script>
     <!--<script type="text/javascript" src="bower_components/underscore/underscore-min.js?q=1"></script>-->
     <!-- bootstrap angular ui -->
@@ -132,13 +133,11 @@
     <script src="JS/customServices/facet-formatting.js?q=1"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.10/angular-cookies.js"></script>
 </head>
-    <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+<div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 
 <body ng-app="resec" ng-cloak>
     <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-
     <div data-ui-view class="animated fadeIn"></div>
-
 </body>
 
 </html>

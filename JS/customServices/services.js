@@ -84,7 +84,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var input_output_list = "http://" + sname + ":4580/api/jsonserver/input_output_list";
     var computerList = "http://" + sname + ":4580/api/users/getadmachines";
     var channelsIconsURL = "http://" + sname + ":4580/api/jsonserver/channelsIcons";
-    var channelList = "http://" + sname + ":4580/api/channels/getallchannels/"
+    var channelList = "http://" + sname + ":4580/api/channels/getallchannels/?q=1"
     var channelListReal = "http://" + sname + ":4580/api/channels/getALLCHANNELS";
     var channelDashboard = "http://" + sname + ":4580/api/channels/getchanneldashboard/";
     var postChannel = "http://" + sname + ":4580/api/Channels/PostChannel";
@@ -731,7 +731,7 @@ app.factory("active_users", function ($http) {
 app.factory("active_agents", function ($http) {
     var sname = localStorage.getItem("serverName");
 
-    var url = "http://" + sname + ":4580/api/Deployment/GetDeployments"
+    var url = "http://" + sname + ":4580/api/Deployment/GetDeployments/"
     return {
         get_agents: function () {
             return $http.get(url)

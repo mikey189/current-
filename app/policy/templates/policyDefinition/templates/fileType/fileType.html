@@ -34,27 +34,28 @@
                 {{::L0Key}}
             </td>
             <td>
-                <md-checkbox aria-label="check all" class="custom-checkbox" ng-click="ctrl.CheckAllExtensions(allowOptionModel, L0Value, 'AllowOption')"
-                    ng-model="allowOptionModel" ng-checked = "ctrl.ChildrenState(L0Value, 'AllowOption')"></md-checkbox>
+                <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(allowOptionModel, L0Value, 'AllowOption')"
+                    ng-model="allowOptionModel" ng-checked = "ctrl.ChildrenState(allowOptionModel, L0Value, 'AllowOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'AllowOption')">
+                  
             </td>
             <td colspan="2" ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="txt" ng-click="ctrl.CheckAllExtensions(ProcessEmbededFiles,L0Value, 'ProcessEmbeddedFilesOption')"
-                    ng-model="ProcessEmbededFiles"></md-checkbox>
+                <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(ProcessEmbededModel, L0Value, 'ProcessEmbeddedFilesOption')"
+                    ng-model="ProcessEmbededModel" ng-checked = "ctrl.ChildrenState(ProcessEmbededModel, L0Value, 'ProcessEmbeddedFilesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'ProcessEmbeddedFilesOption')">
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="txt" ng-click="ctrl.CheckAllExtensions(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')"
-                    ng-model="sandboxModel"></md-checkbox>
+               <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')"
+                    ng-model="sandboxModel" ng-checked = "ctrl.ChildrenState(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'SandboxAllowedFileTypesOption')">
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-                <md-checkbox aria-label="txt" ng-click="ctrl.CheckAllExtensions(regex, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
-                    ng-model="regex"></md-checkbox>
+               <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
+                    ng-model="regexModel" ng-checked = "ctrl.ChildrenState(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : extension" ng-if="L0Value.AreChildrenHidden ||  extension ===  Ext.Extension"
             ng-init="L0Value.AreChildrenHidden = true">
             <td>
                 <span class="extensions" layout="column"> 
-               {{::Ext.Extension }} 
+               {{::Ext.Extension}} 
                <span style="font-size: 0.8em; color: #333">{{Ext.Description}}</span>
                </span>
             </td>

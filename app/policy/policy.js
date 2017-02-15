@@ -66,21 +66,46 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.CheckAllExtensions = (ModelState, Parent, Property) => {
             for (var i = 0, len = Parent.length; i < len; i++) {
                 if (Parent[i][Property] !== null) {
-                    Parent[i][Property] = (!ModelState) ? true : false;
+                    Parent[i][Property] = (!ModelState) ? false : true;
                 }
             }
         }
 
-        self.ChildrenState = (Parent, Property) => {
-                var TrueElements = [];
-                for (var i = 0, len = Parent.length; i < len; i++) {
-                    if (Parent[i][Property] == true){
-                        TrueElements.push("1");
-                    }
+        self.ChildrenState = (ModelState, Parent, Property) => {
+            var TrueElements = [];
+            for (var i = 0, len = Parent.length; i < len; i++) {
+                if (Parent[i][Property] == true) {
+                    TrueElements.push("1");
                 }
-                return TrueElements.length === Parent.length;
             }
-            //________________________Get policy and format it's facets ___________________________
+            ModelState = (TrueElements.length === Parent.length) ? true : false;
+            return ModelState;
+        }
+
+        self.IsIndeterminate = (Parent, Property) => {
+            var ModelState = false;
+            var ar = [];
+            var x = Parent.every(x => {
+                if (x[Property] !== null){
+                    ar.push("2")
+                }
+                return ar;
+            })
+            
+            var TrueElements = [];
+            console.log(ar.length)
+            var ParentLen = ar.length;
+            for (var i = 0, len = Parent.length; i < len; i++) {
+                if (Parent[i][Property] == true) {
+                    TrueElements.push("1");
+                }
+            }
+            var len = TrueElements.length;
+            ModelState = (len < ParentLen && len > 1) ? true : false;
+            return ModelState;
+        }
+
+        //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
 
@@ -260,7 +285,7 @@ app.filter("splitter", function () {
         return string;
     }
 });
- app.filter('split', function () {
+app.filter('split', function () {
     return function (input, splitChar, splitIndex) {
         // do some bounds checking here to ensure it has that index
         return input.split(splitChar)[splitIndex];
