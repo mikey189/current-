@@ -95,7 +95,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelTypes = "http://" + sname + ":4580/api/deployment/getDeployments"
     var channelSettings = "http://" + sname + ":4580/api/channels/PostChannelSettings?id="
     var delete_channel = "http://" + sname + ":4580/api/Channels/DeleteChannel/"
-    var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
+    var policyList = "http://" + sname + ":4580/api/policy/getallpolicies/?q=1";
     var reorderChannelOrder = "http://" + sname + ":4580/api/Channels/ReorderChannelPriority"
     var updateChannelName = "http://" + sname + ":4580/api/channels/UpdateChannelName?"
     var ChannelFacets = "http://" + sname + ":4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage"
@@ -273,7 +273,7 @@ app.factory("policyData", function ($rootScope, $http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var policyList = "http://" + sname + ":4580/api/policy/getallpolicies";
+    var policyList = "http://" + sname + ":4580/api/policy/getallpolicies/?q=1";
     var new_policy_creation = "http://" + sname + ":4580/api/policy/postPolicy";
     var policyOrder = "http://" + sname + ":4580/api/policy/reorderPolicyPriority";
     var deletePolicy = "http://" + sname + ":4580/api/policy/deletepolicy";
@@ -549,7 +549,7 @@ app.factory("sanitization_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var url = "http://" + sname + ":4580/api/report/GetSanitizations?"
+    var url = "http://" + sname + ":4580/api/report/GetSanitizations/?q=1"
     var filter_field = "http://" + sname + ":4580/api/jsonserver/sanitizations?q=sanitization_filter_fields"
     var details = "http://" + sname + ":4580/api/report/GetSanitizationInformation/"
 
@@ -617,7 +617,7 @@ app.factory("system_events_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var base_url = "http://" + sname + ":4580/api/Report/GetSystemNotifications?"
+    var base_url = "http://" + sname + ":4580/api/Report/GetSystemNotifications/?q=1"
     return {
         get_system_events: function (index, size) {
             return $http.get(base_url + "PageIndex=" + index + "&PageSize=" + size)
@@ -636,7 +636,7 @@ app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs?"
+    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs/?q=1"
     return {
         get_jobs: function (filter_query) {
             return $http({
@@ -652,7 +652,7 @@ app.factory("emails_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations"
+    var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations/?q=1"
     return {
         get_emails: function (index, size, order) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
