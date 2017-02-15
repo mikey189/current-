@@ -122,10 +122,8 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
         restrict: "A",
         link: function (scope, element, attrs) {
             element.click(function () {
-                var edition_section = $("#edition_section")
                 var self = $(this)
                 if (!scope.ctrl.EndpointSourcesAreEditable) {
-                    edition_section.removeClass("notEditable")
                     self.css("background-color", "red")
                     self.html("SAVE")
                     scope.ctrl.EndpointSourcesAreEditable = true
@@ -133,7 +131,6 @@ app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) 
                     scope.ctrl.selectedOutputs = {}
                     scope.ctrl.selectedInputs = {}
                 } else {
-                    edition_section.addClass("notEditable")
                     self.css("background-color", "#311B92")
                         //recording selected inputs
                     var input_element = $(".input_element")
