@@ -53,13 +53,13 @@ md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-i
 md-switch.md-default-theme ._md-bar, md-switch ._md-bar{
     background-color: #E91E63;
 }
-md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
+/*md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
     background-color: #64D3CC !important;
 }
 
 md-checkbox.md-default-theme.md-checked ._md-icon, md-checkbox.md-checked ._md-icon{
     background-color: #64D3CC !important;
-}
+}*/
 
 md-checkbox.md-default-theme.md-checked ._md-icon:after, md-checkbox.md-checked ._md-icon:after{
     border-color: white !important;

@@ -58,20 +58,26 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.RefreshSidenav();
 
         self.DeleteAction = function (key, L0Key) {
-                //set false
                 self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
             }
             //__________________________Filetypes children check __________________________
 
+
         self.CheckAllExtensions = (Parent, Property) => {
             var x = Parent.every((y) => {
-                if (typeof (y[Property]) != undefined) {
-                    console.log(y[Property])
-                    return y[Property];
-                }
+                console.log(y[Property]);
+                console.log("not nul from every => ", y[Property]);
+                return y[Property] == true;
             });
-            for (i in Parent) {
-                Parent[i].Property = (!x) ? true : false;
+
+            for (var i = 0, len = Parent.length; i < len; i++) {
+                if (Parent[i][Property] !== null) {
+                    Parent[i][Property] = (!x) ? true : false;
+                } else {
+                    if (Parent[i][Property] !== null) {
+                        Parent[i][Property] == true || false;
+                    } 
+                }
             }
         };
 
@@ -85,7 +91,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         //________________________Get policy and format it's facets ___________________________
 
-        self.getPolicyInfo =  (id) => {
+        self.getPolicyInfo = (id) => {
 
                 //LoadFacetTemplate: Boolean;
                 var deferred = $q.defer();
@@ -160,7 +166,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             }
             //watching for change//
-        $scope.$watch(angular.bind(this,  () => {
+        $scope.$watch(angular.bind(this, () => {
             return this.policyId;
         }), function (newVal) {
             self.getPolicyInfo(newVal);
@@ -168,7 +174,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
 
         //______________________________________Formatting Facets to display in DOM______________
-        self.FormatFacetTemplates =  (RetrievedData) => {
+        self.FormatFacetTemplates = (RetrievedData) => {
 
             return FacetFormatter.FormatFacetTemplates(RetrievedData);
 
@@ -176,12 +182,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         //RetrievedData= FacetsTemplates from server after parsing and formatting them
         //EntityFacets= all entity(policy or channel) facets contains Raw data
-        self.InitFacets =  (newRetrievedData, EntityFacets) => {
+        self.InitFacets = (newRetrievedData, EntityFacets) => {
             return FacetFormatter.InitFacets(newRetrievedData, EntityFacets);
         };
         // ______________________________________   confirm policy creation   __________________________
 
-        self.CreatePolicy =  () => {
+        self.CreatePolicy = () => {
                 self.PolicyIsInCreation = true;
                 policyData.create_new_policy(self.PolicyInfo).then((success) => {
                         $mdDialog.cancel();
@@ -197,13 +203,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
             // ______________________________________   format to post facets   ________________________
 
-        self.FormatForPOST =  () => {
+        self.FormatForPOST = () => {
 
 
             var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
 
 
-            policyData.post_policy_settings(self.policyId, Facets2POST).then( (success) => {
+            policyData.post_policy_settings(self.policyId, Facets2POST).then((success) => {
                 self.show_success_dialog("Your changes were successfuly saved")
                 var deferred = $q.defer();
                 var $cdr = policyData.getCDRFacets();
@@ -216,12 +222,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     deferred.resolve(FacetVm);
                 });
                 return deferred.promise;
-            }).then( (answer) => {
+            }).then((answer) => {
 
                 self.PolicyFacets = answer.EntityFacets;
 
 
-            },  (error) => {
+            }, (error) => {
                 self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
             })
 
@@ -229,14 +235,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }
 
         //save cdr settings__________________________________________
-        self.SaveFacetsInCDR =  (DOMValue) => {
+        self.SaveFacetsInCDR = (DOMValue) => {
                 if (!DOMValue) {
                     self.FormatForPOST();
                 }
             }
             // ______________________________________   End Of formatting to post    __________________________
             // ______________________________________   Special filter    __________________________
-        self.myFilter =  (item) => {
+        self.myFilter = (item) => {
 
             return true;
         };
