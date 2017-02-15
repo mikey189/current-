@@ -63,33 +63,24 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //__________________________Filetypes children check __________________________
 
 
-        self.CheckAllExtensions = (Parent, Property) => {
-            var x = Parent.every((y) => {
-                console.log(y[Property]);
-                console.log("not nul from every => ", y[Property]);
-                return y[Property] == true;
-            });
-
+        self.CheckAllExtensions = (ModelState, Parent, Property) => {
             for (var i = 0, len = Parent.length; i < len; i++) {
                 if (Parent[i][Property] !== null) {
-                    Parent[i][Property] = (!x) ? true : false;
-                } else {
-                    if (Parent[i][Property] !== null) {
-                        Parent[i][Property] == true || false;
-                    } 
+                    Parent[i][Property] = (!ModelState) ? true : false;
                 }
             }
-        };
+        }
 
-        self.AreAllChildrenSelected = (Arr, Prop) => {
-            var state = Arr.every((x) => {
-                return x[Prop] == true;
-            });
-            //  console.log(Prop, "=> ", state);
-            return state;
-        };
-
-        //________________________Get policy and format it's facets ___________________________
+        self.ChildrenState = (Parent, Property) => {
+                var TrueElements = [];
+                for (var i = 0, len = Parent.length; i < len; i++) {
+                    if (Parent[i][Property] == true){
+                        TrueElements.push("1");
+                    }
+                }
+                return TrueElements.length === Parent.length;
+            }
+            //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
 
@@ -268,8 +259,8 @@ app.filter("splitter", function () {
         string = splitted.split(/(?=[A-Z])/).join(" ");
         return string;
     }
-})
-app.filter('split', function () {
+});
+ app.filter('split', function () {
     return function (input, splitChar, splitIndex) {
         // do some bounds checking here to ensure it has that index
         return input.split(splitChar)[splitIndex];
