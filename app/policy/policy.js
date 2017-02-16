@@ -86,12 +86,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             var ModelState = false;
             var ar = [];
             var x = Parent.every(x => {
-                if (x[Property] !== null){
+                if (x[Property] !== null) {
                     ar.push("2")
                 }
                 return ar;
             })
-            
+
             var TrueElements = [];
             var ParentLen = ar.length;
             for (var i = 0, len = Parent.length; i < len; i++) {
@@ -100,12 +100,25 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 }
             }
             var len = TrueElements.length;
-            ModelState = (len < ParentLen && len > 1) ? true : false;
+            ModelState = (len < ParentLen && len > 0) ? true : false;
             return ModelState;
         }
 
-      
 
+        self.DisplayGlobalCheckbox = (Parent, Property) => {
+            var testArr = [];
+            var willDisplay;
+            for (var i = 0, len = Parent.length; i < len; i++) {
+                if (Parent[i][Property] !== null){
+                    testArr.push(Parent[i]);
+                };
+            };
+
+            willDisplay = (testArr.length > 0) ? true : false;
+            console.log(Property, "=>", willDisplay, "Length => ", testArr.length);
+            console.log(testArr)
+            return willDisplay;
+        }
 
         //________________________Get policy and format it's facets ___________________________
 

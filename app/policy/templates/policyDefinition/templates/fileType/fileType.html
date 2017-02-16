@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
-
-
 <json-formatter json="ctrl.Filetypes"></json-formatter>
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
     <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
@@ -35,20 +33,24 @@
             </td>
             <td>
                 <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(allowOptionModel, L0Value, 'AllowOption')"
-                    ng-model="allowOptionModel" ng-checked = "ctrl.ChildrenState(allowOptionModel, L0Value, 'AllowOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'AllowOption')">
-                  
+                    ng-model="allowOptionModel" ng-checked="ctrl.ChildrenState(allowOptionModel, L0Value, 'AllowOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'AllowOption')"
+                    ng-if="ctrl.DisplayGlobalCheckbox(L0Value, 'AllowOption')">
             </td>
             <td colspan="2" ng-if="ctrl.isFileTypesAdvanceModeON">
                 <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(ProcessEmbededModel, L0Value, 'ProcessEmbeddedFilesOption')"
-                    ng-model="ProcessEmbededModel" ng-checked = "ctrl.ChildrenState(ProcessEmbededModel, L0Value, 'ProcessEmbeddedFilesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'ProcessEmbeddedFilesOption')">
+                    ng-model="ProcessEmbededModel" ng-if="ctrl.DisplayGlobalCheckbox(L0Value, 'ProcessEmbeddedFilesOption')"
+                    ng-checked="ctrl.ChildrenState(ProcessEmbededModel, L0Value, 'ProcessEmbeddedFilesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'ProcessEmbeddedFilesOption')">
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-               <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')"
-                    ng-model="sandboxModel" ng-checked = "ctrl.ChildrenState(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'SandboxAllowedFileTypesOption')">
+                <input type="checkbox" class="custom-checkbox md-checkbox" ng-if="ctrl.DisplayGlobalCheckbox(L0Value, 'SandboxAllowedFileTypesOption')"
+                    ng-click="ctrl.CheckAllExtensions(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')" ng-model="sandboxModel"
+                    ng-checked="ctrl.ChildrenState(sandboxModel, L0Value, 'SandboxAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'SandboxAllowedFileTypesOption')">
             </td>
             <td ng-if="ctrl.isFileTypesAdvanceModeON">
-               <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
-                    ng-model="regexModel" ng-checked = "ctrl.ChildrenState(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')" ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
+                <input type="checkbox" class="custom-checkbox md-checkbox" ng-if="ctrl.DisplayGlobalCheckbox(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
+                    ng-click="ctrl.CheckAllExtensions(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
+                    ng-model="regexModel" ng-checked="ctrl.ChildrenState(regexModel, L0Value, 'RegularExpressionScannerAllowedFileTypesOption')"
+                    ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  Extension ===  Ext.Extension"
@@ -57,7 +59,7 @@
                 <span class="extensions" layout="column"> 
                {{::Ext.Extension}} 
                <span style="font-size: 0.8em; color: #333">{{Ext.Description}}</span>
-               </span>
+                </span>
             </td>
             <td>
                 <md-checkbox aria-label="is Allowed" ng-model="Ext.AllowOption" ng-if="Ext.AllowOption != null"></md-checkbox>
