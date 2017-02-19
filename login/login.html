@@ -1,4 +1,9 @@
 <div ng-http-loader methods="['GET']" template="app/common/templates/loader.html" ttl="1"></div>
+
+
+
+<h1>{{ctrl.srv}}</h1>
+
 <div layout="column" flex layout-fill id="loginBody" role="main" ng-init="ctrl.CheckIfCookies()">
     <md-content layout="column" id="content">
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
@@ -23,6 +28,7 @@
                             <md-checkbox id="remember-me" aria-label="remember me" ng-model="ctrl.IsRememberMe"></md-checkbox>
                             REMEMBER ME
                         </div>
+                        <button ng-click="ctrl.ChangeToken()">change token</button>
                     </md-input-container>
                 </md-content>
             </md-whiteframe>

@@ -20,15 +20,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/common/common.html',
         controller: 'common',
         controllerAs: 'ctrl',
-        abstract: true,
-        resolve: {
+       // abstract: true,
+      /*  resolve: {
             HeaderHasToken: function ($http) {
                 var token = localStorage.getItem("token");
                 var serverName = localStorage.getItem("serverName");
                 $http.defaults.headers.common.Authorization = token;
                 return $http.defaults.headers.common.Authorization;
             }
-        }
+        }*/
 
     })
 

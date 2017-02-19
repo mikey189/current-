@@ -61,16 +61,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
             }
             //__________________________Filetypes children check __________________________
-
-
         self.CheckAllExtensions = (ModelState, Parent, Property) => {
             for (var i = 0, len = Parent.length; i < len; i++) {
                 if (Parent[i][Property] !== null) {
                     Parent[i][Property] = (!ModelState) ? false : true;
                 }
             }
-        }
-
+        };
         self.ChildrenState = (ModelState, Parent, Property) => {
             var TrueElements = [];
             for (var i = 0, len = Parent.length; i < len; i++) {
@@ -80,8 +77,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
             ModelState = (TrueElements.length === Parent.length) ? true : false;
             return ModelState;
-        }
-
+        };
         self.IsIndeterminate = (Parent, Property) => {
             var ModelState = false;
             var ar = [];
@@ -102,9 +98,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             var len = TrueElements.length;
             ModelState = (len < ParentLen && len > 0) ? true : false;
             return ModelState;
-        }
-
-
+        };
         self.DisplayGlobalCheckbox = (Parent, Property) => {
             var testArr = [];
             var willDisplay;
@@ -115,11 +109,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             };
 
             willDisplay = (testArr.length > 0) ? true : false;
-            console.log(Property, "=>", willDisplay, "Length => ", testArr.length);
-            console.log(testArr)
+           
             return willDisplay;
-        }
-
+        };
         //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
