@@ -20,15 +20,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/common/common.html',
         controller: 'common',
         controllerAs: 'ctrl',
-       // abstract: true,
-      /*  resolve: {
-            HeaderHasToken: function ($http) {
+        abstract: true,
+        resolve: {
+            HeaderHasToken:  ($http) => {
                 var token = localStorage.getItem("token");
                 var serverName = localStorage.getItem("serverName");
                 $http.defaults.headers.common.Authorization = token;
                 return $http.defaults.headers.common.Authorization;
             }
-        }*/
+        }
 
     })
 
@@ -129,8 +129,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
         })*/
-        
-        .state('app.channelManagement.newChannel', {
+
+    .state('app.channelManagement.newChannel', {
             url: '/channelManagementNewChannelS1',
             templateUrl: 'app/channelManagement/templates/newChannel/templates/step1/step1.html',
             //controller: 'endpo',
@@ -194,7 +194,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('app.policy.dashboard', {
             url: '/policyDashboard',
             templateUrl: 'app/policy/templates/policyDashboardTab/policyDashboardTab.html',
-            displayName: "Policy",            
+            displayName: "Policy",
             classSelector: "policy"
 
         })
@@ -300,15 +300,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 
-        .state('app.reports_scanners', {
-            url: '/scannerreports',
-            templateUrl: 'app/reports/scanners/scanners.html',
-            controller: 'reports_scanners',
-            displayName: "Scanners",
-            parentUrl: "app.reports",
-            parentName: "System Status >"
+    .state('app.reports_scanners', {
+        url: '/scannerreports',
+        templateUrl: 'app/reports/scanners/scanners.html',
+        controller: 'reports_scanners',
+        displayName: "Scanners",
+        parentUrl: "app.reports",
+        parentName: "System Status >"
 
-        })
+    })
 
     .state('app.settings', {
         url: '/settings',
