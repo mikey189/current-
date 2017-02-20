@@ -13,9 +13,9 @@ app.factory("401Error", function ($q, $injector) {
                     .ok('Log Back in')
                 $mdDialog.show(alert)
                     .then(() => {
-                        $state.go("login", {
+                        $state.transitionTo("login", {
                             reload: true
-                        })
+                        });
                     })
             }
             return $q.reject(rejection)

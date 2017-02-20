@@ -1,6 +1,8 @@
 app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
 
-    var self = this
+    var self = this;
+
+
 
     self.EndDate = Math.floor(Date.now() / 60000);
     self.StartDate = self.EndDate - 5;
@@ -16,70 +18,64 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
             case "5 Minutes":
                 self.StartDate = self.EndDate - 5;
                 self.DynamicLabels = new Array(5);
-
                 break;
             case "30 Minutes":
                 self.StartDate = self.EndDate - 30;
                 self.DynamicLabels = new Array(15);
-
                 break;
             case "1 Hour":
                 self.StartDate = self.EndDate - 60;
                 self.DynamicLabels = new Array(15);
-
                 break;
             case "90 Minutes":
                 self.StartDate = self.EndDate - 90;
                 self.DynamicLabels = new Array(15);
-
                 break;
             case "2 Hours":
                 self.StartDate = self.EndDate - 120;
                 self.DynamicLabels = new Array(15);
-
                 break;
-        }
+        };
+
+        self.AllClusters = {};
+        var NewCPUWithLowKey = {};
 
         $cluster.GetClusterData(self.StartDate, self.EndDate)
-            .then((answer) => {
-                self.stats = answer.data;
-                var status = answer.data.ClusterStatusInfo.Status;
-                var CpuMeasurementList = answer.data.CpuMeasurementList;
-                self.ClusterData = [];
-                var cpus = [];
-                var currentLow = [];
-                var currentHigh = [];
-                var currentMany = [];
-                var currentJobsMeasures = [];
+            .then((res) => {
+                self.All = res.data;
+                self.Clusters = res.data.ClusterStatusInfo.Nodes;
+                self.Clusters.forEach((CValue, CKey) => {
 
-                angular.forEach(CpuMeasurementList, (value, key) => {
-                    var data = {};
-                    data.Label = key;
-                    data.ClusterStatus = status;
-                    for (i in answer.data.ClusterStatusInfo.Nodes) {
-                        data.JobTypes = {
-                            "High": answer.data.ClusterStatusInfo.Nodes[i].IsHighComplexityConsumer,
-                            "Many": answer.data.ClusterStatusInfo.Nodes[i].IsManyFilesConsumer,
-                            "Low": answer.data.ClusterStatusInfo.Nodes[i].IsLowComplexityConsumer
-                        };
-                    };
-                    angular.forEach(value, (v, k) => {
-                        currentHigh.push(v.HighComplexityRunningSanitizations);
-                        currentLow.push(v.LowComplexityRunningSanitizations);
-                        currentMany.push(v.ManyComplexityRunningSanitizations);
-                        cpus.push(v.CpuLoad);
+                    var lowerKey = CValue.Name.toLowerCase();
+                    self.AllClusters[lowerKey] = CValue;
+                    angular.forEach(self.All.CpuMeasurementList, (v, k) => {
+                        var lowerCaseKey = k.toLowerCase();
+                        NewCPUWithLowKey[lowerCaseKey] = v;
+                    })
+                    self.AllClusters[lowerKey].CPUs = [];
+                    self.AllClusters[lowerKey].currentJobs = [];
+                    angular.forEach(NewCPUWithLowKey[lowerKey], (lv, lk) => {
+                        self.AllClusters[lowerKey].CPUs.push(lv.CpuLoad);
+                        self.AllClusters[lowerKey].currentJobs.push(lv.LowComplexityRunningSanitizations, lv.HighComplexityRunningSanitizations, lv.ManyComplexityRunningSanitizations);
                     });
-                    currentJobsMeasures.push(currentHigh);
-                    currentJobsMeasures.push(currentMany);
-                    currentJobsMeasures.push(currentLow);
-                    data.currentJobs = currentJobsMeasures;
-                    data.cpu = cpus;
-                    self.ClusterData.push(data);
-
                 });
-
-
+                console.log(self.AllClusters);
             })
+
+        var AllMeasuresAreNull = (element, index, array) => {
+            return element < 2;
+        }
+        self.IsEmptyMeasurement = (Measurement) => {
+            return Measurement.every(AllMeasuresAreNull);
+        }
     });
 
 }]);
+
+app.filter("toDate", () => {
+    return (input) => {
+        var NewDate = new Date(input);
+        console.log(NewDate);
+        return NewDate;
+    }
+})

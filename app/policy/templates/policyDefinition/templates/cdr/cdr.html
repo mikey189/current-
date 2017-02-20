@@ -36,8 +36,9 @@
     </div>
 
 
-    <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable" >
-        
+
+    <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable" class="fail-actions">
+
          <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
             <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
             <md-button class="md-icon-button" toggle-cdr-fail-actions-edition ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRFailActionsEditable)">
@@ -47,7 +48,7 @@
         </div>
 
         <div layout="row" layout-margin flex="100"  layout-wrap>
-            <span class="action-chips"   md-whiteframe="2">
+            <span class="action-chips" md-whiteframe="2" ng-if="L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] !== ''">
                 {{L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] }}
             </span>
         </div> 
@@ -61,19 +62,3 @@
     </div>
 </div>
 
-<md-list class="cards shadow-on-section-hover" style="padding-top: 0px" md-whiteframe="5" ng-init="ctrl.CDRHyperLinkEditable = false">
-    <div class="card-title" layout-padding layout="row" layout-align="space-betwwen center">
-        <h4 flex><strong> Hyperlink Regex </strong></h4>
-            <md-button toggle-regex-edition class="md-icon-button" ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRHyperLinkEditable)">
-                <md-icon class="white" ng-if="!ctrl.CDRHyperLinkEditable">edit</md-icon>
-                <md-icon class="white" ng-if="ctrl.CDRHyperLinkEditable">save</md-icon>
-            </md-button>
-        </div>
-        <md-list-item ng-repeat="(k, v) in ctrl.cdr['Hyperlink Regex'].Properties" layout="row" layout-align="space-between center">
-            <p>{{v.DisplayName}}</p>
-            <input ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_String'" ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]"
-            />
-            <md-switch ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_Bool'" aria-label="use google safe browsing"
-                ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]"></md-switch>
-        </md-list-item>
-        </md-list>

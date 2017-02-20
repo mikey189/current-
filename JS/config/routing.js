@@ -237,6 +237,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             ParentID: "PolicyDefinition"
 
         })
+        .state('app.policy.definition.regex', {
+            url: '/policyRegex',
+            classSelector: "policy",
+            templateUrl: 'app/policy/templates/policyDefinition/templates/regex/regex.html',
+            displayName: "Policy > Regex Settings",
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
+
+        })
         .state('app.policy.definition.settings', {
             url: '/policyDefinitionSettings',
             templateUrl: 'app/policy/templates/policyDefinition/templates/settings/settings.html',

@@ -27,9 +27,10 @@ app.directive("logout", ($rootScope, $state, $timeout, HTTPHeaders) => {
         window.localStorage.removeItem("serverName");
         window.localStorage.removeItem("")
         console.log(window.localStorage);
-        $timeout(function () {
-          $state.go("login");
-        })
+        $state.transitionTo("login",  {
+          reload: true
+        });
+
       })
     }
   }

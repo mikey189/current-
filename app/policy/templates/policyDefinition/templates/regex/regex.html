@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
+
+
+<md-list class="cards shadow-on-section-hover" style="padding-top: 0px; margin-top: 4em" md-whiteframe="5" ng-init="ctrl.CDRHyperLinkEditable = false">
+    <div class="card-title" layout-padding layout="row" layout-align="space-betwwen center">
+        <h4 flex><strong> Hyperlink Regex </strong></h4>
+        <md-button toggle-regex-edition class="md-icon-button" ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRHyperLinkEditable)">
+            <md-icon class="white" ng-if="!ctrl.CDRHyperLinkEditable">edit</md-icon>
+            <md-icon class="white" ng-if="ctrl.CDRHyperLinkEditable">save</md-icon>
+        </md-button>
+    </div>
+    <md-list-item ng-repeat="(k, v) in ctrl.cdr['Hyperlink Regex'].Properties" layout="row" layout-align="space-between center">
+        <p>{{v.DisplayName}}</p>
+        <input ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_String'" ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]">
+        <md-switch ng-disabled="!ctrl.CDRHyperLinkEditable" ng-if="v.Type === 'FacetPropertyType_Bool'" aria-label="use google safe browsing"
+            ng-model="ctrl.PolicyFacets['Hyperlink Regex'].Values[k]"></md-switch>
+    </md-list-item>
+</md-list>

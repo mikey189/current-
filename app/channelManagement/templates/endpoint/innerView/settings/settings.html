@@ -9,7 +9,29 @@ After init
         <span ng-if="!ctrl.AreSettingsEditable">EDIT</span>
     </md-button>
 </div>
-<md-list md-whiteframe="4" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
+<md-list ng-if="ctrl.TemplateConditions.isDirWatcher" md-whiteframe="4" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}" style="margin-top: 2em"> 
+    <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
+        <span>Dir Watcher Settings</span>
+    </md-toolbar>
+    <md-list-item ng-repeat="(L0Key, L0Value) in ctrl.whoData['Directory Watcher Advanced Settings'].Properties" ng-switch="L0Value.Type" layout="row"
+        layout-align="space-between center">
+        <span flex="80">{{L0Value.DisplayName}}</span>
+        <div ng-switch-when="FacetPropertyType_String" type="text" flex>
+            <input class="material-input" flex ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]" />
+        </div>
+        <div ng-switch-when="FacetPropertyType_Bool" flex layout="row" layout-align=" end">
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]"></md-switch>
+        </div>
+        <div ng-switch-when="FacetPropertyType_Int" flex>
+            <input class="material-input" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]" type="number" />
+        </div>
+        <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
+            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]"
+                class="select"></select>
+        </div>
+    </md-list-item>
+</md-list>
+<md-list md-whiteframe="4"  style="margin-top: 2em" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
     <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
         <span>Agent Settings</span>
     </md-toolbar>
@@ -31,3 +53,4 @@ After init
         </div>
     </md-list-item>
 </md-list>
+
