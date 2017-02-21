@@ -45,7 +45,6 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                 self.All = res.data;
                 self.Clusters = res.data.ClusterStatusInfo.Nodes;
                 self.Clusters.forEach((CValue, CKey) => {
-
                     var lowerKey = CValue.Name.toLowerCase();
                     self.AllClusters[lowerKey] = CValue;
                     angular.forEach(self.All.CpuMeasurementList, (v, k) => {

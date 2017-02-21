@@ -1,8 +1,6 @@
 app.controller("dashboard", ["dashboardData", function (dashboardData) {
 
     var self = this;
-    console.log(localStorage.getItem("serverName"));
-
 
     self.purpleInt = '40';
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];

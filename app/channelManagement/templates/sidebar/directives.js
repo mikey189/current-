@@ -1,4 +1,4 @@
-app.directive("getMyId", ["$state", "C2CData", "channelData", function ($state, C2CData, channelData) {
+app.directive("getMyId", ["$state",  "channelData", function ($state, channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {

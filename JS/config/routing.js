@@ -11,8 +11,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'login/login.html',
             controller: 'login',
             controllerAs: 'ctrl'
-
-
         })
 
     .state('app', {
@@ -22,7 +20,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controllerAs: 'ctrl',
         abstract: true,
         resolve: {
-            HeaderHasToken:  ($http) => {
+            HeaderHasToken: ($http) => {
                 var token = localStorage.getItem("token");
                 var serverName = localStorage.getItem("serverName");
                 $http.defaults.headers.common.Authorization = token;

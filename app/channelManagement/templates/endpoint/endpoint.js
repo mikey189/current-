@@ -27,6 +27,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         break;
 
                     case 100:
+                    
                         self.TemplateConditions.isDirWatcher = false;
                         self.TemplateConditions.isEndpoint = true;
                         self.EndpointSourcesAreEditable = false;

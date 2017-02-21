@@ -1,9 +1,10 @@
-app.factory("401Error", function ($q, $injector) {
+app.factory("401Error", ($q, $injector) => {
     return {
         responseError: function (rejection) {
             if (rejection.status === 401) {
                 var $mdDialog = $injector.get("$mdDialog");
                 var $state = $injector.get("$state");
+                var $window = $injector.get("$window");
                 localStorage.removeItem("token");
                 var $timeout = $injector.get("$timeout");
                 var alert = $mdDialog.alert()
@@ -13,8 +14,10 @@ app.factory("401Error", function ($q, $injector) {
                     .ok('Log Back in')
                 $mdDialog.show(alert)
                     .then(() => {
-                        $state.transitionTo("login", {
+                        $state.go('login', {}, {
                             reload: true
+                        }).then(function () {
+                            $window.location.reload(true);
                         });
                     })
             }
@@ -22,8 +25,6 @@ app.factory("401Error", function ($q, $injector) {
         }
     }
 });
-
-
 
 app.factory("HTTPHeaders", function ($http, $state, $timeout) {
     var token = localStorage.getItem("token")
@@ -38,9 +39,6 @@ app.factory("HTTPHeaders", function ($http, $state, $timeout) {
 
 
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
-
-    var sname = localStorage.getItem("serverName");
-    //var snme = serverName !== null ? sname: "jdevO1"
 
     return {
         checkLogin: function (serverName, username, password) {
@@ -61,20 +59,9 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
             })
         }
     }
-}])
+}]);
 
 //http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
-
-app.factory("groupList", function ($http) {
-
-
-    var url = "http://localhost:3000/groupList";
-    return {
-        getGroups: function () {
-            return $http.get(url)
-        }
-    }
-})
 
 app.factory("channelData", function ($http, $rootScope) {
 
@@ -494,7 +481,7 @@ app.factory("dashboardData", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    console.log("from services =>"+sname)
+    console.log("dashboard data service says => ", sname);
     var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
     var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
     var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
@@ -515,24 +502,6 @@ app.factory("dashboardData", function ($http) {
         }
     }
 })
-
-app.factory("C2CData", function () {
-    var savedData = {}
-
-    function set(data) {
-        savedData = data;
-    }
-
-    function get() {
-        return savedData;
-    }
-
-    return {
-        set: set,
-        get: get
-    }
-
-});
 
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
@@ -611,7 +580,7 @@ app.factory("telerik_reports_factory", function ($http) {
             return $http.get(reportsList);
         }
     }
-})
+});
 
 app.factory("system_events_factory", function ($http) {
 
@@ -630,7 +599,7 @@ app.factory("system_events_factory", function ($http) {
             })
         }
     }
-})
+});
 
 app.factory("jobs_factory", function ($http) {
 
@@ -646,7 +615,7 @@ app.factory("jobs_factory", function ($http) {
             })
         }
     }
-})
+});
 
 app.factory("emails_factory", function ($http) {
 
@@ -658,7 +627,7 @@ app.factory("emails_factory", function ($http) {
             return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
         }
     }
-})
+});
 
 app.factory("scanners_factory", function ($http) {
 
@@ -691,9 +660,7 @@ app.factory("scanners_factory", function ($http) {
             });
         }
     }
-})
-
-
+});
 
 app.factory("notification_types", function ($http) {
     var sname = localStorage.getItem("serverName");
@@ -715,7 +682,7 @@ app.factory("computer_list", function ($http) {
             return $http.get(url)
         }
     }
-})
+});
 
 app.factory("active_users", function ($http) {
     var sname = localStorage.getItem("serverName");
@@ -726,7 +693,7 @@ app.factory("active_users", function ($http) {
             return $http.get(url)
         }
     }
-})
+});
 
 app.factory("active_agents", function ($http) {
     var sname = localStorage.getItem("serverName");
@@ -737,7 +704,7 @@ app.factory("active_agents", function ($http) {
             return $http.get(url)
         }
     }
-})
+});
 
 app.factory("sanitization_status", function ($http) {
     var sname = localStorage.getItem("serverName");
@@ -748,7 +715,7 @@ app.factory("sanitization_status", function ($http) {
             return $http.get(url)
         }
     }
-})
+});
 
 app.factory("$cluster", function ($http) {
 
@@ -763,4 +730,4 @@ app.factory("$cluster", function ($http) {
 
         }
     }
-})
+});

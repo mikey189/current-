@@ -294,11 +294,11 @@ app.factory("FacetFormatter", function () {
                                 formattedStr += (isFirst ? "" : "|") + objkey + "=" + currentValue[objkey];
                             } else if (type === "FacetPropertyType_MultiChoice") {
                                 if (currentValue !== "") {
-                                    var PipedString = ""
+                                    var PipedString = "";
                                     for (i in currentValue) {
                                         PipedString += (currentValue[i] + "|");
                                     }
-                                    PipedString = PipedString.slice(1, -1);
+                                    PipedString = PipedString.substring(1, PipedString.length-1);
                                     console.log(PipedString)
                                     formattedStr = PipedString;
                                 }
