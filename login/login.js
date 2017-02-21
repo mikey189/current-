@@ -29,7 +29,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
         //password = "P04531418";
 
-        self.LogUserInOnEnter = function ($event, $http) {
+        self.LogUserInOnEnter =  ($event, $http) => {
 
             var keyCode = $event.which || $event.keyCode;
 
@@ -43,7 +43,7 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
                 if (self.IsRememberMe) {
 
-                   
+
                     $cookies.put('serverName', serverName);
 
                     $cookies.put('UserName', self.UserName);
@@ -52,24 +52,22 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
 
                 }
 
-                authService.checkLogin(serverName, self.UserName, self.Password).then(function (answer) {
+                authService.checkLogin(serverName, self.UserName, self.Password)
 
-                    var token = "Bearer " + answer.data.AccessToken
+                .then(
+                    (answer) => {
 
-                    localStorage.setItem("serverName", serverName)
-
-                    localStorage.setItem("token", token)
-
-                    $state.go("app.dashboard")
-
-
-                }, function (error) {
-
-                    self.is_login_nahon = false;
-
-                })
-            }
-        }
+                        var token = "Bearer " + answer.data.AccessToken;
+                        localStorage.setItem("serverName", serverName);
+                        localStorage.setItem("token", token);
+                        $state.go("app.dashboard");
+                    },
+                    (error) => {
+                        self.is_login_nahon = false
+                    }
+                );
+            };
+        };
 
         self.requireMatch = false;
 

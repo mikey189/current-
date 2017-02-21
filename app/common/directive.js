@@ -18,19 +18,15 @@ app.directive("gSidenav", function () {
 
 })
 
-app.directive("logout", ($rootScope, $state, $timeout, HTTPHeaders) => {
+app.directive("logout", ($rootScope, $state, HTTPHeaders) => {
   return {
     restrict: "A",
     link: (scope, element, attrs) => {
       element.click(() => {
         HTTPHeaders.DeleteTokenFromHeader();
-        window.localStorage.removeItem("serverName");
-        window.localStorage.removeItem("")
-        console.log(window.localStorage);
-        $state.transitionTo("login",  {
-          reload: true
-        });
-
+        window.localStorage.clear();
+        console.log(window.applicationCache);
+        $state.go("login");
       })
     }
   }

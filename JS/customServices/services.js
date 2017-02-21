@@ -494,7 +494,7 @@ app.factory("dashboardData", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-
+    console.log("from services =>"+sname)
     var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
     var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
     var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";

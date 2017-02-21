@@ -1,6 +1,7 @@
-app.controller("dashboard", [ "dashboardData", function (dashboardData) {
+app.controller("dashboard", ["dashboardData", function (dashboardData) {
 
     var self = this;
+    console.log(localStorage.getItem("serverName"));
 
 
     self.purpleInt = '40';
@@ -20,5 +21,7 @@ app.controller("dashboard", [ "dashboardData", function (dashboardData) {
         self.casesInfo = answer.data;
         self.totalCases = self.casesInfo.length;
     })
+
+
 
 }])
