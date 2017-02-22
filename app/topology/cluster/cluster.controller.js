@@ -1,7 +1,33 @@
 app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
-
     var self = this;
 
+    /*  var TrendReducer = (arr) => {
+        var mediumValues = [];
+        for (var i = 0; i < arr.length; i += 2) {
+            if (arr[i + 1] !== undefined) {
+                var medium = (parseInt(arr[i]) + parseInt(arr[i + 1])) / 2
+                mediumValues.push(medium)
+            } else {
+                mediumValues.push([arr[i]]);
+            }
+        }
+        var MediumValuesLength = mediumValues.length;
+        var originalLength = arr.length;
+        return mediumValues;
+    };
+
+    var TrendIterator = (arr, DesiredSize) => {
+        var result = TrendReducer(arr);
+        var resultLength = result.length;
+
+        while (resultLength > DesiredSize) {
+            result = TrendReducer(result);
+            resultLength = result.length;
+        }
+        console.log(result);
+        return result;
+    }
+*/
 
 
     self.EndDate = Math.floor(Date.now() / 60000);
@@ -21,19 +47,19 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                 break;
             case "30 Minutes":
                 self.StartDate = self.EndDate - 30;
-                self.DynamicLabels = new Array(15);
+                self.DynamicLabels = new Array(30);
                 break;
             case "1 Hour":
                 self.StartDate = self.EndDate - 60;
-                self.DynamicLabels = new Array(15);
+                self.DynamicLabels = new Array(60);
                 break;
             case "90 Minutes":
                 self.StartDate = self.EndDate - 90;
-                self.DynamicLabels = new Array(15);
+                self.DynamicLabels = new Array(90);
                 break;
             case "2 Hours":
                 self.StartDate = self.EndDate - 120;
-                self.DynamicLabels = new Array(15);
+                self.DynamicLabels = new Array(120);
                 break;
         };
 
@@ -58,9 +84,8 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
                         self.AllClusters[lowerKey].currentJobs.push(lv.LowComplexityRunningSanitizations, lv.HighComplexityRunningSanitizations, lv.ManyComplexityRunningSanitizations);
                     });
                 });
-                console.log(self.AllClusters);
+                
             })
-
         var AllMeasuresAreNull = (element, index, array) => {
             return element < 2;
         }

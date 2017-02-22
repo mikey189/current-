@@ -103,16 +103,19 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             var testArr = [];
             var willDisplay;
             for (var i = 0, len = Parent.length; i < len; i++) {
-                if (Parent[i][Property] !== null){
+                if (Parent[i][Property] !== null) {
                     testArr.push(Parent[i]);
                 };
             };
 
             willDisplay = (testArr.length > 0) ? true : false;
-           
+
             return willDisplay;
         };
-        //________________________Get policy and format it's facets ___________________________
+
+
+       
+            //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
 

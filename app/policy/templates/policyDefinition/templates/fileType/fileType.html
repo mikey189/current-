@@ -11,7 +11,7 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input ng-show="ctrl.isFiletypeEditable" ng-model="Extension" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
+<input ng-show="ctrl.isFiletypeEditable" filter-extensions id="search-extensions" placeholder="search any extension" md-whiteframe="6"
     class="shadow-on-section-hover" />
 <table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
@@ -23,13 +23,13 @@
         <th ng-if="ctrl.isFileTypesAdvanceModeON">Regex Scanner</th>
     </thead>
     <tbody>
-        <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index ">
-            <td>
+        <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index " class="parent-classification">
+            <td > 
                 <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.AreChildrenHidden =! L0Value.AreChildrenHidden">
                     <md-icon ng-show="!L0Value.AreChildrenHidden">keyboard_arrow_right</md-icon>
                     <md-icon ng-show="L0Value.AreChildrenHidden">keyboard_arrow_down</md-icon>
                 </md-button>
-                {{::L0Key}}
+               <span class="parent-itself"> {{::L0Key}}</span>
             </td>
             <td>
                 <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(allowOptionModel, L0Value, 'AllowOption')"
@@ -54,11 +54,11 @@
             </td>
         </tr>
         <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  Extension ===  Ext.Extension"
-            ng-init="L0Value.AreChildrenHidden = true">
+            ng-init="L0Value.AreChildrenHidden = true" class="children-extensions">
             <td>
                 <span class="extensions" layout="column"> 
                {{::Ext.Extension}} 
-               <span style="font-size: 0.8em; color: #333">{{Ext.Description}}</span>
+               <span style="font-size: 0.8em; color: #333">{{::Ext.Description}}</span>
                 </span>
             </td>
             <td>

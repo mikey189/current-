@@ -23,15 +23,12 @@
             </span>
         </div>  
 
-        <div class="actions animated fadeInDown" layout="column" layout-margin  ng-if="L0Value.showValues" ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues">
-            <h3>{{L1Key | splitter : ":": 1}}</h3>
-            <div layout="row" layout-wrap>
-            <span class="action-chips"  ng-class="{'HIGH': L1Value[3]=== 'High','MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide=" L1Value.length == 0 || L1Value[2].includes('None')" >
-             {{L1Value[2]}}
+        <div class="actions animated bounce" layout="row" layout-wrap layout-margin  ng-if="L0Value.showValues">
+            <span class="action-chips" ng-repeat="(L1Key, L1Value) in L0Value.AvailableValues" ng-class="{'HIGH': L1Value[3]=== 'High','MEDIUM': L1Value[3] === 'Medium', 'LOW': L1Value[3] === 'Low' }" ng-hide=" L1Value.length == 0 || L1Value[2].includes('None')" >
+            <span class="parent-category"> {{L1Value[1]}} =></span> {{L1Value[2]}}
                 <md-tooltip ng-if="L1Value[4].length > 0" md-direction="top">{{L1Value[4]}}</md-tooltip>
                 <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] = true" ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key][L1Key] == false">add</md-icon>
             </span>
-            </div>
         </div>
     </div>
 

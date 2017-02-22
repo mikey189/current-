@@ -81,3 +81,6 @@
   .fail-actions {
       border-top: solid 4px red;
   }
+  .parent-category{
+      color: #333;
+  }
