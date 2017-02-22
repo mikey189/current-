@@ -70,11 +70,3 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
     });
 
 }]);
-
-app.filter("toDate", () => {
-    return (input) => {
-        var NewDate = new Date(input);
-        console.log(NewDate);
-        return NewDate;
-    }
-})
