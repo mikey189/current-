@@ -8,8 +8,18 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   //paging the data 
   $scope.get_data = function () {
     sanitization_factory.get_data($scope.query.PageIndex, $scope.query.PageSize, $scope.query.order).then(function (answer) {
-      $scope.data = answer.data
-      $scope.total_length = $scope.data.Total
+      $scope.data = answer.data;
+      var DataLength = $scope.data.List.length;
+      for (var i = 0; i < DataLength; i++) {
+        var SanitizationID = $scope.data.List[i]["Sanitization Id"];
+        var sanitization = $scope.data.List[i];
+        $scope.data.List[i].Actions = [];
+        sanitization_factory.get_actions(SanitizationID).then((res) => {
+          sanitization.Actions = res.data
+        });
+        return $scope.data.List[i] = sanitization;
+      }
+      $scope.total_length = $scope.data.Total;
     })
   }
   $scope.$watchGroup(['query.PageIndex', 'query.PageSize', 'query.order'], function (newValues, oldValues, scope) {
@@ -55,8 +65,8 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   channelData.getComputerList().then(function (answer) {
     $scope.computer_list = answer.data
   })
-  channelData.getChannelTypes().then(function (answer) {
-      $scope.channel_types = answer.data
+  channelData.getchannelList().then(function (answer) {
+      $scope.ChannelList = answer.data
     })
     //end of filter diaglog
     //details dialog
@@ -77,5 +87,33 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
       $scope.sanitization_details = answer.data
     })
     $scope.open_details()
+  };
+
+  $scope.PerformAction = (id, action) => {
+    console.log(id)
+    sanitization_factory.perform_action(id, action)
+      .then((answer) => {
+        alert("congrats")
+      }, (error)=>{
+        alert("an error occured ", error.data);
+      })
   }
+
+
+
+
+
 });
+
+app.filter("CutUntil", () => {
+  return (value, character) => {
+    return value.split(character).pop();
+  }
+})
+
+app.filter("MillisecondsConvertor", () => {
+  return (value) => {
+    var seconds = Math.floor(value / 1000);
+    return seconds;
+  }
+})

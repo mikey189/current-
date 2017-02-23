@@ -11,8 +11,8 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input ng-show="ctrl.isFiletypeEditable" filter-extensions id="search-extensions" placeholder="search any extension" md-whiteframe="6"
-    class="shadow-on-section-hover" />
+<input ng-show="ctrl.isFiletypeEditable" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
+    class="shadow-on-section-hover" ng-model="ctrl.FileTypeQuery"/>
 <table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
     <thead>
         <th>Category</th>
@@ -53,7 +53,7 @@
                     ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
             </td>
         </tr>
-        <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  Extension ===  Ext.Extension"
+        <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  ctrl.FileTypeQuery ===  Ext.Extension "
             ng-init="L0Value.AreChildrenHidden = true" class="children-extensions">
             <td>
                 <span class="extensions" layout="column"> 

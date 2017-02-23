@@ -41,36 +41,7 @@ app.directive("filterExtensions", () => {
                 var input, query, table, parentTR, ParentClassification, i;
                 input = document.getElementById("search-extensions");
                 query = input.value.toLowerCase();
-                table = document.getElementById("filetype-table");
-                ParentClassification = $("parent-itself").html();
-                parentTR = $(".parent-classification");
-                // Loop through all table rows, and hide those who don't match the search query
-                var ParentCategory = scope.ctrl.Filetypes;
-                var extensionsArr = [];
-                var MainArray = [];
-                for (i in ParentCategory) {
-                    MainArray.push(ParentCategory[i]);
-                };
-                var concat = _.concat(MainArray);
-                var flattened = _.flattenDeep(concat);
-                var index = _.findIndex(flattened, (o) => {
-                    return o.Extension == query;
-                })
-                if (index > -1) {
-                    var Parent = (flattened[index].Type.toLowerCase());
-
-                    parentTR.each(function (index) {
-                        console.log(Parent)
-                        var self = $(this);
-                        var sectionName = self.find(".parent-itself").html().toLowerCase().replace(" ", "");;
-                        console.log(sectionName)
-                        if (sectionName == Parent) {
-                            self.css("background-color", "red");
-                            console.log(sectionName + " is the same as : " + Parent);
-
-                        }
-                    })
-                };
+                console.log(query)
             });
         }
     };

@@ -298,7 +298,7 @@ app.factory("FacetFormatter", function () {
                                     for (i in currentValue) {
                                         PipedString += (currentValue[i] + "|");
                                     }
-                                    PipedString = PipedString.substring(1, PipedString.length-1);
+                                    PipedString = PipedString.substring(0, PipedString.length-1);
                                     console.log(PipedString)
                                     formattedStr = PipedString;
                                 }

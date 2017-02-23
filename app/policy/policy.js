@@ -112,10 +112,32 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             return willDisplay;
         };
+        //flatening the filetypes for better indexing when filtering them;
+       /* self.FlattendFileTypeDeep = () => {
+            var ParentCategory = self.Filetypes;
+            var extensionsArr = [];
+            var MainArray = [];
+            for (i in ParentCategory) {
+                MainArray.push(ParentCategory[i]);
+            };
+            var concat = _.concat(MainArray);
+            self.flattenedFT = _.flattenDeep(concat);
+        };
 
+        self.SearchValueForQuery = "";
 
-       
-            //________________________Get policy and format it's facets ___________________________
+        self.ShowRow = (A, Query) => {
+            if (self.FileTypeQuery !== undefined) {
+                var index = _.findIndex(self.flattenedFT, (x) => {
+                    return x.Extension == Query;
+                });
+                var result = (index != -1) ? true : false;
+                console.log(A + " : " + Query + " => " + result);
+                return result;
+            }
+        };*/
+
+        //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
 
@@ -129,6 +151,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 policyData.get_policy_info(id).then(function (answer) {
 
                     self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
+                    //flattens the filetype for better indexing when filtering filtetype DOMSide;
+                    //self.FlattendFileTypeDeep();
                     // checking child state for "AllowOption" Property
                     angular.forEach(self.Filetypes, function (value, key) {
                         if (value.AllowOption == false) {

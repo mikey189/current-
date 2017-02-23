@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
+<json-formatter json="data"></json-formatter>
 <center>
     <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
@@ -29,14 +30,19 @@
                             </md-button>
                         </td>
                         <td md-cell>{{x["Start Time"] | date:"MM/dd/yyyy ':' h:mma"}}</td>
-                        <td md-cell>{{x.Duration}}</td>
-                        <td md-cell>{{x.User}}</td>
+                        <td md-cell>{{x.Duration | date: "mm: ss"}}</td>
+                        <td md-cell>{{x.User | CutUntil: "/"}}</td>
                         <td md-cell>{{x['File Name']}}</td>
                         <td md-cell>{{x.Size}}</td>
                         <td md-cell>{{x["Processing Server"]}}</td>
                         <td md-cell>{{x.Status}}</td>
                         <td md-cell>{{x.Outcome}}</td>
-                        <td md-cell>{{x.Actions}}</td>
+                        <td md-cell layout="row" layout-align="space-between center">
+                            <select flex="60" ng-model="selectedAction" ng-options="action for action in x.Actions"></select>
+                            <md-button flex aria-label="send action" class="md-icon-button" ng-if="selectedAction" ng-click="PerformAction(x['Sanitization Id'], selectedAction)">
+                                <md-icon>done</md-icon>
+                            </md-button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -518,21 +518,36 @@ app.factory("sanitization_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var url = "http://" + sname + ":4580/api/report/GetSanitizations/?q=1"
-    var filter_field = "http://" + sname + ":4580/api/jsonserver/sanitizations?q=sanitization_filter_fields"
-    var details = "http://" + sname + ":4580/api/report/GetSanitizationInformation/"
-
+    var url = "http://" + sname + ":4580/api/report/GetSanitizations/?q=1";
+    var filter_field = "http://" + sname + ":4580/api/jsonserver/sanitizations?q=sanitization_filter_fields";
+    var details = "http://" + sname + ":4580/api/report/GetSanitizationInformation/";
+    var available_actions = "http://" + sname + ":4580/api/report/GetSanitizationWorkflowAction/";
+    var performActionUrl = "http://" + sname + ":4580/api/report/PostPerformSanitizationWorkflowAction/";
 
     return {
 
-        get_data: function (index, size, order_field) {
+        get_actions: (id) => {
+            return $http.get(available_actions + id)
+        },
+
+        perform_action: (id, action) => {
+            return $http({
+                url: performActionUrl + id,
+                method: 'POST',
+                cache: false,
+                params: {
+                    "sanitizationWorkflowAction": action
+                }
+            })
+        },
+        get_data: (index, size, order_field) => {
             return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&sortField=" + order_field)
         },
-        get_filter_fields: function () {
+        get_filter_fields: () => {
             return $http.get(filter_field)
         },
 
-        get_filter_results: function (filter_query) {
+        get_filter_results: (filter_query) => {
             return $http({
                 url: url,
                 method: 'GET',
@@ -540,7 +555,7 @@ app.factory("sanitization_factory", function ($http) {
                 params: filter_query
             })
         },
-        get_details: function (id) {
+        get_details: (id) => {
             return $http.get(details + id)
         }
     }

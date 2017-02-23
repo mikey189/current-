@@ -2,6 +2,7 @@
 
 <div class="md-dialog-container">
   <md-dialog layout-padding flex="50">
+    <json-formatter json="sanitization_fields"></json-formatter>
     <md-toolbar class="sanitization-filter-toolbar" layout="row" layout-align="center center">
       <h3 id="filter-title">Filters</h3>
     </md-toolbar>
@@ -22,7 +23,7 @@
         <md-input-container>
           <md-select ng-model="f_q.computer" placeholder="Pick a computer from the list">
             <md-option ng-repeat="computer in computer_list">
-              {{computer.name}}
+              {{computer}}
             </md-option>
           </md-select>
         </md-input-container>
@@ -31,8 +32,8 @@
         Channels
         <md-input-container>
           <md-select ng-model="f_q.channelType" placeholder="Pick a Channel Type from the list">
-            <md-option ng-repeat="channel in channel_types">
-              {{channel}}
+            <md-option ng-repeat="channel in ChannelList">
+              {{channel.Name}}
             </md-option>
           </md-select>
         </md-input-container>
