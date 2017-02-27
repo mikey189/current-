@@ -27,7 +27,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         break;
 
                     case 100:
-                    
+
                         self.TemplateConditions.isDirWatcher = false;
                         self.TemplateConditions.isEndpoint = true;
                         self.EndpointSourcesAreEditable = false;
@@ -133,6 +133,9 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         /*--------------------  Watching for changes in channel ID --------------------*/
         if (!self.NoChannelExists) {
             self.UpdateChannelData = function (newVal) {
+                channelData.getChannelDashboard(newVal).then((answer1) => {
+                    self.channelDashboard = answer1.data
+                })
                 channelData.get_channel(newVal).then(answer => {
                     var deferred = $q.defer();
                     var $q2 = channelData.ChannelFacets();
@@ -166,9 +169,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         });
         //default view for dashboard is blocked
         self.isBlocked = true;
-        channelData.getChannelDashboard(self.rootId).then(function (answer1) {
-            self.channelDashboard = answer1.data
-        })
+
 
 
         /*--------------------  Channel Input and Output --------------------*/

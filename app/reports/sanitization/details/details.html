@@ -32,15 +32,15 @@
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Deployement Description</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value"> {{sanitization_details["Deployment"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Channel</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value">{{sanitization_details["Channel"]}}  </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Policy</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value"> {{sanitization_details["Policy"]}} </span>
                   </md-list-item>
                 </md-list>
               </md-content>
@@ -50,32 +50,32 @@
                 <h3>Stored Files Informations</h3>
                 <md-list>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
-                    <span class="detail-title">Source Location</span>
-                    <span class="detail-value"> Missing</span>
+                    <span class="detail-title">Source Name</span>
+                    <span class="detail-value"> {{sanitization_details["SourceName"]}}</span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Source Path</span>
-                    <span class="detail-value"> Missing</span>
+                    <span class="detail-value"> {{sanitization_details["SourcePath"]}}</span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
-                    <span class="detail-title">Destination Location</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-title">Destination Name</span>
+                    <span class="detail-value"> {{sanitization_details["DestinationName"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Destination Path</span>
-                    <span class="detail-value">Missing </span>
+                    <span class="detail-value">{{sanitization_details["DestinationPath"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Filetype</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value">{{sanitization_details["FileType"]}}  </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">HashCode</span>
-                    <span class="detail-value"> {{sanitization_details["Actions Log"]}} </span>
+                    <span class="detail-value"> {{sanitization_details["HashCode"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Comment</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value"> {{sanitization_details["Comment"]}} </span>
                   </md-list-item>
                 </md-list>
               </md-content>
@@ -86,19 +86,19 @@
                 <md-list>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Agent IP</span>
-                    <span class="detail-value"> Missing</span>
+                    <span class="detail-value">{{sanitization_details["AgentIp"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Portal Server</span>
-                    <span class="detail-value"> Missing</span>
+                    <span class="detail-value"> {{sanitization_details["PortalServer"]}}</span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Processing Server</span>
-                    <span class="detail-value"> {{sanitization_details["Processing Server"]}} </span>
+                    <span class="detail-value"> {{sanitization_details["ProcessingServer"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Queue Name</span>
-                    <span class="detail-value">Missing </span>
+                    <span class="detail-value">{{sanitization_details["QueueName"]}} </span>
                   </md-list-item>
                 </md-list>
               </md-content>
@@ -117,19 +117,19 @@
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Processing Duration</span>
-                    <span class="detail-value"> ? </span>
+                    <span class="detail-value"> {{sanitization_details["ProcessingDuration"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Overall Duration</span>
-                    <span class="detail-value">? </span>
+                    <span class="detail-value"> {{sanitization_details["OverallDuration"]}}</span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Embedded Files (estimated)</span>
-                    <span class="detail-value"> Missing </span>
+                    <span class="detail-value">  {{sanitization_details["Embedded Files"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Embedded Files (actual)</span>
-                    <span class="detail-value"> {{sanitization_details["Actions Log"]}} </span>
+                    <span class="detail-value"> {{sanitization_details["EmbeddedFilesActual"]}} </span>
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Status</span>
@@ -137,7 +137,7 @@
                   </md-list-item>
                   <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
                     <span class="detail-title">Details</span>
-                    <span class="detail-value"> Same as "Outcome Details" ? </span>
+                    <span class="detail-value">{{sanitization_details["Outcome Details"]}} </span>
                   </md-list-item>
                 </md-list>
               </md-content>
@@ -146,12 +146,6 @@
               <md-content class="md-padding">
                 <h3>Log History</h3>
                 <p>{{sanitization_details['Log History']}}</p>
-              </md-content>
-            </md-tab>
-            <md-tab label="Embedded Files">
-              <md-content class="md-padding">
-                <h3>Embedded Files</h3>
-                <p>{{sanitization_details["Embedded Files"]}}</p>
               </md-content>
             </md-tab>
           </md-tabs>
