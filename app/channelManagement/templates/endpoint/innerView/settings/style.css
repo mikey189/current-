@@ -35,3 +35,11 @@
     color: white !important;
     font-weight: 700 !important;
 }
+.save-settings{
+    background-color:  #2196F3 !important;
+    color: white !important;
+    font-weight: 700 !important;
+}
+.save-settings:hover{
+    background-color: #FF1744 !important;
+}

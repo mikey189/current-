@@ -1,9 +1,8 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
 <json-formatter json="ctrl.Filetypes"></json-formatter>
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
-    <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" save-filetypes ng-class="{'filetype-not-edited': !ctrl.isFiletypeEditable, 'filetype-in-edition': ctrl.isFiletypeEditable}">
-        <span ng-show="ctrl.isFiletypeEditable">SAVE</span>
-        <span ng-show="!ctrl.isFiletypeEditable">EDIT</span>
+    <md-button aria-label="advanced mode" class="shadow-on-hover" id="save-filetype" md-whiteframe="4" save-filetypes >
+        SAVE
     </md-button>
     <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON"
         ng-class="{'basic-mode-button': !ctrl.isFileTypesAdvanceModeON, 'advanced-mode-button': ctrl.isFileTypesAdvanceModeON}">
@@ -11,9 +10,8 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input ng-show="ctrl.isFiletypeEditable" id="search-extensions" placeholder="search any extension" md-whiteframe="6"
-    class="shadow-on-section-hover" ng-model="ctrl.FileTypeQuery"/>
-<table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table" ng-class="{'not-editable': !ctrl.isFiletypeEditable }">
+<input  id="search-extensions" placeholder="search any extension" md-whiteframe="6" class="shadow-on-section-hover" ng-model="ctrl.FileTypeQuery"/>
+<table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table">
     <thead>
         <th>Category</th>
         <th>Allow</th>

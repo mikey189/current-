@@ -139,7 +139,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         //________________________Get policy and format it's facets ___________________________
 
+    
+
         self.getPolicyInfo = (id) => {
+
+            policyData.getDashboard(id).then((res)=> {
+                self.dashboardData = res.data;
+            })
 
                 //LoadFacetTemplate: Boolean;
                 var deferred = $q.defer();

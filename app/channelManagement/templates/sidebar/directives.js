@@ -4,7 +4,7 @@ app.directive("getMyId", ["$state",  "channelData", function ($state, channelDat
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.$apply(function () {
+                scope.$apply( () => {
                     scope.ctrl.rootId = parseInt(self.attr("channel-id"));
                 })
             })

@@ -2,12 +2,8 @@
 <json-formatter json="ctrl.whoData"></json-formatter>
 After init
 <json-formatter json="ctrl.ChannelFacets"></json-formatter>
-<div layout="row" layout-align="end start">
-    <md-button edit-channel-settings md-whiteframe="4" ng-class="{'edit-mode-on': ctrl.AreSettingsEditable, 'edit-mode-off': !ctrl.AreSettingsEditable}"
-        aria-label="edit settings" class="shadow-on-hover">
-        <span ng-if="ctrl.AreSettingsEditable">DONE</span>
-        <span ng-if="!ctrl.AreSettingsEditable">EDIT</span>
-    </md-button>
+<div layout="row" layout-align="start start">
+    <md-button edit-channel-settings md-whiteframe="4" aria-label="edit settings" class="shadow-on-hover save-settings">SAVE</md-button>
 </div>
 <md-list ng-if="ctrl.TemplateConditions.isDirWatcher" md-whiteframe="4" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}"
     style="margin-top: 2em">
@@ -33,7 +29,7 @@ After init
         </div>
     </md-list-item>
 </md-list>
-<md-list md-whiteframe="4" style="margin-top: 2em" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}">
+<md-list md-whiteframe="4" style="margin-top: 2em" class="settings shadow-on-section-hover">
     <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
         <span>Agent Settings</span>
     </md-toolbar>

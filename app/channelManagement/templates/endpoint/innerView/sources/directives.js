@@ -117,69 +117,64 @@ app.directive("editField", function () {
     }
 })
 
-app.directive("editInputsAndOutputs", function (channelData, $state, $mdDialog) {
+app.directive("editInputsAndOutputs", (channelData, $state, $mdDialog) => {
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
-            element.click(function () {
+        link: (scope, element, attrs) => {
+            element.click(() => {
                 var self = $(this)
-                if (!scope.ctrl.EndpointSourcesAreEditable) {
-                    self.css("background-color", "red")
-                    self.html("SAVE")
-                    scope.ctrl.EndpointSourcesAreEditable = true
-                        //emptying arrays in case user plays too much with edit and save buttons
-                    scope.ctrl.selectedOutputs = {}
-                    scope.ctrl.selectedInputs = {}
-                } else {
-                    self.css("background-color", "#311B92")
-                        //recording selected inputs
-                    var input_element = $(".input_element")
-                    input_element.each(function () {
-                            var self = $(this)
-                            if (self.hasClass("input_is_selected")) {
-                                var input_name = self.find("md-content").html()
-                                    // var input_object = {}
-                                    //input_object[input_name] = true
-                                scope.ctrl.selectedInputs[input_name] = true
-                            }
-                        })
-                        //recording selected ouputs
-                    var output_elements = $(".output_element")
-                    output_elements.each(function () {
-                            var self = $(this)
-                            if (self.hasClass("input_is_selected")) {
-                                var output_name = self.find("md-content").html()
-                                    //var output_object = {}
-                                    //output_object[output_name] = true
-                                scope.ctrl.selectedOutputs[output_name] = true
-                            }
-                        })
-                        //recording the object that stores all info of the view
-                    scope.ctrl.IoConfiguration = {
-                            "inputConfiguration": {
-                                "SelectedIoList": scope.ctrl.selectedInputs,
-                                "IoSmbConfiguration": scope.ctrl.ismbList
-                            },
-                            "outputConfiguration": {
-                                "SelectedIoList": scope.ctrl.selectedOutputs,
-                                "IoSmbConfiguration": scope.ctrl.osmbList,
-                                "NullStoreName": scope.ctrl.NullStoreName
-
-                            }
+                var selectedInputs = {};
+                var selectedOutputs = {};
+                //recording selected inputs
+                var input_element = $(".input_element")
+                input_element.each(function () {
+                        var self = $(this)
+                        if (self.hasClass("input_is_selected")) {
+                            var input_name = self.find("md-content").html();
+                                // var input_object = {}
+                                //input_object[input_name] = true
+                            selectedInputs[input_name] = true;
                         }
-                        //posting the data to the server
-                    channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
-
-                        scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()
-                        scope.ctrl.UpdateChannelData(success.data.Id)
-                    }, function (error) {
-                        scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message)
-
                     })
-                    scope.$apply()
-                    self.html("EDIT")
-                    scope.ctrl.EndpointSourcesAreEditable = false
-                }
+                    //recording selected ouputs
+                var output_elements = $(".output_element");
+                output_elements.each(function(){
+                        var self = $(this)
+                        console.log(output_elements);
+                        if (self.hasClass("input_is_selected")) {
+                            var output_name = self.find("md-content").html();
+                            console.log("output name =>"+output_name);
+                                //var output_object = {}
+                                //output_object[output_name] = true
+                            selectedOutputs[output_name] = true;
+                        }
+                    })
+                    //recording the object that stores all info of the view
+                scope.ctrl.IoConfiguration = {
+                        "inputConfiguration": {
+                            "SelectedIoList": selectedInputs,
+                            "IoSmbConfiguration": scope.ctrl.ismbList
+                        },
+                        "outputConfiguration": {
+                            "SelectedIoList": selectedOutputs,
+                            "IoSmbConfiguration": scope.ctrl.osmbList,
+                            "NullStoreName": scope.ctrl.NullStoreName
+                        }
+                        
+                    }
+                    console.log(selectedInputs);
+                    console.log(selectedOutputs);
+                    console.log(scope.ctrl.IoConfiguration);
+                    //posting the data to the server
+                channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
+
+                    scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()
+                    scope.ctrl.UpdateChannelData(success.data.Id)
+                }, function (error) {
+                    scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message)
+
+                })
+                scope.$apply();
             })
         }
     }

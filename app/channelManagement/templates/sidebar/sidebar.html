@@ -31,7 +31,7 @@
                             <md-icon aria-label="remove channel" md-svg-src="app/channelManagement/templates/sidebar/icons/{{x.ChannelInfo.GeneralInformations.ChannelTypeName}}.svg"
                                 class="channel_type_icon"></md-icon>
                             <strong>
-                                <a ui-sref="app.channelManagement.endpoint.dashboard" class="channel-name-editable" 
+                               <a class="channel-name-editable" 
                             contenteditable="{{x.is_channelName_editable}}" _id="{{x.Id}}" ng-class="{'channel-name-in-edtion': x.is_channelName_editable}">{{x.Name}}</a>
                             </strong>
                         </div>

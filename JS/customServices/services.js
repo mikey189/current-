@@ -265,7 +265,6 @@ app.factory("policyData", function ($rootScope, $http) {
     var policyOrder = "http://" + sname + ":4580/api/policy/reorderPolicyPriority";
     var deletePolicy = "http://" + sname + ":4580/api/policy/deletepolicy";
     var policySidenav = "http://" + sname + ":4580/api/policy/GetPoliciesSideNav"
-
     var policyDashboard = "http://" + sname + ":4580/api/policy/GetPolicyDashboardInfo/";
     var filetype = "http://" + sname + ":4580/api/general/filetypes";
     var postFiletype = "http://" + sname + ":4580/api/policy/PostPolicyFileTypes/";

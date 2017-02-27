@@ -28,28 +28,6 @@ app.directive("checkIfEditable", function () {
     }
 })
 
-app.directive("editPreferences", ["policyData", "FacetFormatter", function (policyData, FacetFormatter) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attr) {
-            element.click(function () {
-                var button = $(this)
-                var table = $("#detectionWrapper")
-                if (!scope.ctrl.editMode) {
-                    table.removeClass("notEditable")
-                    button.html("DONE");
-                    scope.ctrl.editMode = true;
-                } else {
-                    table.addClass("notEditable")
-                    button.html("EDIT");
-                    scope.ctrl.editMode = false;
-                    scope.ctrl.FormatForPOST()
-                }
-            })
-        }
-    }
-}])
-
 app.directive("unwrappFireye", function () {
     return {
         restrict: "A",

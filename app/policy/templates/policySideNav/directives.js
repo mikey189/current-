@@ -94,19 +94,17 @@ app.directive("deletePolicy", ["policyData", "$q", "$mdDialog", function (policy
     }
 }])
 
-
-
-
-app.directive("initiateApiCallWithId", ["policyData", "$mdSidenav", function (policyData, $mdSidenav) {
+app.directive("initiateApiCallWithId",  (policyData, $mdSidenav, $state) => {
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
+        link:  (scope, element, attrs) => {
             element.bind("click", function () {
                 var self = $(this);
-                scope.$apply(function () {
+                scope.$apply( () => {
                     scope.ctrl.policyId = parseInt(self.attr("policy-id"));
+                    $state.go("app.policy.definition.fileType");
                 })
             })
         }
     }
-}])
+})

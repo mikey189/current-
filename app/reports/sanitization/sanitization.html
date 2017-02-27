@@ -38,9 +38,11 @@
                         <td md-cell>{{x.Status}}</td>
                         <td md-cell>{{x.Outcome}}</td>
                         <td md-cell layout="row" layout-align="space-between center">
-                            <select flex="60" ng-model="selectedAction" ng-options="action for action in x.Actions"></select>
-                            <md-button flex aria-label="send action" class="md-icon-button" ng-if="selectedAction" ng-click="PerformAction(x['Sanitization Id'], selectedAction)">
-                                <md-icon>done</md-icon>
+                            <md-select placeholder="Pick an action" ng-model="ActionToPerform" md-on-open="LoadActions(x['Sanitization Id'])" style="min-width: 200px;">
+                                <md-option ng-value="action" ng-repeat="action in actions">{{action}}</md-option>
+                            </md-select>
+                            <md-button flex aria-label="send action" class="md-icon-button" ng-if="ActionToPerform" perform-action sanitization-id="x['Sanitization Id']" action="ActionToPerform">
+                                <md-icon id="TaskIndicator">done</md-icon>
                             </md-button>
                         </td>
                     </tr>

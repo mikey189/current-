@@ -10,18 +10,16 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     sanitization_factory.get_data($scope.query.PageIndex, $scope.query.PageSize, $scope.query.order).then(function (answer) {
       $scope.data = answer.data;
       var DataLength = $scope.data.List.length;
-      for (var i = 0; i < DataLength; i++) {
-        var SanitizationID = $scope.data.List[i]["Sanitization Id"];
-        var sanitization = $scope.data.List[i];
-        $scope.data.List[i].Actions = [];
-        sanitization_factory.get_actions(SanitizationID).then((res) => {
-          sanitization.Actions = res.data
-        });
-        return $scope.data.List[i] = sanitization;
-      }
       $scope.total_length = $scope.data.Total;
     })
-  }
+  };
+  $scope.LoadActions = (ID) => {
+    sanitization_factory.get_actions(ID)
+      .then((results) => {
+        $scope.actions = results.data;
+      })
+  };
+
   $scope.$watchGroup(['query.PageIndex', 'query.PageSize', 'query.order'], function (newValues, oldValues, scope) {
     $scope.query.PageIndex = newValues[0]
     $scope.query.PageSize = newValues[1]
@@ -88,21 +86,6 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     })
     $scope.open_details()
   };
-
-  $scope.PerformAction = (id, action) => {
-    console.log(id)
-    sanitization_factory.perform_action(id, action)
-      .then((answer) => {
-        alert("congrats")
-      }, (error)=>{
-        alert("an error occured ", error.data);
-      })
-  }
-
-
-
-
-
 });
 
 app.filter("CutUntil", () => {

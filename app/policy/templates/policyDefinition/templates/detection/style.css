@@ -23,18 +23,17 @@
     background-color: none;
 }
 
-.editDetection {
-    background-color: #190051;
-    color: white;
-    font-weight: 600;
+.save-detection {
+    background-color: #2196F3;
+    color: white !important;
+    font-weight: 700 !important;
     margin-left: 0px;
     margin-top: 2em;
 }
 
-.editDetection:hover {
+.save-detection:hover {
     background-color: #FF1744 !important;
-    color: white;
-    font-weight: 600;
+
 }
 
 .not-editable {
