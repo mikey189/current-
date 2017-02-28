@@ -16,6 +16,47 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.isChecked = function (ftypes) {
             return true;
         }
+
+        self.DashboardTimeFrame = "1 Hour";
+
+        self.GetDashboardTimeFrame = (id, SelectedTime) => {
+            var TimeNow = new Date().getTime();
+            var TimeQuery;
+            switch (SelectedTime) {
+                case "Last Hour":
+                    TimeQuery = TimeNow - (3600 * 1000);
+                    policyData.getDashboard(id, TimeQuery).then((res) => {
+                        self.dashboardData = res.data;
+                    })
+                    break;
+                case "24 Hours":
+                    TimeQuery = TimeNow - (3600 * 1000 * 24);
+                    policyData.getDashboard(id, TimeQuery).then((res) => {
+                        self.dashboardData = res.data;
+                    })
+                    break;
+                case "1 Week":
+                    TimeQuery = TimeNow - (3600 * 1000 * 24 * 7);
+                    policyData.getDashboard(id, TimeQuery).then((res) => {
+                        self.dashboardData = res.data;
+                    })
+                    break;
+                case "1 Month":
+                    TimeQuery = TimeNow - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
+                    policyData.getDashboard(id, TimeQuery).then((res) => {
+                        self.dashboardData = res.data;
+                    })
+                    break;
+                default:
+                    TimeQuery = TimeNow - (3600 * 1000);
+                    policyData.getDashboard(id, TimeQuery).then((res) => {
+                        self.dashboardData = res.data;
+                    })
+                    break;
+            }
+        }
+
+
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
@@ -112,40 +153,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             return willDisplay;
         };
-        //flatening the filetypes for better indexing when filtering them;
-       /* self.FlattendFileTypeDeep = () => {
-            var ParentCategory = self.Filetypes;
-            var extensionsArr = [];
-            var MainArray = [];
-            for (i in ParentCategory) {
-                MainArray.push(ParentCategory[i]);
-            };
-            var concat = _.concat(MainArray);
-            self.flattenedFT = _.flattenDeep(concat);
-        };
-
-        self.SearchValueForQuery = "";
-
-        self.ShowRow = (A, Query) => {
-            if (self.FileTypeQuery !== undefined) {
-                var index = _.findIndex(self.flattenedFT, (x) => {
-                    return x.Extension == Query;
-                });
-                var result = (index != -1) ? true : false;
-                console.log(A + " : " + Query + " => " + result);
-                return result;
-            }
-        };*/
-
         //________________________Get policy and format it's facets ___________________________
-
-    
 
         self.getPolicyInfo = (id) => {
 
-            policyData.getDashboard(id).then((res)=> {
-                self.dashboardData = res.data;
-            })
+               self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
 
                 //LoadFacetTemplate: Boolean;
                 var deferred = $q.defer();
@@ -226,6 +238,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             return this.policyId;
         }), function (newVal) {
             self.getPolicyInfo(newVal);
+        });
+//wathc for time change in dashboard;
+         $scope.$watch(angular.bind(this, () => {
+            return this.DashboardTimeFrame;
+        }), function (newVal) {
+            self.GetDashboardTimeFrame(self.policyId, newVal);
         });
 
 

@@ -43,7 +43,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/dashboard/dashboard.html',
         controller: 'dashboard',
         controllerAs: "ctrl",
-        displayName: "Dashboard"
+        displayName: "Dashboard",
+        classSelector: "app.dashboard"
     })
 
     .state('app.channelManagement', {

@@ -1,9 +1,19 @@
 <div id="top-file-type-header" layout="row" layout-margin md-whiteframe="4">
-    <div layout="row" layout-align="start center" flex="100">
+    <div layout="row" layout-align="space-between center" flex="100">
+        <div flex="80" layout="row" layout-align="start center">
         <md-icon md-svg-src="IMG/icons/top-file.svg" class="top-file-icon md-72">insert_drive_file</md-icon>
-        <h3>Top File Type</h3>
+        <h4>Top File Type</h4>
+        </div>
+       
+        <md-input-container class="noMarginInput" flex>
+            <md-select ng-model="ctrl.DashboardTimeFrame">
+                <md-option selected><small>Last Hour</small></md-option>
+                <md-option><small>24 Hours</small></md-option>
+                <md-option><small>1 Week</small></md-option>
+                <md-option><small>1 Month</small></md-option>
+            </md-select>
+        </md-input-container>
     </div>
-    
 </div>
 <md-virtual-repeat-container id="top-files-policy">
     <div md-virtual-repeat="f in ctrl.dashboardData.TopTenFileTypes" class="policy-top-file-type" flex layout="row" layout-margin>

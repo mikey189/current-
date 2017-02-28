@@ -353,8 +353,8 @@ app.factory("policyData", function ($rootScope, $http) {
                 return response.data
             })
         },
-        getDashboard: function (id) {
-            return $http.get(policyDashboard + id)
+        getDashboard: function (id, TimeReference) {
+            return $http.get(policyDashboard + id+"?startTimeInTicks="+TimeReference)
         },
         getDescriptions: function () {
             return $http.get(fileExtensionsDescription).then(function (response) {
