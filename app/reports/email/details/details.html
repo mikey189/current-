@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="app/reports/sanitization/details/style.css" />
+<div class="md-dialog-container">
+  <md-dialog layout-padding aria-label="whyyyyy" class="detail-dialog">
+    <md-toolbar class="sanitization-detail-toolbar" layout="row" layout-align="space-between center">
+      <h3 id="details-title">Details</h3>
+      <md-button class="md-icon-button" close-sanitization-details aria-label="ok">
+        <md-icon md-svg-src="icons/close.svg"></md-icon>
+    </md-toolbar>
+    <md-dialog-content>
+      <div ng-cloak>
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="General Informations">
+              <md-content class="md-padding">
+                <h3>General Informations</h3>
+                <md-list>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Job ID</span>
+                    <span class="detail-value"> {{sanitization_details["Sanitization Job Id"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Sanitization ID</span>
+                    <span class="detail-value"> {{sanitization_details["Sanitization Id"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Stored File ID</span>
+                    <span class="detail-value"> Missing </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Deployment ID</span>
+                    <span class="detail-value">{{sanitization_details["Deployment Id"]}}  </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Deployement Description</span>
+                    <span class="detail-value"> {{sanitization_details["Deployment"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Channel</span>
+                    <span class="detail-value">{{sanitization_details["Channel"]}}  </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Policy</span>
+                    <span class="detail-value"> {{sanitization_details["Policy"]}} </span>
+                  </md-list-item>
+                </md-list>
+              </md-content>
+            </md-tab>
+            <md-tab label="Stored File informations">
+              <md-content class="md-padding">
+                <h3>Stored Files Informations</h3>
+                <md-list>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Source Name</span>
+                    <span class="detail-value"> {{sanitization_details["SourceName"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Source Path</span>
+                    <span class="detail-value"> {{sanitization_details["SourcePath"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Destination Name</span>
+                    <span class="detail-value"> {{sanitization_details["DestinationName"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Destination Path</span>
+                    <span class="detail-value">{{sanitization_details["DestinationPath"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Filetype</span>
+                    <span class="detail-value">{{sanitization_details["FileType"]}}  </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">HashCode</span>
+                    <span class="detail-value"> {{sanitization_details["HashCode"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Comment</span>
+                    <span class="detail-value"> {{sanitization_details["Comment"]}} </span>
+                  </md-list-item>
+                </md-list>
+              </md-content>
+            </md-tab>
+            <md-tab label="Deployement Information">
+              <md-content class="md-padding">
+                <h3>Deployement Informations</h3>
+                <md-list>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Agent IP</span>
+                    <span class="detail-value">{{sanitization_details["AgentIp"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Portal Server</span>
+                    <span class="detail-value"> {{sanitization_details["PortalServer"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Processing Server</span>
+                    <span class="detail-value"> {{sanitization_details["ProcessingServer"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Queue Name</span>
+                    <span class="detail-value">{{sanitization_details["QueueName"]}} </span>
+                  </md-list-item>
+                </md-list>
+              </md-content>
+            </md-tab>
+            <md-tab label="Sanitization Overall Informations">
+              <md-content class="md-padding">
+                <h3>Sanitization Overall Informations</h3>
+                <md-list>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Start Time</span>
+                    <span class="detail-value"> {{sanitization_details["Start Time"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Wait Time</span>
+                    <span class="detail-value"> {{sanitization_details["Wait Time"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Processing Duration</span>
+                    <span class="detail-value"> {{sanitization_details["ProcessingDuration"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Overall Duration</span>
+                    <span class="detail-value"> {{sanitization_details["OverallDuration"]}}</span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Embedded Files (estimated)</span>
+                    <span class="detail-value">  {{sanitization_details["Embedded Files"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Embedded Files (actual)</span>
+                    <span class="detail-value"> {{sanitization_details["EmbeddedFilesActual"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Status</span>
+                    <span class="detail-value"> {{sanitization_details["Status"]}} </span>
+                  </md-list-item>
+                  <md-list-item layout="row" layout-align="space-between center" class="sanit-details-list-item">
+                    <span class="detail-title">Details</span>
+                    <span class="detail-value">{{sanitization_details["Outcome Details"]}} </span>
+                  </md-list-item>
+                </md-list>
+              </md-content>
+            </md-tab>
+            <md-tab label="Log History">
+              <md-content class="md-padding">
+                <h3>Log History</h3>
+                <p>{{sanitization_details['Log History']}}</p>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+</div>
