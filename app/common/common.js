@@ -7,5 +7,9 @@ app.controller('common', function ($rootScope, $state, $stateParams) {
 	self.token = localStorage.getItem("token");
 	self.serverName = localStorage.getItem("serverName")
 
+	var IsUserSOB = localStorage.getItem("ISSOB");
+	self.IsUserSOB = (IsUserSOB === "true") ? true : false;
+	console.log(self.IsUserSOB)
+
 })
 

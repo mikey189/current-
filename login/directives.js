@@ -31,6 +31,10 @@ app.directive("checkCredentials", ["authService", "$state", "$cookies",
 
                         localStorage.setItem("token", token) 
 
+                        localStorage.setItem("ISSOB", answer.data.IsSob)
+
+                        console.log(localStorage.getItem("ISSOB"));
+
                         $state.go("app.dashboard")
 
 

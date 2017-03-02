@@ -1,11 +1,13 @@
-app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTTPHeaders", "$cookies", 
+app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTTPHeaders", "$cookies",
 
-     function($rootScope, authService, $state, $timeout, HTTPHeaders, $cookies)  {
+    function ($rootScope, authService, $state, $timeout, HTTPHeaders, $cookies) {
 
         var self = this;
 
-        self.CheckIfCookies = function () {
-
+        self.CheckBrowserAndCookies = function () {
+            if (navigator.userAgent.indexOf("Chrome") == -1) {
+                $state.go("isNotChrome")
+            }
             var CookieStorage = {
                 servername: $cookies.get('serverName'),
                 username: $cookies.get('UserName'),
@@ -52,17 +54,17 @@ app.controller("login", ["$rootScope", "authService", "$state", "$timeout", "HTT
                 }
 
                 authService.checkLogin(serverName, self.UserName, self.Password)
-                .then(
-                    (answer) => {
-                        var token = "Bearer " + answer.data.AccessToken;
-                        localStorage.setItem("serverName", serverName);
-                        localStorage.setItem("token", token);
-                        $state.go("app.dashboard");
-                    },
-                    (error) => {
-                        self.is_login_nahon = false
-                    }
-                );
+                    .then(
+                        (answer) => {
+                            var token = "Bearer " + answer.data.AccessToken;
+                            localStorage.setItem("serverName", serverName);
+                            localStorage.setItem("token", token);
+                            $state.go("app.dashboard");
+                        },
+                        (error) => {
+                            self.is_login_nahon = false
+                        }
+                    );
             };
         };
         self.requireMatch = false;

@@ -31,8 +31,18 @@
     pointer-events: none;
 }
 
-.save-smb-button{
-    background-color : #2979FF !important;
-    font-weight: 700; 
+.save-smb-button {
+    background-color: #2979FF !important;
+    font-weight: 700;
     color: white;
+}
+
+.edit-dr {
+    background-color: #2979FF !important;
+    color: white !important;
+    font-size: 700 !important;
+}
+
+.edit-dr:hover {
+    background-color: #C51162 !important;
 }

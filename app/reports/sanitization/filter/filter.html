@@ -2,7 +2,7 @@
 
 <div class="md-dialog-container">
   <md-dialog layout-padding flex="50">
-    <json-formatter json="sanitization_fields"></json-formatter>
+    <json-formatter json="f_q"></json-formatter>
     <md-toolbar class="sanitization-filter-toolbar" layout="row" layout-align="center center">
       <h3 id="filter-title">Filters</h3>
     </md-toolbar>
@@ -10,7 +10,7 @@
       <md-list-item ng-repeat="x in sanitization_fields" layout="row" layout-align="space-between center">
         {{x.name}}
         <md-input-container>
-          <md-select ng-model="f_q.status" placeholder="{{x.values[1]}}">
+          <md-select ng-model="f_q[x.name]" placeholder="{{x.values[1]}}">
             <md-option ng-repeat="status in x.values" ng-value="status">
               {{status}}
             </md-option>

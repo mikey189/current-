@@ -5,6 +5,7 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     PageSize: 10,
     PageIndex: 1
   };
+  $scope.f_q = {};
   //paging the data 
   $scope.get_data = function () {
     sanitization_factory.get_data($scope.query.PageIndex, $scope.query.PageSize, $scope.query.order).then(function (answer) {
@@ -70,6 +71,7 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     //details dialog
   $scope.send_filter_query = function () {
     $mdDialog.hide()
+    console.log($scope.f_q)
     sanitization_factory.get_filter_results($scope.f_q).then(function (answer) {
       $scope.data = answer.data
     })

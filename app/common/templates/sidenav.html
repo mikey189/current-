@@ -13,26 +13,32 @@
                 <md-icon md-svg-src="icons/policiesIcon.svg"></md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Topology">
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Topology" ng-if="ctrl.IsUserSOB">
             <md-button md-no-ink ui-sref='app.clusterManagement' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Topology</md-tooltip>
                 <md-icon class='material-icons md-light'>tune</md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports">
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-if="!ctrl.IsUserSOB">
             <md-button md-no-ink ui-sref='app.reports' class=' thisButton fullWidthButton white' layout="row" layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Reports</md-tooltip>
                 <md-icon class="material-icons md-light">assignment</md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management">
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-if="ctrl.IsUserSOB">
+            <md-button md-no-ink ui-sref='app.reports_emails' class=' thisButton fullWidthButton white' layout="row" layout-align="center center">
+                <md-tooltip class="custom-toolip" md-direction="right">Mail Reports</md-tooltip>
+                <md-icon class="material-icons md-light">mail</md-icon>
+            </md-button>
+        </md-list-item>
+        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management" ng-if="!ctrl.IsUserSOB">
             <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="row"
                 layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Channel Management</md-tooltip>
                 <md-icon md-svg-src="icons/channelLogo.svg"></md-icon>
             </md-button>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Settings">
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Settings" ng-if="!ctrl.IsUserSOB">
             <md-button md-no-ink ui-sref='app.settings' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
                 <md-tooltip class="custom-toolip" md-direction="right">Settings</md-tooltip>
                 <md-icon class='material-icons md-light'>settings</md-icon>
