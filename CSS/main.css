@@ -1,10 +1,11 @@
-
 /*deleting default ugly blue contouring on buttons, inputs ...*/
+
 .shadow-on-hover:hover {
-  box-shadow: 0 14px 18px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.18);
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.18);
 }
+
 .shadow-on-section-hover:hover {
-  box-shadow: 0 14px 26px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 input:focus,
@@ -14,45 +15,59 @@ button:focus {
     outline: none;
 }
 
-.not-editable{
+.not-editable {
     pointer-events: none !important;
 }
 
-.button-strong{
+.button-strong {
     font-weight: 600;
 }
 
-.notEditable{
+.notEditable {
     pointer-events: none;
 }
+
+
 /*editing default select*/
 
-.defaultSelect{
+.defaultSelect {
     border: 0px !important;
     width: 100% !important;
 }
+
+
 /*adding this property on ng-hide makes transitions on ng-show much faster (see exception row in policy defintion for more details)*/
-.ng-hide.ng-hide-animate{
-     display: none !important;
+
+.ng-hide.ng-hide-animate {
+    display: none !important;
 }
-md-chips .md-chips.md-focused, md-chips .md-chips.md-focused{
+
+md-chips .md-chips.md-focused,
+md-chips .md-chips.md-focused {
     box-shadow: 0 2px #23CCC7 !important;
 }
+
 
 /* custom switcher with background color: on -> turquoise
 off -> red
 */
-md-switch.md-default-theme.md-checked ._md-bar, md-switch.md-checked ._md-bar{
+
+md-switch.md-default-theme.md-checked ._md-bar,
+md-switch.md-checked ._md-bar {
     background-color: #2196F3;
 }
-md-switch.md-default-theme.md-checked .md-ink-ripple, md-switch.md-checked .md-ink-ripple{
+
+md-switch.md-default-theme.md-checked .md-ink-ripple,
+md-switch.md-checked .md-ink-ripple {
     background-color: #FAFAFA;
 }
 
-
-md-switch.md-default-theme ._md-bar, md-switch ._md-bar{
+md-switch.md-default-theme ._md-bar,
+md-switch ._md-bar {
     background-color: #E91E63;
 }
+
+
 /*md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
     background-color: #64D3CC !important;
 }
@@ -61,14 +76,13 @@ md-checkbox.md-default-theme.md-checked ._md-icon, md-checkbox.md-checked ._md-i
     background-color: #64D3CC !important;
 }*/
 
-md-checkbox.md-default-theme.md-checked ._md-icon:after, md-checkbox.md-checked ._md-icon:after{
+md-checkbox.md-default-theme.md-checked ._md-icon:after,
+md-checkbox.md-checked ._md-icon:after {
     border-color: white !important;
 }
 
 
-
 /* setting the proper size for md-x size on md-icons otherwise icons will gorw but not their dom Element */
-
 
 md-dialog.fullscreen-dialog {
     max-width: 80%;
@@ -78,34 +92,57 @@ md-dialog.fullscreen-dialog {
     border-radius: 10px;
 }
 
-
 .superPartialDivider {
-     
-        position: relative;
-      
-    }
-    
-    .superPartialDivider:after {
-        content: '';
-        width: 2px;
-        margin-top: 0%;
-        height: 70%;
-        background: #f1f1f1;
-        position: absolute;
-        right: -2px;
-    }
+    position: relative;
+}
 
+.superPartialDivider:after {
+    content: '';
+    width: 2px;
+    margin-top: 0%;
+    height: 70%;
+    background: #f1f1f1;
+    position: absolute;
+    right: -2px;
+}
 
-._md-select-value{
+._md-select-value {
     padding-bottom: 8px !important;
 }
 
-md-content, p, h1, h2, h3, h4, h5, h6, text-area *
-{
-   font-family: Calibri !important;
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-family: Calibri !important;
 }
 
-.commonCustomSelector{
+::-moz-placeholder {
+    /* Firefox 19+ */
+    font-family: Calibri !important;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    font-family: Calibri !important;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    font-family: Calibri !important;
+}
+
+md-content,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+text-area * {
+    font-family: Calibri !important;
+}
+
+.commonCustomSelector {
     border: solid 2px #DAE1F0;
     border-radius: 100px;
 }
@@ -580,8 +617,6 @@ md-content {
     min-height: 100%;
 }
 
-
-
 #sanitizedFileGraph {
     width: 80%;
     height: 15%;
@@ -596,12 +631,10 @@ md-content {
     border-right: solid 1px #d3d3d3;
 }
 
-.resizedDonoughts > canvas{
+.resizedDonoughts>canvas {
     width: 8em !important;
     height: 4.44em !important;
 }
-
-
 
 .greenBorder {
     border-color: solid 1px #5DC5BD;
@@ -764,12 +797,12 @@ md-select:not ([disabled]):focus ._md-select-value {
     height: auto;
 }
 
-#topFileTypeMdList> md-list-item {
+#topFileTypeMdList>md-list-item {
     background-color: white;
     height: auto;
 }
 
-#topUsersMdList> md-list-item {
+#topUsersMdList>md-list-item {
     background-color: white;
     height: auto;
 }
@@ -807,7 +840,8 @@ md-select:not ([disabled]):focus ._md-select-value {
 policy-graph-toolbar {
     margin-bottom: 2em;
 }
-#policyMainNav{
+
+#policyMainNav {
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -816,21 +850,21 @@ policy-graph-toolbar {
     background-color: #101250;
 }
 
-#policyNav> li> a {
+#policyNav>li>a {
     color: white;
 }
 
-#policyNav> li>a:hover {
+#policyNav>li>a:hover {
     background-color: #6B69EB;
     color: white
 }
 
-#policyNav> li>a:focus {
+#policyNav>li>a:focus {
     background-color: #6B69EB;
     color: white;
 }
 
-#policyNav> li {
+#policyNav>li {
     border-left: solid 1px white;
 }
 
@@ -838,7 +872,7 @@ policy-graph-toolbar {
     margin-left: 0px;
 }
 
-#whoSearchBox> input {
+#whoSearchBox>input {
     border: 0px;
 }
 
@@ -846,7 +880,7 @@ policy-graph-toolbar {
     padding-bottom: 0px;
 }
 
-#usersSearchBox> input {
+#usersSearchBox>input {
     border: 0px;
 }
 
@@ -873,12 +907,12 @@ policy-graph-toolbar {
     width: 93%;
 }
 
-#channelSearchBox> input {
+#channelSearchBox>input {
     border: 0px;
     color: white
 }
 
-#channelSearchBox> input::-webkit-input-placeholder {
+#channelSearchBox>input::-webkit-input-placeholder {
     border: 0px;
     color: white
 }
@@ -928,31 +962,35 @@ a:not(.md-button) {
     margin-right: 0px;
     margin-left: 0px;
 }
-#policyDefintionView{
+
+#policyDefintionView {
     padding-left: 0px;
     padding-right: 0px;
 }
 
-#blockedFileSpan > h3{
+#blockedFileSpan>h3 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-#dashboardTableContainer{
+#dashboardTableContainer {
     min-height: 100% !important;
 }
-.marginLeft1em{
+
+.marginLeft1em {
     margin-left: 1em;
 }
 
-.noMarginRight{
-margin-right: 1em !important;
-margin-left: 0em !important; 
+.noMarginRight {
+    margin-right: 1em !important;
+    margin-left: 0em !important;
 }
-.noMarginLeft{
+
+.noMarginLeft {
     margin-right: 0em !important;
-margin-left: 1em !important; 
+    margin-left: 1em !important;
 }
-.md-divider{
+
+.md-divider {
     border-top: solid 1px #BDBDBD;
 }

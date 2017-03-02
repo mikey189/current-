@@ -1,19 +1,45 @@
-#form{
+#form {
     background-color: white;
     border-radius: 3px;
     min-height: 300px;
     min-width: 40%;
 }
-#btn{
-    width: 90% !important;
+
+#btn {
+    
     background-color: #7B1FA2;
     color: white !important;
+    align-content: right;
 }
-.input-field{
+
+#btn:hover {
+    background-color: #AD1457 !important;
+}
+
+.input-field {
     margin-top: 3em;
     margin-left: 20px;
     margin-right: 20px;
 }
+
 #container {
     background-color: #E0E9F7;
+}
+
+.password-container input {
+    border: solid 0px white !important;
+    border-bottom: solid 2px #7B1FA2 !important;
+}
+
+.password-container input:focus {
+    border-bottom: solid 2px #AD1457 !important;
+}
+
+.password-container {
+    margin-left: 1.3em;
+    margin-top: 2em;
+}
+.no-margin{
+    margin-right: 0px !important;
+    padding-right: 0px !important
 }
