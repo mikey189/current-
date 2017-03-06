@@ -1,9 +1,15 @@
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/style.css">
 <md-content layout-align="space-between start">
-
     <md-content layout="row">
         <md-content flex="100" layout="column" style="margin-left: 1em; margin-right: 1em">
-            <channel-dashboard-data-switcher></channel-dashboard-data-switcher>
-            <json-formatter json="ctrl.channelDashboard"></json-formatter>
+            <md-input-container>
+            <md-select ng-model="ctrl.DashboardTimeFrame" aria-label="time-frame" id="channel-dashboard-timepicker" layout-align="end end">
+                <md-option selected><small>Last Hour</small></md-option>
+                <md-option><small>24 Hours</small></md-option>
+                <md-option><small>1 Week</small></md-option>
+                <md-option><small>1 Month</small></md-option>
+            </md-select>
+            </md-input-container>
             <div layout="row" flex="100" layout-align="space-between start">
                 <endpoint-dashboard-top-files style="width: 49%"></endpoint-dashboard-top-files>
                 <endpoint-dashboard-top-users style="width: 49%"></endpoint-dashboard-top-users>

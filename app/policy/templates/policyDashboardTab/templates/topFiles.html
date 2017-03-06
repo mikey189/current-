@@ -20,7 +20,7 @@
 <md-virtual-repeat-container id="top-files-policy" ng-if="ctrl.dashboardData.TopTenFileTypes.length > 0">
     <div md-virtual-repeat="f in ctrl.dashboardData.TopTenFileTypes" class="policy-top-file-type" flex layout="row" layout-margin>
         <div class="top-file-icon-holder" layout="column" layout-align="center center" layout-margin flex="10">
-            <md-icon class="material-icons darkPurple">insert_drive_file</md-icon>
+            <md-icon class="material-icons darkPurple">extension</md-icon>
             <p class="noMarginBottom noMarginTop extensionName" to-uppercase>{{f.FileExtension}}</p>
         </div>
         <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
@@ -28,7 +28,7 @@
             <p class="noMarginBottom noMarginTop">{{f.TotalPassed}} Passed Files</p>
         </div>
         <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">
-            <md-icon class="material-icons lightGreen">check_circle</md-icon>
+            <md-icon md-svg-src="icons/modified-file.svg"></md-icon>
             <p class="noMarginBottom noMarginTop">{{f.TotalModified}} Modified Files</p>
         </div>
         <div class="top-file-icon-holder" layout="row" layout-align="start center" layout-margin flex="20">

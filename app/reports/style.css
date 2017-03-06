@@ -21,3 +21,7 @@
 .reports-menu-description{
     margin: 3em 1.5em;
 }
+.report-menu{
+    width: 100% !important;
+    text-align: left !important;
+}

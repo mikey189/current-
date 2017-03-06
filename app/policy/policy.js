@@ -20,54 +20,57 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //var TimeOffset = UTCTime.getTimezoneOffset() * 60000; //get milliseconds offset;
         self.DashboardTimeFrame = "1 Week";
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
-             getUTCNow = () => {
-                var now = new Date();
-                var time = now.getTime();
-                var offset = now.getTimezoneOffset();
-                offset = offset * 60000;
-                return time - offset;
-            }
 
-            var TimeQuery;
-            switch (SelectedTime) {
-                case "Last Hour":
-                    TimeQuery = getUTCNow() - (3600 * 1000);
-                    console.log(TimeQuery)
-                    policyData.getDashboard(id, TimeQuery).then((res) => {
-                        self.dashboardData = res.data;
-                    })
-                    break;
-                case "24 Hours":
-                    TimeQuery = getUTCNow() - (3600 * 1000 * 24);
-                    console.log(TimeQuery)
-                    policyData.getDashboard(id, TimeQuery).then((res) => {
-                        self.dashboardData = res.data;
-                    })
-                    break;
-                case "1 Week":
-                    TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
-                    policyData.getDashboard(id, TimeQuery).then((res) => {
-                        self.dashboardData = res.data;
-                    })
-                    break;
-                case "1 Month":
-                    TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
-                    console.log(TimeQuery);
-                    policyData.getDashboard(id, TimeQuery).then((res) => {
-                        self.dashboardData = res.data;
-                    })
-                    break;
-                default:
-                    TimeQuery = getUTCNow() - (3600 * 1000);
-                    console.log(TimeQuery)
+            if (id) {
 
-                    policyData.getDashboard(id, TimeQuery).then((res) => {
-                        self.dashboardData = res.data;
-                    })
-                    break;
+                getUTCNow = () => {
+                    var now = new Date();
+                    var time = now.getTime();
+                    var offset = now.getTimezoneOffset();
+                    offset = offset * 60000;
+                    return time - offset;
+                }
+
+                var TimeQuery;
+                switch (SelectedTime) {
+                    case "Last Hour":
+                        TimeQuery = getUTCNow() - (3600 * 1000);
+                        console.log(TimeQuery)
+                        policyData.getDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "24 Hours":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24);
+                        console.log(TimeQuery)
+                        policyData.getDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "1 Week":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
+                        policyData.getDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "1 Month":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
+                        console.log(TimeQuery);
+                        policyData.getDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    default:
+                        TimeQuery = getUTCNow() - (3600 * 1000);
+                        console.log(TimeQuery)
+
+                        policyData.getDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                }
             }
         }
-
 
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
@@ -170,84 +173,84 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         self.getPolicyInfo = (id) => {
 
+                if (id) {
 
+                    self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
 
-                self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
+                    //LoadFacetTemplate: Boolean;
+                    var deferred = $q.defer();
+                    self.PolicyFacets = {};
+                    self.ServerFacetTemplates = {};
+                    self.ParsedPolicyFacets = {};
+                    self.FacetTemplatesContainer = {};
+                    //   if (LoadFacetTemplate) {
+                    policyData.get_policy_info(id).then(function (answer) {
 
-                //LoadFacetTemplate: Boolean;
-                var deferred = $q.defer();
-                self.PolicyFacets = {};
-                self.ServerFacetTemplates = {};
-                self.ParsedPolicyFacets = {};
-                self.FacetTemplatesContainer = {};
-                //   if (LoadFacetTemplate) {
-                policyData.get_policy_info(id).then(function (answer) {
+                        self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
+                        //flattens the filetype for better indexing when filtering filtetype DOMSide;
+                        //self.FlattendFileTypeDeep();
+                        // checking child state for "AllowOption" Property
+                        angular.forEach(self.Filetypes, function (value, key) {
+                            if (value.AllowOption == false) {
+                                key.ChildrenAreNotAllAllowed = true;
+                            } else {
+                                key.ChildrenAreNotAllAllowed = false;
+                            }
+                        });
+                        self.policy = answer.data;
+                        //init PolicyFacets
+                        self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? {} : self.policy.PolicyFacets;
 
-                    self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
-                    //flattens the filetype for better indexing when filtering filtetype DOMSide;
-                    //self.FlattendFileTypeDeep();
-                    // checking child state for "AllowOption" Property
-                    angular.forEach(self.Filetypes, function (value, key) {
-                        if (value.AllowOption == false) {
-                            key.ChildrenAreNotAllAllowed = true;
-                        } else {
-                            key.ChildrenAreNotAllAllowed = false;
+                        //__________________________________________file detection settings__________________________________________//
+
+                        var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
+
+                        self.OpenEmailTemplate = () => {
+                            $mdDialog.show({
+                                    controller: "EmailNotificationTemplateController",
+                                    templateUrl: 'app/policy/templates/policyDefinition/templates/settings/email.template.html',
+                                    parent: angular.element(document.body),
+                                    clickOutsideToClose: true,
+                                })
+                                .then((answer) => {
+                                    $scope.status = 'You said the information was "' + answer + '".';
+                                }, () => {
+                                    $scope.status = 'You cancelled the dialog.';
+                                });
                         }
-                    });
-                    self.policy = answer.data;
-                    //init PolicyFacets
-                    self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? {} : self.policy.PolicyFacets;
 
-                    //__________________________________________file detection settings__________________________________________//
+                        /*______________________________________settings______________________________________*/
+                        var q2 = policyData.get_policy_settings("PolicySettings");
 
-                    var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
+                        //______________________________________retrieving CDR Facets__________________________________________//
 
-                    self.OpenEmailTemplate = () => {
-                        $mdDialog.show({
-                                controller: "EmailNotificationTemplateController",
-                                templateUrl: 'app/policy/templates/policyDefinition/templates/settings/email.template.html',
-                                parent: angular.element(document.body),
-                                clickOutsideToClose: true,
-                            })
-                            .then((answer) => {
-                                $scope.status = 'You said the information was "' + answer + '".';
-                            }, () => {
-                                $scope.status = 'You cancelled the dialog.';
-                            });
-                    }
+                        var q3 = policyData.getCDRFacets();
 
-                    /*______________________________________settings______________________________________*/
-                    var q2 = policyData.get_policy_settings("PolicySettings");
+                        $q.all({
+                            q1,
+                            q2,
+                            q3
+                        }).then(data => {
+                            self.RawData = data;
+                            var detectionFacets = data.q1.data;
+                            var allFacets = data.q2.data;
+                            var cdr = data.q3.data;
+                            //merge all facets templates into one object.
+                            Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
+                            self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
+                            self.allFacets = self.FormatFacetTemplates(allFacets);
+                            self.cdr = self.FormatFacetTemplates(cdr);
+                            Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
+                            var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
+                            deferred.resolve(FacetVm);
+                        });
+                        return deferred.promise;
+                    }).then(function (answer) {
 
-                    //______________________________________retrieving CDR Facets__________________________________________//
+                        self.PolicyFacets = answer.EntityFacets;
+                    })
 
-                    var q3 = policyData.getCDRFacets();
-
-                    $q.all({
-                        q1,
-                        q2,
-                        q3
-                    }).then(data => {
-                        self.RawData = data;
-                        var detectionFacets = data.q1.data;
-                        var allFacets = data.q2.data;
-                        var cdr = data.q3.data;
-                        //merge all facets templates into one object.
-                        Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
-                        self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
-                        self.allFacets = self.FormatFacetTemplates(allFacets);
-                        self.cdr = self.FormatFacetTemplates(cdr);
-                        Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
-                        var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
-                        deferred.resolve(FacetVm);
-                    });
-                    return deferred.promise;
-                }).then(function (answer) {
-
-                    self.PolicyFacets = answer.EntityFacets;
-                })
-
-
+                }
             }
             //watching for change//
         $scope.$watch(angular.bind(this, () => {
@@ -261,8 +264,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.GetDashboardTimeFrame(self.policyId, newVal);
         });
-
-
         //______________________________________Formatting Facets to display in DOM______________
         self.FormatFacetTemplates = (RetrievedData) => {
 

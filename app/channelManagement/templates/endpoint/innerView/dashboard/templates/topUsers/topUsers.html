@@ -1,23 +1,19 @@
-<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topUsers/style.css" />
-
-<md-content id="endpointDashboardTopUsers" md-whiteframe="6">
-
-    <div layout="row" md-whiteframe="4" layout-padding layout-align="none center">
-        <md-icon class="material-icons md-primary md-36" id="EndpointTopFilesIcon">groups</md-icon>
-        <h4>Top Users</h4>
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
+<md-toolbar layout="row" class="light-blue" md-whiteframe="6">
+    <div layout-margin>
+        <md-icon md-svg-src="icons/top-user.svg" class="top-file-icon md-72"></md-icon>
+        <span style="color: #333">Top Users</span>
     </div>
-
-    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight">
-        <md-list>
-            <div md-virtual-repeat="user in ctrl.channelDashboard.TopUsersList">
-                <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin>
-                    <p flex="65"> {{user.Name}}</p>
-                    <div>
-                    <p class="customChips">{{user.Team}}</p>
-                    </div>
-                </md-list-item>
-                <md-divider></md-divider>
-            </div>
-        </md-list>
-    </md-virtual-repeat-container>
-</md-content>
+</md-toolbar>
+<md-list flex class="top-file-type-list" md-whiteframe="4">
+    <md-list-item class="md-2-line file-type-row" ng-repeat="user in ctrl.dashboardData.TopUsersList" ng-if="ctrl.dashboardData.TopUsersList.length > 0">
+        <div layout="row" layout-align="space-between center" flex>
+            <p class="user-name" layout-align="start center" flex="50">{{user.Name}}</p>
+            <p layout-align="end end" class="user-team" layout-padding>{{user.Team}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item ng-if="ctrl.dashboardData.TopUsersList.length < 1" layout="column" layout-align="center center" layout-margin>
+        <md-icon class="material-icons md-48">sentiment_very_dissatisfied</md-icon>
+        <h3>No data available for this time frame</h3>
+    </md-list-item>
+</md-list>

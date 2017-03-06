@@ -313,7 +313,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-        .state('app.reports_jobs', {
+        .state('app.reports.jobs', {
             url: '/jobs',
             templateUrl: 'app/reports/jobs/jobs.html',
             controller: 'reports_jobs',

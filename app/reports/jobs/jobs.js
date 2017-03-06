@@ -5,10 +5,10 @@ app.controller("reports_jobs", function ($scope, jobs_factory, computer_list, ac
         PageSize: 5,
         PageIndex: 1
     };
-    $scope.get_data = function () {
+    $scope.get_data =  () => {
         jobs_factory.get_jobs($scope.jobs_query).then(function (answer) {
-            $scope.data = answer.data
-            $scope.total_length = answer.data.Total
+            $scope.data = answer.data;
+            $scope.total_length = answer.data.Total;
         })
     }
     $scope.get_data()
@@ -41,17 +41,16 @@ app.controller("reports_jobs", function ($scope, jobs_factory, computer_list, ac
     })
     sanitization_status.get_status_list().then(function (answer) {
         $scope.sanitization_status = answer.data
-    })
+    });
 
 
-    $scope.QueryUsers = (query) => {
-
-        var included = _.find($scope.users, (user) => {
-            return user.includes(query)
-        })
-
-        console.log(query + " is => " + included)
-        var result = (typeof included == "undefined") ? $scope.users : included;
+    $scope.SearchUser = (query) => {
+        var QueryLC = (query) ? query.toLowerCase() : "";
+        var result = _.filter($scope.users, function (user) {
+            var UserLC = user.toLowerCase();
+            return UserLC.includes(QueryLC)
+        });
+        console.log(result)
         return result;
     }
 

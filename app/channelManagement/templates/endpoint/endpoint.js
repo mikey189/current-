@@ -2,9 +2,63 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
     function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q) {
 
         var self = this;
-        self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
         //setting switcher function to switch templates
         self.TemplateConditions = {};
+        //dashboard top files 
+
+
+        self.GetDashboardTimeFrame = (id, SelectedTime) => {
+
+            if (id && typeof SelectedTime != "undefined") {
+                getUTCNow = () => {
+                    var now = new Date();
+                    var time = now.getTime();
+                    var offset = now.getTimezoneOffset();
+                    offset = offset * 60000;
+                    return time - offset;
+                }
+                var TimeQuery;
+                switch (SelectedTime) {
+                    case "Last Hour":
+                        TimeQuery = getUTCNow() - (3600 * 1000);
+
+                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "24 Hours":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24);
+
+
+                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "1 Week":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
+
+
+                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    case "1 Month":
+                        TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
+
+
+                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                    default:
+                        TimeQuery = getUTCNow() - (3600 * 1000);
+                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
+                            self.dashboardData = res.data;
+                        })
+                        break;
+                }
+            }
+        }
         self.TemplateSwitcher = function (ChannelType, channelInfo) {
                 switch (ChannelType) {
                     // endpoint
@@ -131,8 +185,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         }
 
         /*--------------------  Watching for changes in channel ID --------------------*/
-        if (!self.NoChannelExists) {
-            self.UpdateChannelData = function (newVal) {
+
+        self.UpdateChannelData = function (newVal) {
+
+            if (newVal) {
+                self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame);
                 channelData.getChannelDashboard(newVal).then((answer1) => {
                     self.channelDashboard = answer1.data
                 })
@@ -159,14 +216,21 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     return deferred.promise;
                 }).then(res => {
                     self.ChannelFacets = res.EntityFacets
+
                 })
             }
-        };
+        }
         $scope.$watch(angular.bind(this, function () {
             return this.rootId;
         }), function (newValue) {
             self.UpdateChannelData(newValue)
         });
+        $scope.$watch(angular.bind(this, function () {
+            return this.DashboardTimeFrame;
+        }), function (time) {
+            self.GetDashboardTimeFrame(self.rootId, time)
+        });
+
         //default view for dashboard is blocked
         self.isBlocked = true;
 
@@ -240,7 +304,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.channel_list = []
         self.is_edit_mode_on = false;
-        self.LoadSidenav = function () {
+        self.LoadSidenav = () => {
             channelData.getchannelList().then(function (answer) {
                 self.menuItems = answer.data;
                 if (self.menuItems.length > 0) {
@@ -255,11 +319,14 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 } else {
                     self.NoChannelExists = true;
                 }
+                return self.rootId
+
+            }).then((id) => {
+                self.UpdateChannelData(id);
 
             })
         }
-        self.LoadSidenav()
-
+        self.LoadSidenav();
         self.onDropComplete = function (index, obj, evt) {
                 var otherObj = self.channel_list[index];
                 var otherIndex = self.channel_list.indexOf(obj);

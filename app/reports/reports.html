@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="app/reports/style.css" />
-
-<div layout="row" layout-margin class="reports-menu-wrapper" layout-wrap layout-align="space-between start">
-  <div class="reports-menu-cards" md-whiteframe="6" flex="30" ng-repeat="x in ctrl.menu">
+<!--<div layout="row" layout-margin class="reports-menu-wrapper" layout-wrap layout-align="center center">
+  <div class="reports-menu-cards" md-whiteframe="6" flex="30" ng-repeat="x in ctrl.menu" ng-if="x.name != 'Mail'">
     <div class="reports-menu-header" layout="row" layout-align="start center" layout-padding md-whiteframe="4">
       <h3>{{x.name}}</h3>
     </div>
@@ -15,7 +14,22 @@
     </div>
   </div>
 </div>
-
-
-
-
+-->
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop  md-whiteframe="4">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Reports</h1>
+    </md-toolbar>
+    <md-content layout-margin>
+      <ul style="padding-left: 0px">
+        <li ng-repeat="report in ctrl.menu">
+            <md-button class="md-button report-menu md-ink-ripple" ui-sref="app.reports.jobs" flex> {{report.name}}</md-button>
+        </li>
+      </ul>
+    </md-content>
+  </md-sidenav>
+  <md-content flex layout-padding layout="column">
+    <md-button ng-click="ctrl.toggleSidenav()">toggle sidenav</md-button>
+    <div ui-view></div>
+  </md-content>
+</section>
