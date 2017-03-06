@@ -6,7 +6,7 @@
         </div>
        
         <md-input-container class="noMarginInput" flex>
-            <md-select ng-model="ctrl.DashboardTimeFrame">
+            <md-select ng-model="ctrl.DashboardTimeFrame" aria-label="time-frame">
                 <md-option selected><small>Last Hour</small></md-option>
                 <md-option><small>24 Hours</small></md-option>
                 <md-option><small>1 Week</small></md-option>
@@ -15,7 +15,9 @@
         </md-input-container>
     </div>
 </div>
-<md-virtual-repeat-container id="top-files-policy">
+
+
+<md-virtual-repeat-container id="top-files-policy" ng-if="ctrl.dashboardData.TopTenFileTypes.length > 0">
     <div md-virtual-repeat="f in ctrl.dashboardData.TopTenFileTypes" class="policy-top-file-type" flex layout="row" layout-margin>
         <div class="top-file-icon-holder" layout="column" layout-align="center center" layout-margin flex="10">
             <md-icon class="material-icons darkPurple">insert_drive_file</md-icon>
@@ -39,3 +41,8 @@
         </div>
     </div>
 </md-virtual-repeat-container>
+
+<div ng-if = "ctrl.dashboardData.TopTenFileTypes.length < 1" layout="column" layout-align="center center" layout-margin>
+    <md-icon class="material-icons md-48">sentiment_very_dissatisfied</md-icon>
+    <h3>No data available for this time frame</h3>
+</div>

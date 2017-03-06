@@ -13,9 +13,9 @@ app.controller("reports_jobs", function ($scope, jobs_factory, computer_list, ac
     }
     $scope.get_data()
     $scope.$watchGroup(['$scope.jobs_query.PageIndex', '$scope.jobs_query.PageSize', '$scope.jobs_query.SortField'], function (newValues, oldValues, scope) {
-        $scope.jobs_query.PageIndex = newValues[0]
-        $scope.jobs_query.PageSize = newValues[1]
-        $scope.jobs_query.SortField = newValues[2]
+        $scope.jobs_query.PageIndex = newValues[0];
+        $scope.jobs_query.PageSize = newValues[1];
+        $scope.jobs_query.SortField = newValues[2];
         $scope.get_data()
     });
     $scope.limitOptions = $scope.limitOptions ? undefined : [10, 25, 50, 100];
@@ -29,17 +29,30 @@ app.controller("reports_jobs", function ($scope, jobs_factory, computer_list, ac
         limitSelect: true,
         pageSelect: true
     }
-    computer_list.get_computers().then(function (answer) {
+    computer_list.get_computers().then((answer) => {
         $scope.computer_list = answer.data
     })
-    active_users.get_users().then(function (answer) {
+    active_users.get_users().then((answer) => {
         $scope.users = answer.data
     })
-    active_agents.get_agents().then(function (answer) {
+
+    active_agents.get_agents().then((answer) => {
         $scope.active_agents = answer.data
     })
-    sanitization_status.get_status_list().then(function(answer){
+    sanitization_status.get_status_list().then(function (answer) {
         $scope.sanitization_status = answer.data
     })
+
+
+    $scope.QueryUsers = (query) => {
+
+        var included = _.find($scope.users, (user) => {
+            return user.includes(query)
+        })
+
+        console.log(query + " is => " + included)
+        var result = (typeof included == "undefined") ? $scope.users : included;
+        return result;
+    }
 
 })

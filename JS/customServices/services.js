@@ -619,7 +619,7 @@ app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs/?q=1"
+    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs/?q=1&AgentTypeStr=endpoint";
     return {
         get_jobs: function (filter_query) {
             return $http({

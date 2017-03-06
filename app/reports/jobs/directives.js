@@ -24,16 +24,6 @@ app.directive("closeJobsFilter", function ($mdDialog) {
         }
     }
 })
-app.directive("filterJobs", function (jobs_factory) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.click(function () {
-                jobs_factory.get_filter_results(scope.jobs_query).then(function (answer) {
-                })
-            })
-        }
-    }
-})
+
 
 

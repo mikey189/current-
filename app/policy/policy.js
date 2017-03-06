@@ -14,41 +14,53 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.allFacets = {};
         self.PolicyIsInCreation = false;
         self.isChecked = function (ftypes) {
-            return true;
-        }
-
-        self.DashboardTimeFrame = "1 Hour";
-
+                return true;
+            }
+            //var UTCTime = new Date();
+            //var TimeOffset = UTCTime.getTimezoneOffset() * 60000; //get milliseconds offset;
+        self.DashboardTimeFrame = "1 Week";
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
-            var TimeNow = new Date().getTime();
+             getUTCNow = () => {
+                var now = new Date();
+                var time = now.getTime();
+                var offset = now.getTimezoneOffset();
+                offset = offset * 60000;
+                return time - offset;
+            }
+
             var TimeQuery;
             switch (SelectedTime) {
                 case "Last Hour":
-                    TimeQuery = TimeNow - (3600 * 1000);
+                    TimeQuery = getUTCNow() - (3600 * 1000);
+                    console.log(TimeQuery)
                     policyData.getDashboard(id, TimeQuery).then((res) => {
                         self.dashboardData = res.data;
                     })
                     break;
                 case "24 Hours":
-                    TimeQuery = TimeNow - (3600 * 1000 * 24);
+                    TimeQuery = getUTCNow() - (3600 * 1000 * 24);
+                    console.log(TimeQuery)
                     policyData.getDashboard(id, TimeQuery).then((res) => {
                         self.dashboardData = res.data;
                     })
                     break;
                 case "1 Week":
-                    TimeQuery = TimeNow - (3600 * 1000 * 24 * 7);
+                    TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
                     policyData.getDashboard(id, TimeQuery).then((res) => {
                         self.dashboardData = res.data;
                     })
                     break;
                 case "1 Month":
-                    TimeQuery = TimeNow - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
+                    TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
+                    console.log(TimeQuery);
                     policyData.getDashboard(id, TimeQuery).then((res) => {
                         self.dashboardData = res.data;
                     })
                     break;
                 default:
-                    TimeQuery = TimeNow - (3600 * 1000);
+                    TimeQuery = getUTCNow() - (3600 * 1000);
+                    console.log(TimeQuery)
+
                     policyData.getDashboard(id, TimeQuery).then((res) => {
                         self.dashboardData = res.data;
                     })
@@ -84,6 +96,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             );
         };
         self.RefreshSidenav = function () {
+            console.log("init sidenav")
             policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
                 if (self.sideNavList.length > 0) {
@@ -157,7 +170,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         self.getPolicyInfo = (id) => {
 
-               self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
+
+
+                self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
 
                 //LoadFacetTemplate: Boolean;
                 var deferred = $q.defer();
@@ -232,6 +247,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     self.PolicyFacets = answer.EntityFacets;
                 })
 
+
             }
             //watching for change//
         $scope.$watch(angular.bind(this, () => {
@@ -239,8 +255,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
-//wathc for time change in dashboard;
-         $scope.$watch(angular.bind(this, () => {
+        //wathc for time change in dashboard;
+        $scope.$watch(angular.bind(this, () => {
             return this.DashboardTimeFrame;
         }), function (newVal) {
             self.GetDashboardTimeFrame(self.policyId, newVal);
