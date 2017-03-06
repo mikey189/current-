@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="64px" viewBox="0 0 78 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>1488491446_apple-01</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-383.000000, -788.000000)">
+            <g id="macos" transform="translate(360.000000, 771.000000)">
+                <g id="1488491446_apple-01" transform="translate(23.000000, 17.000000)">
+                    <g id="Layer_1">
+                        <polygon id="Shape" fill="#A6A6AD" points="47.58 62.4390244 30.42 62.4390244 31.98 53.8536585 46.02 53.8536585"></polygon>
+                        <path d="M72.54,56.195122 L5.46,56.195122 C2.886,56.195122 0,53.3073171 0,50.7317073 L0,4.68292683 C0,2.10731707 2.106,0 4.68,0 L73.32,0 C75.894,0 78,2.10731707 78,4.68292683 L78,50.7317073 C78,53.3073171 75.114,56.195122 72.54,56.195122 L72.54,56.195122 Z" id="Shape" fill="#3E3E42"></path>
+                        <polygon id="Shape" fill="#000000" opacity="0.1" points="46.878 58.5365854 46.02 53.8536585 31.98 53.8536585 31.122 58.5365854"></polygon>
+                        <path d="M0,47.0634146 L0,51.5121951 C0,54.0878049 2.106,56.195122 4.68,56.195122 L73.32,56.195122 C75.894,56.195122 78,54.0878049 78,51.5121951 L78,47.0634146 C78,46.9073171 77.922,46.8292683 77.766,46.8292683 L0.234,46.8292683 C0.078,46.8292683 0,46.9073171 0,47.0634146 L0,47.0634146 Z" id="Shape" fill="#D2D2D6"></path>
+                        <rect id="Rectangle-path" fill="#57575E" x="3.9" y="3.90243902" width="70.2" height="39.0243902"></rect>
+                        <ellipse id="Oval" fill="#A6A6AD" cx="39" cy="51.5121951" rx="2.34" ry="2.34146341"></ellipse>
+                        <path d="M51.48,63.2195122 C51.48,63.6878049 51.168,64 50.7,64 L27.3,64 C26.832,64 26.52,63.6878049 26.52,63.2195122 L26.52,62.4390244 C26.52,61.9707317 26.832,61.6585366 27.3,61.6585366 L50.7,61.6585366 C51.168,61.6585366 51.48,61.9707317 51.48,62.4390244 L51.48,63.2195122 L51.48,63.2195122 Z" id="Shape" fill="#D2D2D6"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

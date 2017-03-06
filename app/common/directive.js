@@ -48,3 +48,13 @@ app.directive("refresh", function ($state) {
     }
   }
 })
+app.directive("changePassword", ($state) => {
+  return {
+    restrict: "A",
+    link: (scope, element, attrs) => {
+      element.click(() => {
+       $state.go("ResetPasswordS1");
+      })
+    }
+  }
+});

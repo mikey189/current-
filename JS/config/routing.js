@@ -6,12 +6,35 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
+
+        .state('isNotChrome', {
+            url: '/isNotChrome',
+            templateUrl: 'login/NotChrome/NotChrome.html',
+            controller: 'NotChrome',
+            controllerAs: 'ctrl'
+        })
         .state('login', {
             url: '/',
             templateUrl: 'login/login.html',
             controller: 'login',
             controllerAs: 'ctrl'
         })
+
+    .state('ResetPasswordS1', {
+        url: '/ResetPasswordS1',
+        templateUrl: 'app/AccountManager/templates/S1/ResetPassword.html',
+        controller: 'ResetPasswordS1',
+        controllerAs: 'ctrl'
+    })
+
+    .state('ResetPasswordS2', {
+        url: '/ResetPasswordS2',
+        templateUrl: 'app/AccountManager/templates/S2/ResetPassword.html',
+        controller: 'ResetPasswordS1',
+        controllerAs: 'ctrl'
+    })
+
+
 
     .state('app', {
         url: '/app',
@@ -54,8 +77,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controllerAs: 'ctrl',
         displayName: "Channel Management",
         classSelector: "channel"
-
     })
+
+
+    /*dashboard policy mail sanitization */
+
 
 
     .state('app.channelManagement.endpoint', {
@@ -74,8 +100,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "Channel Management",
             classSelector: "channel",
             ParentID: "ChannelDashboard"
-
-
 
         })
         .state('app.channelManagement.endpoint.sources', {

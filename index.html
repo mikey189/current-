@@ -31,7 +31,6 @@
         delete window.exports;
         delete window.module;
     </script>-->
- 
     <script type="text/javascript" src="JS/libraries/jquery.min.js "></script>
     <script src="JS/libraries/jquery-ui.js "></script>
     <script type='text/javascript' src='JS/libraries/bootstrap.min.js '></script>
@@ -73,8 +72,7 @@
     <script src='JS/config/theming.js '></script>
     <!--<script src='JS/config/translator.js '></script>-->
     <script src='login/services/authentification.js '></script>
-        <script  src="JS/customServices/services.js?t=<?=time()?>"></script>
-
+    <script src="JS/customServices/services.js?t=<?=time()?>"></script>
     <script src='login/login.js'></script>
     <script src='login/directives.js'></script>
     <script src='app/cases/cases.js'></script>
@@ -123,6 +121,8 @@
     <script src="app/reports/jobs/jobs.js "></script>
     <script src="app/reports/jobs/directives.js"></script>
     <script src="app/reports/email/email.js "></script>
+    <script src="app/AccountManager/templates/S1/controller.js"></script>
+    <script src="app/AccountManager/templates/S2/controller.js"></script>
     <!-- load this one for data table -->
     <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js "></script>
     <!--Reports JS-->
@@ -132,6 +132,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.min.js " type="text/javascript"></script>
     <script src="JS/customServices/facet-formatting.js "></script>
     <script src="JS/libraries/ng-cookies.js"></script>
+    <script src="login/NotChrome/controller.js"></script>
 </head>
 
 <body ng-app="resec" ng-cloak>

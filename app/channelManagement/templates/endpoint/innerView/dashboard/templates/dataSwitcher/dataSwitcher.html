@@ -1,15 +1,16 @@
-<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/dataSwitcher/style.css" />
-<div id="CMDataSwitcher" layout="row" layout-padding layout-align="space-around center" class="md-whiteframe-5dp">
-    <h4 flex="40"></h4>
-    <div layout="row" layout-align="start center" flex layout-margin>
-        <div layout="row" class="c1" blocked-processed-toggler layout-margin>
-            <div class="blocked active">
-                Blocked Files
-            </div>
-            <div class="processed">
-                Processed Files
-            </div>
-        </div>
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/dataSwitcher/style.css">
+<!--<div layout="row" layout-margin layout-align="end end">
+    <div layout="row" layout-align="space-between center" id="time-container">
+        <md-icon id="timeline-icon">timeline</md-icon>
+        <md-input-container class="noMarginInput">
+            <md-select ng-model="ctrl.DashboardTimeFrame">
+                <md-option selected><small>Last Hour</small></md-option>
+                <md-option><small>24 Hours</small></md-option>
+                <md-option><small>1 Week</small></md-option>
+                <md-option><small>1 Month</small></md-option>
+            </md-select>
+        </md-input-container>
     </div>
-</div>
+</div>-->
 
+<div rg-range-picker="myDatetimeRange" labels="myDatetimeLabels"></div>

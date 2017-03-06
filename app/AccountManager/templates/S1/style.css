@@ -1,0 +1,21 @@
+#form {
+    background-color: white;
+    border-radius: 3px;
+    min-height: 300px;
+    min-width: 40%;
+}
+
+.send-email {
+    background-color: #7B1FA2 !important;
+    color: white !important;
+}
+
+.input-field {
+    margin-top: 3em;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#container {
+    background-color: #E0E9F7;
+}
