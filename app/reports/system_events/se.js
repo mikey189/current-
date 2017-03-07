@@ -1,4 +1,4 @@
-app.controller("system_events", function ($scope, system_events_factory) {
+app.controller("system_events", function ($scope, system_events_factory, $mdDialog, ToastNotifications) {
 
   $scope.se_query = {
     order: 'StartTime',
@@ -32,4 +32,17 @@ app.controller("system_events", function ($scope, system_events_factory) {
   };
   $scope.filter = {}
 
+  $scope.LaunchFilter = () => {
+    system_events_factory.get_filter_results($scope.se_query).then((answer) => {
+      if (answer.data.Total < 1) {
+        ToastNotifications.ErrorToast("Your request has returned 0 result, thus it was NOT taken into account")
+      } else {
+        $scope.data = answer.data;
+        $scope.total_length = $scope.data.Total;
+      }
+    }, (error) => {
+       ToastNotifications.ErrorToast("an error has occured : " + error.data.Message);
+    })
+    $mdDialog.hide();
+  }
 })

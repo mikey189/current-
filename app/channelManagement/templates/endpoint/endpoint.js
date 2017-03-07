@@ -1,5 +1,5 @@
-app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q",
-    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q) {
+app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q","ToastNotifications",
+    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications) {
 
         var self = this;
         //setting switcher function to switch templates
@@ -163,24 +163,10 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.HTTP_Dialogs = {
 
             ShowSuccessDialog: function () {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Success')
-                    .textContent('Your changes were successfully saved.')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                )
+                ToastNotifications.SuccessToast("Your Changes were successfully saved")
             },
             ShowErrorDialog: function (ErrorMessage) {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Error')
-                    .textContent('An error occured while updating the changes you made : ' + ErrorMessage)
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                )
+                ToastNotifications.ErrorToast(ErrorMessage)
             }
         }
 

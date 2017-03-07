@@ -30,3 +30,6 @@
 .cancel-button:hover {
     background-color: #283593 !important;
 }
+.k-datetimepicker .k-picker-wrap .k-icon{
+    margin: 6px 6px !important;
+}

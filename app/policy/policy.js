@@ -1,6 +1,6 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter","ToastNotifications",
 
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications) {
 
         var self = this;
         self.sidenav_edit_mode = false;
@@ -78,25 +78,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         };
         self.ComputingUnits = ["Kb", "Mb", "Gb", "Tb"];
         self.show_success_dialog = function (message) {
-            $mdDialog.show(
-                $mdDialog.alert()
-                .clickOutsideToClose(true)
-                .title('Success')
-                .textContent(message)
-                .ariaLabel('Alert Dialog Demo')
-                .ok('Got it!')
-            );
+            ToastNotifications.SuccessToast(message)
         };
         self.show_error_dialog = function (message, errorMessage) {
             var str = message + " : " + errorMessage
-            $mdDialog.show(
-                $mdDialog.alert()
-                .clickOutsideToClose(true)
-                .title('Error')
-                .textContent(str)
-                .ariaLabel('Alert Dialog Demo')
-                .ok('Got it!')
-            );
+            ToastNotifications.ErrorToast(str);
         };
         self.RefreshSidenav = function () {
             console.log("init sidenav")

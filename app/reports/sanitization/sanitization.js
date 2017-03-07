@@ -25,7 +25,7 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     $scope.query.PageIndex = newValues[0]
     $scope.query.PageSize = newValues[1]
     $scope.query.order = newValues[2]
-    $scope.get_data()
+    $scope.get_data();
   });
   //filter dialog
   $scope.limitOptions = $scope.limitOptions ? undefined : [10, 25, 50, 100];

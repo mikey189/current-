@@ -39,10 +39,14 @@ md-select-value {
     min-width: 36px !important;
     color: white !important;
 }
-.se-filter-icon{
-    color: white !important;
+.action-success{
+    background-color: #43A047 !important;
 }
-.error-message{
-    color: #FFEA00;
-    font-weight: 700;
+.action-success>td{
+    color: white !important;
+    font-weight: 700 !important;
+}
+.action-failed{
+    background-color: #C62828 !important;
+    color: white !important;
 }

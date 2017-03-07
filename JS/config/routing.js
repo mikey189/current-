@@ -313,7 +313,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
        
-        .state('app.reports.emails', {
+        .state('app.email_reports', {
             url: '/emails',
             templateUrl: 'app/reports/email/email.html',
             controller: 'reports_emails',
