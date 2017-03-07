@@ -46,8 +46,8 @@ After init
             <input class="material-input" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" type="number" />
         </div>
         <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
-            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"
-                class="select"></select>
+            <select ng-options="L0Value.AvailableValues.indexOf(x) as x for x in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"
+                class="select" ></select>
         </div>
     </md-list-item>
 </md-list>

@@ -29,3 +29,6 @@
 .filter-input:focus{
     border-color: #3D5AFE !important;
 }
+.k-datetimepicker .k-picker-wrap .k-icon{
+    margin: 6px 6px !important;
+}

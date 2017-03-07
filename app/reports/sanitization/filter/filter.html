@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="app/reports/sanitization/filter/style.css" />
-
 <div class="md-dialog-container">
   <md-dialog layout-padding flex="50">
+    <json-formatter json="f_q"></json-formatter>
+
     <md-toolbar class="sanitization-filter-toolbar" layout="row" layout-align="center center">
       <h3 id="filter-title">Filters</h3>
     </md-toolbar>
@@ -44,6 +45,19 @@
           <input class="filter-input" ng-model="f_q.fileName" type="name" aria-label="chant">
         </md-input-container>
       </md-list-item>
+    
+        <div layout="row" layout-align="space-between center" layout-margin>
+            <div layout="column" layout-align="start start" flex="50">
+                <p>Start Time</p>
+                <input kendo-date-time-picker ng-model="f_q.StartTime" k-ng-model="startTime" style="width: 100%;" class="k-input sessioncamexclude"
+                />
+            </div>
+            <div layout="column" layout-align="start start" flex>
+                <p>End Time</p>
+                <input kendo-date-time-picker ng-model="f_q.EndTime" k-ng-model="endTime" style="width: 100%;" />
+            </div>
+        </div>
+     
       <!-- job id -->
       <md-list-item layout="row" layout-align="space-between center">
         Jobs ID
