@@ -18,8 +18,8 @@
 <div layout="column">
   <div layout="row" layout-align=" center start">
     <md-input-container flex="30">
-      <md-select md-whiteframe="6" ng-model="report" aria-label="report selector" id="report-selector">
-        <md-option ng-repeat="report in ctrl.reports" value="{{report.name}}" ng-selected="{{report[0]}}" ui-sref="{{report.sref}}">{{report.name}}</md-option>
+      <md-select md-whiteframe="6" ng-model="ctrl.DisplayedReport" aria-label="report selector" id="report-selector" placeholder="Choose a report to display">
+        <md-option ng-repeat="report in ctrl.reports" value="{{report.name}}"  ui-sref="{{report.sref}}" ng-click="ctrl.showSimpleToast(report.name)">{{report.name}}</md-option>
       </md-select>
 
     </md-input-container>

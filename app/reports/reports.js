@@ -1,8 +1,6 @@
-app.controller("reports", function (reports_factory, $state) {
+app.controller("reports", function ($state, $mdToast) {
         var self = this;
-        reports_factory.get_menu().then(function (answer) {
-            var reports = answer.data
-        })
+
 
         self.reports = [{
             "name": "Sanitization",
@@ -17,5 +15,15 @@ app.controller("reports", function (reports_factory, $state) {
             "name": "Scanners",
             "sref": "app.reports.scanners"
         }]
+
+        self.showSimpleToast =  (SelectedView) => {
+            $mdToast.show(
+                $mdToast.simple()
+                .textContent(SelectedView)
+                .position("bottom right")
+                .hideDelay(1500)
+            );
+        };
+
     })
     // url to insert app.reports_scanners

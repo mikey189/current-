@@ -126,7 +126,7 @@ app.factory("channelData", function ($http, $rootScope) {
             return $http.get(channelListReal)
         },
         getChannelDashboard: function (id, TimeReference) {
-            return $http.get(channelDashboard + id+"?startTimeInTicks="+TimeReference)
+            return $http.get(channelDashboard + id + "?startTimeInTicks=" + TimeReference)
         },
         createChannel: function (data) {
             return $http({
@@ -354,7 +354,7 @@ app.factory("policyData", function ($rootScope, $http) {
             })
         },
         getDashboard: function (id, TimeReference) {
-            return $http.get(policyDashboard + id+"?startTimeInTicks="+TimeReference)
+            return $http.get(policyDashboard + id + "?startTimeInTicks=" + TimeReference)
         },
         getDescriptions: function () {
             return $http.get(fileExtensionsDescription).then(function (response) {
@@ -742,6 +742,42 @@ app.factory("$cluster", function ($http) {
             //we use post to get the data beause it takes a long time
             return $http.get(ClusterData + "sdate=" + StartTime + "&edate=" + EndTime)
 
+        }
+    }
+});
+
+app.factory("accountMgmt_factory", function ($http) {
+
+    var sname = localStorage.getItem("serverName")
+
+    return {
+        PostForgotPassword: function (username, server) {
+            var postSaasForgotPasswordUrl = "http://" + server + ":4580/api/manage/PostSaasForgotPassword?";
+            //we use post to get the data beause it takes a long time
+
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: postSaasForgotPasswordUrl + "username=" + username,
+                method: "POST"
+            });
+        },
+        PostResetPassword: function (newPassword, token, server) {
+            var postSaasResetPasswordUrl = server + "/api/manage/PostSaasResetPassword";
+            //we use post to get the data beause it takes a long time
+            var forgotPwdParams = {
+                "newPassword": newPassword,
+                "token": token
+            };
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: postSaasResetPasswordUrl,
+                method: "POST",
+                params: forgotPwdParams
+            });
         }
     }
 });

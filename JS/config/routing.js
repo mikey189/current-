@@ -30,7 +30,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('ResetPasswordS2', {
         url: '/ResetPasswordS2',
         templateUrl: 'app/AccountManager/templates/S2/ResetPassword.html',
-        controller: 'ResetPasswordS1',
+        controller: 'ResetPasswordS2',
         controllerAs: 'ctrl'
     })
 
@@ -187,7 +187,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         displayName: "New Channel"
 
     })
-
 
     .state('app.clusterManagement', {
             url: '/clusterManagement',

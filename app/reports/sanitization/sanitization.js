@@ -1,4 +1,4 @@
-app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData) {
+app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData, $mdToast) {
   $scope.selected = [];
   $scope.query = {
     order: 'StartTime',
@@ -88,6 +88,16 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     })
     $scope.open_details()
   };
+
+  $scope.ActionSuccedded = (Filename) => {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent("Requested action successfully performed on " + Filename)
+      .position("bottom right")
+      .hideDelay(4500)
+    );
+  };
+
 });
 
 app.filter("CutUntil", () => {
