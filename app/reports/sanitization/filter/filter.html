@@ -30,8 +30,8 @@
       <md-list-item layout="row" layout-align="space-between center">
         Channels
         <md-input-container>
-          <md-select ng-model="f_q.channelType" placeholder="Pick a Channel Type from the list">
-            <md-option ng-repeat="channel in ChannelList">
+          <md-select ng-model="f_q.channelId" placeholder="Pick a Channel Type from the list">
+            <md-option ng-value = "channel.Id" ng-repeat="channel in ChannelList">
               {{channel.Name}}
             </md-option>
           </md-select>
