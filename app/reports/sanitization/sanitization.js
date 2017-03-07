@@ -1,4 +1,4 @@
-app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData, $mdToast) {
+app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData, ToastNotifications) {
   $scope.selected = [];
   $scope.query = {
     order: 'StartTime',
@@ -41,7 +41,8 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   };
   $scope.open_sanitization_filter = function () {
     $mdDialog.show({
-      controller: "sanitization",
+      scope: $scope, // use parent scope in template
+      preserveScope: true,
       clickOutsideToClose: true,
       templateUrl: 'app/reports/sanitization/filter/filter.html',
       parent: angular.element(document).find("body")
@@ -49,10 +50,8 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   };
   $scope.open_details = function () {
     $mdDialog.show({
-      controller: "sanitization",
-      /*without this, for some crazy and unknown reason, this particular dialog does inherit only
-    scope values created at load, all scope value created after are not taken into account*/
-      scope: $scope.$new(),
+      scope: $scope, // use parent scope in template
+      preserveScope: true,
       clickOutsideToClose: true,
       templateUrl: 'app/reports/sanitization/details/details.html',
       parent: angular.element(document).find("body")
@@ -73,7 +72,15 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     $mdDialog.hide()
     console.log($scope.f_q)
     sanitization_factory.get_filter_results($scope.f_q).then(function (answer) {
-      $scope.data = answer.data
+      if (answer.data.Total < 1) {
+        ToastNotifications.ErrorToast("Your request has returned 0 result, thus it was NOT taken into account")
+      } else {
+        $scope.data = answer.data;
+        $scope.total_length = $scope.data.Total;
+      }
+    }, (error) => {
+      ToastNotifications.ErrorToast("an error has occured : " + error.data.Message);
+
     })
   }
   $scope.cancel_filter = function () {

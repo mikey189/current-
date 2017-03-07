@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
-<json-formatter json="data"></json-formatter>
 <center>
     <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
@@ -23,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="x in  data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect"
+                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect"
                         class="sanitization-row">
                         <td md-cell>
                             <md-button class="md-icon-button clickMe" sanitizationId="{{x['Sanitization Id']}}" ng-click="show_details_modal_ready(x['Sanitization Id'])">

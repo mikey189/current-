@@ -2,16 +2,15 @@
 
 <div class="md-dialog-container">
   <md-dialog layout-padding flex="50">
-    <json-formatter json="f_q"></json-formatter>
     <md-toolbar class="sanitization-filter-toolbar" layout="row" layout-align="center center">
       <h3 id="filter-title">Filters</h3>
     </md-toolbar>
     <md-list>
       <md-list-item ng-repeat="x in sanitization_fields" layout="row" layout-align="space-between center">
-        {{x.name}}
+        {{x.Key}}
         <md-input-container>
-          <md-select ng-model="f_q[x.name]" placeholder="{{x.values[1]}}">
-            <md-option ng-repeat="status in x.values" ng-value="status">
+          <md-select ng-model="f_q[x.Key]" placeholder="{{x.Value[1]}}">
+            <md-option ng-repeat="status in x.Value" ng-value="status">
               {{status}}
             </md-option>
           </md-select>
