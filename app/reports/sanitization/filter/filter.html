@@ -9,7 +9,7 @@
       <md-list-item ng-repeat="x in sanitization_fields" layout="row" layout-align="space-between center">
         {{x.Key}}
         <md-input-container>
-          <md-select ng-model="f_q[x.Key]" placeholder="{{x.Value[1]}}">
+          <md-select ng-model="f_q[x.Key]" placeholder="{{x.Value[0]}}">
             <md-option ng-repeat="status in x.Value" ng-value="status">
               {{status}}
             </md-option>
