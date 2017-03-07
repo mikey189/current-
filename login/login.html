@@ -1,10 +1,10 @@
 <div ng-http-loader methods="['GET']" template="app/common/templates/loader.html" ttl="1"></div>
 <div layout="column" flex layout-fill id="loginBody" role="main" ng-init="ctrl.CheckBrowserAndCookies()">
-    <md-content layout="column" id="content" >
+    <md-content layout="column" id="content">
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
-        <div layout="row" layout-align="center center" >
-            <md-whiteframe id='loginForm' class="md-whiteframe-24dp" layout="column" layout-padding flex = "40" >
-                <md-content layout='column' layout-align='center' layout-margin flex = "45">
+        <div layout="row" layout-align="center center">
+            <md-whiteframe id='loginForm' class="md-whiteframe-24dp" layout="column" layout-padding flex="40">
+                <md-content layout='column' layout-align='center' layout-margin flex="45">
                     <md-input-container>
                         <label>Server</label>
                         <input ng-model="ctrl.serverName" id="ServerName" ng-keypress="ctrl.LogUserInOnEnter($event)">
@@ -18,8 +18,8 @@
                         <input ng-model="ctrl.Password" type="password" id="password" ng-keypress="ctrl.LogUserInOnEnter($event)" ng-class="{'error animated shake': !ctrl.is_login_nahon}">
                     </md-input-container>
                     <md-input-container layout="row" layout-align="space-between center">
-                        <md-button flex="45" id="login-button" ui-sref="ResetPasswordS1"><strong>Forgot Password</strong></md-button>
                         <md-button flex="45" id="login-button" check-credentials><strong>Login</strong></md-button>
+                        <md-button flex="45" id="login-button" ui-sref="ResetPasswordS1"><strong>Forgot Password</strong></md-button>
                     </md-input-container>
                     <div layout="row" flex layout-align="start center" layout-margin>
                         <md-checkbox id="remember-me" aria-label="remember me" ng-model="ctrl.IsRememberMe"></md-checkbox>

@@ -15,21 +15,14 @@
   </div>
 </div>
 -->
-<section layout="row" flex>
-  <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop  md-whiteframe="4">
-    <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">Reports</h1>
-    </md-toolbar>
-    <md-content layout-margin>
-      <ul style="padding-left: 0px">
-        <li ng-repeat="report in ctrl.menu">
-            <md-button class="md-button report-menu md-ink-ripple" ui-sref="app.reports.jobs" flex> {{report.name}}</md-button>
-        </li>
-      </ul>
-    </md-content>
-  </md-sidenav>
-  <md-content flex layout-padding layout="column">
-    <md-button ng-click="ctrl.toggleSidenav()">toggle sidenav</md-button>
-    <div ui-view></div>
-  </md-content>
-</section>
+<div layout="column">
+  <div layout="row" layout-align=" center start">
+    <md-input-container flex="30">
+      <md-select md-whiteframe="6" ng-model="report" aria-label="report selector" id="report-selector">
+        <md-option ng-repeat="report in ctrl.reports" value="{{report.name}}" ng-selected="{{report[0]}}" ui-sref="{{report.sref}}">{{report.name}}</md-option>
+      </md-select>
+
+    </md-input-container>
+  </div>
+  <div ui-view></div>
+</div>

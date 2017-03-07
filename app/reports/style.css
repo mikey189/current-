@@ -25,3 +25,14 @@
     width: 100% !important;
     text-align: left !important;
 }
+
+
+
+
+/*new menu*/
+
+#report-selector{
+    margin-top: 3em !important;
+    background-color: white !important;
+    border-radius: 2px !important;
+}

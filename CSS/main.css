@@ -585,6 +585,10 @@ md-chips .md-chips {
     color: red;
 }
 
+md-select.md-default-theme ._md-select-value, md-select ._md-select-value{
+    border-bottom: solid 0px white !important;
+}
+
 md-select.md-default-theme ._md-select-value,
 md-select ._md-select-value {
     color: black;

@@ -285,7 +285,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "System Status"
 
         })
-        .state('app.sanitization', {
+        .state('app.reports.sanitization', {
             url: '/sanitization',
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',
@@ -294,7 +294,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentUrl: "app.reports",
             parentName: "System Status >"
         })
-        .state('app.telerik_reports', {
+        .state('app.reports.telerik_reports', {
             url: '/telerik_reports',
             templateUrl: 'app/reports/telerik_reports/tr.html',
             controller: 'telerik_reports',
@@ -304,7 +304,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-        .state('app.system_events', {
+        .state('app.reports.systemEvents', {
             url: '/system_events',
             templateUrl: 'app/reports/system_events/se.html',
             controller: 'system_events',
@@ -313,16 +313,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-        .state('app.reports.jobs', {
-            url: '/jobs',
-            templateUrl: 'app/reports/jobs/jobs.html',
-            controller: 'reports_jobs',
-            displayName: "Jobs",
-            parentUrl: "app.reports",
-            parentName: "System Status >"
-
-        })
-        .state('app.reports_emails', {
+       
+        .state('app.reports.emails', {
             url: '/emails',
             templateUrl: 'app/reports/email/email.html',
             controller: 'reports_emails',
@@ -332,7 +324,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 
-    .state('app.reports_scanners', {
+    .state('app.reports.scanners', {
         url: '/scannerreports',
         templateUrl: 'app/reports/scanners/scanners.html',
         controller: 'reports_scanners',
