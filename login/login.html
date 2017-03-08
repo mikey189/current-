@@ -4,7 +4,7 @@
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
         <div layout="row" layout-align="center center">
             <md-whiteframe id='loginForm' class="md-whiteframe-24dp" layout="column" layout-padding flex="40">
-                <md-content layout='column' layout-align='center' layout-margin flex="45">
+                <md-content layout='column' layout-align='center' layout-margin flex-gt-lg="35"  flex-lg="45" flex-sm="70" flex-md="60">
                     <md-input-container>
                         <label>Server</label>
                         <input ng-model="ctrl.serverName" id="ServerName" ng-keypress="ctrl.LogUserInOnEnter($event)">

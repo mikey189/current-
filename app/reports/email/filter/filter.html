@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="app/reports/email/filter/style.css" />
+<div class="md-dialog-container">
+    <md-dialog layout-padding flex="50">
+        <json-formatter json="f_q"></json-formatter>
+        <md-toolbar class="sanitization-filter-toolbar" layout="row" layout-align="center center">
+            <h3 id="filter-title">Filter</h3>
+        </md-toolbar>
+        <md-list>
+            <md-list-item ng-repeat="x in sanitization_fields" layout="row" layout-align="space-between center">
+                {{x.Key}}
+                <md-input-container flex = "70">
+                    <md-select ng-model="f_q[x.Key]" placeholder="{{x.Value[0]}}">
+                        <md-option ng-repeat="status in x.Value" ng-value="status">
+                            {{status}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </md-list-item>
+            <!-- computer List -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Computer
+                <md-input-container flex = "70">
+                    <md-select ng-model="f_q.computer" placeholder="Pick a computer from the list">
+                        <md-option ng-repeat="computer in computer_list">
+                            {{computer}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </md-list-item>
+            <md-list-item layout="row" layout-align="space-between center">
+                Channels
+                <md-input-container flex = "70">
+                    <md-select ng-model="f_q.channelId" placeholder="Pick a Channel Type from the list">
+                        <md-option ng-value="channel.Id" ng-repeat="channel in ChannelList">
+                            {{channel.Name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </md-list-item>
+            <!-- file name -->
+            <md-list-item layout="row" layout-align="space-between center">
+                File Name
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.fileName" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <div layout="row" layout-align="space-between center" layout-margin>
+                <div layout="column" layout-align="start start" flex="50">
+                    <p>Start Time</p>
+                    <input kendo-date-time-picker ng-model="f_q.StartTime" k-ng-model="startTime" style="width: 100%;" class="k-input sessioncamexclude"
+                    />
+                </div>
+                <div layout="column" layout-align="start start" flex>
+                    <p>End Time</p>
+                    <input kendo-date-time-picker ng-model="f_q.EndTime" k-ng-model="endTime" style="width: 100%;" />
+                </div>
+            </div>
+            <md-list-item layout="row" layout-align="space-between center">
+                From
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.EmailFrom" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item layout="row" layout-align="space-between center">
+                To
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.EmailTo" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item layout="row" layout-align="space-between center">
+                Subject
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.EmailSubject" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <!-- job id -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Jobs ID
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.jobId" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <!-- Duration -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Duration
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.Duration" type="number" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <!-- processing server -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Processing Server
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.ProcessingServer" aria-label="chant" type="name">
+                </md-input-container>
+            </md-list-item>
+            <!-- portal server -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Portal Server
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.PortalServer" type="name" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <!-- Policy Id -->
+            <md-list-item layout="row" layout-align="space-between center">
+                Policy ID
+                <md-input-container flex = "70">
+                    <input class="filter-input" ng-model="f_q.PolicyId" type="number" aria-label="chant">
+                </md-input-container>
+            </md-list-item>
+            <div layout="row" layout-align="space-between center">
+                <md-button class="cancel-sanitization-filters" flex="50" ng-click="CancelFilter()">CANCEL</md-button>
+                <md-button class="close-sanitization-filters" flex="50" ng-click="SendFilterQuery()">FILTER</md-button>
+            </div>
+    </md-dialog>
+</div>

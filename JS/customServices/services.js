@@ -540,10 +540,14 @@ app.factory("sanitization_factory", function ($http) {
             })
         },
         get_data: (index, size, order_field) => {
-            return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&sortField=" + order_field)
+            return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&SortField=" + order_field)
         },
         get_filter_fields: () => {
             return $http.get(filter_field)
+        },
+
+        FilterOrder: (Field, Order) => {
+            return $http.get(url+"&SortField="+Field+"&SortOrder="+Order)
         },
 
         get_filter_results: (filter_query) => {
@@ -611,7 +615,10 @@ app.factory("system_events_factory", function ($http) {
                 method: 'GET',
                 params: filter_query
             })
-        }
+        },
+        FilterOrder: (Field, Order)=> {
+            return $http.get(base_url+"&SortField="+Field+"&SortOrder="+Order);
+        } 
     }
 });
 
@@ -636,9 +643,17 @@ app.factory("emails_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
     var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations/?q=1"
+
     return {
-        get_emails: function (index, size, order) {
-            return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+       get_emails: function (filter_query) {
+            return $http({
+                url: base_url,
+                method: 'GET',
+                params: filter_query
+            })
+        },
+        FilterOrder: (Field, Order ) => {
+            return $http.get(base_url+"&SortField="+Field+"&SortOrder="+Order);
         }
     }
 });

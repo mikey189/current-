@@ -1,10 +1,30 @@
-app.controller("system_events", function ($scope, system_events_factory, $mdDialog, ToastNotifications) {
+app.controller("system_events", function ($scope, system_events_factory,$q, $mdDialog, ToastNotifications) {
 
   $scope.se_query = {
     order: 'StartTime',
     PageSize: 10,
     PageIndex: 1
   };
+
+  $scope.$watch('se_query.order', function (newValue, oldValue) {
+    if (newValue != undefined) {
+      var deferred = $q.defer();
+      $scope.promise = deferred.promise;
+      var order = (newValue.includes("-")) ? "Desc" : "Asc";
+      var f = newValue.replace(/[^\w\s]/gi, '');
+      var field = f.replace(/\s/g, "");
+      system_events_factory.FilterOrder(field, order).then((res) => {
+        ToastNotifications.SuccessToast("Sorting according to " + f);
+        $scope.data = res.data;
+        $scope.total_length = res.data.Total
+        return res.data.Total
+      }).then((Promise) => {
+        deferred.resolve();
+      })
+    }
+  });
+
+
   //paging the data 
   $scope.get_data = function () {
     system_events_factory.get_system_events($scope.se_query.PageIndex, $scope.se_query.PageSize, $scope.se_query.order).then(function (answer) {
@@ -12,10 +32,9 @@ app.controller("system_events", function ($scope, system_events_factory, $mdDial
       $scope.total_length = $scope.data.Total;
     })
   }
-  $scope.$watchGroup(['se_query.PageIndex', 'se_query.PageSize', 'se_query.order'], function (newValues, oldValues, scope) {
+  $scope.$watchGroup(['se_query.PageIndex', 'se_query.PageSize'], function (newValues, oldValues, scope) {
     $scope.se_query.PageIndex = newValues[0]
     $scope.se_query.PageSize = newValues[1]
-    $scope.se_query.order = newValues[2]
     $scope.get_data()
   });
   //filter dialog
@@ -41,7 +60,7 @@ app.controller("system_events", function ($scope, system_events_factory, $mdDial
         $scope.total_length = $scope.data.Total;
       }
     }, (error) => {
-       ToastNotifications.ErrorToast("an error has occured : " + error.data.Message);
+      ToastNotifications.ErrorToast("an error has occured : " + error.data.Message);
     })
     $mdDialog.hide();
   }

@@ -1,4 +1,4 @@
-app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData, ToastNotifications) {
+app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog,$q,  channelData, ToastNotifications) {
   $scope.selected = [];
   $scope.query = {
     order: 'StartTime',
@@ -21,10 +21,9 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
       })
   };
 
-  $scope.$watchGroup(['query.PageIndex', 'query.PageSize', 'query.order'], function (newValues, oldValues, scope) {
+  $scope.$watchGroup(['query.PageIndex', 'query.PageSize'], function (newValues, oldValues, scope) {
     $scope.query.PageIndex = newValues[0]
     $scope.query.PageSize = newValues[1]
-    $scope.query.order = newValues[2]
     $scope.get_data();
   });
   //filter dialog
@@ -95,15 +94,34 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     })
     $scope.open_details()
   };
-
   $scope.ActionSuccedded = (Filename) => {
-    $mdToast.show(
-      $mdToast.simple()
-      .textContent("Requested action successfully performed on " + Filename)
-      .position("bottom right")
-      .hideDelay(4500)
-    );
+    ToastNotifications.SuccessToast("Action Successfully performed on "+Filename);
   };
+
+
+$scope.$watch('query.order', function (newValue, oldValue) {
+    if (newValue != undefined) {
+      var deferred = $q.defer();
+      $scope.promise = deferred.promise;
+      var order = (newValue.includes("-")) ? "Desc" : "Asc";
+      var f = (newValue.includes("User"))? "UserName" : newValue.replace(/[^\w\s]/gi, '');
+      var field = f.replace(/\s/g, "");
+      sanitization_factory.FilterOrder(field, order).then((res) => {
+        ToastNotifications.SuccessToast("Sorting according to "+f);
+        $scope.data = res.data;
+        $scope.total_length = res.data.Total
+        return res.data.Total
+      }).then((Promise) => {
+        deferred.resolve();
+      })
+    }
+  });
+
+
+
+
+
+
 
 });
 

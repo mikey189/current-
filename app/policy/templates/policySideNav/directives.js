@@ -102,7 +102,7 @@ app.directive("initiateApiCallWithId",  (policyData, $mdSidenav, $state) => {
                 var self = $(this);
                 scope.$apply( () => {
                     scope.ctrl.policyId = parseInt(self.attr("policy-id"));
-                    $state.go("app.policy.definition.fileType");
+                    $state.go("app.policy.dashboard");
                 })
             })
         }

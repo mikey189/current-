@@ -2,27 +2,28 @@
 <center>
     <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
-            <table md-table class="sanitization-table" ng-model="selected">
+            <table md-table class="sanitization-table" ng-model="selected" md-progress="promise">
                 <thead md-head class="santization-head" md-order="email_query.order">
                     <tr md-row>
-                         <th md-column md-numeric>
-                            <md-button class="md-icon-button" ng-click="open_sanitization_filter()" aria-label="soulant">
+                        <th md-column md-numeric>
+                            <md-button class="md-icon-button" ng-click="OpenFilter()" aria-label="soulant">
                                 <md-icon md-svg-src="icons/filter.svg"></md-icon>
                             </md-button>
                         </th>
-                        <th md-column md-order-by="StartTime"><span>Start Time</span></th>
-                        <th md-column md-order-by="From"><span>From</span></th>
-                        <th md-column md-order-by="To"><span>To</span></th>
-                        <th md-column md-order-by="Subject"><span>Subject</span></th>
-                        <th md-column md-order-by="Size"><span>Size</span></th>
-                        <th md-column md-order-by="Processing Server"><span>Processing Server</span></th>
-                        <th md-column md-order-by="Status"><span>Status</span></th>
-                        <th md-column md-order-by="Outcome"><span>Outcome</span></th>
-                        <th md-column md-order-by="Actions"><span>Actions</span></th>
+                        <th md-column md-order-by="['Start Time']"><span>Start Time</span></th>
+                        <th md-column md-order-by="['Mail From Address']"><span>From</span></th>
+                        <th md-column md-order-by="['Mail To Addresses']"><span>To</span></th>
+                        <th md-column md-order-by="['Mail Subject']"><span>Subject</span></th>
+                        <th md-column md-order-by="['Size']"><span>Size</span></th>
+                        <th md-column md-order-by="['Processing Server']"><span>Processing Server</span></th>
+                        <th md-column md-order-by="['Status']"><span>Status</span></th>
+                        <th md-column md-order-by="['Outcome']"><span>Outcome</span></th>
+                        <th md-column ><span>Actions</span></th>
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  email_query.order | limitTo:  email_query.PageSize" md-auto-select="options.autoSelect">
+                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  email_query.order | limitTo:  email_query.PageSize"
+                        md-auto-select="options.autoSelect">
                         <td md-cell>
                             <md-button class="md-icon-button clickMe" sanitizationId="{{x['Sanitization Id']}}" ng-click="show_details_modal_ready(x['Sanitization Id'])">
                                 <md-icon>info_outline</md-icon>
@@ -33,14 +34,15 @@
                         <td md-cell>{{x['Mail To Addresses']}}</td>
                         <td md-cell>{{x['Mail Subject']}}</td>
                         <td md-cell>{{x['Size']}}</td>
-                        <td md-cell>{{x['Processing Server']}}</td>   
+                        <td md-cell>{{x['Processing Server']}}</td>
                         <td md-cell>{{x['Status']}}</td>
                         <td md-cell>{{x['Outcome']}}</td>
                         <td md-cell layout="row" layout-align="space-between center">
-                            <md-select placeholder="Pick an action" ng-model="ActionToPerform" md-on-open="LoadActions(x['Sanitization Id'])" style="min-width: 200px;">
+                            <md-select placeholder="Pick an action" ng-model="ActionToPerform" md-on-open="LoadActions(x['Sanitization Id'])" ng-disabled="ActionToPerform" >
                                 <md-option ng-value="action" ng-repeat="action in actions">{{action}}</md-option>
                             </md-select>
-                            <md-button flex aria-label="send action" class="md-icon-button" ng-if="ActionToPerform" perform-action sanitization-id="{{x['Sanitization Id']}}" action="{{ActionToPerform}}">
+                            <md-button  aria-label="send action" class="md-icon-button" flex ng-if="ActionToPerform"  from="{{x['Mail From Address']}}"
+                                perform-email-action sanitization-id="{{x['Sanitization Id']}}" action="{{ActionToPerform}}">
                                 <md-icon id="TaskIndicator">done</md-icon>
                             </md-button>
                         </td>
