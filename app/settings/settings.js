@@ -92,14 +92,17 @@ app.directive('stringToDate', function () {
 
       }
 
-      /*ngModel.$parsers.push(function (value) {
+      ngModel.$parsers.push(function (value) {
         return value.toUTCString();
-      });*/
-      ngModel.$formatters.push(function (value) {
-        if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
-          return value
-        }
       });
+      ngModel.$formatters.push(function (val) {
+        //if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
+          var date = new Date(val)
+          console.log(date)
+          return date;
+       // }
+      });
+     
     }
   };
 });

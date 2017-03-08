@@ -6,32 +6,41 @@
             <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
                 <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
                     <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                        {{::prop.DisplayName}}
-                        <md-icon class='material-icons detail-toolip' style='margin-right: 0.3em'>
-                            info
-                            <md-tooltip>
-                                {{::prop.Comment}} : {{::prop.InputType}}
-                            </md-tooltip>
-                        </md-icon>
-                        <div ng-switch="prop.InputType" flex="30">
-                            <div ng-switch-when="number" flex='100' layout="row">
-                                <input flex="70" type="number" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
-                                    formatter="prop.Value">
-                                <select ng-if="prop.IsComplex" flex="30">
-                                    <option>KB</option>
-                                    <option>MB</option>
-                                    <option>GB</option>
-                                </select>
-                            </div>
-                            <div ng-switch-when="text" flex='100' layout="row">
-                                <input type="text" class="form-control" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
-                                />
-                            </div>
-                            <input string-to-date ng-switch-default flex='100' type="{{ctrl.sortType(prop.InputType) }}" class="form-control" ng-model="prop.Value"
-                                ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}" />
+                        <div layout="row" layout-align=" start center" flex="40">
+                            <md-icon class='material-icons detail-toolip' style='margin-right: 0.3em'>
+                                info
+                                <md-tooltip>
+                                    {{::prop.Comment}} : {{::prop.InputType}}
+                                </md-tooltip>
+                            </md-icon>
+                            {{::prop.DisplayName}}
                         </div>
+                        <div ng-if="prop.InputType == 'number'" layout="row" layout-align="space-between center" flex="60">
+                            <md-input-container flex="70" md-no-float class="md-block">
+                                <input type="number" ng-disabled="prop.IsVolatile" ng-model="prop.Value" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
+                                    formatter="prop.Value">
+                            </md-input-container>
+                            <md-input-container flex ng-if="prop.IsComplex">
+                                <label>Unit</label>
+                                <md-select ng-model="ctrl.userState">
+                                    <md-option>KB</md-option>
+                                    <md-option>MB</md-option>
+                                    <md-option>GB</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text'">
+                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}">
+                        </md-input-container>
+                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'">
+                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}">
+                        </md-input-container>
+                        <div flex="60" ng-if="prop.InputType == 'datetime'" ng-disabled="prop.IsVolatile">
+                            <md-datepicker style="width: 100% !important " ng-model="prop.Value" string-to-date></md-datepicker>
+                        </div>
+                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value"></md-checkbox>
+                    
                     </md-list-item>
-                    <md-divider></md-divider>
                 </md-list>
             </md-tab-body>
         </md-tab>

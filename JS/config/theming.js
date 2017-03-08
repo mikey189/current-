@@ -7,6 +7,7 @@ app.config(function($mdThemingProvider) {
       'default': '900',
       'hue-1': '900'
   })
+ 
     .accentPalette('orange');
 });
 

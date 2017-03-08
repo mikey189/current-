@@ -23,7 +23,7 @@
             </div>
             <div layout="column" layout-align="start start" flex>
                 <p>End Time</p>
-                <input kendo-date-time-picker ng-model="se_query.EndTime" k-ng-model="EndTime" style="width: 100%;" />
+                <input kendo-date-time-picker ng-model="se_query.EndTime"  min="se_query.StartTime" k-ng-model="EndTime" style="width: 100%;" />
             </div>
         </div>
         <md-input-container md-no-float class="md-block">
