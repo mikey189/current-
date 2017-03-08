@@ -18,19 +18,19 @@
         <div layout="row" layout-align="space-between center" layout-margin>
             <div layout="column" layout-align="start start" flex="50">
                 <p>Start Time</p>
-                <input kendo-date-time-picker ng-model="se_query.StartTime" k-ng-model="startTime" style="width: 100%;" class="k-input sessioncamexclude"
+                <input kendo-date-time-picker ng-model="se_query.StartTime" k-ng-model="StartTime" style="width: 100%;" class="k-input sessioncamexclude"
                 />
             </div>
             <div layout="column" layout-align="start start" flex>
                 <p>End Time</p>
-                <input kendo-date-time-picker ng-model="se_query.EndTime" k-ng-model="endTime" style="width: 100%;" />
+                <input kendo-date-time-picker ng-model="se_query.EndTime" k-ng-model="EndTime" style="width: 100%;" />
             </div>
         </div>
         <md-input-container md-no-float class="md-block">
-            <input ng-model="se_query.server" placeholder="Server">
+            <input ng-model="se_query.ServerName" placeholder="Server">
         </md-input-container>
         <md-input-container md-no-float class="md-block">
-            <input ng-model="se_query.JobId" placeholder="JOB ID">
+            <input ng-model="se_query.Details" placeholder="Details">
         </md-input-container>
     </div>
     <div layout="row" layout-padding layout-align="space-between center">
