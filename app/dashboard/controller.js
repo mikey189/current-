@@ -1,25 +1,17 @@
-app.controller("dashboard", ["dashboardData", function (dashboardData) {
+app.controller("dashboard", function (MainDashboard) {
 
     var self = this;
 
     self.purpleInt = '40';
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+    MainDashboard.GetDashboard().then((res) => {
+        self.inputs = res.data.DashboardInputs;
+        self.outputs = res.data.DashboardOutputs;
+        self.resecTable = res.data.FileTypesStatistics;
+        self.TotalInputs = res.data.TotalInputs;
+        self.TotalOutputs = res.data.TotalOutputs;
+        self.main = res.data;
 
-    dashboardData.getInput().then(function (response) {
-        self.input = response.data
-    })
-    dashboardData.getTotalInput().then(function (response) {
-        self.totalInputs = response.data;
-    })
-
-    dashboardData.getOutput().then(function (response) {
-        self.output = response.data;
-    })
-    dashboardData.getCasesSidebar().then(function (answer) {
-        self.casesInfo = answer.data;
-        self.totalCases = self.casesInfo.length;
     })
 
-
-
-}])
+})

@@ -61,6 +61,17 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
     }
 }]);
 
+
+app.factory("MainDashboard", ($http) => {
+    var sname = localStorage.getItem("serverName");
+    var url = "http://"+sname+":4580/api/general/dashboard";
+    return {
+        GetDashboard: () => {
+            return $http.get(url);
+        }
+    }
+})
+
 //http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
 
 app.factory("channelData", function ($http, $rootScope) {

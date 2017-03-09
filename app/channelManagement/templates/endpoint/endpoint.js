@@ -1,5 +1,5 @@
-app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q","ToastNotifications",
-    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications) {
+app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q","ToastNotifications","$stateParams",
+    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications, $stateParams) {
 
         var self = this;
         //setting switcher function to switch templates
@@ -296,7 +296,8 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 if (self.menuItems.length > 0) {
                     self.NoChannelExists = false;
                     //retrieving the first ID of the list if not already defined
-                    self.rootId = $state.params.ChannelId || self.menuItems[0].Id
+                    console.log($state);
+                    self.rootId = $state.params.id || self.menuItems[0].Id
                     var ChannelType = self.menuItems[0].AgentType
                     for (i = 0; i < self.menuItems.length; i++) {
                         self.channel_list.push(self.menuItems[i])

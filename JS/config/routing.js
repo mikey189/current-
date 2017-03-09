@@ -77,6 +77,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/channelManagement',
         templateUrl: 'app/channelManagement/channelManagement.html',
         controller: 'channels',
+
         controllerAs: 'ctrl',
         displayName: "Channel Management",
         classSelector: "channel"
@@ -92,6 +93,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         //parent: "app.channelManagement",
         templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
         displayName: "Channel Management",
+
         classSelector: "channel"
 
     })
@@ -101,6 +103,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             displayName: "Channel Management",
+            params: {
+                id: null
+            },
             classSelector: "channel",
             ParentID: "ChannelDashboard"
 

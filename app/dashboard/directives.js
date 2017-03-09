@@ -13,7 +13,7 @@ app.directive("dResecTable", function () {
         replace: false
     }
 })
-app.directive("dCasesSidebar", function(){
+app.directive("dCasesSidebar", function () {
     return {
         restrict: "E",
         templateUrl: "app/dashboard/templates/sidenavCases/casesSidebar.html",
@@ -63,12 +63,12 @@ app.directive("getHeight", function () {
 })
 
 
-app.directive("syncScroll", function(){
+app.directive("syncScroll", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attrs){
-            $(document).ready(function(){
-                $(document).find("md-virtual-repeat-container").children().bind("scroll", function(){
+        link: function (scope, element, attrs) {
+            $(document).ready(function () {
+                $(document).find("md-virtual-repeat-container").children().bind("scroll", function () {
                     var sibling = $(document).find("md-virtual-repeat-container").children();
                     sibling.scrollTop($(this).scrollTop());
                 })
@@ -77,3 +77,23 @@ app.directive("syncScroll", function(){
     }
 })
 
+app.directive("goToChannel", function ($state, $stateParams) {
+    return {
+        restrict: "A",
+         scope: {
+                cid: "@"
+            },
+        link: function (scope, element, attrs) {
+           
+            element.click(() => {
+                var self = $(this);
+                var id = parseInt(scope.cid)
+                console.log(scope.cid)
+                $state.go('app.channelManagement.endpoint.dashboard', {
+                    id: id
+                });
+                console.log($stateParams)
+            })
+        }
+    }
+})
