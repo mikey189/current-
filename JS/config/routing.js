@@ -4,6 +4,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
     $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when('/app', '/dashboard');
 
     $stateProvider
 
@@ -52,6 +53,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
 
     })
+
+
 
     .state('app.testPage', {
         url: '/app',
@@ -312,16 +315,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-       
-        .state('app.email_reports', {
-            url: '/emails',
-            templateUrl: 'app/reports/email/email.html',
-            controller: 'reports_emails',
-            displayName: "Emails",
-            parentUrl: "app.reports",
-            parentName: "System Status >"
 
-        })
+    .state('app.email_reports', {
+        url: '/emails',
+        templateUrl: 'app/reports/email/email.html',
+        controller: 'reports_emails',
+        displayName: "Emails",
+        parentUrl: "app.reports",
+        parentName: "System Status >"
+
+    })
 
     .state('app.reports.scanners', {
         url: '/scannerreports',

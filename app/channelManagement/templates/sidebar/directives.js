@@ -1,10 +1,10 @@
-app.directive("getMyId", ["$state",  "channelData", function ($state, channelData) {
+app.directive("getMyId", ["$state", "channelData", function ($state, channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.$apply( () => {
+                scope.$apply(() => {
                     scope.ctrl.rootId = parseInt(self.attr("channel-id"));
                 })
             })
@@ -75,23 +75,9 @@ app.directive("channelSidenavEditMode", function (channelData, $mdDialog) {
                         channelsOrder.push(channelID)
                     })
                     channelData.reorder_channel_priority(channelsOrder).then(function (success) {
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                            .clickOutsideToClose(true)
-                            .title('CONGRATS!')
-                            .textContent('The ne priorities were successfully saved')
-                            .ariaLabel('Alert Dialog Demo')
-                            .ok('AWSOME!')
-                        );
+                        scope.ctrl.HTTP_Dialogs.ShowSuccessDialog();
                     }, function (error) {
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                            .clickOutsideToClose(true)
-                            .title('OOPS, ERROR')
-                            .textContent('There was an error while updating the priorities : ' + error.data.Message)
-                            .ariaLabel('Alert Dialog Demo')
-                            .ok('Got it!')
-                        );
+                        scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message);
                     })
                     editIcon.removeClass("editOn")
                 }

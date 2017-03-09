@@ -34,9 +34,9 @@ channel facets Values
                             <input class="search-box" type="text" ng-model="currentValue" />
                             <md-icon>search</md-icon>
                         </div>
-                        <md-virtual-repeat-container id="vertical-container">
-                            <div ng-repeat="x in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key] track by $index" class="repeateditem" layout="row"
-                                layout-align="space-between center" layout-padding flex="100" ng-if="x !== ''">
+                        <md-virtual-repeat-container id="available-values" flex>
+                            <div ng-repeat="x in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]  | filter: currentValue track by $index" class="repeateditem" layout="row"
+                                layout-align="space-between center" layout-padding  ng-if="x !== ''">
                                 {{x}}
                                 <md-button class="md-icon-button no-padding-no-margin" ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].splice($index, 1)">
                                     <md-icon class="remove-icon">remove</md-icon>
@@ -46,9 +46,9 @@ channel facets Values
                     </div>
                     <div id="all" flex="50" >
                         <input class="search-box" type="text" ng-model="allValue" />
-                        <md-virtual-repeat-container layout-margin>
+                        <md-virtual-repeat-container layout-margin id="available-values">
                             <div md-virtual-repeat="all in L1Value.AvailableValues | filter: allValue" class="repeated-item" layout="row" layout-align="space-between center"
-                                layout-padding flex="100">
+                                layout-padding >
                                 {{all}}
                                 <md-button class="md-icon-button no-padding-no-margin" ng-if="!ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].includes(all)"
                                     ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].push(all)">
@@ -61,13 +61,13 @@ channel facets Values
             </div>
             <!--________________________ type = IP will go here _______________________-->
             <div ng-switch-when="StrPropType_ChannelIpsSelection">
-                <md-virtual-repeat-container id="vertical-container">
+                <md-virtual-repeat-container id="available-values">
                     <div layout="row" class="add-ip" md-whiteframe="4" layout-align="space-between center">
                         <input type="text" ng-model="ipToAdd" flex="85" class="ip-field" />
                         <md-button md-whiteframe="3" ng-click="ctrl.AddIPToChannel(ipToAdd)" flex class="blue-btn">ASSIGN IP</md-button>
                     </div>
                     <div md-virtual-repeat="ip in ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key]  " class="repeated-item" layout="row"
-                        layout-align="space-between center" layout-padding flex="100">
+                        layout-align="space-between center" layout-padding flex="100" ng-hide="ip === ''">
                         {{ip}}
                         <md-button class="md-icon-button no-padding-no-margin"  ng-click="ctrl.ChannelFacets['Channel Usage Settings'].Values[L1Key].splice($index, 1)">
                             <md-icon class="remove-icon">remove</md-icon>
