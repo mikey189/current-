@@ -487,31 +487,7 @@ app.factory("policyData", function ($rootScope, $http) {
     }
 })
 
-app.factory("dashboardData", function ($http) {
 
-    var sname = localStorage.getItem("serverName");
-
-    console.log("dashboard data service says => ", sname);
-    var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
-    var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
-    var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
-    var casesSidebar = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardSidebar";
-
-    return {
-        getInput: function () {
-            return $http.get(inputURL)
-        },
-        getTotalInput: function () {
-            return $http.get(totalInputURL)
-        },
-        getOutput: function () {
-            return $http.get(outputURL)
-        },
-        getCasesSidebar: function () {
-            return $http.get(casesSidebar)
-        }
-    }
-})
 
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
