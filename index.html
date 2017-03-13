@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="CSS/uiViewAnimations.css">
     <link href='CSS/Font/Ubuntu.css' rel='stylesheet' type='text/css'>
     <link href='CSS/animate.css' rel='stylesheet' type='text/css'>
+    <link href="css/hover.css" rel="stylesheet" media="all">
+
     <!--<link rel='stylesheet' href="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.min.css"/>-->
     <link rel='stylesheet' href='login/login.css' />
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
@@ -141,7 +143,7 @@
 </head>
 
 <body ng-app="resec" ng-cloak>
-    <div data-ui-view class="animated fadeIn"></div>
+    <div data-ui-view class="animated fadeIn" prevent-routing-without-save></div>
 </body>
 
 </html>

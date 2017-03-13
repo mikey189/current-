@@ -160,3 +160,12 @@ md-checkbox.md-checked ._md-icon {
 #save-filetype:hover {
     background-color: #FF1744 !important;
 }
+.custom-checkbox {
+  margin: 8px;
+  cursor: pointer;
+  padding-left: 18px;
+  padding-right: 0;
+  line-height: 26px;
+  min-width: 18px;
+  min-height: 18px;
+}

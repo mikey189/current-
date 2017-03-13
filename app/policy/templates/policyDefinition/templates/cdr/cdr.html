@@ -1,13 +1,10 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
-<p>ctrl.PolicyFacets['Policy CDR Settings']</p>
-<json-formatter json="ctrl.PolicyFacets['Policy CDR Settings']"></json-formatter>
-<p>ctrl.cdr</p>
-<json-formatter json="ctrl.cdr"></json-formatter>
-<div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5"
-    ng-cloak ng-switch="L0Value.Type">
-    <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-        <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
-            <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
+<div style="margin-top: 2em">
+    <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5"
+        ng-cloak ng-switch="L0Value.Type">
+        <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
+            <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+                <h4 layout-padding><strong> {{L0Value.DisplayName | uppercase}}<strong></h4>
             <md-button class="md-icon-button" toggle-cdr-edition binded-value="L0Value.showValues" ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">
                 <md-icon class="white">edit</md-icon>
             </md-button>
@@ -35,27 +32,27 @@
 
 
     <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable" class="fail-actions">
+            <div layout="row" layout-align="space-between center" class="card-title-fail-action" ng-init="L0Value.showValues = false">
+                <h4 layout-padding><strong> {{L0Value.DisplayName | uppercase}}<strong></h4>
+                <md-button class="md-icon-button" toggle-cdr-fail-actions-edition ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRFailActionsEditable)">
+                    <md-icon class="white" ng-if="!ctrl.CDRFailActionsEditable">edit</md-icon>
+                    <md-icon class="white" ng-if="ctrl.CDRFailActionsEditable">save</md-icon>     
+                </md-button>
+            </div>
 
-         <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
-            <h4 layout-padding><strong> {{L0Value.DisplayName}}<strong></h4>
-            <md-button class="md-icon-button" toggle-cdr-fail-actions-edition ng-click="ctrl.SaveFacetsInCDR(ctrl.CDRFailActionsEditable)">
-                <md-icon class="white" ng-if="!ctrl.CDRFailActionsEditable">edit</md-icon>
-                <md-icon class="white" ng-if="ctrl.CDRFailActionsEditable">save</md-icon>     
-            </md-button>
-        </div>
+            <div layout="row" layout-margin flex="100"  layout-wrap>
+                <span class="action-chips" md-whiteframe="2" ng-if="L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] !== ''">
+                    {{L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] }}
+                </span>
+            </div> 
 
-        <div layout="row" layout-margin flex="100"  layout-wrap>
-            <span class="action-chips" md-whiteframe="2" ng-if="L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] !== ''">
-                {{L0Value.AvailableValues[ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key]] }}
-            </span>
-        </div> 
-
-        <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-if="ctrl.CDRFailActionsEditable" >
-            <span class="action-chips" ng-repeat="y in L0Value.AvailableValues track by $index">
-                {{y}}
-                <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = $index" >add</md-icon>
-            </span>
-        </div> 
+            <div class="actions animated fadeInDown" layout="row" layout-margin layout-wrap ng-if="ctrl.CDRFailActionsEditable" >
+                <span class="action-chips" ng-repeat="y in L0Value.AvailableValues track by $index">
+                    {{y}}
+                    <md-icon class="white" ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[L0Key] = $index" >add</md-icon>
+                </span>
+            </div> 
+        
     </div>
 </div>
-
+</div>

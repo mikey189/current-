@@ -53,8 +53,36 @@ app.directive("changePassword", ($state) => {
     restrict: "A",
     link: (scope, element, attrs) => {
       element.click(() => {
-       $state.go("ResetPasswordS1");
+        $state.go("ResetPasswordS2");
       })
     }
   }
 });
+
+app.directive("preventoutingWithoutSave", ($state, $rootScope) => {
+  return {
+    restrict: "A",
+    link: (scope, element, attrs) => {
+      scope.$watch(function () {
+        return $state.$current.locals["@app"].$scope.ctrl;
+      }, function (newValue, oldValue) {
+        var oldModel = oldValue;
+        var newModel = newValue;
+        var isEqual = _.isEqual(oldModel, newModel);
+        console.log(newModel);
+        console.log(oldModel)
+        console.log(isEqual);
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+          console.log("route is about to change")
+            if (isEqual == true){
+              console.log("is equal can't say nothing")
+            }else{
+              console.log("the model has changed")
+              event.preventDefault();
+            }
+          })
+          // Do something with the $scope.buttons;
+      });
+    }
+  }
+})

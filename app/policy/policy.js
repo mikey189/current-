@@ -1,4 +1,4 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter","ToastNotifications",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications",
 
     function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications) {
 
@@ -71,6 +71,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 }
             }
         }
+
 
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
@@ -155,7 +156,11 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             return willDisplay;
         };
-        //________________________Get policy and format it's facets ___________________________
+        self.FilterExtensions = (val, arr) => {
+                var result = (val.$viewValue === arr) ? true : false;
+                return result
+            }
+            //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
 
@@ -324,7 +329,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             return true;
         };
 
-
     }
 
 ])
@@ -352,9 +356,8 @@ app.filter('split', function () {
         return input.split(splitChar)[splitIndex];
     }
 });
-
 app.filter("GetValueFromIndex", function () {
     return (index) => {
         return 1;
     }
-})
+});

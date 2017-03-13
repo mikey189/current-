@@ -1,24 +1,65 @@
-#policyDefinitionSwitcherBK{
+#policyDefinitionSwitcherBK {
     background-color: white;
     margin-top: 2em;
 }
 
-#policyDefinitionSwitcher{
+#policyDefinitionSwitcher {
     border-radius: 100px;
     border: solid 1px #B9B9B9;
     background-color: white;
     color: #484554;
 }
-.roundedTabSelector{
+
+.roundedTabSelector {
     border-radius: 100px;
     color: #484554 !important;
 }
 
-.roundedTabSelector:focus{
+.roundedTabSelector:focus {
     background-color: #6B69EB !important;
-    color: white !important;   
-}
-.policyInnerNavUISelected{
-    background-color: #6B69EB;
     color: white !important;
+}
+
+.policyInnerNavUISelected {
+    background-color: #2196F3 !important;
+    color: white !important;
+}
+
+#policy-view-switcher {
+    margin-top: 2em;
+}
+
+
+
+.groupX {
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 3px 15px 3px 15px;
+    color: white;
+    font-weight: 700 !important;
+    background-color: #0F155B;
+    text-transform: none;
+    font-weight: 400;
+    min-width: 100px;
+    box-shadow: 2px 2px 2px !important;
+}
+
+.md-button.left {
+    border-radius: 10px 0 0 10px;
+}
+
+.md-button.middle {
+    border-radius: 0;
+    border-left: 1px solid rgba(230, 230, 230, 0.96);
+    border-right: 1px solid rgba(230, 230, 230, 0.96);
+}
+
+.md-button.right {
+    border-radius: 0 10px 10px 0;
+}
+
+.md-button.groupX:not([disabled]):hover {
+    background-color: #6B69EB !important;
+    color: white;
+    transition: 0.8s;
 }

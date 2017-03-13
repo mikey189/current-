@@ -78,9 +78,12 @@
       border-radius: 100px;
   }
   
-  .fail-actions {
-      border-top: solid 4px red;
-  }
-  .parent-category{
+.card-title-fail-action{
+    background-color: #333;
+    color: white;
+}
+  
+  .parent-category {
       color: #333;
   }
+  

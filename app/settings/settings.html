@@ -18,7 +18,7 @@
                         <div ng-if="prop.InputType == 'number'" layout="row" layout-align="space-between center" flex="60">
                             <md-input-container flex="70" md-no-float class="md-block">
                                 <input type="number" ng-disabled="prop.IsVolatile" ng-model="prop.Value" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
-                                    formatter="prop.Value">
+                                    formatter="prop.Value" aria-label="tf">
                             </md-input-container>
                             <md-input-container flex ng-if="prop.IsComplex">
                                 <label>Unit</label>
@@ -30,15 +30,15 @@
                             </md-input-container>
                         </div>
                         <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text'">
-                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}">
+                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}" aria-label="tf">
                         </md-input-container>
-                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'">
-                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}">
+                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'" >
+                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}" aria-label="tf">
                         </md-input-container>
-                        <div flex="60" ng-if="prop.InputType == 'datetime'" ng-disabled="prop.IsVolatile">
-                            <md-datepicker style="width: 100% !important " ng-model="prop.Value" string-to-date></md-datepicker>
+                        <div flex="60" ng-if="prop.InputType == 'datetime'" >
+                            <md-datepicker ng-disabled="prop.IsVolatile" style="width: 100% !important " ng-model="prop.Value" string-to-date ></md-datepicker>
                         </div>
-                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value"></md-checkbox>
+                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value" aria-label="tf"></md-checkbox>
                     
                     </md-list-item>
                 </md-list>
@@ -47,4 +47,3 @@
     </md-tabs>
     <md-button ng-click="ctrl.SaveSettings()" id="save_settings_changes" md-whiteframe="6">Save Changes</md-button>
 </div>
-<json-formatter json="ctrl.allProps"></json-formatter>

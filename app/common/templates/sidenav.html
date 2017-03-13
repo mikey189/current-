@@ -2,46 +2,47 @@
     sidebar-hover layout-fill>
     <md-list class="menuHolder" display-item-inline>
         <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Dashboard">
-            <md-button md-no-ink ui-sref='app.dashboard' class='fullWidthButton white thisButton' layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">dashboard</md-tooltip>
-                <md-icon md-svg-src="icons/dashboardLogo.svg"></md-icon>
+            <md-button md-no-ink ui-sref='app.dashboard' class='fullWidthButton white thisButton' layout="column" layout-align="start start">
+                <md-icon md-svg-src="icons/dashboardLogo.svg" style="margin-left: 0px"></md-icon>
+                <p>dashboard</p>
             </md-button>
         </md-list-item>
         <md-list-item value="Policy" ng-class="{'sidebarIconHover': $state.current.classSelector ==='policy'}">
-            <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Policy</md-tooltip>
-                <md-icon md-svg-src="icons/policiesIcon.svg"></md-icon>
-            </md-button>
-        </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Topology" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.clusterManagement' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Topology</md-tooltip>
-                <md-icon class='material-icons md-light'>tune</md-icon>
-            </md-button>
-        </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.reports' class=' thisButton fullWidthButton white' layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Reports</md-tooltip>
-                <md-icon class="material-icons md-light">assignment</md-icon>
-            </md-button>
-        </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.email_reports' class=' thisButton fullWidthButton white' layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Mail Reports</md-tooltip>
-                <md-icon class="material-icons md-light">mail</md-icon>
+            <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="column" layout-align="start start">
+                <md-icon md-svg-src="icons/policiesIcon.svg" style="margin-left: 0px"></md-icon>
+               <p> Policy</p>
             </md-button>
         </md-list-item>
         <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="row"
+            <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="column"
                 layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Channel Management</md-tooltip>
-                <md-icon md-svg-src="icons/channelLogo.svg"></md-icon>
+                <md-icon md-svg-src="icons/channelLogo.svg" style="margin-left: 0px"></md-icon>
+                Channels
             </md-button>
         </md-list-item>
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Topology" ng-hide="ctrl.IsUserSOB">
+            <md-button md-no-ink ui-sref='app.clusterManagement' class='thisButton fullWidthButton white' layout="column" layout-align="center center">
+                <md-icon class='material-icons md-light' style="margin-left: 0px">tune</md-icon>
+                Topology
+            </md-button>
+        </md-list-item>
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
+            <md-button md-no-ink ui-sref='app.reports' class=' thisButton fullWidthButton white' layout="column" layout-align="center center">
+                <md-icon class="material-icons md-light" style="margin-left: 0px">assignment</md-icon>
+                Reports
+            </md-button>
+        </md-list-item>
+        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
+            <md-button md-no-ink ui-sref='app.email_reports' class=' thisButton fullWidthButton white' layout="column" layout-align="start start">
+                <md-icon class="material-icons md-light" style="margin-left: 0px">mail</md-icon>
+                <p>Mail</p>
+            </md-button>
+        </md-list-item>
+        
         <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Settings" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.settings' class='thisButton fullWidthButton white' layout="row" layout-align="center center">
-                <md-tooltip class="custom-toolip" md-direction="right">Settings</md-tooltip>
-                <md-icon class='material-icons md-light'>settings</md-icon>
+            <md-button md-no-ink ui-sref='app.settings' class='thisButton fullWidthButton white' layout="column" layout-align="start start">
+                <md-icon class='material-icons md-light' style="margin-left: 0px">settings</md-icon>
+                <p>Settings</p>
             </md-button>
         </md-list-item>
     </md-list>

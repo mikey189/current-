@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
 <div layout="column" layout-margin id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
-    <json-formatter json="ctrl.channel_data"></json-formatter>
-    <json-formatter json="ctrl.all_inputs"></json-formatter>
+
     <div layout="row" layout-margin layout-align="end center">
         <md-button class="save-sources margin_top md-raised shadow-on-hover" id="edit_IO" edit-inputs-and-outputs>SAVE</md-button>
     </div>

@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/switcher/style.css" />
-<div layout="row" flex="100" layout-align="center center" id="policyDefinitionSwitcherBK" layout-padding md-whiteframe="6">
-    <nav flex="65">
+    <div flex layout="row" layout-align="center center" id="policy-view-switcher">
+        <md-button ui-sref-active="policyInnerNavUISelected" class="groupX left  hvr-sweep-to-right" ui-sref="app.policy.definition.fileType">File Types</md-button>
+        <md-button ui-sref-active="policyInnerNavUISelected" class="groupX middle  hvr-sweep-to-right" ui-sref="app.policy.definition.detection">Detection</md-button>
+        <md-button ui-sref-active="policyInnerNavUISelected" class="groupX middle hvr-sweep-to-right" ui-sref="app.policy.definition.cdr">CDR</md-button>
+        <md-button ui-sref-active="policyInnerNavUISelected" class="groupX middle hvr-sweep-to-right" ui-sref="app.policy.definition.regex">Hyperlinks</md-button>
+        <md-button ui-sref-active="policyInnerNavUISelected" class="groupX right hvr-sweep-to-right" ui-sref="app.policy.definition.settings">Settings</md-button>
+    </div>
+    <!-- <nav flex="65">
         <ul class="nav nav-justified" id="policyDefinitionSwitcher">
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.fileType" ui-sref-active="policyInnerNavUISelected"><strong>File Type</strong></a></li>
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.detection" ui-sref-active="policyInnerNavUISelected"><strong>Detection </strong></a></li>
@@ -8,5 +14,4 @@
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.regex" ui-sref-active="policyInnerNavUISelected"><strong>Hyperlinks</strong></a></li>
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.settings" ui-sref-active="policyInnerNavUISelected"><strong>Settings</strong></a></li>
         </ul>
-    </nav>
-</div>
+    </nav>-->
