@@ -21,7 +21,7 @@ app.config(function(toastrConfig) {
     allowHtml: true,
     closeButton: true,
     closeHtml: '<button>&times;</button>',
-    extendedTimeOut: 1000,
+    extendedTimeOut: 0,
     iconClasses: {
       error: 'toast-error',
       info: 'toast-info',
