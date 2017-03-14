@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="87px" height="59px" viewBox="0 0 87 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_multiline_chart_black_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_multiline_chart_black_24px" transform="translate(-8.000000, -21.000000)">
+            <g id="Group">
+                <path d="M94.4166667,29.6983333 L88.3654167,23.6470833 L76.1341667,37.4233333 C67.2933333,27.4666667 55.0620833,21.4583333 41.2429167,21.4583333 C28.84,21.4583333 17.4670833,26.4366667 8.58333333,34.3333333 L14.6775,40.4275 C21.9733333,34.0329167 31.2004167,30.0416667 41.2429167,30.0416667 C53.0020833,30.0416667 63.0875,35.4491667 70.2975,43.9466667 L57.9375,57.8516667 L40.7708333,40.685 L8.58333333,72.9154167 L15.0208333,79.3529167 L40.7708333,53.56 L57.9375,70.7266667 L75.31875,51.1995833 C78.5375,56.9933333 80.6833333,63.6454167 81.49875,70.7266667 L90.125,70.7266667 C89.1808333,60.8558333 86.0479167,51.88625 81.37,44.3758333 L94.4166667,29.6983333 L94.4166667,29.6983333 Z" id="Shape" fill="#FFFFFF"></path>
+                <polygon id="Shape" points="0 0 103 0 103 103 0 103"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1156,7 +1156,6 @@
 
 /* Forward */
 .hvr-forward {
-  display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -1286,6 +1285,7 @@
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
+
 
 /* Sweep To Left */
 .hvr-sweep-to-left {
@@ -2888,7 +2888,6 @@
 
 /* Icon Forward */
 .hvr-icon-forward {
-  display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);

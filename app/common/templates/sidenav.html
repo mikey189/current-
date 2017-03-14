@@ -1,49 +1,50 @@
 <md-sidenav md-component-id="left" id="sidenavIndex" md-is-locked-open='true' class='md-whiteframe-4dp' layout-align='start center'
     sidebar-hover layout-fill>
     <md-list class="menuHolder" display-item-inline>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Dashboard">
-            <md-button md-no-ink ui-sref='app.dashboard' class='fullWidthButton white thisButton' layout="column" layout-align="start start">
-                <md-icon md-svg-src="icons/dashboardLogo.svg" style="margin-left: 0px"></md-icon>
-                <p>dashboard</p>
-            </md-button>
+        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'app.dashboard'}" value="Dashboard" layout="row"
+            layout-align="space-betwwen center" class="hvr-forward">
+            <a ui-sref="app.dashboard">
+                <md-icon md-svg-src="icons/dashboardLogo.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">DASHBOARD</span>
+            </a>
         </md-list-item>
-        <md-list-item value="Policy" ng-class="{'sidebarIconHover': $state.current.classSelector ==='policy'}">
-            <md-button md-no-ink class="thisButton fullWidthButton white" ui-sref="app.policy.dashboard" layout="column" layout-align="start start">
-                <md-icon md-svg-src="icons/policiesIcon.svg" style="margin-left: 0px"></md-icon>
-               <p> Policy</p>
-            </md-button>
+        <md-list-item value="Policy" class="hvr-forward" ng-class="{'sidebarIconHover': $state.current.classSelector ==='policy'}"
+            layout="row">
+            <a ui-sref="app.policy.dashboard">
+                <md-icon md-svg-src="icons/policiesIcon.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">POLICY</span>
+            </a>
         </md-list-item>
-        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.channelManagement.endpoint.dashboard' class='thisButton fullWidthButton white' layout="column"
-                layout-align="center center">
-                <md-icon md-svg-src="icons/channelLogo.svg" style="margin-left: 0px"></md-icon>
-                Channels
-            </md-button>
+        <md-list-item ng-class="{'sidebarIconHover': $state.current.classSelector === 'channel'}" value="Channel Management" class="hvr-forward"
+            ng-hide="ctrl.IsUserSOB" layout="row">
+            <a ui-sref='app.channelManagement.endpoint.dashboard'>
+                <md-icon md-svg-src="icons/channelLogo.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">CHANNELS</span>
+            </a>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Topology" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.clusterManagement' class='thisButton fullWidthButton white' layout="column" layout-align="center center">
-                <md-icon class='material-icons md-light' style="margin-left: 0px">tune</md-icon>
-                Topology
-            </md-button>
+        <md-list-item ui-sref-active="sidebarIconHover " value="Topology" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+            <a ui-sref='app.clusterManagement'>
+                <md-icon md-svg-src="icons/topology.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">TOPOLOGY</span>
+            </a>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.reports' class=' thisButton fullWidthButton white' layout="column" layout-align="center center">
-                <md-icon class="material-icons md-light" style="margin-left: 0px">assignment</md-icon>
-                Reports
-            </md-button>
+        <md-list-item ui-sref-active="sidebarIconHover " value="Reports" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+            <a ui-sref='app.reports'>
+                <md-icon md-svg-src="icons/reports.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">REPORTS</span>
+            </a>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Reports" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.email_reports' class=' thisButton fullWidthButton white' layout="column" layout-align="start start">
-                <md-icon class="material-icons md-light" style="margin-left: 0px">mail</md-icon>
-                <p>Mail</p>
-            </md-button>
+        <md-list-item ui-sref-active="sidebarIconHover " value="Reports" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+            <a ui-sref='app.email_reports'>
+                <md-icon md-svg-src="icons/mail-reports.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">MAILS</span>
+            </a>
         </md-list-item>
-        
-        <md-list-item ui-sref-active="sidebarIconHover animated pulse" value="Settings" ng-hide="ctrl.IsUserSOB">
-            <md-button md-no-ink ui-sref='app.settings' class='thisButton fullWidthButton white' layout="column" layout-align="start start">
-                <md-icon class='material-icons md-light' style="margin-left: 0px">settings</md-icon>
-                <p>Settings</p>
-            </md-button>
+        <md-list-item ui-sref-active="sidebarIconHover " value="Settings" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+            <a ui-sref='app.settings'>
+                <md-icon md-svg-src="icons/settings.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">SETTINGS</span>
+            </a>
         </md-list-item>
     </md-list>
 </md-sidenav>
