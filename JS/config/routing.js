@@ -267,6 +267,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             ParentID: "PolicyDefinition"
 
         })
+        .state('app.policy.definition.cdrDouble', {
+            url: '/stam',
+            classSelector: "policy",
+            templateUrl: 'app/policy/cdr.tmpl.html',
+            displayName: "Policy > CDR Settings",
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
+
+        })
+      
         .state('app.policy.definition.regex', {
             url: '/policyRegex',
             classSelector: "policy",

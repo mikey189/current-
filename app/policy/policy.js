@@ -1,6 +1,6 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications", "cdrFormatter",
 
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter) {
 
         var self = this;
         self.sidenav_edit_mode = false;
@@ -72,7 +72,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             }
         }
 
-
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
@@ -91,8 +90,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 self.sideNavList = answer.data
                 if (self.sideNavList.length > 0) {
                     self.NoPolicyExists = false;
-                    self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId
-
+                    self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId;
                 } else {
                     self.NoPolicyExists = true;
                 }
@@ -163,12 +161,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
-
                 if (id) {
-
                     self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
-
-                    //LoadFacetTemplate: Boolean;
+                        //LoadFacetTemplate: Boolean;
                     var deferred = $q.defer();
                     self.PolicyFacets = {};
                     self.ServerFacetTemplates = {};
@@ -231,6 +226,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
                             self.allFacets = self.FormatFacetTemplates(allFacets);
                             self.cdr = self.FormatFacetTemplates(cdr);
+                            self.custCdr = cdrFormatter.format(self.cdr["Policy CDR Settings"].Properties);
+                            console.log(self.custCdr)
                             Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                             var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
                             deferred.resolve(FacetVm);
@@ -286,37 +283,29 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             // ______________________________________   format to post facets   ________________________
 
         self.FormatForPOST = () => {
+                var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
+                policyData.post_policy_settings(self.policyId, Facets2POST).then((success) => {
+                    self.show_success_dialog("Your changes were successfuly saved")
+                    var deferred = $q.defer();
+                    var $cdr = policyData.getCDRFacets();
+                    $q.all({
+                        $cdr
+                    }).then(data => {
+                        self.cdr = self.FormatFacetTemplates(data.$cdr.data);
+                        Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
+                        var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
+                        deferred.resolve(FacetVm);
+                    });
+                    return deferred.promise;
+                }).then((answer) => {
+                    self.PolicyFacets = answer.EntityFacets;
+                }, (error) => {
+                    self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
+                })
 
 
-            var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
-
-
-            policyData.post_policy_settings(self.policyId, Facets2POST).then((success) => {
-                self.show_success_dialog("Your changes were successfuly saved")
-                var deferred = $q.defer();
-                var $cdr = policyData.getCDRFacets();
-                $q.all({
-                    $cdr
-                }).then(data => {
-                    self.cdr = self.FormatFacetTemplates(data.$cdr.data);
-                    Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
-                    var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
-                    deferred.resolve(FacetVm);
-                });
-                return deferred.promise;
-            }).then((answer) => {
-
-                self.PolicyFacets = answer.EntityFacets;
-
-
-            }, (error) => {
-                self.show_error_dialog("An error occured while saving your changes : ", error.data.Message)
-            })
-
-
-        }
-
-        //save cdr settings__________________________________________
+            }
+            //save cdr settings__________________________________________
         self.SaveFacetsInCDR = (DOMValue) => {
                 if (!DOMValue) {
                     self.FormatForPOST();
