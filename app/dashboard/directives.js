@@ -88,11 +88,9 @@ app.directive("goToChannel", function ($state, $stateParams) {
             element.click(() => {
                 var self = $(this);
                 var id = parseInt(scope.cid)
-                console.log(scope.cid)
                 $state.go('app.channelManagement.endpoint.dashboard', {
                     id: id
                 });
-                console.log($stateParams)
             })
         }
     }

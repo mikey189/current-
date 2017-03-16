@@ -18,7 +18,6 @@ app.directive("tableIsDisabledModal", function () {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                console.log("clicked")
                 if (scope.ctrl.isFiletypeEditable = false) {
                     scope.ctrl.show_error_dialog("Warning", "Make sure to click on EDIT")
                 }
@@ -36,7 +35,6 @@ app.directive("filterExtensions", () => {
                 var input, query, table, parentTR, ParentClassification, i;
                 input = document.getElementById("search-extensions");
                 query = input.value.toLowerCase();
-                console.log(query)
             });
         }
     };

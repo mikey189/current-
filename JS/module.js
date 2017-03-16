@@ -30,6 +30,7 @@
        warning: 'toast-warning'
      },
      messageClass: 'toast-message',
+     preventOpenDuplicates: true,
      onHidden: null,
      onShown: null,
      onTap: null,
@@ -44,3 +45,12 @@
      toastClass: 'toast'
    });
  });
+ app.run(['$rootScope', '$location', function ($rootScope, $location) {
+   var token = localStorage.getItem("token");
+   $rootScope.$on("$routeChangeStart", function (event, next, current) {
+    console.log(token);
+     if (next.templateUrl === "edit.html") {
+       // $location.path('/');
+     };
+   })
+ }]);

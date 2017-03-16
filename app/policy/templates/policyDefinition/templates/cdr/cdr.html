@@ -29,7 +29,7 @@
                     <div layout="row" layout-wrap flex>
                         <span ng-class = "{'disabled': ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'hvr-glow': ! ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'HIGH': y.severity === 'High','MEDIUM': y.severity === 'Medium', 'LOW': y.severity === 'Low'}" class="action-chips faire-ecart" ng-repeat="y in x.L2" ng-hide="y.action === 'None'">
                             <md-tooltip ng-if="!ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID]" md-direction="right">{{y.description}}</md-tooltip>
-                            <md-tooltip ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID]" md-direction="right">Already in Use</md-tooltip>
+                            <md-tooltip ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID]" md-direction="top">Already in Use</md-tooltip>
 
                             {{y.action}}
                             <md-icon ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] = true" ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] == false">add</md-icon>
@@ -38,7 +38,6 @@
                 </div>    
             </div> 
         </div>
-
         <div ng-switch-when="FacetPropertyType_SingleChoice" ng-init="ctrl.CDRFailActionsEditable" class="fail-actions">
                 <div layout="row" layout-align="space-between center" class="card-title-fail-action" ng-init="!CDRFailActionsEditable">
                     <h4 layout-padding><strong> {{L0Value.DisplayName | uppercase}}<strong></h4>

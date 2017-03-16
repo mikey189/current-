@@ -1,3 +1,154 @@
+app.factory("DummyDashboard", () => {
+
+    var Users = [{
+        "name": "Ana Henry",
+        "extension": "exe",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Holman Beard",
+        "extension": "png",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Diane Maynard",
+        "extension": "tif",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Gates Lyons",
+        "extension": "csv",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Shirley Shelton",
+        "extension": "html",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Casey Hebert",
+        "extension": "js",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Santos Allison",
+        "extension": "Sketch",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Bass Barrera",
+        "extension": "doc",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Morrison Frazier",
+        "extension": "ppt",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "name": "Stacey Dickson",
+        "extension": "xls",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }];
+    var Extensions = [{
+        "extension": "Exe",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "Docx",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "Xls",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "PNG",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "Svg",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "GIN",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "DMG",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "CSV",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "PPT",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, {
+        "extension": "Sketch",
+        "blocked": "12",
+        "modified": "14",
+        "passed": "20",
+        "total": "67"
+    }, ]
+
+    return {
+
+        GetTopUsers: () => {
+            return Users;
+        },
+        GetExtensions: () => {
+            return Extensions;
+        }
+
+    }
+
+})
+
+
+
+
 app.factory("401Error", ($q, $injector) => {
     return {
         responseError: function (rejection) {
@@ -64,7 +215,7 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
 
 app.factory("MainDashboard", ($http) => {
     var sname = localStorage.getItem("serverName");
-    var url = "http://"+sname+":4580/api/general/dashboard";
+    var url = "http://" + sname + ":4580/api/general/dashboard";
     return {
         GetDashboard: () => {
             return $http.get(url);
@@ -534,7 +685,7 @@ app.factory("sanitization_factory", function ($http) {
         },
 
         FilterOrder: (Field, Order) => {
-            return $http.get(url+"&SortField="+Field+"&SortOrder="+Order)
+            return $http.get(url + "&SortField=" + Field + "&SortOrder=" + Order)
         },
 
         get_filter_results: (filter_query) => {
@@ -603,9 +754,9 @@ app.factory("system_events_factory", function ($http) {
                 params: filter_query
             })
         },
-        FilterOrder: (Field, Order)=> {
-            return $http.get(base_url+"&SortField="+Field+"&SortOrder="+Order);
-        } 
+        FilterOrder: (Field, Order) => {
+            return $http.get(base_url + "&SortField=" + Field + "&SortOrder=" + Order);
+        }
     }
 });
 
@@ -632,15 +783,15 @@ app.factory("emails_factory", function ($http) {
     var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations/?q=1"
 
     return {
-       get_emails: function (filter_query) {
+        get_emails: function (filter_query) {
             return $http({
                 url: base_url,
                 method: 'GET',
                 params: filter_query
             })
         },
-        FilterOrder: (Field, Order ) => {
-            return $http.get(base_url+"&SortField="+Field+"&SortOrder="+Order);
+        FilterOrder: (Field, Order) => {
+            return $http.get(base_url + "&SortField=" + Field + "&SortOrder=" + Order);
         }
     }
 });

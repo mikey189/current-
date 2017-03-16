@@ -34,16 +34,6 @@ app.factory("cdrFormatter", () => {
 
                 arr.push(y);
             }
-            var ex = [];
-            
-           
-            console.log(ex)
-            console.log(arr)
-                /*for (x in bigObject){
-                    var obj = {};
-                    obj.category =  _.trim(bigObject[x], ":");
-                    secondObj.push(obj)
-                }*/
             return arr;
         }
     }

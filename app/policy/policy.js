@@ -1,8 +1,10 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications", "cdrFormatter",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications", "cdrFormatter", "DummyDashboard",
 
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter, DummyDashboard) {
 
         var self = this;
+
+        self.unified_view = true;
         self.sidenav_edit_mode = false;
         self.PolicyInfo = {};
         self.newPolicy = false;
@@ -19,6 +21,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //var UTCTime = new Date();
             //var TimeOffset = UTCTime.getTimezoneOffset() * 60000; //get milliseconds offset;
         self.DashboardTimeFrame = "1 Week";
+        self.GetTopUsers = () => {
+            self.TopUsers = DummyDashboard.GetTopUsers();
+            self.UsersQuery = {
+                order: "blocked"
+            };
+        self.FilesQuery = {order: "blocked"}
+        }
+        self.TopExtensions = DummyDashboard.GetExtensions();
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
 
             if (id) {
@@ -35,14 +45,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 switch (SelectedTime) {
                     case "Last Hour":
                         TimeQuery = getUTCNow() - (3600 * 1000);
-                        console.log(TimeQuery)
                         policyData.getDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
                         })
                         break;
                     case "24 Hours":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24);
-                        console.log(TimeQuery)
                         policyData.getDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
                         })
@@ -55,15 +63,12 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         break;
                     case "1 Month":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
-                        console.log(TimeQuery);
                         policyData.getDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
                         })
                         break;
                     default:
                         TimeQuery = getUTCNow() - (3600 * 1000);
-                        console.log(TimeQuery)
-
                         policyData.getDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
                         })
@@ -85,7 +90,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             ToastNotifications.ErrorToast(str);
         };
         self.RefreshSidenav = function () {
-            console.log("init sidenav")
             policyData.getSidenav().then(function (answer) {
                 self.sideNavList = answer.data
                 if (self.sideNavList.length > 0) {
@@ -227,7 +231,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                             self.allFacets = self.FormatFacetTemplates(allFacets);
                             self.cdr = self.FormatFacetTemplates(cdr);
                             self.custCdr = cdrFormatter.format(self.cdr["Policy CDR Settings"].Properties);
-                            console.log(self.custCdr)
                             Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
                             var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
                             deferred.resolve(FacetVm);

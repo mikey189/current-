@@ -29,7 +29,6 @@ app.directive("addIp", function () {
         },
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                console.log(scope.container)
                 scope.container = (scope.container == "") ? [] : scope.container
 
                 if (!scope.container.includes(scope.value)) {

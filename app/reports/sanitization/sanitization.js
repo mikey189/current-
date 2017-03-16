@@ -69,7 +69,6 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     //details dialog
   $scope.send_filter_query = function () {
     $mdDialog.hide()
-    console.log($scope.f_q)
     sanitization_factory.get_filter_results($scope.f_q).then(function (answer) {
       if (answer.data.Total < 1) {
         ToastNotifications.ErrorToast("Your request has returned 0 result, thus it was NOT taken into account")

@@ -34,12 +34,19 @@
                 <span class="sidenav-title">REPORTS</span>
             </a>
         </md-list-item>
-        <md-list-item ui-sref-active="sidebarIconHover " value="Reports" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+        <md-list-item ui-sref-active="sidebarIconHover " value="mails" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
             <a ui-sref='app.email_reports'>
                 <md-icon md-svg-src="icons/mail-reports.svg" class="sidenav-icon"></md-icon>
                 <span class="sidenav-title">MAILS</span>
             </a>
         </md-list-item>
+         <md-list-item ui-sref-active="sidebarIconHover " value="sanitization" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
+            <a ui-sref='app.sanitization_reports'>
+                <md-icon md-svg-src="icons/files-reports.svg" class="sidenav-icon"></md-icon>
+                <span class="sidenav-title">FILES REPORT</span>
+            </a>
+        </md-list-item>
+        
         <md-list-item ui-sref-active="sidebarIconHover " value="Settings" ng-hide="ctrl.IsUserSOB" class="hvr-forward" layout="row">
             <a ui-sref='app.settings'>
                 <md-icon md-svg-src="icons/settings.svg" class="sidenav-icon"></md-icon>

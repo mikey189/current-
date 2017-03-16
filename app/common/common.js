@@ -9,10 +9,8 @@ app.controller('common', function ($rootScope, $state, $stateParams, $mdMenu) {
 
 	var IsUserSOB = localStorage.getItem("ISSOB");
 	self.IsUserSOB = (IsUserSOB === "true") ? true : false;
-	console.log(self.IsUserSOB)
 
 	self.openMenu = ($mdMenu, ev) => {
-		console.log("opening menu")
 		originatorEv = ev;
 		$mdMenu.open(ev);
 	};

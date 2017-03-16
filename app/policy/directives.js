@@ -113,6 +113,51 @@ app.directive("policyDashboardTopFiles", function(){
         replace: false
     }
 })
+
+
+app.directive("policyDashboardPassedFiles", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/PassedFiles.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardBlockedFiles", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/BlockedFiles.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardPassedUsers", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/PassedUsers.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardBlockedUsers", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/BlockedUsers.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardUnifiedUsers", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/UsersUnified.html",
+        replace: false
+    }
+})
+app.directive("policyDashboardUnifiedFiles", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/policy/templates/policyDashboardTab/templates/FilesUnified.html",
+        replace: false
+    }
+})
+
 app.directive("policyDashboardTopUsers", function(){
     return {
         restrict: "E",
@@ -168,10 +213,7 @@ app.directive('stringToCdrObject', function () {
             ngModel.$parsers.push(function (value) {
                 return '' + value;
             });
-            ngModel.$formatters.push(function (value) {
-                console.log(value)
-
-            });
+           
         }
     };
 });

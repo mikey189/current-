@@ -2,11 +2,8 @@ app.controller("reports", function ($state, $mdToast) {
         var self = this;
 
 
-        self.reports = [{
-            "name": "Sanitization",
-            "sref": "app.reports.sanitization"
-        }, {
-            "name": "Telerik Reports",
+        self.reports = [ {
+            "name": "Offline Reports",
             "sref": "app.reports.telerik_reports"
         }, {
             "name": "System Events",

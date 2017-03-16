@@ -69,22 +69,24 @@ app.controller("cluster", ["$cluster", "$scope", function ($cluster, $scope) {
         $cluster.GetClusterData(self.StartDate, self.EndDate)
             .then((res) => {
                 self.All = res.data;
+                console.log(self.All);
                 self.Clusters = res.data.ClusterStatusInfo.Nodes;
-                self.Clusters.forEach((CValue, CKey) => {
-                    var lowerKey = CValue.Name.toLowerCase();
-                    self.AllClusters[lowerKey] = CValue;
-                    angular.forEach(self.All.CpuMeasurementList, (v, k) => {
-                        var lowerCaseKey = k.toLowerCase();
-                        NewCPUWithLowKey[lowerCaseKey] = v;
-                    })
-                    self.AllClusters[lowerKey].CPUs = [];
-                    self.AllClusters[lowerKey].currentJobs = [];
-                    angular.forEach(NewCPUWithLowKey[lowerKey], (lv, lk) => {
-                        self.AllClusters[lowerKey].CPUs.push(lv.CpuLoad);
-                        self.AllClusters[lowerKey].currentJobs.push(lv.LowComplexityRunningSanitizations, lv.HighComplexityRunningSanitizations, lv.ManyComplexityRunningSanitizations);
+                if (self.Clusters) {
+                    self.Clusters.forEach((CValue, CKey) => {
+                        var lowerKey = CValue.Name.toLowerCase();
+                        self.AllClusters[lowerKey] = CValue;
+                        angular.forEach(self.All.CpuMeasurementList, (v, k) => {
+                            var lowerCaseKey = k.toLowerCase();
+                            NewCPUWithLowKey[lowerCaseKey] = v;
+                        })
+                        self.AllClusters[lowerKey].CPUs = [];
+                        self.AllClusters[lowerKey].currentJobs = [];
+                        angular.forEach(NewCPUWithLowKey[lowerKey], (lv, lk) => {
+                            self.AllClusters[lowerKey].CPUs.push(lv.CpuLoad);
+                            self.AllClusters[lowerKey].currentJobs.push(lv.LowComplexityRunningSanitizations, lv.HighComplexityRunningSanitizations, lv.ManyComplexityRunningSanitizations);
+                        });
                     });
-                });
-                
+                }
             })
         var AllMeasuresAreNull = (element, index, array) => {
             return element < 2;

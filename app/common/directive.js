@@ -69,11 +69,8 @@ app.directive("preventoutingWithoutSave", ($state, $rootScope) => {
         var oldModel = oldValue;
         var newModel = newValue;
         var isEqual = _.isEqual(oldModel, newModel);
-        console.log(newModel);
-        console.log(oldModel)
-        console.log(isEqual);
+       
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
-          console.log("route is about to change")
             if (isEqual == true){
               console.log("is equal can't say nothing")
             }else{

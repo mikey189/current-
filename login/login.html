@@ -4,7 +4,7 @@
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
         <div layout="row" layout-align="center center">
             <md-whiteframe id='loginForm' class="md-whiteframe-24dp" layout="column" layout-padding flex="40">
-                <md-content layout='column' layout-align='center' layout-margin flex-gt-lg="35"  flex-lg="45" flex-sm="70" flex-md="60">
+                <md-content layout='column' layout-align='center' layout-margin flex-gt-lg="35" flex-lg="45" flex-sm="70" flex-md="60">
                     <md-input-container>
                         <label>Server</label>
                         <input ng-model="ctrl.serverName" id="ServerName" ng-keypress="ctrl.LogUserInOnEnter($event)">
@@ -18,9 +18,9 @@
                         <input ng-model="ctrl.Password" type="password" id="password" ng-keypress="ctrl.LogUserInOnEnter($event)" ng-class="{'error animated shake': !ctrl.is_login_nahon}">
                     </md-input-container>
                     <md-input-container layout="row" layout-align="space-between center">
-                        <md-button flex="45" id="login-button" check-credentials><strong>Login</strong></md-button>
-                        <md-button flex="45" id="login-button" ui-sref="ResetPasswordS1"><strong>Forgot Password</strong></md-button>
+                        <md-button flex id="login-button" check-credentials><strong>Login</strong></md-button>
                     </md-input-container>
+                    <md-button md-no-ink  ui-sref="ResetPasswordS1"><small>Forgot Password</small></md-button>
                     <div layout="row" flex layout-align="start center" layout-margin>
                         <md-checkbox id="remember-me" aria-label="remember me" ng-model="ctrl.IsRememberMe"></md-checkbox>
                         REMEMBER ME

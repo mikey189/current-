@@ -49,7 +49,6 @@ app.directive("renamePolicy", function (policyData) {
                 var p1 = self.parents();
                 var name = p1.closest("md-list-item").find(".policyName").html()
                 var id = self.attr("policy-id")
-                console.log("i")
                 policyData.update_policy_name(id, name).then(function (success) {
                     scope.ctrl.show_success_dialog("Policy name successfully saved");
                     scope.ctrl.policy.Name = name;
@@ -82,8 +81,6 @@ app.directive("deletePolicy", ["policyData", "$q", "$mdDialog", function (policy
                     .cancel('Cancel');
                 $mdDialog.show(confirm).then(function () {
                     policyData.deletePolicy(id).then(success => {
-                        console.log(success)
-                        console.log("policy successfuly delete " + id)
                         scope.ctrl.RefreshSidenav();
                     }, error => {
                         scope.ctrl.show_error_dialog("This policy could not be delete ", error.data.Message)

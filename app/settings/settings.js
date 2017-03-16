@@ -98,7 +98,6 @@ app.directive('stringToDate', function () {
       ngModel.$formatters.push(function (val) {
         //if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
           var date = new Date(val)
-          console.log(date)
           return date;
        // }
       });

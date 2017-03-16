@@ -140,10 +140,8 @@ app.directive("editInputsAndOutputs", (channelData, $state, $mdDialog) => {
                 var output_elements = $(".output_element");
                 output_elements.each(function(){
                         var self = $(this)
-                        console.log(output_elements);
                         if (self.hasClass("input_is_selected")) {
                             var output_name = self.find("md-content").html();
-                            console.log("output name =>"+output_name);
                                 //var output_object = {}
                                 //output_object[output_name] = true
                             selectedOutputs[output_name] = true;
@@ -162,9 +160,7 @@ app.directive("editInputsAndOutputs", (channelData, $state, $mdDialog) => {
                         }
                         
                     }
-                    console.log(selectedInputs);
-                    console.log(selectedOutputs);
-                    console.log(scope.ctrl.IoConfiguration);
+               
                     //posting the data to the server
                 channelData.update_inputs_outputs(scope.ctrl.rootId, scope.ctrl.IoConfiguration).then(function (success) {
 

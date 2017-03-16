@@ -40,7 +40,6 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $q) {
                     .ok('Yes, delete this channel')
                     .cancel('Cancel deletion');
                 $mdDialog.show(confirm).then(() => {
-                    console.log("about to delete ", channel_id)
                     channelData.delete_channel(channel_id).then(result => {
                         console.log("successfully deleted channel : ", channel_id)
                             .then(() => {

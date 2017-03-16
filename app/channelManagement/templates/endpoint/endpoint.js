@@ -1,8 +1,14 @@
-app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q","ToastNotifications","$stateParams",
-    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications, $stateParams) {
+app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q", "ToastNotifications", "$stateParams","DummyDashboard",
+    function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications, $stateParams, DummyDashboard) {
 
         var self = this;
         //setting switcher function to switch templates
+
+        self.TopBlockedUsers = DummyDashboard.GetBlockedUsers();
+        self.TopPassedUsers = DummyDashboard.GetPassedUsers();
+        self.TopExtensions = DummyDashboard.GetExtensions();
+
+
         self.TemplateConditions = {};
         //dashboard top files 
 
@@ -175,10 +181,12 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.UpdateChannelData = function (newVal) {
 
             if (newVal) {
+
                 self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame);
                 channelData.getChannelDashboard(newVal).then((answer1) => {
                     self.channelDashboard = answer1.data
                 })
+
                 channelData.get_channel(newVal).then(answer => {
                     var deferred = $q.defer();
                     var $q2 = channelData.ChannelFacets();
@@ -296,7 +304,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 if (self.menuItems.length > 0) {
                     self.NoChannelExists = false;
                     //retrieving the first ID of the list if not already defined
-                    console.log($state);
                     self.rootId = $state.params.id || self.menuItems[0].Id
                     var ChannelType = self.menuItems[0].AgentType
                     for (i = 0; i < self.menuItems.length; i++) {

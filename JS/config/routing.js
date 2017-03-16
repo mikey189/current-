@@ -1,7 +1,6 @@
-// ROUTES
-
 app.config(function ($stateProvider, $urlRouterProvider) {
 
+    
 
     $urlRouterProvider.otherwise('/');
     $urlRouterProvider.when('/app', '/dashboard');
@@ -51,7 +50,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 return $http.defaults.headers.common.Authorization;
             }
         }
-
     })
 
 
@@ -276,8 +274,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             ParentID: "PolicyDefinition"
 
         })
-      
-        .state('app.policy.definition.regex', {
+
+    .state('app.policy.definition.regex', {
             url: '/policyRegex',
             classSelector: "policy",
             templateUrl: 'app/policy/templates/policyDefinition/templates/regex/regex.html',
@@ -302,7 +300,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "System Status"
 
         })
-        .state('app.reports.sanitization', {
+        .state('app.sanitization_reports', {
             url: '/sanitization',
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',

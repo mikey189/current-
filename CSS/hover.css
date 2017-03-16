@@ -2175,7 +2175,6 @@
 
 /* Underline From Center */
 .hvr-underline-from-center {
-  display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -2190,8 +2189,8 @@
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: #2098D1;
-  height: 4px;
+  background: #4285F4;
+  height: 2px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
   -webkit-transition-duration: 0.3s;
@@ -2428,7 +2427,6 @@
 /* SHADOW/GLOW TRANSITIONS */
 /* Glow */
 .hvr-glow {
-  display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
