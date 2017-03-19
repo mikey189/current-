@@ -26,8 +26,13 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             self.UsersQuery = {
                 order: "blocked"
             };
-        self.FilesQuery = {order: "blocked"}
+            self.TopExtensions = DummyDashboard.GetExtensions();
+
+            self.FilesQuery = {
+                order: "blocked"
+            }
         }
+        
         self.TopExtensions = DummyDashboard.GetExtensions();
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
 

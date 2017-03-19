@@ -2,7 +2,7 @@
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 
 
-<div layout='column' layout-gt-sm='column' id='policyMainContent' ng-cloak layout-fill ng-init="ctrl.RefreshSidenav()">
+<div layout='column' layout-gt-sm='column' id='policyMainContent' data-ng-cloak layout-fill ng-init="ctrl.RefreshSidenav()">
     <md-content layout='row' flex>
         <policy-sidenav layout-fill flex="15"></policy-sidenav>
         <md-content layout-fill layout='column' id="policyNotScrollable" ng-if="!ctrl.NoPolicyExists" flex = "80">

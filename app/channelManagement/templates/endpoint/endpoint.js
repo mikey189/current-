@@ -4,9 +4,10 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         var self = this;
         //setting switcher function to switch templates
 
-        self.TopBlockedUsers = DummyDashboard.GetTopUsers();
-        self.TopPassedUsers = DummyDashboard.GetTopUsers();
+        self.TopUsers = DummyDashboard.GetTopUsers();
         self.TopExtensions = DummyDashboard.GetExtensions();
+        self.UsersQuery = {"order": "blocked"};
+        self.FilesQuery = {"order": "blocked"};
 
 
         self.TemplateConditions = {};

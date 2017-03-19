@@ -10,106 +10,106 @@ app.factory("DummyDashboard", () => {
     }, {
         "name": "Holman Beard",
         "extension": "png",
-        "blocked": "12",
+        "blocked": "20",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Diane Maynard",
         "extension": "tif",
-        "blocked": "12",
+        "blocked": "21",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Gates Lyons",
         "extension": "csv",
-        "blocked": "12",
+        "blocked": "16",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Shirley Shelton",
         "extension": "html",
-        "blocked": "12",
+        "blocked": "10",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Casey Hebert",
         "extension": "js",
-        "blocked": "12",
+        "blocked": "16",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Santos Allison",
         "extension": "Sketch",
-        "blocked": "12",
-        "modified": "14",
-        "passed": "20",
+        "blocked": "120",
+        "modified": "10",
+        "passed": "5",
         "total": "67"
     }, {
         "name": "Bass Barrera",
         "extension": "doc",
-        "blocked": "12",
+        "blocked": "67",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Morrison Frazier",
         "extension": "ppt",
-        "blocked": "12",
+        "blocked": "19",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "name": "Stacey Dickson",
         "extension": "xls",
-        "blocked": "12",
+        "blocked": "18",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }];
     var Extensions = [{
         "extension": "Exe",
-        "blocked": "12",
+        "blocked": "30",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "Docx",
-        "blocked": "12",
+        "blocked": "8",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "Xls",
-        "blocked": "12",
+        "blocked": "7",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "PNG",
-        "blocked": "12",
+        "blocked": "6",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "Svg",
-        "blocked": "12",
+        "blocked": "91",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "GIN",
-        "blocked": "12",
+        "blocked": "30",
         "modified": "14",
         "passed": "20",
         "total": "67"
     }, {
         "extension": "DMG",
-        "blocked": "12",
+        "blocked": "17",
         "modified": "14",
         "passed": "20",
         "total": "67"

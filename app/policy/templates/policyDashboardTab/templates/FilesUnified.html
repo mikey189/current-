@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody md-body>
-                <tr md-row ng-repeat="x in ctrl.TopUsers | orderBy:  ctrl.UsersQuery.order" md-auto-select="options.autoSelect">
+                <tr md-row ng-repeat="x in ctrl.TopExtensions | orderBy:  ctrl.FilesQuery.order" md-auto-select="options.autoSelect">
                     <td md-cell>{{x.extension | uppercase}}</td>
                     <td md-cell>{{x.blocked}}</td>
                     <td md-cell>{{x.modified}}</td>

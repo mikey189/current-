@@ -25,3 +25,8 @@
     color: white;
     font-weight: 800;
 }
+#policy-dashboard-timepicker{
+    background-color: white;
+    border-bottom: none !important;
+    /*width: 20%;*/
+}
