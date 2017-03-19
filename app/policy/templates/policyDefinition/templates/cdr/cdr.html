@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
+<json-formatter json="ctrl.PolicyFacets['Policy CDR Settings'].Values"></json-formatter>
 <div style="margin-top: 2em" layout="row" layout-align="end">
     <md-button class="hvr-glow" id="save-cdr" ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">Save</md-button>
 </div>
@@ -25,14 +26,16 @@
             </div>   
             <div ng-repeat="(L1Key, L1Value) in ctrl.custCdr" ng-if="L0Value.showValues">
                 <div ng-repeat="x in L1Value[L0Value.DisplayName]"  layout-wrap layout-margin>
-                    <h4 class="categories hvr-underline-from-center">  {{x.L1}}</h4>
+                    <h4 class="categories hvr-underline-from-left">  {{x.L1}}</h4>
                     <div layout="row" layout-wrap flex>
-                        <span ng-class = "{'disabled': ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'hvr-glow': ! ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'HIGH': y.severity === 'High','MEDIUM': y.severity === 'Medium', 'LOW': y.severity === 'Low'}" class="action-chips faire-ecart" ng-repeat="y in x.L2" ng-hide="y.action === 'None'">
+                        <span ng-class = "{'disabled': ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'hvr-glow': ! ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID], 'HIGH': y.severity === 'High','MEDIUM': y.severity === 'Medium', 'LOW': y.severity === 'Low'}" class="action-chips faire-ecart" ng-repeat="y in x.L2" ng-hide="y.action === 'None'" layout="row">
                             <md-tooltip ng-if="!ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID]" md-direction="right">{{y.description}}</md-tooltip>
                             <md-tooltip ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID]" md-direction="top">Already in Use</md-tooltip>
-
-                            {{y.action}}
-                            <md-icon ng-click="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] = true" ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] == false">add</md-icon>
+                            {{y.action}} {{y[UID]}}
+                            <!--ng-hide="ctrl.CDRParentIncludesAction(ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName], y.category)"-->
+                            <div assign-cdr-action parent="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName]" newvalue = "y.UID" category = "y.category">
+                                <md-icon  ng-if="ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] != true||ctrl.PolicyFacets['Policy CDR Settings'].Values[y.InternalName][y.UID] == false">add</md-icon>
+                            </div>
                         </span>
                     </div> 
                 </div>    
