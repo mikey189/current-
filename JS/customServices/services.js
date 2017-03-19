@@ -705,9 +705,9 @@ app.factory("sanitization_factory", function ($http) {
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
     var UpdateSettings = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
+    var searchUsers = "http://" + sname + ":4580/api/users/getadusergroups?domain="+sname;
     return {
         UpdateSettings: function (props) {
             return $http({
@@ -718,6 +718,9 @@ app.factory("system_properties", function ($http) {
                 method: "POST",
                 data: props
             });
+        },
+        getusers: (user) => {
+            return $http.get(searchUsers+"&user="+user)
         },
         get_properties: function () {
             return $http.get(propertiesList);

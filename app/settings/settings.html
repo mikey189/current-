@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="app/settings/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
+<div layout="column" flex layout-align="center center" ng-if="!ctrl.HaveSettingsFinishedLoading">
+    <md-circular md-mode="indeterminate"></md-circular>
+</div>
 <div class="md-padding" ng-cloak>
     <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselec md-dynamic-height md-whiteframe="4">
         <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}" class="setting_tabs">
@@ -29,17 +32,37 @@
                                 </md-select>
                             </md-input-container>
                         </div>
-                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text'">
-                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}" aria-label="tf">
+                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text' && prop.DisplayName !== 'Admin Group Name'">
+                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
+                                aria-label="tf">
                         </md-input-container>
-                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'" >
-                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}" aria-label="tf">
+                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'">
+                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
+                                aria-label="tf">
                         </md-input-container>
-                        <div flex="60" ng-if="prop.InputType == 'datetime'" >
-                            <md-datepicker ng-disabled="prop.IsVolatile" style="width: 100% !important " ng-model="prop.Value" string-to-date ></md-datepicker>
+                        <div flex="60" ng-if="prop.InputType == 'datetime'">
+                            <md-datepicker ng-disabled="prop.IsVolatile" style="width: 100% !important " ng-model="prop.Value" string-to-date></md-datepicker>
                         </div>
-                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value" aria-label="tf"></md-checkbox>
-                    
+                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value"
+                            aria-label="tf">
+                        </md-checkbox>
+                        <md-autocomplete flex="60" ng-if="prop.DisplayName === 'Admin Group Name' && prop.InputType == 'text'" 
+                        ng-model="queryuser"
+                         md-selected-item="ctrl.selectedItem"
+                            md-search-text-change="ctrl.getuser(queryuser)"
+                             md-search-text="queryuser"
+                              md-items="item in ctrl.getuser(queryuser)"
+                            md-item-text="item"
+                             md-min-length="0" 
+                             placeholder="Search a user">
+                            <md-item-template>
+                                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+                            </md-item-template>
+                            <md-not-found>
+                                No user matching "{{queryuser}}" were found.
+                            </md-not-found>
+                        </md-autocomplete>
+                      
                     </md-list-item>
                 </md-list>
             </md-tab-body>

@@ -1,14 +1,17 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/cdr/style.css" />
-<json-formatter json="ctrl.PolicyFacets['Policy CDR Settings'].Values"></json-formatter>
-<div style="margin-top: 2em" layout="row" layout-align="end">
-    <md-button class="hvr-glow" id="save-cdr" ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">Save</md-button>
-</div>
-<div style="margin-top: 2em">
-    <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5"
-        ng-cloak ng-switch="L0Value.Type">
-        <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
-            <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
-                <h4 layout-padding><strong> {{L0Value.DisplayName | uppercase}}<strong></h4>
+    <div ng-if="ctrl.policyFacetsFinishedLoading == false" layout="column" layout-align="center center" flex>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div ng-if="ctrl.policyFacetsFinishedLoading == true">
+        <div style="margin-top: 2em" layout="row" layout-align="end">
+            <md-button class="hvr-glow" id="save-cdr" ng-click="ctrl.SaveFacetsInCDR(L0Value.showValues)">Save</md-button>
+        </div>
+        <div style="margin-top: 2em">
+            <div ng-repeat="(L0Key, L0Value) in ctrl.cdr['Policy CDR Settings'].Properties" class="cards shadow-on-section-hover" md-whiteframe="5"
+                ng-cloak ng-switch="L0Value.Type">
+                <div ng-switch-when="FacetPropertyType_Bool, FacetPropertyType_MultiChoice">
+                    <div layout="row" layout-align="space-between center" class="card-title" ng-init="L0Value.showValues = false">
+                        <h4 layout-padding><strong> {{L0Value.DisplayName | uppercase}}<strong></h4>
             <md-button class="md-icon-button" aria-label="toggle-view"  ng-click="L0Value.showValues = (L0Value.showValues) ? false : true">
                 <md-icon class="white hvr-sink" ng-if="!L0Value.showValues">expand_more</md-icon>
                 <md-icon class="white hvr-bob" ng-if="L0Value.showValues">expand_less</md-icon>
@@ -64,4 +67,5 @@
                 </div> 
         </div>
     </div>
+</div>
 </div>

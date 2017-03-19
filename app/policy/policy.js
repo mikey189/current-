@@ -3,6 +3,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
     function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter, DummyDashboard) {
 
         var self = this;
+            self.sidenavHasLoaded = false;
 
         self.unified_view = true;
         self.sidenav_edit_mode = false;
@@ -31,8 +32,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             self.FilesQuery = {
                 order: "blocked"
             }
-        }
-
+        };
         self.TopExtensions = DummyDashboard.GetExtensions();
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
 
@@ -80,8 +80,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         break;
                 }
             }
-        }
-
+        };
         self.FiletypeInitConditions = function () {
             self.isAdvancedModeOn = false;
             self.isTableEditable = false;
@@ -105,6 +104,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                 }
 
             })
+            self.sidenavHasLoaded = true;
         }
         self.RefreshSidenav();
 
@@ -171,6 +171,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         self.getPolicyInfo = (id) => {
                 if (id) {
+                    console.log("loading")
+                    self.policyFacetsFinishedLoading = false;
                     self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
                         //LoadFacetTemplate: Boolean;
                     var deferred = $q.defer();
@@ -265,6 +267,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                         var result = (arr.length >= 1) ? true : false;
                         return result;
                     }*/
+                    self.policyFacetsFinishedLoading = true;
+
+                    console.log("finished loading")
 
                 }
             }
@@ -274,7 +279,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
-        //wathc for time change in dashboard;
+        
         $scope.$watch(angular.bind(this, () => {
             return this.DashboardTimeFrame;
         }), function (newVal) {
@@ -294,26 +299,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         };
 
 
-        //_____________________________Checking if CDR are not in double before adding them______________
 
-
-        /** if parent has a property that includes the category name and parent[property] == true => inverse this property
-         *  to false and set themselected property to true */
-
-        self.CheckForDoubleCDR = (Parent, action, category) => {
-
-            angular.forEach(Parent, (key, value) => {
-                //console.log(value +"=>"+key)
-                Parent[action] == true;
-                if (value.includes(category) && Parent[value] == true) {
-                    Parent[value] == false;
-                    Parent[action] == true;
-                    console.log(Parent[action])
-                    console.log(Parent)
-                    return Parent;
-                }
-            })
-        }
 
         // ______________________________________   confirm policy creation   __________________________
 

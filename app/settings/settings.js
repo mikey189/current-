@@ -1,10 +1,12 @@
 app.controller('settings', function (system_properties, $scope, $mdDialog) {
 
   var self = this;
+  self.HaveSettingsFinishedLoading = false;
 
   self.allProps = [];
   system_properties.get_properties().success(function (answer) {
     self.allProps = answer;
+    self.HaveSettingsFinishedLoading = true;
 
   });
 
@@ -50,6 +52,15 @@ app.controller('settings', function (system_properties, $scope, $mdDialog) {
         return "text"
         break;
     }
+  }
+  self.getuser = (user) => {
+    console.log(user);
+    var users = [];
+    system_properties.getusers(user).then((res) => {
+      users.push(res.data)
+      console.log(res)
+      return users;
+    })
   }
 
 })
@@ -97,11 +108,11 @@ app.directive('stringToDate', function () {
       });
       ngModel.$formatters.push(function (val) {
         //if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
-          var date = new Date(val)
-          return date;
-       // }
+        var date = new Date(val)
+        return date;
+        // }
       });
-     
+
     }
   };
 });
