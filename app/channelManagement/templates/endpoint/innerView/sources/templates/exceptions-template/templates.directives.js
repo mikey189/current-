@@ -14,3 +14,10 @@ app.directive("dwSmb", function(){
     }
 })
 
+app.directive("emailTemplate", function(){
+    return{
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/exceptions-template/email/email.html",
+        replace: false
+    }
+})

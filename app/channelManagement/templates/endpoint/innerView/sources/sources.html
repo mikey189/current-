@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
 <div layout="column" layout-margin id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
-
     <div layout="row" layout-margin layout-align="end center">
         <md-button class="save-sources margin_top md-raised shadow-on-hover" id="edit_IO" edit-inputs-and-outputs>SAVE</md-button>
     </div>
@@ -30,4 +29,7 @@
 </div>
 <div ng-if="ctrl.TemplateConditions.isDirWatcher">
     <dw-sources></dw-sources>
+</div>
+<div ng-if="ctrl.TemplateConditions.isEmail">
+    <email-template></email-template>
 </div>

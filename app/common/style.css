@@ -65,3 +65,27 @@
 .menuHolder>md-list-item {
     margin-top: 1.5em !important
 }
+
+.notification-type {
+    height: 1em;
+    width: 1em;
+    border-radius: 0.5em;
+    margin-right: 0.5em;
+}
+
+.success {
+    background-color: lightgreen;
+}
+
+.warning {
+    background-color: darkorange;
+}
+
+.red {
+    background-color: red;
+}
+
+#notification-btn {
+    height: 4em !important;
+    width: 5em !important;
+}

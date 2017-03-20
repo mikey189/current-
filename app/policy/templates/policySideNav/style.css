@@ -188,3 +188,6 @@
     color: white !important;
     pointer-events: none !important;
 }
+.white-progress{
+    color: white !important;
+}

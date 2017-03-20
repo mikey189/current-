@@ -1,4 +1,4 @@
-app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q", "ToastNotifications", "$stateParams","DummyDashboard",
+app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "FacetFormatter", "$q", "ToastNotifications", "$stateParams", "DummyDashboard",
     function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications, $stateParams, DummyDashboard) {
 
         var self = this;
@@ -6,8 +6,12 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.TopUsers = DummyDashboard.GetTopUsers();
         self.TopExtensions = DummyDashboard.GetExtensions();
-        self.UsersQuery = {"order": "blocked"};
-        self.FilesQuery = {"order": "blocked"};
+        self.UsersQuery = {
+            "order": "blocked"
+        };
+        self.FilesQuery = {
+            "order": "blocked"
+        };
 
 
         self.TemplateConditions = {};
@@ -31,6 +35,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         channelData.getChannelDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
+                            console.log(res.data)
                         })
                         break;
                     case "24 Hours":
@@ -55,6 +60,8 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
                         channelData.getChannelDashboard(id, TimeQuery).then((res) => {
                             self.dashboardData = res.data;
+                            console.log(res.data)
+
                         })
                         break;
                     default:
@@ -75,6 +82,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isEndpoint = true;
                         self.EndpointSourcesAreEditable = false;
                         self.TemplateConditions.isAPI = false;
+                        self.TemplateConditions.isEmail = false;
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
@@ -93,6 +101,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isEndpoint = true;
                         self.EndpointSourcesAreEditable = false;
                         self.TemplateConditions.isAPI = false;
+                        self.TemplateConditions.isEmail = false;
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
@@ -113,6 +122,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isEndpoint = true;
                         self.EndpointSourcesAreEditable = false;
                         self.TemplateConditions.isAPI = false;
+                        self.TemplateConditions.isEmail = false;
 
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
@@ -125,7 +135,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
 
-
                         break;
                         //case is dirwatcher
                     case 3:
@@ -134,15 +143,21 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isEndpoint = false;
                         self.TemplateConditions.isAPI = false;
                         self.DWSourcesAreEditable = false;
+                        self.TemplateConditions.isEmail = false;
+
                         self.DW.Sources = channelInfo.DirWatcherConfigurations || [];
 
-
                         break;
-                    case 100:
 
-                        self.TemplateConditions.isAPI = true;
+                    case 4:
+
                         self.TemplateConditions.isDirWatcher = false;
                         self.TemplateConditions.isEndpoint = false;
+                        self.TemplateConditions.isAPI = false;
+                        self.DWSourcesAreEditable = false;
+                        self.TemplateConditions.isEmail = true;
+
+                        break;
 
                 }
             }
@@ -183,6 +198,8 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
             if (newVal) {
 
+                self.ChannelHasFinishedLoading = false;
+
                 self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame);
                 channelData.getChannelDashboard(newVal).then((answer1) => {
                     self.channelDashboard = answer1.data
@@ -213,6 +230,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     self.ChannelFacets = res.EntityFacets
 
                 })
+                self.ChannelHasFinishedLoading = true;
             }
         }
         $scope.$watch(angular.bind(this, function () {
@@ -300,6 +318,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.channel_list = []
         self.is_edit_mode_on = false;
         self.LoadSidenav = () => {
+            self.sidenavHasLoaded = false;
             channelData.getchannelList().then(function (answer) {
                 self.menuItems = answer.data;
                 if (self.menuItems.length > 0) {
@@ -314,6 +333,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 } else {
                     self.NoChannelExists = true;
                 }
+                self.sidenavHasLoaded = true;
                 return self.rootId
 
             }).then((id) => {

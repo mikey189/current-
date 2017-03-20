@@ -253,7 +253,7 @@ app.factory("channelData", function ($http, $rootScope) {
     return {
         getchannelList: function () {
             return $http.get(channelList, {
-                cache: false
+                cache: true
             })
         },
         addChannel: function (data) {
@@ -376,7 +376,7 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         get_policy_list: function () {
             return $http.get(policyList, {
-                cache: false
+                cache: true
             })
         },
         reorder_channel_priority: function (policyOrder) {
@@ -464,12 +464,12 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         getList: function () {
             return $http.get(policyList, {
-                cache: false
+                cache: true
             });
         },
         getSidenav: function () {
             return $http.get(policySidenav, {
-                cache: false
+                cache: true
             })
         },
         getTopFiles: function () {
@@ -707,7 +707,7 @@ app.factory("system_properties", function ($http) {
     var sname = localStorage.getItem("serverName");
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
     var UpdateSettings = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
-    var searchUsers = "http://" + sname + ":4580/api/users/getadusergroups?domain="+sname;
+    var searchUsers = "http://" + sname + ":4580/api/users/getadusergroups?";
     return {
         UpdateSettings: function (props) {
             return $http({
@@ -720,10 +720,10 @@ app.factory("system_properties", function ($http) {
             });
         },
         getusers: (user) => {
-            return $http.get(searchUsers+"&user="+user)
+            return $http.get(searchUsers+"user="+user)
         },
         get_properties: function () {
-            return $http.get(propertiesList);
+            return $http.get(propertiesList, {cache: true});
 
         }
     }

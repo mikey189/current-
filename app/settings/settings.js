@@ -1,14 +1,15 @@
 app.controller('settings', function (system_properties, $scope, $mdDialog) {
 
   var self = this;
-  self.HaveSettingsFinishedLoading = false;
 
   self.allProps = [];
-  system_properties.get_properties().success(function (answer) {
-    self.allProps = answer;
-    self.HaveSettingsFinishedLoading = true;
-
-  });
+  self.GetSystemProps = () => {
+    self.HaveSettingsFinishedLoading = false;
+    system_properties.get_properties().success(function (answer) {
+      self.allProps = answer;
+      self.HaveSettingsFinishedLoading = true;
+    });
+  }
 
   self.SaveSettings = function () {
     system_properties.UpdateSettings(self.allProps).success(function (answer) {
@@ -57,9 +58,9 @@ app.controller('settings', function (system_properties, $scope, $mdDialog) {
     console.log(user);
     var users = [];
     system_properties.getusers(user).then((res) => {
-      users.push(res.data)
-      console.log(res)
-      return users;
+      res.data
+      console.log(res.data)
+      return res.data;
     })
   }
 

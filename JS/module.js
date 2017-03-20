@@ -1,7 +1,7 @@
  var app = angular.module('resec', ['ngMaterial', 'ui.router', 'chart.js', 'ngMdIcons',
    'xeditable', 'ui.bootstrap', 'ngDraggable', 'angular.vertilize', 'ngDragDrop', 'jsonFormatter',
    'md.data.table', 'ng.httpLoader', 'ng-ip-address', 'angular-loading-bar', 'ngAnimate', "googlechart", "ipCookie",
-   "ngCookies", "ui.indeterminate", "kendo.directives", "toastr", "angular.filter"
+   "ngCookies", "ui.indeterminate", "kendo.directives", "toastr", "angular.filter", "angular-notification-icons"
  ])
 
  //spinner / loader for GET/POST requests
@@ -14,9 +14,6 @@
      $httpProvider.interceptors.push("401Error");
    }
  ]);
-
-
-
  app.config(function (toastrConfig) {
    angular.extend(toastrConfig, {
      allowHtml: true,

@@ -16,14 +16,17 @@ app.controller("dashboard", function (toastr, MainDashboard) {
             self.main = res.data;
             self.UserAlerts = res.data.UserAlerts;
 
+
             if (self.UserAlerts.length > 0) {
+                var NotificationsArr = [];
                 for (i in self.UserAlerts) {
+                    NotificationsArr.push(self.UserAlerts[i]);
+                    localStorage.setItem("notifications", JSON.stringify(NotificationsArr));
                     if (self.UserAlerts[i].Severity === "Error") {
                         toastr.error(self.UserAlerts[i].Description + '<br> <a style="color: yellow" href="' + self.UserAlerts[i].Url + '">Read More</a>', self.UserAlerts[i].Name, {
                             allowHtml: true
                         });
                     }
-
                 }
 
             }

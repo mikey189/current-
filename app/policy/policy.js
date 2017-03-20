@@ -3,7 +3,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
     function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter, DummyDashboard) {
 
         var self = this;
-            self.sidenavHasLoaded = false;
+        self.sidenavHasLoaded = false;
 
         self.unified_view = true;
         self.sidenav_edit_mode = false;
@@ -94,19 +94,19 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             ToastNotifications.ErrorToast(str);
         };
         self.RefreshSidenav = function () {
-            policyData.getSidenav().then(function (answer) {
-                self.sideNavList = answer.data
-                if (self.sideNavList.length > 0) {
-                    self.NoPolicyExists = false;
-                    self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId;
-                } else {
-                    self.NoPolicyExists = true;
-                }
-
-            })
-            self.sidenavHasLoaded = true;
-        }
-        self.RefreshSidenav();
+                self.sidenavHasLoaded = false;
+                policyData.getSidenav().then(function (answer) {
+                    self.sideNavList = answer.data
+                    if (self.sideNavList.length > 0) {
+                        self.NoPolicyExists = false;
+                        self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId;
+                    } else {
+                        self.NoPolicyExists = true;
+                    }
+                    self.sidenavHasLoaded = true;
+                })
+            }
+            //self.RefreshSidenav();
 
         self.DeleteAction = function (key, L0Key) {
                 self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
@@ -171,10 +171,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         self.getPolicyInfo = (id) => {
                 if (id) {
-                    console.log("loading")
                     self.policyFacetsFinishedLoading = false;
-                    self.GetDashboardTimeFrame(id, self.DashboardTimeFrame)
-                        //LoadFacetTemplate: Boolean;
+                    self.GetDashboardTimeFrame(id, self.DashboardTimeFrame);
+                    //LoadFacetTemplate: Boolean;
                     var deferred = $q.defer();
                     self.PolicyFacets = {};
                     self.ServerFacetTemplates = {};
@@ -183,92 +182,70 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
                     //   if (LoadFacetTemplate) {
                     policyData.get_policy_info(id).then(function (answer) {
 
-                            self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
-                            //flattens the filetype for better indexing when filtering filtetype DOMSide;
-                            //self.FlattendFileTypeDeep();
-                            // checking child state for "AllowOption" Property
-                            angular.forEach(self.Filetypes, function (value, key) {
-                                if (value.AllowOption == false) {
-                                    key.ChildrenAreNotAllAllowed = true;
-                                } else {
-                                    key.ChildrenAreNotAllAllowed = false;
-                                }
-                            });
-                            self.policy = answer.data;
-                            //init PolicyFacets
-                            self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? {} : self.policy.PolicyFacets;
-
-                            //__________________________________________file detection settings__________________________________________//
-
-                            var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
-
-                            self.OpenEmailTemplate = () => {
-                                $mdDialog.show({
-                                        controller: "EmailNotificationTemplateController",
-                                        templateUrl: 'app/policy/templates/policyDefinition/templates/settings/email.template.html',
-                                        parent: angular.element(document.body),
-                                        clickOutsideToClose: true,
-                                    })
-                                    .then((answer) => {
-                                        $scope.status = 'You said the information was "' + answer + '".';
-                                    }, () => {
-                                        $scope.status = 'You cancelled the dialog.';
-                                    });
+                        self.Filetypes = answer.data.PolicyInfo.FileTypesActionsSettings;
+                        //flattens the filetype for better indexing when filtering filtetype DOMSide;
+                        //self.FlattendFileTypeDeep();
+                        // checking child state for "AllowOption" Property
+                        angular.forEach(self.Filetypes, function (value, key) {
+                            if (value.AllowOption == false) {
+                                key.ChildrenAreNotAllAllowed = true;
+                            } else {
+                                key.ChildrenAreNotAllAllowed = false;
                             }
+                        });
+                        self.policy = answer.data;
+                        //init PolicyFacets
+                        self.PolicyFacets = (jQuery.isEmptyObject(self.policy.PolicyFacets)) ? {} : self.policy.PolicyFacets;
 
-                            /*______________________________________settings______________________________________*/
-                            var q2 = policyData.get_policy_settings("PolicySettings");
+                        //__________________________________________file detection settings__________________________________________//
 
-                            //______________________________________retrieving CDR Facets__________________________________________//
+                        var q1 = policyData.get_policy_settings("PolicyFileDetectionSettings");
 
-                            var q3 = policyData.getCDRFacets();
+                        self.OpenEmailTemplate = () => {
+                            $mdDialog.show({
+                                    controller: "EmailNotificationTemplateController",
+                                    templateUrl: 'app/policy/templates/policyDefinition/templates/settings/email.template.html',
+                                    parent: angular.element(document.body),
+                                    clickOutsideToClose: true,
+                                })
+                                .then((answer) => {
+                                    $scope.status = 'You said the information was "' + answer + '".';
+                                }, () => {
+                                    $scope.status = 'You cancelled the dialog.';
+                                });
+                        }
 
-                            $q.all({
-                                q1,
-                                q2,
-                                q3
-                            }).then(data => {
-                                self.RawData = data;
-                                var detectionFacets = data.q1.data;
-                                var allFacets = data.q2.data;
-                                var cdr = data.q3.data;
-                                //merge all facets templates into one object.
-                                Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
-                                self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
-                                self.allFacets = self.FormatFacetTemplates(allFacets);
-                                self.cdr = self.FormatFacetTemplates(cdr);
-                                self.custCdr = cdrFormatter.format(self.cdr["Policy CDR Settings"].Properties);
-                                Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
-                                var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
-                                deferred.resolve(FacetVm);
-                            });
-                            return deferred.promise;
-                        }).then(function (answer) {
+                        /*______________________________________settings______________________________________*/
+                        var q2 = policyData.get_policy_settings("PolicySettings");
 
-                            self.PolicyFacets = answer.EntityFacets;
-                        })
-                        //Prevent assigning two of the same CDR categeory action for the same filetype, this solutuion is not optimal though
+                        //______________________________________retrieving CDR Facets__________________________________________//
 
+                        var q3 = policyData.getCDRFacets();
 
-                    /*  self.CDRParentIncludesAction = (parent, child) => {
-                        var result;
-                        var arr = [];
-
-                        angular.forEach(parent, (key, value) => {
-                            // console.log(value)
-
-                            if (value.includes(child) && parent[value]) {
-                                arr.push(value);
-
-                            }
-                            // console.log(arr.length)
-
-                        })
-                        var result = (arr.length >= 1) ? true : false;
-                        return result;
-                    }*/
-                    self.policyFacetsFinishedLoading = true;
-
+                        $q.all({
+                            q1,
+                            q2,
+                            q3
+                        }).then(data => {
+                            self.RawData = data;
+                            var detectionFacets = data.q1.data;
+                            var allFacets = data.q2.data;
+                            var cdr = data.q3.data;
+                            //merge all facets templates into one object.
+                            Object.assign(self.ServerFacetTemplates, detectionFacets, allFacets, cdr);
+                            self.DetectionFacets = self.FormatFacetTemplates(detectionFacets);
+                            self.allFacets = self.FormatFacetTemplates(allFacets);
+                            self.cdr = self.FormatFacetTemplates(cdr);
+                            self.custCdr = cdrFormatter.format(self.cdr["Policy CDR Settings"].Properties);
+                            Object.assign(self.FacetTemplatesContainer, self.DetectionFacets, self.allFacets, self.cdr)
+                            var FacetVm = self.InitFacets(self.FacetTemplatesContainer, self.PolicyFacets);
+                            deferred.resolve(FacetVm);
+                        });
+                        self.policyFacetsFinishedLoading = true;
+                        return deferred.promise;
+                    }).then(function (answer) {
+                        self.PolicyFacets = answer.EntityFacets;
+                    })
                     console.log("finished loading")
 
                 }
@@ -279,7 +256,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         }), function (newVal) {
             self.getPolicyInfo(newVal);
         });
-        
         $scope.$watch(angular.bind(this, () => {
             return this.DashboardTimeFrame;
         }), function (newVal) {
@@ -297,9 +273,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         self.InitFacets = (newRetrievedData, EntityFacets) => {
             return FacetFormatter.InitFacets(newRetrievedData, EntityFacets);
         };
-
-
-
 
         // ______________________________________   confirm policy creation   __________________________
 
@@ -351,19 +324,14 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             // ______________________________________   End Of formatting to post    __________________________
             // ______________________________________   Special filter    __________________________
         self.myFilter = (item) => {
-
             return true;
         };
-
     }
-
 ])
 
 // ______________________________________   End Of controller    ______________________________________
 
 // ______________________________________   Custom Filters    ______________________________________
-
-
 
 app.filter("splitter", function () {
     return function (string, char, index) {

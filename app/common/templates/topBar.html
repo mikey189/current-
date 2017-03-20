@@ -19,6 +19,21 @@
         <md-button class="md-icon-button md-primary" refresh>
             <md-icon>refresh</md-icon>
         </md-button>
+        <md-menu md-offset="0 -7" md-position-mode="target-right target" ng-if="ctrl.notificationsLength > 0">
+            <md-button md-no-ink class="md-icon-button"id="notification-btn" ng-click="$mdOpenMenu($event)">
+                <notification-icon count='ctrl.notificationsLength'>
+                    <md-icon style="color: #333">mail</md-icon>
+                </notification-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item ng-repeat="notification in ctrl.notifications track by $index">
+                    <md-button href="{{notification.Url}}">
+                        <span class="notification-type" ng-class="{'success': notification.Severity === 'Success','red': notification.Severity === 'Error', 'warning': notification.Severity === 'Warning'  }"></span>
+                        <span md-menu-align-target layout-wrap>{{notification.Name}}</span>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
         <md-menu md-offset="0 -7" md-position-mode="target-right target">
             <md-button aria-label="Open demo menu" class="md-icon-button md-primary" ng-click="$mdOpenMenu($event)">
                 <md-icon md-menu-origin>account_circle</md-icon>

@@ -1,72 +1,71 @@
 <link rel="stylesheet" href="app/settings/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
-<div layout="column" flex layout-align="center center" ng-if="!ctrl.HaveSettingsFinishedLoading">
-    <md-circular md-mode="indeterminate"></md-circular>
-</div>
-<div class="md-padding" ng-cloak>
-    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselec md-dynamic-height md-whiteframe="4">
-        <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}" class="setting_tabs">
-            <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
-                <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
-                    <md-list-item layout='row' layout-align='space-between center' layout-padding>
-                        <div layout="row" layout-align=" start center" flex="40">
-                            <md-icon class='material-icons detail-toolip' style='margin-right: 0.3em'>
-                                info
-                                <md-tooltip>
-                                    {{::prop.Comment}} : {{::prop.InputType}}
-                                </md-tooltip>
-                            </md-icon>
-                            {{::prop.DisplayName}}
-                        </div>
-                        <div ng-if="prop.InputType == 'number'" layout="row" layout-align="space-between center" flex="60">
-                            <md-input-container flex="70" md-no-float class="md-block">
-                                <input type="number" ng-disabled="prop.IsVolatile" ng-model="prop.Value" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
-                                    formatter="prop.Value" aria-label="tf">
+<div ng-init="ctrl.GetSystemProps()">
+    <div ng-if="!ctrl.HaveSettingsFinishedLoading" layout="column" layout-fill flex layout-align="center center">
+        <md-progress-circular md-mode="indeterminate" class="md-accent md-accent-3"></md-progress-circular>
+    </div>
+    <div class="md-padding" ng-cloak ng-if="ctrl.HaveSettingsFinishedLoading">
+        <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselec md-dynamic-height md-whiteframe="4">
+            <md-tab ng-repeat="tab in ctrl.allProps" label="{{tab.TabName}}" class="setting_tabs">
+                <md-tab-body class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+                    <md-list class='whiteBk' ng-repeat="prop in tab.Properties">
+                        <md-list-item layout='row' layout-align='space-between center' layout-padding>
+                            <div layout="row" layout-align=" start center" flex="40">
+                                <md-icon class='material-icons detail-toolip' style='margin-right: 0.3em'>
+                                    info
+                                    <md-tooltip>
+                                        {{::prop.Comment}} : {{::prop.InputType}}
+                                    </md-tooltip>
+                                </md-icon>
+                                {{::prop.DisplayName}}
+                            </div>
+                            <div ng-if="prop.InputType == 'number'" layout="row" layout-align="space-between center" flex="60">
+                                <md-input-container flex="70" md-no-float class="md-block">
+                                    <input type="number" ng-disabled="prop.IsVolatile" ng-model="prop.Value" placeholder="{{prop.DisplayName }}: {{prop.InputType}}"
+                                        formatter="prop.Value" aria-label="tf">
+                                </md-input-container>
+                                <md-input-container flex ng-if="prop.IsComplex">
+                                    <label>Unit</label>
+                                    <md-select ng-model="ctrl.userState">
+                                        <md-option>KB</md-option>
+                                        <md-option>MB</md-option>
+                                        <md-option>GB</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text' && prop.DisplayName !== 'Admin Group Name'">
+                                <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
+                                    aria-label="tf">
                             </md-input-container>
-                            <md-input-container flex ng-if="prop.IsComplex">
-                                <label>Unit</label>
-                                <md-select ng-model="ctrl.userState">
-                                    <md-option>KB</md-option>
-                                    <md-option>MB</md-option>
-                                    <md-option>GB</md-option>
-                                </md-select>
+                            <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'">
+                                <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
+                                    aria-label="tf">
                             </md-input-container>
-                        </div>
-                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'text' && prop.DisplayName !== 'Admin Group Name'">
-                            <input type="text" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
+                            <div flex="60" ng-if="prop.InputType == 'datetime'">
+                                <md-datepicker ng-disabled="prop.IsVolatile" style="width: 100% !important " ng-model="prop.Value" string-to-date></md-datepicker>
+                            </div>
+                            <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value"
                                 aria-label="tf">
-                        </md-input-container>
-                        <md-input-container flex="60" md-no-float class="md-block" ng-if="prop.InputType == 'password'">
-                            <input type="password" ng-disabled="prop.IsVolatile" ng-model="prop.Value" ng-readonly="prop.IsVolatile" placeholder="{{prop.Value}}"
-                                aria-label="tf">
-                        </md-input-container>
-                        <div flex="60" ng-if="prop.InputType == 'datetime'">
-                            <md-datepicker ng-disabled="prop.IsVolatile" style="width: 100% !important " ng-model="prop.Value" string-to-date></md-datepicker>
-                        </div>
-                        <md-checkbox ng-disabled="prop.IsVolatile" ng-if="prop.InputType == 'checkbox'" ng-readonly="prop.IsVolatile" ng-model="prop.Value"
-                            aria-label="tf">
-                        </md-checkbox>
-                        <md-autocomplete flex="60" ng-if="prop.DisplayName === 'Admin Group Name' && prop.InputType == 'text'" 
-                        ng-model="queryuser"
-                         md-selected-item="ctrl.selectedItem"
-                            md-search-text-change="ctrl.getuser(queryuser)"
-                             md-search-text="queryuser"
-                              md-items="item in ctrl.getuser(queryuser)"
-                            md-item-text="item"
-                             md-min-length="0" 
-                             placeholder="Search a user">
-                            <md-item-template>
-                                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-                            </md-item-template>
-                            <md-not-found>
-                                No user matching "{{queryuser}}" were found.
-                            </md-not-found>
-                        </md-autocomplete>
-                      
-                    </md-list-item>
-                </md-list>
-            </md-tab-body>
-        </md-tab>
-    </md-tabs>
-    <md-button ng-click="ctrl.SaveSettings()" id="save_settings_changes" md-whiteframe="6">Save Changes</md-button>
+                            </md-checkbox>
+                            <md-autocomplete flex required ng-if="prop.DisplayName === 'Admin Group Name' && prop.InputType == 'text'" md-input-name="autocompleteField"
+                                md-input-minlength="1" md-input-maxlength="30" md-no-cache="false" md-selected-item="prop.Value"
+                                md-search-text="queryuser" md-items="item in ctrl.getuser(queryuser)" md-item-text="item" md-require-match
+                                md-floating-label="User">
+                                <md-item-template>
+                                    <span md-highlight-text="queryuser">{{item}}</span>
+                                </md-item-template>
+                                <div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+                                    <div ng-message="required">You <b>must</b> chose a user.</div>
+                                    <div ng-message="md-require-match">Please select an existing user.</div>
+                                    <div ng-message="minlength">Your entry is not long enough.</div>
+                                    <div ng-message="maxlength">Your entry is too long.</div>
+                                </div>
+                            </md-autocomplete>
+                        </md-list-item>
+                    </md-list>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+        <md-button ng-click="ctrl.SaveSettings()" id="save_settings_changes" md-whiteframe="6">Save Changes</md-button>
+    </div>
 </div>
