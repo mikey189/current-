@@ -43,3 +43,6 @@ md-input-container{
 md-input-container:focus{
     border-bottom: solid 1px red !important;
 }
+.md-input:disabled{
+    color: red !important;
+}

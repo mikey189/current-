@@ -21,3 +21,11 @@ app.directive("emailTemplate", function(){
         replace: false
     }
 })
+
+app.directive("apiTemplate", function(){
+    return{
+        restrict: "E",
+        templateUrl: "app/channelManagement/templates/endpoint/innerView/sources/templates/exceptions-template/API/API.html",
+        replace: false
+    }
+})

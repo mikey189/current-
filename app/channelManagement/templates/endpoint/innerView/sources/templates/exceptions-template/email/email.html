@@ -10,21 +10,22 @@
     <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
         <span>Email Settings</span>
     </md-toolbar>
-    <md-list-item ng-repeat="(L0Key, L0Value) in ctrl.EmailSettings" ng-switch="L0Value.Type"
+    <json-formatter json="ctrl.ServerFacetTemplates"></json-formatter>
+    <md-list-item ng-repeat="(L0Key, L0Value) in ctrl.whoData['Email Settings'].Properties" ng-switch="L0Value.Type"
         layout="row" layout-align="space-between center">
         <span flex="80">{{L0Value.DisplayName}}</span>
         <div ng-switch-when="FacetPropertyType_String" type="text" flex>
-            <input class="material-input" flex ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]" />
+            <input class="material-input" flex ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]" />
         </div>
         <div ng-switch-when="FacetPropertyType_Bool" flex layout="row" layout-align=" end">
-            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]"></md-switch>
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]"></md-switch>
         </div>
         <div ng-switch-when="FacetPropertyType_Int" flex>
-            <input class="material-input" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]" type="number"
+            <input class="material-input" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]" type="number"
             />
         </div>
         <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
-            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Directory Watcher Advanced Settings'].Values[L0Key]"
+            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]"
                 class="select"></select>
         </div>
     </md-list-item>

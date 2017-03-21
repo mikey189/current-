@@ -98,11 +98,11 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     case 100:
 
                         self.TemplateConditions.isDirWatcher = false;
-                        self.TemplateConditions.isEndpoint = true;
+                        self.TemplateConditions.isEndpoint = false;
                         self.EndpointSourcesAreEditable = false;
-                        self.TemplateConditions.isAPI = false;
+                        self.TemplateConditions.isAPI = true;
                         self.TemplateConditions.isEmail = false;
-
+                        /*
                         self.InputConfiguration = channelInfo.InputConfiguration || {};
                         self.ismbList = self.InputConfiguration.IoSmbConfiguration || [];
                         self.OutputConfiguration = channelInfo.OutputConfiguration || {};
@@ -110,7 +110,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.NullStoreName = self.OutputConfiguration.NullStoreName;
                         self.NumberOFiSMBs = self.ismbList.length || 0;
                         self.NumberOFoSMBs = self.osmbList.length || 0;
-
+                        */
 
                         break;
 
