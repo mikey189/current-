@@ -4,9 +4,9 @@ app.controller("dashboard", function (toastr, MainDashboard) {
 
     self.purpleInt = '40';
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
+        self.DashboardHasLoaded = false;
 
     self.getData = () => {
-
         MainDashboard.GetDashboard().then((res) => {
             self.inputs = res.data.DashboardInputs;
             self.outputs = res.data.DashboardOutputs;
@@ -15,8 +15,7 @@ app.controller("dashboard", function (toastr, MainDashboard) {
             self.TotalOutputs = res.data.TotalOutputs;
             self.main = res.data;
             self.UserAlerts = res.data.UserAlerts;
-
-
+            self.DashboardHasLoaded = true;
             if (self.UserAlerts.length > 0) {
                 var NotificationsArr = [];
                 for (i in self.UserAlerts) {

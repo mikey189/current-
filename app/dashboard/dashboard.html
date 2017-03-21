@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="app/dashboard/style.css" />
-<div layout="column" id="dashoardContainer" get-height ng-cloak sync-scroll class="animated fadeIn" ng-cloak ng-init="ctrl.getData()" ng-if="ctrl.DashboardHasLoaded">
+<div layout="column" id="dashoardContainer" get-height ng-cloak sync-scroll class="animated fadeIn" ng-cloak ng-init="ctrl.getData()"
+    ng-show="ctrl.DashboardHasLoaded">
     <!--    <toolbar-top></toolbar-top> -->
     <div layout-xl='row' layout gt-md='row' layout-margin layout-md='column' layout-sm='column' layout-xs='column' layout-align-xl='space-around center'
         layout-align-lg='space-between center' id='dashoardTableContainer'>
@@ -18,6 +19,8 @@
             <!--Centered title of of table -->
             <output-by-channel></output-by-channel>
         </div>
-        <!-- <d-cases-sidebar></d-cases-sidebar>-->
     </div>
 </div>
+<md-content ng-show="!ctrl.DashboardHasLoaded" layout-fill layout='column'  layout-align="center center">
+    <md-progress-circular md-mode="indeterminate" class="md-accent md-accent-3"></md-progress-circular>
+</md-content>

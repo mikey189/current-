@@ -1,8 +1,8 @@
 <div ng-http-loader methods="['GET']" template="app/common/templates/loader.html" ttl="1"></div>
-<div layout="column" flex layout-fill id="loginBody" role="main" ng-init="ctrl.CheckBrowserAndCookies()">
-    <md-content layout="column" id="content">
+<div layout="column" flex layout-fill layout-align="center center" id="loginBody" role="main" ng-init="ctrl.CheckBrowserAndCookies()">
+    <!--<md-content layout="column" id="content">
         <md-icon md-svg-src='login/resecLogo.svg' class='md-150'></md-icon>
-        <div layout="row" layout-align="center center">
+        <div layout="row" layout-align="center center" >
             <md-whiteframe id='loginForm' class="md-whiteframe-24dp" layout="column" layout-padding flex="40">
                 <md-content layout='column' layout-align='center' layout-margin>
                     <md-input-container>
@@ -31,5 +31,28 @@
             </md-whiteframe>
         </div>
     </md-content>
-    <md-content class="error_message animated fadeIn md-title" ng-if="!ctrl.is_login_nahon" layout-align="center center" layout="row">Please Check Your Credentials</md-content>
+    <md-content class="error_message animated fadeIn md-title" ng-if="!ctrl.is_login_nahon" layout-align="center center" layout="row">Please Check Your Credentials</md-content>-->
+    <md-icon md-svg-src='login/resecLogo2.svg' class='md-150' style="margin-top: 0px"></md-icon>
+
+    <form id="form-holder" name="loginForm" layout="column" layout-align="center center" layout-margin style="width: 30%">
+        <input id="ServerName" type="text" name="server" md-whiteframe="4" ng-model="ctrl.serverName" class="login-input" ng-class="{'wrong-login': !ctrl.is_login_nahon}" placeholder="Server"
+            required ng-keypress="ctrl.LogUserInOnEnter($event)">
+        <span class="error-message" ng-show="loginForm.server.$touched && loginForm.server.$invalid">The server is required.</span>
+        <input id="username" type="text" name="username" md-whiteframe="4" ng-model="ctrl.UserName" class="login-input" placeholder="Username" ng-class="{'wrong-login': !ctrl.is_login_nahon}"
+            required ng-keypress="ctrl.LogUserInOnEnter($event)">
+        <span class="error-message" ng-show="loginForm.username.$touched && loginForm.username.$invalid">Username is required.</span>
+        <input id="password" type="password" name="password" md-whiteframe="4" ng-model="ctrl.Password" class="login-input" placeholder="Password" ng-class="{'wrong-login': !ctrl.is_login_nahon}"
+            required ng-keypress="ctrl.LogUserInOnEnter($event)">
+        <span class="error-message" ng-show="loginForm.password.$touched && loginForm.password.$invalid">Please enter a valid password</span>
+        <span class="error-message-credentials" ng-show="!ctrl.is_login_nahon">Incorrect credentials !</span>
+        <md-button check-credentials ng-disabled="!loginForm.$valid" ng-class="{'valid-btn': loginForm.$valid, 'shake animated': !ctrl.is_login_nahon}" md-whiteframe="4"
+            id="login-btn">LOGIN</md-button>
+        <div layout="row" layout-align="space-between center" style="width: 100%">
+            <div layout="row" flex ng-show="loginForm.$valid">
+                <md-checkbox id="remember-me" aria-label="remember me" ng-model="ctrl.IsRememberMe"></md-checkbox>
+                <md-content style="margin-bottom: 0px" class="hvr-underline-from-left">Remember Me</md-content>
+            </div>
+            <md-content ui-sref="ResetPasswordS1" class="hvr-underline-from-right">Forgot Password?</md-content>
+        </div>
+    </form>
 </div>
