@@ -235,7 +235,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelsIconsURL = "http://" + sname + ":4580/api/jsonserver/channelsIcons";
     var channelList = "http://" + sname + ":4580/api/channels/getallchannels/?q=1"
     var channelListReal = "http://" + sname + ":4580/api/channels/getALLCHANNELS";
-    var channelDashboard = "http://" + sname + ":4580/api/channels/getChannelDashboard/";
+    var ChannelTopUsers = "http://" + sname + ":4580/api/channels/GetChannelDashboardTopUsers/";
     var postChannel = "http://" + sname + ":4580/api/Channels/PostChannel";
     var updateComputers = "http://" + sname + ":4580/api/channels/PostChannelComputerList/";
     var current_computers = "http://" + sname + ":4580/api/Channels/getchannel/"
@@ -253,7 +253,7 @@ app.factory("channelData", function ($http, $rootScope) {
     return {
         getchannelList: function () {
             return $http.get(channelList, {
-                cache: true
+                cache: false
             })
         },
         addChannel: function (data) {
@@ -287,9 +287,14 @@ app.factory("channelData", function ($http, $rootScope) {
         getAllChannels: function () {
             return $http.get(channelListReal)
         },
-        getChannelDashboard: function (id, TimeReference) {
-            return $http.get(channelDashboard + id + "?startTimeInTicks=" + TimeReference)
+        GetTopUsers: function (id, TimeReference, order) {
+            return $http.get(ChannelTopUsers + id + "?startTimeInTicks=" + TimeReference+"&sortField="+order)
         },
+        /*
+        Missing call
+        GetTopFiles: function (id, TimeReference, order) {
+            return $http.get(ChannelTopFiles + id + "?startTimeInTicks=" + TimeReference+"sortField="+order)
+        },*/
         createChannel: function (data) {
             return $http({
                 headers: {

@@ -51,6 +51,7 @@ md-checkbox.md-checked ._md-icon {
     border-radius: 3px;
     min-height: 3em;
     padding-left: 0.5em;
+    border-width: 0px;
 }
 
 #login-btn {
@@ -69,18 +70,18 @@ md-checkbox.md-checked ._md-icon {
 }
 
 .error-message {
-    color: #333;
+    color: #FFE710;
     text-align: start;
     width: 100%;
 }
 
 .error-message-credentials {
-    color: #333;
+    color: #FFE710;
     text-align: start;
     font-weight: 700;
     width: 100%;
 }
 
 .wrong-login {
-    border: solid 2px #FF1744 !important;
+    border: solid 3px #FFE710 !important;
 }

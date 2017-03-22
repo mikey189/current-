@@ -4,7 +4,7 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
         var self = this;
         self.sidenavHasLoaded = false;
-
+        self.PolicyCreationIsDone = false;
         self.unified_view = true;
         self.sidenav_edit_mode = false;
         self.PolicyInfo = {};
@@ -94,19 +94,21 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             ToastNotifications.ErrorToast(str);
         };
         self.RefreshSidenav = function () {
-                self.sidenavHasLoaded = false;
-                policyData.getSidenav().then(function (answer) {
-                    self.sideNavList = answer.data
-                    if (self.sideNavList.length > 0) {
-                        self.NoPolicyExists = false;
-                        self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId;
-                    } else {
-                        self.NoPolicyExists = true;
-                    }
-                    self.sidenavHasLoaded = true;
-                })
-            }
-            //self.RefreshSidenav();
+            self.sidenavHasLoaded = false;
+            console.log("loading sidenav")
+            policyData.getSidenav().then(function (answer) {
+                self.sideNavList = answer.data
+                if (self.sideNavList.length > 0) {
+                    self.NoPolicyExists = false;
+                    console.log(self.sideNavList)
+                    self.policyId = $state.params.PolicyID || self.sideNavList[0].PolicyId;
+                } else {
+                    self.NoPolicyExists = true;
+                }
+                self.sidenavHasLoaded = true;
+
+            })
+        }
 
         self.DeleteAction = function (key, L0Key) {
                 self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
@@ -170,7 +172,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //________________________Get policy and format it's facets ___________________________
 
         self.getPolicyInfo = (id) => {
+
                 if (id) {
+                    console.log(id)
                     self.policyFacetsFinishedLoading = false;
                     self.GetDashboardTimeFrame(id, self.DashboardTimeFrame);
                     //LoadFacetTemplate: Boolean;
@@ -277,14 +281,18 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         // ______________________________________   confirm policy creation   __________________________
 
         self.CreatePolicy = () => {
-                self.PolicyIsInCreation = true;
+                self.PolicyCreationIsDone = true;
+
                 policyData.create_new_policy(self.PolicyInfo).then((success) => {
+                        self.PolicyCreationIsDone = true;
+                        self.policyId = success.data.Id;
+                        console.log(success.data)
+                            //need to reorganize received output to fit the policy List needs
+                        var newPolicy = {};
+                        newPolicy.PolicyName = success.data.GeneralInformations.PolicyName;
+                        newPolicy.PolicyId = success.data.Id;
+                        self.sideNavList.push(newPolicy);
                         $mdDialog.cancel();
-                        $state.go('app.policy.definition.fileType', {
-                            PolicyID: success.data.Id
-                        }, {
-                            reload: true
-                        });
                     },
                     (error) => {
                         alert("there was an error : " + error.data.Message);

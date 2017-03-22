@@ -25,7 +25,7 @@ app.directive("goToChannelCreation", function ($state) {
 })
 
 
-app.directive("deleteChannel", function ($mdDialog, channelData, $q) {
+app.directive("deleteChannel", function ($mdDialog, channelData, $q, $timeout) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
@@ -42,13 +42,12 @@ app.directive("deleteChannel", function ($mdDialog, channelData, $q) {
                 $mdDialog.show(confirm).then(() => {
                     channelData.delete_channel(channel_id).then(result => {
                         console.log("successfully deleted channel : ", channel_id)
-                            .then(() => {
-                                scope.ctrl.LoadSidenav();
-                            })
+                        scope.ctrl.LoadSidenav();
                     }, error => {
                         scope.ctrl.HTTP_Dialogs.ShowErrorDialog("We could not delete this channel", error.data.Message);
                     })
                 })
+
             })
         }
     }
@@ -89,9 +88,7 @@ app.directive("renameChannel", function (channelData, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-
             element.bind("click", function () {
-
                 var self = $(this)
                 var ChannelID = self.parents("md-list-item").attr("channel-id");
                 var ChannelName = self.parents("md-list-item").find("a").html();
@@ -106,3 +103,21 @@ app.directive("renameChannel", function (channelData, $mdDialog) {
         }
     };
 });
+
+app.directive("getChannelGeneralInfo", function ($mdDialog) {
+    return {
+        restrict: "A",
+        link: (scope, element, attrs) => {
+            element.click(() => {
+                var self = $(this);
+                console.log(self);
+                var ChannelID = self.attr("channel-id");
+                console.log(self.attr("channel-name"));
+                var match = _.find(scope.ctrl.channel_list, function (channel) {
+                    return channel.id == ChannelID;
+                });
+                console.log(match);
+            })
+        }
+    }
+})

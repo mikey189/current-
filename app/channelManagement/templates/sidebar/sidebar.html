@@ -4,11 +4,18 @@
     <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="channelLeftSidebar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
-            <md-toolbar class="purleSidebar" layout="row" layout-align="center center" id="channelSidebarToolbar">
+            <md-toolbar class="purleSidebar" layout="row" layout-align="space-between center" id="channelSidebarToolbar">
                 <h1 class="md-toolbar-tools">Channels List</h1>
-                <md-button class="md-icon-button " channel-sidenav-edit-mode id="reorder_channels_button">
-                    <md-icon aria-label="edit" id="reorder_channels_icon">swap_vert</md-icon>
-                </md-button>
+                <div layout="row" layout-margin>
+                    <md-button class="md-icon-button " channel-sidenav-edit-mode id="reorder_channels_button">
+                        <md-icon aria-label="edit" id="reorder_channels_icon">swap_vert</md-icon>
+                        <md-tooltip md-direction="bottom">Reorder Channels Priority</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button" go-to-channel-creation>
+                        <md-icon id="reorder_channels_icon">playlist_add</md-icon>
+                        <md-tooltip md-direction="bottom">Create New Channel</md-tooltip>
+                    </md-button>
+                </div>
             </md-toolbar>
             <md-content class="purpleSidebar" flex>
                 <md-input-container md-no-float flex layout="row" layout-align="space-between center" id="channelSearchBox" flex class="noVerticalMargin purpleSidebar"
@@ -20,9 +27,6 @@
                     <md-progress-circular md-mode="indeterminate" class="md-accent md-hue-1"></md-progress-circular>
                 </div>
                 <md-list layout-margin id="sidebarNavLinks" ng-if="ctrl.sidenavHasLoaded">
-                    <md-list-item class="create_channel_sidenav_item" md-whiteframe="2" go-to-channel-creation>
-                        <strong>Create Channel</strong>
-                    </md-list-item>
                     <md-list-item ng-repeat="x in ctrl.channel_list | filter: Name " get-my-id class="channelSidenavItems" md-whiteframe="2"
                         layout="row" layout-align="space-between center" channel-id="{{x.Id}}" channel-type="{{x.AgentType}}"
                         ng-drop="ctrl.is_edit_mode_on" ng-drop-success="ctrl.onDropComplete($index, $data,$event)" ng-drag="ctrl.is_edit_mode_on"
@@ -53,6 +57,11 @@
                                     <md-menu-item>
                                         <md-button delete-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">
                                             <span md-menu-align-target>Delete Channel</span>
+                                        </md-button>
+                                    </md-menu-item>
+                                     <md-menu-item>
+                                        <md-button get-channel-general-info channel-id="{{x.Id}}" channel-name="{{x.Name}}">
+                                            <span md-menu-align-target>General Informations</span>
                                         </md-button>
                                     </md-menu-item>
                                 </md-menu-content>

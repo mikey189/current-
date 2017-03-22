@@ -15,8 +15,6 @@ app.controller('common', function ($rootScope, $state, $stateParams, $mdMenu) {
 		$mdMenu.open(ev);
 	};
 	self.notifications = JSON.parse(localStorage.getItem("notifications")) || [];
-	console.log(self.notifications);
-	console.log(localStorage)
 	self.notificationsLength = self.notifications.length;
 
 })

@@ -4,13 +4,13 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         var self = this;
         //setting switcher function to switch templates
 
-        self.TopUsers = DummyDashboard.GetTopUsers();
+        //self.TopUsers = DummyDashboard.GetTopUsers();
         self.TopExtensions = DummyDashboard.GetExtensions();
         self.UsersQuery = {
-            "order": "blocked"
+            "order": "Blocked"
         };
         self.FilesQuery = {
-            "order": "blocked"
+            "order": "Blocked"
         };
 
 
@@ -20,7 +20,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
 
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
 
-            if (id && typeof SelectedTime != "undefined") {
+            if (id && SelectedTime) {
                 getUTCNow = () => {
                     var now = new Date();
                     var time = now.getTime();
@@ -32,42 +32,32 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 switch (SelectedTime) {
                     case "Last Hour":
                         TimeQuery = getUTCNow() - (3600 * 1000);
-
-                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
-                            self.dashboardData = res.data;
-                            console.log(res.data)
+                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
+                            self.TopUsers = res.data.TopUsersList;
                         })
                         break;
                     case "24 Hours":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24);
-
-
-                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
-                            self.dashboardData = res.data;
+                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
+                            self.TopUsers = res.data.TopUsersList;
                         })
                         break;
                     case "1 Week":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
-
-
-                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
-                            self.dashboardData = res.data;
+                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
+                            self.TopUsers = res.data.TopUsersList;
                         })
                         break;
                     case "1 Month":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
-
-
-                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
-                            self.dashboardData = res.data;
-                            console.log(res.data)
-
+                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
+                            self.TopUsers = res.data.TopUsersList;
                         })
                         break;
                     default:
                         TimeQuery = getUTCNow() - (3600 * 1000);
-                        channelData.getChannelDashboard(id, TimeQuery).then((res) => {
-                            self.dashboardData = res.data;
+                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
+                            self.TopUsers = res.data.TopUsersList;
                         })
                         break;
                 }
@@ -156,6 +146,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         self.TemplateConditions.isAPI = false;
                         self.DWSourcesAreEditable = false;
                         self.TemplateConditions.isEmail = true;
+                        self.EmailSettings = channelInfo.EmailSourcesConfiguration;
 
                         break;
 
@@ -199,11 +190,10 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             if (newVal) {
 
                 self.ChannelHasFinishedLoading = false;
-
-                self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame);
-                channelData.getChannelDashboard(newVal).then((answer1) => {
+                self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame, self.UsersQuery.order);
+                /*channelData.getChannelDashboard(newVal).then((answer1) => {
                     self.channelDashboard = answer1.data
-                })
+                })*/
 
                 channelData.get_channel(newVal).then(answer => {
                     var deferred = $q.defer();
@@ -228,7 +218,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     return deferred.promise;
                 }).then(res => {
                     self.ChannelFacets = res.EntityFacets
-
                 })
                 self.ChannelHasFinishedLoading = true;
             }
@@ -238,10 +227,16 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         }), function (newValue) {
             self.UpdateChannelData(newValue)
         });
+
         $scope.$watch(angular.bind(this, function () {
             return this.DashboardTimeFrame;
         }), function (time) {
-            self.GetDashboardTimeFrame(self.rootId, time)
+            self.GetDashboardTimeFrame(self.rootId, time, self.UsersQuery.order)
+        });
+        $scope.$watch(angular.bind(this, function () {
+            return this.UsersQuery.order;
+        }), function (order) {
+            self.GetDashboardTimeFrame(self.rootId, self.DashboardTimeFrame, order)
         });
 
         //default view for dashboard is blocked
@@ -320,25 +315,24 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         self.LoadSidenav = () => {
             self.sidenavHasLoaded = false;
             channelData.getchannelList().then(function (answer) {
+                console.log("loading sidenav")
+
                 self.menuItems = answer.data;
                 if (self.menuItems.length > 0) {
                     self.NoChannelExists = false;
                     //retrieving the first ID of the list if not already defined
                     self.rootId = $state.params.id || self.menuItems[0].Id
-                    var ChannelType = self.menuItems[0].AgentType
+                    var ChannelType = self.menuItems[0].AgentType;
                     for (i = 0; i < self.menuItems.length; i++) {
                         self.channel_list.push(self.menuItems[i])
                     }
-                    //self.TemplateSwitcher(self.channel_list[0].AgentType);
                 } else {
                     self.NoChannelExists = true;
                 }
                 self.sidenavHasLoaded = true;
                 return self.rootId
-
             }).then((id) => {
                 self.UpdateChannelData(id);
-
             })
         }
         self.LoadSidenav();

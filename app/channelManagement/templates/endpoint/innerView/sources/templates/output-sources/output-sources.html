@@ -11,9 +11,8 @@
             <span id="sources-smb-counter" ng-if="ctrl.NumberOFoSMBs > 0">{{ctrl.NumberOFoSMBs}}</span> SMB
         </md-content>
     </div>
-    <div flex="25" ng-init="ctrl.NullOptionIsEditable = false"  layout-padding layout="row" layout-align="center center" ng-class="{ 'null-activated': ctrl.NullOptionIsEditable}">
-        <md-icon class="material-icons md-48" ng-click="ctrl.EditNullOption()">do_not_disturb</md-icon>
-        
+    <div flex="25" class="no-border-click" ng-init="ctrl.NullOptionIsEditable = false" ng-click="ctrl.EditNullOption()" layout-padding layout="column" layout-align="center center" ng-class="{ 'null-activated': ctrl.NullOptionIsEditable}">
+        <md-icon  md-svg-src="icons/ncNull.svg" >do_not_disturb</md-icon>
+        <md-content class="md-subhead strong" _name="null">Null</md-content>
     </div>
-     
 </div>

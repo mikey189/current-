@@ -10,7 +10,6 @@
             <thead md-head class="santization-head" md-order="ctrl.UsersQuery.order">
                 <tr md-row>
                     <th md-column md-order-by="name"><span>Name</span></th>
-                    <th md-column md-order-by="extension"><span>File Extension</span></th>
                     <th md-column md-numeric md-order-by="blocked"><span>Blocked</span></th>
                     <th md-column md-numeric md-order-by="modified"><span>Modified</span></th>
                     <th md-column md-numeric md-order-by="passed"><span>Passed</span></th>
@@ -19,34 +18,14 @@
             </thead>
             <tbody md-body>
                 <tr md-row ng-repeat="x in ctrl.TopUsers | orderBy:  ctrl.UsersQuery.order" md-auto-select="options.autoSelect">
-                    <td md-cell>{{x.name| uppercase}}</td>
-                    <td md-cell>{{x.extension | uppercase}}</td>
-                    <td md-cell>{{x.blocked}}</td>
-                    <td md-cell>{{x.modified}}</td>
-                    <td md-cell>{{x.passed}}</td>
-                    <td md-cell>{{x.total}}</td>
+                    <td md-cell>{{x.Name| uppercase}}</td>
+                    <td md-cell>{{x.BlockededNumber}}</td>
+                    <td md-cell>{{x.ProcessedNumber}}</td>
+                    <td md-cell>{{x.PassedNumber}}</td>
+                    <td md-cell>{{x.TotalNumber}}</td>
                 </tr>
             </tbody>
         </table>
     </md-table-container>
 </div>
 
-<!--<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
-<md-toolbar layout="row" class="light-blue" md-whiteframe="6">
-    <div layout-margin>
-        <md-icon md-svg-src="icons/top-user.svg" class="top-file-icon md-72"></md-icon>
-        <span style="color: #333">Top Users</span>
-    </div>
-</md-toolbar>
-<md-list flex class="top-file-type-list" md-whiteframe="4">
-    <md-list-item class="md-2-line file-type-row" ng-repeat="user in ctrl.dashboardData.TopUsersList" ng-if="ctrl.dashboardData.TopUsersList.length > 0">
-        <div layout="row" layout-align="space-between center" flex>
-            <p class="user-name" layout-align="start center" flex="50">{{user.Name}}</p>
-            <p layout-align="end end" class="user-team" layout-padding>{{user.Team}}</p>
-        </div>
-    </md-list-item>
-    <md-list-item ng-if="ctrl.dashboardData.TopUsersList.length < 1" layout="column" layout-align="center center" layout-margin>
-        <md-icon class="material-icons md-48">sentiment_very_dissatisfied</md-icon>
-        <h3>No data available for this time frame</h3>
-    </md-list-item>
-</md-list>-->

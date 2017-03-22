@@ -1,8 +1,10 @@
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="1"></div>
 <div layout="column" check-root-id ng-cloak ng-if="!ctrl.NoChannelExists && ctrl.ChannelHasFinishedLoading">
-    <top-bar></top-bar>
-    <info-top-bar></info-top-bar>
-    <inner-nav></inner-nav>
+    <div>
+        <top-bar></top-bar>
+        <info-top-bar></info-top-bar>
+        <inner-nav></inner-nav>
+    </div>
     <inner-view layout-margin></inner-view>
 </div>
 <md-content layout-fill ng-if="ctrl.NoChannelExists" layout="row" layout-align="center center">
