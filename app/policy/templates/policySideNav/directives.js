@@ -47,8 +47,8 @@ app.directive("renamePolicy", function (policyData) {
             element.click(function () {
                 var self = $(this)
                 var p1 = self.parents();
-                var name = p1.closest("md-list-item").find(".policyName").html()
-                var id = self.attr("policy-id")
+                var name = p1.closest("md-list-item").find(".policyName").html();
+                var id = self.attr("policy-id");
                 policyData.update_policy_name(id, name).then(function (success) {
                     scope.ctrl.show_success_dialog("Policy name successfully saved");
                     scope.ctrl.policy.Name = name;
@@ -61,35 +61,6 @@ app.directive("renamePolicy", function (policyData) {
 })
 
 
-
-
-app.directive("deletePolicy", ["policyData", "$q", "$mdDialog", function (policyData, $q, $mdDialog) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("click", function () {
-                var self = $(this);
-                var cell = self.parents().closest(".policyItem");
-                var PolicyName = self.attr("policy-name");
-                var id = parseInt(self.attr("policy-id"));
-
-                var confirm = $mdDialog.confirm()
-                    .title('You are about to delete a channel')
-                    .textContent('You are about to delete the Policy ' + PolicyName)
-                    .ariaLabel('Delete Policy')
-                    .ok('Yes, delete this policy')
-                    .cancel('Cancel');
-                $mdDialog.show(confirm).then(function () {
-                    policyData.deletePolicy(id).then(success => {
-                        scope.ctrl.RefreshSidenav();
-                    }, error => {
-                        scope.ctrl.show_error_dialog("This policy could not be delete ", error.data.Message)
-                    })
-                })
-            })
-        }
-    }
-}])
 
 app.directive("initiateApiCallWithId", (policyData, $mdSidenav, $state) => {
     return {

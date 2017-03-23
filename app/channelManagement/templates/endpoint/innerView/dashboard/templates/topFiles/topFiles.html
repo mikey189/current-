@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="app/reports/scanners/style.css">
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css">
 
 <div flex md-whiteframe="7" class="sanitization-table-holder" style="margin-top: 2em">
     <md-toolbar class="md-table-toolbar md-default" id="unified-title">
@@ -6,65 +7,32 @@
             <span>Top Files</span>
         </div>
     </md-toolbar>
-    <md-table-container style="margin-top: 0px" class="sanitization-table-container" ng-init="ctrl.GetTopUsers()">
-        <table md-table class="sanitization-table" ng-model="selected" md-progress=" ctrl.UserQuery">
+    <md-table-container style="margin-top: 0px" class="sanitization-table-container">
+        <table md-table class="sanitization-table" ng-model="selected" md-progress="ctrl.FilePromise">
             <thead md-head class="santization-head" md-order="ctrl.FilesQuery.order">
                 <tr md-row>
                     <th md-column md-order-by="extension"><span>File Extension</span></th>
-                    <th md-column md-numeric md-order-by="blocked"><span>Blocked</span></th>
-                    <th md-column md-numeric md-order-by="modified"><span>Modified</span></th>
-                    <th md-column md-numeric md-order-by="passed"><span>Passed</span></th>
-                    <th md-column md-numeric md-order-by="total"><span>Total</span></th>
+                    <th md-column md-numeric md-order-by="Blocked"><span>Blocked</span></th>
+                    <th md-column md-numeric md-order-by="Modified"><span>Modified</span></th>
+                    <th md-column md-numeric md-order-by="Passed"><span>Passed</span></th>
+                    <th md-column md-numeric md-order-by="Total"><span>Total</span></th>
                 </tr>
             </thead>
             <tbody md-body>
-                <tr md-row ng-repeat="x in ctrl.TopExtensions | orderBy:  ctrl.FilesQuery.order" md-auto-select="options.autoSelect">
-                    <td md-cell>{{x.extension | uppercase}}</td>
-                    <td md-cell>{{x.blocked}}</td>
-                    <td md-cell>{{x.modified}}</td>
-                    <td md-cell>{{x.passed}}</td>
-                    <td md-cell>{{x.total}}</td>
+                <tr ng-if="ctrl.TopFiles.length > 0" md-row ng-repeat="x in ctrl.TopFiles | orderBy:  ctrl.FilesQuery.order" md-auto-select="options.autoSelect">
+                    <td md-cell class="extension">{{x.Filetype | uppercase}}</td>
+                    <td md-cell>{{x.BlockededNumber}}</td>
+                    <td md-cell>{{x.ProcessedNumber}}</td>
+                    <td md-cell>{{x.PassedNumber}}</td>
+                    <td md-cell>{{x.TotalNumber}}</td>
+                </tr>
+                <tr md-row ng-if="ctrl.TopFiles.length == 0">
+                    <td md-cell colspan="5" class="no-data">
+                        <md-icon style="margin-right: 0.3em">pan_tool</md-icon>
+                        No Data To Show For This Time Frame
+                        </td>
                 </tr>
             </tbody>
         </table>
     </md-table-container>
 </div>
-<!--<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
-<md-toolbar layout="row" class="light-blue" md-whiteframe="6" >
-    <div layout-margin>
-        <md-icon md-svg-src="IMG/icons/top-file.svg" class="top-file-icon md-72"></md-icon>
-        <span style="color: #333">Top 10 File Extensions</span>
-    </div>
-</md-toolbar>
-<md-list flex class="top-file-type-list" md-whiteframe="4">
-    <md-list-item class="md-2-line file-type-row" ng-repeat="x in ctrl.dashboardData.TopFilesTypeList" ng-if="ctrl.dashboardData.TopFilesTypeList.length > 0"
-        layout="row" layout-align="space-between center">
-        <div layout="column" layout-align="center start" layout-margin flex="25">
-            <md-icon>extension</md-icon>
-            <p class="extension">.{{x.Filetype | uppercase}}</p>
-        </div>
-        <div layout="column" layout-align=" center center" layout-margin flex="25">
-            <md-icon class="material-icons lightGreen">block</md-icon>
-            <p class="center-text">
-                <span ng-if="x.BlockededNumber > 0">{{x.BlockededNumber}} / {{x.TotalNumber}}</span>
-                <span ng-if="x.BlockededNumber == 0">No</span> Blocked Files</p>
-        </div>
-        <div layout="column" layout-align="center center" layout-margin flex="25">
-            <md-icon class="material-icons danger">check_circle</md-icon>
-            <p class="center-text">
-                <span ng-if="x.PassedNumber > 0">{{x.PassedNumber}} / {{x.TotalNumber}}</span>
-                <span ng-if="x.PassedNumber == 0">No</span> Passed Files</p>
-        </div>
-        <div layout="column" layout-align="center center" layout-margin flex="25">
-            <md-icon md-svg-src="icons/modified-file.svg"></md-icon>
-            <p class="center-text">
-                <span ng-if="x.ProcessedNumber > 0">
-                {{x.ProcessedNumber}} / {{x.TotalNumber}}</span>
-                <span ng-if="x.ProcessedNumber == 0">No</span> Processed Files</p>
-        </div>
-    </md-list-item>
-    <md-list-item ng-if="ctrl.dashboardData.TopFilesTypeList.length == 0" layout="column" layout-align="center center" layout-margin>
-        <md-icon class="material-icons md-48">sentiment_very_dissatisfied</md-icon>
-        <h3>No data available for this time frame</h3>
-    </md-list-item>
-</md-list>-->

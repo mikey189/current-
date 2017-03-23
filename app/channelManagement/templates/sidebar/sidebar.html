@@ -55,12 +55,12 @@
                                         </md-button>
                                     </md-menu-item>
                                     <md-menu-item>
-                                        <md-button delete-channel channel-id="{{x.Id}}" channel-name="{{x.Name}}">
+                                        <md-button deletehannel ng-click="ctrl.DeleteChannel(x.Id, x.Name)">
                                             <span md-menu-align-target>Delete Channel</span>
                                         </md-button>
                                     </md-menu-item>
                                      <md-menu-item>
-                                        <md-button get-channel-general-info channel-id="{{x.Id}}" channel-name="{{x.Name}}">
+                                        <md-button ng-click="ctrl.GetChannelGeneralInfo(x.Id)">
                                             <span md-menu-align-target>General Informations</span>
                                         </md-button>
                                     </md-menu-item>

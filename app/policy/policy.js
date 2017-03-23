@@ -109,7 +109,6 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
 
             })
         }
-
         self.DeleteAction = function (key, L0Key) {
                 self.PolicyFacets['Policy CDR Settings'].Values[L0Key][key] = false;
             }
@@ -278,28 +277,58 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             return FacetFormatter.InitFacets(newRetrievedData, EntityFacets);
         };
 
-        // ______________________________________   confirm policy creation   __________________________
+        // ______________________________________   Policy Sidenav   __________________________
 
+        //create policy
         self.CreatePolicy = () => {
-                self.PolicyCreationIsDone = true;
-
-                policyData.create_new_policy(self.PolicyInfo).then((success) => {
-                        self.PolicyCreationIsDone = true;
-                        self.policyId = success.data.Id;
-                        console.log(success.data)
-                            //need to reorganize received output to fit the policy List needs
-                        var newPolicy = {};
-                        newPolicy.PolicyName = success.data.GeneralInformations.PolicyName;
-                        newPolicy.PolicyId = success.data.Id;
-                        self.sideNavList.push(newPolicy);
-                        $mdDialog.cancel();
-                    },
-                    (error) => {
-                        alert("there was an error : " + error.data.Message);
-                    })
-            }
-            // ______________________________________   format to post facets   ________________________
-
+            self.PolicyCreationIsDone = true;
+            policyData.create_new_policy(self.PolicyInfo).then((success) => {
+                    self.PolicyCreationIsDone = true;
+                    self.policyId = success.data.Id;
+                    console.log(success.data)
+                        //need to reorganize received output to fit the policy List needs
+                    var newPolicy = {};
+                    newPolicy.PolicyName = success.data.GeneralInformations.PolicyName;
+                    newPolicy.PolicyId = success.data.Id;
+                    self.sideNavList.push(newPolicy);
+                    $mdDialog.cancel();
+                },
+                (error) => {
+                    alert("there was an error : " + error.data.Message);
+                })
+        };
+        //delete Policy
+        self.DeletePolicy = (ID, PolicyName) => {
+            var confirm = $mdDialog.confirm()
+                .title('You are about to delete a channel')
+                .textContent('You are about to delete the Policy ' + PolicyName)
+                .ariaLabel('Delete Policy')
+                .ok('Yes, delete this policy')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function () {
+                policyData.deletePolicy(ID).then(success => {
+                    var MatchingPolicy = _.find(self.sideNavList, (policy) => {
+                        return policy.PolicyId == ID
+                    });
+                    console.log(self.sideNavList);
+                    var MatchingIndex = self.sideNavList.indexOf(MatchingPolicy);
+                    self.sideNavList.splice(MatchingIndex, 1);
+                    self.policyId = self.sideNavList[0].PolicyId;
+                }, error => {
+                    self.show_error_dialog("This policy could not be delete ", error.data.Message)
+                })
+            })
+        };
+        //rename policy 
+        self.RenamePolicy = (ID, NewName) => {
+            policyData.update_policy_name(ID, NewName).then((success) => {
+                self.show_success_dialog("New Name Successfully Saved");
+                self.getPolicyInfo(ID);
+            }, (error) => {
+                scope.ctrl.show_error_dialog("Error : ", error.data.Message)
+            })
+        };
+        // ______________________________________   format to post facets   ________________________
         self.FormatForPOST = () => {
                 var Facets2POST = FacetFormatter.FormatForPOST(self, "PolicyFacets", "ServerFacetTemplates");
                 policyData.post_policy_settings(self.policyId, Facets2POST).then((success) => {
@@ -336,11 +365,8 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
         };
     }
 ])
-
 // ______________________________________   End Of controller    ______________________________________
-
 // ______________________________________   Custom Filters    ______________________________________
-
 app.filter("splitter", function () {
     return function (string, char, index) {
         if (string == undefined || string === "" || string == null) {

@@ -236,6 +236,7 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelList = "http://" + sname + ":4580/api/channels/getallchannels/?q=1"
     var channelListReal = "http://" + sname + ":4580/api/channels/getALLCHANNELS";
     var ChannelTopUsers = "http://" + sname + ":4580/api/channels/GetChannelDashboardTopUsers/";
+    var ChannelTopFiles = "http://" + sname + ":4580/api/channels/ChannelDashboardTopFiles/";
     var postChannel = "http://" + sname + ":4580/api/Channels/PostChannel";
     var updateComputers = "http://" + sname + ":4580/api/channels/PostChannelComputerList/";
     var current_computers = "http://" + sname + ":4580/api/Channels/getchannel/"
@@ -289,6 +290,9 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         GetTopUsers: function (id, TimeReference, order) {
             return $http.get(ChannelTopUsers + id + "?startTimeInTicks=" + TimeReference+"&sortField="+order)
+        },
+        GetTopFiles: function (id, TimeReference, order) {
+            return $http.get(ChannelTopFiles + id + "?startTimeInTicks=" + TimeReference+"&sortField="+order)
         },
         /*
         Missing call
@@ -381,7 +385,7 @@ app.factory("channelData", function ($http, $rootScope) {
         },
         get_policy_list: function () {
             return $http.get(policyList, {
-                cache: true
+                cache: false
             })
         },
         reorder_channel_priority: function (policyOrder) {
@@ -469,12 +473,12 @@ app.factory("policyData", function ($rootScope, $http) {
         },
         getList: function () {
             return $http.get(policyList, {
-                cache: true
+                cache: false
             });
         },
         getSidenav: function () {
             return $http.get(policySidenav, {
-                cache: true
+                cache: false
             })
         },
         getTopFiles: function () {

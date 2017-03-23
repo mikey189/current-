@@ -1,62 +1,9 @@
-#endPointTopFiles{
-    background-color: white;
-    margin-top: 1em;
-    padding-bottom: 0px;
-
-}
-.progress-bar-danger {
-    background-color: #5BB56F;
-}
-.noMarginBottom{
-    margin-bottom: 0px;
-}
-#EndpointTopFilesIcon{
-    margin-right: 0.5em;
-    margin-left: 0px;
-}
-.md-48{
-    min-width: 48px;
-    min-height: 48px;
-}
-.topFilesProgressBar{
-    margin-bottom: 8px !important;
-
-}
-.center-text{
-    text-align: center;
+.no-data {
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-size: 0.9em !important;
+    color: #565656 !important;
 }
 .extension{
     font-weight: 700 !important;
-
-}
-.file-type-row{
-    border-bottom: solid 1px rgba(0,0,0,0.12)
-}
-.light-blue{
-    background-color: white !important;
-}
-.top-file-type-list{
-    background-color: white !important;
-    border-radius: 3px !important;
-}
-
-.md-72{
-    min-height: 72px;
-    min-width: 72px;
-}
-
-
-.top-file-icon{
-    margin-left: 0px;
-    margin-right: 0px;
-}
-.user-name{
-    font-weight: 700;
-
-}
-
-.user-team{
-    color: white;
-    background-color: #2196F3;
-    border-radius: 50px;
 }

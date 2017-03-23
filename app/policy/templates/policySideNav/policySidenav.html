@@ -13,11 +13,15 @@
         <md-progress-circular md-mode="indeterminate" class="md-accent md-hue-1"></md-progress-circular>
     </div>
     <md-list layout-padding id="policyListHolder" ng-if="ctrl.sidenavHasLoaded == true">
-        <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName track by $index" policy-id={{policy.PolicyId}} layout-padding
-            class="policyItem" policy-list-hover layout="column" layout-align="center start" initiate-api-call-with-id ng-class="{'selectedPolicy': ctrl.policyId === policy.PolicyId}">
+        <md-list-item ng-repeat="policy in ctrl.sideNavList | filter: PolicyName track by policy.PolicyId" policy-id={{policy.PolicyId}}
+            layout-padding class="policyItem" policy-list-hover layout="column" layout-align="center start" initiate-api-call-with-id
+            ng-class="{'selectedPolicy': ctrl.policyId === policy.PolicyId}">
             <div layout="row" layout-align="space-between start" style="width: 100%" ng-init="policy[$index].isEditable = false">
-                <div layout="column" flex="70">
-                    <p contenteditable="{{policy[$index].isEditable}}" class="md-subhead white bold policyName" ng-class="{'name-in-edition': policy[$index].isEditable }">{{policy.PolicyName}}</p>
+                <div layout="column"  ng-init="policy.isEditable = false">
+                   <!-- <p contenteditable="{{policy[policy.PolicyId].isEditable}}" class="md-subhead white bold policyName"
+                        ng-class="{'name-in-edition': policy[policy.PolicyId].isEditable }">{{policy.PolicyName}}</p>-->
+                        <input ng-model="policy.PolicyName" class="policy-name" ng-disabled = "!policy.isEditable" 
+                        ng-class="{'name-in-edition': policy.isEditable}">
                     <div layout="row" layout-align="space-between start">
                         <div layout="row" layout-align="start start">
                             <md-icon class="white-icon marginRight1em">insert_drive_file</md-icon>
@@ -32,9 +36,9 @@
                         <p class="customChips" ng-repeat="channel in policy.ChannelNames" md-whiteframe="4">{{channel}}</p>
                     </div>
                 </div>
-                <div flex="30" layout="row" layout-align="end center">
-                    <md-button class="md-icon-button" ng-if="policy[$index].isEditable" policy-id="{{policy.PolicyId}}" ng-click="policy[$index].isEditable = false"
-                        rename-policy>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-icon-button" ng-show="policy.isEditable == true" 
+                    ng-click="ctrl.RenamePolicy(policy.PolicyId,policy.PolicyName); policy.isEditable =! policy.isEditable">
                         <md-icon class="red-icon">done</md-icon>
                     </md-button>
                     <md-menu md-offset="0 -7" md-position-mode="target-right target">
@@ -43,12 +47,12 @@
                         </md-button>
                         <md-menu-content width="2">
                             <md-menu-item>
-                                <md-button ng-click="policy[$index].isEditable = true">
+                                <md-button ng-click="policy.isEditable = true">
                                     <span md-menu-align-target>Rename Policy</span>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
-                                <md-button delete-policy policy-id="{{policy.PolicyId}}" policy-name="{{policy.PolicyName}}">
+                                <md-button ng-click="ctrl.DeletePolicy(policy.PolicyId, policy.PolicyName)">
                                     <span md-menu-align-target>Delete Policy</span>
                                 </md-button>
                             </md-menu-item>

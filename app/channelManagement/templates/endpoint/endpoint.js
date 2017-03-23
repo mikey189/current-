@@ -2,25 +2,21 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
     function (channelData, $scope, $mdDialog, $state, FacetFormatter, $q, ToastNotifications, $stateParams, DummyDashboard) {
 
         var self = this;
-        //setting switcher function to switch templates
-
-        //self.TopUsers = DummyDashboard.GetTopUsers();
-        self.TopExtensions = DummyDashboard.GetExtensions();
         self.UsersQuery = {
-            "order": "Blocked"
+            "order": "Modified"
         };
         self.FilesQuery = {
-            "order": "Blocked"
+            "order": "Total"
         };
-
-
         self.TemplateConditions = {};
         //dashboard top files 
-
-
-        self.GetDashboardTimeFrame = (id, SelectedTime) => {
-
+        self.GetDashboard = (id, SelectedTime, UserOrder, FilesOrder) => {
+            var FileDefered = $q.defer();
+            self.FilePromise = FileDefered.promise;
+            var UserDefered = $q.defer();
+            self.UserPromise = UserDefered.promise;
             if (id && SelectedTime) {
+                self.TopFilesQueryInProgress = true;
                 getUTCNow = () => {
                     var now = new Date();
                     var time = now.getTime();
@@ -32,37 +28,73 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                 switch (SelectedTime) {
                     case "Last Hour":
                         TimeQuery = getUTCNow() - (3600 * 1000);
-                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
-                            self.TopUsers = res.data.TopUsersList;
+                        channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
+                            self.TopUsers = res.data;
+                            UserDefered.resolve();
+
+                        })
+                        channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
+                            self.TopFilesQueryInProgress = false;
+                            self.TopFiles = res.data.TopFilesTypeList;
+                            FileDefered.resolve();
                         })
                         break;
                     case "24 Hours":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24);
-                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
-                            self.TopUsers = res.data.TopUsersList;
+                        channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
+                            self.TopUsers = res.data;
+                            UserDefered.resolve();
+
+                        })
+                        channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
+                            self.TopFilesQueryInProgress = false;
+                            self.TopFiles = res.data.TopFilesTypeList;
+                            FileDefered.resolve();
                         })
                         break;
                     case "1 Week":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
-                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
-                            self.TopUsers = res.data.TopUsersList;
+                        channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
+                            self.TopUsers = res.data;
+                            UserDefered.resolve();
+
                         })
+                        channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
+                            self.TopFilesQueryInProgress = false;
+                            self.TopFiles = res.data.TopFilesTypeList;
+                            FileDefered.resolve();
+                        })
+
                         break;
                     case "1 Month":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
-                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
-                            self.TopUsers = res.data.TopUsersList;
+                        channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
+                            self.TopUsers = res.data;
+                            UserDefered.resolve();
+
+                        })
+                        channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
+                            self.TopFilesQueryInProgress = false;
+                            self.TopFiles = res.data.TopFilesTypeList;
+                            FileDefered.resolve();
                         })
                         break;
                     default:
                         TimeQuery = getUTCNow() - (3600 * 1000);
-                        channelData.GetTopUsers(id, TimeQuery, self.UsersQuery.order).then((res) => {
-                            self.TopUsers = res.data.TopUsersList;
+                        channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
+                            self.TopUsers = res.data;
+                            UserDefered.resolve();
+
+                        })
+                        channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
+                            self.TopFilesQueryInProgress = false;
+                            self.TopFiles = res.data.TopFilesTypeList;
+                            FileDefered.resolve();
                         })
                         break;
-                }
-            }
-        }
+                };
+            };
+        };
         self.TemplateSwitcher = function (ChannelType, channelInfo) {
                 switch (ChannelType) {
                     // endpoint
@@ -175,26 +207,19 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         //dialogs to show for error and success
         self.HTTP_Dialogs = {
 
-            ShowSuccessDialog: function () {
-                ToastNotifications.SuccessToast("Your Changes were successfully saved")
-            },
-            ShowErrorDialog: function (ErrorMessage) {
-                ToastNotifications.ErrorToast(ErrorMessage)
+                ShowSuccessDialog: function () {
+                    ToastNotifications.SuccessToast("Your Changes were successfully saved")
+                },
+                ShowErrorDialog: function (ErrorMessage) {
+                    ToastNotifications.ErrorToast(ErrorMessage)
+                }
             }
-        }
-
-        /*--------------------  Watching for changes in channel ID --------------------*/
+            /*--------------------  Watching for changes in channel ID --------------------*/
 
         self.UpdateChannelData = function (newVal) {
-
             if (newVal) {
-
                 self.ChannelHasFinishedLoading = false;
-                self.GetDashboardTimeFrame(newVal, self.DashboardTimeFrame, self.UsersQuery.order);
-                /*channelData.getChannelDashboard(newVal).then((answer1) => {
-                    self.channelDashboard = answer1.data
-                })*/
-
+                self.GetDashboard(newVal, self.DashboardTimeFrame, self.UsersQuery.order, self.FilesQuery.order);
                 channelData.get_channel(newVal).then(answer => {
                     var deferred = $q.defer();
                     var $q2 = channelData.ChannelFacets();
@@ -231,21 +256,23 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
         $scope.$watch(angular.bind(this, function () {
             return this.DashboardTimeFrame;
         }), function (time) {
-            self.GetDashboardTimeFrame(self.rootId, time, self.UsersQuery.order)
+            self.GetDashboard(self.rootId, time, self.UsersQuery.order, self.FilesQuery.order)
         });
         $scope.$watch(angular.bind(this, function () {
             return this.UsersQuery.order;
-        }), function (order) {
-            self.GetDashboardTimeFrame(self.rootId, self.DashboardTimeFrame, order)
+        }), (UserOrder) => {
+            UserOrder = UserOrder.replace("-", "");
+            self.GetDashboard(self.rootId, self.DashboardTimeFrame, UserOrder, self.FilesQuery.order);
         });
-
+        $scope.$watch(angular.bind(this, function () {
+            return this.FilesQuery.order;
+        }), (FilesOrder) => {
+            FilesOrder = FilesOrder.replace("-", "");
+            self.GetDashboard(self.rootId, self.DashboardTimeFrame, self.UsersQuery.order, FilesOrder);
+        });
         //default view for dashboard is blocked
         self.isBlocked = true;
-
-
-
         /*--------------------  Channel Input and Output --------------------*/
-
         self.are_outputs_and_outputs_editable = false;
         channelData.get_input_output_list().then(function (answer) {
             self.all_inputs = answer.data[0].inputs
@@ -269,7 +296,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             self.osmbList.push(oSMB);
             self.NumberOFoSMBs++;
         }
-
         self.deleteISMB = function (ISMB) {
             var index = self.ismbList.indexOf(ISMB)
             self.ismbList.splice(index, 1);
@@ -280,8 +306,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             self.osmbList.splice(index, 1);
             self.NumberOFoSMBs--;
         }
-
-
         self.PolicyFacets = {}
 
         /*--------------------  who is using this channel --------------------*/
@@ -316,7 +340,6 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             self.sidenavHasLoaded = false;
             channelData.getchannelList().then(function (answer) {
                 console.log("loading sidenav")
-
                 self.menuItems = answer.data;
                 if (self.menuItems.length > 0) {
                     self.NoChannelExists = false;
@@ -330,6 +353,7 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                     self.NoChannelExists = true;
                 }
                 self.sidenavHasLoaded = true;
+                console.log(self.channel_list)
                 return self.rootId
             }).then((id) => {
                 self.UpdateChannelData(id);
@@ -344,6 +368,48 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
             }
             //making channelNm non editable by default
         self.is_channelName_editable = false;
+        //delete channel => not refreshing sidenav but refreshing local object instead:)
+
+        self.DeleteChannel = (channelId, channelName) => {
+            var confirm = $mdDialog.confirm()
+                .title('You are about to delete a channel')
+                .textContent('You are about to delete the channel ' + channelName)
+                .ariaLabel('delete channel')
+                .ok('Yes, delete this channel')
+                .cancel('Cancel deletion');
+            $mdDialog.show(confirm).then(() => {
+                channelData.delete_channel(channelId).then(result => {
+                    console.log("successfully deleted channel : ", channelId)
+                    var MatchingChannel = _.find(self.channel_list, function (channel) {
+                        return channel.Id == channelId;
+                    });
+                    var ChannelIndex = self.channel_list.indexOf(MatchingChannel);
+                    self.channel_list.splice(ChannelIndex, 1);
+                    self.rootId = self.channel_list[0].Id;
+                    console.log(self.channel_list);
+
+                }, error => {
+                    self.HTTP_Dialogs.ShowErrorDialog("We could not delete this channel", error.data.Message);
+                })
+            })
+        };
+        self.GetChannelGeneralInfo = (ChannelId) => {
+            var MatchingChannel = _.find(self.channel_list, (channel) => {
+                return channel.Id == ChannelId
+            });
+            var ChannelIndex = self.channel_list.indexOf(MatchingChannel);
+            var ChannelName = self.channel_list[ChannelIndex].ChannelInfo.GeneralInformations.Name;
+            var ChannelDescription = self.channel_list[ChannelIndex].ChannelInfo.GeneralInformations.Description || "No Description Has Been Set for this Channel";
+            $mdDialog.show(
+                $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title(ChannelName)
+                .textContent(ChannelDescription)
+                .ariaLabel('Alert Dialog Demo')
+                .ok('OK')
+            );
+
+        }
 
         /*-------------------- Formatting facets before POST ----------------------*/
 
