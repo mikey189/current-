@@ -31,66 +31,80 @@ app.controller("channels", ["channelData", "$scope", "$mdDialog", "$state", "Fac
                         channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
                             self.TopUsers = res.data;
                             UserDefered.resolve();
-
-                        })
+                        }, (error) => {
+                            UserDefered.reject();
+                        });
                         channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
                             self.TopFilesQueryInProgress = false;
                             self.TopFiles = res.data.TopFilesTypeList;
                             FileDefered.resolve();
-                        })
+                        }, (error) => {
+                            FileDefered.reject();
+                        });
                         break;
                     case "24 Hours":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24);
                         channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
                             self.TopUsers = res.data;
                             UserDefered.resolve();
-
-                        })
+                        }, (error) => {
+                            UserDefered.reject();
+                        });
                         channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
                             self.TopFilesQueryInProgress = false;
                             self.TopFiles = res.data.TopFilesTypeList;
                             FileDefered.resolve();
-                        })
+                        }, (error) => {
+                            FileDefered.reject();
+                        });
                         break;
                     case "1 Week":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 7);
                         channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
                             self.TopUsers = res.data;
                             UserDefered.resolve();
-
-                        })
+                        }, (error) => {
+                            UserDefered.reject();
+                        });
                         channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
                             self.TopFilesQueryInProgress = false;
                             self.TopFiles = res.data.TopFilesTypeList;
                             FileDefered.resolve();
-                        })
-
+                        }, (error) => {
+                            FileDefered.reject();
+                        });
                         break;
                     case "1 Month":
                         TimeQuery = getUTCNow() - (3600 * 1000 * 24 * 30); // might be a pain in the ass when month have 28/31 days ..
                         channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
                             self.TopUsers = res.data;
                             UserDefered.resolve();
-
-                        })
+                        }, (error) => {
+                            UserDefered.reject();
+                        });
                         channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
                             self.TopFilesQueryInProgress = false;
                             self.TopFiles = res.data.TopFilesTypeList;
                             FileDefered.resolve();
-                        })
+                        }, (error) => {
+                            FileDefered.reject();
+                        });
                         break;
                     default:
                         TimeQuery = getUTCNow() - (3600 * 1000);
                         channelData.GetTopUsers(id, TimeQuery, UserOrder).then((res) => {
                             self.TopUsers = res.data;
                             UserDefered.resolve();
-
-                        })
+                        }, (error) => {
+                            UserDefered.reject();
+                        });
                         channelData.GetTopFiles(id, TimeQuery, FilesOrder).then((res) => {
                             self.TopFilesQueryInProgress = false;
                             self.TopFiles = res.data.TopFilesTypeList;
                             FileDefered.resolve();
-                        })
+                        }, (error) => {
+                            FileDefered.reject();
+                        });
                         break;
                 };
             };

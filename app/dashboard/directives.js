@@ -1,53 +1,95 @@
-app.directive("dInputsByChannel", function () {
+app.directive("storyTime", () => {
+
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/inputsByChannel/inputsByChannel.html",
+        templateUrl: "app/dashboard/templates/story-time/storyTime.html",
+        replace: false
+    }
+
+})
+
+app.directive("interchangeableGraph", () => {
+
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/graphs/graphs.html",
+        replace: false
+    }
+
+})
+
+app.directive("dashboardCalendar", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/timepicker/timepicker.html",
         replace: false
     }
 })
 
+app.directive("legendFrame", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/legendFrame/legendFrame.html",
+        replace: false
+    }
+})
+
+app.directive("bottomGraphs", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/RoundedGraphs/Graphs.html",
+        replace: false
+    }
+})
+app.directive("bottomNotifications", ()=> {
+    return {
+        restruct: "E",
+        templateUrl: "app/dashboard/templates/notifications/notifications.html",
+        replace: false
+    }
+})
+/*app.directive("dInputsByChannel", function () {
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/old/inputsByChannel/inputsByChannel.html",
+        replace: false
+    }
+})
 app.directive("dResecTable", function () {
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/resecTable/resecTable.html",
+        templateUrl: "app/dashboard/templates/old/resecTable/resecTable.html",
         replace: false
     }
 })
 app.directive("dCasesSidebar", function () {
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/sidenavCases/casesSidebar.html",
+        templateUrl: "app/dashboard/templates/old/sidenavCases/casesSidebar.html",
         replace: false
     }
 })
-
-
 app.directive('resecTable', function () {
     return {
         restrict: 'AECM',
-        templateUrl: 'app/dashboard/templates/resecTable/resecTable.html',
+        templateUrl: 'app/dashboard/templates/old/resecTable/resecTable.html',
         replace: false
     }
 })
-
-
 app.directive('outputByChannel', function () {
     return {
         restrict: 'AECM',
-        templateUrl: 'app/dashboard/templates/outputByChannel/outputByChannel.html',
+        templateUrl: 'app/dashboard/templates/old/outputByChannel/outputByChannel.html',
         replace: false
     }
 })
-
-
 app.directive('toolbarTop', function () {
     return {
         restrict: 'AECM',
-        templateUrl: 'app/dashboard/templates/toolbarTop/toolbarTop.html',
+        templateUrl: 'app/dashboard/templates/old/toolbarTop/toolbarTop.html',
         replace: false
     }
 })
-
 app.directive("getHeight", function () {
     return {
         restrict: "A",
@@ -61,8 +103,6 @@ app.directive("getHeight", function () {
         }
     }
 })
-
-
 app.directive("syncScroll", function () {
     return {
         restrict: "A",
@@ -76,7 +116,6 @@ app.directive("syncScroll", function () {
         }
     }
 })
-
 app.directive("goToChannel", function ($state, $stateParams) {
     return {
         restrict: "A",
@@ -94,4 +133,4 @@ app.directive("goToChannel", function ($state, $stateParams) {
             })
         }
     }
-})
+})*/

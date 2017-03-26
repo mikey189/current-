@@ -17,12 +17,18 @@
                 </tr>
             </thead>
             <tbody md-body>
-                <tr md-row ng-repeat="x in ctrl.TopUsers | orderBy:  ctrl.UsersQuery.order" md-auto-select="options.autoSelect">
+                <tr  ng-if="ctrl.TopUsers.length > 0" md-row ng-repeat="x in ctrl.TopUsers | orderBy:  ctrl.UsersQuery.order" md-auto-select="options.autoSelect">
                     <td md-cell>{{x.Name| uppercase}}</td>
                     <td md-cell>{{x.BlockededNumber}}</td>
                     <td md-cell>{{x.ProcessedNumber}}</td>
                     <td md-cell>{{x.PassedNumber}}</td>
                     <td md-cell>{{x.TotalNumber}}</td>
+                </tr>
+                <tr md-row ng-if="ctrl.TopUsers.length < 1">
+                    <td md-cell colspan="5" class="no-data">
+                        <md-icon style="margin-right: 0.3em">pan_tool</md-icon>
+                        No Data To Show For This Time Frame
+                        </td>
                 </tr>
             </tbody>
         </table>

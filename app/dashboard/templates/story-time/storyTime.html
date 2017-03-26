@@ -1,0 +1,39 @@
+<link href="style.css">
+<div id="story-time-container" md-whiteframe="9" layout-margin layout-wrap>
+    During the last
+    <select ng-options="ctrl.Data.TimeFrame[x] as x for x in ctrl.Data.TimeFrame" ng-model="ctrl.SelectedTimeFrame" class="action-selector"></select>    Days the ReSecure platform
+    <select ng-options="ctrl.Data.TreatmentType[x] as x for x in ctrl.Data.TreatmentType" ng-model="ctrl.TreatmentType" class="action-selector"></select>
+    <span class="important-figure">{{ctrl.Data.NumberOfConcernedFiles}} Files</span> .The system detected <span class="important-figure">{{ctrl.Data.KnownInfections}} Known Infections</span>,<br>
+    <select ng-options="ctrl.Data.ActionType[x] as x for x in ctrl.Data.ActionType" ng-model="ctrl.ActionType" class="action-selector"></select>    <span class="important-figure">{{ctrl.Data.PotentialThreats}} Threats.
+    </span> It's ' <select ng-options="ctrl.Data.UpTime[x] as x for x in ctrl.Data.UpTime" ng-model="ctrl.UpTime" class="action-selector"></select>    was <span class="important-figure">{{ctrl.Data.UpTimeFigure}} %</span>
+       and average time was 
+    <span class="important-figure">{{ctrl.Data.ProcessingTime}} seconds </span> per file.
+</div>
+<style>
+    #story-time-container {
+
+        background-color: #3F51B5 !important;
+        text-align: center;
+        color: white;
+        font-size: 2em;
+        margin-top: 0em !important;
+        margin-left: 0em !important;
+        margin-right: 0em !important;
+        font-weight: 700;
+        
+    }
+    
+    .action-selector {
+        background-color: #2196F3 !important;
+        border-color: transparent;
+        -webkit-appearance: none;
+        -webkit-border-radius: 25px;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        text-align: center;
+    }
+    .important-figure{
+        color: yellow;
+        font-weight: 800;
+    }
+</style>

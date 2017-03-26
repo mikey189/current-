@@ -1,0 +1,14 @@
+{
+    "TopBar": {
+        "TimeFrame": ["30 Days", "3 Weeks", "2 Weeks", "One Week", "One Day"],
+        "TreatmentType": ["Processed", "Sanitized", "Blocked"],
+        "NumberOfConcernedFiles": 789,
+        "KnownInfections": 1908,
+        "ActionType": ["Prevented", "Sanitized", "Blocked"],
+        "UpTime": ["Up Time", "Down Time"],
+        "PotentialThreats": 212,
+        "UpTimeFigure": 98,
+        "ProcessingType": ["Down Time", "Up Time"],
+        "ProcessingTime": 245
+    }
+}

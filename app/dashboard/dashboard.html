@@ -1,10 +1,21 @@
 <link rel="stylesheet" href="app/dashboard/style.css" />
-<div layout="column" id="dashoardContainer" get-height ng-cloak sync-scroll class="animated fadeIn" ng-cloak ng-init="ctrl.getData()"
-    ng-show="ctrl.DashboardHasLoaded">
-    <!--    <toolbar-top></toolbar-top> -->
-    <div layout-xl='row' layout gt-md='row' layout-margin layout-md='column' layout-sm='column' layout-xs='column' layout-align-xl='space-around center'
+<link href="app/dashboard/templates/style.css">
+<story-time></story-time>
+<div layout "row" layout-align="space-between center" layout-margin>
+    <interchangeable-graph flex="75"></interchangeable-graph>
+    <legend-frame flex></legend-frame>
+</div>
+<div layout="row" layout-margin style="margin-top: 3em">
+    <dashboard-calendar flex="50"></dashboard-calendar>
+    <bottom-notifications flex></bottom-notifications>
+</div>
+<bottom-graphs></bottom-graphs>
+</div>
+<!--<div layout="column" id="dashoardContainer" get-height ng-cloak sync-scroll class="animated fadeIn" ng-cloak ng-init="ctrl.getData()"
+    ng-show="ctrl.DashboardHasLoaded">-->
+<!--    <toolbar-top></toolbar-top> -->
+<!--<div layout-xl='row' layout gt-md='row' layout-margin layout-md='column' layout-sm='column' layout-xs='column' layout-align-xl='space-around center'
         layout-align-lg='space-between center' id='dashoardTableContainer'>
-        <!-- table 1-->
         <div notifybar style="position:absolute;top:0;right:0"></div>
         <div flex-xl="35" flex-lg="35" flex-md="35" flex-sm="90" flex-xs="90" c>
             <d-inputs-by-channel></d-inputs-by-channel>
@@ -16,11 +27,10 @@
             <resec-table></resec-table>
         </div>
         <div flex-xl="35" flex-lg="35" flex-md="35" flex-sm="90" flex-xs="90">
-            <!--Centered title of of table -->
             <output-by-channel></output-by-channel>
         </div>
     </div>
 </div>
 <md-content ng-show="!ctrl.DashboardHasLoaded" layout-fill layout='column'  layout-align="center center">
     <md-progress-circular md-mode="indeterminate" class="md-accent md-accent-3"></md-progress-circular>
-</md-content>
+</md-content>-->

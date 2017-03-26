@@ -32,7 +32,6 @@ app.config(function ($mdThemingProvider) {
     .accentPalette("ResecPalette");
 });
 
-
 app.config(function ($mdIconProvider) {
   $mdIconProvider
     .iconSet('resec', 'IMG/icons/resecLogo.svg', 24)

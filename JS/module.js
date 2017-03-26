@@ -1,7 +1,7 @@
  var app = angular.module('resec', ['ngMaterial', 'ui.router', 'chart.js', 'ngMdIcons',
    'xeditable', 'ui.bootstrap', 'ngDraggable', 'angular.vertilize', 'ngDragDrop', 'jsonFormatter',
    'md.data.table', 'ng.httpLoader', 'ng-ip-address', 'angular-loading-bar', 'ngAnimate', "googlechart", "ipCookie",
-   "ngCookies", "ui.indeterminate", "kendo.directives", "toastr", "angular.filter", "angular-notification-icons"
+   "ngCookies", "ui.indeterminate", "kendo.directives", "toastr", "angular.filter", "angular-notification-icons", "mp.datePicker"
  ])
 
  //spinner / loader for GET/POST requests
