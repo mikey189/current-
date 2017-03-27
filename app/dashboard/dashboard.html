@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="app/dashboard/style.css" />
 <link href="app/dashboard/templates/style.css">
 <story-time></story-time>
-<div layout "row" layout-align="space-between center" layout-margin>
+<div layout "row" layout-align="space-between start" layout-margin>
     <interchangeable-graph flex="75"></interchangeable-graph>
     <legend-frame flex></legend-frame>
 </div>
-<div layout="row" layout-margin style="margin-top: 3em">
-    <dashboard-calendar flex="50"></dashboard-calendar>
+<bottom-graphs></bottom-graphs>
+<div layout="row" layout-margin style="margin-top: 3em" vertilize-container>
+    <news-feed flex="50"></news-feed>
     <bottom-notifications flex></bottom-notifications>
 </div>
-<bottom-graphs></bottom-graphs>
 </div>
 <!--<div layout="column" id="dashoardContainer" get-height ng-cloak sync-scroll class="animated fadeIn" ng-cloak ng-init="ctrl.getData()"
     ng-show="ctrl.DashboardHasLoaded">-->

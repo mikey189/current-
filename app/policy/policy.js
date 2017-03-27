@@ -1,6 +1,6 @@
-app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications", "cdrFormatter", "DummyDashboard",
+app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "$state", "$http", "$mdDialog", "$timeout", '$q', "FacetFormatter", "ToastNotifications", "cdrFormatter", "Dashboard",
 
-    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter, DummyDashboard) {
+    function ($scope, $mdSidenav, policyData, channelData, $state, $http, $mdDialog, $timeout, $q, FacetFormatter, ToastNotifications, cdrFormatter, Dashboard) {
 
         var self = this;
         self.sidenavHasLoaded = false;
@@ -23,17 +23,16 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //var TimeOffset = UTCTime.getTimezoneOffset() * 60000; //get milliseconds offset;
         self.DashboardTimeFrame = "1 Week";
         self.GetTopUsers = () => {
-            self.TopUsers = DummyDashboard.GetTopUsers();
+            self.TopUsers = Dashboard.GetTopUsers();
             self.UsersQuery = {
                 order: "blocked"
             };
-            self.TopExtensions = DummyDashboard.GetExtensions();
+            self.TopExtensions = Dashboard.GetExtensions();
 
             self.FilesQuery = {
                 order: "blocked"
             }
         };
-        self.TopExtensions = DummyDashboard.GetExtensions();
         self.GetDashboardTimeFrame = (id, SelectedTime) => {
 
             if (id) {

@@ -2,7 +2,7 @@ app.directive("storyTime", () => {
 
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/story-time/storyTime.html",
+        templateUrl: "app/dashboard/templates/storyTime.html",
         replace: false
     }
 
@@ -12,7 +12,7 @@ app.directive("interchangeableGraph", () => {
 
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/graphs/graphs.html",
+        templateUrl: "app/dashboard/templates/graphs.html",
         replace: false
     }
 
@@ -21,7 +21,7 @@ app.directive("interchangeableGraph", () => {
 app.directive("dashboardCalendar", () => {
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/timepicker/timepicker.html",
+        templateUrl: "app/dashboard/templates/timepicker.html",
         replace: false
     }
 })
@@ -29,7 +29,7 @@ app.directive("dashboardCalendar", () => {
 app.directive("legendFrame", () => {
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/legendFrame/legendFrame.html",
+        templateUrl: "app/dashboard/templates/legendFrame.html",
         replace: false
     }
 })
@@ -37,14 +37,21 @@ app.directive("legendFrame", () => {
 app.directive("bottomGraphs", () => {
     return {
         restrict: "E",
-        templateUrl: "app/dashboard/templates/RoundedGraphs/Graphs.html",
+        templateUrl: "app/dashboard/templates/Donughts.html",
         replace: false
     }
 })
 app.directive("bottomNotifications", ()=> {
     return {
-        restruct: "E",
-        templateUrl: "app/dashboard/templates/notifications/notifications.html",
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/notifications.html",
+        replace: false
+    }
+})
+app.directive("newsFeed", () => {
+    return {
+        restrict: "E",
+        templateUrl: "app/dashboard/templates/newsFeed.html",
         replace: false
     }
 })

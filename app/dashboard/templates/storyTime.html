@@ -1,0 +1,46 @@
+<link href="style.css">
+<div id="story-time-container" md-whiteframe="9" layout-margin layout-wrap>
+    During the last
+    <select ng-change="ctrl.TriggerDataChange()" ng-model="ctrl.SelectedTimeFrame" class="action-selector" ng-init="ctrl.SelectedTimeFrame = '1Month'">
+        <option value="1Day">Last Day</option>
+        <option value="1Week">Last Week</option>
+        <option value="1Month" selected>Last Month</option>
+        <option value="3Months">3 Months</option>
+        <option value = "custom">Custom</option>
+    </select> Days the ReSecure platform
+    <span class="twitter-like">processed</span><span class="important-figure">{{ctrl.Data.NumberOfConcernedFiles}} Files.</span>The
+    system detected <span class="important-figure">{{ctrl.Data.KnownInfections}} Known Infections</span>
+    <span class="twitter-like">detected</span> <span class="important-figure">{{ctrl.Data.PotentialThreats}} Threats.
+    </span> It's <span class="twitter-like">up time</span> was <span class="important-figure">{{ctrl.Data.UpTimeFigure}} % </span>and
+    average time was
+    <span class="important-figure">{{ctrl.Data.ProcessingTime}} seconds </span> per file.
+</div>
+<style>
+    #story-time-container {
+        background-color: #471BAB !important;
+        text-align: center;
+        color: white;
+        font-size: 1.3em;
+        border-radius: 5px;
+        font-weight: 700;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    
+    .action-selector {
+        background-color: #2196F3 !important;
+        border-color: transparent;
+        -webkit-border-radius: 25px;
+    }
+    
+    .important-figure {
+        color: yellow;
+        font-weight: 800;
+    }
+    
+    .twitter-like {
+        border-bottom: solid 2px #E53935;
+    }
+</style>

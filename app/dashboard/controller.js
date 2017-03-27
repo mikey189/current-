@@ -1,13 +1,43 @@
-app.controller("dashboard", function (toastr, DummyDashboard) {
+app.controller("dashboard", function (toastr, Dashboard, $mdDialog) {
 
     var self = this;
     self.purpleInt = '40';
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     self.DashboardHasLoaded = false;
-    DummyDashboard.GetDummyData().then((res) => {
+    Dashboard.GetDummyData().then((res) => {
         self.Data = res.data.TopBar;
     })
-self.PickedDate = "13/02/2015"
+    Dashboard.GetFeed().then((res) => {
+        self.news = res.data.articles;
+    })
+
+    var SearchDataFromDate = (StartingDate) => {
+        console.log(StartingDate)
+    };
+    self.TriggerDataChange = () => {
+
+        if (self.SelectedTimeFrame != 'custom') {
+            SearchDataFromDate(self.SelectedTimeFrame);
+        } else {
+            $mdDialog.show({  
+                templateUrl: "app/dashboard/templates/timepicker.html",
+                parent: angular.element(document.body),
+                clickOutsideToClose: true
+            });
+
+        }
+
+    }
+    self.CancelDialog = () => {
+        $mdDialog.cancel();
+    }
+
+    self.CloseDialogAndFilterData = (SpecificDate) => {
+        $mdDialog.hide()
+        SearchDataFromDate(SpecificDate);
+    }
+
+    self.PickedDate = "13/02/2015"
     self.DummyLabels1 = ["January", "February", "March", "April", "May", "June", "July"];
     self.series = ['Series A', 'Series B'];
     self.DummyData1 = [
@@ -37,11 +67,11 @@ self.PickedDate = "13/02/2015"
             }]
         }
     };
- 
-    self.FileComplexityLabels = ["High Complexity", "Low Complexity", "Many Complexity"];
-    self.FileComplexity = [300, 500, 100];
-    self.TrafficByPolicy = ["Marketing", "Engineers", "Admin"];
-    self.PolicyTraffic = [200, 300, 150];
+
+    self.FileComplexityLabels = ["High Complexity", "Low Complexity", "Many Complexity", "4", "5", "6", "7", "8", "9", "10"];
+    self.FileComplexity = [300, 500, 100, 130, 150, 134, 430, 129, 109, 180];
+    self.TrafficByPolicy = ["Marketing", "Engineers", "Admin", "Enpoint", "API"];
+    self.PolicyTraffic = [200, 300, 150, 130, 101];
     self.TrafficByChannel = ["Endpoint", "Mail", "API"];
     self.ChannelTraffic = [230, 270, 170];
 

@@ -1,18 +1,20 @@
-app.factory("DummyDashboard", ($http) => {
+app.factory("Dashboard", ($http) => {
 
     var url = "app/dashboard/DummyData.json";
-
+    var NewsURl  = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=aeaf2ce8b9984429bbe0d8ea1a0a92fc";
     return{
         GetDummyData: () => {
             return $http.get(url)
+        }, 
+        GetFeed: () => {
+            return $http.get(NewsURl)
+        },
+        GetFeedImage:(ImageURL) => {
+            return $http.get(ImageURL)
         }
     }
 
 })
-
-
-
-
 app.factory("401Error", ($q, $injector) => {
     return {
         responseError: function (rejection) {
@@ -40,7 +42,6 @@ app.factory("401Error", ($q, $injector) => {
         }
     }
 });
-
 app.factory("HTTPHeaders", function ($http, $state, $timeout) {
     var token = localStorage.getItem("token")
 
@@ -51,8 +52,6 @@ app.factory("HTTPHeaders", function ($http, $state, $timeout) {
 
     }
 })
-
-
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
     return {
@@ -75,8 +74,6 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
         }
     }
 }]);
-
-
 app.factory("MainDashboard", ($http) => {
     var sname = localStorage.getItem("serverName");
     var url = "http://" + sname + ":4580/api/general/dashboard";
@@ -86,9 +83,7 @@ app.factory("MainDashboard", ($http) => {
         }
     }
 })
-
 //http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
-
 app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
@@ -287,9 +282,6 @@ app.factory("channelData", function ($http, $rootScope) {
 
     }
 })
-
-
-
 app.factory("policyData", function ($rootScope, $http) {
 
 
@@ -510,9 +502,6 @@ app.factory("policyData", function ($rootScope, $http) {
 
     }
 })
-
-
-
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
@@ -523,7 +512,6 @@ app.factory("reports_factory", function ($http) {
         }
     }
 })
-
 app.factory("sanitization_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -574,7 +562,6 @@ app.factory("sanitization_factory", function ($http) {
         }
     }
 });
-
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -601,7 +588,6 @@ app.factory("system_properties", function ($http) {
         }
     }
 });
-
 app.factory("telerik_reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
@@ -613,7 +599,6 @@ app.factory("telerik_reports_factory", function ($http) {
         }
     }
 });
-
 app.factory("system_events_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");

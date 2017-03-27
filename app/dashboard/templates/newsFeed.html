@@ -1,0 +1,41 @@
+<div vertilize>
+    <md-toolbar layout-padding id="news-header">
+        News
+    </md-toolbar>
+    <div id="notification-container" md-whiteframe="6" layout-padding>
+        <div ng-repeat="news in ctrl.news">
+            <h4>{{news.title}}</h4>
+            <div layout="row" layout-margin>
+                <a href="{{news.url}}" target="blank">
+                    <image md-whiteframe="5" class="article-thumbnail" src="{{news.urlToImage}}" />
+                </a>
+                <p>{{news.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #news-header {
+        background-color: #333;
+        color: white !important;
+        font-weight: 800;
+    }
+    
+    #notification-container {
+        background-color: white;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin-top: 0px;
+        overflow: auto;
+        max-height: 25em;
+    }
+    
+    .article-thumbnail {
+        display: block;
+        max-width: 100px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+        border-radius: 5px;
+    }
+</style>
