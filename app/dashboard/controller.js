@@ -4,6 +4,27 @@ app.controller("dashboard", function (toastr, Dashboard, $mdDialog) {
     self.purpleInt = '40';
     self.timeReferences = ['Real Time', '1 hour', '1 week', '2 weeks', '3 weeks', '1 month'];
     self.DashboardHasLoaded = false;
+
+
+    //sidenav with important info => init 
+
+    self.SideInfo = [{
+        "title": "Total Processed Files",
+        "result": "789"
+    }, {
+        "title": "Total Processed Files",
+        "result": "Docx"
+    }, {
+        "title": "Total Processed Files",
+        "result": "A.Cook"
+    }, {
+        "title": "Average Processing Time",
+        "result": "1.2 sec"
+    }]
+
+self.chartTitle = "Processed Files";
+
+
     Dashboard.GetDummyData().then((res) => {
         self.Data = res.data.TopBar;
     })
@@ -19,7 +40,7 @@ app.controller("dashboard", function (toastr, Dashboard, $mdDialog) {
         if (self.SelectedTimeFrame != 'custom') {
             SearchDataFromDate(self.SelectedTimeFrame);
         } else {
-            $mdDialog.show({  
+            $mdDialog.show({
                 templateUrl: "app/dashboard/templates/timepicker.html",
                 parent: angular.element(document.body),
                 clickOutsideToClose: true

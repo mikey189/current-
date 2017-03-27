@@ -8,17 +8,14 @@
         <option value="3Months">3 Months</option>
         <option value = "custom">Custom</option>
     </select> Days the ReSecure platform
-    <span class="twitter-like">processed</span><span class="important-figure">{{ctrl.Data.NumberOfConcernedFiles}} Files.</span>The
-    system detected <span class="important-figure">{{ctrl.Data.KnownInfections}} Known Infections</span>
-    <span class="twitter-like">detected</span> <span class="important-figure">{{ctrl.Data.PotentialThreats}} Threats.
-    </span> It's <span class="twitter-like">up time</span> was <span class="important-figure">{{ctrl.Data.UpTimeFigure}} % </span>and
-    average time was
-    <span class="important-figure">{{ctrl.Data.ProcessingTime}} seconds </span> per file.
+    <span class="twitter-like" sidenav-info-for-processed>processed</span><span class="important-figure">{{ctrl.Data.NumberOfConcernedFiles}}</span>Files. The
+    system detected<span class="important-figure">{{ctrl.Data.KnownInfections}}</span> Known Infections
+    <span class="twitter-like" sidenav-info-for-detected>detected</span><span class="important-figure">{{ctrl.Data.PotentialThreats}}</span> Threats and <span class="twitter-like" sidenav-info-for-prevented> prevented</span> <span class="important-figure"> 1240</span> potential threats.
+   
 </div>
 <style>
     #story-time-container {
         background-color: #471BAB !important;
-        text-align: center;
         color: white;
         font-size: 1.3em;
         border-radius: 5px;
@@ -38,6 +35,7 @@
     .important-figure {
         color: yellow;
         font-weight: 800;
+        font-size: 1.5em;
     }
     
     .twitter-like {

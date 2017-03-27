@@ -87,3 +87,6 @@ md-checkbox.md-checked ._md-icon {
 .wrong-login {
     border: solid 1.5px #333 !important;
 }
+#image-holder{
+    background-image: url("loginImage.jpg");
+}

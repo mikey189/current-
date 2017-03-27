@@ -1,7 +1,7 @@
-<div class="chart-container" md-whiteframe="8">
-    <h3 class="graph-title">Processed Files</h3>
-    <canvas height="70%" class="chart chart-line" chart-data="ctrl.DummyData1" chart-labels="ctrl.DummyLabels1" chart-series="ctrl.series"
-        chart-options="ctrl.options" chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick">
+<div class="chart-container" md-whiteframe="8" vertilize>
+    <h3 class="graph-title">{{ctrl.chartTitle}}</h3>
+    <canvas height="65%" class="chart chart-line" chart-data="ctrl.DummyData1" chart-labels="ctrl.DummyLabels1" chart-series="ctrl.series"
+        chart-options="ctrl.options" chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick" style="padding-bottom: 15px">
     </canvas>
 </div>
 <style>
@@ -20,5 +20,7 @@
         margin-left: 1em;
         font-weight: 800;
         margin-bottom: 1em;
+        margin-top: 0px !important;
     }
+
 </style>
