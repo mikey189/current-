@@ -1,10 +1,19 @@
 <link rel="stylesheet" href="app/common/style.css" />
-<div layout="column" layout-fill ng-controller='common'>
+<!--<div layout="column" layout-fill ng-controller='common'>
     <g-top-navbar></g-top-navbar>
     <div layout='row' style="height: 100%">
         <g-sidenav></g-sidenav>
-        <!-- <md-content id="mainContent" style="height: 100%" flex data-ui-view>-->
         <md-content id="mainContent" style="height: 100%" flex data-ui-view>
         </md-content>
+    </div>
+</div>-->
+<div  ng-controller='common'>
+    <div layout='row' style="height: 100%">
+        <g-sidenav flex="12"></g-sidenav>
+        <div layout="column" layout-fill>
+            <g-top-navbar></g-top-navbar>
+            <md-content id="mainContent" style="height: 100%" flex data-ui-view>
+            </md-content>
+        </div>
     </div>
 </div>

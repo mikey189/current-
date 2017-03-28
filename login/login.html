@@ -1,6 +1,6 @@
 <div ng-http-loader methods="['GET']" template="app/common/templates/loader.html" ttl="1"></div>
 <div layout="column" flex layout-fill layout-align="center center" id="loginBody" role="main" ng-init="ctrl.CheckBrowserAndCookies()">
-    <md-icon md-svg-src='login/resecLogo.svg' class='md-150' style="margin-top: 0px"></md-icon>
+    <!--  <md-icon md-svg-src='login/resecLogo.svg' class='md-150' style="margin-top: 0px"></md-icon>
 
     <form id="form-holder" name="loginForm" layout="column" layout-align="center center" layout-margin style="width: 30%">
         <input id="ServerName" type="text" name="server" md-whiteframe="4" ng-model="ctrl.serverName" class="login-input" ng-class="{'wrong-login': !ctrl.is_login_nahon}" placeholder="Server"
@@ -22,9 +22,9 @@
             </div>
             <md-content ui-sref="ResetPasswordS1" class="hvr-underline-from-right-yellow">Forgot Password?</md-content>
         </div>
-    </form>
-   <!-- <div layout="row" flex="50" id="form-holder" md-whiteframe="6">
-        <form id="form-holder" name="loginForm" layout="column" layout-align="center center" layout-margin flex="40">
+    </form>-->
+    <div layout="row" flex="50" flex-gt-lg="60" md-whiteframe="12" style="width: 50%">
+        <form flex="50" id="form-holder" name="loginForm" layout="column" layout-align="center center" layout-margin flex="40">
             <input id="ServerName" type="text" name="server" md-whiteframe="4" ng-model="ctrl.serverName" class="login-input" ng-class="{'wrong-login': !ctrl.is_login_nahon}"
                 placeholder="Server" required ng-keypress="ctrl.LogUserInOnEnter($event)">
             <span class="error-message" ng-show="loginForm.server.$touched && loginForm.server.$invalid">The server is required.</span>
@@ -37,18 +37,22 @@
             <span class="error-message-credentials" ng-show="!ctrl.is_login_nahon">Incorrect credentials !</span>
             <md-button check-credentials ng-disabled="!loginForm.$valid" ng-class="{'valid-btn': loginForm.$valid, 'shake animated': !ctrl.is_login_nahon}"
                 md-whiteframe="4" id="login-btn">LOGIN</md-button>
-            <div layout="row" layout-align="space-between center" style="width: 100%">
+            <div layout="row" layout-align="space-between center" style="width: 90%; margin-top: 1.8em">
                 <div layout="row" flex ng-show="loginForm.$valid">
                     <md-checkbox id="remember-me" aria-label="remember me" ng-model="ctrl.IsRememberMe"></md-checkbox>
-                    <md-content style="margin-bottom: 0px" class="hvr-underline-from-left-yellow">Remember Me</md-content>
+                    <md-content style="margin-bottom: 0px" class="white hvr-underline-from-left-yellow">Remember Me</md-content>
                 </div>
-                <md-content ui-sref="ResetPasswordS1" class="hvr-underline-from-right-yellow">Forgot Password?</md-content>
+                <md-content ui-sref="ResetPasswordS1" class="white hvr-underline-from-right-yellow">Forgot Password?</md-content>
             </div>
         </form>
-        <div flex id="image-holder"/>
+        <div flex id="image-holder" layout-align="end end" layout="column">
+            <md-button id="play-btn" md-whiteframe="7" href="https://www.youtube.com/watch?v=8nHVEWdnxPc">
+                <md-icon class="white">play_arrow</md-icon>
+                TAKE A TOUR
+            </md-button>
+        </div>
     </div>
-</div>-->
-
+</div>
 <style>
 
 </style>

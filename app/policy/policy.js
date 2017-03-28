@@ -23,11 +23,9 @@ app.controller('policy', ["$scope", "$mdSidenav", "policyData", "channelData", "
             //var TimeOffset = UTCTime.getTimezoneOffset() * 60000; //get milliseconds offset;
         self.DashboardTimeFrame = "1 Week";
         self.GetTopUsers = () => {
-            self.TopUsers = Dashboard.GetTopUsers();
             self.UsersQuery = {
                 order: "blocked"
             };
-            self.TopExtensions = Dashboard.GetExtensions();
 
             self.FilesQuery = {
                 order: "blocked"
