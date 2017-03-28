@@ -17,4 +17,6 @@ app.controller('common', function ($rootScope, $state, $stateParams, $mdMenu) {
 	self.notifications = JSON.parse(localStorage.getItem("notifications")) || [];
 	self.notificationsLength = self.notifications.length;
 
+	self.FakeNews = "Your License is about to expire, your access will subsequently be restricted"
+
 })

@@ -18,6 +18,14 @@ app.directive("gSidenav", function () {
 
 })
 
+app.directive("systemAlerts", () => {
+  return {
+    restrict: "E",
+    templateUrl: "app/common/templates/systemAlerts.html",
+    replace: false
+  }
+})
+
 app.directive("logout", ($rootScope, $state, HTTPHeaders, $window) => {
   return {
     restrict: "A",
@@ -81,5 +89,16 @@ app.directive("preventoutingWithoutSave", ($state, $rootScope) => {
           // Do something with the $scope.buttons;
       });
     }
+  }
+})
+
+app.directive("closeSystemNotifications", () => {
+  return {
+    restrict: "A",
+    link: (scope, element, attrs)=>{
+      element.click(()=> {
+        $("#system-alerts-container").remove();
+      })
+    } 
   }
 })

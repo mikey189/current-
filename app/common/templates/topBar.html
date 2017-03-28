@@ -1,9 +1,9 @@
+<system-alerts></system-alerts>
+
 <md-toolbar id='dashboardToolbar' layout='row' layout-align='space-between center' layout-padding layout-sm='column' layout-xs='column'
     md-whiteframe="12">
     <md-content class='md-headline darkPurple' layout="row">
-        <a ui-sref="app.dashboard" layout="row" layout-align="center center">
-            <md-icon md-svg-src="IMG/icons/resecLogo.svg" class="main-logo"></md-icon>
-        </a>
+        
         {{ctrl.serverName | uppercase}} > &nbsp{{$state.current.displayName}}
     </md-content>
     <div layout="row" layout-align="space-between center">

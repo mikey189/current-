@@ -18,7 +18,6 @@
 }
 
 .menuHolder {
-    margin-top: 1.5em;
 }
 
 .custom-toolip {
@@ -88,4 +87,7 @@
 #notification-btn {
     height: 4em !important;
     width: 5em !important;
+}
+#menu-resec-icon{
+    margin: 0px !important;
 }
