@@ -116,9 +116,7 @@ app.factory("FacetFormatter", function () {
                                         var boolValue = splittedByEqual[1];
                                         defaultValues[splittedByEqual[0]] = boolValue;
                                     } else if (type === " FacetPropertyType_MultiChoice") {
-                                        console.log("coucou")
                                         defaultValue.push(itemStr)
-                                        console.log(defaultValue)
                                     } else {
                                         var boolValue = splittedByEqual.length != 2 ? false : splittedByEqual[1] === "True";
                                         defaultValues[splittedByEqual[0]] = boolValue;
@@ -299,7 +297,6 @@ app.factory("FacetFormatter", function () {
                                         PipedString += (currentValue[i] + "|");
                                     }
                                     PipedString = PipedString.substring(0, PipedString.length-1);
-                                    console.log(PipedString)
                                     formattedStr = PipedString;
                                 }
                             } else {

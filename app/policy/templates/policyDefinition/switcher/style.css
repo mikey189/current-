@@ -1,24 +1,39 @@
-#policyDefinitionSwitcherBK{
+#policyDefinitionSwitcherBK {
     background-color: white;
     margin-top: 2em;
 }
 
-#policyDefinitionSwitcher{
+#policyDefinitionSwitcher {
     border-radius: 100px;
     border: solid 1px #B9B9B9;
     background-color: white;
     color: #484554;
 }
-.roundedTabSelector{
+
+.roundedTabSelector {
     border-radius: 100px;
     color: #484554 !important;
 }
 
-.roundedTabSelector:focus{
+.roundedTabSelector:focus {
     background-color: #6B69EB !important;
-    color: white !important;   
-}
-.policyInnerNavUISelected{
-    background-color: #6B69EB;
     color: white !important;
 }
+
+.policyInnerNavUISelected {
+    border-bottom: solid 4px #2196F3 !important;
+    font-weight: 700;
+    color: #D81B60 !important;
+}
+
+#policy-view-switcher {
+    margin-top: 2em;
+    background-color: white;
+}
+
+.mymenu {
+    text-align: center;
+    font-weight: 700 !important;;
+    color: #333;
+}
+

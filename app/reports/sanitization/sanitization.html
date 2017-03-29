@@ -1,9 +1,8 @@
 <link rel="stylesheet" href="app/reports/sanitization/style.css" />
-<json-formatter json="data"></json-formatter>
 <center>
     <div ng-cloak flex-gt-md="95" md-whiteframe="7" class="sanitization-table-holder">
         <md-table-container class="sanitization-table-container">
-            <table md-table md-progress=" get_data" class="sanitization-table" ng-model="selected">
+            <table md-table class="sanitization-table" ng-model="selected" md-progress=" promise">
                 <thead md-head class="santization-head" md-order="query.order">
                     <tr md-row>
                         <th md-column md-numeric>
@@ -23,7 +22,8 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="x in  data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect" class="sanitization-row">
+                    <tr md-row ng-repeat="x in data.List | filter: filter.search | orderBy:  query.order | limitTo:  query.PageSize" md-auto-select="options.autoSelect"
+                        class="sanitization-row">
                         <td md-cell>
                             <md-button class="md-icon-button clickMe" sanitizationId="{{x['Sanitization Id']}}" ng-click="show_details_modal_ready(x['Sanitization Id'])">
                                 <md-icon>info_outline</md-icon>
@@ -31,17 +31,18 @@
                         </td>
                         <td md-cell>{{x["Start Time"] | date:"MM/dd/yyyy ':' h:mma"}}</td>
                         <td md-cell>{{x.Duration | date: "mm: ss"}}</td>
-                        <td md-cell>{{x.User | CutUntil: "/"}}</td>
+                        <td md-cell>{{x.User | CutUntil: "/" }}</td>
                         <td md-cell>{{x['File Name']}}</td>
                         <td md-cell>{{x.Size}}</td>
                         <td md-cell>{{x["Processing Server"]}}</td>
                         <td md-cell>{{x.Status}}</td>
                         <td md-cell>{{x.Outcome}}</td>
                         <td md-cell layout="row" layout-align="space-between center">
-                            <md-select placeholder="Pick an action" ng-model="ActionToPerform" md-on-open="LoadActions(x['Sanitization Id'])" style="min-width: 200px;">
+                            <md-select placeholder="Pick an action" ng-model="ActionToPerform" md-on-open="LoadActions(x['Sanitization Id'])" ng-disabled="ActionToPerform">
                                 <md-option ng-value="action" ng-repeat="action in actions">{{action}}</md-option>
                             </md-select>
-                            <md-button flex aria-label="send action" class="md-icon-button" ng-if="ActionToPerform" perform-action sanitization-id="{{x['Sanitization Id']}}" action="{{ActionToPerform}}">
+                            <md-button flex aria-label="send action" class="md-icon-button" ng-show="ActionToPerform" filename="{{x['File Name']}}" perform-action
+                                sanitization-id="{{x['Sanitization Id']}}" action="{{ActionToPerform}}">
                                 <md-icon id="TaskIndicator">done</md-icon>
                             </md-button>
                         </td>

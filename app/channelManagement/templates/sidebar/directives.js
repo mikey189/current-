@@ -1,10 +1,10 @@
-app.directive("getMyId", ["$state",  "channelData", function ($state, channelData) {
+app.directive("getMyId", ["$state", "channelData", function ($state, channelData) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
                 var self = $(this);
-                scope.$apply( () => {
+                scope.$apply(() => {
                     scope.ctrl.rootId = parseInt(self.attr("channel-id"));
                 })
             })
@@ -19,37 +19,6 @@ app.directive("goToChannelCreation", function ($state) {
         link: function (scope, element, attrs) {
             element.click(function () {
                 $state.go("app.channelManagement.newChannel");
-            })
-        }
-    }
-})
-
-
-app.directive("deleteChannel", function ($mdDialog, channelData, $q) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("click", function () {
-                var self = $(this)
-                var channel_id = self.attr("channel-id");
-                var channel_name = self.attr("channel-name")
-                var confirm = $mdDialog.confirm()
-                    .title('You are about to delete a channel')
-                    .textContent('You are about to delete the channel ' + channel_name)
-                    .ariaLabel('delete channel')
-                    .ok('Yes, delete this channel')
-                    .cancel('Cancel deletion');
-                $mdDialog.show(confirm).then(() => {
-                    console.log("about to delete ", channel_id)
-                    channelData.delete_channel(channel_id).then(result => {
-                        console.log("successfully deleted channel : ", channel_id)
-                            .then(() => {
-                                scope.ctrl.LoadSidenav();
-                            })
-                    }, error => {
-                        scope.ctrl.HTTP_Dialogs.ShowErrorDialog("We could not delete this channel", error.data.Message);
-                    })
-                })
             })
         }
     }
@@ -75,23 +44,9 @@ app.directive("channelSidenavEditMode", function (channelData, $mdDialog) {
                         channelsOrder.push(channelID)
                     })
                     channelData.reorder_channel_priority(channelsOrder).then(function (success) {
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                            .clickOutsideToClose(true)
-                            .title('CONGRATS!')
-                            .textContent('The ne priorities were successfully saved')
-                            .ariaLabel('Alert Dialog Demo')
-                            .ok('AWSOME!')
-                        );
+                        scope.ctrl.HTTP_Dialogs.ShowSuccessDialog();
                     }, function (error) {
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                            .clickOutsideToClose(true)
-                            .title('OOPS, ERROR')
-                            .textContent('There was an error while updating the priorities : ' + error.data.Message)
-                            .ariaLabel('Alert Dialog Demo')
-                            .ok('Got it!')
-                        );
+                        scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message);
                     })
                     editIcon.removeClass("editOn")
                 }
@@ -104,9 +59,7 @@ app.directive("renameChannel", function (channelData, $mdDialog) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-
             element.bind("click", function () {
-
                 var self = $(this)
                 var ChannelID = self.parents("md-list-item").attr("channel-id");
                 var ChannelName = self.parents("md-list-item").find("a").html();
@@ -114,6 +67,7 @@ app.directive("renameChannel", function (channelData, $mdDialog) {
                 channelData.updateChannelName(ChannelID, ChannelName)
                     .then(function (success) {
                         scope.ctrl.HTTP_Dialogs.ShowSuccessDialog();
+                        scope.ctrl.rootId = ChannelID;
                     }, function (error) {
                         scope.ctrl.HTTP_Dialogs.ShowErrorDialog(error.data.Message);
                     })
@@ -121,3 +75,4 @@ app.directive("renameChannel", function (channelData, $mdDialog) {
         }
     };
 });
+

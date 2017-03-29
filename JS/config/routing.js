@@ -1,9 +1,9 @@
-// ROUTES
-
 app.config(function ($stateProvider, $urlRouterProvider) {
 
+    
 
     $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when('/app', '/dashboard');
 
     $stateProvider
 
@@ -30,7 +30,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('ResetPasswordS2', {
         url: '/ResetPasswordS2',
         templateUrl: 'app/AccountManager/templates/S2/ResetPassword.html',
-        controller: 'ResetPasswordS1',
+        controller: 'ResetPasswordS2',
         controllerAs: 'ctrl'
     })
 
@@ -50,8 +50,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 return $http.defaults.headers.common.Authorization;
             }
         }
-
     })
+
+
 
     .state('app.testPage', {
         url: '/app',
@@ -74,6 +75,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/channelManagement',
         templateUrl: 'app/channelManagement/channelManagement.html',
         controller: 'channels',
+
         controllerAs: 'ctrl',
         displayName: "Channel Management",
         classSelector: "channel"
@@ -89,6 +91,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         //parent: "app.channelManagement",
         templateUrl: 'app/channelManagement/templates/endpoint/endpoint.html',
         displayName: "Channel Management",
+
         classSelector: "channel"
 
     })
@@ -98,6 +101,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             //parent: "app.channelManagement",
             templateUrl: 'app/channelManagement/templates/endpoint/innerView/dashboard/dashboard.html',
             displayName: "Channel Management",
+            params: {
+                id: null
+            },
             classSelector: "channel",
             ParentID: "ChannelDashboard"
 
@@ -188,7 +194,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     })
 
-
     .state('app.clusterManagement', {
             url: '/clusterManagement',
             templateUrl: 'app/topology/cluster/cluster.tmpl.html',
@@ -260,7 +265,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             ParentID: "PolicyDefinition"
 
         })
-        .state('app.policy.definition.regex', {
+        .state('app.policy.definition.cdrDouble', {
+            url: '/stam',
+            classSelector: "policy",
+            templateUrl: 'app/policy/cdr.tmpl.html',
+            displayName: "Policy > CDR Settings",
+            classSelector: "policy",
+            ParentID: "PolicyDefinition"
+
+        })
+
+    .state('app.policy.definition.regex', {
             url: '/policyRegex',
             classSelector: "policy",
             templateUrl: 'app/policy/templates/policyDefinition/templates/regex/regex.html',
@@ -285,7 +300,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             displayName: "System Status"
 
         })
-        .state('app.sanitization', {
+        .state('app.sanitization_reports', {
             url: '/sanitization',
             templateUrl: 'app/reports/sanitization/sanitization.html',
             controller: 'sanitization',
@@ -294,7 +309,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentUrl: "app.reports",
             parentName: "System Status >"
         })
-        .state('app.telerik_reports', {
+        .state('app.reports.telerik_reports', {
             url: '/telerik_reports',
             templateUrl: 'app/reports/telerik_reports/tr.html',
             controller: 'telerik_reports',
@@ -304,7 +319,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-        .state('app.system_events', {
+        .state('app.reports.systemEvents', {
             url: '/system_events',
             templateUrl: 'app/reports/system_events/se.html',
             controller: 'system_events',
@@ -313,26 +328,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             parentName: "System Status >"
 
         })
-        .state('app.reports_jobs', {
-            url: '/jobs',
-            templateUrl: 'app/reports/jobs/jobs.html',
-            controller: 'reports_jobs',
-            displayName: "Jobs",
-            parentUrl: "app.reports",
-            parentName: "System Status >"
 
-        })
-        .state('app.reports_emails', {
-            url: '/emails',
-            templateUrl: 'app/reports/email/email.html',
-            controller: 'reports_emails',
-            displayName: "Emails",
-            parentUrl: "app.reports",
-            parentName: "System Status >"
+    .state('app.email_reports', {
+        url: '/emails',
+        templateUrl: 'app/reports/email/email.html',
+        controller: 'reports_emails',
+        displayName: "Emails",
+        parentUrl: "app.reports",
+        parentName: "System Status >"
 
-        })
+    })
 
-    .state('app.reports_scanners', {
+    .state('app.reports.scanners', {
         url: '/scannerreports',
         templateUrl: 'app/reports/scanners/scanners.html',
         controller: 'reports_scanners',

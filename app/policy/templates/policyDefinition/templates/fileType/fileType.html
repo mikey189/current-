@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/fileType/style.css" />
-<json-formatter json="ctrl.Filetypes"></json-formatter>
 <div layout="row" layout-align="space-between center" class="filetype-edition-center">
-    <md-button aria-label="advanced mode" class="shadow-on-hover" id="save-filetype" md-whiteframe="4" save-filetypes >
+    <md-button aria-label="advanced mode" class="shadow-on-hover" id="save-filetype" md-whiteframe="4" save-filetypes>
         SAVE
     </md-button>
     <md-button aria-label="advanced mode" class="shadow-on-hover" md-whiteframe="4" ng-click="ctrl.isFileTypesAdvanceModeON =! ctrl.isFileTypesAdvanceModeON"
@@ -10,7 +9,8 @@
         <span ng-if="!ctrl.isFileTypesAdvanceModeON">Advanced Mode </span>
     </md-button>
 </div>
-<input  id="search-extensions" placeholder="search any extension" md-whiteframe="6" class="shadow-on-section-hover" ng-model="ctrl.FileTypeQuery"/>
+<form name="filter">
+    <input id="search-extensions" placeholder="search any extension" md-whiteframe="6" class="shadow-on-section-hover" ng-model="ext" name="ext" ng-keyup="ctrl.logger(filter.ext)"></form>
 <table class="table table-responsive shadow-on-section-hover" md-whiteframe="6" ng-cloak id="filetype-table">
     <thead>
         <th>Category</th>
@@ -22,12 +22,12 @@
     </thead>
     <tbody>
         <tr ng-repeat-start="(L0Key, L0Value) in ctrl.Filetypes track by $index " class="parent-classification">
-            <td > 
+            <td>
                 <md-button aria-label="expand" class="md-icon-button" ng-click="L0Value.AreChildrenHidden =! L0Value.AreChildrenHidden">
                     <md-icon ng-show="!L0Value.AreChildrenHidden">keyboard_arrow_right</md-icon>
                     <md-icon ng-show="L0Value.AreChildrenHidden">keyboard_arrow_down</md-icon>
                 </md-button>
-               <span class="parent-itself"> {{::L0Key}}</span>
+                <span class="parent-itself"> {{::L0Key}}</span>
             </td>
             <td>
                 <input type="checkbox" class="custom-checkbox md-checkbox" ng-click="ctrl.CheckAllExtensions(allowOptionModel, L0Value, 'AllowOption')"
@@ -51,8 +51,7 @@
                     ui-indeterminate="ctrl.IsIndeterminate(L0Value, 'RegularExpressionScannerAllowedFileTypesOption')">
             </td>
         </tr>
-        <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  ctrl.FileTypeQuery ===  Ext.Extension "
-            ng-init="L0Value.AreChildrenHidden = true" class="children-extensions">
+        <tr ng-repeat-start="Ext in L0Value | filter : Extension" ng-if="L0Value.AreChildrenHidden ||  ctrl.FilterExtensions(filter.ext, Ext.Extension)" class="children-extensions">
             <td>
                 <span class="extensions" layout="column"> 
                {{::Ext.Extension}} 

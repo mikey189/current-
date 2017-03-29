@@ -1,42 +1,38 @@
-<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css" />
+<link rel="stylesheet" href="app/reports/scanners/style.css">
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/dashboard/templates/topFiles/style.css">
 
-<md-content id="endPointTopFiles" md-whiteframe="6">
-
-    <div layout="row" md-whiteframe="4" layout-padding layout-align="none center">
-        <md-icon id="EndpointTopFilesIcon" md-svg-src="icons/topFiles.svg" class="md-48"></md-icon>
-        <h4>Top Files Type</h4>
-    </div>
-
-    <md-virtual-repeat-container id="vertical-container" class="matchMyHeight">
-    <md-list>
-
-        <div md-virtual-repeat="x in ctrl.channelDashboard.TopFilesTypeList">
-
-            <md-list-item class="repeated-item" flex layout="row" layout-align="space-between center" layout-margin ng-switch="ctrl.isBlocked">
-                <p flex> {{x.Filetype}}</p>
-
-                <div class="progress topFilesProgressBar" flex="60" ng-switch-when=false>
-
-                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.ProcessedNumber}}" aria-valuemin="0" aria-valuemax="100" style="width: {{x.ProcessedNumber}}%; min-width: 2em">
-                        {{x.ProcessedNumber}}%
-                    </div>
-                </div>
-
-                <div class="progress topFilesProgressBar" flex="60" ng-switch-default>
-
-                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{x.BlockededNumber}}" aria-valuemin="0" aria-valuemax="100" style="width: {{x.BlockededNumber}}%; min-width: 2em">
-                        {{x.BlockededNumber}}%
-                    </div>
-                </div>
-
-                <p flex="10" ng-switch-when=false>{{x.ProcessedNumber}}%</p>
-                <p flex="10" ng-switch-default>{{x.BlockededNumber}}%</p>
-
-            </md-list-item>
+<div flex md-whiteframe="7" class="sanitization-table-holder" style="margin-top: 2em">
+    <md-toolbar class="md-table-toolbar md-default" id="unified-title">
+        <div class="md-toolbar-tools">
+            <span>Top Files</span>
         </div>
-
-        <md-divider></md-divider>
-        </div>
-    </md-list>
-</md-virtual-repeat-container>
-</md-content>
+    </md-toolbar>
+    <md-table-container style="margin-top: 0px" class="sanitization-table-container">
+        <table md-table class="sanitization-table" ng-model="selected" md-progress="ctrl.FilePromise">
+            <thead md-head class="santization-head" md-order="ctrl.FilesQuery.order">
+                <tr md-row>
+                    <th md-column md-order-by="extension"><span>File Extension</span></th>
+                    <th md-column md-numeric md-order-by="Blocked"><span>Blocked</span></th>
+                    <th md-column md-numeric md-order-by="Modified"><span>Modified</span></th>
+                    <th md-column md-numeric md-order-by="Passed"><span>Passed</span></th>
+                    <th md-column md-numeric md-order-by="Total"><span>Total</span></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr ng-if="ctrl.TopFiles.length > 0" md-row ng-repeat="x in ctrl.TopFiles | orderBy:  ctrl.FilesQuery.order" md-auto-select="options.autoSelect">
+                    <td md-cell class="extension">{{x.Filetype | uppercase}}</td>
+                    <td md-cell>{{x.BlockededNumber}}</td>
+                    <td md-cell>{{x.ProcessedNumber}}</td>
+                    <td md-cell>{{x.PassedNumber}}</td>
+                    <td md-cell>{{x.TotalNumber}}</td>
+                </tr>
+                <tr md-row ng-if="ctrl.TopFiles.length == 0">
+                    <td md-cell colspan="5" class="no-data">
+                        <md-icon style="margin-right: 0.3em">pan_tool</md-icon>
+                        No Data To Show For This Time Frame
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</div>

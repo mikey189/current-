@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="app/reports/scanners/style.css">
+<div flex md-whiteframe="7" class="sanitization-table-holder" style="margin-top: 2em">
+    <md-toolbar class="md-table-toolbar md-default" id="unified-title">
+        <div class="md-toolbar-tools">
+            <span>Top Files</span>
+        </div>
+    </md-toolbar>
+    <md-table-container style="margin-top: 0px" class="sanitization-table-container" ng-init="ctrl.GetTopUsers()">
+        <table md-table class="sanitization-table" ng-model="selected" md-progress=" ctrl.UserQuery">
+            <thead md-head class="santization-head" md-order="ctrl.FilesQuery.order">
+                <tr md-row>
+                    <th md-column md-order-by="extension"><span>File Extension</span></th>
+                    <th md-column md-numeric md-order-by="blocked"><span>Blocked</span></th>
+                    <th md-column md-numeric md-order-by="modified"><span>Modified</span></th>
+                    <th md-column md-numeric md-order-by="passed"><span>Passed</span></th>
+                    <th md-column md-numeric md-order-by="total"><span>Total</span></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="x in ctrl.TopExtensions | orderBy:  ctrl.FilesQuery.order" md-auto-select="options.autoSelect">
+                    <td md-cell>{{x.extension | uppercase}}</td>
+                    <td md-cell>{{x.blocked}}</td>
+                    <td md-cell>{{x.modified}}</td>
+                    <td md-cell>{{x.passed}}</td>
+                    <td md-cell>{{x.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</div>

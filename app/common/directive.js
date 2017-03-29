@@ -18,6 +18,14 @@ app.directive("gSidenav", function () {
 
 })
 
+app.directive("systemAlerts", () => {
+  return {
+    restrict: "E",
+    templateUrl: "app/common/templates/systemAlerts.html",
+    replace: false
+  }
+})
+
 app.directive("logout", ($rootScope, $state, HTTPHeaders, $window) => {
   return {
     restrict: "A",
@@ -53,8 +61,44 @@ app.directive("changePassword", ($state) => {
     restrict: "A",
     link: (scope, element, attrs) => {
       element.click(() => {
-       $state.go("ResetPasswordS1");
+        $state.go("ResetPasswordS2");
       })
     }
   }
 });
+
+app.directive("preventoutingWithoutSave", ($state, $rootScope) => {
+  return {
+    restrict: "A",
+    link: (scope, element, attrs) => {
+      scope.$watch(function () {
+        return $state.$current.locals["@app"].$scope.ctrl;
+      }, function (newValue, oldValue) {
+        var oldModel = oldValue;
+        var newModel = newValue;
+        var isEqual = _.isEqual(oldModel, newModel);
+       
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if (isEqual == true){
+              console.log("is equal can't say nothing")
+            }else{
+              console.log("the model has changed")
+              event.preventDefault();
+            }
+          })
+          // Do something with the $scope.buttons;
+      });
+    }
+  }
+})
+
+app.directive("closeSystemNotifications", () => {
+  return {
+    restrict: "A",
+    link: (scope, element, attrs)=>{
+      element.click(()=> {
+        $("#system-alerts-container").remove();
+      })
+    } 
+  }
+})

@@ -63,14 +63,12 @@
 }
 
 .channelSidenavItems:hover {
-    border-left: solid 4px #00C851;
         background-color: #4285F4;
 
 }
 
 .sidenavItemHoverState {
     background-color: #4285F4;
-    border-left: solid 4px #00C851;
 }
 
 .white-icon {

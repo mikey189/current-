@@ -1,0 +1,7 @@
+<md-list md-whiteframe="5" class="top-list">
+    <md-toolbar class="list-title" md-whiteframe="4">Top 10 Passed Files</md-toolbar>
+    <md-list-item  class="dashboard-list hvr-underline-from-center" ng-repeat="file in ctrl.TopExtensions">
+        <h4>{{::file.extension | uppercase}}</h4>
+        <p class="list-value">{{::file.number}}</p>
+    </md-list-item>
+</md-list>

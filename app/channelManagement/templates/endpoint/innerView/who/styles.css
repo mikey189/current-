@@ -63,7 +63,7 @@
     font-weight: 700;
 }
 .custom-chips:hover{
-    box-shadow: -3px 2px 2px 0px #333;
+    box-shadow: -2px 2px 2px 0px #333;
 }
 
 .no-padding-no-margin {
@@ -93,9 +93,6 @@
     padding-top: 1em;
 }
 
-md-virtual-repeat-container {
-    height: 292px;
-}
 
 .search-box {
     border: solid 0px !important;
@@ -139,4 +136,10 @@ md-virtual-repeat-container {
   opacity: 0;
   transition: .5s ease;
   background-color: #008CBA;
+}
+#available-values{
+    min-height: 30% !important;
+}
+.red{
+    background-color: red !important;
 }

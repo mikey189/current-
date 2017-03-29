@@ -1,12 +1,10 @@
 <link href="app/channelManagement/templates/endpoint/innerView/sources/templates/exceptions-template/DW/style.css" rel="stylesheet"
 />
-<json-formatter json="ctrl.DW"></json-formatter>
-<json-formatter json="ctrl.channel_data"></json-formatter>
-<md-button edit-dw-sources aria-label="edit dr" >
-    <span ng-if="ctrl.DWSourcesAreEditable">SAVE</span>
-    <span ng-if="!ctrl.DWSourcesAreEditable">EDIT</span>
+
+<md-button md-whiteframe="4" edit-dw-sources aria-label="edit dr" style="background-color: blue; font-weight: 700; color: white" >
+    SAVE
 </md-button>
-<table class="table table-responsive" id="DirWatcherTable" md-whiteframe="4" ng-class="{'noteEditable': !ctrl.DWSourcesAreEditable}">
+<table class="table table-responsive" id="DirWatcherTable" md-whiteframe="4" >
     <thead>
         <th>
             <md-button aria-label="add-row" class="md-icon-button" ng-click="ctrl.CreateNewDirWatcherSourcesEntry()">
@@ -24,7 +22,7 @@
     <tbody>
         <tr ng-repeat="DW in ctrl.DW.Sources track by $index">
             <td>
-                <md-button ng-if="ctrl.DWSourcesAreEditable" aria-label="add-row" class="md-icon-button" ng-click="ctrl.RemoveDirWatcherSourcesEntry($index)">
+                <md-button  aria-label="add-row" class="md-icon-button" ng-click="ctrl.RemoveDirWatcherSourcesEntry($index)">
                     <md-icon>remove</md-icon>
                 </md-button>
             </td>

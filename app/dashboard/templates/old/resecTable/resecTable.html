@@ -1,0 +1,10 @@
+<md-list class='md-raised dashboardTransparentTable animated fadeInUp' md-whiteframe="6">
+    <md-list-item layout-padding class="md-2-line" ng-repeat="x in ctrl.resecTable">
+        <md-icon class="material-icons md-avatar"><i class="material-icons purpleIcons md-48">{{x.IconUrl}}</i></md-icon>
+        <div class="md-list-item-text" layout="column">
+            <h5 class='purple'>{{x.Total}}</h5>
+            <p class='purple'>{{x.Name}}</p>
+        </div>
+    </md-list-item>
+    <md-divider></md-divider>
+</md-list>

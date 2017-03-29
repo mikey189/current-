@@ -1,8 +1,5 @@
 <link rel="stylesheet" href="app/topology/cluster/style.css" />
-<h2 id="page-title">Cluster</h2>
-<json-formatter json="ctrl.All"></json-formatter>
-<json-formatter json="ctrl.AllClusters"></json-formatter>
-<div layout="row" layout-margin flex="100" layout-align="center center">
+<div layout="column" layout-margin flex="100" layout-align="center center">
     <h3>Time Frame</h3>
     <md-input-container>
         <md-select ng-model='ctrl.selectedTime' placeholder="5 Minutes Ago" id="time-picker">
@@ -14,12 +11,7 @@
         </md-select>
     </md-input-container>
 </div>
-<div flex="30" class="legend" md-whiteframe="4" layout="row">
-    <div class="high" flex="33"> High Complexity</div>
-    <div class="many" flex="33"> Many Complexity</div>
-    <div class="low" flex="33"> Low Complexity</div>
-</div>
-<table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6">
+<table class="table table-responsive table-stripped cluster-table" ng-cloak md-whiteframe="6" ng-if="ctrl.Clusters">
     <thead>
         <th>Server Name</th>
         <th>Status</th>
@@ -57,8 +49,18 @@
                 </div>
             </td>
             <td>
-                {{cluster.StartedAt  | date:'medium'}}
+                {{cluster.StartedAt | date:'medium'}}
             </td>
         </tr>
     </tbody>
 </table>
+<div layout="column" layout-align="center center" ng-if="!ctrl.Clusters" style="margin-top: 4em">
+    <h1>No data to display for this time frame </h1>
+</div>
+<div layout-margin ng-if="ctrl.Clusters">
+    <div class="legend" md-whiteframe="4" layout="row" flex="30" layout-align="start">
+        <div class="high" flex="33"> High Complexity</div>
+        <div class="many" flex="33"> Many Complexity</div>
+        <div class="low" flex="33"> Low Complexity</div>
+    </div>
+</div>

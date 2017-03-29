@@ -27,13 +27,7 @@ app.directive("innerView", function () {
         replace: false
     }
 })
-app.directive("channelDashboardDataSwitcher", function () {
-    return {
-        restrict: 'E',
-        templateUrl: "app/channelManagement/templates/endpoint/innerView/dashboard/templates/dataSwitcher/dataSwitcher.html",
-        replace: false
-    }
-})
+
 app.directive("endpointDashboardTopFiles", function () {
     return {
         restrict: 'E',

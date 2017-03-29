@@ -3,10 +3,6 @@ app.directive("editDwSources", function (channelData) {
         restrict: "A",
         link: function (scope, element, attrs) {
             element.bind("click", function () {
-                if (!scope.ctrl.DWSourcesAreEditable) {
-                    scope.ctrl.DWSourcesAreEditable = true;
-                } else {
-
                     //checking if each value is unique 
 
                     var TestObject = [];
@@ -19,7 +15,6 @@ app.directive("editDwSources", function (channelData) {
                     TestObject[6] = [];
 
                     var DWLen = scope.ctrl.DW.Sources;
-                    console.log(DWLen)
                     for (i in DWLen) {
                         TestObject[0].push(DWLen[i]["InputFolder"]);
                         TestObject[1].push(DWLen[i]["OutputFolder"]);
@@ -47,7 +42,7 @@ app.directive("editDwSources", function (channelData) {
                         alert("please provide unique values");
                     }
 
-                }
+                
             })
         }
     }

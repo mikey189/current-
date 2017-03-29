@@ -1,7 +1,7 @@
-app.controller("ResetPasswordS1", function ($state, $mdDialog) {
+app.controller("ResetPasswordS1", function ($state, $mdDialog,accountMgmt_factory) {
     var self = this;
 
-    self.sendEmail = () => {
+    self.sendEmail = (userEmail,server) => {
         //post here before the request to server and then on success go to login otherwise prompt error message
 
 
@@ -15,6 +15,7 @@ app.controller("ResetPasswordS1", function ($state, $mdDialog) {
 
         $mdDialog.show(confirm).then(function () {
             //make post here
+            accountMgmt_factory.PostForgotPassword(userEmail,server);
             $state.go("login");
         }, function () {
             $state.go("login");
@@ -22,3 +23,4 @@ app.controller("ResetPasswordS1", function ($state, $mdDialog) {
 
     }
 })
+

@@ -1,12 +1,7 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/detection/style.css" />
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/templates/settings/style.css" />
 <md-button md-whiteframe="4" class="save-detection shadow-on-hover" aria-label="edit preferences" ng-click="ctrl.FormatForPOST()">SAVE</md-button>
-<div layout='row' layout-align="space-between">
-    <p>Policy Facets</p>
-    <json-formatter json="ctrl.PolicyFacets"></json-formatter>
-    <p>Detection Facets straight from server </p>
-    <json-formatter json="ctrl.DetectionFacets"></json-formatter>
-</div>
+
 <div id="policySettingsContainer">
     <md-list layout-margin ng-repeat="(Key, value) in ctrl.DetectionFacets" >
         <div class='whiteBk policy_settings_lists shadow-on-section-hover' md-whiteframe="4" flex>

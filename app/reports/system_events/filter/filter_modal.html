@@ -15,22 +15,25 @@
                 </md-option>
             </md-select>
         </md-input-container>
-        <div layout="row" flex layout-align="space-between center">
-            Start date
-            <md-datepicker ng-model="se_query.StartTime" md-placeholder="Start date"></md-datepicker>
-        </div>
-        <div layout="row" flex layout-align="space-between center">
-            End date
-            <md-datepicker ng-model="se_query.EndTime" md-placeholder="End date"></md-datepicker>
+        <div layout="row" layout-align="space-between center" layout-margin>
+            <div layout="column" layout-align="start start" flex="50">
+                <p>Start Time</p>
+                <input kendo-date-time-picker ng-model="se_query.StartTime" k-ng-model="StartTime" style="width: 100%;" class="k-input sessioncamexclude"
+                />
+            </div>
+            <div layout="column" layout-align="start start" flex>
+                <p>End Time</p>
+                <input kendo-date-time-picker ng-model="se_query.EndTime"  min="se_query.StartTime" k-ng-model="EndTime" style="width: 100%;" />
+            </div>
         </div>
         <md-input-container md-no-float class="md-block">
-            <input ng-model="se_query.server" placeholder="Server">
+            <input ng-model="se_query.ServerName" placeholder="Server">
         </md-input-container>
         <md-input-container md-no-float class="md-block">
-            <input ng-model="se_query.details" placeholder="Details">
+            <input ng-model="se_query.Details" placeholder="Details">
         </md-input-container>
     </div>
     <div layout="row" layout-padding layout-align="space-between center">
         <md-button aria-label="1" flex class="cancel-button" close-system-events-filter md-whiteframe="5">CANCEL</md-button>
-        <md-button aria-label="2" flex class="confirm-button" confirm-system-events-filter md-whiteframe="5">FILTER</md-button>        
+        <md-button aria-label="2" flex class="confirm-button" ng-click="LaunchFilter()" md-whiteframe="5">FILTER</md-button>        
 </md-dialog>

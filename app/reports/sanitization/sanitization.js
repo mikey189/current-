@@ -1,4 +1,4 @@
-app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog, channelData) {
+app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog,$q,  channelData, ToastNotifications) {
   $scope.selected = [];
   $scope.query = {
     order: 'StartTime',
@@ -21,11 +21,10 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
       })
   };
 
-  $scope.$watchGroup(['query.PageIndex', 'query.PageSize', 'query.order'], function (newValues, oldValues, scope) {
+  $scope.$watchGroup(['query.PageIndex', 'query.PageSize'], function (newValues, oldValues, scope) {
     $scope.query.PageIndex = newValues[0]
     $scope.query.PageSize = newValues[1]
-    $scope.query.order = newValues[2]
-    $scope.get_data()
+    $scope.get_data();
   });
   //filter dialog
   $scope.limitOptions = $scope.limitOptions ? undefined : [10, 25, 50, 100];
@@ -41,7 +40,8 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   };
   $scope.open_sanitization_filter = function () {
     $mdDialog.show({
-      controller: "sanitization",
+      scope: $scope, // use parent scope in template
+      preserveScope: true,
       clickOutsideToClose: true,
       templateUrl: 'app/reports/sanitization/filter/filter.html',
       parent: angular.element(document).find("body")
@@ -49,10 +49,8 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
   };
   $scope.open_details = function () {
     $mdDialog.show({
-      controller: "sanitization",
-      /*without this, for some crazy and unknown reason, this particular dialog does inherit only
-    scope values created at load, all scope value created after are not taken into account*/
-      scope: $scope.$new(),
+      scope: $scope, // use parent scope in template
+      preserveScope: true,
       clickOutsideToClose: true,
       templateUrl: 'app/reports/sanitization/details/details.html',
       parent: angular.element(document).find("body")
@@ -71,9 +69,16 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     //details dialog
   $scope.send_filter_query = function () {
     $mdDialog.hide()
-    console.log($scope.f_q)
     sanitization_factory.get_filter_results($scope.f_q).then(function (answer) {
-      $scope.data = answer.data
+      if (answer.data.Total < 1) {
+        ToastNotifications.ErrorToast("Your request has returned 0 result, thus it was NOT taken into account")
+      } else {
+        $scope.data = answer.data;
+        $scope.total_length = $scope.data.Total;
+      }
+    }, (error) => {
+      ToastNotifications.ErrorToast("an error has occured : " + error.data.Message);
+
     })
   }
   $scope.cancel_filter = function () {
@@ -88,6 +93,35 @@ app.controller("sanitization", function ($scope, sanitization_factory, $mdDialog
     })
     $scope.open_details()
   };
+  $scope.ActionSuccedded = (Filename) => {
+    ToastNotifications.SuccessToast("Action Successfully performed on "+Filename);
+  };
+
+
+$scope.$watch('query.order', function (newValue, oldValue) {
+    if (newValue != undefined) {
+      var deferred = $q.defer();
+      $scope.promise = deferred.promise;
+      var order = (newValue.includes("-")) ? "Desc" : "Asc";
+      var f = (newValue.includes("User"))? "UserName" : newValue.replace(/[^\w\s]/gi, '');
+      var field = f.replace(/\s/g, "");
+      sanitization_factory.FilterOrder(field, order).then((res) => {
+        ToastNotifications.SuccessToast("Sorting according to "+f);
+        $scope.data = res.data;
+        $scope.total_length = res.data.Total
+        return res.data.Total
+      }).then((Promise) => {
+        deferred.resolve();
+      })
+    }
+  });
+
+
+
+
+
+
+
 });
 
 app.filter("CutUntil", () => {

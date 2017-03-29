@@ -1,0 +1,26 @@
+<div layout="row">
+    <div class="donught-container" layout="column" layout-align="center center" layout-margin flex="33" md-whiteframe="7">
+        <h3>File Complexity</h3>
+        <canvas class="chart chart-doughnut" chart-data="ctrl.FileComplexity" chart-labels="ctrl.FileComplexityLabels">
+        </canvas>
+    </div>
+    <div class="donught-container" layout="column" layout-align="center center" layout-margin flex="33" md-whiteframe="7">
+        <h3>Traffic By Policy</h3>
+        <canvas  class="chart chart-doughnut" chart-data="ctrl.PolicyTraffic" chart-labels="ctrl.TrafficByPolicy">
+        </canvas>
+    </div>
+    <div   class="donught-container" layout="column" layout-align="center center" layout-margin flex="33" md-whiteframe="7">
+        <h3>Traffic By Channel</h3>
+        <canvas  class="chart chart-doughnut" chart-data="ctrl.ChannelTraffic" chart-labels="ctrl.TrafficByChannel">
+        </canvas>
+    </div>
+</div>
+<style>
+
+.donught-container{
+    background-color: white;
+    border-radius: 4px;
+    height: auto;
+}
+
+</style>

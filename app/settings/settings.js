@@ -3,10 +3,13 @@ app.controller('settings', function (system_properties, $scope, $mdDialog) {
   var self = this;
 
   self.allProps = [];
-  system_properties.get_properties().success(function (answer) {
-    self.allProps = answer;
-
-  });
+  self.GetSystemProps = () => {
+    self.HaveSettingsFinishedLoading = false;
+    system_properties.get_properties().success(function (answer) {
+      self.allProps = answer;
+      self.HaveSettingsFinishedLoading = true;
+    });
+  }
 
   self.SaveSettings = function () {
     system_properties.UpdateSettings(self.allProps).success(function (answer) {
@@ -51,6 +54,15 @@ app.controller('settings', function (system_properties, $scope, $mdDialog) {
         break;
     }
   }
+  self.getuser = (user) => {
+    console.log(user);
+    var users = [];
+    system_properties.getusers(user).then((res) => {
+      res.data
+      console.log(res.data)
+      return res.data;
+    })
+  }
 
 })
 
@@ -92,14 +104,16 @@ app.directive('stringToDate', function () {
 
       }
 
-      /*ngModel.$parsers.push(function (value) {
+      ngModel.$parsers.push(function (value) {
         return value.toUTCString();
-      });*/
-      ngModel.$formatters.push(function (value) {
-        if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
-          return value
-        }
       });
+      ngModel.$formatters.push(function (val) {
+        //if (hasNumbers(ngModel.$$rawModelValue) && isDate(ngModel.$$rawModelValue)) {
+        var date = new Date(val)
+        return date;
+        // }
+      });
+
     }
   };
 });

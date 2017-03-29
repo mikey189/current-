@@ -17,10 +17,12 @@ app.directive("performAction", (sanitization_factory) => {
                 var self = $(this);
                 var id = self.attr("sanitization-id");
                 var action = self.attr("action");
+                var filename = self.attr("filename");
                 var row = self.parents("tr");
                 var TaskIndicator = self.find("#TaskIndicator");
                 TaskIndicator.html("hourglass_full");
                 sanitization_factory.perform_action(id, action).then((answer) => {
+                    scope.ActionSuccedded(filename);
                     TaskIndicator.html("thumb_up");
                     row.addClass("action-success")
                 }, (error) => {

@@ -300,9 +300,7 @@ body {
     color: white;
 }
 
-.white:hover {
-    color: #8C9EFF;
-}
+
 
 .fullWidthButton {
     min-width: auto;
@@ -391,9 +389,6 @@ md-list-item>md-button {
     text-align: center;
 }
 
-#vertical-container {
-    height: 65%;
-}
 
 .progress-bar-purple {
     background-color: #773EB2;
@@ -583,6 +578,10 @@ md-chips .md-chips {
 
 #red {
     color: red;
+}
+
+md-select.md-default-theme ._md-select-value, md-select ._md-select-value{
+    border-bottom: solid 0px white !important;
 }
 
 md-select.md-default-theme ._md-select-value,
@@ -925,7 +924,6 @@ policy-graph-toolbar {
 .channelSidenavItems:hover {
     background-color: #38359C;
     color: white;
-    border-left: solid 0.5em #706BE2;
 }
 
 .channelSidenavItems:active {

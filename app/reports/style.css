@@ -21,3 +21,14 @@
 .reports-menu-description{
     margin: 3em 1.5em;
 }
+.report-menu{
+    width: 100% !important;
+    text-align: left !important;
+}
+/*new menu*/
+
+#report-selector{
+    margin-top: 3em !important;
+    background-color: white !important;
+    border-radius: 2px !important;
+}

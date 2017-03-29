@@ -1,0 +1,26 @@
+<div class="chart-container" md-whiteframe="8" vertilize>
+    <h3 class="graph-title">{{ctrl.chartTitle}}</h3>
+    <canvas height="65%" class="chart chart-line" chart-data="ctrl.DummyData1" chart-labels="ctrl.DummyLabels1" chart-series="ctrl.series"
+        chart-options="ctrl.options" chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick" style="padding-bottom: 15px">
+    </canvas>
+</div>
+<style>
+    .RoundedGraph {
+        /*height: 45% !important;*/
+    }
+    
+    .chart-container {
+        background-color: white !important;
+        border-radius: 5px;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    
+    .graph-title {
+        margin-left: 1em;
+        font-weight: 800;
+        margin-bottom: 1em;
+        margin-top: 0px !important;
+    }
+
+</style>

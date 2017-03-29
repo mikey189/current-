@@ -1,3 +1,20 @@
+app.factory("Dashboard", ($http) => {
+
+    var url = "app/dashboard/DummyData.json";
+    var NewsURl  = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=aeaf2ce8b9984429bbe0d8ea1a0a92fc";
+    return{
+        GetDummyData: () => {
+            return $http.get(url)
+        }, 
+        GetFeed: () => {
+            return $http.get(NewsURl)
+        },
+        GetFeedImage:(ImageURL) => {
+            return $http.get(ImageURL)
+        }
+    }
+
+})
 app.factory("401Error", ($q, $injector) => {
     return {
         responseError: function (rejection) {
@@ -25,7 +42,6 @@ app.factory("401Error", ($q, $injector) => {
         }
     }
 });
-
 app.factory("HTTPHeaders", function ($http, $state, $timeout) {
     var token = localStorage.getItem("token")
 
@@ -36,8 +52,6 @@ app.factory("HTTPHeaders", function ($http, $state, $timeout) {
 
     }
 })
-
-
 app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) {
 
     return {
@@ -60,9 +74,16 @@ app.factory("authService", ["$rootScope", "$http", function ($rootScope, $http) 
         }
     }
 }]);
-
+app.factory("MainDashboard", ($http) => {
+    var sname = localStorage.getItem("serverName");
+    var url = "http://" + sname + ":4580/api/general/dashboard";
+    return {
+        GetDashboard: () => {
+            return $http.get(url);
+        }
+    }
+})
 //http: jdev01:4580/api/channels/GetChannelSettingsFacets?section=ChannelUsage
-
 app.factory("channelData", function ($http, $rootScope) {
 
     var sname = localStorage.getItem("serverName");
@@ -73,7 +94,8 @@ app.factory("channelData", function ($http, $rootScope) {
     var channelsIconsURL = "http://" + sname + ":4580/api/jsonserver/channelsIcons";
     var channelList = "http://" + sname + ":4580/api/channels/getallchannels/?q=1"
     var channelListReal = "http://" + sname + ":4580/api/channels/getALLCHANNELS";
-    var channelDashboard = "http://" + sname + ":4580/api/channels/getchanneldashboard/";
+    var ChannelTopUsers = "http://" + sname + ":4580/api/channels/GetChannelDashboardTopUsers/";
+    var ChannelTopFiles = "http://" + sname + ":4580/api/channels/ChannelDashboardTopFiles/";
     var postChannel = "http://" + sname + ":4580/api/Channels/PostChannel";
     var updateComputers = "http://" + sname + ":4580/api/channels/PostChannelComputerList/";
     var current_computers = "http://" + sname + ":4580/api/Channels/getchannel/"
@@ -125,9 +147,17 @@ app.factory("channelData", function ($http, $rootScope) {
         getAllChannels: function () {
             return $http.get(channelListReal)
         },
-        getChannelDashboard: function (id) {
-            return $http.get(channelDashboard + id)
+        GetTopUsers: function (id, TimeReference, order) {
+            return $http.get(ChannelTopUsers + id + "?startTimeInTicks=" + TimeReference+"&sortField="+order)
         },
+        GetTopFiles: function (id, TimeReference, order) {
+            return $http.get(ChannelTopFiles + id + "?startTimeInTicks=" + TimeReference+"&sortField="+order)
+        },
+        /*
+        Missing call
+        GetTopFiles: function (id, TimeReference, order) {
+            return $http.get(ChannelTopFiles + id + "?startTimeInTicks=" + TimeReference+"sortField="+order)
+        },*/
         createChannel: function (data) {
             return $http({
                 headers: {
@@ -252,9 +282,6 @@ app.factory("channelData", function ($http, $rootScope) {
 
     }
 })
-
-
-
 app.factory("policyData", function ($rootScope, $http) {
 
 
@@ -354,7 +381,7 @@ app.factory("policyData", function ($rootScope, $http) {
             })
         },
         getDashboard: function (id, TimeReference) {
-            return $http.get(policyDashboard + id+"?startTimeInTicks="+TimeReference)
+            return $http.get(policyDashboard + id + "?startTimeInTicks=" + TimeReference)
         },
         getDescriptions: function () {
             return $http.get(fileExtensionsDescription).then(function (response) {
@@ -475,33 +502,6 @@ app.factory("policyData", function ($rootScope, $http) {
 
     }
 })
-
-app.factory("dashboardData", function ($http) {
-
-    var sname = localStorage.getItem("serverName");
-
-    console.log("dashboard data service says => ", sname);
-    var inputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardInputs";
-    var totalInputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardTotalInputs";
-    var outputURL = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardOutputs";
-    var casesSidebar = "http://" + sname + ":4580/api/jsonserver/dashboard?q=dashboardSidebar";
-
-    return {
-        getInput: function () {
-            return $http.get(inputURL)
-        },
-        getTotalInput: function () {
-            return $http.get(totalInputURL)
-        },
-        getOutput: function () {
-            return $http.get(outputURL)
-        },
-        getCasesSidebar: function () {
-            return $http.get(casesSidebar)
-        }
-    }
-})
-
 app.factory("reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
@@ -512,7 +512,6 @@ app.factory("reports_factory", function ($http) {
         }
     }
 })
-
 app.factory("sanitization_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -540,10 +539,14 @@ app.factory("sanitization_factory", function ($http) {
             })
         },
         get_data: (index, size, order_field) => {
-            return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&sortField=" + order_field)
+            return $http.get(url + "PageIndex=" + index + "&PageSize=" + size + "&SortField=" + order_field)
         },
         get_filter_fields: () => {
             return $http.get(filter_field)
+        },
+
+        FilterOrder: (Field, Order) => {
+            return $http.get(url + "&SortField=" + Field + "&SortOrder=" + Order)
         },
 
         get_filter_results: (filter_query) => {
@@ -559,13 +562,12 @@ app.factory("sanitization_factory", function ($http) {
         }
     }
 });
-
 app.factory("system_properties", function ($http) {
 
     var sname = localStorage.getItem("serverName");
-
     var propertiesList = "http://" + sname + ":4580/api/SystemProperties/GetSystemProperties";
     var UpdateSettings = "http://" + sname + ":4580/api/SystemProperties/PostSystemProperties";
+    var searchUsers = "http://" + sname + ":4580/api/users/getadusergroups?";
     return {
         UpdateSettings: function (props) {
             return $http({
@@ -577,13 +579,15 @@ app.factory("system_properties", function ($http) {
                 data: props
             });
         },
+        getusers: (user) => {
+            return $http.get(searchUsers+"user="+user)
+        },
         get_properties: function () {
-            return $http.get(propertiesList);
+            return $http.get(propertiesList, {cache: true});
 
         }
     }
 });
-
 app.factory("telerik_reports_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
@@ -595,7 +599,6 @@ app.factory("telerik_reports_factory", function ($http) {
         }
     }
 });
-
 app.factory("system_events_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
@@ -611,6 +614,9 @@ app.factory("system_events_factory", function ($http) {
                 method: 'GET',
                 params: filter_query
             })
+        },
+        FilterOrder: (Field, Order) => {
+            return $http.get(base_url + "&SortField=" + Field + "&SortOrder=" + Order);
         }
     }
 });
@@ -619,7 +625,7 @@ app.factory("jobs_factory", function ($http) {
 
     var sname = localStorage.getItem("serverName");
 
-    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs/?q=1"
+    var base_url = "http://" + sname + ":4580/api/report/GetSanitizationJobs/?q=1&AgentTypeStr=endpoint";
     return {
         get_jobs: function (filter_query) {
             return $http({
@@ -636,9 +642,17 @@ app.factory("emails_factory", function ($http) {
     var sname = localStorage.getItem("serverName");
 
     var base_url = "http://" + sname + ":4580/api/report/GetEmailSanitizations/?q=1"
+
     return {
-        get_emails: function (index, size, order) {
-            return $http.get(base_url + "?PageIndex=" + index + "&PageSize=" + size + "&SortOrder=" + order)
+        get_emails: function (filter_query) {
+            return $http({
+                url: base_url,
+                method: 'GET',
+                params: filter_query
+            })
+        },
+        FilterOrder: (Field, Order) => {
+            return $http.get(base_url + "&SortField=" + Field + "&SortOrder=" + Order);
         }
     }
 });
@@ -742,6 +756,42 @@ app.factory("$cluster", function ($http) {
             //we use post to get the data beause it takes a long time
             return $http.get(ClusterData + "sdate=" + StartTime + "&edate=" + EndTime)
 
+        }
+    }
+});
+
+app.factory("accountMgmt_factory", function ($http) {
+
+    var sname = localStorage.getItem("serverName")
+
+    return {
+        PostForgotPassword: function (username, server) {
+            var postSaasForgotPasswordUrl = "http://" + server + ":4580/api/manage/PostSaasForgotPassword?";
+            //we use post to get the data beause it takes a long time
+
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: postSaasForgotPasswordUrl + "username=" + username,
+                method: "POST"
+            });
+        },
+        PostResetPassword: function (newPassword, token, server) {
+            var postSaasResetPasswordUrl = server + "/api/manage/PostSaasResetPassword";
+            //we use post to get the data beause it takes a long time
+            var forgotPwdParams = {
+                "newPassword": newPassword,
+                "token": token
+            };
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: postSaasResetPasswordUrl,
+                method: "POST",
+                params: forgotPwdParams
+            });
         }
     }
 });

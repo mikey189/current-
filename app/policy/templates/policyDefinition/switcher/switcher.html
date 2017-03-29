@@ -1,6 +1,15 @@
 <link rel="stylesheet" href="app/policy/templates/policyDefinition/switcher/style.css" />
-<div layout="row" flex="100" layout-align="center center" id="policyDefinitionSwitcherBK" layout-padding md-whiteframe="6">
-    <nav flex="65">
+<div flex layout="row" layout-align="center center" id="policy-view-switcher" layout-margin md-whiteframe="4">
+    <div flex="15" ui-sref-active="policyInnerNavUISelected" class="mymenu hvr-float" ui-sref="app.policy.definition.fileType"
+        layout-padding>FILE TYPES</div>
+    <div flex="15" ui-sref-active="policyInnerNavUISelected" class="mymenu hvr-float" ui-sref="app.policy.definition.detection"
+        layout-padding>DETECTION</div>
+    <div flex="15" ui-sref-active="policyInnerNavUISelected" class="mymenu hvr-float" ui-sref="app.policy.definition.cdr" layout-padding>CDR</div>
+    <div flex="15" ui-sref-active="policyInnerNavUISelected" class="mymenu hvr-float" ui-sref="app.policy.definition.regex" layout-padding>HYPERLINKS</div>
+    <div flex="15" ui-sref-active="policyInnerNavUISelected" class="mymenu hvr-float" ui-sref="app.policy.definition.settings"
+        layout-padding>SETTINGS</div>
+</div>
+<!-- <nav flex="65">
         <ul class="nav nav-justified" id="policyDefinitionSwitcher">
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.fileType" ui-sref-active="policyInnerNavUISelected"><strong>File Type</strong></a></li>
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.detection" ui-sref-active="policyInnerNavUISelected"><strong>Detection </strong></a></li>
@@ -8,5 +17,4 @@
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.regex" ui-sref-active="policyInnerNavUISelected"><strong>Hyperlinks</strong></a></li>
             <li class="policyDefinitionSwitcher"><a class="roundedTabSelector" ui-sref="app.policy.definition.settings" ui-sref-active="policyInnerNavUISelected"><strong>Settings</strong></a></li>
         </ul>
-    </nav>
-</div>
+    </nav>-->

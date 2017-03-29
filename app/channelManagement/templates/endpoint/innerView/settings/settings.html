@@ -1,12 +1,8 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" /> Transformed Facets
-<json-formatter json="ctrl.whoData"></json-formatter>
-After init
-<json-formatter json="ctrl.ChannelFacets"></json-formatter>
 <div layout="row" layout-align="start start">
     <md-button edit-channel-settings md-whiteframe="4" aria-label="edit settings" class="shadow-on-hover save-settings">SAVE</md-button>
 </div>
-<md-list ng-if="ctrl.TemplateConditions.isDirWatcher" md-whiteframe="4" class="settings shadow-on-section-hover" ng-class="{'not-editable': !ctrl.AreSettingsEditable}"
-    style="margin-top: 2em">
+<md-list ng-if="ctrl.TemplateConditions.isDirWatcher" md-whiteframe="4" class="settings shadow-on-section-hover" style="margin-top: 2em">
     <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
         <span>Dir Watcher Settings</span>
     </md-toolbar>
@@ -46,9 +42,30 @@ After init
             <input class="material-input" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]" type="number" />
         </div>
         <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
-            <select ng-options="item as item for item in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"
+            <select ng-options="L0Value.AvailableValues.indexOf(x) as x for x in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Agent Settings'].Values[L0Key]"
                 class="select"></select>
         </div>
     </md-list-item>
 </md-list>
-
+<md-list ng-if="ctrl.TemplateConditions.isEmail" md-whiteframe="4" class="settings shadow-on-section-hover" style="margin-top: 2em">
+    <md-toolbar layout="row" layout-align="start center" layout-padding class="settings-toolbar">
+        <span>Email Settings</span>
+    </md-toolbar>
+    <md-list-item ng-repeat="(L0Key, L0Value) in ctrl.whoData['Email Settings'].Properties" ng-switch="L0Value.Type" layout="row"
+        layout-align="space-between center">
+        <span flex="80">{{L0Value.DisplayName}}</span>
+        <div ng-switch-when="FacetPropertyType_String" type="text" flex>
+            <input class="material-input" flex ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]" />
+        </div>
+        <div ng-switch-when="FacetPropertyType_Bool" flex layout="row" layout-align=" end">
+            <md-switch aria-label="bool" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]"></md-switch>
+        </div>
+        <div ng-switch-when="FacetPropertyType_Int" flex>
+            <input class="material-input" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]" type="number" />
+        </div>
+        <div ng-switch-when="FacetPropertyType_SingleChoice" flex>
+            <select ng-options="L0Value.AvailableValues.indexOf(x) as x for x in L0Value.AvailableValues" ng-model="ctrl.ChannelFacets['Email Settings'].Values[L0Key]"
+                class="select"></select>
+        </div>
+    </md-list-item>
+</md-list>

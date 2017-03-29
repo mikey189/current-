@@ -1,3 +1,41 @@
+<link rel="stylesheet" href="app/policy/templates/policyDashboardTab/templates/style.css">
+<!--
 <div layout="row" layout-align="space-between start" vertilize-container id="pdWrapper">
     <policy-dashboard-top-files id="topFileTypeMdList" flex md-whiteframe="6"></policy-dashboard-top-files>
+</div>
+-->
+<div style="margin-top: 2em">
+    <!-- <div layout="row" layout-align="end">
+        <md-button class="md-icon-button" ng-click="ctrl.unified_view">
+            <md-icon>view_agenda</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="!ctrl.unified_view">
+            <md-icon>view_module</md-icon>
+        </md-button>
+    </div>
+    <div layout="column" style="margin-top: 2em"  ng-if="!ctrl.unified_view" class="animated fadeIn">
+        <div layout="row" layout-margin layout-align="space-between center">
+            <policy-dashboard-passed-files flex="50"></policy-dashboard-passed-files>
+            <policy-dashboard-blocked-files flex></policy-dashboard-blocked-files>
+        </div>
+        <div layout="row" layout-align="space-between center" layout-margin>
+            <policy-dashboard-passed-users flex="50"></policy-dashboard-passed-users>
+            <policy-dashboard-blocked-users flex></policy-dashboard-blocked-users>
+        </div>
+    </div>-->
+    <div layout="row" layout-align="end center" layout-margin style="margin-top: 2em">
+        <h4>Time Frame</h4>
+        <md-input-container>
+            <md-select ng-model="ctrl.DashboardTimeFrame" aria-label="time-frame" id="policy-dashboard-timepicker" >
+                <md-option selected><small>Last Hour</small></md-option>
+                <md-option><small>24 Hours</small></md-option>
+                <md-option><small>1 Week</small></md-option>
+                <md-option><small>1 Month</small></md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div style="margin-top: 2em">
+        <policy-dashboard-unified-files></policy-dashboard-unified-files>
+        <policy-dashboard-unified-users></policy-dashboard-unified-users>
+    </div>
 </div>

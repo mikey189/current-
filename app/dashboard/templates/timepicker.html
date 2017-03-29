@@ -1,0 +1,14 @@
+<md-dialog>
+    <md-toolbar layout-padding layout="row" layout-align="center center">Pick a specific Day</md-toolbar>
+    <md-content layout-margin>
+        <md-datepicker ng-model="ctrl.customDate" md-is-open="true" layout-margin></md-datepicker>
+    </md-content>
+    <div layout="row">
+        <md-button ng-click="ctrl.CloseDialogAndFilterData()">
+            CANCEL
+        </md-button>
+        <md-button ng-click="ctrl.CancelDialog()">
+            GO!
+        </md-button>
+    </div>
+</md-dialog>

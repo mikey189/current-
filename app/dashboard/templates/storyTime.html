@@ -1,0 +1,44 @@
+<link href="style.css">
+<div id="story-time-container" md-whiteframe="9" layout-margin layout-wrap>
+    During the last
+    <select ng-change="ctrl.TriggerDataChange()" ng-model="ctrl.SelectedTimeFrame" class="action-selector" ng-init="ctrl.SelectedTimeFrame = '1Month'">
+        <option value="1Day">Last Day</option>
+        <option value="1Week">Last Week</option>
+        <option value="1Month" selected>Last Month</option>
+        <option value="3Months">3 Months</option>
+        <option value = "custom">Custom</option>
+    </select> Days the ReSecure platform
+    <span class="twitter-like" sidenav-info-for-processed>processed</span><span class="important-figure">{{ctrl.Data.NumberOfConcernedFiles}}</span>Files. The
+    system detected<span class="important-figure">{{ctrl.Data.KnownInfections}}</span> Known Infections
+    <span class="twitter-like" sidenav-info-for-detected>detected</span><span class="important-figure">{{ctrl.Data.PotentialThreats}}</span> Threats and <span class="twitter-like" sidenav-info-for-prevented> prevented</span> <span class="important-figure"> 1240</span> potential threats.
+   
+</div>
+<style>
+    #story-time-container {
+        background-color: #471BAB !important;
+        color: white;
+        font-size: 1.3em;
+        border-radius: 5px;
+        font-weight: 700;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    
+    .action-selector {
+        background-color: #2196F3 !important;
+        border-color: transparent;
+        -webkit-border-radius: 25px;
+    }
+    
+    .important-figure {
+        color: yellow;
+        font-weight: 800;
+        font-size: 1.5em;
+    }
+    
+    .twitter-like {
+        border-bottom: solid 2px #E53935;
+    }
+</style>

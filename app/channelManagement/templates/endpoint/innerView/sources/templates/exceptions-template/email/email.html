@@ -1,0 +1,26 @@
+<h1>email sources</h1>
+
+<link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/settings/style.css" /> Transformed Facets
+    <json-formatter json="ctrl.EmailSettings"></json-formatter>
+
+<div layout="row" layout-align="space-between center" layout-margin>
+   <form name="userForm"   novalidate>
+       
+<div layout="row" layout-align="start start">
+    <md-button  save-email-settings md-whiteframe="4" aria-label="edit settings" class="shadow-on-hover save-settings" ng-disabled="userForm.$invalid">SAVE</md-button>
+</div>
+  <div>
+      <md-input-container>
+        <label>Input Relay Name</label>
+        <input ng-model="ctrl.EmailSettings.InputRelayName" type="string" required>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Outgoing Relay Name</label>
+        <input ng-model="ctrl.EmailSettings.OutgoingRelayName" type="string" required>
+      </md-input-container>
+    </div>
+    
+        
+    </form>
+</div>

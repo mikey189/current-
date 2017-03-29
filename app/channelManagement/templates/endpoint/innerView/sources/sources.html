@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="app/channelManagement/templates/endpoint/innerView/sources/style.css" />
 <div ng-http-loader methods="['POST']" template="app/common/templates/loader.html" ttl="2"></div>
 <div layout="column" layout-margin id="edition_section" ng-cloak ng-if="ctrl.TemplateConditions.isEndpoint">
-    <json-formatter json="ctrl.channel_data"></json-formatter>
-    <json-formatter json="ctrl.all_inputs"></json-formatter>
     <div layout="row" layout-margin layout-align="end center">
         <md-button class="save-sources margin_top md-raised shadow-on-hover" id="edit_IO" edit-inputs-and-outputs>SAVE</md-button>
     </div>
@@ -15,15 +13,15 @@
             <channel-inputs-sources id="inputs_sources" flex="50" match-parent-width></channel-inputs-sources>
             <channel-outputs-sources id="outputs_sources" flex="50" match-parent-width></channel-outputs-sources>
         </div>
+        <div md-whiteframe = "4" ng-if="ctrl.NullOptionIsEditable" layout="row" flex layout-margin layout-align="space-between center" class="null-container">
+            <p flex="20" style="margin-bottom: 0px; margin-right: 0.5em">Null Store Name</p>
+            <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.NullStoreName">
+        </div>
         <div layout="row" layout-align="space-between center" layout-margin>
             <div layout="column" flex="50">
                 <i-smb ng-repeat="ISMB in ctrl.ismbList"></i-smb>
             </div>
             <div layout="column" flex="50">
-                <div ng-if="ctrl.NullOptionIsEditable" layout="row" layout-align="space-between center" class="null-container" >
-                    <p>Null Store Name</p>
-                    <input flex ng-disabled="!ctrl.NullOptionIsEditable" ng-model="ctrl.NullStoreName">
-                </div>
                 <o-smb ng-repeat="OSMB in ctrl.osmbList"></o-smb>
             </div>
         </div>
@@ -32,3 +30,10 @@
 <div ng-if="ctrl.TemplateConditions.isDirWatcher">
     <dw-sources></dw-sources>
 </div>
+<div ng-if="ctrl.TemplateConditions.isEmail">
+    <email-template></email-template>
+</div>
+<div ng-if="ctrl.TemplateConditions.isAPI">
+    <api-template></api-template>
+</div>
+<json-formatter json="ctrl.channel_data"></json-formatter>

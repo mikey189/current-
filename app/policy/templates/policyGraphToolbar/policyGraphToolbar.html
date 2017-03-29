@@ -12,7 +12,7 @@
                 <ng-md-icon icon='arrow_downward' style='fill:red' size='36'></ng-md-icon>
             </div>
             <div flex='15' layout='row' layout-align='center center'>
-                <h3 class='purple marginLeft'>{{ctrl.dashboardData.AllSanitizationNumericResults.TotalBlocked}}</h3>
+                <h3 class='purple marginLeft'>{{ctrl.dashboardData.AllSanitizationNumericResults || 0}}</h3>
             </div>
             <div flex>
                 <!--<canvas id="blockedFilesGraph" class="chart chart-line" chart-data="ctrl.data" chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options" chart-dataset-override="datasetOverride" chart-click="ctrl.onClick" </canvas>-->
@@ -26,7 +26,7 @@
                 <ng-md-icon icon='arrow_upwards' style='fill:#773EB2' size='36'></ng-md-icon>
             </div>
             <div flex='15' layout='row' layout-align='center center'>
-                <h3 class='purple marginLeft'>{{ctrl.dashboardData.AllSanitizationNumericResults.TotalProcessed}}</h3>
+                <h3 class='purple marginLeft'>{{ctrl.dashboardData.AllSanitizationNumericResults || 0}}</h3>
             </div>
             <div flex>
                 <!--<canvas style='width: 80%; height: 15%' id="sanitizedFileGraph" class="chart chart-line" chart-data="ctrl.data" chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options" chart-dataset-override="datasetOverride" chart-click="ctrl.onClick" </canvas>-->

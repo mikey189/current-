@@ -1,0 +1,36 @@
+<!--<div class="legend-container" md-whiteframe="8" layout-wrap>
+    <span class="important-figure top-figure">789</span> Files were processed by the system
+    <div>
+        <br>
+         The
+        <md-button class="special-button" md-whiteframe="5">Top File Type</md-button> was <span class="important-figure">EXE</span>
+        <br> The
+        <md-button class="special-button" md-whiteframe="5">Most Active User</md-button>
+        was <span class="important-figure">David</span>
+    </div>
+</div>-->
+<md-list md-whiteframe="7" class="legendFrame-container" vertilize>
+    <md-list-item layout-gt-lg="row" layout="column" layout-align="space-between center" ng-repeat="x in ctrl.SideInfo">
+        <md-content class="title-important">{{x.title}}</md-content>
+        <md-content layout-padding class="total-important">{{x.result}}</md-content>
+    </md-list-item>
+</md-list>
+<style>
+    .total-important {
+        font-size: 2vw;
+        color: #333 !important;
+    }
+    
+    .legendFrame-container {
+        background-color: white;
+        border-radius: 5px;
+    }
+    
+    .title-important {
+        color: #E53935 !important;
+        font-size: 1.1vw;
+    }
+    
+    
+    
+</style>

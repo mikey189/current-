@@ -5,6 +5,7 @@ app.directive("editChannelSettings", function (channelData, $mdDialog, $timeout)
             element.bind("click", function () {
                 var self = $(this);
                 var postData = scope.ctrl.FormatChannelFacetsBeforePOST();
+                console.log(JSON.stringify(postData));
                 $timeout(() => {
                     channelData.updateWhoIsUsing(scope.ctrl.rootId, postData).then( (success) => {
                         scope.ctrl.HTTP_Dialogs.ShowSuccessDialog()

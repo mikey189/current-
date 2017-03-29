@@ -1,4 +1,4 @@
-app.controller('common', function ($rootScope, $state, $stateParams) {
+app.controller('common', function ($rootScope, $state, $stateParams, $mdMenu) {
 
 	var self = this;
 	$rootScope.timeFrame = ["Real Time", "1 Hour", "1 Day", "1 Week", "1 Month"];
@@ -9,7 +9,14 @@ app.controller('common', function ($rootScope, $state, $stateParams) {
 
 	var IsUserSOB = localStorage.getItem("ISSOB");
 	self.IsUserSOB = (IsUserSOB === "true") ? true : false;
-	console.log(self.IsUserSOB)
+
+	self.openMenu = ($mdMenu, ev) => {
+		originatorEv = ev;
+		$mdMenu.open(ev);
+	};
+	self.notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+	self.notificationsLength = self.notifications.length;
+
+	self.FakeNews = "Your License is about to expire, your access will subsequently be restricted"
 
 })
-

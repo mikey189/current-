@@ -78,9 +78,29 @@
       border-radius: 100px;
   }
   
-  .fail-actions {
-      border-top: solid 4px red;
-  }
-  .parent-category{
+.card-title-fail-action{
+    background-color: #333;
+    color: white;
+}
+  
+  .parent-category {
       color: #333;
+  }
+  .faire-ecart{
+      margin-bottom: 0.5em;
+      margin-right: 0.7em;
+  }
+  .disabled{
+      opacity: 0.4;
+      color: #333;
+  }
+  .categories{
+      font-weight: 700;
+      color: #333;
+      padding-bottom: 0.4em;
+  }
+  #save-cdr{
+      font-weight: 700;
+      color: white;
+      background-color: #2196F3;
   }
